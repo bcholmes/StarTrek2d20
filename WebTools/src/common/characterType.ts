@@ -58,6 +58,8 @@ export class CharacterTypeModel {
                 return sources.indexOf(Source.KlingonCore) >= 0;
             } else if (t.type === CharacterType.Starfleet) {
                 return true;
+            } else if (t.type === CharacterType.Civilian || t.type === CharacterType.AmbassadorDiplomat) {
+                return sources.indexOf(Source.PlayersGuide) || sources.indexOf(Source.Core2ndEdition);
             } else {
                 return sources.indexOf(Source.PlayersGuide) >= 0
             }

@@ -1787,10 +1787,6 @@
 
     "Talent.fastTargetingSystems.soloDescription": "Les systèmes de ciblage du vaisseau opèrent plus rapidement et plus précisément que ceux des autres navires de sa classe, ce qui lui confère un avantage certain en combat. De plus, lorsqu’il tente de cibler un Système précis sur un vaisseau ennemi, la difficulté de la Tâche n’est pas majorée.",
 
-    "Talent.firstResponse": "Première réaction",
-
-    "Talent.firstResponse.description": "Vous gagnez un d20 bonus quand vous effectuez la Tâche Premiers secours pendant un combat. De plus, vous pouvez toujours obtenir une Réussite mitigée, mais pour chaque Complication que vous subissez la difficulté pour soigner les blessures du patient par la suite augmentera de +1.",
-
     "Talent.fieldMedicine": "Médecine de terrain",
 
     "Talent.fieldMedicine.description": "Quand vous effectuez une Tâche de Médecine, vous ignorez les augmentations de difficulté dues à l’absence d’instruments ou d’équipement appropriés.",
@@ -1798,6 +1794,10 @@
     "Talent.finesseStrikes": "Tir acrobatique",
 
     "Talent.finesseStrikes.description": "Vous êtes gracieux sur un champ de bataille, dansant autour de vos ennemis. Une fois par rencontre de combat, vous pouvez relancer tous les [D] pour le stress que vous infligez lors d'une seule attaque de mélée réussie",
+
+    "Talent.firstResponse": "Première réaction",
+
+    "Talent.firstResponse.description": "Vous gagnez un d20 bonus quand vous effectuez la Tâche Premiers secours pendant un combat. De plus, vous pouvez toujours obtenir une Réussite mitigée, mais pour chaque Complication que vous subissez la difficulté pour soigner les blessures du patient par la suite augmentera de +1.",
 
     "Talent.flyBy": "Vol de reconnaissance",
 

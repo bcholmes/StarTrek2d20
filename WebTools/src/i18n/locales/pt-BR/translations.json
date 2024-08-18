@@ -2198,10 +2198,6 @@
 
     "Talent.fastTargetingSystems.soloDescription": "Os sistemas de mira da arma podem travar armas em um alvo muito mais rápido e com mais precisão do que outras naves de sua classe, concedendo-lhe uma vantagem em batalha.",
 
-    "Talent.firstResponse": "Primeiros Socorros Imediatos",
-
-    "Talent.firstResponse.description": "Sempre que tentar a Tarefa de Primeiros Socorros durante o combate, você ganha um d20 de bônus. Além disso, você sempre pode ser Bem-sucedido a um Custo, sendo que cada Complicação sofrida adiciona +1 à Dificuldade de curar a Lesão do paciente posteriormente.",
-
     "Talent.fieldMedicine": "Medicina de Campo",
 
     "Talent.fieldMedicine.description": "Quando fizer uma Tarefa de Medicina, você pode ignorar qualquer aumento em Dificuldade para trabalhar sem as ferramentas ou equipamentos apropriados.",
@@ -2209,6 +2205,10 @@
     "Talent.finesseStrikes": "Ataques Refinados",
 
     "Talent.finesseStrikes.description": "Você é gracioso no campo de batalha, muitas vezes dançando ao redor do inimigo com relativa facilidade. Uma vez por encontro de combate, você pode rolar novamente todos os [D] do Estresse que infligir quando fizer um único ataque Corporal bem-sucedido.",
+
+    "Talent.firstResponse": "Primeiros Socorros Imediatos",
+
+    "Talent.firstResponse.description": "Sempre que tentar a Tarefa de Primeiros Socorros durante o combate, você ganha um d20 de bônus. Além disso, você sempre pode ser Bem-sucedido a um Custo, sendo que cada Complicação sofrida adiciona +1 à Dificuldade de curar a Lesão do paciente posteriormente.",
 
     "Talent.flyBy": "Passar Voando",
 

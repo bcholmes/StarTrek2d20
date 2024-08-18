@@ -2141,6 +2141,10 @@
 
     "Talent.appliedForce.description2e": "When you make a Melee Attack, you may use Fitness instead of Daring. In addition, you add 1 to the Severity of your Unarmed Attacks.",
 
+    "Talent.appliedResearch": "Applied Research",
+
+    "Talent.appliedResearch.description2e": "Once per scene, when you attempt a task which relates to information you received earlier that scene from an Obtain Information question, the first bonus die you purchase is free.",
+
     "Talent.askingTheRightQuestions": "Asking the Right Questions",
 
     "Talent.askingTheRightQuestions.description": "When you attempt a task that relates to information you’ve received from Obtain Information questions in the current scene, you may re-roll 1d20.",
@@ -2161,9 +2165,17 @@
 
     "Talent.backUpPlans.description2e": "Whenever you or an ally fail a task (so long as you are present in the scene), you may add 1 point to the group’s Momentum pool.",
 
+    "Talent.bafflingBriefing": "Baffling Briefing",
+
+    "Talent.bafflingBriefing.description2e": "When you engage in a social conflict using deception, you may use Science in place of Command so long as their technical knowledge is used to mislead their opponent.",
+
     "Talent.bargain": "Bargain",
 
     "Talent.bargain.description2e": "When you use Negotiation to make an offer to someone during social conflict, you may re-roll a single d20 on your next Persuade task to convince that person. If the social conflict with that person involves an extended task, your Impact is increased by 1.",
+
+    "Talent.bedsideManner": "Bedside Manner",
+
+    "Talent.bedsideManner.description2e": "When you succeed at a Medicine task to heal an Injury, you may immediately remove a negative trait from the patient, even if that trait was unrelated to the Injury being treated. In addition, when you attempt a Reputation Check, add one additional positive influence.",
 
     "Talent.boldCommand": "Bold: Command",
 
@@ -2233,6 +2245,10 @@
 
     "Talent.cautiousSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by spending Momentum, you may re-roll a single d20.",
 
+    "Talent.chiefOfStaff": "Chief of Staff",
+
+    "Talent.chiefOfStaff.description2e": "When you Assist another character attempting a Medicine task, each assisting character may re-roll their assistance die.",
+
     "Talent.chosenSpeaker": "Chosen Speaker",
 
     "Talent.chosenSpeaker.description2e": "Among Aenar communities, leaders and mediators are chosen as and when the need arises, nominating an individual to serve as Speaker. You’ve been chosen for this role often and are adept at using your senses and your telepathy to aid communication. When attempting a task to communicate telepathically with a willing being, you may re-roll 1d20.",
@@ -2286,6 +2302,10 @@
 
     "Talent.combatGunner.description": "You have trained to operate ground vehicles and mounted weapons. You may use your Conn instead of Security when making an attack with a weapon mounted on a ground vehicle.",
 
+    "Talent.combatMedic": "Combat Medic",
+
+    "Talent.combatMedic.description2a": "When attempting a Medicine task during combat, you may pick one trait which increases the Difficulty of the task and ignore it.",
+
     "Talent.commandShip": "Command Ship",
 
     "Talent.commandShip.soloDescription": "The ship has command and control systems allowing it to coordinate easily with allies during a crisis.",
@@ -2293,6 +2313,7 @@
     "Talent.computerExpertise": "Computer Expertise",
 
     "Talent.computerExpertise.description": "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
+    "Talent.computerExpertise.description2e": "Whenever you attempt a task that involves the program- ming or study of a computer system, the first bonus d20 you purchase is free.",
 
     "Talent.constantlyWatching": "Constantly Watching",
 
@@ -2316,6 +2337,14 @@
     "Talent.culturalFlexibility.description": "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
     "Talent.culturalFlexibility.description2e": "You are at ease when meeting new cultures, and you adapt to unfamiliar social structures easily. When you attempt a task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you may re-roll 1d20.",
 
+    "Talent.cuttingEdgeMedicine": "Cutting Edge Medicine",
+
+    "Talent.cuttingEdgeMedicine.description2e": "Whenever you attempt a Medicine task with a Difficulty of 3 or higher, you may spend up to 3 Momentum (Immediate) to reduce the Difficulty by the number of Momentum spent, to a minimum Difficulty of 1. However, as these latest advances are often experimental, the complication range of the task increases by 1 for each Momentum spent.",
+
+    "Talent.cyberneticist": "Cyberneticist",
+
+    "Talent.cyberneticist.description2e": "When you attempt a task to work on, install, or remove a cybernetic device from a patient, the first bonus d20 you purchase is free.",
+
     "Talent.dauntless": "Dauntless",
 
     "Talent.dauntless.description": "Whenever you attempt a Task to resist being intimidated or threatened, you may add a bonus d20 to your dice pool.",
@@ -2324,6 +2353,10 @@
     "Talent.decisiveLeadership": "Decisive Leadership",
 
     "Talent.decisiveLeadership.description2e": "In a conflict, once per round, you or your allies may Keep the Initiative for free.",
+
+    "Talent.dedicatedFocusX": "Dedicated Focus (X)",
+
+    "Talent.dedicatedFocusX.description2e": "When this talent is taken, choose one of your focuses. When attempting a task where that focus applies, you score a critical success for any die which rolls equal to or under twice the relevant department.",
 
     "Talent.defensiveTrainingMelee": "Defensive Training: Melee",
 
@@ -2352,6 +2385,14 @@
 
     "Talent.demolitionist.description": "You are skilled in making, setting, and defusing explosive devices. Whenever you attempt an Engineering task to create, set, or to defuse an explosive device or whenever you make an attack with a weapon with the Grenade weapon quality, the first d20 you purchase is free. In addition, you can ignore the first complication on an Engineering task involving explosives once per scene.",
 
+    "Talent.diagnosticExpertise": "Diagnostic Expertise",
+
+    "Talent.diagnosticExpertise.description": "When you succeed at a Medicine task to identify and diagnose the nature of a medical problem, you may ask one question—as per Obtain Information—for every additional d20 you bought by spending Momentum.",
+
+    "Talent.didTheReading": "Did the Reading",
+
+    "Talent.didTheReading.description2e": "When you attempt a task, you may spend 1 Momentum (Immediate) to use Science on that task instead of the department you would normally use. In addition, you count as having an applicable focus for that task. Each time after the first in a single scene that you use this ability, the Momentum cost increases by 1: this is cumulative.",
+
     "Talent.diplomaticSuites": "Diplomatic Suites",
 
     "Talent.diplomaticSuites.soloDescription": "The ship has numerous high-quality staterooms for hosting VIPs, as well as briefing rooms and other facilities that allow the ship to serve as a neutral ground for diplomatic summits, trade negotiations, and similar functions.",
@@ -2359,6 +2400,11 @@
     "Talent.doctorsOrders": "Doctor’s Orders",
 
     "Talent.doctorsOrders.description": "When you attempt a Task to coordinate others, or to coerce someone into taking or refraining from a specific course of action, you may use your Medicine Discipline instead of Command.",
+    "Talent.doctorsOrders.description2e": "When you attempt a task to coordinate others, or to coerce someone into taking or refraining from a specific course of action, you may use your Medicine depart- ment instead of Command.",
+
+    "Talent.dontYouDieOnMe": "Don't You Die on Me!",
+
+    "Talent.dontYouDieOnMe.description2e": "When a character is killed, you may spend Determination to make one attempt to revive them. If they were killed instantly by an Attack, then this may only be attempted within that scene. If the character suffered an Injury and died because they didn’t receive medical treatment in time, this may be attempted before the end of the subsequent scene. This requires a Daring + Medicine task, with a Difficulty of 3. If suc- cessful, the character is brought back from the brink of death, though they will remain Defeated for the remain- der of the adventure. Failure means that your efforts were unsuccessful and the character dies.",
 
     "Talent.dualEnvironment": "Dual Environment",
 
@@ -2388,6 +2434,10 @@
 
     "Talent.empathy2e.description": "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this task if the situation is stressful, if there are a lot of beings present, if the target has resist- ance to telepathy, and other relevant factors.",
 
+    "Talent.expeditionExpert": "Expedition Expert",
+
+    "Talent.expeditionExpert.description2e": "Prior to participating in an away team mission, you may make additional preparations by spending 2 Momentum (Immediate). During the expedition, any member of the away team may re-roll a single d20 on any task to navigate the terrain or circumvent a hazard or obstacle. The away team may re-roll a total number of dice in this way equal to your Science rating.",
+
     "Talent.exploitWeakness": "Exploit Weakness",
 
     "Talent.exploitWeakness.description": "You are trained in surprising your opponent and taking advantage of any weaknesses they have. When you attempt an attack against an unaware enemy, or an enemy suffering from a trait that represents weakness or vulnerability, the attack gains the Piercing 2 effect.",
@@ -2408,21 +2458,27 @@
 
     "Talent.fastTargetingSystems.soloDescription": "The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",
 
+    "Talent.fellowshipSpeciality": "Fellowship Specialty",
+
+    "Talent.fellowshipSpeciality.description2e": "Select a focus. When you succeed at a Medicine task where that focus applies, the cost of the Create Trait Momentum spend is reduced to 1.",
+
     "Talent.fireAtWill": "Fire at Will",
 
     "Talent.fireAtWill.description2e": "If you make an Attack, you may use the Swift Action Momentum spend for 1 Momentum rather than 2, but the second major action you take must also be an Attack.",
 
-    "Talent.firstResponse": "First Response",
-
-    "Talent.firstResponse.description": "Whenever you attempt the First Aid Task during combat, you gain a bonus d20. Further, you may always Succeed at a Cost, with each Complication you suffer adding +1 to the Difficulty of healing the patient’s Injury subsequently.",
-
     "Talent.fieldMedicine": "Field Medicine",
 
     "Talent.fieldMedicine.description": "When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",
+    "Talent.fieldMedicine.description2e": "When attempting a Medicine task, you may ignore any increase in Difficulty or complication range for working without the proper tools or equipment.",
 
     "Talent.finesseStrikes": "Finesse Strikes",
 
     "Talent.finesseStrikes.description": "You are graceful on the field of battle, often dancing around the enemy with relative ease. Once per combat encounter, you may reroll all the [D] for the Stress you inflict when you make a single successful melee attack.",
+
+    "Talent.firstResponse": "First Response",
+
+    "Talent.firstResponse.description": "Whenever you attempt the First Aid Task during combat, you gain a bonus d20. Further, you may always Succeed at a Cost, with each Complication you suffer adding +1 to the Difficulty of healing the patient’s Injury subsequently.",
+    "Talent.firstResponse.description2e": "When you attempt the First Aid task during combat, the first die you purchase is free. Further, you may always Succeed at Cost, with each complication you suffer adding 1 to the Difficulty of healing the patient’s Injury subsequently.",
 
     "Talent.flyBy": "Fly-By",
 
@@ -2533,9 +2589,14 @@
 
     "Talent.inertia.description2e": "When you use the Impulse minor action, you may spend 1 Momentum to move one additional zone so long as you used the Impulse minor action or Warp major action in your previous turn.",
 
+    "Talent.insightfulGuidance": "Insightful Guidance",
+
+    "Talent.insightfulGuidance.description2e": "Whenever you Assist a character in a social conflict, using your knowledge of psychology or emotional states, that character is considered to have a beneficial trait (Psychological Profile) in addition to the normal benefits provided by your Assist.",
+
     "Talent.intenseScrutiny": "Intense Scrutiny",
 
     "Talent.intenseScrutiny.description": "Whenever you succeed at a Task using Reason or Control as part of an Extended Task, you may ignore up to two Resistance for every Effect rolled.",
+    "Talent.intenseScrutiny.description2e": "Whenever you succeed at a task using Reason or Control as part of an extended task, you ignore any Resistance on that extended task.",
 
     "Talent.interrogation": "Interrogation",
 
@@ -2566,9 +2627,17 @@
     "Talent.kolinahr.description": "You have undergone the ritual journey to purge all emotion. You reduce the Difficulty of all Tasks to resist coercion, mental intrusion, pain, and other mental attacks by two.",
     "Talent.kolinahr.description2e": "You have undergone the ritual journey to purge all emotion, allowing you to dispassionately observe and dissect your emotional responses and render them powerless. When you ignore emotions using your Mental Discipline Species Ability, you may avoid emotional traits by taking 1 Stress instead of 2, and you no longer increase the potency of emotional traits when Fatigued.",
 
+    "Talent.labRat": "Lab Rat",
+
+    "Talent.labRat.description2e": "When attempting an extended task while using a laboratory, increase your Impact by 1.",
+
     "Talent.leadInvestigator": "Lead Investigator",
 
     "Talent.leadInvestigator.description2e": "Whenever you attempt a task to retrieve or analyze evidence of a crime, you may re-roll 1d20. When you spend one or more Momentum to Obtain Information to ask questions about a crime scene or evidence, you may ask one additional question.",
+
+    "Talent.learnFromFailure": "Learn from Failure",
+
+    "Talent.learnFromFailure.description2e": "When you fail at a Science task, you may add 3 Threat to create a trait which represents knowledge or insights gained from the failure. The cost of this is reduced by 1 for each success you scored on the failed task.",
 
     "Talent.maintenanceSpecialist": "Maintenance Specialist",
 
@@ -2584,6 +2653,10 @@
 
     "Talent.meanRightHook.description": "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
     "Talent.meanRightHook.description2e": "Your Unarmed Strike Attack gains the Intense quality.",
+
+    "Talent.mentalRepository": "Mental Repository",
+
+    "Talent.mentalRepository.description2e": "Using extensive mental conditioning, you have access to memories with unprecedented clarity and accuracy. You may treat Obtain Information as if it were an Immediate Momentum spend, but the answers to these questions can only come from information you would already know and remember.",
 
     "Talent.meticulous": "Meticulous",
 
@@ -2703,6 +2776,14 @@
 
     "Talent.pointDefenseSystem.soloDescription": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction it is traveling from, potentially destroying it before it impacts the shields or the ship’s hull. This system only works at subwarp speeds.",
 
+    "Talent.positiveReinforcement": "Positive Reinforcement",
+
+    "Talent.positiveReinforcement.description2e": "Once per mission, you may attempt a Presence + Medicine task with a Difficulty of 3, while providing emo- tional or mental treatment for another character. Success creates a character trait for your patient that lasts until the end of the mission: Boosted Confidence. In addition to the normal effects of the trait, that character can reroll their dice pool, as if they’d spent Determination, once be- fore the end of the mission. If the task the character used their reroll on fails, they lose the trait created by this talent.",
+
+    "Talent.practiceMakesPerfect": "Practice Makes Perfect",
+
+    "Talent.practiceMakesPerfect.description2e": "After you have succeeded in a Medicine task, the Difficulty of any other Medicine tasks attempted that scene to treat or heal the same kind of Injury, poison, disease, or other ailment is reduced by 1.",
+
     "Talent.precautions": "Precautions",
 
     "Talent.precautions.description2e": "Once per scene, when an ally suffers an Injury or the ship suffers a Breach, prevent that Injury or Breach; describe what precaution you took to prevent the issue.",
@@ -2729,6 +2810,10 @@
     "Talent.proudAndHonorable.description": "Your personal integrity is unimpeachable, and you will not willingly break a promise made. Whenever you attempt a Task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you reduce the Difficulty by 1.",
     "Talent.proudAndHonorable.description2e": "Whenever you attempt a task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you may add Threat to immediately succeed at the task. The amount of Threat you add is equal to the task’s Difficulty.\n",
 
+    "Talent.psychoanalyst": "Psychoanalyst",
+
+    "Talent.psychoanalyst.description2e": "When you use Medicine during a social conflict, you may increase the complication range of your task by 1, 2, or 3. For each step of complication range increased, you may ask a single question as if you’d spent Momentum on Obtain Information. Any Complications generated from this task results in the individual you are interacting with becoming offended or upset with being “analyzed.”",
+
     "Talent.psychokinesis": "Psychokinesis",
 
     "Talent.psychokinesis.description2e": "You can manipulate and control objects using only the power of the mind. You may exert a psychic force upon an object within Close range equivalent to the force that you would normally be able to exert physically, though this takes concentration and cannot be done violently.\n\nYou may spend 1 Momentum (Immediate, Repeatable) to increase the magnitude of the force you apply, with each Momentum spent counting as an additional person’s worth of force applied (that is, you can move or manipulate objects that would take two people to move or manipulate by spending 1 Momentum). Momentum (Immediate) may also be spent to increase the range of this: 1 Momentum to affect objects in Medium range, 2 Momentum to affect objects at Long range, and gamemaster’s discretion for distances beyond. To apply force violently instead, add 1 Threat to make a Control + Security task with a Difficulty of 2 to strike an opponent (as a Ranged Attack), inflicting a Stun or Deadly Injury with a Severity of 3.",
@@ -2745,6 +2830,7 @@
     "Talent.quickStudy": "Quick Study",
 
     "Talent.quickStudy.description": "When attempting a Task that will involve an unfamiliar medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty increase stemming from your unfamiliarity.",
+    "Talent.quickStudy.description2e": "When attempting a task that will involve an unfamiliar practice, technique, or medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty or compli- cation range increase stemming from your unfamiliarity.",
 
     "Talent.quickSurvey": "Quick Survey",
 
@@ -2755,6 +2841,14 @@
 
     "Talent.quickToAction.description": "During the first round of any combat, you and your allies may ignore the normal cost to Retain the Initiative.",
     "Talent.quickToAction.description2e": "During the first round of any combat, you and your allies may ignore the normal cost to Keep the Initiative.",
+
+    "Talent.rapidAnalysis": "Rapid Analysis",
+
+    "Talent.rapidAnalysis.description2e": "When you succeed at a Science task, the cost of the Reduce Time Momentum option is reduced to 1.",
+
+    "Talent.rapidHypothesis": "Rapid Hypothesis",
+
+    "Talent.rapidHypothesis.description2e": "Once per scene, when you ask two or more questions using Obtain Information, you may immediately create a trait representing your theoretical understanding of the subject of those questions.",
 
     "Talent.rapidFireTorpedoLauncher": "Rapid-Fire Torpedo Launcher",
 
@@ -2848,6 +2942,10 @@
 
     "Talent.steadyHands.description2e": "When you take the Aim minor action before a Ranged Attack, you add 1 to the Attack’s Severity, in addition to the other effects of aiming.",
 
+    "Talent.stimulantShot": "Stimulant Shot",
+
+    "Talent.stimulantShot.description2e": "When you perform the First Aid task to revive a Defeated ally, you may add 1 Threat to let that ally recover Stress equal to your Medicine rating. A character may only bene- fit from this talent once per adventure.",
+
     "Talent.strafingRun": "Strafing Run",
 
     "Talent.strafingRun.description2e": "Whenever you succeed at the Attack Pattern task and then Keep the Initiative, the cost to Keep the Initiative is reduced to 0. If the character taking the next turn makes an Attack, they may re-roll one d20.",
@@ -2856,6 +2954,10 @@
 
     "Talent.strongPagh.description": "You believe profoundly in the Prophets, and rely heavily upon that faith to see you through hardship. Whenever you attempt a Task to resist being coerced or threatened, you reduce the Difficulty of that Task by 1.",
     "Talent.strongPagh.description2e": "You believe profoundly in the Prophets, and you rely upon that faith to see you through hardship. Whenever you attempt a task to resist being coerced or threatened, you may take Stress equal to the Difficulty of the task to automatically succeed.",
+
+    "Talent.studentOfWar": "Student of War",
+
+    "Talent.studentOfWar.description2e": "You have conducted extensive research into numerous kinds of conflict and has devoted your academic career to the study of war. While this  knowledge may be purely theoretical, such information, when placed into the hands of more capable combatants, can be truly devastating. When you Assist a character making an Attack or taking the Guard action in combat, they may re-roll one d20.",
 
     "Talent.studious": "Studious",
 
@@ -2872,6 +2974,10 @@
 
     "Talent.supervisor.description": "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
     "Talent.supervisor.description2e": "The ship’s Crew Support increases by 1. This increase is cumulative if multiple main characters select it.",
+
+    "Talent.surverySavant": "Surgery Savant",
+
+    "Talent.surverySavant.description2e": "When attempting a Medicine task during an extended task relating to surgery, your Impact is increased by 1.",
 
     "Talent.tachyonDetectionField": "Tachyon Detection Field",
 
@@ -2901,6 +3007,7 @@
     "Talent.testingATheory": "Testing a Theory",
 
     "Talent.testingATheory.description": "When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",
+    "Talent.testingATheory.description2e": "When you attempt a task using Engineering or Science, the first bonus d20 you purchase is free, so long as you succeeded at a previous task covering the same scientif- ic or technological field earlier in the same adventure. If you created a trait that represents a hypothesis about an unknown phenomenon, you may also re-roll one d20 on tasks related to that hypothesis.",
 
     "Talent.thatWasntMe": "That Wasn't Me",
 
@@ -2919,6 +3026,10 @@
 
     "Talent.threadTheNeedle.description2e": "When you perform the Impulse minor action or Warp major action when piloting a starship, enemy Attacks from ships with a greater Scale than yours increase in difficulty by +1. If attacked by a ship with a Scale that is double or more the Scale of your ship, then you increase the Difficulty by 2 instead.",
 
+    "Talent.theoryIntoPractice": "Theory into Practice",
+
+    "Talent.theoryIntoPractice.description2e": "When you succeed at a task using Engineering or Science where you gain the additional d20 from the Testing a Theory talent, or which benefits from a\ntrait that represents a hypothesis you’ve made, you generate 2 bonus Momentum. Bonus Momentum may not be saved.",
+
     "Talent.tough": "Tough",
 
     "Talent.tough.description": "Whenever you Avoid an Injury, the cost is reduced by 1, to a minimum of 1.",
@@ -2935,6 +3046,7 @@
     "Talent.triage": "Triage",
 
     "Talent.triage.description": "When you attempt a Task to identify specific injuries or illnesses, or to determine the severity of a patient’s condition, you may spend one Momentum (Repeatable) to diagnose one additional patient.",
+    "Talent.triage.description2e": "When you attempt a task to identify specific Injuries or illnesses, or to determine the severity of a patient’s condition, you may spend 1 Momentum (Repeatable) to diagnose one additional patient.",
 
     "Talent.untappedPotential": "Untapped Potential",
 
@@ -2960,6 +3072,10 @@
 
     "Talent.voiceOfAuthority.description2e": "When you Assist someone, and use your Presence to do so, you may add 2 Threat to treat your assistance die as if it had rolled a 1 instead of rolling it.",
 
+    "Talent.walkingEncyclopedia": "Walking Encyclopedia",
+
+    "Talent.walkingEncyclopedia.description2e": "Once per session, when you attempt a task, you may spend 2 Momentum (Immediate) to gain an addition- al focus for the remainder of the session, due to your breadth of knowledge. However, any task using that focus increases its complication range by 1, as you are not a true expert on that subject.",
+
     "Talent.warriorsSpirit": "Warrior's Spirit",
 
     "Talent.warriorsSpirit.description2e": "When you make a Melee Attack, or are targeted by a Melee Attack, and you buy one or more d20s by adding Threat, you may re-roll the dice pool for your task roll. Further, you own either a mek’leth (a blade) or a bat’leth (a heavy blade) at your discretion, which counts as standard issue for you.",
@@ -2978,7 +3094,7 @@
 
     "Talent.zeroGCombat": "Zero-G Combat",
 
-    "Talent.zeroGCombat.description2e": "In combat, when you make an Attack while in a zero-grav- ity or micro-gravity environment, you may use the higher of your Conn or Security departments for the task, and you ignore any difficulty increases caused by the lack of gravity. In addition, enemies who lack similar training increase the Difficulty of Attacks against you by 1.",
+    "Talent.zeroGCombat.description2e": "In combat, when you make an Attack while in a zero-gravity or micro-gravity environment, you may use the higher of your Conn or Security departments for the task, and you ignore any difficulty increases caused by the lack of gravity. In addition, enemies who lack similar training increase the Difficulty of Attacks against you by 1.",
 
     "TalentCategory.general": "General",
     "TalentCategory.career": "Career",

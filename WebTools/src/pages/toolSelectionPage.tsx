@@ -36,7 +36,7 @@ const ToolSelectionPage = () => {
         if (hasSource(Source.Core2ndEdition)) {
             let character = Character.createMainCharacter(CharacterType.Starfleet, 2);
             store.dispatch(setCharacter(character));
-            goToPage(PageIdentity.Species);
+            goToPage(PageIdentity.CharacterType);
         } else if (hasSource(Source.KlingonCore) || hasSource(Source.PlayersGuide)) {
             goToPage(PageIdentity.CharacterType);
         } else {

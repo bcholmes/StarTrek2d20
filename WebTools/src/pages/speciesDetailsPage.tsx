@@ -2,7 +2,7 @@
 import { Navigation } from '../common/navigator';
 import {PageIdentity} from './pageIdentity';
 import { SpeciesHelper, SpeciesModel } from '../helpers/species';
-import { TalentsHelper, TalentViewModel } from '../helpers/talents';
+import { TalentsHelper, TalentViewModel, ToViewModel } from '../helpers/talents';
 import { Button } from '../components/button';
 import { CheckBox } from '../components/checkBox';
 import { Dialog } from '../components/dialog';
@@ -86,7 +86,9 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
             let species = SpeciesHelper.getSpeciesByType(character.speciesStep?.species);
             species.talents.forEach(t => talents.push(t));
         } else if (character.speciesStep?.ability?.talentNames?.length) {
-            character.speciesStep.ability.talentNames.map(t => TalentsHelper.getTalent(t)).forEach(t => talents.push(t));
+            character.speciesStep.ability.talentNames
+                .map(t => ToViewModel(TalentsHelper.getTalent(t), 1, character.type, character.version))
+                .forEach(t => talents.push(t));
         }
 
         let initial = character.speciesStep?.talent ? TalentsHelper.getTalent(character.speciesStep?.talent?.talent) : undefined;

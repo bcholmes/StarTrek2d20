@@ -19,6 +19,7 @@ import StressOrShieldsView from "./stressOrShieldsView";
 import FocusBlockView from "./focusBlockView";
 import WeaponBlockView from "./weaponBlockView";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
+import SpeciesAbilityBlockView from "./speciesAbilityBlockView";
 
 export interface ICharacterViewProperties {
     character: Character;
@@ -153,7 +154,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
             <div className="col-xl-6 mt-4">
                 {renderStats()}
 
-                <ValuesBlockView character={character} />
+                <SpeciesAbilityBlockView character={character} />
                 <TalentsBlockView construct={character} />
 
             </div>
@@ -177,6 +178,8 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                 </div>
 
                 <div>
+                    <ValuesBlockView character={character} />
+
                     <WeaponBlockView construct={character} />
 
                     <Header level={2} className="mt-4">{t('Construct.other.equipment')}</Header>

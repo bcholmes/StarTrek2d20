@@ -153,8 +153,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
     }
 
     private startWorkflow() {
-        let character = new Character();
-        character.type = this.state.type;
+        let character = Character.createMainCharacter(this.state.type, hasSource(Source.Core2ndEdition) ? 2 : 1);
         if (character.type === CharacterType.AlliedMilitary) {
             character.typeDetails = new AlliedMilitaryDetails(AllyHelper.instance.findOption(this.state.alliedMilitary), this.state.otherName);
         } else if (character.type === CharacterType.AmbassadorDiplomat) {

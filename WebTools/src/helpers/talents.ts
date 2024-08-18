@@ -858,22 +858,22 @@ export class Talents {
             new TalentModel(
                 "Fly-By",
                 "Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",
-                [new DisciplinePrerequisite(Skill.Conn, 2)],
+                [new DisciplinePrerequisite(Skill.Conn, 2), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Precise Evasion",
                 "Whenever you succeed at the Evasive Action Task, you may spend two Momentum. If you do, the ship does not suffer the increased Difficulty for attacks normally caused by Evasive Action.",
-                [new DisciplinePrerequisite(Skill.Conn, 4)],
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Push the Limits",
                 "When you attempt a Conn Task that has increased in Difficulty due to environmental conditions or damage to the engines, reduce the Difficulty by 1, to a minimum of 1.",
-                [new DisciplinePrerequisite(Skill.Conn, 4)],
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Starship Expert",
                 "Whenever you succeed at a Conn Task to identify a type of starship, or to try and understand an unknown form of Starship, you gain one bonus Momentum, which may only be used on the Obtain Information Momentum Spend, or to pay part of the cost of the Create Advantage Momentum Spend (where the Advantage must represent some form of known or observed weakness in the ship being studied).",
-                [new DisciplinePrerequisite(Skill.Conn, 3)],
+                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Attack Run",
@@ -903,7 +903,7 @@ export class Talents {
             new TalentModel(
                 "Multi-Tasking",
                 "Attempting the Override Task while at a bridge station including Helm and/or Navigator positions utilizes the character’s Conn Discipline instead of the Discipline normally required for the Task.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Pathfinder",
@@ -928,11 +928,11 @@ export class Talents {
             new TalentModel(
                 "Thread the Needle",
                 "You’re used to operating small, nimble ships, where their agility and small profile make them a much harder target, if you know how to fly them. When you perform an Impulse, Warp, or Evasive Action task when piloting a starship, enemy attacks from ships with a greater Scale than yours increase in Difficulty by 1. If attacked by a ship with a Scale that is double or more the Scale of your ship, then you increase the Difficulty by 2 instead.",
-                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Zero-G Combat",
                 "You have received special training to fight effectively in micro-gravity and zero-gravity environments, a process that famously involves a significant amount of nausea as participants acclimatize to the conditions. In combat, when you make an attack while in a zero-gravity or micro-gravity environment, you may use the higher of your Conn or Security disciplines for the task, and you ignore any Difficulty increases caused by the lack of gravity. In addition, enemies who lack similar training increase the Difficulty of attacks against you by 1.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Hands-On Pilot",
                 "Your piloting style delves deeply into the technical aspects of a ship’s propulsion systems, and you spend much of your time in Engineering, fine-tuning power flows, subspace field geometries, and inertial stabilizers to ensure that the ship flies exactly the way you want it to. When you perform one of the Impulse, Warp, Evasive Action, or Attack Pattern tasks, the ship may treat its assistance die as if it had rolled a 1. However, when anyone else pilots the ship, they increase their complication range by 1, as your adjustments don’t suit everyone.",
@@ -940,36 +940,36 @@ export class Talents {
             new TalentModel(
                 "Visit Every Star",
                 "Your expertise in navigation and stellar cartography come from a deep and enduring fascination with space; as a child, you dreamed of the stars you’d visit and the stellar phenomena you’d see up close, and you memorized every fact you could about them. You gain an additional focus, and one of your focuses (either the one gained from this talent, or an existing one) must relate to Astronavigation, Stellar Cartography, or a similar field of space science. Further, when you succeed at a navigation-related task, you gain 1 bonus Momentum due to your knowledge and familiarity. Bonus Momentum cannot be saved.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Close Protection",
                 "When you make a successful Attack, you may spend one Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",
-                [new DisciplinePrerequisite(Skill.Security, 4)],
+                [new DisciplinePrerequisite(Skill.Security, 4), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Interrogation",
                 "When you succeed at a Task to coerce someone to reveal information in a social conflict, you will gain one bonus Momentum, which may only be spent on the Obtain Information Momentum Spend.",
-                [new DisciplinePrerequisite(Skill.Security, 3)],
+                [new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Mean Right Hook",
                 "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1, "Security", false, new AliasModel("Warrior’s Strike", Source.KlingonCore)),
             new TalentModel(
                 "Pack Tactics",
                 "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1, "Security"),
             new TalentModel(
                 "Quick to Action",
                 "During the first round of any combat, you and your allies may ignore the normal cost to Retain the Initiative.",
-                [new DisciplinePrerequisite(Skill.Security, 3)],
+                [new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Combat Medic",
                 "The character’s abilities in field medicine and battle triage are exceptional and their presence inspires allies to continue any fight. Whenever the character attempts the First Aid Task, they may spend one Momentum to cause the recipient to regain points of Stress equal to the number of the character’s Medicine Discipline. A character may only regain Stress in this way once per scene.",
-                [new DisciplinePrerequisite(Skill.Security, 2), new DisciplinePrerequisite(Skill.Medicine, 2), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Security, 2), new DisciplinePrerequisite(Skill.Medicine, 2), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Criminal Minds",
@@ -979,7 +979,7 @@ export class Talents {
             new TalentModel(
                 "Crisis Management",
                 "Small squad tactics can mean the difference between life and death in a dangerous, hostile situation, and the character excels at coordinating action in battle. The character may make use of the Direct Task (Star Trek Adventures core rulebook p. 173). If they already have access to the Direct Task, they may do so twice per scene instead of once.",
-                [new VariableDisciplinePrerequisite(Skill.Security, Skill.Command, 3), new SourcePrerequisite(Source.OperationsDivision)],
+                [new VariableDisciplinePrerequisite(Skill.Security, Skill.Command, 3), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1,
                 "Security"),
             new TalentModel(
@@ -990,7 +990,7 @@ export class Talents {
             new TalentModel(
                 "Fire at Will",
                 "The character is capable of tracking multiple targets and making attacks against them with great effect. Whenever the character makes a ranged weapon attack, and then uses the Swift Task Momentum spend to make a second ranged attack, they ignore the normal Difficulty increase from Swift Task.",
-                [new DisciplinePrerequisite(Skill.Security, 2), new AttributePrerequisite(Attribute.Daring, 9), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Security, 2), new AttributePrerequisite(Attribute.Daring, 9), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Full Spread - Maximum Yield!",
@@ -1005,12 +1005,12 @@ export class Talents {
             new TalentModel(
                 "Lead Investigator",
                 "The character has a mind intrigued by mystery and investigation, and is often called upon to review and coordinate response to lawbreaking. The character generates two bonus Momentum after a successful Task to investigate a crime.",
-                [new DisciplinePrerequisite(Skill.Security, 3), new DisciplinePrerequisite(Skill.Conn, 2), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Security, 3), new DisciplinePrerequisite(Skill.Conn, 2), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Martial Artist",
                 "There are countless forms and styles of hand-to-hand combat, and the character has mastered several of them. The character’s Unarmed Strike attacks gain the Intense Damage Effect. If the character also has the Mean Right Hook Talent, then both Damage Effect apply when Effects are rolled.",
-                [new DisciplinePrerequisite(Skill.Security, 4), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Security, 4), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Precision Targeting",
@@ -1020,15 +1020,15 @@ export class Talents {
             new TalentModel(
                 "Ambush Tactics",
                 "You’ve familiarized yourself with techniques that make ambushes and surprise attacks especially effective. When you succeed at an attack against an enemy who is unaware of your presence, or who is suffering from a trait or complication which represents a weakness or vulnerability, add 2[D] to the amount of Stress the attack inflicts. This applies to both personal combat and ship combat.",
-                [new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Applied Force",
                 "You’ve trained to best apply your size and strength in a fight. When you make a melee attack, you may use Fitness instead of Daring. In addition, you add 1[D] to the Stress rating of your unarmed attacks, or 2[D] if you have a Fitness of 11 or higher.",
-                [new DisciplinePrerequisite(Skill.Security, 4), new AttributePrerequisite(Attribute.Fitness, 9), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Security, 4), new AttributePrerequisite(Attribute.Fitness, 9), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Defensive Training",
                 "You’re especially good at avoiding harm. Select either melee attacks or ranged attacks when you acquire this talent. Attacks against you of the chosen type increase in Difficulty by 1.",
-                [new DisciplinePrerequisite(Skill.Security, 2), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Security, 2), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Precision Salvo",
                 "You’ve spent countless hours running combat simulations and fine-tuning targeting subroutines, and you can now place a torpedo salvo exactly where it will have the most decisive effect. When you make a torpedo attack, you may spend 1 Momentum (Immediate) to add the Piercing 1 weapon effect.",
@@ -1045,22 +1045,22 @@ export class Talents {
             new TalentModel(
                 "I Know My Ship",
                 "Whenever you attempt a Task to determine the source of a technical problem with your ship, add one bonus d20.",
-                [new DisciplinePrerequisite(Skill.Engineering, 4)],
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "In the Nick of Time",
                 "Whenever you succeed at an Engineering or Science Task as part of an Extended Task, you score 1 additional Work for every Effect rolled.",
-                [new VariableDisciplinePrerequisite(Skill.Engineering, Skill.Science, 3)],
+                [new VariableDisciplinePrerequisite(Skill.Engineering, Skill.Science, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1, "Science"),
             new TalentModel(
                 "Intense Scrutiny",
                 "Whenever you succeed at a Task using Reason or Control as part of an Extended Task, you may ignore up to two Resistance for every Effect rolled.",
-                [new VariableDisciplinePrerequisite(Skill.Engineering, Skill.Science, 3)],
+                [new VariableDisciplinePrerequisite(Skill.Engineering, Skill.Science, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1, "Science"),
             new TalentModel(
                 "Jury-Rig",
                 "Whenever you attempt an Engineering Task to perform repairs, you may reduce the Difficulty by two, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene, plus one additional scene per Momentum spent (Repeatable) before they fail again. Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
-                [new DisciplinePrerequisite(Skill.Engineering, 4)],
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Experimental Device",
@@ -1075,37 +1075,53 @@ export class Talents {
             new TalentModel(
                 "Maintenance Specialist",
                 "You are an expert in conducting and directing normal, day-to-day, maintenance and repairs on Starfleet equipment. Whenever they are required to perform maintenance, reduce the Difficulty by 1, to a minimum of 1, and halve the time required to complete the Task.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Meticulous",
                 "You are patient, methodical, and check for errors before considering Tasks complete. Whenever they use Engineering to complete a Task, you may negate one Complication generated from the roll. However, during timed Tasks or Challenges, you take 1 more interval to complete the Task.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new AttributePrerequisite(Attribute.Control, 10), new SourcePrerequisite(Source.OperationsDivision)],
+                [
+                    new DisciplinePrerequisite(Skill.Engineering, 3),
+                    new AttributePrerequisite(Attribute.Control, 10),
+                    new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Miracle Worker",
                 "You have a reputation of doing the impossible: repairs or modifications well in advance of expectations; getting offline systems up and running when most needed and so on. Whenever you use Engineering on an Extended Task, if you achieve a Breakthrough and roll at least one Effect on a Challenge Die, you achieve a second Breakthrough.",
-                [new DisciplinePrerequisite(Skill.Engineering, 5), new SourcePrerequisite(Source.OperationsDivision)],
+                [
+                    new DisciplinePrerequisite(Skill.Engineering, 5),
+                    new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Procedural Compliance",
                 "You are well versed in established Starfleet engineering practices and guidelines. By spending 2 Momentum to Create an Advantage (obtaining the proper technical manuals and documentation prior to attempting a Task to work on a ship’s system), you may reroll 1d20 during the next Engineering Task.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new DisciplinePrerequisite(Skill.Conn, 2), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
+                [
+                    new DisciplinePrerequisite(Skill.Engineering, 3),
+                    new DisciplinePrerequisite(Skill.Conn, 2),
+                    new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)
+                ],
                 1),
             new TalentModel(
                 "Past the Redline",
                 "Engineers understand that safety tolerances and operating margins are always designed into the acceptable performance range of equipment. While not recommended the equipment is usually capable of higher performance, if the consequences are risky. This Talent provides bonus Momentum for using a ship’s System until the end of the scene. Select the System you wish to enhance, and the number of bonus Momentum to be provided. Attempt a Daring + Engineering Task with a Difficulty equal to the bonus Momentum selected. If the you succeed, subsequent Tasks using that System automatically generate that amount of bonus Momentum. However, to represent the risks involved, the Task also increases its Complication Range by the same number as the Bonus Momentum provided. If a Complication is rolled, the System no longer provides bonus Momentum and the System suffers a number of Breaches equal to half the ship’s Scale.",
-                [new DisciplinePrerequisite(Skill.Engineering, 4), new AttributePrerequisite(Attribute.Daring, 10), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
+                [
+                    new DisciplinePrerequisite(Skill.Engineering, 4),
+                    new AttributePrerequisite(Attribute.Daring, 10),
+                    new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Repair Team Leader",
                 "You are trained to direct and lead damage repair parties during emergencies, giving them guidance and expert knowledge of the ships systems. If you succeed at the Damage Control Task you may spend 3 Momentum (Repeatable) to also repair one Breach.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new DisciplinePrerequisite(Skill.Command, 2), new SourcePrerequisite(Source.OperationsDivision)],
+                [
+                    new DisciplinePrerequisite(Skill.Engineering, 3),
+                    new DisciplinePrerequisite(Skill.Command, 2),
+                    new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)
+                ],
                 1),
             new TalentModel(
                 "Right Tool for the Right Job",
                 "Engineers are trained to identify and use appropriate tools whenever they are working on the delicate components that make up complex ship systems. Whenever you acquire an engineering tool with an Opportunity Cost, the tool grants an Advantage if it did not do so originally, or increases the Advantage it provides by one step.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Rocks Into Replicators",
@@ -1115,12 +1131,15 @@ export class Talents {
             new TalentModel(
                 "Saboteur",
                 "You’re skilled in taking things apart – violently if necessary. When you make an attack against a structure, machine, or stationary vehicle while in personal combat (i.e., you aren’t using a ship’s weapons to make the attack), you may use your Engineering instead of your Security to resolve the attack task and the Stress inflicted.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide)]
+                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]
                 ),
             new TalentModel(
                 "Percussive Maintenance",
                 "You have an extensive repertoire of quick fixes, crude bypasses, and other improvised techniques for using and repairing devices during a crisis. They all do the job, but it’s messy work. When you attempt a Control + Engineering task, you may add 2 to Threat to use your Daring instead of your Control. If you do this, and the task succeeds, you may reduce the time taken by 1 interval without spending Momentum.",
-                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.PlayersGuide)]
+                [
+                    new DisciplinePrerequisite(Skill.Engineering, 4),
+                    new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)
+                ]
                 ),
             new TalentModel(
                 "I’m Giving It All She’s Got!",
@@ -1130,52 +1149,52 @@ export class Talents {
             new TalentModel(
                 "Transporter Chief",
                 "You’re well-versed in the operation of transporter systems and can often get them to function in extreme circumstances or to achieve outcomes that few others could manage. Such efforts are never without risk, given the delicacy of the technology. When you attempt a task to use, repair, or modify a transporter, you may add 2 to Threat to reduce the Difficulty of the task by 2, to a minimum of 0.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide)]
+                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]
                 ),
             new TalentModel(
                 "Computer Expertise",
                 "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
-                [new DisciplinePrerequisite(Skill.Science, 2)],
+                [new DisciplinePrerequisite(Skill.Science, 2), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Testing a Theory",
                 "When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",
-                [new VariableDisciplinePrerequisite(Skill.Science, Skill.Engineering, 2)],
+                [new VariableDisciplinePrerequisite(Skill.Science, Skill.Engineering, 2), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1, "Science"),
             new TalentModel(
                 "Baffling Briefing",
                 "When the character engages in a Social Conflict using deception, the character may use Science in place of Command so long as their technical knowledge is used to mislead their opponent. ",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Presence, 9)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Presence, 9)],
                 1),
             new TalentModel(
                 "Dedicated Focus X",
                 "Choose a Focus your character has. When attempting a Task where that Focus applies, each d20 that generates 2 successes also generates  1 bonus Momentum. This Talent only applies to d20s in the character’s dice pool, and does not apply to d20s added due to equipment, starship assistance, or character assistance.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 4)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 4)],
                 1),
             new TalentModel(
                 "Expedition Expert",
                 "Prior to participating in an away team mission, the character may prepare by conducting a research Task. If they succeed, Momentum may be spent to allow the character to substitute their Science Discipline in place of any other, during any Task to navigate or transverse difficult terrain during the mission. Each point of Momentum spent from the research Task in this way allows for one such substitution.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Fitness, 9)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Fitness, 9)],
                 1),
             new TalentModel(
                 "Lab Rat",
                 "The character prefers to spend most of their free time engaged in various side projects and experiments. Because of this, they are extremely familiar with the equipment and capabilities of the labs on board their ship. When attempting an Extended Task while using a laboratory, the character gains the Progression 1 Effect.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 3), new DisciplinePrerequisite(Skill.Engineering, 3)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 3), new DisciplinePrerequisite(Skill.Engineering, 3)],
                 1),
             new TalentModel(
                 "Mental Repository",
                 "Using extensive mental conditioning, the character has access to memories with unprecedented clarity and accuracy. So long as the character takes time to focus their mind prior to attempting a Task – which takes 2 Intervals during a Timed Challenge – they reduce the Difficulty of the Task by 1 to a minimum of 1. In addition, if they succeed they gain a bonus Momentum which may only be spent on the Obtain Information Momentum spend.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Reason, 10)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Reason, 10)],
                 1),
             new TalentModel(
                 "Rapid Analysis",
                 "Tasks attempted as part of a Timed Challenge using the Science Discipline takes the character 1 Time Interval instead of 2. The amount of time taken for any Task may not be reduced to less than 1 Interval.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Daring, 9)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 3), new AttributePrerequisite(Attribute.Daring, 9)],
                 1),
             new TalentModel(
                 "Student of War",
                 "The character has conducted extensive research into numerous kinds of conflict and has devoted their academic career to the study of war. While this knowledge may be purely theoretical, such information, when placed into the hands of more capable combatants, can be truly devastating. When the character provides assistance to a Combat Task, they may reroll their die.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 4), new DisciplinePrerequisite(Skill.Security, 3)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 4), new DisciplinePrerequisite(Skill.Security, 3)],
                 1),
             new TalentModel(
                 "Temporal Mechanic",
@@ -1185,7 +1204,7 @@ export class Talents {
             new TalentModel(
                 "Theory Into Practice",
                 "When you attempt a Task using Engineering or Science where you gain the additional d20 from the Testing a  Theory Talent, reduce the Difficulty of the Task by 1, to a minimum of 0.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 3), new TalentPrerequisite("Testing a Theory")],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 3), new TalentPrerequisite("Testing a Theory")],
                 1),
             new TalentModel(
                 "Unconventional Thinking",
@@ -1195,74 +1214,74 @@ export class Talents {
             new TalentModel(
                 "Walking Encyclopedia",
                 "Once per session, when you attempt a Task, you may spend 2 Momentum (Immediate) in order to gain an additional Focus for the remainder of the session, due to your breadth of knowledge. However, any Task using that Focus increases in Complication range by 1, as you are not a true expert on that subject.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Science, 2), new AttributePrerequisite(Attribute.Reason, 9)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 2), new AttributePrerequisite(Attribute.Reason, 9)],
                 1),
             new TalentModel(
                 "Applied Research",
                 "You’re a practical scientist, always looking to see how your knowledge can be put into practice. Once per scene, when you attempt a task which relates to information you received earlier that scene from an Obtain Information question, you may roll an additional d20.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 3)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 3)]),
             new TalentModel(
                 "Did the Reading",
                 "You absorb information quickly and know how to put it to good use. When you attempt a task, you may spend 1 Momentum (Immediate) to use Science on that task instead of the discipline you would normally use. In addition, you count as having an applicable focus for that task. Each time after the first in a single scene that you use this ability, the Momentum cost increases by 1: this is cumulative.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 4)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 4)]),
             new TalentModel(
                 "Learn from Failure",
                 "A true scientist learns as much from failure as from success. When you fail at a Science task, you may add 3 to Threat to create an advantage that represents knowledge or insights gained from the failure. The cost of this is reduced by 1 for each success you scored on the failed task.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 4)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 4)]),
             new TalentModel(
                 "Rapid Hypothesis",
                 "You are quick to devise a working theory about an unknown phenomenon’s nature, origin, or effect. Once per scene, when you ask two or more questions using Obtain Information, you may immediately create an advantage that represents your theoretical understanding of the subject of those questions.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Science, 5)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Science, 5)]),
             new TalentModel(
                 "Doctor’s Orders",
                 "When you attempt a Task to coordinate others, or to coerce someone into taking or refraining from a specific course of action, you may use your Medicine Discipline instead of Command.",
-                [new DisciplinePrerequisite(Skill.Medicine, 4)],
+                [new DisciplinePrerequisite(Skill.Medicine, 4), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Field Medicine",
                 "When attempting a Medicine Task, you may ignore any increase in Difficulty for working without the proper tools or equipment.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1,
                 "Medicine"),
             new TalentModel(
                 "First Response",
                 "Whenever you attempt the First Aid Task during combat, you gain a bonus d20. Further, you may always Succeed at a Cost, with each Complication you suffer adding +1 to the Difficulty of healing the patient’s Injury subsequently.",
-                [new DisciplinePrerequisite(Skill.Medicine, 3)],
+                [new DisciplinePrerequisite(Skill.Medicine, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Quick Study",
                 "When attempting a Task that will involve an unfamiliar medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty increase stemming from your unfamiliarity.",
-                [new DisciplinePrerequisite(Skill.Medicine, 3)],
+                [new DisciplinePrerequisite(Skill.Medicine, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Triage",
                 "When you attempt a Task to identify specific injuries or illnesses, or to determine the severity of a patient’s condition, you may spend one Momentum (Repeatable) to diagnose one additional patient.",
-                [new DisciplinePrerequisite(Skill.Medicine, 3)],
+                [new DisciplinePrerequisite(Skill.Medicine, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Bedside Manner",
                 "When the character succeeds at a Medicine Task to heal another’s Injury, the character may immediately remove a personal Complication from the patient, even if that Complication was unrelated to the treated Injury. In addition, whenever this character attempts a Reputation Check, they are considered to have one additional positive influence.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Command, 3)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Command, 3)],
                 1),
             new TalentModel(
                 "Chief of Staff",
                 "When using the Medicine Discipline to provide  assistance to another character attempting a Medicine Task, all characters providing assistance may reroll one d20 in their dice pool.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Command, 3)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Command, 3)],
                 1),
             new TalentModel(
                 "Cyberneticist",
                 "Whenever the character attempts a Task to work on, install, or remove a cybernetic device from a patient, they add a d20 to their dice pool. ",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Engineering, 3)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Engineering, 3)],
                 1),
             new TalentModel(
                 "Fellowship Specialty",
                 "Select a Focus. When you succeed at a Medicine Task where that Focus applies, the cost of the Create Advantage Momentum spend is reduced by 1, to a minimum of 1.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 4)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 4)],
                 1),
             new TalentModel(
                 "Field Medic",
                 "Through experience and training, the stress of battle fades when there’s a patient in need. When attempting a Medicine Task while in the midst of combat, you may ignore the first Complication that would increase the Difficulty of this Task.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Security, 2)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Security, 2)],
                 1),
             new TalentModel(
                 "Healing Hands",
@@ -1302,39 +1321,39 @@ export class Talents {
             new TalentModel(
                 "Insightful Guidance",
                 "Whenever you Assist a character, who is in a Social Conflict, using your knowledge of psychology or emotional states, that character is considered to have an Advantage in addition to the normal benefits provided by your Assist. ",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Command, 2)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new DisciplinePrerequisite(Skill.Command, 2)],
                 1),
             new TalentModel(
                 "Practice Makes Perfect",
                 "Once per scene, after the character has succeeded on a Medicine Task relating to the treatment of a patient, reduce the Difficulty of the next Medicine Task relating to that patient by 1.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3), new AttributePrerequisite(Attribute.Reason, 8)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new AttributePrerequisite(Attribute.Reason, 8)],
                 1),
             new TalentModel(
                 "Psychoanalyst",
                 "When you use the Medicine Discipline during a Social Conflict you may increase the Complication range of your Task by a number of steps. For each step you may ask a single question as if you’d spent Momentum on Obtain Information. Any Complications generated from this Task results in the individual you are interacting with becoming offended or upset with being “analyzed.”",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 3)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3)],
                 1),
             new TalentModel(
                 "Surgery Savant",
                 "When attempting a Medicine Task during an Extended Task relating to surgery, the character gains the Triumphant Effect.",
-                [new SourcePrerequisite(Source.SciencesDivision), new DisciplinePrerequisite(Skill.Medicine, 4)],
+                [new SourcePrerequisite(Source.SciencesDivision, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 4)],
                 1),
             new TalentModel(
                 "Cutting-Edge Medicine",
                 "You keep up to date with the latest medical publications and the latest advances in medical science, to ensure that there are no diseases you’re unprepared to face, and no treatments or medicines you’re unfamiliar with. Whenever you make a Medicine task with a Difficulty of 3 or higher, you may spend up to 3 Momentum (Immediate) to reduce the Difficulty by the number of Momentum spent, to a minimum Difficulty of 1. However, as these latest advances are often experimental, the complication range of the task increases by 1 for each Momentum spent.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 4)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 4)]),
             new TalentModel(
                 "Diagnostic Expertise",
                 "You focus on diagnosing the nature of an illness, injury, psychological problem, or other condition, because once the cause has been determined, finding the solution gets easier. When you succeed at a Medicine task to identify and diagnose the nature of a medical problem, you gain 1 bonus Momentum for every additional d20 you bought by spending Momentum, which may only be used to Obtain Information or Create Advantage.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 4)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 4)]),
             new TalentModel(
                 "Don’t You Die on Me!",
                 "The line between life and death is a thin one, and you’re good enough to keep a patient alive when lesser doctors would have pronounced them dead. When a character is killed, you may spend 1 Determination to make one attempt to revive them. If they were killed instantly by suffering two injuries, then this may only be attempted within that scene. If the character suffered a lethal injury and died because they didn’t receive medical treatment in time, this may be attempted before the end of the subsequent scene. This requires a Daring + Medicine task, with a Difficulty of 3. If successful, the character is brought back from the brink of death, though the injury / injuries that nearly killed them still require healing. Failure means that your efforts were unsuccessful and the character dies.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 5)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 5)]),
             new TalentModel(
                 "Stimulant Shot",
                 "You’ve got a few tricks and treatments that can get an injured patient back on their feet for a while. They are rough on the body, but they can be essential during a crisis. When you perform the First Aid task on an injured ally, you may get them back into the fighting right away without spending Momentum. In addition, the ally recovers Stress equal to twice your Medicine rating.",
-                [new SourcePrerequisite(Source.PlayersGuide), new DisciplinePrerequisite(Skill.Medicine, 3)]),
+                [new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3)]),
             // Species
             new TalentModel(
                 "Proud and Honorable",
@@ -2172,7 +2191,7 @@ export class Talents {
                 "I’Qosa"),
             new TalentModel(
                 "Zero-G Swimmer",
-                "I’Qosa are experts at moving both in underwater and zero- gravity environments due to their natural aquatic habitat. The character receives a bonus d20 on any task related to swimming or zero-g maneuvering.",
+                "I’Qosa are experts at moving both in underwater and zero-gravity environments due to their natural aquatic habitat. The character receives a bonus d20 on any task related to swimming or zero-g maneuvering.",
                 [new SourcePrerequisite(Source.IdwYearFive), new SpeciesPrerequisite(Species.IQosa, true)],
                 1,
                 "I’Qosa"),
@@ -3123,7 +3142,10 @@ export class Talents {
             new TalentModel(
                 "Saboteur (War)",
                 "You have a knack for breaking things. When attacking an object, structure, or stationary vehicle, you may use your Engineering score instead of Security. In addition, when inflicting Stress on such a target, you can spend 2 Momentum to change any challenge dice to an effect result, up to your Engineering score.",
-                [new SourcePrerequisite(Source.FederationKlingonWar, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Engineering, 5), new DisciplinePrerequisite(Skill.Security, 2)],
+                [
+                    new SourcePrerequisite(Source.FederationKlingonWar),
+                    new DisciplinePrerequisite(Skill.Engineering, 5),
+                    new DisciplinePrerequisite(Skill.Security, 2)],
                 1,
                 "General"),
             new TalentModel(
@@ -3170,11 +3192,29 @@ export class Talents {
                 1,
                 "Security"),
             new TalentModel(
+                "Piercing Salvo",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Security, 4)],
+                1,
+                "Security"),
+            new TalentModel(
+                "Precision Targeting",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Security, 3), new DisciplinePrerequisite(Skill.Conn, 3)],
+                1,
+                "Security"),
+            new TalentModel(
                 "Steady Hands",
                 "",
                 [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Security, 3), new AttributePrerequisite(Attribute.Control, 9)],
                 1,
                 "Security"),
+            new TalentModel(
+                "Positive Reinforcement",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new AttributePrerequisite(Attribute.Presence, 9)],
+                1,
+                "Medicine"),
 
         ];
 
@@ -3773,7 +3813,7 @@ export class Talents {
             1,
             "Klingon", true),
         new TalentModel(
-            "Precision Targeting",
+            "Precision Targeting (Klingon)",
             "When the character makes an attack that targets a specific system, he may reroll one d20 in his dice pool, and the attack gains the Piercing 1 damage effect",
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new OfficerPrerequisite(), new DisciplinePrerequisite(Skill.Security, 3)],
             1,

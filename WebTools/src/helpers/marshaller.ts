@@ -32,6 +32,7 @@ import { Era, ErasHelper } from './eras';
 import { Asset, AssetStat } from '../asset/asset';
 import { AssetType } from '../asset/assetType';
 import { AssetStatType, allAssetStatTypes } from '../asset/assetStat';
+import { SpeciesAbility, SpeciesAbilityList } from './speciesAbility';
 
 class Marshaller {
 
@@ -826,6 +827,10 @@ class Marshaller {
                 if (species != null) {
                     result.speciesStep = new SpeciesStep(speciesCode);
 
+                    if (result.version > 1) {
+                        result.speciesStep.ability = SpeciesAbilityList.instance.getBySpecies(speciesCode);
+                    }
+
                     if (json.mixedSpecies != null) {
                         let speciesCode = SpeciesHelper.getSpeciesTypeByName(json.mixedSpecies);
                         if (speciesCode != null) {
@@ -851,9 +856,14 @@ class Marshaller {
                         }
                     } else {
                         let species = SpeciesHelper.getSpeciesByType(speciesCode);
+
                         if (species != null) {
                             result.speciesStep = new SpeciesStep(speciesCode);
                             result.addTrait(species.trait);
+
+                            if (result.version > 1) {
+                                result.speciesStep.ability = SpeciesAbilityList.instance.getBySpecies(speciesCode);
+                            }
                         }
                     }
 
