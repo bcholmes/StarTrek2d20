@@ -94,7 +94,7 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
             "Construct.discipline.science": new Column(503.7, 119.4, 9, 45),
             "Construct.discipline.security": new Column(429.8, 119.4, 9, 45),
 
-            "Construct.other.resistance": new Column(357.5, 171.1, 9, 45),
+            "Construct.other.protection": new Column(357.5, 171.1, 9, 45),
             "Construct.other.reputation": new Column(429.8, 171.1, 9, 45),
             "Construct.other.reprimands": new Column(503.7, 171.1, 9, 45),
         };

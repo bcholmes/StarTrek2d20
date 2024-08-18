@@ -1683,7 +1683,6 @@
     "Specialization.colonist": "Colonist",
     "Specialization.conn": "Conn",
     "Specialization.counselor": "Counselor",
-    "Specialization.civilianDoctor": "Medical Doctor",
     "Specialization.engineer": "Engineer",
     "Specialization.federationAmbassador": "Federation Ambassador",
     "Specialization.ferengiDaiMon": "Ferengi DaiMon",
@@ -2132,6 +2131,10 @@
 
     "Talent.askingTheRightQuestions.description": "When you attempt a task that relates to information you’ve received from Obtain Information questions in the current scene, you may re-roll 1d20.",
 
+    "Talent.attackRun": "Attack Run",
+
+    "Talent.attackRun.description2e": "Whenever you succeed at the Attack Pattern major action, enemy Attacks against you do not reduce in Difficulty due to that action.",
+
     "Talent.automatedDefenses": "Automated Defenses",
 
     "Talent.automatedDefenses.soloDescription": "The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.",
@@ -2233,6 +2236,10 @@
     "Talent.constantlyWatching.description": "When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",
     "Talent.constantlyWatching.description2e": "At the start of an action scene, the gamemaster must spend an additional 2 Threat to have an NPC take the first turn. You may also re-roll 1d20 on any task attempt- ed to locate a hidden enemy or danger.",
 
+    "Talent.coveringAdvance": "Covering Advance",
+
+    "Talent.coveringAdvance.description2e": "When you succeed at a task to maneuver your ship, you may spend 2 Momentum to provide cover for allied ships. When an enemy vessel next makes an Attack, before the beginning of your next turn, if you are the closest ship to that attacker but they do not target you, the difficulty of their Attack is equal to your ship’s Scale.",
+
     "Talent.captainsYacht": "Captain's Yacht",
 
     "Talent.captainsYacht.soloDescription": "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger\nthan most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",
@@ -2311,6 +2318,10 @@
 
     "Talent.durability.description": "Whether through genetic engineering or cybernetic implants, you’re more durable than most people. You gain Protection 2.",
 
+    "Talent.efficientEvasion": "Efficient Evasion",
+
+    "Talent.efficientEvasion.description2e": "When you attempt an Evasive Action major action for the second or subsequent time in a row during a scene, you add 1 Momentum to the group pool.",
+
     "Talent.electronicWarfareSystems": "Electronic Warfare Systems",
 
     "Talent.electronicWarfareSystems.soloDescription": "The ship’s communications systems have been specially designed to intercept and disrupt enemy communications in battle.",
@@ -2362,6 +2373,7 @@
     "Talent.flyBy": "Fly-By",
 
     "Talent.flyBy.description": "Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",
+    "Talent.flyBy.description2e": "Whenever you use the Swift Action Momentum spend, you do not increase the Difficulty of the second task if one of the tasks you attempt is to pilot a vessel.",
 
     "Talent.focusedFire": "Focused Fire",
 
@@ -2376,6 +2388,10 @@
     "Talent.formerInitiate.description": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are Symbionts, you were one of the many who failed, but the quality of even a failed initiate is enough for Starfleet to recruit you. When you attempt a Task using Control or Reason, and spend Determination to buy a bonus d20 for that Task, you may re-roll your dice pool. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
     "Talent.formerInitiate.description2e": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are symbionts, you were one of many who failed, but the capabilities of even a failed Initiate are highly sought after by Starfleet and other organizations. When you attempt a task using Control or Reason, and you spend Determination to set a die as a 1, you may also re-roll your dice pool after the roll. You cannot select this talent if you have the Joined talent.",
 
+    "Talent.glancingImpact": "Glancing Impact",
+
+    "Talent.glancingImpact.description2e": "Whenever you succeed at the Evasive Action major ac- tion, increase the Resistance of the ship you are piloting by 2; this bonus lasts until the start of your next turn.",
+
     "Talent.greedIsEternal": "Greed is Eternal",
 
     "Talent.greedIsEternal.description2e": "When engaged in negotiations—including in social conflict—that have the potential for you to profit personally, you may add 1 Threat to re-roll your dice pool.",
@@ -2387,6 +2403,10 @@
     "Talent.gutFeeling": "Gut Feeling",
 
     "Talent.gutFeeling.description2e": "When the gamemaster spends Threat to introduce re- inforcements or to cause a Reversal, they must spend 2 additional Threat to do so. This is 2 extra Threat in total, not per reinforcement.",
+
+    "Talent.handsOnPilot": "Hands-On Pilot",
+
+    "Talent.handsOnPilot.description2e": "When you perform the Warp, Evasive Action, or Attack Pattern major actions, the ship may count its focus range as double the relevant department rating (i.e., if the ship has a Conn of 3, it will score a critical success on any roll of 6 or less). However, when anyone else pilots the ship, increase the complication range by 1.",
 
     "Talent.highResolutionSensors": "High-Resolution Sensors",
 
@@ -2432,18 +2452,22 @@
 
     "Talent.improvisedWeaponTraining.description": "You are able to turn the most innocuous items into weapons at a moment’s notice. Once per scene, you may use an item such as a rock, crystal, or shard of metal laying around into a melee weapon. This weapon deals 2[D] + Security damage and is removed at the end of the encounter.",
 
-    "Talent.indefatigable": "Indefatigable",
-
-    "Talent.indefatigable.description2e": "When you fail a task, and attempt that task again during the same scene, reduce the Difficulty of the second at- tempt (and any subsequent attempts if you still fail) by 1.",
-
     "Talent.incisiveScrutiny": "Incisive Scrutiny",
 
     "Talent.incisiveScrutiny.description": "You have a knack for finding weak spots in arguments, theories, and machines alike to glean information from them, learning about things by how they respond to pressure against vulnerable points. When you succeed at a Task using Control or Insight, you gain one bonus Momentum, which may only be used for the Obtain Information Momentum Spend.",
     "Talent.incisiveScrutiny.description2e": "When you succeed at a task using Control or Insight, you may ask one question, as if you had spent Momentum to Obtain Information.",
 
+    "Talent.indefatigable": "Indefatigable",
+
+    "Talent.indefatigable.description2e": "When you fail a task, and attempt that task again during the same scene, reduce the Difficulty of the second at- tempt (and any subsequent attempts if you still fail) by 1.",
+
     "Talent.independentPhaserSupply": "Independent Phaser Supply",
 
     "Talent.independentPhaserSupply.soloDescription": "The ship’s phasers use an independent power supply, rather than drawing directly from the ship’s other power sources.",
+
+    "Talent.inertia": "Inertia",
+
+    "Talent.inertia.description2e": "When you use the Impulse minor action, you may spend 1 Momentum to move one additional zone so long as you used the Impulse minor action or Warp major action in your previous turn.",
 
     "Talent.intenseScrutiny": "Intense Scrutiny",
 
@@ -2498,6 +2522,10 @@
 
     "Talent.movingTarget.description": "Your training in hit-and-move tactics allows you to confuse attackers as you run to take cover. When you take the Sprint task, the Difficulty of ranged attacks that target you is increased by 1 until your next turn.",
 
+    "Talent.multiTasking": "Multi-Tasking",
+
+    "Talent.multiTasking.description2e": "When you attempt the Override major action while at a bridge station that includes one or both helm or nav- igator positions, you may use your Conn department instead of the department usually required for that task.",
+
     "Talent.multiVectorAssaultMode": "Multi-Vector Assault Mode",
 
     "Talent.multiVectorAssaultMode.soloDescription": "The vessel can split apart into three distinct sections. Each section has the same systems and departments scores as the original fully integrated starship, but each individual section has less power than when the ship is integrated. Use this in narration to create interesting advantages or complications.",
@@ -2549,6 +2577,10 @@
     "Talent.parentFigure.description": "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a Task, and two or more other characters are involved in the Task, the first Complication generated on the Task — either by the character attempting the Task, or one of the assistants — may be ignored.",
     "Talent.parentFigure.description2e": "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a task, and two or more other characters are involved in the task, the first complication generated on the task—either by the character attempting the task, or one of the assistants—may be ignored.",
 
+    "Talent.pathfinder": "Pathfinder",
+
+    "Talent.pathfinder.description2e": "Whenever you attempt a task to plot a course through unknown territory, reduce the Difficulty of the task by 1, 2, or 3, to a minimum of 1. For each point by which you reduce the Difficulty, increase the complication range of that task.",
+
     "Talent.personalEffects": "Personal Effects",
 
     "Talent.personalEffects.description": "The character possesses some significant and uncommon item or device which is not part of Starfleet’s standard issue, but which is nevertheless useful for missions. The character may select one item with an Opportunity Cost of 2, or two items with an Opportunity Cost of 1 each. Neither items may have an Escalation Cost greater than 1.",
@@ -2565,6 +2597,11 @@
     "Talent.preciseEvasion": "Precise Evasion",
 
     "Talent.preciseEvasion.description": "Whenever you succeed at the Evasive Action Task, you may spend two Momentum. If you do, the ship does not suffer the increased Difficulty for attacks normally caused by Evasive Action.",
+    "Talent.preciseEvasion.description2e": "Whenever you use the Evasive Action major action, the ship does not suffer the increased Difficulty for Attacks normally caused by Evasive Action.",
+
+    "Talent.precisionManeuvering": "Precision Maneuvering",
+
+    "Talent.precisionManeuvering.description2e": "Whenever you attempt a task that requires precise or careful maneuvering, or where there is a risk of colliding with another object, you may re-roll 1d20.",
 
     "Talent.proudAndHonorable": "Proud and Honorable",
 
@@ -2578,6 +2615,7 @@
     "Talent.pushTheLimits": "Push the Limits",
 
     "Talent.pushTheLimits.description": "When you attempt a Conn Task that has increased in Difficulty due to environmental conditions or damage to the engines, reduce the Difficulty by 1, to a minimum of 1.",
+    "Talent.pushTheLimits.description2e": "When you attempt a Conn task that has increased in Difficulty due to environmental conditions or damage to the engines, you may add 1 Threat to ignore the difficul- ty increase.",
 
     "Talent.quantumTorpedoes": "Quantum Torpedoes",
 
@@ -2661,6 +2699,10 @@
 
     "Talent.slimSensorSilhouette.soloDescription": "This ship is designed to present a minimal sensor return to a searching ship’s sensors through advanced hull plating, jamming, and passive subspace baffles.",
 
+    "Talent.spacewalk": "Spacewalk",
+
+    "Talent.spacewalk.description2e": "Whenever the Difficulty of a task would be increased due to low- or zero-gravity, ignore that Difficulty increase. If a task that was normally possible would be made impossible because of low- or zero-gravity, you may attempt the task at +1 Difficulty instead.",
+
     "Talent.spiritOfDiscovery": "Spirit of Discovery",
 
     "Talent.spiritOfDiscovery.description": "You have the drive, spirit, and courage to voyage into the unknown. You may spend one Determination to add three points to the group Momentum pool. The normal conditions for spending Determination still apply.",
@@ -2669,6 +2711,11 @@
     "Talent.starshipExpert": "Starship Expert",
 
     "Talent.starshipExpert.description": "Whenever you succeed at a Conn Task to identify a type of starship, or to try and understand an unknown form of Starship, you gain one bonus Momentum, which may only be used on the Obtain Information Momentum Spend, or to pay part of the cost of the Create Advantage Momentum Spend (where the Advantage must represent some form of known or observed weakness in the ship being studied).",
+    "Talent.starshipExpert.description2e": "Whenever you succeed at a Conn task to identify a type of starship, or to try to understand an unknown form of starship, you gain 1 bonus Momentum, which may only be used on the Obtain Information Momentum spend, or to pay part of the cost of the Create Trait Momentum spend (where the trait must represent some form of known or observed weakness in the ship being studied).",
+
+    "Talent.strafingRun": "Strafing Run",
+
+    "Talent.strafingRun.description2e": "Whenever you succeed at the Attack Pattern task and then Keep the Initiative, the cost to Keep the Initiative is reduced to 0. If the character taking the next turn makes an Attack, they may re-roll one d20.",
 
     "Talent.strongPagh": "Strong Pagh",
 
@@ -2728,6 +2775,10 @@
     "Talent.theUshaan.description": "You are experienced in the tradition of honor-dueling known as the Ushaan, having spilt much blood upon the ice. When you make a melee Attack, or are targeted by a melee Attack, and buy one or more d20s by adding to Threat, you may re-roll the dice pool for the Task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels.",
     "Talent.theUshaan.description2e": "You are experienced in the tradition of honor-dueling known as the Ushaan. When you make a Melee Attack, or are targeted by a Melee Attack, and buy one or more d20s by adding to Threat, you may re-roll any number of dice in your dice pool for the task. Further, you own an Ushaan-tor, a razor-sharp ice-miner’s tool used in these duels. The Ushaan-tor is a blade, and it counts as standard issue for you.",
 
+    "Talent.threadTheNeedle": "Thread the Needle",
+
+    "Talent.threadTheNeedle.description2e": "When you perform the Impulse minor action or Warp major action when piloting a starship, enemy Attacks from ships with a greater Scale than yours increase in difficulty by +1. If attacked by a ship with a Scale that is double or more the Scale of your ship, then you increase the Difficulty by 2 instead.",
+
     "Talent.tough": "Tough",
 
     "Talent.tough.description": "Whenever you Avoid an Injury, the cost is reduced by 1, to a minimum of 1.",
@@ -2757,6 +2808,10 @@
 
     "Talent.veteran.description": "The character is wise and experienced, and draws upon inner reserves of willpower and determination in a more measured and considered way. Whenever the character spends a point of Determination, roll 1[D]. If an Effect is rolled, immediately regain that spent point of Determination. The character has a rank of at least Lieutenant Commander.",
 
+    "Talent.visitEveryStar": "Visit Every Star",
+
+    "Talent.visitEveryStar.description2e": "You gain an additional focus, and one of your focuses (either the one gained from this talent, or an existing one) must relate to Astronavigation, Stellar Cartography, or a similar field of space science. Further, when you succeed at a navigation-related task, you gain 1 bonus Momentum due to your knowledge and familiarity. Bonus Momentum cannot be saved.",
+
     "Talent.voiceOfAuthority": "Voice of Authority",
 
     "Talent.voiceOfAuthority.description2e": "When you Assist someone, and use your Presence to do so, you may add 2 Threat to treat your assistance die as if it had rolled a 1 instead of rolling it.",
@@ -2776,6 +2831,10 @@
     "Talent.wormholeRelaySystem": "Wormhole Relay System",
 
     "Talent.wormholeRelaySystem.soloDescription": "The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",
+
+    "Talent.zeroGCombat": "Zero-G Combat",
+
+    "Talent.zeroGCombat.description2e": "In combat, when you make an Attack while in a zero-grav- ity or micro-gravity environment, you may use the higher of your Conn or Security departments for the task, and you ignore any difficulty increases caused by the lack\nof gravity. In addition, enemies who lack similar training increase the Difficulty of Attacks against you by 1.",
 
     "TalentCategory.general": "General",
     "TalentCategory.career": "Career",

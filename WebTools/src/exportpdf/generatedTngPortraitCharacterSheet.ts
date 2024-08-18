@@ -31,7 +31,7 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
         return {
             "attacks": new Column(184.6, 604.1, 12.1, 187.8),
             "attributes": new Column(184.6, 188.2, 12.1, 187.8),
-            "disciplines": new Column(184.6, 260.1, 12.1, 187.8),
+            "departments": new Column(184.6, 260.1, 12.1, 187.8),
             "equipment": new Column(422.4, 604.1, 12.1, 130.0),
             "focuses": new Column(422.4, 188.1, 12.1, 130.0),
             "injuries": new Column(422.4, 508.1, 12.1, 130.0),
@@ -97,7 +97,7 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
             "Construct.discipline.medicine": new Column(322.5, 306.5, 9, 46),
 
 
-            "Construct.other.resistance": new Column(175.5, 336.5, 9, 46),
+            "Construct.other.protection": new Column(175.5, 336.5, 9, 46),
             "Construct.other.reputation": new Column(247.7, 336.5, 9, 46),
             "Construct.other.reprimands": new Column(322.5, 336.5, 9, 46),
         };

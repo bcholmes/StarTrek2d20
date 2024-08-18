@@ -79,7 +79,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
 
         this.writeTitle(page);
         this.writeSubTitles(page, character);
-        this.writeStatLabels(page);
+        this.writeStatLabels(page, character);
         this.writeDetailLabels(page);
         this.writeWeaponLabels(page);
 
@@ -386,10 +386,13 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
 
     }
 
-    writeStatLabels(page: PDFPage) {
+    writeStatLabels(page: PDFPage, character: Character) {
         let fontSize = 12.5;
 
         Object.keys(this.statLocations).forEach(key => {
+            if (key === "Construct.other.protection" && character.version === 1) {
+                key = "Construct.other.resistance";
+            }
             let block = this.statLocations[key];
             const originalText = i18next.t(key).toLocaleUpperCase();
             let text = originalText;

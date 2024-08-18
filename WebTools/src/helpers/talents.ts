@@ -762,52 +762,52 @@ export class Talents {
             new TalentModel(
                 "Advisor",
                 "Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",
-                [new DisciplinePrerequisite(Skill.Command, 2), new MainCharacterPrerequisite()],
+                [new DisciplinePrerequisite(Skill.Command, 2), new MainCharacterPrerequisite(), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Defuse the Tension",
                 "Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",
-                [new DisciplinePrerequisite(Skill.Command, 3)],
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Follow My Lead",
                 "Once per scene, when you succeed at a Task during combat or another perilous situation, you may spend one Determination. If you do, choose a single ally. The next Task that ally attempts counts as having assistance from you, using your Presence + Command.",
-                [new DisciplinePrerequisite(Skill.Command, 3)],
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Supervisor",
                 "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
-                [],
+                [new SourcePrerequisite(Source.Core, Source.Core2ndEdition)],
                 1, "Command", false, new AliasModel("War Leader", Source.KlingonCore)),
             new TalentModel(
                 "Bargain",
                 "When negotiating an offer with someone during Social Conflict, you may re-roll a d20 on your next Persuade Task to convince that person. If the Social Conflict involves an Extended Task, you gain the Progression 1 benefit when you roll your Challenge Dice.",
-                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Call Out Targets",
                 "Upon assisting a character making an attack (using either the Assist Task, the Direct Task, or some other means), the helped character generates one point of bonus Momentum if they succeed; bonus Momentum cannot be saved to the group pool.",
-                [new DisciplinePrerequisite(Skill.Command, 3), new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 3), new DisciplinePrerequisite(Skill.Security, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Call to Action",
                 "In a Conflict, a character may use the Prepare Minor Action to grant one ally a Minor Action of their choice (performed immediately) if they can communicate with that ally.",
-                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Cold Reading",
                 "Succeeding at a Task during Social Conflict generates one bonus Momentum which must be used for the Obtain Information Momentum Spend to gain knowledge about an individual on the other side of the interaction. If the Social Conflict involves an Extended Task, the character gains the Scrutinize 1 benefit when rolling Challenge Dice.",
-                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Coordinated Efforts",
                 "During an Extended Task, an assisted character may gain either the Scrutinize 2 or Progression 1 benefits when they roll their Challenge Dice.",
-                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Decisive Leadership",
                 "In a Conflict, whenever the character performs the Assist Task and would then pay two Momentum to keep the initiative, the cost to keep the initiative is reduced to 0.",
-                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Fleet Commander",
@@ -817,12 +817,12 @@ export class Talents {
             new TalentModel(
                 "Multi-Discipline",
                 "The character may select one additional Role, but not Commanding Officer or Admiral.",
-                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Plan of Action",
                 "When an ally succeeds at a Task that was made possible or had reduced Difficulty because of an Advantage created by the character, if that Advantage represented a plan or strategy, they generate two bonus Momentum. Bonus Momentum cannot be saved into the group pool.",
-                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Time Management",
@@ -832,22 +832,22 @@ export class Talents {
             new TalentModel(
                 "Advanced Team Dynamics",
                 "The people working for you are the best, and you expect the best from them. The first time each adventure that you introduce a supporting character, that supporting character may take one additional option to improve the supporting character (from the list on page 134 of the core rulebook, or page 126 of The Klingon Empire core rulebook).",
-                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.PlayersGuide), new MainCharacterPrerequisite(), new CommandingAndExecutiveOfficerPrerequisite()],
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition), new MainCharacterPrerequisite(), new CommandingAndExecutiveOfficerPrerequisite()],
                 1),
             new TalentModel(
                 "Bolster",
                 "You are skilled in keeping your allies up and active even under the most difficult circumstances. When you succeed at any task using your Command discipline during an action scene, you may spend Momentum to recover Stress suffered by your allies: each Momentum spent (Repeatable) recovers Stress equal to your Command rating from a single ally. This cannot help an injured character.",
-                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.PlayersGuide)],
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Precautions",
                 "You prepare for the worst, just in case. Once per scene, when an ally suffers an injury or the ship suffers a breach, you may prevent that injury or breach; describe what precaution you took to allow that ally to avoid being injured or to prevent that breach occurring.",
-                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.PlayersGuide)],
+                [new DisciplinePrerequisite(Skill.Command, 4), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Teacher",
                 "Beyond only being a leader, you concern yourself with the development and growth of your crew, taking pride in their accomplishments. When you create an advantage for an ally that represents your guidance or advice, that ally may re-roll one d20 on a single task they attempt which benefits from that advantage.",
-                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Command, 3), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Fly-By",
                 "Whenever you use the Swift Task Momentum Spend, you do not increase the Difficulty of the second Task if one of the Tasks you attempt is to pilot a vessel or vehicle.",
@@ -871,27 +871,27 @@ export class Talents {
             new TalentModel(
                 "Attack Run",
                 "A success in the Attack Pattern Task lets a character spend two Momentum. Enemy Attacks against the character’s ship do not reduce in Difficulty due to the Attack Pattern Task.",
-                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Covering Advance",
                 "A success at any Helm Task means two Momentum can be spent to block a single enemy vessel within Medium range, plus one additional enemy vessel for each additional Momentum spent beyond that (Repeatable). When a blocked vessel makes its next attack, before the beginning of the character’s next Turn, the Difficulty of any Attack that does not target your vessel has a base Difficulty equal to the character ship’s Scale, instead of normal Difficulty.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Efficient Evasion",
                 "Attempting an Evasive Action Task for the second or subsequent time in a row during a scene reduces the Power Requirement for Evasive Action to 0.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Glancing Impact",
                 "Succeeding at the Evasive Action Task increases the Resistance of the ship being piloted by +2. This bonus lasts until the start of the character’s next Turn.",
-                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Inertia",
                 "When the character succeeds at a Maneuver Task, 1 Momentum may be spent to move one additional zone so long as the previous Turn included an Impulse or Warp Task.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Multi-Tasking",
@@ -901,22 +901,22 @@ export class Talents {
             new TalentModel(
                 "Pathfinder",
                 "When a character attempts a Task to plot a course through unknown territory, reduce the Difficulty of the Task by 1, 2, or 3, to a minimum of 1. Each point that reduces Difficulty increases the Complication Range of the Task.",
-                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Precision Maneuvering",
                 "Reduces the Difficulty of the Task by 1, to a minimum of 0, when attempting a Task that requires precise maneuvering, or where there is a collision risk.",
-                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Spacewalk",
                 "Whenever the Difficulty of a Task is increased thanks to low- or zero-gravity, ignore the increase. A Task that is normally possible but isn’t because of low- or zero-gravity, may be attempted at +1 Difficulty to the Task.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Strafing Run",
                 "When a character succeeds at the Attack Pattern Task and spends Momentum to keep the initiative, the cost to keep the initiative is 0.",
-                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision)],
+                [new DisciplinePrerequisite(Skill.Conn, 4), new SourcePrerequisite(Source.CommandDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Thread the Needle",
@@ -929,7 +929,7 @@ export class Talents {
             new TalentModel(
                 "Hands-On Pilot",
                 "Your piloting style delves deeply into the technical aspects of a ship’s propulsion systems, and you spend much of your time in Engineering, fine-tuning power flows, subspace field geometries, and inertial stabilizers to ensure that the ship flies exactly the way you want it to. When you perform one of the Impulse, Warp, Evasive Action, or Attack Pattern tasks, the ship may treat its assistance die as if it had rolled a 1. However, when anyone else pilots the ship, they increase their complication range by 1, as your adjustments don’t suit everyone.",
-                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide)]),
+                [new DisciplinePrerequisite(Skill.Conn, 3), new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]),
             new TalentModel(
                 "Visit Every Star",
                 "Your expertise in navigation and stellar cartography come from a deep and enduring fascination with space; as a child, you dreamed of the stars you’d visit and the stellar phenomena you’d see up close, and you memorized every fact you could about them. You gain an additional focus, and one of your focuses (either the one gained from this talent, or an existing one) must relate to Astronavigation, Stellar Cartography, or a similar field of space science. Further, when you succeed at a navigation-related task, you gain 1 bonus Momentum due to your knowledge and familiarity. Bonus Momentum cannot be saved.",
