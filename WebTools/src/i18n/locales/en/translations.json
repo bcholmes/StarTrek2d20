@@ -2111,6 +2111,10 @@
     "Talent.advancedShields.description": "The vessel’s shields are state of the art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure. The ship’s maximum Shields are increased by 5.",
     "Talent.advancedShields.soloDescription": "The vessel’s shields are state-of-the-art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure.",
 
+    "Talent.advancedTeamDynamics": "Advanced Team Dynamics",
+
+    "Talent.advancedTeamDynamics.description2e": "The first time you introduce a supporting character in a mission, that supporting character may take one additional option to improve the supporting character.",
+
     "Talent.advancedTransporters": "Advanced Transporters",
 
     "Talent.advancedTransporters.soloDescription": "The ship is outfitted with dozens of transporter emitter array pads, allowing targeting scanners to lock on to their targets and destination more easily.",
@@ -2118,14 +2122,24 @@
     "Talent.advisor": "Advisor",
 
     "Talent.advisor.description": "Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",
+    "Talent.advisor.description2e": "Whenever you Assist another character using your Command, the assisted character may re-roll one d20.",
 
-    "Talent.aLittleMorePower": "A Little More Power",
+    "Talent.aLittleMorePower": "More Power",
 
     "Talent.aLittleMorePower.description": "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
+    "Talent.aLittleMorePower.description2e": "Whenever you use the Reroute Power major action, you may spend 2 Momentum to give Reserve Power to two systems, rather than one.",
+
+    "Talent.ambushTactics": "Ambush Tactics",
+
+    "Talent.ambushTactics.description2e": "When you succeed at an Attack against an enemy who is unaware of your presence, or who is suffering from a trait or complication which represents a weakness or vulnerability, increase the Severity of the Attack by 2.",
 
     "Talent.anAnswerForEverything": "An Answer for Everything",
 
     "Talent.anAnswerForEverything.description": "You relish intense debate, where you can see your opponent’s argument unfold, then turn it back against them. When you succeed at a task as part of an extended task in a social conflict, you may reroll a number of [D] up to your Command score.",
+
+    "Talent.appliedForce": "Applied Force",
+
+    "Talent.appliedForce.description2e": "When you make a Melee Attack, you may use Fitness instead of Daring. In addition, you add 1 to the Severity of your Unarmed Attacks.",
 
     "Talent.askingTheRightQuestions": "Asking the Right Questions",
 
@@ -2146,6 +2160,10 @@
     "Talent.backUpPlans": "Back-Up Plans",
 
     "Talent.backUpPlans.description2e": "Whenever you or an ally fail a task (so long as you are present in the scene), you may add 1 point to the group’s Momentum pool.",
+
+    "Talent.bargain": "Bargain",
+
+    "Talent.bargain.description2e": "When you use Negotiation to make an offer to someone during social conflict, you may re-roll a single d20 on your next Persuade task to convince that person. If the social conflict with that person involves an extended task, your Impact is increased by 1.",
 
     "Talent.boldCommand": "Bold: Command",
 
@@ -2171,9 +2189,25 @@
 
     "Talent.boldSecurity.description": "Whenever you attempt a Task with Security, and you buy one or more d20s by adding to Threat, you may re-roll a single d20.",
 
+    "Talent.bolster": "Bolster",
+
+    "Talent.bolster.description2e": "When you succeed at any task using your Command during an action scene, you may spend Momentum to recover Stress suffered by your allies. When you spend 1 Momentum (Repeatable), one ally who can see and hear you recovers 1 Stress. You may affect multiple allies, but each ally affected may only recover 1 Stress in this way each time this talent is used.",
+
+    "Talent.callOutTargets": "Call Out Targets",
+
+    "Talent.callOutTargets.description2e": "When you Assist a character in an Attack, the assisted character generates 2 bonus Momentum if their Attack succeeds. Bonus Momentum cannot be saved.",
+
+    "Talent.callToAction": "Call to Action",
+
+    "Talent.callToAction.description2e": "In a conflict, you may use the Prepare minor action to grant one ally who you can communicate with a minor action of their choice, which they perform immediately.",
+
     "Talent.calmAndLogical": "Calm and Logical",
 
     "Talent.calmAndLogical.description2e": "When you gain a trait which represents a mood or emotional state, you may suppress that trait (ignoring its effect) for the duration of a single task or a single turn in combat by suffering 1 Stress.",
+
+    "Talent.captainsYacht": "Captain's Yacht",
+
+    "Talent.captainsYacht.soloDescription": "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger\nthan most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",
 
     "Talent.cautiousCommand": "Cautious: Command",
 
@@ -2203,9 +2237,26 @@
 
     "Talent.chosenSpeaker.description2e": "Among Aenar communities, leaders and mediators are chosen as and when the need arises, nominating an individual to serve as Speaker. You’ve been chosen for this role often and are adept at using your senses and your telepathy to aid communication. When attempting a task to communicate telepathically with a willing being, you may re-roll 1d20.",
 
+    "Talent.cloakedMines": "Cloaked Mines",
+
+    "Talent.cloakedMines.soloDescription": "The ship’s mines are equipped with state-of- the-art cloaking technology, making them almost impossible to detect.",
+
+    "Talent.cloakingDevice": "Cloaking Device",
+
+    "Talent.cloakingDevice.soloDescription": "The vessel has a device that allows it to vanish from sensors. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker finds some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down.",
+
     "Talent.closeKnitCrew": "Close-Knit Crew",
 
     "Talent.closeKnitCrew.description2e": "When a scene begins, if there are fewer points of\nMomentum in the group pool than there are characters in the scene who have this talent, immediately add 1 Momentum to the group pool.",
+
+    "Talent.closeProtection": "Close Protection",
+
+    "Talent.closeProtection.description": "When you make a successful Attack, you may spend one Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",
+    "Talent.closeProtection.description2e": "When you make a successful Attack, you may spend 1 Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",
+
+    "Talent.coldReading": "Cold Reading",
+
+    "Talent.coldReading.description2e": "When you succeed at a task during social conflict, you generate 1 bonus Momentum which must be used for the Obtain Information Momentum spend to gain knowledge about one of the people you’re interacting with. If the  social conflict with that person involves an extended task, you may ignore any Resistance the extended task has.",
 
     "Talent.collaborationCommand": "Collaboration: Command",
 
@@ -2231,31 +2282,6 @@
 
     "Talent.collaborationSecurity.description": "Whenever an ally attempts a Task using Security, you may spend one Momentum (Immediate) to allow them to use your score for that Discipline, and one of your Focuses.",
 
-    "Talent.constantlyWatching": "Constantly Watching",
-
-    "Talent.constantlyWatching.description": "When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",
-    "Talent.constantlyWatching.description2e": "At the start of an action scene, the gamemaster must spend an additional 2 Threat to have an NPC take the first turn. You may also re-roll 1d20 on any task attempt- ed to locate a hidden enemy or danger.",
-
-    "Talent.coveringAdvance": "Covering Advance",
-
-    "Talent.coveringAdvance.description2e": "When you succeed at a task to maneuver your ship, you may spend 2 Momentum to provide cover for allied ships. When an enemy vessel next makes an Attack, before the beginning of your next turn, if you are the closest ship to that attacker but they do not target you, the difficulty of their Attack is equal to your ship’s Scale.",
-
-    "Talent.captainsYacht": "Captain's Yacht",
-
-    "Talent.captainsYacht.soloDescription": "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger\nthan most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",
-
-    "Talent.cloakedMines": "Cloaked Mines",
-
-    "Talent.cloakedMines.soloDescription": "The ship’s mines are equipped with state-of- the-art cloaking technology, making them almost impossible to detect.",
-
-    "Talent.cloakingDevice": "Cloaking Device",
-
-    "Talent.cloakingDevice.soloDescription": "The vessel has a device that allows it to vanish from sensors. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker finds some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down.",
-
-    "Talent.closeProtection": "Close Protection",
-
-    "Talent.closeProtection.description": "When you make a successful Attack, you may spend one Momentum to protect a single ally within Close range. The next Attack against that ally before the start of your next turn increases in Difficulty by 1.",
-
     "Talent.combatGunner": "Combat Gunner",
 
     "Talent.combatGunner.description": "You have trained to operate ground vehicles and mounted weapons. You may use your Conn instead of Security when making an attack with a weapon mounted on a ground vehicle.",
@@ -2268,6 +2294,23 @@
 
     "Talent.computerExpertise.description": "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
 
+    "Talent.constantlyWatching": "Constantly Watching",
+
+    "Talent.constantlyWatching.description": "When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",
+    "Talent.constantlyWatching.description2e": "At the start of an action scene, the gamemaster must spend an additional 2 Threat to have an NPC take the first turn. You may also re-roll 1d20 on any task attempt- ed to locate a hidden enemy or danger.",
+
+    "Talent.coordinatedEfforts": "Coordinated Efforts",
+
+    "Talent.coordinatedEfforts.description2e": "When you Assist another character during an extended task, the character you Assist increases their Impact by 1.",
+
+    "Talent.coveringAdvance": "Covering Advance",
+
+    "Talent.coveringAdvance.description2e": "When you succeed at a task to maneuver your ship, you may spend 2 Momentum to provide cover for allied ships. When an enemy vessel next makes an Attack, before the beginning of your next turn, if you are the closest ship to that attacker but they do not target you, the difficulty of their Attack is equal to your ship’s Scale.",
+
+    "Talent.crisisManagement": "Crisis Management",
+
+    "Talent.crisisManagement.description2e": "The Momentum cost to use the Direct major action is removed.",
+
     "Talent.culturalFlexibility": "Cultural Flexibility",
 
     "Talent.culturalFlexibility.description": "Your people are friendly, patient, and inquisitive, and you exemplify these traits. You are at ease when meeting new cultures, and adapt to unfamiliar social structures easily. When you attempt a Task to learn about an unfamiliar culture, or to act in an appropriate manner when interacting with members of such a culture, you reduce the Difficulty by 1.",
@@ -2278,17 +2321,24 @@
     "Talent.dauntless.description": "Whenever you attempt a Task to resist being intimidated or threatened, you may add a bonus d20 to your dice pool.",
     "Talent.dauntless.description2e": "Whenever another character attempts to intimidate or threaten you, you may suffer 2 Stress to ignore their attempt.",
 
+    "Talent.decisiveLeadership": "Decisive Leadership",
+
+    "Talent.decisiveLeadership.description2e": "In a conflict, once per round, you or your allies may Keep the Initiative for free.",
+
     "Talent.defensiveTrainingMelee": "Defensive Training: Melee",
 
     "Talent.defensiveTrainingMelee.description": "You are adept at staying out of harm’s way during a skirmish. Melee attacks that target you have their Difficulty increased by 1.",
+    "Talent.defensiveTrainingMelee.description2e": "Melee Attacks against you increase in Difficulty by 1.",
 
     "Talent.defensiveTrainingRanged": "Defensive Training: Ranged",
 
     "Talent.defensiveTrainingRanged.description": "You are adept at staying out of harm’s way during a skirmish. Ranged attacks that target you have their Difficulty increased by 1.",
+    "Talent.defensiveTrainingRanged.description2e": "Ranged Attacks against you increase in Difficulty by 1.",
 
     "Talent.defuseTheTension": "Defuse the Tension",
 
     "Talent.defuseTheTension.description": "Whenever you attempt a Task to persuade someone not to resort to violence, you may add a bonus d20 to your dice pool.",
+    "Talent.defuseTheTension.description2e": "Whenever you attempt a task to persuade someone not to resort to violence, the first d20 you purchase for that task is free.",
 
     "Talent.dedicatedSubspaceTransceiverArray": "Dedicated Subspace Tranceiver Array",
 
@@ -2358,6 +2408,10 @@
 
     "Talent.fastTargetingSystems.soloDescription": "The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",
 
+    "Talent.fireAtWill": "Fire at Will",
+
+    "Talent.fireAtWill.description2e": "If you make an Attack, you may use the Swift Action Momentum spend for 1 Momentum rather than 2, but the second major action you take must also be an Attack.",
+
     "Talent.firstResponse": "First Response",
 
     "Talent.firstResponse.description": "Whenever you attempt the First Aid Task during combat, you gain a bonus d20. Further, you may always Succeed at a Cost, with each Complication you suffer adding +1 to the Difficulty of healing the patient’s Injury subsequently.",
@@ -2382,11 +2436,16 @@
     "Talent.followMyLead": "Follow My Lead",
 
     "Talent.followMyLead.description": "Once per scene, when you succeed at a Task during combat or another perilous situation, you may spend one Determination. If you do, choose a single ally. The next Task that ally attempts counts as having assistance from you, using your Presence + Command.",
+    "Talent.followMyLead.description2e": "When you succeed at a task during combat or another perilous situation, you may spend Determination. If you do, choose a single ally who can hear you. The next task that ally attempts counts as having assistance from you, using your Presence + Command. On this task, do not roll your assistance die: it counts as having already rolled a 1.",
 
     "Talent.formerInitiate": "Former Initiate",
 
     "Talent.formerInitiate.description": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are Symbionts, you were one of the many who failed, but the quality of even a failed initiate is enough for Starfleet to recruit you. When you attempt a Task using Control or Reason, and spend Determination to buy a bonus d20 for that Task, you may re-roll your dice pool. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
     "Talent.formerInitiate.description2e": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are symbionts, you were one of many who failed, but the capabilities of even a failed Initiate are highly sought after by Starfleet and other organizations. When you attempt a task using Control or Reason, and you spend Determination to set a die as a 1, you may also re-roll your dice pool after the roll. You cannot select this talent if you have the Joined talent.",
+
+    "Talent.getDown": "Get Down!",
+
+    "Talent.getDown.description": "You and any allies within Close range gain +1 Protection while in Cover.",
 
     "Talent.glancingImpact": "Glancing Impact",
 
@@ -2419,6 +2478,11 @@
     "Talent.iKnowMyShip": "I Know My Ship",
 
     "Talent.iKnowMyShip.description": "Whenever you attempt a Task to determine the source of a technical problem with your ship, add one bonus d20.",
+    "Talent.iKnowMyShip.description2e": "Whenever you attempt a task to determine the source of a technical problem with your ship, the first bonus d20 you purchase is free.",
+
+    "Talent.imGivingItAllShesGot": "I'm Giving It All She's Got!",
+
+    "Talent.imGivingItAllShesGot.description2e": "Once per scene, when the ship has no Reserve Power remaining at the start of your turn, you may add 2 Threat to gain Reserve Power.",
 
     "Talent.improvedDamageControl": "Improved Damage Control",
 
@@ -2476,10 +2540,12 @@
     "Talent.interrogation": "Interrogation",
 
     "Talent.interrogation.description": "When you succeed at a Task to coerce someone to reveal information in a social conflict, you will gain one bonus Momentum, which may only be spent on the Obtain Information Momentum Spend.",
+    "Talent.interrogation.description2e": "When you succeed at a task to coerce someone to reveal information in a social conflict, you may ask one question for free, as per the Obtain Information Momentum spend.",
 
     "Talent.inTheNickOfTime": "In the Nick of Time",
 
     "Talent.inTheNickOfTime.description": "Whenever you succeed at an Engineering or Science Task as part of an Extended Task, you score 1 additional Work for every Effect rolled.",
+    "Talent.inTheNickOfTime.description2e": "Whenever you succeed at an Engineering or Science task as part of an extended task, you increase your Impact by 1.",
 
     "Talent.joined": "Joined",
 
@@ -2489,6 +2555,7 @@
     "Talent.juryRig": "Jury-rig",
 
     "Talent.juryRig.description": "Whenever you attempt an Engineering Task to perform repairs, you may reduce the Difficulty by two, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene, plus one additional scene per Momentum spent (Repeatable) before they fail again. Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
+    "Talent.juryRig.description2e": "Whenever you attempt an Engineering task to perform repairs, you may reduce the Difficulty by 2, to a minimum of 0. If you do this, however, then the repairs are only temporary and will last only a single scene before they fail again; you may increase this duration by one scene by spending 1 Momentum (Repeatable). Jury-rigged repairs can only be applied once, and the Difficulty to repair a device that has been Jury-rigged increases by 1.",
 
     "Talent.killersInstinct": "Killer's Instinct",
 
@@ -2499,11 +2566,28 @@
     "Talent.kolinahr.description": "You have undergone the ritual journey to purge all emotion. You reduce the Difficulty of all Tasks to resist coercion, mental intrusion, pain, and other mental attacks by two.",
     "Talent.kolinahr.description2e": "You have undergone the ritual journey to purge all emotion, allowing you to dispassionately observe and dissect your emotional responses and render them powerless. When you ignore emotions using your Mental Discipline Species Ability, you may avoid emotional traits by taking 1 Stress instead of 2, and you no longer increase the potency of emotional traits when Fatigued.",
 
+    "Talent.leadInvestigator": "Lead Investigator",
+
+    "Talent.leadInvestigator.description2e": "Whenever you attempt a task to retrieve or analyze evidence of a crime, you may re-roll 1d20. When you spend one or more Momentum to Obtain Information to ask questions about a crime scene or evidence, you may ask one additional question.",
+
+    "Talent.maintenanceSpecialist": "Maintenance Specialist",
+
+    "Talent.maintenanceSpecialist.description2e": "You may ignore the first complication rolled on any Engineering task. Further, when you create any equip- ment trait, any character who uses that piece of equip- ment in a task may ignore the first complication rolled.",
+
+    "Talent.martialArtist": "Martial Artist",
+
+    "Talent.martialArtist.description2e": "Your Unarmed Strike Attack may be used to inflict Deadly Injuries as well as Stun Injuries.",
+
     "Talent.meanRightHook": "Mean Right Hook",
 
     "Talent.meanRightHook.alias.klingonCore": "Warrior’s Strike",
 
     "Talent.meanRightHook.description": "Your Unarmed Strike Attack has the Vicious 1 Damage Effect.",
+    "Talent.meanRightHook.description2e": "Your Unarmed Strike Attack gains the Intense quality.",
+
+    "Talent.meticulous": "Meticulous",
+
+    "Talent.meticulous.description2e": "During a timed challenge or extended task, before rolling, you may take one die and treat it as if it had already rolled a 1, but if you do, the task will take one additional interval.",
 
     "Talent.methodicalPlanning": "Methodical Planning",
 
@@ -2514,6 +2598,10 @@
     "Talent.mindMeld.description": "You have undergone training in telepathic techniques that allow the melding of minds through physical contact. This will always require a Task with a Difficulty of at least 1, which can be opposed by an unwilling participant. If successful, you link minds with the participant, sharing thoughts and memories; Momentum may be spent to gain more information, or perform deeper telepathic exchanges. This link goes both ways, and it is a tiring and potentially hazardous process for you. Complications can result in pain, disorientation, or lingering emotional or behavioral difficulties.",
     "Talent.mindMeld.description2e": "You’ve undergone training in telepathic techniques that allow the melding of minds through physical contact. This always requires a task (normally Control + Sciences) with a Difficulty of at least 1, which can be opposed by an unwilling participant. If successful, you link minds with the participant, sharing thoughts and memories. Momentum may be spent to gain more information or perform deeper telepathic exchanges. This link goes both ways, and it is a tiring and potentially hazardous process. Complications can result in taking Stress, pain, disorientation, or lingering emotional or behavioral difficulties.",
 
+    "Talent.miracleWorker": "Miracle Worker",
+
+    "Talent.miracleWorker.description2e": "Whenever you succeed at an Engineering task to over- come an extended task, you may increase your Impact by 1 by spending 1 Momentum instead of 2.",
+
     "Talent.modularLaboratories": "Modular Laboratories",
 
     "Talent.modularLaboratories.soloDescription": "The ship has considerable numbers of empty, multi- purpose compartments that can be converted to laboratories as and when required.",
@@ -2521,6 +2609,10 @@
     "Talent.movingTarget": "Moving Target",
 
     "Talent.movingTarget.description": "Your training in hit-and-move tactics allows you to confuse attackers as you run to take cover. When you take the Sprint task, the Difficulty of ranged attacks that target you is increased by 1 until your next turn.",
+
+    "Talent.multiDiscipline": "Multi-Discipline",
+
+    "Talent.multiDiscipline.description2e": "You may select one additional Role Benefit, which may not be Commanding Officer.",
 
     "Talent.multiTasking": "Multi-Tasking",
 
@@ -2571,15 +2663,24 @@
     "Talent.packTactics": "Pack Tactics",
 
     "Talent.packTactics.description": "Whenever you assist another character during combat, the character you assisted gains one bonus Momentum if they succeed.",
+    "Talent.packTactics.description2e": "Whenever you Assist another character during combat, the character you assisted gains 1 bonus Momentum if they succeed.",
 
     "Talent.parentFigure": "Parent Figure",
 
     "Talent.parentFigure.description": "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a Task, and two or more other characters are involved in the Task, the first Complication generated on the Task — either by the character attempting the Task, or one of the assistants — may be ignored.",
     "Talent.parentFigure.description2e": "You have a large family, with many children, nieces, and nephews, and you’ve learned how to coordinate even the most unruly and fractious of groups when necessary. When attempting or assisting a task, and two or more other characters are involved in the task, the first complication generated on the task—either by the character attempting the task, or one of the assistants—may be ignored.",
 
+    "Talent.pastTheRedline": "Past the Redline",
+
+    "Talent.pastTheRedline.description2e": "When you use advanced technology, including at- tempting a task assisted by the ship, you may choose to increase the complication range by 1, 2, or 3. If you succeed, then you gain bonus Momentum equal to the amount by which the complication range was increased. Bonus Momentum cannot be saved.",
+
     "Talent.pathfinder": "Pathfinder",
 
     "Talent.pathfinder.description2e": "Whenever you attempt a task to plot a course through unknown territory, reduce the Difficulty of the task by 1, 2, or 3, to a minimum of 1. For each point by which you reduce the Difficulty, increase the complication range of that task.",
+
+    "Talent.percussiveMaintenance": "Percussive Maintenance",
+
+    "Talent.percussiveMaintenance.description2e": "When you attempt a Control + Engineering task, you may add 1 Threat to use your Daring instead of your Control. If you do this, and the task succeeds, then you may reduce the time taken by 1 interval without spend- ing Momentum.",
 
     "Talent.personalEffects": "Personal Effects",
 
@@ -2590,9 +2691,21 @@
 
     "Talent.pheromones.description": "You are capable of emitting pheromones which can render Orion males (and others) suggestible. These pheromones affect several other species—including Humans—in a similar way. When dealing with males of a species affected by these pheromones, you gain 2 bonus Momentum on all tasks to persuade or command them. However, female members of species affected often suffer headaches because of the pheromones, increasing the complication range of tasks to interact with them by 1. Vulcans are known to be unaffected, while Denobulans experience a different effect and become drowsy. The gamemaster’s discretion applies as to which species are affected, which are immune, and which suffer unexpected effects, but most species are affected similarly to Humans and Orions.",
 
+    "Talent.piercingSalvo": "Piercing Salvo",
+
+    "Talent.piercingSalvo.description2e": "When you make a Torpedo Attack, you may spend 2 Momentum (Immediate) to add the Piercing quality.",
+
+    "Talent.planOfAction": "Plan of Action",
+
+    "Talent.planOfAction.description2e": "Whenever an ally succeeds at a task that was made possible, or had a reduced Difficulty, because of a trait you created, and that trait represented a plan, strategy, or course of action, they generate 2 bonus Momentum. Bonus Momentum cannot be saved.",
+
     "Talent.pointDefenseSystem": "Point Defense System",
 
     "Talent.pointDefenseSystem.soloDescription": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction it is traveling from, potentially destroying it before it impacts the shields or the ship’s hull. This system only works at subwarp speeds.",
+
+    "Talent.precautions": "Precautions",
+
+    "Talent.precautions.description2e": "Once per scene, when an ally suffers an Injury or the ship suffers a Breach, prevent that Injury or Breach; describe what precaution you took to prevent the issue.",
 
     "Talent.preciseEvasion": "Precise Evasion",
 
@@ -2602,6 +2715,14 @@
     "Talent.precisionManeuvering": "Precision Maneuvering",
 
     "Talent.precisionManeuvering.description2e": "Whenever you attempt a task that requires precise or careful maneuvering, or where there is a risk of colliding with another object, you may re-roll 1d20.",
+
+    "Talent.precisionTargeting": "Precision Targeting",
+
+    "Talent.precisionTargeting.description2e": "You can more easily pick out and target specific systems when making an Attack against an enemy vessel. When you make an Attack with starship weapons that targets a specific ship system, you may re-roll a d20.",
+
+    "Talent.proceduralCompliance": "Procedural Compliance",
+
+    "Talent.proceduralCompliance.description2e": "When you attempt an Engineering task, you may remove one d20 from your dice pool before rolling. If you do so, you gain one automatic success on your task.",
 
     "Talent.proudAndHonorable": "Proud and Honorable",
 
@@ -2633,6 +2754,7 @@
     "Talent.quickToAction": "Quick to Action",
 
     "Talent.quickToAction.description": "During the first round of any combat, you and your allies may ignore the normal cost to Retain the Initiative.",
+    "Talent.quickToAction.description2e": "During the first round of any combat, you and your allies may ignore the normal cost to Keep the Initiative.",
 
     "Talent.rapidFireTorpedoLauncher": "Rapid-Fire Torpedo Launcher",
 
@@ -2645,6 +2767,10 @@
     "Talent.reassuring": "Reassuring",
 
     "Talent.reassuring.description2e": "When you succeed at a task using your Presence, you may spend Momentum to reassure your allies, so long as they are able to hear you. You may spend 1 Momentum (Repeatable) to allow one ally who can see and hear you to recover 1 Stress. That ally may not recover more than 3 Stress from one use of this talent.",
+
+    "Talent.repairTeamLeader": "Repair Team Leader",
+
+    "Talent.repairTeamLeader.description2e": "You are trained to direct and lead damage repair teams during emergencies, giving them your guidance and expert knowledge of the ship’s systems. If you succeed at the Damage Control major action you may spend 2 Momentum (Repeatable) to repair one additional Breach.",
 
     "Talent.resolute": "Resolute",
 
@@ -2659,6 +2785,10 @@
 
     "Talent.regimentedMind.description2e": "When you spend Momentum to Obtain Information, you may reduce the Difficulty of one task later in the same scene by 1, so long as that task relates to the information gained.",
 
+    "Talent.rightToolForTheRightJob": "Right Tool for the Right Job",
+
+    "Talent.rightToolForTheRightJob.description2e": "Whenever you acquire an engineering tool with an Opportunity Cost, that equipment trait of that tool gains +1 Potency (typically this will result in Potency 2). If the tool is used in an extended task, whoever is using that tool increases their Impact by 1.",
+
     "Talent.rousingSpeaker": "Rousing Speaker",
 
     "Talent.rousingSpeaker.description": "You are accustomed to public speaking, stirring the emotions of your audience. When you attempt a task to convince or persuade others with a stirring speech, reduce the Difficulty of the task by 1.",
@@ -2670,6 +2800,7 @@
     "Talent.saboteurWar": "Saboteur",
 
     "Talent.saboteurWar.description": "You have a knack for breaking things. When attacking an object, structure, or stationary vehicle, you may use your Engineering score instead of Security. In addition, when inflicting Stress on such a target, you can spend 2 Momentum to change any challenge dice to an effect result, up to your Engineering score.",
+    "Talent.saboteurWar.description2e": "When you make an Attack against a structure, machine, or stationary vehicle while in personal combat (i.e., you aren’t using a ship’s weapons to make the Attack), you may use your Engineering instead of your Security to resolve the Attack.",
 
     "Talent.saucerSeparation": "Saucer Separation",
 
@@ -2713,6 +2844,10 @@
     "Talent.starshipExpert.description": "Whenever you succeed at a Conn Task to identify a type of starship, or to try and understand an unknown form of Starship, you gain one bonus Momentum, which may only be used on the Obtain Information Momentum Spend, or to pay part of the cost of the Create Advantage Momentum Spend (where the Advantage must represent some form of known or observed weakness in the ship being studied).",
     "Talent.starshipExpert.description2e": "Whenever you succeed at a Conn task to identify a type of starship, or to try to understand an unknown form of starship, you gain 1 bonus Momentum, which may only be used on the Obtain Information Momentum spend, or to pay part of the cost of the Create Trait Momentum spend (where the trait must represent some form of known or observed weakness in the ship being studied).",
 
+    "Talent.steadyHands": "Steady Hands",
+
+    "Talent.steadyHands.description2e": "When you take the Aim minor action before a Ranged Attack, you add 1 to the Attack’s Severity, in addition to the other effects of aiming.",
+
     "Talent.strafingRun": "Strafing Run",
 
     "Talent.strafingRun.description2e": "Whenever you succeed at the Attack Pattern task and then Keep the Initiative, the cost to Keep the Initiative is reduced to 0. If the character taking the next turn makes an Attack, they may re-roll one d20.",
@@ -2736,10 +2871,15 @@
     "Talent.supervisor.alias.klingonCore": "War Leader",
 
     "Talent.supervisor.description": "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
+    "Talent.supervisor.description2e": "The ship’s Crew Support increases by 1. This increase is cumulative if multiple main characters select it.",
 
     "Talent.tachyonDetectionField": "Tachyon Detection Field",
 
     "Talent.tachyonDetectionField.soloDescription": "The ship is equipped with a field generator that projects a cloud of tachyons around it. While the field is active, the ship is notified of any cloaked vessels that are within or pass into close range.",
+
+    "Talent.teacher": "Teacher",
+
+    "Talent.teacher.description2e": "When you create a trait for an ally that represents your guidance or advice, that ally may re-roll one d20 on a single task they attempt which benefits from that trait.",
 
     "Talent.telepath": "Telepath",
 
@@ -2788,6 +2928,10 @@
 
     "Talent.tracker.description": "You can follow even the faintest of tracks. When you attempt a task to track animals, people, or ground vehicles, the first d20 you buy is free. If the tracking was done as part of an extended task then the roll gains Progression 1.",
 
+    "Talent.transporterChief": "Transporter Chief",
+
+    "Talent.transporterChief.description2e": "You’re well-versed in the operation of transporter systems and can often get them to function in extreme circumstances or to achieve outcomes that few could manage. Such efforts are never without risk, given the delicacy of the technology. When you attempt a task to use, repair, or modify a transporter, you may add 2 Threat to reduce the Difficulty of the task by 2, to a minimum of 0.",
+
     "Talent.triage": "Triage",
 
     "Talent.triage.description": "When you attempt a Task to identify specific injuries or illnesses, or to determine the severity of a patient’s condition, you may spend one Momentum (Repeatable) to diagnose one additional patient.",
@@ -2834,7 +2978,7 @@
 
     "Talent.zeroGCombat": "Zero-G Combat",
 
-    "Talent.zeroGCombat.description2e": "In combat, when you make an Attack while in a zero-grav- ity or micro-gravity environment, you may use the higher of your Conn or Security departments for the task, and you ignore any difficulty increases caused by the lack\nof gravity. In addition, enemies who lack similar training increase the Difficulty of Attacks against you by 1.",
+    "Talent.zeroGCombat.description2e": "In combat, when you make an Attack while in a zero-grav- ity or micro-gravity environment, you may use the higher of your Conn or Security departments for the task, and you ignore any difficulty increases caused by the lack of gravity. In addition, enemies who lack similar training increase the Difficulty of Attacks against you by 1.",
 
     "TalentCategory.general": "General",
     "TalentCategory.career": "Career",

@@ -519,16 +519,23 @@ export class TalentModel implements ITalent {
     }
 
     get localizedDisplayName() {
-        let name = this.localizedName;
-        if (this.category) {
-            const suffix = " (" + this.category + ")";
-            if (name.indexOf(suffix) >= 0) {
-                return name.substring(0, name.indexOf(suffix));
+        let key = "Talent." + this.rootKey;
+        let result = i18next.t(key);
+
+        if (result === key) {
+            let name = this.localizedName;
+            if (this.category) {
+                const suffix = " (" + this.category + ")";
+                if (name.indexOf(suffix) >= 0) {
+                    return name.substring(0, name.indexOf(suffix));
+                } else {
+                    return name;
+                }
             } else {
                 return name;
             }
         } else {
-            return name;
+            return result;
         }
     }
 
@@ -1033,8 +1040,8 @@ export class Talents {
             new TalentModel(
                 "A Little More Power",
                 "Whenever you succeed at an Engineering Task aboard your own ship, you may spend one Momentum to regain one spent Power.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3)],
-                1, null, false, new AliasModel("More Power", Source.KlingonCore)),
+                [new DisciplinePrerequisite(Skill.Engineering, 3), new SourcePrerequisite(Source.Core, Source.KlingonCore, Source.Core2ndEdition)],
+                1, null, false, new AliasModel("A Little More Power", Source.Core), new AliasModel("More Power", Source.KlingonCore)),
             new TalentModel(
                 "I Know My Ship",
                 "Whenever you attempt a Task to determine the source of a technical problem with your ship, add one bonus d20.",
@@ -1083,12 +1090,12 @@ export class Talents {
             new TalentModel(
                 "Procedural Compliance",
                 "You are well versed in established Starfleet engineering practices and guidelines. By spending 2 Momentum to Create an Advantage (obtaining the proper technical manuals and documentation prior to attempting a Task to work on a ship’s system), you may reroll 1d20 during the next Engineering Task.",
-                [new DisciplinePrerequisite(Skill.Engineering, 3), new DisciplinePrerequisite(Skill.Conn, 2), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Engineering, 3), new DisciplinePrerequisite(Skill.Conn, 2), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Past the Redline",
                 "Engineers understand that safety tolerances and operating margins are always designed into the acceptable performance range of equipment. While not recommended the equipment is usually capable of higher performance, if the consequences are risky. This Talent provides bonus Momentum for using a ship’s System until the end of the scene. Select the System you wish to enhance, and the number of bonus Momentum to be provided. Attempt a Daring + Engineering Task with a Difficulty equal to the bonus Momentum selected. If the you succeed, subsequent Tasks using that System automatically generate that amount of bonus Momentum. However, to represent the risks involved, the Task also increases its Complication Range by the same number as the Bonus Momentum provided. If a Complication is rolled, the System no longer provides bonus Momentum and the System suffers a number of Breaches equal to half the ship’s Scale.",
-                [new DisciplinePrerequisite(Skill.Engineering, 4), new AttributePrerequisite(Attribute.Daring, 10), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new AttributePrerequisite(Attribute.Daring, 10), new SourcePrerequisite(Source.OperationsDivision, Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Repair Team Leader",
@@ -1118,7 +1125,7 @@ export class Talents {
             new TalentModel(
                 "I’m Giving It All She’s Got!",
                 "You can keep a ship running on a fraction of its normal power levels, and always seem to be able to squeeze just a little more power out of the reserves or non-essential systems. Whenever someone attempts a task with a Power requirement aboard your ship while you are aboard, roll 1[D]; on an effect, reduce that Power requirement by 1, to a minimum of 0. In addition, when you succeed at the Power Management task, you restore Power equal to your Engineering score, rather than only 1; you may increase this amount by spending Momentum as normal.",
-                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.PlayersGuide)]
+                [new DisciplinePrerequisite(Skill.Engineering, 4), new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition)]
                 ),
             new TalentModel(
                 "Transporter Chief",
@@ -3116,7 +3123,7 @@ export class Talents {
             new TalentModel(
                 "Saboteur (War)",
                 "You have a knack for breaking things. When attacking an object, structure, or stationary vehicle, you may use your Engineering score instead of Security. In addition, when inflicting Stress on such a target, you can spend 2 Momentum to change any challenge dice to an effect result, up to your Engineering score.",
-                [new SourcePrerequisite(Source.FederationKlingonWar), new DisciplinePrerequisite(Skill.Engineering, 5), new DisciplinePrerequisite(Skill.Security, 2)],
+                [new SourcePrerequisite(Source.FederationKlingonWar, Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Engineering, 5), new DisciplinePrerequisite(Skill.Security, 2)],
                 1,
                 "General"),
             new TalentModel(
@@ -3156,6 +3163,18 @@ export class Talents {
                 [new SourcePrerequisite(Source.Core2ndEdition), new SpeciesPrerequisite(Species.Tellarite, true)],
                 1,
                 "Tellarite"),
+            new TalentModel(
+                "Get Down",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Security, 2)],
+                1,
+                "Security"),
+            new TalentModel(
+                "Steady Hands",
+                "",
+                [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Security, 3), new AttributePrerequisite(Attribute.Control, 9)],
+                1,
+                "Security"),
 
         ];
 

@@ -1639,6 +1639,10 @@
 
     "Talent.boldSecurity.description": "Quand vous effectuez une Tâche avec Sécurité et que vous achetez au moins un d20 en ajoutant de la Menace, vous pouvez relancer un d20.",
 
+    "Talent.captainsYacht": "Yacht du capitaine",
+
+    "Talent.captainsYacht.soloDescription": "Le vaisseau possède une navette supplémentaire unique, généralement montée sous la soucoupe. Plus spacieuses que la plupart des navettes, elle est souvent utilisée pour les missions diplomatiques et les excursions spéciales de l'officier de commandement et est généralement connue sous le nom de \"yacht du capitaine\"",
+
     "Talent.cautiousCommand": "Prudent : Commandement",
 
     "Talent.cautiousCommand.description": "À chaque fois que vous effectuez une Tâche avec Commandement et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
@@ -1662,6 +1666,18 @@
     "Talent.cautiousSecurity": "Prudent : Sécurité",
 
     "Talent.cautiousSecurity.description": "À chaque fois que vous effectuez une Tâche avec Sécurité et que vous achetez au moins un d20 en dépensant des points d’Impulsion, vous pouvez relancer un d20. ",
+
+    "Talent.cloakedMines": "Mines occultées",
+
+    "Talent.cloakedMines.soloDescription": "Les mines du vaisseau sont équipées d'un système d'occultation de pointe, les rendant quasiment impossible à détecter.",
+
+    "Talent.cloakingDevice": "Système occulteur",
+
+    "Talent.cloakingDevice.soloDescription": "Le vaisseau est équipé d'un dispositif qui lui permet de disparaitre des capteurs. En étant occuté, le vaisseau ne peut ni attaquer, ni subir une attaque, a moins que l'attaquant ne dispose de moyen de détecter le vaisseau occulté. Tant que le système d'occultation est activé, les boucliers ne peuvent être activés",
+
+    "Talent.closeProtection": "Protection rapprochée",
+
+    "Talent.closeProtection.description": "Quand vous réussissez une attaque, vous pouvez dépenser 1 point d’Impulsion pour protéger un et un seul allié situé à portée Courte. La difficulté de la prochaine attaque qui le prendra pour cible avant le début de votre prochain tour augmente de +1.",
 
     "Talent.collaborationCommand": "Collaboration : Commandement",
 
@@ -1687,26 +1703,6 @@
 
     "Talent.collaborationSecurity.description": "À chaque fois qu’un allié effectue une Tâche avec Sécurité, vous pouvez dépenser 1 point d’Impulsion (immédiat), ce qui lui permettra d’utiliser votre score dans la Discipline, ainsi que l’une de vos Spécialisations.",
 
-    "Talent.constantlyWatching": "Toujours sur ses gardes",
-
-    "Talent.constantlyWatching.description": "Quand vous tentez de détecter un danger ou des ennemis dissimulés, vous diminuez la difficulté de –1.",
-
-    "Talent.captainsYacht": "Yacht du capitaine",
-
-    "Talent.captainsYacht.soloDescription": "Le vaisseau possède une navette supplémentaire unique, généralement montée sous la soucoupe. Plus spacieuses que la plupart des navettes, elle est souvent utilisée pour les missions diplomatiques et les excursions spéciales de l'officier de commandement et est généralement connue sous le nom de \"yacht du capitaine\"",
-
-    "Talent.cloakedMines": "Mines occultées",
-
-    "Talent.cloakedMines.soloDescription": "Les mines du vaisseau sont équipées d'un système d'occultation de pointe, les rendant quasiment impossible à détecter.",
-
-    "Talent.cloakingDevice": "Système occulteur",
-
-    "Talent.cloakingDevice.soloDescription": "Le vaisseau est équipé d'un dispositif qui lui permet de disparaitre des capteurs. En étant occuté, le vaisseau ne peut ni attaquer, ni subir une attaque, a moins que l'attaquant ne dispose de moyen de détecter le vaisseau occulté. Tant que le système d'occultation est activé, les boucliers ne peuvent être activés",
-
-    "Talent.closeProtection": "Protection rapprochée",
-
-    "Talent.closeProtection.description": "Quand vous réussissez une attaque, vous pouvez dépenser 1 point d’Impulsion pour protéger un et un seul allié situé à portée Courte. La difficulté de la prochaine attaque qui le prendra pour cible avant le début de votre prochain tour augmente de +1.",
-
     "Talent.combatGunner": "Artilleur",
 
     "Talent.combatGunner.description": "Vous avez été entrainé à manier les vehicules terrestres et les armes montées. Vous pouvez utiliser la discipline Pilotage au lieu de Sécurité lors d'une attaque à l'aide d'une arme montée oud'un vehicule terrestre.",
@@ -1718,6 +1714,10 @@
     "Talent.computerExpertise": "Expertise informatique",
 
     "Talent.computerExpertise.description": "Quand vous programmez ou étudiez un Système informatique, vous ajoutez un d20 bonus à votre réserve de dés.",
+
+    "Talent.constantlyWatching": "Toujours sur ses gardes",
+
+    "Talent.constantlyWatching.description": "Quand vous tentez de détecter un danger ou des ennemis dissimulés, vous diminuez la difficulté de –1.",
 
     "Talent.culturalFlexibility": "Souplesse culturelle",
 

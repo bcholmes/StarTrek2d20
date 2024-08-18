@@ -2050,6 +2050,10 @@
 
     "Talent.boldSecurity.description": "Sempre que fizer uma Tarefa com Segurança e comprar um ou mais d20s ao gerar Ameaça, você pode rejogar um único d20",
 
+    "Talent.captainsYacht": "Iate do Capitão",
+
+    "Talent.captainsYacht.soloDescription": "A nave tem uma única embarcação de apoio adicional, normalmente montada em uma porta dedicada sob a seção do pires da nave. Essa nave, maior\ndo que a maioria das naves auxiliares, são frequentemente usadas para missões diplomáticas e excursões especiais pelo oficial comandante e são conhecidas como o Iate do Capitão.",
+
     "Talent.cautiousCommand": "Cauteloso: Comando",
 
     "Talent.cautiousCommand.description": "Sempre que fizer uma Tarefa com Comando e comprar um ou mais d20s ao gastar Ímpeto, você pode rejogar um único d20.",
@@ -2073,6 +2077,18 @@
     "Talent.cautiousSecurity": "Cauteloso: Segurança",
 
     "Talent.cautiousSecurity.description": "Sempre que fizer uma Tarefa com Segurança e comprar um ou mais d20s ao gastar Ímpeto, você pode rejogar um único d20.",
+
+    "Talent.cloakedMines": "Minas Camufladas",
+
+    "Talent.cloakedMines.soloDescription": "As minas do navio são equipadas com tecnologia de camuflagem de última geração, tornando-as quase impossíveis de serem detectadas.",
+
+    "Talent.cloakingDevice": "Dispositivo de Camuflagem",
+
+    "Talent.cloakingDevice.soloDescription": "A embarcação possui um dispositivo que permite que ela suma dos sensores. Enquanto está camuflada, a embarcação não  pode tentar ataques, nem pode ser alvo de um ataque, a menos que o atacante tenha encontrado alguma forma de  detectar a nave camuflada. Enquanto estiver camuflada, os escudos da embarcação permanecem abaixados.",
+
+    "Talent.closeProtection": "Proteger o Próximo",
+
+    "Talent.closeProtection.description": "Quando for bem-sucedido em um Ataque, você pode gastar um ponto de Ímpeto para proteger um único aliado em distância Curta. O próximo Ataque contra esse aliado antes do início do seu próximo turno tem a Dificuldade aumentada em 1 ponto.",
 
     "Talent.collaborationCommand": "Colaboração: Comando",
 
@@ -2098,26 +2114,6 @@
 
     "Talent.collaborationSecurity.description": "Sempre que um aliado fizer uma Tarefa usando Segurança, você pode gastar um ponto de Ímpeto (Imediato) para permitir que ele use o valor de sua Disciplina e um de seus Focos.",
 
-    "Talent.constantlyWatching": "Observação Constante",
-
-    "Talent.constantlyWatching.description": "Quando fizer uma Tarefa para detectar perigo ou inimigos ocultos, reduza a Dificuldade em 1.",
-
-    "Talent.captainsYacht": "Iate do Capitão",
-
-    "Talent.captainsYacht.soloDescription": "A nave tem uma única embarcação de apoio adicional, normalmente montada em uma porta dedicada sob a seção do pires da nave. Essa nave, maior\ndo que a maioria das naves auxiliares, são frequentemente usadas para missões diplomáticas e excursões especiais pelo oficial comandante e são conhecidas como o Iate do Capitão.",
-
-    "Talent.cloakedMines": "Minas Camufladas",
-
-    "Talent.cloakedMines.soloDescription": "As minas do navio são equipadas com tecnologia de camuflagem de última geração, tornando-as quase impossíveis de serem detectadas.",
-
-    "Talent.cloakingDevice": "Dispositivo de Camuflagem",
-
-    "Talent.cloakingDevice.soloDescription": "A embarcação possui um dispositivo que permite que ela suma dos sensores. Enquanto está camuflada, a embarcação não  pode tentar ataques, nem pode ser alvo de um ataque, a menos que o atacante tenha encontrado alguma forma de  detectar a nave camuflada. Enquanto estiver camuflada, os escudos da embarcação permanecem abaixados.",
-
-    "Talent.closeProtection": "Proteger o Próximo",
-
-    "Talent.closeProtection.description": "Quando for bem-sucedido em um Ataque, você pode gastar um ponto de Ímpeto para proteger um único aliado em distância Curta. O próximo Ataque contra esse aliado antes do início do seu próximo turno tem a Dificuldade aumentada em 1 ponto.",
-
     "Talent.combatGunner": "Artilheiro de Combate",
 
     "Talent.combatGunner.description": "Você foi treinado para operar veículos terrestres e armas montadas. Você pode usar sua Condução em vez de Segurança ao fazer um ataque com uma arma montada em um veículo terrestre.",
@@ -2129,6 +2125,10 @@
     "Talent.computerExpertise": "Especialidade em Computação",
 
     "Talent.computerExpertise.description": "Sempre que for bem-sucedido em uma Tarefa que envolva a programação ou estudo de um sistema de computadores, você pode adicionar um d20 extra à sua parada de dados.",
+
+    "Talent.constantlyWatching": "Observação Constante",
+
+    "Talent.constantlyWatching.description": "Quando fizer uma Tarefa para detectar perigo ou inimigos ocultos, reduza a Dificuldade em 1.",
 
     "Talent.culturalFlexibility": "Flexibilidade Cultural",
 

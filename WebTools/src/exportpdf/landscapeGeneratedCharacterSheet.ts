@@ -236,7 +236,11 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
                     talentName += " [Rank: " + rank + "]";
                 }
                 paragraph.append(talentName + ": ", new FontSpecification(this.boldFont, 9));
-                paragraph.append(talent.localizedDescription, new FontSpecification(this.textFont, 9));
+                if (character.version === 1) {
+                    paragraph.append(talent.localizedDescription, new FontSpecification(this.textFont, 9));
+                } else {
+                    paragraph.append(talent.localizedDescription2e, new FontSpecification(this.textFont, 9));
+                }
                 paragraph.write();
 
                 if (talent.name === TALENT_NAME_BORG_IMPLANTS) {

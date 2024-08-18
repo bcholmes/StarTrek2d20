@@ -1194,6 +1194,10 @@
 
     "Talent.boldSecurity.description": "Immer, wenn Sie eine Aufgabe mit Sicherheit absolvieren und einen oder mehrere zusätzliche W20 mit Bedrohung erwerben, können Sie einen W20 neu würfeln.",
 
+    "Talent.captainsYacht": "Yacht des Captains",
+
+    "Talent.captainsYacht.soloDescription": "Das Raumschiff verfügt über ein einzelnes zusätzliches Unterstützungsfahrzeug. Dieses ist für gewöhnlich an einer speziell dafür ausgelegten Andockstelle unterhalb der Untertassensektion des Schiffs befestigt. Es ist größer als die meisten Shuttles und wird oft für diplomatische Missionen und wichtige Ausflüge des Kommandierenden Offiziers genutzt. In der Regel werden diese Schiffe als „Yacht des Captains“ bezeichnet.",
+
     "Talent.cautiousCommand": "Vorsichtig: Kommando",
 
     "Talent.cautiousCommand.description": "Immer, wenn Sie eine Aufgabe mit Kommando versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
@@ -1217,6 +1221,10 @@
     "Talent.cautiousSecurity": "Vorsichtig: Sicherheit",
 
     "Talent.cautiousSecurity.description": "Immer, wenn Sie eine Aufgabe mit Sicherheit versuchen und einen oder mehrere zusätzliche W20 mit Momentum erwerben, können Sie einen W20 neu würfeln.",
+
+    "Talent.closeProtection": "Bodyguard",
+
+    "Talent.closeProtection.description": "Bei einem erfolgreichen Angriff können Sie einen Punkt Momentum ausgeben, um einen einzelnen Verbündeten in Kurzer Reichweite zu beschützen. Der nächste Angriff gegen diesen Verbündeten, der vor Ihrem nächsten Zug stattfindet, hat eine um 1 erhöhte Schwierigkeit.",
 
     "Talent.collaborationCommand": "Zusammenarbeit: Kommando",
 
@@ -1242,18 +1250,6 @@
 
     "Talent.collaborationSecurity.description": "Immer, wenn ein Verbündeter eine Aufgabe mit Sicherheit versucht, können Sie einen Punkt Sofortiges Momentum einsetzen, damit der Verbündete Ihren Wert in der besagten Disziplin einsetzen kann, sowie einen Ihrer Fokusse.",
 
-    "Talent.constantlyWatching": "Stets wachsam",
-
-    "Talent.constantlyWatching.description": "Wenn Sie eine Aufgabe absolvieren, um Gefahren oder versteckte Feinde zu erkennen, können Sie die Schwierigkeit der Aufgabe um 1 reduzieren.",
-
-    "Talent.captainsYacht": "Yacht des Captains",
-
-    "Talent.captainsYacht.soloDescription": "Das Raumschiff verfügt über ein einzelnes zusätzliches Unterstützungsfahrzeug. Dieses ist für gewöhnlich an einer speziell dafür ausgelegten Andockstelle unterhalb der Untertassensektion des Schiffs befestigt. Es ist größer als die meisten Shuttles und wird oft für diplomatische Missionen und wichtige Ausflüge des Kommandierenden Offiziers genutzt. In der Regel werden diese Schiffe als „Yacht des Captains“ bezeichnet.",
-
-    "Talent.closeProtection": "Bodyguard",
-
-    "Talent.closeProtection.description": "Bei einem erfolgreichen Angriff können Sie einen Punkt Momentum ausgeben, um einen einzelnen Verbündeten in Kurzer Reichweite zu beschützen. Der nächste Angriff gegen diesen Verbündeten, der vor Ihrem nächsten Zug stattfindet, hat eine um 1 erhöhte Schwierigkeit.",
-
     "Talent.commandShip": "Kommandoschiff",
 
     "Talent.commandShip.soloDescription": "Das Schiff verfügt über Kommando- und Kontrollsysteme, die es ihm erlauben, seine Aktivitäten während einer Krise besser mit Verbündeten zu koordinieren.",
@@ -1261,6 +1257,10 @@
     "Talent.computerExpertise": "Computerexperte",
 
     "Talent.computerExpertise.description": "Wenn Sie eine Aufgabe versuchen, die das Programmieren oder Studium eines Computersystems beinhaltet, können Sie Ihrem Würfelvorrat einen zusätzlichen W20 hinzufügen.",
+
+    "Talent.constantlyWatching": "Stets wachsam",
+
+    "Talent.constantlyWatching.description": "Wenn Sie eine Aufgabe absolvieren, um Gefahren oder versteckte Feinde zu erkennen, können Sie die Schwierigkeit der Aufgabe um 1 reduzieren.",
 
     "Talent.culturalFlexibility": "Kulturelle Anpassungsfähigkeit",
 
