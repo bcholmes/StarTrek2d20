@@ -1,4 +1,4 @@
-import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { SimpleColor } from "../common/colour";
 import { XYLocation } from "../common/xyLocation";
 import { SheetTag } from "./icharactersheet";
@@ -260,6 +260,19 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
                 paragraph = paragraph ? paragraph.nextParagraph() : null;
             }
         };
+    }
+
+    fillFocuses(form: PDFForm, character: Character) {
+        let index = 0;
+        character.focuses.forEach( (f) => {
+            this.fillField(form, 'Focus ' + (++index), f);
+        });
+
+        if (character.version > 1 && character.pastime?.length) {
+            character.pastime.forEach((p) => {
+                this.fillField(form, 'Focus ' + (++index), i18next.t('Construct.other.pastimes') + ": " + p);
+            });
+        }
     }
 
     get pillSize() {

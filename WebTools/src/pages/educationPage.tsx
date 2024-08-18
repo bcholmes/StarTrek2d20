@@ -16,6 +16,7 @@ import store from '../state/store';
 import { setCharacterEducation } from '../state/characterActions';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { connect } from 'react-redux';
+import { Track } from '../helpers/trackEnum';
 
 enum StarfleetTrackTab {
 
@@ -31,12 +32,12 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
 
     const rollTrack = () => {
-        let track = TracksHelper.instance.generateTrack(character.type);
+        let track = TracksHelper.instance.generateTrack(character.type, character.version);
         setRandomTrack(track);
     }
 
     const selectTrack = (track: TrackModel) => {
-        const enlisted = (tab === StarfleetTrackTab.Enlisted);
+        const enlisted = (tab === StarfleetTrackTab.Enlisted || track.id === Track.Enlisted);
         store.dispatch(setCharacterEducation(track.id, enlisted));
         Navigation.navigateToPage(PageIdentity.CareerDetails);
     }
@@ -53,6 +54,8 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
     const getTracks = () => {
         if (character.type !== CharacterType.Starfleet) {
             return TracksHelper.instance.getTracks(character.type);
+        } else if (character.version > 1) {
+            return TracksHelper.instance.getVersion2StarfleetTracks();
         } else if (tab === StarfleetTrackTab.Other) {
             return TracksHelper.instance.getOtherStarfleetTracks();
         } else if (tab === StarfleetTrackTab.Enlisted) {
@@ -63,7 +66,7 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
     }
 
     const types = (randomTrack != null && tab !== StarfleetTrackTab.Other)
-        ? toTableRow(TracksHelper.instance.getTrack(randomTrack, character.type), 0)
+        ? toTableRow(TracksHelper.instance.getTrack(randomTrack, character.type, character.version), 0)
         : getTracks().map((e, i) => toTableRow(e, i));
 
     return (
@@ -75,7 +78,7 @@ const EducationPage: React.FC<ICharacterProperties> = ({character}) => {
 
                 <InstructionText text={t(makeKey('EducationPage.instruction.', CharacterType[character.type]))} />
 
-                {character.type === CharacterType.Starfleet
+                {(character.type === CharacterType.Starfleet && character.version === 1)
                     ? (<div className="btn-group w-100 my-4" role="group" aria-label="Environment types">
                         <button type="button" className={'btn btn-info btn-sm p-2 text-center ' + (tab === StarfleetTrackTab.Officer ? "active" : "")}
                             onClick={() => setTab(StarfleetTrackTab.Officer)}>{t('EducationPage.starfleet.academy')}</button>

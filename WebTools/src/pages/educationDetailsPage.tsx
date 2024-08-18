@@ -35,7 +35,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
     const track = character.stereotype === Stereotype.SoloCharacter
         ? TracksHelper.instance.getSoloTrack(character.educationStep?.track)
-        : TracksHelper.instance.getTrack(character.educationStep?.track, character.type);
+        : TracksHelper.instance.getTrack(character.educationStep?.track, character.type, character.version);
     const attributeController = new EducationAttributeController(character, track);
     const primaryDisciplineController = new EducationPrimaryDisciplineController(character, track);
     const secondaryDisciplineController = new EducationSecondaryDisciplineController(character, track);

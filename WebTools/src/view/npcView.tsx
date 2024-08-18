@@ -13,6 +13,7 @@ import WeaponBlockView from "./weaponBlockView";
 import FocusBlockView from "./focusBlockView";
 import ValuesBlockView from "./valuesBlockView";
 import TalentsBlockView from "./talentsBlockView";
+import SpeciesAbilityBlockView from "./speciesAbilityBlockView";
 
 const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -68,7 +69,7 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
             <div className="col-xl-6 mt-4">
                 <CharacterStatBlock character={character} />
 
-                <ValuesBlockView character={character} />
+                <SpeciesAbilityBlockView character={character} />
                 <TalentsBlockView construct={character} />
             </div>
             <div className="col-xl-6">
@@ -86,6 +87,7 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
 
                 </div>
 
+                <ValuesBlockView character={character} />
                 <WeaponBlockView construct={character} />
             </div>
         </div>

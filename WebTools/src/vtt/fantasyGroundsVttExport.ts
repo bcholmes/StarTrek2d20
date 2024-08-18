@@ -751,7 +751,9 @@ export class FantasyGroupsVttExporter {
     }
 
     convertTraining(character: Character) {
-        let training = character.educationStep?.track ? TracksHelper.instance.getTrack(character.educationStep?.track, character.type) : null;
+        let training = character.educationStep?.track
+            ? TracksHelper.instance.getTrack(character.educationStep?.track, character.type, character.version)
+            : null;
         if (training) {
             return {
                 "name": "training",

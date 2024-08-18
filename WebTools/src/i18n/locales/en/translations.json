@@ -1774,7 +1774,7 @@
     "Species.betazoid.name": "Betazoid",
     "Species.betazoid.aboutNames": "Betazoid names tend to have at least two syllables and a melodic sound, with a personal name followed by a family name; of these, the family name tends to have a harder sound. Betazoids are traditionally matriarchal, with children taking their mother’s family name.",
     "Species.betazoid.description": "The peaceful Betazoid people hail from the idyllic, verdant world Betazed. The world is a valued member of the Federation, and its people can be found across Federation space, including Starfleet. Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. The potency of this ability varies between individuals, but it has resulted in a culture where honesty and directness are fundamental: it is difficult to keep secrets when everyone around you can read minds.",
-    "Species.betazoid.description2e": "The peaceful Betazoid people hail from the idyllic, ver- dant world Betazed. The world has long been a valued member of the Federation, and its people can be found across Federation space, including Starfleet. Betazoids appear almost identical to Humans but differ in one ma- jor way: they are naturally telepathic, developing mental abilities during adolescence. The potency of this ability varies between individuals.\n\nDue to their widespread telepathy, Betazoids have a culture of honesty and directness—there is little reason to be evasive or deceitful in a culture where everyone can read your mind and sense your emotions. Among non-telepaths, and even telepaths of other species, this can result in some Betazoids seeming blunt or even rude. Betazoids who spend a lot of time among other cultures tend to either lean into this notion or choose to temper their honesty with tact.",
+    "Species.betazoid.description2e": "The peaceful Betazoid people hail from the idyllic, verdant world Betazed. The world has long been a valued member of the Federation, and its people can be found across Federation space, including Starfleet. Betazoids appear almost identical to Humans but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. The potency of this ability varies between individuals.\n\nDue to their widespread telepathy, Betazoids have a culture of honesty and directness—there is little reason to be evasive or deceitful in a culture where everyone can read your mind and sense your emotions. Among non-telepaths, and even telepaths of other species, this can result in some Betazoids seeming blunt or even rude. Betazoids who spend a lot of time among other cultures tend to either lean into this notion or choose to temper their honesty with tact.",
     "Species.betazoid.exampleValue": "Compassion Through Understanding",
     "Species.betazoid.soloDescription": "Betazoids appear almost identical to Humans, but differ in one major way: they are naturally telepathic, developing mental abilities during adolescence. All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",
     "Species.betazoid.traitDescription": "All Betazoids are telepathic to varying degrees, and even when not actively using their abilities, they are highly perceptive of others around them, but also highly sensitive to telepathic disturbances and mental assaults. They have little familiarity with lies and deception, due to their open culture and ability to read the thoughts and emotions of others. As they are sensitive to the minds of other living beings, they tend not to be comfortable around animals, for fear of losing themselves in the minds of wild creatures.",
@@ -2022,7 +2022,7 @@
 
     "SpeciesAbility.denobulan": "Breadth of Study",
 
-    "SpeciesAbility.denobulan.description": "Denobulans have a robust immune system, but a vulnerability to various forms of radiation poisoning. They are adept climbers. Denobulans do not need to sleep, but must hibernate for several days each year, becoming disoriented if kept awake during this period.",
+    "SpeciesAbility.denobulan.description": "You may select two additional focuses.",
 
     "SpeciesAbility.ferengi": "The Great Material Continuum",
 
@@ -2030,7 +2030,7 @@
 
     "SpeciesAbility.human": "Faith of the Heart",
 
-    "SpeciesAbility.human.description": "Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless, stubborn, irrational, and unpredictable.",
+    "SpeciesAbility.human.description": "When you use one of your values to spend or gain Determination, you may also add 1 Momentum to the group pool.",
 
     "SpeciesAbility.klingon": "Brak'lul",
 
@@ -2891,10 +2891,13 @@
 
     "Talent.ruggedDesign.soloDescription": "The ship is designed with the frontier in mind, with a durable construction and easy access to critical systems that allow repairs to be made easily.",
 
+    "Talent.saboteur": "Saboteur",
+
+    "Talent.saboteur.description2e": "When you make an Attack against a structure, machine, or stationary vehicle while in personal combat (i.e., you aren’t using a ship’s weapons to make the Attack), you may use your Engineering instead of your Security to resolve the Attack.",
+
     "Talent.saboteurWar": "Saboteur",
 
     "Talent.saboteurWar.description": "You have a knack for breaking things. When attacking an object, structure, or stationary vehicle, you may use your Engineering score instead of Security. In addition, when inflicting Stress on such a target, you can spend 2 Momentum to change any challenge dice to an effect result, up to your Engineering score.",
-    "Talent.saboteurWar.description2e": "When you make an Attack against a structure, machine, or stationary vehicle while in personal combat (i.e., you aren’t using a ship’s weapons to make the Attack), you may use your Engineering instead of your Security to resolve the Attack.",
 
     "Talent.saucerSeparation": "Saucer Separation",
 

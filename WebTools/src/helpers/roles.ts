@@ -289,7 +289,7 @@ export class RolesHelper {
             "Not a typical senior staff role, some captains, particularly those operating in uncharted space, choose the most senior navigator to serve as senior staff as well. When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
             Skill.Conn,
             "When the navigator is required to analyze, or repair technology related to flight or propulsion, they may use the Conn Discipline instead of Engineering.",
-            new SourcePrerequisite(Source.TricorderSet),
+            new SourcePrerequisite(Source.TricorderSet, Source.Core2ndEdition),
             new NotKlingonPrerequisite(),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
@@ -299,7 +299,7 @@ export class RolesHelper {
             "On larger ships and starbases, it’s common to have personnel dedicated to the mental soak. Some captains regard them as valuable advisors, as their training covers both culture and psychology, making them exceptionally good at reading the moods and intentions of others.",
             Skill.Medicine,
             "After succeeding at a Task to determine the emotional state or intent of another living creature, the ship’s counselor gains one bonus Momentum, which may only be used on the Obtain Information Momentum Spend.",
-            new SourcePrerequisite(Source.Core),
+            new SourcePrerequisite(Source.Core, Source.Core2ndEdition),
             new NotKlingonPrerequisite(),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
@@ -309,7 +309,7 @@ export class RolesHelper {
             "More common in the earlier days of Starfleet, dedicated communications officers are typically skilled in linguistics and cryptography, and aided with advanced translation and decryption technologies, and thus valuable during encounters with both new cultures, and with hostile ones.",
             undefined,
             "When a Task attempted by the communications officer is increased in Difficulty because of an unfamiliar language or encryption, ignore that Difficulty increase.",
-            new SourcePrerequisite(Source.Core),
+            new SourcePrerequisite(Source.Core, Source.Core2ndEdition),
             new NotKlingonPrerequisite(),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new MilitaryPrerequisite()),
@@ -550,7 +550,7 @@ export class RolesHelper {
             Skill.Security,
             "As a bodyguard, you will have a single character – another PC, or an NPC – whom you are assigned to protect. When you are in the same zone as that character, you may spend 1 Momentum (Immediate) when that character is attacked to have the attack target you instead. If you do this, the attack’s Difficulty is also increased by 1.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide),
+            new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition),
             new AdultPrerequisite()),
         new RoleModel(
             Role.ShipsCookOrChef,
@@ -595,7 +595,7 @@ export class RolesHelper {
             Skill.Science,
             "You gain one additional value, which must reflect the importance of your work to you. In addition, select one of your focuses – this is the field you are an expert in. When you use this focus on a task and succeed, you generate one bonus Momentum. Bonus Momentum may not be saved.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide),
+            new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition),
             new AdultPrerequisite()),
         new RoleModel(
             Role.IntelligenceAgent,
@@ -604,7 +604,7 @@ export class RolesHelper {
             Skill.Security,
             "Once per adventure, you may create an advantage without requiring a task or spending any Momentum, Threat, or Determination. This advantage must reflect information, equipment, physical resources, or access to a location (such as access codes or identification data) provided to you by a contact or by your agency.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide),
+            new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition),
             new AdultPrerequisite()),
         new RoleModel(
             Role.Merchant,
@@ -612,7 +612,7 @@ export class RolesHelper {
             "You’re a merchant or trader, exchanging valuable goods for latinum, or for other goods. Even in the Federation, a civilization which has largely evolved beyond scarcity and the personal accumulation of wealth, merchants are necessary for ensuring that resources can easily move from place to place, and the Federation and its members maintain reserves of latinum and other precious commodities to allow them to trade with other civilizations. In a practical, day-to-day sense, merchants are well-connected and often have access to unusual items or specialized resources that might not be available normally.",
             Skill.Command,
             "Once per adventure, you can waive the Opportunity costs on up to three items of equip- ment being acquired by other player characters. You may even allow other player characters to obtain items that are not normally available to them (such as disruptors to a Starfleet crew, or items which are restricted or illegal), though you add 1 to Threat for each such item provided.",
-            new SourcePrerequisite(Source.PlayersGuide),
+            new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),
         new RoleModel(
@@ -622,7 +622,7 @@ export class RolesHelper {
             Skill.Command,
             "You gain an additional Directive or Dictate, which only applies to you, which reflects the political stance of the government you represent. Your gamemaster will work with you to determine the wording of this Directive or Dictate. It serves to provide you with a source of complications and potential restrictions when acting against the interests of your government, as well as benefits when you are acting with the full support of your superiors.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide),
+            new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition),
             new AdultPrerequisite()),
         new RoleModel(
             Role.ShipsDoctor,
@@ -649,7 +649,7 @@ export class RolesHelper {
             Skill.Medicine,
             "You reduce the Difficulty of any task to translate or understand an unfamiliar language by 2, to a minimum of 0.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.PlayersGuide),
+            new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition),
             new AdultPrerequisite()),
 
         new RoleModel(
@@ -713,7 +713,7 @@ export class RolesHelper {
             Skill.Security,
             "You have trained tirelessly to use a starship’s weaponry as instinctively as most security personnel wield a hand phaser. When you succeed on an attack assisted by a ship’s weapons, you may spend 1 Momentum (Immediate) to gain 1 effect.",
             new NotTalentPrerequisite("Advanced Team Dynamics"),
-            new SourcePrerequisite(Source.FederationKlingonWar),
+            new SourcePrerequisite(Source.FederationKlingonWar, Source.Core2ndEdition),
             new AdultPrerequisite()),
 
     ];

@@ -242,4 +242,19 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
     serializeBasicAssignment(character: Character) {
         return character.localizedAssignmentWithoutShip;
     }
+
+    fillFocuses(form: PDFForm, character: Character) {
+        let index = 0;
+        character.focuses.forEach( (f) => {
+            this.fillField(form, 'Focus ' + (++index), f);
+        });
+
+        if (character.version > 1 && character.pastime?.length) {
+            index++;
+            character.pastime.forEach((p) => {
+                this.fillField(form, 'Focus ' + (++index), i18next.t('Construct.other.pastimes') + ": " + p);
+            });
+        }
+    }
+
 }

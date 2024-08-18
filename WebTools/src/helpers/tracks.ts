@@ -6,7 +6,6 @@ import { hasSource } from '../state/contextFunctions';
 import { Track } from './trackEnum';
 import { makeKey } from '../common/translationKey';
 import i18next from 'i18next';
-import { Character } from '../common/character';
 
 export enum ImprovementRuleType {
     AT_LEAST_ONE, MUST_INCLUDE_ALL, MAY_DECREMENT_ONE
@@ -194,6 +193,77 @@ export class TracksHelper {
             "You have pursued a working internship at a major research station and obtained a commission in Starfleet following exceptional work in your field.",
             [Skill.Science],
             [Skill.Medicine, Skill.Engineering],
+            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
+        ),
+    ];
+
+    private _version2Tracks: TrackModel[] = [
+        new TrackModel(
+            Track.Command,
+            "Command Track",
+            Source.Core2ndEdition,
+            "The Command track is for those cadets who aspire to command their own starship someday. It focuses on leadership and interpersonal skills, diplomacy, decisionmaking in crisis situations, an understanding of protocol and procedure, and starship operations, which includes flight control. Many command track cadets begin their careers as flight control officers and pilots, where their training can be put to the test on a smaller scale while they gain the experience necessary for more authority and responsibility. Command track cadets customarily undertake the infamous Kobayashi Maru test during their final year.",
+            [Skill.Command, Skill.Conn],
+            [Skill.Engineering, Skill.Medicine, Skill.Science, Skill.Security],
+            ["Astronavigation", "Composure", "Diplomacy", "Extra-Vehicular Activity", "Evasive Action", "Helm Operations", "Inspiration", "Persuasion", "Small Craft", "Starship Recognition", "Starfleet Protocols", "Team Dynamics"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
+        ),
+        new TrackModel(
+            Track.Operations,
+            "Operations Track",
+            Source.Core2ndEdition,
+            "The Operations track is practical and hands-on, dealing with many of the realities of Starfleet’s mission. Divided broadly into engineering and security divisions, operations track cadets are defined by a sense of pragmatism, whether that applies to the technical or the tactical.",
+            [Skill.Engineering, Skill.Security],
+            [Skill.Command, Skill.Conn, Skill.Medicine, Skill.Science],
+            ["Computers", "Cybernetics", "Electro-Plasma Power Systems", "Espionage", "Hand Phasers", "Hand-to-Hand Combat", "Infiltration", "Interrogation", "Shipboard Tactical Systems", "Survival", "Transporters & Replicators", "Warp Field Dynamics"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
+        ),
+        new TrackModel(
+            Track.Sciences,
+            "Sciences Track",
+            Source.Core2ndEdition,
+            "Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",
+            [Skill.Medicine, Skill.Science],
+            [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Security],
+            ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"],
+            undefined,
+            undefined,
+            false,
+            "Track.starfleet."
+        ),
+        new TrackModel(
+            Track.Enlisted,
+            "Enlisted",
+            Source.Core2ndEdition,
+            "",
+            [Skill.Conn, Skill.Security, Skill.Engineering, Skill.Science],
+            [Skill.Command, Skill.Medicine],
+            [
+                "Computers", "Electro-Plasma Power Systems", "Emergency Medicine", "EVA", "Hand Phasers",
+                "Helm Operations", "Shipboard Tactical Systems", "Small Craft", "Survival", "Transporters and Replicatos"
+            ],
+            undefined,
+            undefined,
+            true,
+            "Track.starfleet."
+        ),
+        new TrackModel(
+            Track.IntelligenceTraining,
+            "Intelligence",
+            Source.Core2ndEdition,
+            "Somewhat isolated from the other Tracks, the Sciences track is primarily academic, with Starfleet Academy producing many accomplished scientists. Included within the sciences track, but separated by a distinct curriculum, is Starfleet Medical, training doctors, nurses, and counselors to serve aboard Starfleet vessels and facilities across the Federation.",
+            [Skill.Medicine, Skill.Science],
+            [Skill.Command, Skill.Conn, Skill.Engineering, Skill.Security],
             ["Anthropology", "Astrophysics", "Botany", "Computers", "Cybernetics", "Emergency Medicine", "Exo-tectonics", "Genetics", "Geology", "Infectious Diseases", "Linguistics", "Physics", "Psychiatry", "Quantum Mechanics", "Trauma Surgery", "Virology", "Warp Field Dynamics", "Xenobiology"],
             undefined,
             undefined,
@@ -402,12 +472,12 @@ export class TracksHelper {
         }
     }
 
-    getTracks(type: CharacterType, enlisted: boolean = false) {
+    getTracks(type: CharacterType) {
         var tracks: TrackModel[] = [];
         var list = this.chooseList(type);
         for (let model of list) {
             if (hasSource(model.source)) {
-                if (model.id === Track.EnlistedSecurityTraining && !enlisted) {
+                if (model.id === Track.EnlistedSecurityTraining) {
                     continue;
                 }
 
@@ -438,8 +508,8 @@ export class TracksHelper {
         return result ? result[0] : undefined;
     }
 
-    getTrack(track: Track, type: CharacterType): TrackModel {
-        let list = this.chooseList(type);
+    getTrack(track: Track, type: CharacterType, version: number): TrackModel {
+        let list = (type === CharacterType.Starfleet && version > 1) ? this._version2Tracks : this.chooseList(type);
         let result = null;
         for (let t of list) {
             if (t.id === track) {
@@ -458,6 +528,15 @@ export class TracksHelper {
         }
     }
 
+    getVersion2StarfleetTracks() {
+        if (hasSource(Source.Core2ndEdition)) {
+            return this._version2Tracks;
+        } else {
+            return [];
+        }
+
+    }
+
     getOfficerStarfleetTracks() {
         return this._tracks
                 .filter(t => t.id !== Track.UniversityAlumni && t.id !== Track.ResearchInternship
@@ -471,65 +550,19 @@ export class TracksHelper {
             .filter(t => hasSource(t.source));
     }
 
-    generateTrack(characterType: CharacterType): Track {
-        if (characterType === CharacterType.Starfleet) {
+    generateTrack(characterType: CharacterType, version: number = 1): Track {
+        if (characterType === CharacterType.Starfleet && version === 1) {
             let tracks = [ Track.Command, Track.Operations, Track.Sciences ];
             let roll = Math.floor(Math.random() * tracks.length);
             return tracks[roll];
+        } else if (characterType === CharacterType.Starfleet) {
+            let list = this._version2Tracks;
+            let roll = Math.floor(Math.random() * list.length);
+            return list[roll].id;
         } else {
             let list = this.chooseList(characterType);
             let roll = Math.floor(Math.random() * list.length);
             return list[roll].id;
-        }
-    }
-
-    applyTrack(character: Character, track: Track, type: CharacterType) {
-        const model = this.getTrack(track, type);
-        switch (model.id) {
-            case Track.EnlistedSecurityTraining:
-                character.skills[Skill.Conn].expertise++;
-                character.skills[Skill.Security].expertise += 2;
-                character.skills[Skill.Engineering].expertise++;
-                character.addFocus("Chain of Command");
-                character.addTrait("Enlisted Crewman");
-                if (character.educationStep) {
-                    character.educationStep.primaryDiscipline = Skill.Security;
-                    character.educationStep.disciplines = [ Skill.Security, Skill.Conn ];
-                    character.educationStep.focuses[2] = "Chain of Command";
-                }
-                break;
-            case Track.ShipOperations:
-                character.skills[Skill.Conn].expertise += 2;
-                character.skills[Skill.Engineering].expertise++;
-                character.skills[Skill.Science].expertise++;
-                if (character.educationStep) {
-                    character.educationStep.primaryDiscipline = Skill.Conn;
-                    character.educationStep.disciplines = [ Skill.Engineering, Skill.Science ];
-                }
-                break;
-            case Track.UniversityAlumni:
-                character.skills[Skill.Science].expertise += 2;
-                character.skills[Skill.Engineering].expertise++;
-                character.skills[Skill.Command].expertise++;
-                if (character.educationStep) {
-                    character.educationStep.primaryDiscipline = Skill.Science;
-                    character.educationStep.disciplines = [ Skill.Engineering, Skill.Command ];
-                }
-                break;
-            case Track.ResearchInternship:
-                character.skills[Skill.Science].expertise += 2;
-                character.skills[Skill.Engineering].expertise++;
-                character.skills[Skill.Medicine].expertise++;
-                if (character.educationStep) {
-                    character.educationStep.primaryDiscipline = Skill.Science;
-                    character.educationStep.disciplines = [ Skill.Engineering, Skill.Medicine ];
-                }
-                break;
-            default:
-                break;
-        }
-        if (model.enlisted) {
-            character.educationStep.enlisted = true;
         }
     }
 }

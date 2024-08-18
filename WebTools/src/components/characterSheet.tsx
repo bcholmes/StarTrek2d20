@@ -39,7 +39,7 @@ class CharacterSheetData {
             new SectionContent(i18n.t('Construct.other.environment'), this.getEnvironmentString()),
             new SectionContent(i18n.t('Construct.other.upbringing'), this.character.upbringingStep ? this.character.upbringingStep?.localizedDescription : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.training'), this.character.educationStep?.track != null
-                ? TracksHelper.instance.getTrack(this.character.educationStep?.track, character.type)?.localizedName
+                ? TracksHelper.instance.getTrack(this.character.educationStep?.track, character.type, character.version)?.localizedName
                 : i18n.t('Common.text.none')),
             new SectionContent(i18n.t('Construct.other.career'), this.character.careerStep?.career != null
                 ? (this.character.stereotype === Stereotype.SoloCharacter

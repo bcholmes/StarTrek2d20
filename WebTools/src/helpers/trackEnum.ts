@@ -34,7 +34,10 @@ export enum Track {
     Physician,
     PoliticianOrBureaucrat,
     ScientificOrTechnicalExpert,
-    TraderOrMerchant
+    TraderOrMerchant,
+
+    // Core 2nd Edition
+    Enlisted,
 }
 
 export const getAllTracks = () => {

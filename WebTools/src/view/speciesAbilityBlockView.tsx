@@ -1,9 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { Header } from "../components/header";
-import { TalentsHelper } from "../helpers/talents";
-import replaceDiceWithArrowhead from "../common/arrowhead";
-import { Stereotype } from "../common/construct";
-import { Starship } from "../common/starship";
 import { Character } from "../common/character";
 import ReactMarkdown from "react-markdown";
 

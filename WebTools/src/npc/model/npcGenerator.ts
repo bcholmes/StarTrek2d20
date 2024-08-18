@@ -22,6 +22,7 @@ import Governments, { Polity } from "../../helpers/governments";
 import { Era } from "../../helpers/eras";
 import AgeHelper from "../../helpers/age";
 import { localizedFocus } from "../../components/focusHelper";
+import { SpeciesAbilityList } from "../../helpers/speciesAbility";
 
 const recreationSkills: { [type: number ]: string[] } = {
 
@@ -438,6 +439,11 @@ export class NpcGenerator {
             let originalSpecies = SpeciesHelper.generateSpecies(CharacterType.Starfleet);
             character.speciesStep.originalSpecies = originalSpecies;
         }
+        if (character.version > 1) {
+            character.speciesStep.ability = SpeciesAbilityList.instance.getBySpecies(species.id);
+        }
+
+
         let nameSpecies = species;
         if (character.speciesStep?.originalSpecies != null) {
             nameSpecies = SpeciesHelper.getSpeciesByType(character.speciesStep.originalSpecies);
@@ -570,12 +576,17 @@ export class NpcGenerator {
             let done = false;
             let n = 0;
 
-            if (i === 0 && species.id === Species.Klingon && hasAnySource([Source.KlingonCore, Source.BetaQuadrant])) {
+            if (i === 0 && species.id === Species.Klingon && hasAnySource([Source.KlingonCore, Source.BetaQuadrant]) && character.version === 1) {
                 character.addTalent(ToViewModel(TalentsHelper.getTalent("Brak'lul"), 1, character.type));
+            } else if (i === 0 && species.id === Species.Betazoid) {
+                if (character.version === 1) {
+                    character.addTalent(ToViewModel(TalentsHelper.getTalent("Telepath"), 1, character.type));
+                } else {
+                    character.addTalent(ToViewModel(TalentsHelper.getTalent("Telepathy2e"), 1, character.type));
+                }
+                numberOfTalents += 1;
             } else if (i === 0 && species.id === Species.CyberneticallyEnhanced && hasSource(Source.SciencesDivision)) {
                 character.addTalent(ToViewModel(TalentsHelper.getTalent("Neural Interface"), 1, character.type));
-            } else if (i === 0 && species.id === Species.Betazoid && specialization.id === Specialization.InformationBroker) {
-                character.addTalent(ToViewModel(TalentsHelper.getTalent("Telepath"), 1, character.type));
             } else {
                 while (!done) {
                     let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);
@@ -586,7 +597,7 @@ export class NpcGenerator {
                         let talentName = species.talents.map(t => t.name);
                         talentList = talentList.filter(t => talentName.indexOf(t.name) >= 0 || (t.specialRule && (i > 0 || talentName.length === 0)))
                             .filter(t => {
-                                if (t.name === "Potent Pheromones") {
+                                if (t.name === "Potent Pheromones" || t.name === "Pheromones") {
                                     return character.pronouns === "she/her";
                                 } else if ((t.name === "Subservient") || (t.name === "Pheromonal Thrall")) {
                                     return character.pronouns === "he/him";
