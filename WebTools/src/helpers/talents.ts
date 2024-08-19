@@ -109,6 +109,16 @@ class VariableDisciplinePrerequisite implements IConstructPrerequisite<Character
     }
 };
 
+class Version1Prerequisite implements IConstructPrerequisite<Character> {
+    isPrerequisiteFulfilled(c: Character) {
+        return c.version === 1;
+    }
+
+    describe(): string {
+        return "";
+    }
+}
+
 class SpeciesPrerequisite implements IConstructPrerequisite<Character> {
     private species: number;
     private allowCrossSelection: boolean;
@@ -1532,7 +1542,7 @@ export class Talents {
             new TalentModel(
                 "Brak’lul",
                 "Various physiological redundancies mean that wounds that would kill other humanoid species don’t affect Klingons as badly. The character gains +2 Resistance against all Non-lethal attacks. In addition, whenever the Klingon is target of a First Aid Task, reduce the Difficulty of that Task by 1, to a minimum of 1.",
-                [new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore), new NotSourcePrerequisite(Source.Core2ndEdition)],
+                [new AnySpeciesPrerequisite(false, Species.Klingon, Species.KlingonQuchHa), new SourcePrerequisite(Source.BetaQuadrant, Source.KlingonCore), new Version1Prerequisite()],
                 1,
                 "Klingon"),
             new TalentModel(
@@ -4337,7 +4347,7 @@ export class Talents {
 
     getAllAvailableTalentsForCharacter(character: Character) {
         if (character.speciesStep?.species === Species.Klingon && !character.hasTalent("Brak’lul")
-                && hasAnySource([Source.KlingonCore, Source.BetaQuadrant])) {
+                && hasAnySource([Source.KlingonCore, Source.BetaQuadrant]) && character.version === 1) {
             return [this.getTalentViewModel("Brak’lul")];
         } else if (character.speciesStep?.species === Species.Changeling && !character.hasTalent("Morphogenic Matrix")) {
             return [this.getTalentViewModel("Morphogenic Matrix")];

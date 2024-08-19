@@ -599,6 +599,8 @@ export class NpcGenerator {
                             .filter(t => {
                                 if (t.name === "Potent Pheromones" || t.name === "Pheromones") {
                                     return character.pronouns === "she/her";
+                                } else if (t.name === "Brak’lul" && character.version > 1) {
+                                    return false;
                                 } else if ((t.name === "Subservient") || (t.name === "Pheromonal Thrall")) {
                                     return character.pronouns === "he/him";
                                 } else {
