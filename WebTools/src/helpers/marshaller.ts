@@ -32,7 +32,7 @@ import { Era, ErasHelper } from './eras';
 import { Asset, AssetStat } from '../asset/asset';
 import { AssetType } from '../asset/assetType';
 import { AssetStatType, allAssetStatTypes } from '../asset/assetStat';
-import { SpeciesAbility, SpeciesAbilityList } from './speciesAbility';
+import { SpeciesAbilityList } from './speciesAbility';
 
 class Marshaller {
 

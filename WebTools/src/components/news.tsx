@@ -12,6 +12,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240818</b>
+                <ul>
+                    <li>A very preliminary version of character creation for 2nd Edition. Fuller and better support still
+                        to come.
+                    </li>
+                    <li>Importantly, starship creation has not yet been updated. So there's that.</li>
+                </ul>
                 <b>v1.240706</b>
                 <ul>
                     <li>A bit more work on the random starship generator.</li>
