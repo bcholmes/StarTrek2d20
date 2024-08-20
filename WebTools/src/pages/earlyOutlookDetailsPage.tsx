@@ -26,6 +26,7 @@ import { Species } from '../helpers/speciesEnum';
 import { localizedFocus } from '../components/focusHelper';
 import { makeKey } from '../common/translationKey';
 import { DisciplinesOrDepartments } from '../view/disciplinesOrDepartments';
+import TalentSettingsView from '../components/talentSettingsView';
 
 const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
 
@@ -134,6 +135,7 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
             </div>
             <div>
                 <Header level={2}>{t('Construct.other.talent')}</Header>
+                {character.version > 1 ? <TalentSettingsView /> : undefined}
                 <SingleTalentSelectionList talents={talents} onSelection={(talent) => { onTalentSelected(talent) } } construct={character}/>
             </div>
             <div className="text-end">
@@ -143,4 +145,12 @@ const EarlyOutlookDetailsPage: React.FC<ICharacterProperties> = ({character}) =>
     );
 }
 
-export default connect(characterMapStateToProperties)(EarlyOutlookDetailsPage)
+function mapStateToProps(state, ownProps) {
+    return {
+        character: state.character?.currentCharacter,
+        allowCrossSpeciesTalents: state.context.allowCrossSpeciesTalents,
+        allowEsotericTalents: state.context.allowEsotericTalents
+    };
+}
+
+export default connect(mapStateToProps)(EarlyOutlookDetailsPage)

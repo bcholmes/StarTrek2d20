@@ -9,35 +9,35 @@ import { CharacterSerializer } from "../common/characterSerializer";
 import { TalentsHelper } from "../helpers/talents";
 import { Column } from "./column";
 
-export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacterSheet {
+export class GeneratedTngPortraitA4CharacterSheet extends BaseTNGGeneratedCharacterSheet {
 
-    static readonly headingColumn = new Column(167.9, 12.9, 17.8, 401);
+    static readonly headingColumn = new Column(251.3, 20.6, 17.8, 307.9);
 
     getName(): string {
-        return i18next.t("Sheet.generatedTngPortraitCharacterSheet")
+        return i18next.t("Sheet.generatedTngPortraitA4CharacterSheet")
     }
     getThumbnailUrl(): string {
-        return '/static/img/sheets/TNG_Standard_Character_Sheet.png'
+        return '/static/img/sheets/TNG_Standard_A4_Character_Sheet.png'
     }
     getPdfUrl(): string {
-        return '/static/pdf/TNG_Standard_Character_Sheet.pdf'
+        return '/static/pdf/TNG_Standard_A4_Character_Sheet.pdf'
     }
 
     getTags(): SheetTag[] {
-        return [ SheetTag.Portrait, SheetTag.Lcars, SheetTag.LanguageSupport, SheetTag.UsLetter ]
+        return [ SheetTag.Portrait, SheetTag.Lcars, SheetTag.LanguageSupport, SheetTag.A4 ]
     }
 
     get subTitleLocations() {
         return {
-            "attacks": new Column(184.6, 604.1, 12.1, 187.8),
-            "attributes": new Column(184.6, 188.2, 12.1, 187.8),
-            "departments": new Column(184.6, 260.1, 12.1, 187.8),
-            "equipment": new Column(422.4, 604.1, 12.1, 130.0),
-            "focuses": new Column(422.4, 188.1, 12.1, 130.0),
-            "injuries": new Column(422.4, 508.1, 12.1, 130.0),
-            "stress": new Column(422.4, 418.1, 12.1, 130.0),
-            "talents": new Column(184.6, 472, 12.1, 187.8),
-            "values": new Column(184.6, 358.1, 12.1, 187.8),
+            "attacks": new Column(175.2, 621.1, 12.1, 187.8),
+            "attributes": new Column(175.2, 200.5, 12.1, 187.8),
+            "departments": new Column(175.2, 272.1, 12.1, 187.8),
+            "equipment": new Column(422.4, 622.1, 12.1, 130.0),
+            "focuses": new Column(422.4, 200.5, 12.1, 130.0),
+            "injuries": new Column(422.4, 514, 12.1, 130.0),
+            "stress": new Column(422.4, 404.2, 12.1, 130.0),
+            "talents": new Column(175.2, 465, 12.1, 187.8),
+            "values": new Column(175.2, 344.3, 12.1, 187.8),
         }
     }
 
@@ -47,59 +47,57 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
 
     get stressPillLocations() {
         return [
-            new XYLocation(407.7, 436.7),
-            new XYLocation(435.6, 436.7),
-            new XYLocation(463.5, 436.7),
-            new XYLocation(491.5, 436.7),
-            new XYLocation(519.4, 436.7),
-            new XYLocation(547.4, 436.7),
+            new XYLocation(409.9, 422.7),
+            new XYLocation(441.7, 422.7),
+            new XYLocation(473.6, 422.7),
+            new XYLocation(505.5, 422.7),
+            new XYLocation(537.4, 422.7),
 
-            new XYLocation(407.7, 453),
-            new XYLocation(435.6, 453),
-            new XYLocation(463.5, 453),
-            new XYLocation(491.5, 453),
-            new XYLocation(519.4, 453),
-            new XYLocation(547.4, 453),
+            new XYLocation(409.9, 439.1),
+            new XYLocation(441.7, 439.1),
+            new XYLocation(473.6, 439.1),
+            new XYLocation(505.5, 439.1),
+            new XYLocation(537.4, 439.1),
 
-            new XYLocation(407.7, 469.4),
-            new XYLocation(435.6, 469.4),
-            new XYLocation(463.5, 469.4),
-            new XYLocation(491.5, 469.4),
-            new XYLocation(519.4, 469.4),
-            new XYLocation(547.4, 469.4),
+            new XYLocation(409.9, 455.4),
+            new XYLocation(441.7, 455.4),
+            new XYLocation(473.6, 455.4),
+            new XYLocation(505.5, 455.4),
+            new XYLocation(537.4, 455.4),
 
-            new XYLocation(407.7, 485.8),
-            new XYLocation(435.6, 485.8),
-            new XYLocation(463.5, 485.8),
-            new XYLocation(491.5, 485.8),
-            new XYLocation(519.4, 485.8),
-            new XYLocation(547.4, 485.8),
+            new XYLocation(409.9, 471.7),
+            new XYLocation(441.7, 471.7),
+            new XYLocation(473.6, 471.7),
+            new XYLocation(505.5, 471.7),
+            new XYLocation(537.4, 471.7),
+
+            new XYLocation(409.9, 488.1),
+            new XYLocation(441.7, 488.1),
+            new XYLocation(473.6, 488.1),
+            new XYLocation(505.5, 488.1),
+            new XYLocation(537.4, 488.1),
         ];
     }
 
     get statLocations() {
         return {
-            "Construct.attribute.control": new Column(175.5, 210.4, 9, 46),
-            "Construct.attribute.fitness": new Column(247.7, 210.4, 9, 46),
-            "Construct.attribute.presence": new Column(322.5, 210.4, 9, 46),
+            "Construct.attribute.control": new Column(164.7, 222.9, 9, 46),
+            "Construct.attribute.fitness": new Column(249.2, 222.9, 9, 46),
+            "Construct.attribute.presence": new Column(330.5, 222.9, 9, 46),
 
-            "Construct.attribute.daring": new Column(175.5, 234.5, 9, 46),
-            "Construct.attribute.insight": new Column(247.7, 234.5, 9, 46),
-            "Construct.attribute.reason": new Column(322.5, 234.5, 9, 46),
-
-
-            "Construct.discipline.command": new Column(175.5, 282.5, 9, 46),
-            "Construct.discipline.security": new Column(247.7, 282.5, 9, 46),
-            "Construct.discipline.science": new Column(322.5, 282.5, 9, 46),
-
-            "Construct.discipline.conn": new Column(175.5, 306.5, 9, 46),
-            "Construct.discipline.engineering": new Column(247.7, 306.5, 9, 46),
-            "Construct.discipline.medicine": new Column(322.5, 306.5, 9, 46),
+            "Construct.attribute.daring": new Column(164.7, 247.1, 9, 46),
+            "Construct.attribute.insight": new Column(249.2, 247.1, 9, 46),
+            "Construct.attribute.reason": new Column(330.5, 247.1, 9, 46),
 
 
-            "Construct.other.protection": new Column(175.5, 336.5, 9, 46),
-            "Construct.other.reputation": new Column(247.7, 336.5, 9, 46),
-            "Construct.other.reprimands": new Column(322.5, 336.5, 9, 46),
+            "Construct.discipline.command": new Column(164.7, 294.8, 9, 46),
+            "Construct.discipline.security": new Column(249.2, 294.8, 9, 46),
+            "Construct.discipline.science": new Column(330.5, 294.8, 9, 46),
+
+            "Construct.discipline.conn": new Column(164.7, 318.8, 9, 46),
+            "Construct.discipline.engineering": new Column(249.2, 318.8, 9, 46),
+            "Construct.discipline.medicine": new Column(330.5, 318.8, 9, 46),
+
         };
     }
 
@@ -112,25 +110,25 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
 
     get determinationPills() {
         return [
-            new Column(304, 448.7, 11, 23.1),
-            new Column(334.7, 448.7, 11, 23.1),
-            new Column(365.4, 448.7, 11, 23.1)
+            new Column(309.3, 441.7, 11, 23.1),
+            new Column(339.9, 441.7, 11, 23.1),
+            new Column(370.6, 441.7, 11, 23.1)
         ];
     }
 
     get determinationLabelBlock() {
-        return new Column(169.2, 448.1, 12.1, 116.5);
+        return new Column(159.7, 441.2, 12.1, 144.8);
     }
 
     get detailLabels() {
         return {
-            "Construct.other.name": new Column(169.3, 43.1, 12.1, 66.8),
-            "Construct.other.rank": new Column(378, 61.1, 12.1, 66.8),
-            "Construct.other.assignment": new Column(169.3, 97.1, 12.1, 66.8),
-            "Construct.other.species": new Column(169.3, 61.1, 12.1, 66.8),
-            "Construct.other.traits": new Column(169.3, 115.1, 12.1, 66.8),
-            "Construct.other.environment": new Column(169.3, 79.1, 12.1, 66.8),
-            "Construct.other.upbringing": new Column(378, 79.1, 12.1, 66.8),
+            "Construct.other.name": new Column(159.9, 50.8, 12.1, 66.8),
+            "Construct.other.rank": new Column(368.2, 68.8, 12.1, 66.8),
+            "Construct.other.assignment": new Column(159.9, 104.7, 12.1, 66.8),
+            "Construct.other.species": new Column(159.9, 68.8, 12.1, 66.8),
+            "Construct.other.traits": new Column(159.9, 121.7, 12.1, 66.8),
+            "Construct.other.environment": new Column(159.9, 86.7, 12.1, 66.8),
+            "Construct.other.upbringing": new Column(368.2, 86.7, 12.1, 66.8),
         };
     }
 
@@ -141,15 +139,15 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
 
 
     writeStress(pdf: PDFDocument, page: PDFPage, character: Character, colour: SimpleColor = BaseTNGGeneratedCharacterSheet.purpleColour) {
-        super.writeStress(pdf, page, character, GeneratedTngPortraitCharacterSheet.lightPurpleColour);
+        super.writeStress(pdf, page, character, GeneratedTngPortraitA4CharacterSheet.lightPurpleColour);
     }
 
     writeTitle(page: PDFPage) {
         const originalText = i18next.t("Sheet.text.title").toLocaleUpperCase();
         let text = originalText;
         const fontSize = this.determineIdealFontWidth([ text ],
-            GeneratedTngPortraitCharacterSheet.headingColumn.width, 25, 18);
-        const block = GeneratedTngPortraitCharacterSheet.headingColumn;
+            GeneratedTngPortraitA4CharacterSheet.headingColumn.width, 25, 18);
+        const block = GeneratedTngPortraitA4CharacterSheet.headingColumn;
         let width = this.headingFont.widthOfTextAtSize(text, fontSize);
         while (width > block.width) {
             text = text.substring(0, text.length-1);
@@ -161,9 +159,9 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
         }
 
         page.drawText(text, {
-            x:  GeneratedTngPortraitCharacterSheet.headingColumn.start.x + GeneratedTngPortraitCharacterSheet.headingColumn.width - width,
+            x:  GeneratedTngPortraitA4CharacterSheet.headingColumn.start.x + GeneratedTngPortraitA4CharacterSheet.headingColumn.width - width,
             y: page.getHeight() - (block.end.y),
-            color: GeneratedTngPortraitCharacterSheet.orangeColour.asPdfRbg(),
+            color: GeneratedTngPortraitA4CharacterSheet.orangeColour.asPdfRbg(),
             font: this.headingFont,
             size: fontSize
         });
@@ -179,13 +177,13 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
             i18next.t("Weapon.common.qualities").toLocaleUpperCase()],
             41.5, 12.5, 8);
 
-        let offset = 680.6 - 626.1;
-        for (let i = 0; i < 4; i++) {
-            let block = new Column(173.3, 626.1 + (offset * i), 10.1, 41.5);
+        let offset = 697.6 - 643.6;
+        for (let i = 0; i < 3; i++) {
+            let block = new Column(164.9, 643.6 + (offset * i), 10.1, 50.3);
             this.writeLabel(page, i18next.t("Weapon.common.name").toLocaleUpperCase(), fontSize, block,
                 SimpleColor.from("#ffffff"), "", true);
 
-            let block2 = new Column(173.3, 650.6 + (offset * i), 10.1, 41.5);
+            let block2 = new Column(164.9, 666.6 + (offset * i), 10.1, 50.3);
             this.writeLabel(page, i18next.t("Weapon.common.qualities").toLocaleUpperCase(), fontSize, block2,
                 SimpleColor.from("#ffffff"), "", true);
         };

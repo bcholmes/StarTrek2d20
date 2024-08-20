@@ -1398,7 +1398,7 @@ export class Talents {
             new TalentModel(
                 "Empathy2e",
                 "",
-                [new SourcePrerequisite(Source.Core2ndEdition)],
+                [new SourcePrerequisite(Source.Core2ndEdition), new GMsDiscretionPrerequisite()],
                 1,
                 "Esoteric"),
             new TalentModel(
@@ -1410,7 +1410,7 @@ export class Talents {
             new TalentModel(
                 "Telepathy2e",
                 "",
-                [new SourcePrerequisite(Source.Core2ndEdition)],
+                [new SourcePrerequisite(Source.Core2ndEdition), new GMsDiscretionPrerequisite()],
                 1,
                 "Esoteric"),
             new TalentModel(

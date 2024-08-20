@@ -10,7 +10,8 @@ export enum SheetTag {
     UsLetter,
     HalfPage,
     Style2e,
-    TwoPage
+    TwoPage,
+    A4
 }
 
 export interface ICharacterSheet {

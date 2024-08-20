@@ -6,7 +6,13 @@ import { Era } from "./eras";
 export enum Quality {
     Area, Calibration, Charge, Dampening, Deadly, Depleting, Devastating, Hidden, HighYield,
     Intense, Jamming, Knockdown, NonLethal, PersistentX, Piercing, Slowing, Versatile, Vicious,
-    Debilitating, Accurate, AreaOrSpread, Spread
+    Debilitating, Accurate, AreaOrSpread, Spread,
+
+    Grenade, Cumbersome
+}
+
+export enum InjuryType {
+    Stun, Deadly
 }
 
 export class WeaponQuality {
@@ -427,6 +433,14 @@ export class Weapon {
             }
         });
         return result;
+    }
+
+    get injuryType() {
+        if (this.isQualityPresent(Quality.Deadly)) {
+            return InjuryType.Deadly;
+        } else {
+            return InjuryType.Stun;
+        }
     }
 
     get scaleApplies() {

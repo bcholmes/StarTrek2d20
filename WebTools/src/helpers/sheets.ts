@@ -27,6 +27,7 @@ import { LandscapeGeneratedCharacterSheet } from '../exportpdf/landscapeGenerate
 import { Generated2eStarshipSheet } from '../exportpdf/generated2eStarshipSheet';
 import { GeneratedTngPortraitCharacterSheet } from '../exportpdf/generatedTngPortraitCharacterSheet';
 import { Column } from '../exportpdf/column';
+import { GeneratedTngPortraitA4CharacterSheet } from '../exportpdf/generatedTngPortraitA4CharacterSheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -1180,7 +1181,7 @@ class CharacterSheets {
                 new StandardRussianCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageTngCharacterSheet(), new RomulanCharacterSheet() ];
         } else if (character.era === Era.NextGeneration) {
-            return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
+            return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
                 new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         } else {
