@@ -3,5 +3,5 @@ import { ICharacterPageProperties } from "../common/iCharacterPageProperties";
 
 export const DisciplinesOrDepartments: React.FC<ICharacterPageProperties> = ({character}) => {
     const { t } = useTranslation();
-    return (<>{character.version === 2 ? t('Construct.other.departments') : t('Construct.other.disciplines')}</>)
+    return (<>{character.version > 1 ? t('Construct.other.departments') : t('Construct.other.disciplines')}</>)
 }

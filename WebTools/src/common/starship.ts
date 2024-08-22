@@ -537,16 +537,23 @@ export class Starship extends Construct {
         }
     }
 
-    getDiceForWeapon(weapon: Weapon) {
+    getDiceForWeapon(weapon: Weapon, includeModifiers: boolean = false) {
+
         let dice = weapon.dice;
+        if (includeModifiers) {
+            // when we export to Roll20, for example, we don't want to include
+            // the additional values
+            let security = this.departments[Department.Security];
+            dice += security
+        }
         if (weapon.isTractorOrGrappler) {
             dice = this.scale - 1;
 
             if (this.hasTalent("High-Power Tractor Beam")) {
                 dice += 2;
             }
-        } else {
-            dice += this.departments[Department.Security];
+        } else if (weapon.scaleApplies && includeModifiers) {
+            dice += this.scale;
         }
         return dice;
     }

@@ -32,7 +32,7 @@ const TalentsBlockView: React.FC<IConstructPageProperties> = ({construct}) => {
                 }
                 return (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
                     <strong>{name + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
-                    {replaceDiceWithArrowhead(t.localizedDescription)}
+                    {replaceDiceWithArrowhead(construct.version === 1 ? t.localizedDescription : t.localizedDescription2e)}
                 </div>);
             }
         });
@@ -55,7 +55,7 @@ const TalentsBlockView: React.FC<IConstructPageProperties> = ({construct}) => {
                 }
                 return (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
                     <strong>{name + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
-                    {replaceDiceWithArrowhead(t.localizedDescription)}
+                    {replaceDiceWithArrowhead(construct.version === 1 ? t.localizedDescription : t.localizedDescription2e)}
                 </div>);
             }
         });
@@ -87,7 +87,7 @@ const TalentsBlockView: React.FC<IConstructPageProperties> = ({construct}) => {
                 let t = TalentsHelper.getTalent(tName);
                 return (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
                     <strong>{t.localizedDisplayName + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
-                    {replaceDiceWithArrowhead(t.localizedDescription)}
+                    {replaceDiceWithArrowhead(construct.version === 1 ? t.localizedDescription : t.localizedDescription2e)}
                 </div>);
             })}
         </>);

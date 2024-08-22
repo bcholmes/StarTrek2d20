@@ -2721,6 +2721,10 @@
 
     "Talent.noPainNoGain.description2e": "When you fail a task (but not an opposed task) which used your Daring, you may always choose to Succeed at Cost.",
 
+    "Talent.novice": "Novice",
+
+    "Talent.novice.description": "Select one of your attributes when you receive this talent. You’re inexperienced, but talented and with a bright future. You may not have or increase any attribute to above 11, or any department to above 4 while you have this talent (and may have to adjust attributes and depart- ments accordingly at the end of character creation).\n\nWhenever you succeed at a task for which you bought one or more additional dice (by any means), roll a d20 after the roll. If you roll equal to or less than the chosen attribute, gain 1 bonus Momentum; if you roll higher, add 1 Threat instead. While you possess this talent, you can- not gain any higher rank than Lieutenant (junior grade), or a higher enlisted rate than Petty Officer.",
+
     "Talent.orbExperience": "Orb Experience",
 
     "Talent.orbExperience.description": "You have received a vision from the Bajoran Prophets, through one of the Orbs. This rare experience, though confusing at first, has shaped your life and outlook. You have one additional Value, reflecting the insights you received from the experience. The first time this Value is Challenged, roll 1[D]; if an Effect is rolled, then some foretold element of the Orb Experience has come to pass, and the Value is not crossed out as it would normally be.",
@@ -3055,6 +3059,7 @@
     "Talent.untappedPotential": "Untapped Potential",
 
     "Talent.untappedPotential.description": "The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1[D]. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.",
+    "Talent.untappedPotential.description2e": "Select one of your attributes when you receive this tal- ent. You’re inexperienced, but talented and with a bright future. You may not have or increase any attribute to above 11, or any department to above 4 while you have this talent (and may have to adjust attributes and departments accordingly at the end of character creation).\n\nWhenever you succeed at a task for which you bought one or more additional dice (by any means), roll a d20 after the roll. If you roll equal to or less than the chosen attribute, gain 1 bonus Momentum; if you roll higher, add 1 Threat instead. While you possess this talent, you can- not gain any higher rank than Lieutenant (junior grade), or a higher enlisted rate than Petty Officer.",
 
     "Talent.variableGeometryWarpField": "Variable Geometry Warp Field",
 
@@ -3067,6 +3072,7 @@
     "Talent.veteran": "Veteran",
 
     "Talent.veteran.description": "The character is wise and experienced, and draws upon inner reserves of willpower and determination in a more measured and considered way. Whenever the character spends a point of Determination, roll 1[D]. If an Effect is rolled, immediately regain that spent point of Determination. The character has a rank of at least Lieutenant Commander.",
+    "Talent.veteran.description2e": "You’re wise and experienced, and draw upon inner reserves of willpower and determination in a measured and considered way. Whenever you spend Determination, roll a d20. If you roll equal to or less than your Control rating, you immediately regain that point of Determination. If you are Starfleet or military, you hold a rank of at least lieutenant commander, or an enlisted rate of at least chief petty officer.",
 
     "Talent.visitEveryStar": "Visit Every Star",
 

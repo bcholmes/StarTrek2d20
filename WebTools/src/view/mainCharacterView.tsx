@@ -45,7 +45,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
         return (<>
             <CharacterStatBlock character={character} />
             <div className="row row-cols-1 row-cols-md-3 mt-3">
-                <StatView name={t('Construct.other.resistance')} value={character.resistance} className="col mb-1" colourClass="pink" showZero={true}/>
+                <StatView name={t(character.version > 1 ? 'Construct.other.protection' : 'Construct.other.resistance')} value={character.resistance} className="col mb-1" colourClass="pink" showZero={true}/>
                 <StatView name={t('Construct.other.reputation')} value={character.reputation} className="col mb-1" colourClass="pink" showZero={true}/>
                 <StatView name={t('Construct.other.reprimands')} value={character.reprimands} className="col mb-1" colourClass="red" showZero={true}/>
             </div>
