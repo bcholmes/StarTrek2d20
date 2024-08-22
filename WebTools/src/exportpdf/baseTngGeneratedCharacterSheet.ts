@@ -390,10 +390,10 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
         let fontSize = 12.5;
 
         Object.keys(this.statLocations).forEach(key => {
+            let block = this.statLocations[key];
             if (key === "Construct.other.protection" && character.version === 1) {
                 key = "Construct.other.resistance";
             }
-            let block = this.statLocations[key];
             const originalText = i18next.t(key).toLocaleUpperCase();
             let text = originalText;
             let width = this.headingFont.widthOfTextAtSize(text, fontSize);
