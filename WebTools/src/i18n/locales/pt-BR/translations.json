@@ -71,7 +71,7 @@
     "TokenCreator.section.eyes.style": "Estilo do Olho",
     "TokenCreator.section.eyes.colour": "Cor dos Olhos",
 
-    "TokenCreator.section.extras": "Exrtas",
+    "TokenCreator.section.extras": "Extras",
 
     "TokenCreator.section.extras.ears": "Orelhas",
     "TokenCreator.section.extras.face": "Rosto",
@@ -596,7 +596,7 @@
     "Page.title.sourceSelection": "Fontes",
     "Page.title.spaceframeOption": "Opção de Estrutura Espacial",
     "Page.title.spaceframeSelection": "Estrutura Espacial",
-    "Page.title.species": "Espécies",
+    "Page.title.species": "Espécie",
     "Page.title.speciesDetails": "Detalhes da Espécie",
     "Page.title.starshipTalentSelection": "Talentos da Nave Estelar",
     "Page.title.starshipTypeSelection": "Tipo de Nave Estelar",
@@ -2719,7 +2719,11 @@
 
     "Talent.noPainNoGain": "Sem Dor, Sem Ganho",
 
-    "Talent.noPainNoGain.description2e": "Quando você fracassar em uma tarefa (mas não em uma tarefa oposta) que tenha usado sua Audácia, você sempre poderá optar por ser Bem- Sucedido ao Custo.",
+    "Talent.noPainNoGain.description2e": "Quando você fracassar em uma tarefa (mas não em uma tarefa oposta) que tenha usado sua Audácia, você sempre poderá optar por ser Bem-Sucedido ao Custo.",
+
+    "Talent.novice": "Novato",
+
+    "Talent.novice.description": "Selecione um de seus atributos ao receber esse talento. Você é inexperiente, mas é talentoso e tem um futuro brilhante. Você não pode ter ou aumentar nenhum atributo para mais de 11 ou nenhum departamento para mais de 4 enquanto tiver esse talento (e pode ter de ajustar os atributos e departamentos de acordo com isso no final da criação do personagem).\n\nSempre que for bem-sucedido em uma tarefa para a qual comprou um ou mais dados adicionais (por qualquer meio), role um d20 após o lançamento. Se a rolagem for igual ou menor que o atributo escolhido, ganhe 1 Ímpeto de bônus; se a rolagem for maior, adicione 1 Ameaça. Enquanto possuir esse talento, você não poderá obter uma patente mais alta do que a de Tenente (grau júnior) ou uma patente de alistamento mais alta do que a de Suboficial.",
 
     "Talent.orbExperience": "Experiência Com Orbe",
 
@@ -2761,21 +2765,68 @@
     "Talent.personalEffects.description": "O personagem possui algum item significativo ou incomum que não é parte do padrão da Frota Estelar, mas que é útil para missões Ele pode escolher um item com um Custo de Oportunidade de 2, ou dois itens ao Custo de Oportunidade de 1 cada. Nenhum dos itens podem ter um Custo de Agravamento maior do que 1.",
     "Talent.personalEffects.description2e": "Você possui algum item ou dispositivo significativo e incomum que não é um item padrão, mas que, mesmo assim, é útil para as missões. Você pode selecionar esse talento várias vezes, ganhando um item diferente a cada vez.",
 
+    "Talent.pheromones": "Feromônios",
+
+    "Talent.pheromones.description": "Você é capaz de emitir feromônios que podem tornar os machos orionianos (e outros) sugestionáveis. Esses feromônios afetam várias outras espécies - inclusive os Humanos - de forma semelhante. Ao lidar com homens de uma espécie afetada por esses feromônios, você ganha 2 bônus de Ímpeto em todas as tarefas para persuadi-los ou comandá-los. No entanto, as fêmeas das espécies afetadas costumam sofrer de dores de cabeça por causa dos feromônios, aumentando em 1 o grau de complicação das tarefas para interagir com elas. Sabe-se que os Vulcanos não são afetados, enquanto os Denobulanos sofrem um efeito diferente e ficam sonolentos. O critério do mestre de jogo se aplica a quais espécies são afetadas, quais são imunes e quais sofrem efeitos inesperados, mas a maioria das espécies é afetada de forma semelhante aos Humanos e Orions.",
+
+    "Talent.piercingSalvo": "Salvo Perfurante",
+
+    "Talent.piercingSalvo.description2e": "Ao fazer um Ataque de Torpedo, você pode gastar 2 Ímpeto (Imediato) para adicionar a qualidade Perfurante.",
+
+    "Talent.planOfAction": "Plano de Ação",
+
+    "Talent.planOfAction.description2e": "Sempre que um aliado for bem-sucedido em uma tarefa que se tornou possível ou teve uma Dificuldade reduzida devido a um traço criado por você, e esse traço representava um plano, uma estratégia ou um curso de ação, ele gera 2 Ímpetos de bônus. O Ímpeto bônus não pode ser salvo.",
+
     "Talent.pointDefenseSystem": "Sistema de Defesa de Pontos",
 
     "Talent.pointDefenseSystem.soloDescription": "A nave é equipada com um sistema de pequenos emissores de armas de energia que opera independentemente dos sistemas de armas principais. Quando um torpedo tem a nave como alvo, esses emissores começam a disparar na direção de onde ele está vindo, potencialmente destruindo-o antes que ele atinja os escudos ou o casco da nave. Esse sistema só funciona em velocidades subdobra.",
 
+    "Talent.positiveReinforcement": "Reforço Positivo",
+
+    "Talent.positiveReinforcement.description2e": "Uma vez por missão, você pode tentar uma tarefa de Presença + Medicina com dificuldade 3, enquanto fornece tratamento emocional ou mental para outra personagem. O sucesso cria um traço de caráter para seu paciente que dura até o final da missão: Confiança Ampliada. Além dos efeitos normais do traço, essa personagem pode rolar novamente seu conjunto de dados, como se tivesse gasto Determinação, uma vez antes do final da missão. Se a tarefa em que a personagem usou a nova rolagem falhar, ela perderá o traço criado por esse talento.",
+
+    "Talent.practiceMakesPerfect": "Prática Leva à Perfeição",
+
+    "Talent.practiceMakesPerfect.description2e": "Depois de ser bem-sucedido em uma tarefa de Medicina, a Dificuldade de qualquer outra tarefa de Medicina tentada naquela cena para tratar ou curar o mesmo tipo de ferimento, veneno, doença ou outra enfermidade é reduzida em 1.",
+
+    "Talent.precautions": "Precauções",
+
+    "Talent.precautions.description2e": "Uma vez por cena, quando um aliado sofrer um Ferimento ou a nave sofrer uma Ruptura, evite esse Ferimento ou Ruptura; descreva a precaução que você tomou para evitar o problema.",
+
     "Talent.preciseEvasion": "Evasão Precisa",
 
     "Talent.preciseEvasion.description": "Sempre que for bem-sucedido na Tarefa Ação Evasiva, você pode gastar dois pontos de Ímpeto. Se o fizer, a nave não sofre a Dificuldade aumentada em ataques normalmente causada por Ação Evasiva.",
+    "Talent.preciseEvasion.description2e": "Sempre que você usar a ação principal Ação Evasiva, a nave não sofrerá o aumento de Dificuldade para Ataques normalmente causado pela Ação Evasiva.",
+
+    "Talent.precisionManeuvering": "Manobras Precisas",
+
+    "Talent.precisionManeuvering.description2e": "Sempre que tentar realizar uma tarefa que exija manobras precisas ou cuidadosas, ou quando houver risco de colisão com outro objeto, você poderá rolar novamente 1d20.",
+
+    "Talent.precisionTargeting": "Precisão de Mira",
+
+    "Talent.precisionTargeting.description2e": "Você pode escolher e mirar sistemas específicos com mais facilidade ao fazer um ataque contra uma nave inimiga. Quando fizer um Ataque com armas da nave estelar que tenha como alvo um sistema específico da nave, você pode rolar novamente um d20.",
+
+    "Talent.proceduralCompliance": "Conformidade de Procedimentos",
+
+    "Talent.proceduralCompliance.description2e": "Ao tentar realizar uma tarefa de Engenharia, você pode remover um d20 do seu conjunto de dados antes de rolar. Se fizer isso, você ganha um sucesso automático em sua tarefa.",
 
     "Talent.proudAndHonorable": "Orgulhoso e Honrado",
 
     "Talent.proudAndHonorable.description": "Sua integridade pessoal é impecável, e você não quebrará uma promessa feita por vontade própria. Sempre que fizer uma Tarefa para resistir ser coagido a quebrar uma promessa, trair seus aliados ou agir desonrosamente de alguma forma, você reduz a Dificuldade em 1.",
+    "Talent.proudAndHonorable.description2e": "Sempre que tentar realizar uma tarefa para resistir a ser coagido a quebrar uma promessa, trair seus aliados ou agir de forma desonrosa, você poderá adicionar Ameaça para ser imediatamente bem-sucedido na tarefa. A quantidade de Ameaça que você adiciona é igual à Dificuldade da tarefa.",
+
+    "Talent.psychoanalyst": "Psicanalista",
+
+    "Talent.psychoanalyst.description2e": "Ao usar Medicina durante um conflito social, você pode aumentar o alcance da complicação da sua tarefa em 1, 2 ou 3. Para cada passo do aumento do intervalo de complicações, você pode fazer uma única pergunta como se tivesse gasto Ímpeto em Obter Informações. Qualquer complicação gerada por essa tarefa faz com que a pessoa com quem você está interagindo fique ofendida ou chateada por ser “analisada”.",
+
+    "Talent.psychokinesis": "Psicocinese",
+
+    "Talent.psychokinesis.description2e": "Você pode manipular e controlar objetos usando apenas o poder da mente. Você pode exercer uma força psíquica sobre um objeto dentro do alcance próximo equivalente à força que normalmente seria capaz de exercer fisicamente, embora isso exija concentração e não possa ser feito com violência.\n\nVocê pode gastar 1 Ímpeto (Imediato, Repetitivo) para aumentar a magnitude da força que aplica, sendo que cada Ímpeto gasto conta como uma força adicional de uma pessoa aplicada (ou seja, você pode mover ou manipular objetos que levariam duas pessoas para mover ou manipular gastando 1 Ímpeto). O Ímpeto (Imediato) também pode ser gasto para aumentar o alcance dessa habilidade: 1 Ímpeto para afetar objetos a médio alcance, 2 Ímpetos para afetar objetos a longo alcance e o critério do mestre de jogo para distâncias maiores. Para aplicar força violentamente, adicione 1 Ameaça para fazer uma tarefa de Controle + Segurança com Dificuldade 2 para atingir um oponente (como um Ataque à Distância), infligindo um Atordoamento ou Ferimento Mortal com Gravidade 3.",
 
     "Talent.pushTheLimits": "Forçar os Limites",
 
     "Talent.pushTheLimits.description": "Quando fizer uma Tarefa de Condução que tenha a Dificuldade aumentada devido a condições ambientais ou dano aos motores, reduza a Dificuldade em 1 ponto, até o valor mínimo de 1.",
+    "Talent.pushTheLimits.description2e": "Ao tentar uma tarefa de Condução que tenha aumentado a Dificuldade devido a condições ambientais ou danos aos motores, você pode adicionar 1 Ameaça para ignorar o aumento da Dificuldade.",
 
     "Talent.quantumTorpedoes": "Torpedos Quânticos",
 
@@ -2784,14 +2835,25 @@
     "Talent.quickStudy": "Estudo Rápido",
 
     "Talent.quickStudy.description": "Ao tentar realizar uma Tarefa que envolva um procedimento médico que não lhe seja familiar ou que trate de uma espécie não familiar, ignore qualquer aumento de Dificuldade decorrente de sua falta de familiaridade.",
+    "Talent.quickStudy.description2e": "Ao tentar realizar uma tarefa que envolva uma prática, uma técnica ou um procedimento médico não familiar, ou que trate de uma espécie não familiar, ignore qualquer aumento no intervalo de Dificuldade ou Complicação decorrente de sua falta de familiaridade.",
 
     "Talent.quickSurvey": "Pesquisa Rápida",
 
     "Talent.quickSurvey.description": "Você tem uma maneira de obter uma boa impressão de uma situação com apenas um momento de observação. No início de uma cena, você pode fazer imediatamente uma pergunta, como se tivesse gasto um Ímpeto no gasto de Ímpeto Obter informações. A resposta só pode fornecer informações que você poderia obter com seus próprios sentidos; você não pode obter informações de equipamentos em tão pouco tempo.",
+    "Talent.quickSurvey.description2e": "No início de uma cena, você pode fazer imediatamente uma pergunta, como se tivesse gasto 1 Ímpeto no gasto de Ímpeto para Obter Informações. A resposta só pode fornecer informações que você poderia obter com seus próprios sentidos: não é possível obter informações de equipamentos em um tempo tão curto.",
 
     "Talent.quickToAction": "Rápido Para Agir",
 
     "Talent.quickToAction.description": "Durante a primeira rodada de qualquer combate, você e seus aliados podem ignorar o custo normal para Manter a Iniciativa.",
+    "Talent.quickToAction.description2e": "Durante a primeira rodada de qualquer combate, você e seus aliados podem ignorar o custo normal para Manter a Iniciativa.",
+
+    "Talent.rapidAnalysis": "Análise Rápida",
+
+    "Talent.rapidAnalysis.description2e": "Quando for bem-sucedido em uma tarefa de Ciência, o custo do Ímpeto de Reduzir Tempo é reduzido para 1.",
+
+    "Talent.rapidHypothesis": "Hipótese Rápida",
+
+    "Talent.rapidHypothesis.description2e": "Uma vez por cena, quando você faz duas ou mais perguntas usando Obter Informações, você pode criar imediatamente um traço que represente sua compreensão teórica do assunto dessas perguntas.",
 
     "Talent.rapidFireTorpedoLauncher": "Lança Torpedo de Disparo Rápido",
 
@@ -2801,13 +2863,30 @@
 
     "Talent.reasonedDiscourse.description": "Você é preciso e sucinto com a linguagem, o que lhe permite transmitir fatos e argumentos lógicos de forma eficaz e rápida. Quando precisar comunicar informações complicadas ou argumentar com lógica em vez de emoção, reduza a Dificuldade da tarefa em 1.",
 
+    "Talent.reassuring": "Tranquilizador",
+
+    "Talent.reassuring.description2e": "Quando for bem-sucedido em uma tarefa usando sua Presença, você pode gastar Ímpeto para tranquilizar seus aliados, desde que eles possam ouvi-lo. Você pode gastar 1 Ímpeto (repetível) para permitir que um aliado que possa vê-lo e ouvi-lo recupere 1 Estresse. Esse aliado não pode recuperar mais de 3 de Estresse com um único uso desse talento.",
+
+    "Talent.repairTeamLeader": "Líder da Equipe de Reparos",
+
+    "Talent.repairTeamLeader.description2e": "Você é treinado para dirigir e liderar equipes de reparo de danos durante emergências, dando-lhes sua orientação e conhecimento especializado dos sistemas da nave. Se for bem-sucedido na ação principal Controle de Danos, poderá gastar 2 Ímpetos (repetíveis) para reparar uma brecha adicional.",
+
     "Talent.resolute": "Resoluto",
 
     "Talent.resolute.description": "Você é indomável e indisposto a sucumbir às adversidades. Você aumenta seu Estresse máximo em 3.",
+    "Talent.resolute.description2e": "Seu Estresse Máximo aumenta em um valor igual à sua classificação de Comando.",
 
     "Talent.regenerativeHull": "Casco Regenerativo",
 
     "Talent.regenerativeHull.soloDescription": "O casco da nave é infundido com tecnologia de nanite Borg feita por engenharia reversa que identifica e repara o casco imediatamente quando ele é danificado, muitas vezes evitando uma ruptura antes que ela aconteça.",
+
+    "Talent.regimentedMind": "Mente Regrada",
+
+    "Talent.regimentedMind.description2e": "Ao gastar Ímpeto para Obter Informações, você pode reduzir a Dificuldade de uma tarefa posterior na mesma cena em 1, desde que essa tarefa esteja relacionada às informações obtidas.",
+
+    "Talent.rightToolForTheRightJob": "Ferramenta Certa para o Trabalho Certo",
+
+    "Talent.rightToolForTheRightJob.description2e": "Sempre que você adquirir uma ferramenta de engenharia com um Custo de Oportunidade, o traço de equipamento dessa ferramenta ganha +1 de Potência (normalmente, isso resultará em Potência 2). Se a ferramenta for usada em uma tarefa prolongada, quem estiver usando essa ferramenta aumentará seu Impacto em 1.",
 
     "Talent.rousingSpeaker": "Orador Inflamado",
 
@@ -2816,6 +2895,10 @@
     "Talent.ruggedDesign": "Projeto Resistente",
 
     "Talent.ruggedDesign.soloDescription": "A nave foi projetada tendo a fronteira em mente, com uma estrutura durável e fácil acesso a sistemas críticos, o que permite que sejam feitos reparos com mais facilidade.",
+
+    "Talent.saboteur": "Sabotador",
+
+    "Talent.saboteur.description2e": "Quando você faz um Ataque contra uma estrutura, máquina ou veículo estacionário durante um combate pessoal (ou seja, você não está usando as armas de uma nave para fazer o Ataque), você pode usar sua Engenharia em vez de sua Segurança para resolver o Ataque.",
 
     "Talent.saboteurWar": "Sabotador",
 
@@ -2829,6 +2912,14 @@
 
     "Talent.secondaryReactors.soloDescription": "A nave tem reatores de fusão e impulso adicionais, que permitem que ela gere quantidades bem maiores de energia. ",
 
+    "Talent.secondWind": "Segundo Sopro",
+
+    "Talent.secondWind.description2e": "Você pode gastar Determinação no início do seu turno para remover o estado Derrotado e recuperar até metade do seu Estresse máximo. Os requisitos normais para gastar um ponto de Determinação ainda se aplicam.",
+
+    "Talent.selfReliant": "Auto-Religioso",
+
+    "Talent.selfReliant.description2e": "Sempre que for bem-sucedido em uma tarefa em que não comprou dados adicionais gastando Ímpeto ou aumentando a Ameaça, você gera um bônus de Ímpeto igual à Dificuldade da tarefa. O Ímpeto bônus não pode ser salvo.",
+
     "Talent.selfReplicatingMines": "Minas Auto-Replicantes",
 
     "Talent.selfReplicatingMines.soloDescription": "A nave carrega minas que são capazes de se replicar ao longo do tempo, permitindo uma propagação mais completa, preenchendo a área em que são implantadas. Observe que a Frota Estelar normalmente não utiliza minas.",
@@ -2841,23 +2932,47 @@
 
     "Talent.slimSensorSilhouette.soloDescription": "Essa nave foi projetada para apresentar um retorno mínimo de sensor aos sensores de uma nave de busca por meio de revestimento avançado do casco, interferência e defletores subespaciais passivos.",
 
+    "Talent.spacewalk": "Caminhada Espacial",
+
+    "Talent.spacewalk.description2e": "Sempre que a Dificuldade de uma tarefa for aumentada devido à gravidade baixa ou zero, ignore esse aumento de Dificuldade. Se uma tarefa que normalmente seria possível se tornasse impossível devido à gravidade baixa ou zero, você pode tentar a tarefa com +1 de Dificuldade.",
+
     "Talent.spiritOfDiscovery": "Espíritos de Descoberta",
 
     "Talent.spiritOfDiscovery.description": "Você possui a motivação, espírito e coragem necessária para viajar pelo desconhecido. Você pode gastar um ponto de Determinação para adicionar três pontos à reserva de Ímpeto do grupo. As condições normais para gastar Determinação ainda se aplicam.",
+    "Talent.spiritOfDiscovery.description2e": "Você tem uma opção adicional que pode escolher quando gasta Determinação: você pode adicionar imediatamente 3 Ímpetos à reserva do grupo.",
 
     "Talent.starshipExpert": "Especialista De Nave Estelar",
 
     "Talent.starshipExpert.description": "Sempre que for bem-sucedido em uma Tarefa de Condução para identificar o tipo de uma nave estelar ou para tentar compreender uma forma desconhecida de uma Nave Estelar, você recebe um ponto de Ímpeto extra que pode ser usado somente com o Gasto de Ímpeto Obter Informação ou para pagar parte do custo de Gasto de Ímpeto Criar Vantagem (em que a Vantagem deve representar alguma forma de fraqueza conhecida ou observada na nave sendo estudada).",
+    "Talent.starshipExpert.description2e": "Sempre que for bem-sucedido em uma tarefa de Condução para identificar um tipo de nave estelar ou para tentar entender uma forma desconhecida de nave estelar, você ganha 1 Ímpeto de bônus, que só pode ser usado no gasto de Ímpeto para Obter Informações ou para pagar parte do custo do gasto de Ímpeto para Criar Traço (em que o traço deve representar alguma forma de fraqueza conhecida ou observada na nave que está sendo estudada).",
+
+    "Talent.steadyHands": "Mãos Firmes",
+
+    "Talent.steadyHands.description2e": "Quando você realiza a ação secundária Mirar antes de um Ataque à Distância, você adiciona 1 à Gravidade do Ataque, além dos outros efeitos de mirar.",
+
+    "Talent.stimulantShot": "Injeção de Estimulante",
+
+    "Talent.stimulantShot.description2e": "Ao realizar a tarefa de Primeiros Socorros para reviver um aliado derrotado, você pode adicionar 1 Ameaça para permitir que esse aliado recupere o Estresse igual à sua classificação de Medicina. Um personagem só pode se beneficiar desse talento uma vez por aventura.",
+
+    "Talent.strafingRun": "Corrida de Ataque",
+
+    "Talent.strafingRun.description2e": "Sempre que você for bem-sucedido na tarefa Padrão de Ataque e, em seguida, Mantiver a Iniciativa, o custo para Manter a Iniciativa será reduzido para 0. Se a personagem no próximo turno fizer um Ataque, ela poderá rolar novamente um d20.",
 
     "Talent.strongPagh": "Pagh Forte",
 
     "Talent.strongPagh.description": "Você acredita profundamente nos Profetas, e confia nessa fé para superar dificuldades. Sempre que fizer uma Tarefa para resistir ser coagido ou ameaçado, você reduz a Dificuldade em 1.",
+    "Talent.strongPagh.description2e": "Você acredita profundamente nos Profetas e conta com essa fé para superar as dificuldades. Sempre que tentar realizar uma tarefa para resistir a ser coagido ou ameaçado, você pode usar Estresse igual à Dificuldade da tarefa para ser automaticamente bem-sucedido.",
+
+    "Talent.studentOfWar": "Estudante de Guerras",
+
+    "Talent.studentOfWar.description2e": "Você realizou uma extensa pesquisa sobre vários tipos de conflito e dedicou sua carreira acadêmica ao estudo da guerra. Embora esse conhecimento possa ser puramente teórico, essas informações, quando colocadas nas mãos de combatentes mais capazes, podem ser realmente devastadoras. Quando você Auxiliar uma personagem a fazer um Ataque ou a realizar a ação de Guarda em combate, ela poderá rolar novamente um d20.",
 
     "Talent.studious": "Estudioso",
 
     "Talent.studious.description": "Sempre que você gastar um ou mais pontos de Ímpeto para Obter Informação, você pode fazer uma pergunta a mais (no total, não por ponto de Ímpeto gasto para Obter Informação).",
+    "Talent.studious.description2e": "Sempre que você gastar 1 ou mais Ímpeto para Obter",
 
-    "Talent.sturdy": "Robusto",
+    "Talent.sturdy": "Informações, você pode fazer uma pergunta adicional (no total, não por Ímpeto gasto em Obter Informações).",
 
     "Talent.sturdy.description": "Você tem uma mistura de resiliência física e fortitude mental que o torna difícil de subjugar. Você reduz o custo de resistir a ser derrubado pelo efeito de dano Derrubar em um, até um mínimo de 0, e recebe +1 de Resistência contra todos os ataques não-letais.",
 
@@ -2866,42 +2981,85 @@
     "Talent.supervisor.alias.klingonCore": "Líder de Guerra",
 
     "Talent.supervisor.description": "A Tripulação de Suporte da nave aumenta em um. Esse aumento é cumulativo se vários Personagens Principais do grupo selecionarem este talento, mas cada Personagem Principal pode selecionar este talento somente uma vez.",
+    "Talent.supervisor.description2e": "A Tripulação de Suporte da nave aumenta em 1. Esse aumento é cumulativo se várias personagens principais o selecionarem.",
+
+    "Talent.surverySavant": "Especialista em Cirurgia",
+
+    "Talent.surverySavant.description2e": "Ao tentar uma tarefa de Medicina durante uma tarefa estendida relacionada à cirurgia, seu Impacto aumenta em 1.",
 
     "Talent.tachyonDetectionField": "Campo de Detecção de Táquions",
 
     "Talent.tachyonDetectionField.soloDescription": "A nave é equipada com um gerador de campo que projeta uma nuvem de táquions ao seu redor. Enquanto o campo estiver ativo, a nave é notificada de qualquer embarcação camuflada que esteja dentro dela ou que passe perto dela.",
 
+    "Talent.teacher": "Professor",
+
+    "Talent.teacher.description2e": "Ao criar um traço para um aliado que represente sua orientação ou conselho, esse aliado pode rolar novamente um d20 em uma única tarefa que ele tentar e que seja beneficiada por esse traço.",
+
     "Talent.telepath": "Telepata",
 
     "Talent.telepath.description": "Você pode sentir os pensamentos e emoções superficiais da maioria dos seres vivos próximos e pode se comunicar telepaticamente com outros empatas e telepatas, assim como com quem você esteja extremamente familiarizado. Pensamentos superficiais são qualquer coisa sobre a qual uma criatura estiver pensando no momento. Você não pode escolher não sentir as emoções ou ler os sentimentos dos próximos, exceto por aqueles que são resistentes a telepatia. Pode ser necessário esforço e uma Tarefa para identificar as emoções ou pensamentos de um indivíduo específico em uma multidão, para procurar na mente de uma criatura por pensamentos ou memórias específicas ou para bloquear as mentes das pessoas próximas. Alvos involuntários podem resistir com uma Tarefa Disputada.",
 
+    "Talent.telepathicProjection": "Projeção Telepática",
+
+    "": "Sua habilidade telepática é mais potente do que a maioria, e você está acostumado a projetar seus pensamentos em outras mentes. Você pode enviar seus pensamentos para as mentes de outras criaturas - exceto aquelas imunes à telepatia - mesmo que essas criaturas não sejam telepáticas. Você pode “ouvir” as respostas delas ao ler suas mentes. Você também é capaz de usar essa habilidade ofensivamente, sobrecarregando a mente de um alvo com ruído psíquico indutor de dor. Isso requer uma tarefa de Presença + Segurança com Dificuldade 2 (aumentando em 1 para cada categoria de alcance além de Perto); o sucesso inflige um Atordoamento ou Ferimento Mortal com Gravidade 3 e efeito Perfurante.",
+
+    "Talent.telepathy2e": "Telepatia",
+
+    "Talent.telepathy2e.description": "Você pode sentir os pensamentos e as emoções superficiais da maioria dos seres vivos próximos e pode se comunicar telepaticamente com outros empatas e telepatas, bem como com aqueles com quem está extremamente familiarizado. Você não pode optar por não sentir as emoções ou não ler os pensamentos superficiais das pessoas próximas, exceto daquelas resistentes à telepatia. É necessário esforço e uma tarefa para identificar as emoções ou os pensamentos de um indivíduo específico em uma multidão, para pesquisar a mente de uma criatura em busca de pensamentos ou memórias específicas ou para bloquear as mentes das pessoas próximas. Aumente a dificuldade se a situação for estressante, se houver muitos seres presentes, se o alvo for resistente à telepatia, etc.",
+
     "Talent.technicalExpertise": "Especialidade Técnica",
 
     "Talent.technicalExpertise.description": "Sempre que fizer uma Tarefa auxiliado pelos Computadores ou Sensores da nave, você pode rejogar um d20 (que pode ser o dado da nave).",
+    "Talent.technicalExpertise.description2e": "Sempre que você tentar uma tarefa auxiliada pelos Computadores ou Sensores da nave computadores ou sensores da nave, você pode rolar novamente um d20 da sua reserva ou permitir que a nave role novamente o d20 dela.",
 
     "Talent.testingATheory": "Testar Uma Teoria",
 
     "Talent.testingATheory.description": "Quanto fizer uma Tarefa de Ciências ou Engenharia, você pode jogar um d20 extra, desde que tenha sido bem-sucedido em uma Tarefa, na mesma aventura, anterior relacionada ao mesmo campo de estudo científico ou tecnológico.",
+    "Talent.testingATheory.description2e": "Ao tentar realizar uma tarefa usando Engenharia ou Ciência, o primeiro d20 de bônus adquirido é gratuito, desde que você tenha sido bem-sucedido em uma tarefa anterior que abranja o mesmo campo científico ou tecnológico no início da mesma aventura. Se tiver criado um traço que represente uma hipótese sobre um fenômeno desconhecido, você também poderá rolar novamente um d20 em tarefas relacionadas a essa hipótese.",
+
+    "Talent.thatWasntMe": "Nao Fui Eu",
+
+    "Talent.thatWasntMe.description2e": "Os Orions são conhecidos como uma das espécies mais indignas de confiança da Galáxia, ao lado dos Ferengi, e ainda assim as pessoas estão dispostas a fazer negócios com eles ou são frequentemente enganadas ou ludibriadas por eles. Você aprendeu a interação sutil de interações sociais, reputações e negações plausíveis que permitem que os outros confiem em você apesar do que ouviram sobre 'aqueles outros Orions'. \nQuando outra personagem tentar uma tarefa para determinar se pode confiar em você, você pode gastar 2 Ímpeto se for sincero ou adicionar 2 Ameaça se estiver tentando enganá-la. De qualquer forma, o personagem não precisa fazer uma rolagem de tarefa: você o convence de que é digno de confiança.",
+
+    "Talent.theEndsJustifyTheMeans": "Os Fins Justificam os Meios",
+
+    "Talent.theEndsJustifyTheMeans.description2e": "Quando você gasta Determinação por causa de uma Diretiva, pode selecionar dois dos benefícios para gastar Determinação, em vez de um.",
 
     "Talent.theUshaan": "O Ushaan",
 
     "Talent.theUshaan.description": "Você é experiente na tradição de duelos honrados conhecidos como Ushaan, tendo derramado muito sangue no gelo. Quando fizer um Ataque corporal ou for alvo de um Ataque corporal e comprar um ou mais d20s ao gerar pontos de Ameaça, você pode rejogar a parada de dados da Tarefa. Além disso, você tem uma Ushaan-tor, uma ferramenta afiada para minerar gelo e que é usada nestes duelos.",
+    "Talent.theUshaan.description2e": "Você tem experiência na tradição de duelo de honra conhecida como Ushaan. Quando você faz um Ataque Corporal, ou é alvo de um Ataque Corporal, e compra um ou mais d20s adicionando à Ameaça, você pode rolar novamente qualquer número de dados em seu conjunto de dados para a tarefa. Além disso, você possui um Ushaan-tor, uma ferramenta de mineração de gelo afiada como uma navalha usada nesses duelos. A Ushaan-tor é uma lâmina e conta como equipamento padrão para você.",
+
+    "Talent.threadTheNeedle": "Passar a Linha na Agulha",
+
+    "Talent.threadTheNeedle.description2e": "Quando você executa a ação secundária Impulso ou a ação principal Dobra ao pilotar uma nave estelar, os ataques inimigos de naves com uma escala maior que a sua aumentam a dificuldade em +1. Se for atacado por uma nave com uma escala que seja o dobro ou mais da escala da sua nave, você aumentará a dificuldade em 2.",
+
+    "Talent.theoryIntoPractice": "Teoria na Prática",
+
+    "Talent.theoryIntoPractice.description2e": "Quando for bem-sucedido em uma tarefa usando Engenharia ou Ciência em que ganha o d20 adicional do talento Testando Uma Teoria, ou que se beneficia de um traço que representa uma hipótese que você fez, você gera 2 Ímpetos de bônus. O Ímpeto bônus não pode ser salvo.",
 
     "Talent.tough": "Durão",
 
     "Talent.tough.description": "Sempre que Evitar Ferimento, o custo é reduzido em 1 ponto, até o custo mínimo de 1 ponto.",
+    "Talent.tough.description2e": "Seu Estresse máximo é aumentado em 2.",
 
     "Talent.tracker": "Você pode seguir até mesmo os rastros mais fracos. Quando você tenta uma tarefa para rastrear animais, pessoas ou veículos terrestres, o primeiro d20 que você compra é gratuito. Se o rastreamento foi feito como parte de uma tarefa estendida, a rolagem ganha Progressão 1.",
 
     "Talent.tracker.description": "Você pode seguir até mesmo os rastros mais fracos. Quando você tenta uma tarefa para rastrear animais, pessoas ou veículos terrestres, o primeiro d20 que você compra é gratuito. Se o rastreamento foi feito como parte de uma tarefa estendida, a rolagem ganha Progressão 1.",
 
+    "Talent.transporterChief": "Chefe de Transporte",
+
+    "Talent.transporterChief.description2e": "Você é muito versado na operação de sistemas de transporte e, muitas vezes, consegue fazer com que eles funcionem em circunstâncias extremas ou alcancem resultados que poucos conseguiriam. Esses esforços nunca são isentos de riscos, dada a delicadeza da tecnologia. Ao tentar uma tarefa para usar, reparar ou modificar um transportador, você pode adicionar 2 Ameaças para reduzir a Dificuldade da tarefa em 2, até um mínimo de 0.",
+
     "Talent.triage": "Triagem",
 
     "Talent.triage.description": "Ao tentar uma Tarefa para identificar ferimentos ou doenças específicos ou para determinar a gravidade da condição de um paciente, você pode gastar um Momentum (Repetível) para diagnosticar um paciente adicional.",
+    "Talent.triage.description2e": "Ao tentar uma tarefa para identificar Ferimentos ou doenças específicos ou para determinar a gravidade da condição de um paciente, você pode gastar 1 Ímpeto (Repetível) para diagnosticar um outro paciente.",
 
     "Talent.untappedPotential": "Potencial Intocado",
 
     "Talent.untappedPotential.description": "A personagem é inexperiente, mas talentoso e com um futuro brilhante à frente na Frota Estelar. Ele não pode ter ou incrementar qualquer Atributo acima de 11 nem qualquer Disciplina acima de 4 enquanto tiver este Talento (e pode ter que ajustar Atributos e Disciplinas de acordo ao final da criação de personagem). Sempre que a personagem for bem-sucedido em uma Tarefa para a qual ele comprou dados extras com Ímpeto ou Ameaça, ele pode jogar 1[D]. A personagem recebe Ímpeto extra igual a rolagem, e então adiciona um ponto à Ameaça se obtiver um Efeito. O personagem não pode ter uma patente maior que tenente (graduação júnior) enquanto possuir este Talento.",
+    "Talent.untappedPotential.description2e": "Selecione um de seus atributos ao receber esse talento. Você é inexperiente, mas talentoso e tem um futuro brilhante. Você não pode ter ou aumentar nenhum atributo para mais de 11 ou nenhum departamento para mais de 4 enquanto tiver esse talento (e pode ter de ajustar os atributos e departamentos de acordo com isso no final da criação do personagem).\n\nSempre que for bem-sucedido em uma tarefa para a qual comprou um ou mais dados adicionais (por qualquer meio), role um d20 após o lançamento. Se a rolagem for igual ou menor que o atributo escolhido, ganhe 1 Ímpeto de bônus; se a rolagem for maior, adicione 1 Ameaça. Enquanto possuir esse talento, você não poderá obter uma patente mais alta do que a de Tenente (grau júnior) ou um posto de alistamento mais alto do que o de Suboficial.",
 
     "Talent.variableGeometryWarpField": "Campo de Dobra de Geometria Variável",
 
@@ -2914,10 +3072,39 @@
     "Talent.veteran": "Veterano",
 
     "Talent.veteran.description": "A personagem é sábio e experiente, e se vale de suas reservas internas de força de vontade e determinação de forma mais comedida e considerada. Sempre que a personagem gastar um ponto de Determinação, jogue 1[D]. Se o resultado for um Efeito, recupere imediatamente esse ponto de Determinação. A personagem tem uma patente de pelo menos Tenente Comandante.",
+    "Talent.veteran.description2e": "Você é sábio e experiente, e utiliza suas reservas internas de força de vontade e determinação de forma ponderada e ponderada. Sempre que gastar Determinação, role um d20. Se o resultado for igual ou inferior à sua classificação de Controle, você recupera imediatamente esse ponto de Determinação. Se você for da Frota Estelar ou militar, deve ter uma patente de, no mínimo, tenente-comandante ou uma taxa de alistamento de, no mínimo, suboficial-chefe.",
+
+    "Talent.visitEveryStar": "Visitar Todas as Estrelas",
+
+    "Talent.visitEveryStar.description2e": "Você ganha um foco adicional, e um de seus focos (o ganho com esse talento ou um já existente) deve estar relacionado à Astronavegação, à Cartografia Estelar ou a um campo semelhante da ciência espacial. Além disso, quando for bem-sucedido em uma tarefa relacionada à navegação, ganhará 1 Ímpeto de bônus devido ao seu conhecimento e familiaridade. O bônus de Ímpeto não pode ser salvo.",
+
+    "Talent.voiceOfAuthority": "Voz de Autoridade",
+
+    "Talent.voiceOfAuthority.description2e": "Ao Auxiliar alguém e usar sua Presença para fazê-lo, você pode adicionar 2 de Ameaça para tratar seu dado de auxílio como se tivesse rolado um 1, em vez de rolá-lo.",
+
+    "Talent.walkingEncyclopedia": "Enciclopédia Ambulante",
+
+    "Talent.walkingEncyclopedia.description2e": "Uma vez por sessão, ao tentar realizar uma tarefa, você pode gastar 2 Ímpeto (Imediato) para ganhar um foco adicional pelo restante da sessão, devido à sua amplitude de conhecimento. No entanto, qualquer tarefa que use esse foco aumenta a faixa de complicação em 1, pois você não é um verdadeiro especialista nesse assunto.",
+
+    "Talent.warriorsSpirit": "Espírito de Guerreiro",
+
+    "Talent.warriorsSpirit.description2e": "Quando você faz um Ataque Corporal ou é alvo de um Ataque Corporal e compra um ou mais d20s adicionando Ameaça, você pode rolar novamente o conjunto de dados para a rolagem de sua tarefa. Além disso, você possui uma mek'leth (uma lâmina) ou uma bat'leth (uma lâmina pesada), a seu critério, que conta como equipamento padrão para você.",
+
+    "Talent.wary": "Desconfiado",
+
+    "Talent.wary.description2e": "Ao tentar uma tarefa para detectar um inimigo ou perigo, você pode rolar novamente um d20.",
+
+    "Talent.wellInformed": "Bem Informado",
+
+    "Talent.wellInformed.description2e": "Você tem contatos em todos os lugares e ouve notícias e rumores de todos os lugares. No início de uma cena, você pode adicionar 1 Ameaça para fazer duas perguntas ao mestre de jogo sobre a situação ou o local, como se tivesse gasto Ímpeto no gasto de Obter Informações. As respostas que receber serão o conhecimento que obteve de seus contatos e das notícias e rumores que ouviu.",
 
     "Talent.wormholeRelaySystem": "Sistema de Retransmissão de Buraco de Minhoca",
 
     "Talent.wormholeRelaySystem.soloDescription": "A nave tem um sistema de sensor adicional equipado com transceptores de alta energia, sensores de verteron e sensores de neutrino. Esses sensores, combinados com dispositivos de geração de campo, permitem que a nave envie e receba fluxos de dados por meio de buracos de minhoca.",
+
+    "Talent.zeroGCombat": "Combate em Gravidade Zero",
+
+    "Talent.zeroGCombat.description2e": "Em combate, ao fazer um Ataque em um ambiente de gravidade zero ou microgravidade, você pode usar o maior dos seus departamentos de Condução ou Segurança para a tarefa e ignorar qualquer aumento de dificuldade causado pela falta de gravidade. Além disso, os inimigos que não tiverem treinamento semelhante aumentam a Dificuldade dos Ataques contra você em 1.",
 
     "TalentCategory.general": "Geral",
     "TalentCategory.career": "Carreira",

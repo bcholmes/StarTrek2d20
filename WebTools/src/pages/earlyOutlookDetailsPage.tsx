@@ -12,7 +12,7 @@ import InstructionText from '../components/instructionText';
 import { Header } from '../components/header';
 import { useTranslation } from 'react-i18next';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
-import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
+import { ICharacterProperties } from '../solo/page/soloCharacterProperties';
 import { addCharacterTalent, setCharacterEarlyOutlook, setCharacterFocus, StepContext } from '../state/characterActions';
 import store from '../state/store';
 import { PageIdentity } from './pageIdentity';

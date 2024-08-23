@@ -2264,7 +2264,7 @@
 
     "Talent.closeKnitCrew": "Close-Knit Crew",
 
-    "Talent.closeKnitCrew.description2e": "When a scene begins, if there are fewer points of\nMomentum in the group pool than there are characters in the scene who have this talent, immediately add 1 Momentum to the group pool.",
+    "Talent.closeKnitCrew.description2e": "When a scene begins, if there are fewer points of Momentum in the group pool than there are characters in the scene who have this talent, immediately add 1 Momentum to the group pool.",
 
     "Talent.closeProtection": "Close Protection",
 
@@ -2314,12 +2314,12 @@
     "Talent.computerExpertise": "Computer Expertise",
 
     "Talent.computerExpertise.description": "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
-    "Talent.computerExpertise.description2e": "Whenever you attempt a task that involves the program- ming or study of a computer system, the first bonus d20 you purchase is free.",
+    "Talent.computerExpertise.description2e": "Whenever you attempt a task that involves the programming or study of a computer system, the first bonus d20 you purchase is free.",
 
     "Talent.constantlyWatching": "Constantly Watching",
 
     "Talent.constantlyWatching.description": "When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",
-    "Talent.constantlyWatching.description2e": "At the start of an action scene, the gamemaster must spend an additional 2 Threat to have an NPC take the first turn. You may also re-roll 1d20 on any task attempt- ed to locate a hidden enemy or danger.",
+    "Talent.constantlyWatching.description2e": "At the start of an action scene, the gamemaster must spend an additional 2 Threat to have an NPC take the first turn. You may also re-roll 1d20 on any task attempted to locate a hidden enemy or danger.",
 
     "Talent.coordinatedEfforts": "Coordinated Efforts",
 
@@ -2518,7 +2518,7 @@
 
     "Talent.gutFeeling": "Gut Feeling",
 
-    "Talent.gutFeeling.description2e": "When the gamemaster spends Threat to introduce re- inforcements or to cause a Reversal, they must spend 2 additional Threat to do so. This is 2 extra Threat in total, not per reinforcement.",
+    "Talent.gutFeeling.description2e": "When the gamemaster spends Threat to introduce reinforcements or to cause a Reversal, they must spend 2 additional Threat to do so. This is 2 extra Threat in total, not per reinforcement.",
 
     "Talent.handsOnPilot": "Hands-On Pilot",
 
@@ -2763,7 +2763,7 @@
     "Talent.personalEffects": "Personal Effects",
 
     "Talent.personalEffects.description": "The character possesses some significant and uncommon item or device which is not part of Starfleet’s standard issue, but which is nevertheless useful for missions. The character may select one item with an Opportunity Cost of 2, or two items with an Opportunity Cost of 1 each. Neither items may have an Escalation Cost greater than 1.",
-    "Talent.personalEffects.description2e": "You possess some significant and uncommon item or device which is not standard issue, but which is never- theless useful for missions. You may select this talent multiple times, gaining a different item each time.",
+    "Talent.personalEffects.description2e": "You possess some significant and uncommon item or device which is not standard issue, but which is nevertheless useful for missions. You may select this talent multiple times, gaining a different item each time.",
 
     "Talent.pheromones": "Pheromones",
 
@@ -2783,7 +2783,7 @@
 
     "Talent.positiveReinforcement": "Positive Reinforcement",
 
-    "Talent.positiveReinforcement.description2e": "Once per mission, you may attempt a Presence + Medicine task with a Difficulty of 3, while providing emo- tional or mental treatment for another character. Success creates a character trait for your patient that lasts until the end of the mission: Boosted Confidence. In addition to the normal effects of the trait, that character can reroll their dice pool, as if they’d spent Determination, once be- fore the end of the mission. If the task the character used their reroll on fails, they lose the trait created by this talent.",
+    "Talent.positiveReinforcement.description2e": "Once per mission, you may attempt a Presence + Medicine task with a Difficulty of 3, while providing emotional or mental treatment for another character. Success creates a character trait for your patient that lasts until the end of the mission: Boosted Confidence. In addition to the normal effects of the trait, that character can reroll their dice pool, as if they’d spent Determination, once be- fore the end of the mission. If the task the character used their reroll on fails, they lose the trait created by this talent.",
 
     "Talent.practiceMakesPerfect": "Practice Makes Perfect",
 
@@ -2835,7 +2835,7 @@
     "Talent.quickStudy": "Quick Study",
 
     "Talent.quickStudy.description": "When attempting a Task that will involve an unfamiliar medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty increase stemming from your unfamiliarity.",
-    "Talent.quickStudy.description2e": "When attempting a task that will involve an unfamiliar practice, technique, or medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty or compli- cation range increase stemming from your unfamiliarity.",
+    "Talent.quickStudy.description2e": "When attempting a task that will involve an unfamiliar practice, technique, or medical procedure, or which is to treat an unfamiliar species, ignore any Difficulty or complication range increase stemming from your unfamiliarity.",
 
     "Talent.quickSurvey": "Quick Survey",
 
@@ -2952,7 +2952,7 @@
 
     "Talent.stimulantShot": "Stimulant Shot",
 
-    "Talent.stimulantShot.description2e": "When you perform the First Aid task to revive a Defeated ally, you may add 1 Threat to let that ally recover Stress equal to your Medicine rating. A character may only bene- fit from this talent once per adventure.",
+    "Talent.stimulantShot.description2e": "When you perform the First Aid task to revive a Defeated ally, you may add 1 Threat to let that ally recover Stress equal to your Medicine rating. A character may only benefit from this talent once per adventure.",
 
     "Talent.strafingRun": "Strafing Run",
 
@@ -2970,7 +2970,7 @@
     "Talent.studious": "Studious",
 
     "Talent.studious.description": "Whenever you spend one or more Momentum to Obtain Information, you may ask one additional question (in total, not per Momentum spent on Obtain Information).",
-    "Talent.studious.description2e": "Whenever you spend 1 or more Momentum to Obtain\nInformation, you may ask one additional question (in total, not per Momentum spent on Obtain Information).",
+    "Talent.studious.description2e": "Whenever you spend 1 or more Momentum to Obtain Information, you may ask one additional question (in total, not per Momentum spent on Obtain Information).",
 
     "Talent.sturdy": "Sturdy",
 
@@ -3010,12 +3010,12 @@
     "Talent.technicalExpertise": "Technical Expertise",
 
     "Talent.technicalExpertise.description": "Whenever you attempt a Task assisted by the ship’s Computers or Sensors, you may re-roll one d20 (which may be the ship’s die).",
-    "Talent.technicalExpertise.description2e": "Whenever you attempt a task assisted by the ship’s\nComputers or Sensors, you may re-roll one d20 in your pool, or you may allow the ship to re-roll its d20.",
+    "Talent.technicalExpertise.description2e": "Whenever you attempt a task assisted by the ship’s Computers or Sensors, you may re-roll one d20 in your pool, or you may allow the ship to re-roll its d20.",
 
     "Talent.testingATheory": "Testing a Theory",
 
     "Talent.testingATheory.description": "When you attempt a Task using Engineering or Science, you may roll one additional d20, so long as you succeeded at a previous Task covering the same scientific or technological field earlier in the same adventure.",
-    "Talent.testingATheory.description2e": "When you attempt a task using Engineering or Science, the first bonus d20 you purchase is free, so long as you succeeded at a previous task covering the same scientif- ic or technological field earlier in the same adventure. If you created a trait that represents a hypothesis about an unknown phenomenon, you may also re-roll one d20 on tasks related to that hypothesis.",
+    "Talent.testingATheory.description2e": "When you attempt a task using Engineering or Science, the first bonus d20 you purchase is free, so long as you succeeded at a previous task covering the same scientific or technological field earlier in the same adventure. If you created a trait that represents a hypothesis about an unknown phenomenon, you may also re-roll one d20 on tasks related to that hypothesis.",
 
     "Talent.thatWasntMe": "That Wasn't Me",
 
