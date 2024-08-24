@@ -122,7 +122,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         const { SheetOutlineOptions, SpaceframeOutline } = await import(/* webpackChunkName: 'spaceframeOutline' */ "../helpers/spaceframeOutlineHelper");
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(56.7, 80), Generated2eStarshipSheet.tealColour.asPdfRbg(), 1.2, 1.2), starship);
 
-        let paragraph = new Paragraph(page, Generated2eStarshipSheet.column1, this.symbolFont);
+        let paragraph = new Paragraph(page, Generated2eStarshipSheet.column1, this.fonts);
         paragraph.append(i18next.t("Construct.other.launchYear").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
             Generated2eStarshipSheet.tealColour);
         paragraph.append("" + (starship.spaceframeModel?.serviceYear ?? (starship.serviceYear ?? "")), new FontSpecification(this.textFont, 9));
@@ -316,7 +316,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
     }
 
     writeTalents(page: PDFPage, starship: Starship, column: Column) {
-        let paragraph = new Paragraph(page, column, this.symbolFont);
+        let paragraph = new Paragraph(page, column, this.fonts);
         let result = { column: column, bottomOfTalents: paragraph.bottom }
         for (let t of starship.getDistinctTalentNameList()) {
 
@@ -352,7 +352,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
     }
 
     writeSpecialRules(page: PDFPage, starship: Starship, column: Column) {
-        let paragraph = new Paragraph(page, column, this.symbolFont);
+        let paragraph = new Paragraph(page, column, this.fonts);
         for (let t of starship.getDistinctTalentNameList()) {
 
             if (paragraph) {

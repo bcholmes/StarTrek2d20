@@ -7,11 +7,12 @@ import { SkillsHelper, Skill } from "../helpers/skills";
 import { Department, allDepartments } from "../helpers/departments";
 import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { TalentModel, TalentsHelper } from "../helpers/talents";
-import { DeliverySystem, EnergyLoadType, PersonalWeapons, Quality, TorpedoLoadType, Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
+import { DeliverySystem, EnergyLoadType, InjuryType, PersonalWeapons, Quality, TorpedoLoadType, Weapon, WeaponRange, WeaponType } from "../helpers/weapons";
 import { allSystems, System } from "../helpers/systems";
 import { Spaceframe } from "../helpers/spaceframeEnum";
 import { Species } from "../helpers/speciesEnum";
 import { EquipmentType } from "../helpers/equipment";
+import { Construct } from "../common/construct";
 
 const DEFAULT_STARSHIP_ICON = "systems/sta/assets/icons/ship_icon.png";
 const DEFAULT_EQUIPMENT_ICON = "systems/sta/assets/icons/voyagercombadgeicon.svg";
@@ -118,7 +119,7 @@ export class FoundryVttExporter {
                 "type": "talent",
                 "img": this.determineTalentIcon(t.talent, options),
                 "system": {
-                    "description": this.convertDescription(t.talent),
+                    "description": this.convertDescription(t.talent, starship),
                     "talenttype": {
                         "typeenum": "general",
                         "description": "",
@@ -298,6 +299,8 @@ export class FoundryVttExporter {
                 "disciplines": {
                 },
                 "milestones": "",
+                "pastimes": character.pastime?.length ? character.pastime.join(", ") : "",
+                "pronouns": character.pronouns ?? "",
                 "rank": character.rank?.name ?? "",
                 "reputation": character.reputation,
                 "stress": {
@@ -497,7 +500,7 @@ export class FoundryVttExporter {
                     "type": "talent",
                     "img": this.determineTalentIcon(talent, options),
                     "system": {
-                        "description": this.convertDescription(talent),
+                        "description": this.convertDescription(talent, character),
                         "talenttype": {
                             "typeenum": this.determineTalentType(talent),
                             "description": this.determineTalentRequirement(talent),
@@ -536,6 +539,7 @@ export class FoundryVttExporter {
                 "system": {
                   "description": "",
                   "damage": w.dice,
+                  "severity": w.dice,
                   "range": w.type === WeaponType.ENERGY ? "Ranged" : "Melee",
                   "hands": w.hands ?? 1,
                   "qualities": {
@@ -545,7 +549,7 @@ export class FoundryVttExporter {
                     "accurate": false,
                     "charge": w.isQualityPresent(Quality.Charge),
                     "cumbersome": false,
-                    "deadly": w.isQualityPresent(Quality.Deadly),
+                    "deadly": w.injuryType === InjuryType.Deadly || w.injuryType === InjuryType.StunOrDeadly,
                     "debilitating": false,
                     "grenade": false,
                     "inaccurate": false,
@@ -554,7 +558,8 @@ export class FoundryVttExporter {
                     "piercingx": w.getRankForQuality(Quality.Piercing),
                     "viciousx": w.getRankForQuality(Quality.Vicious),
                     "opportunity": 0,
-                    "escalation": 0
+                    "escalation": 0,
+                    "stun": w.injuryType === InjuryType.Stun || w.injuryType === InjuryType.StunOrDeadly
                   },
                   "opportunity": null,
                   "escalation": null
@@ -694,8 +699,10 @@ export class FoundryVttExporter {
         }
     }
 
-    convertDescription(talent: TalentModel) {
-        let description = talent.localizedDescription.replace(CHALLENGE_DICE_NOTATION, "CD");
+    convertDescription(talent: TalentModel, construct: Construct) {
+        let description = construct.version === 1
+            ? talent.localizedDescription.replace(CHALLENGE_DICE_NOTATION, "CD")
+            : talent.localizedDescription2e.replace(CHALLENGE_DICE_NOTATION, "CD");
 
         let prerequisites = talent.requirement;
         return description.split("\n").map(d => "<p>" + d + "</p>") + (prerequisites ? "<p><strong>" + prerequisites + "</strong></p>" : "");

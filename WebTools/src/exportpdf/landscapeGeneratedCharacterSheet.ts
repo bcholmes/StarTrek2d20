@@ -204,7 +204,7 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
 
 
     writeRoleAndTalents(page: PDFPage, character: Character) {
-        let paragraph = new Paragraph(page, LandscapeGeneratedCharacterSheet.talentsColumn, this.symbolFont);
+        let paragraph = new Paragraph(page, LandscapeGeneratedCharacterSheet.talentsColumn, this.fonts);
         if (character.role != null) {
             let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {

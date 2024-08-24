@@ -176,7 +176,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
     }
 
     writeCharacterDetails(page: PDFPage, character: Character) {
-        let paragraph = new Paragraph(page, this.mainBlock, this.symbolFont);
+        let paragraph = new Paragraph(page, this.mainBlock, this.fonts);
         paragraph.append(i18next.t("Construct.other.purpose").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
         paragraph.append(character.jobAssignment ?? i18next.t("Common.text.none"), new FontSpecification(this.textFont, 9));
         paragraph.write();

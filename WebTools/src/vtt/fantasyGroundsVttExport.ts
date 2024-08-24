@@ -1492,7 +1492,10 @@ export class FantasyGroupsVttExporter {
                     "name": this.createNumberedId(index++),
                     "type": "element",
                     "elements": [
-                        this.convertToFormattedText("desc", null, talent.localizedDescription.replace(CHALLENGE_DICE_NOTATION, "CD")),
+                        this.convertToFormattedText("desc", null,
+                            character.version === 1
+                                ? talent.localizedDescription.replace(CHALLENGE_DICE_NOTATION, "CD")
+                                : talent.localizedDescription2e.replace(CHALLENGE_DICE_NOTATION, "CD")),
                         {
                             "name": "locked",
                             "type": "element",

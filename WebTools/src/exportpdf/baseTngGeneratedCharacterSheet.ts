@@ -11,6 +11,7 @@ import { Column } from "./column";
 import { XYLocation } from "../common/xyLocation";
 import i18next from "i18next";
 import { getCurrentLanguageCode } from "../i18n/config";
+import { FontLibrary, FontType } from "./fontLibrary";
 
 export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet {
     static readonly lightPurpleColour = SimpleColor.from("#c3bcde");
@@ -19,9 +20,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
     static readonly headingColour = SimpleColor.from("#9C3478");
     static readonly orangeColour = SimpleColor.from("#F9A164");
 
-    textFont: PDFFont;
-    boldFont: PDFFont;
-    symbolFont: PDFFont;
+    fonts: FontLibrary = new FontLibrary();
     headingFont: PDFFont;
 
     get determinationPills(): Column[] {
@@ -55,19 +54,33 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
     async initializeFonts(pdf: PDFDocument) {
         await super.initializeFonts(pdf);
 
-        this.textFont = this.formFont;
+        this.fonts.addFont(FontType.Standard, this.formFont);
         const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
-        this.boldFont = await pdf.embedFont(boldFontBytes);
+        const boldFont = await pdf.embedFont(boldFontBytes);
+        this.fonts.addFont(FontType.Bold, boldFont);
 
         if (getCurrentLanguageCode() === "ru") {
-            this.headingFont = this.boldFont;
+            this.headingFont = boldFont;
         } else {
             const fontBytes = await fetch("/static/font/lcars_font.TTF").then(res => res.arrayBuffer());
             this.headingFont = await pdf.embedFont(fontBytes);
         }
 
+        const italicFontBytes = await fetch("/static/OpenSansCondensed-LightItalic.ttf").then(res => res.arrayBuffer());
+        const italicFont = await pdf.embedFont(italicFontBytes);
+        this.fonts.addFont(FontType.Italic, italicFont);
+
         const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
-        this.symbolFont = await pdf.embedFont(symbolFontBytes);
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
+        this.fonts.addFont(FontType.Symbol, symbolFont);
+    }
+
+    get boldFont() {
+        return this.fonts.fontByType(FontType.Bold);
+    }
+
+    get textFont() {
+        return this.fonts.fontByType(FontType.Standard);
     }
 
     async populate(pdf: PDFDocument, construct: Construct) {

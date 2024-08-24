@@ -17,6 +17,7 @@ import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { Paragraph } from "./paragraph";
 import { XYLocation } from "../common/xyLocation";
 import { Starship } from "../common/starship";
+import { FontLibrary, FontType } from "./fontLibrary";
 
 export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
@@ -28,24 +29,33 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
     static readonly bulletPath = "M 1.98633,0 C 0.88552,0 0,0.887478 0,1.988281 v 2.52539 C 0,5.614474 0.88552,6.5 1.98633,6.5 H 7.35 C 9.1505,6.5 10.6,5.050496 10.6,3.25 10.6,1.449502 9.1505,0 7.35,0 Z";
 
-    textFont: PDFFont;
-    boldFont: PDFFont;
-    symbolFont: PDFFont;
+    fonts: FontLibrary = new FontLibrary();
     headingFont: PDFFont;
 
 
     async initializeFonts(pdf: PDFDocument) {
         await super.initializeFonts(pdf);
 
-        this.textFont = this.formFont;
+        this.fonts.addFont(FontType.Standard, this.formFont);
         const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
-        this.boldFont = await pdf.embedFont(boldFontBytes);
+        const boldFont = await pdf.embedFont(boldFontBytes);
+        this.fonts.addFont(FontType.Bold, boldFont);
+
 
         const fontBytes = await fetch("/static/font/Michroma-Regular.ttf").then(res => res.arrayBuffer());
         this.headingFont = await pdf.embedFont(fontBytes);
 
         const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
-        this.symbolFont = await pdf.embedFont(symbolFontBytes);
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
+        this.fonts.addFont(FontType.Symbol, symbolFont);
+    }
+
+    get boldFont() {
+        return this.fonts.fontByType(FontType.Bold);
+    }
+
+    get textFont() {
+        return this.fonts.fontByType(FontType.Standard);
     }
 
     get nameColumn() {
@@ -212,7 +222,7 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
                 + (construct.version === 1 ? CHALLENGE_DICE_NOTATION : "") + qualities
                 + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
 
-            paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);
+            paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.fonts) : paragraph.nextParagraph(0);
             paragraph.append(w.description + ": ", bold);
             paragraph.append(text, standard);
             paragraph.write();

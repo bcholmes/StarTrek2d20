@@ -203,6 +203,16 @@ export class Milestone {
     }
 }
 
+export class SpeciesAbilityOptions {
+    focuses: string[] = [];
+
+    copy() {
+        let result = new SpeciesAbilityOptions();
+        result.focuses = [...this.focuses];
+        return result;
+    }
+}
+
 export class SpeciesStep {
     public readonly species: Species;
     public mixedSpecies: Species;
@@ -211,6 +221,7 @@ export class SpeciesStep {
     public attributes: Attribute[];
     public talent?: SelectedTalent;
     public ability?: SpeciesAbility;
+    public abilityOptions: SpeciesAbilityOptions;
 
     constructor(species: Species) {
         this.species = species;
@@ -231,6 +242,8 @@ export class SpeciesStep {
         if (this.ability != null) {
             result.ability = this.ability;
         }
+
+        result.abilityOptions = this.abilityOptions?.copy();
         return result;
     }
 }
