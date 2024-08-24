@@ -206,7 +206,7 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
             } else {
                 qualities = "";
             }
-            const dice = (construct instanceof Starship) ? (construct as Starship).getDiceForWeapon(w, true) : (w.dice + security);
+            const dice = (construct instanceof Starship) ? (construct as Starship).getDiceForWeapon(w) : (w.dice + security);
 
             let text = type + ", " + injuryType + dice
                 + (construct.version === 1 ? CHALLENGE_DICE_NOTATION : "") + qualities

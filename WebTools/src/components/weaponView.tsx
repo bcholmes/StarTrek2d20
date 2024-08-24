@@ -1,7 +1,6 @@
 import React from "react";
-import { InjuryType, Weapon } from "../helpers/weapons";
+import { Weapon } from "../helpers/weapons";
 import { useTranslation } from 'react-i18next';
-import { makeKey } from "../common/translationKey";
 
 interface IWeaponViewProperties {
     weapon?: Weapon;
@@ -14,7 +13,7 @@ const WeaponView: React.FC<IWeaponViewProperties> = ({weapon, dice, version}) =>
     const { t } = useTranslation();
 
     const renderInjuryAndDetails = () => {
-        let result = weapon.injuryTypeEffectsAndQualities;
+        let result = version > 1 ? weapon.injuryTypeEffectsAndQualities : weapon.effectsAndQualities;
         return result?.length ? result : '\u00A0';
     }
 

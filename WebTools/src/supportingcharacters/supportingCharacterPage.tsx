@@ -22,6 +22,9 @@ import { ICharacterPageProperties } from '../common/iCharacterPageProperties';
 import { connect } from 'react-redux';
 import { characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
 import { StepContext, setCharacter, setCharacterAge, setCharacterAssignment, setCharacterFocus, setCharacterName, setCharacterPronouns, setCharacterRank, setCharacterSpecies, setCharacterType } from '../state/characterActions';
+import { localizedFocus } from '../components/focusHelper';
+import { FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
+import D20IconButton from '../solo/component/d20IconButton';
 
 
 const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
@@ -113,8 +116,19 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         }
     }
 
+    const selectRandomFocus = (index: number) => {
+        let done = false;
+        while (!done) {
+            let focus = localizedFocus(FocusRandomTableWithHints(character.supportingStep?.disciplines[0]));
+            if (character.focuses.indexOf(focus) < 0) {
+                done = true;
+                store.dispatch(setCharacterFocus(focus, StepContext.FinishingTouches, index));
+            }
+        }
+    }
+
     useEffect(() => {
-        let character = Character.createSupportingCharacter(store.getState().context.era);
+        let character = Character.createSupportingCharacter(store.getState().context.era, hasSource(Source.Core2ndEdition) ? 2 : 1);
         store.dispatch(setCharacter(character));
     }, [])
 
@@ -227,23 +241,32 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                     <p>
                         {t('SupportingCharacter.focusInstruction')}
                     </p>
-                    <div className="mb-2">
+                    <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
                         <InputFieldAndLabel labelName={t('Construct.other.focus1')} value={character.focuses[0] ?? ""}
                             id="focus1" onChange={(value) => {
                                 store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 0));
                             }} />
+                        <div style={{ flexShrink: 0 }} className="mt-1">
+                            <D20IconButton onClick={() => selectRandomFocus(0)}/>
+                        </div>
                     </div>
-                    <div className="mb-2">
+                    <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
                         <InputFieldAndLabel labelName={t('Construct.other.focus2')} value={character.focuses[1] ?? ""}
                             id="focus2" onChange={(value) => {
                                 store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 1));
                             }} />
+                        <div style={{ flexShrink: 0 }} className="mt-1">
+                            <D20IconButton onClick={() => selectRandomFocus(1)}/>
+                        </div>
                     </div>
-                    <div className="mb-2">
+                    <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
                         <InputFieldAndLabel labelName={t('Construct.other.focus3')} value={character.focuses[2] ?? ""}
                             id="focus3" onChange={(value) => {
                                 store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 2));
                             }} />
+                        <div style={{ flexShrink: 0 }} className="mt-1">
+                            <D20IconButton onClick={() => selectRandomFocus(2)}/>
+                        </div>
                     </div>
                     <Header level={2} className="mt-5">{t('SupportingCharacter.nameAndRank')}</Header>
                     <p>

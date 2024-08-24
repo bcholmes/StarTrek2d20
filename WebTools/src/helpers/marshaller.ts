@@ -377,6 +377,9 @@ class Marshaller {
         if (t.value) {
             talent["value"] = t.value;
         }
+        if (t.attribute != null) {
+            talent["attribute"] = t.attribute;
+        }
         return talent;
     }
 
@@ -1105,6 +1108,9 @@ class Marshaller {
             }
             if (t["value"]) {
                 selectedTalent.value = t["value"];
+            }
+            if (t["attribute"] != null) {
+                selectedTalent.attribute = AttributesHelper.getAttributeByName(t["attribute"]);
             }
             return selectedTalent;
         } else {

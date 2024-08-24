@@ -5,6 +5,7 @@ import { XYLocation } from "../common/xyLocation";
 import { FontSpecification } from "./fontSpecification";
 import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { TextBlock } from "./textBlock";
+import { FontLibrary, FontType } from "./fontLibrary";
 
 // A line represents one line of text inside a paragrap and/or column of text. The line can
 // contain different text blocks (including some blocks that have different fonts or font weights),
@@ -96,17 +97,26 @@ export class Paragraph {
 
     column: Column;
     lines: Line[] = [];
-    symbolFont: PDFFont;
     page: PDFPage;
     indentAmount: number;
+    fontLibrary: FontLibrary;
 
     // in PDF coordinate system
     private start?: XYLocation;
 
-    constructor(page: PDFPage, column: Column, symbolFont?: PDFFont) {
+    constructor(page: PDFPage, column: Column, fontLibrary: FontLibrary|PDFFont) {
         this.column = column;
         this.page = page;
-        this.symbolFont = symbolFont;
+        if (fontLibrary instanceof FontLibrary) {
+            this.fontLibrary = fontLibrary as FontLibrary;
+        } else {
+            let fonts = { [FontType.Symbol] : (fontLibrary as PDFFont)};
+            this.fontLibrary = new FontLibrary(fonts);
+        }
+    }
+
+    get symbolFont() {
+        return this.fontLibrary[FontType.Symbol];
     }
 
     get startColumn() {
@@ -203,7 +213,7 @@ export class Paragraph {
             }
 
             if (line) {
-                result = new Paragraph(this.page, Paragraph.unindentedColumn(line.column, this.indentAmount), this.symbolFont);
+                result = new Paragraph(this.page, Paragraph.unindentedColumn(line.column, this.indentAmount), this.fontLibrary);
                 result.start = this.indentAmount ? new XYLocation(newLocation.x - this.indentAmount, newLocation.y) : newLocation;
             } else {
                 result = null;

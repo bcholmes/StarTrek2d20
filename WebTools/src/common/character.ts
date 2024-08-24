@@ -22,7 +22,7 @@ import { Specialization } from './specializationEnum';
 import { MilestoneType } from '../modify/model/milestoneType';
 import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equipment';
 import { Era } from '../helpers/eras';
-import { SpeciesAbility } from '../helpers/speciesAbility';
+import { SpeciesAbility, SpeciesAbilityList } from '../helpers/speciesAbility';
 
 export abstract class CharacterTypeDetails {
 }
@@ -143,6 +143,7 @@ export class SelectedTalent {
     implants: BorgImplantType[];
     focuses: string[];
     value: string;
+    attribute?: Attribute;
 
     constructor(talent: string) {
         this.talent = talent;
@@ -155,6 +156,7 @@ export class SelectedTalent {
         result.implants = [...this.implants];
         result.focuses = [...this.focuses];
         result.value = this.value;
+        result.attribute = this.attribute;
         return result;
     }
 }
@@ -1320,11 +1322,16 @@ export class Character extends Construct {
         return result;
     }
 
-    public static createSupportingCharacter(era: Era) {
+    public static createSupportingCharacter(era: Era, version: 1|2 = 1) {
         let result = new Character();
+        result.version = version;
         result.stereotype = Stereotype.SupportingCharacter;
         result.era = era;
         result.speciesStep = new SpeciesStep(Species.Human);
+        if (version > 1) {
+            result.speciesStep.ability = SpeciesAbilityList.instance.getBySpecies(Species.Human);
+        }
+
         result.supportingStep = new SupportingStep();
         let rank = RanksHelper.instance().getRank(Rank.Lieutenant);
         result.rank = new CharacterRank(rank.localizedName, rank.id);

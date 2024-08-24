@@ -12,6 +12,7 @@ import StressOrShieldsView from "./stressOrShieldsView";
 import FocusBlockView from "./focusBlockView";
 import WeaponBlockView from "./weaponBlockView";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
+import SpeciesAbilityBlockView from "./speciesAbilityBlockView";
 
 const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -68,6 +69,8 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
                 <CharacterStatBlock character={character} />
 
                 <ValuesBlockView character={character} />
+
+                <SpeciesAbilityBlockView character={character} />
             </div>
             <div className="col-xl-6">
                 <div className="row">

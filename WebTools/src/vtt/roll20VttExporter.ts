@@ -310,7 +310,7 @@ export class Roll20VttExporter {
                 result += "<li><p>" + w.description + " ("
                     + (w.isTractorOrGrappler ? "" : (WeaponTypeModel.TYPES[w.type].description + ", "))
                     + (w.range != null ? "Range " + WeaponRange[w.range] + ", " : "")
-                    + (w.isTractorOrGrappler ? "Strength " + starship.getDiceForWeapon(w) : (starship.getDiceForWeapon(w) + delta)) + " "
+                    + (w.isTractorOrGrappler ? "Strength " + starship.getDiceForWeaponForRoll20(w) : (starship.getDiceForWeaponForRoll20(w) + delta)) + " "
                     + w.effectsAndQualities + ")"
                     + "</p></li>";
             });
@@ -941,7 +941,7 @@ export class Roll20VttExporter {
 
     convertStarshipWeapon(starship: Starship, weapon: Weapon, id: IdHelper) {
         let damage = "";
-        for (let i = 0; i < weapon.dice + starship.getDiceForWeapon(weapon); i++) {
+        for (let i = 0; i < weapon.dice + starship.getDiceForWeaponForRoll20(weapon); i++) {
             damage += "{{cdice" + (i+1) + "=[[1d6]]}}";
         }
         const rowId = id.nextId();
