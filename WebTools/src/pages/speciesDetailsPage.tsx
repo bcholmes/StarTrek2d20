@@ -91,6 +91,10 @@ const SpeciesDetailsPage : React.FC<ISpeciesDetailsProperties> = ({character, al
                 .forEach(t => talents.push(t));
         }
 
+        if (talents.length === 0) {
+            talents.push(...TalentsHelper.getAllAvailableTalentsForCharacter(character));
+        }
+
         let initial = character.speciesStep?.talent ? TalentsHelper.getTalent(character.speciesStep?.talent?.talent) : undefined;
         if (talents.length > 0 && isTalentSelectionRequired()) {
             return (<div>

@@ -66,7 +66,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
             this.headingFont = await pdf.embedFont(fontBytes);
         }
 
-        const italicFontBytes = await fetch("/static/OpenSansCondensed-LightItalic.ttf").then(res => res.arrayBuffer());
+        const italicFontBytes = await fetch("/static/font/OpenSansCondensed-LightItalic.ttf").then(res => res.arrayBuffer());
         const italicFont = await pdf.embedFont(italicFontBytes);
         this.fonts.addFont(FontType.Italic, italicFont);
 

@@ -138,7 +138,7 @@ export class CareersHelper {
     }
 
     getCareers(character: Character) {
-        if (character.stereotype === Stereotype.SoloCharacter) {
+        if (character.stereotype === Stereotype.SoloCharacter || character.version > 1) {
             return this.getSoloCareerLengths();
         } else {
             let careers: CareerModel[] = [];
@@ -161,7 +161,7 @@ export class CareersHelper {
     }
 
     getCareer(career: Career, c: Character) {
-        if (c.stereotype === Stereotype.SoloCharacter) {
+        if (c.stereotype === Stereotype.SoloCharacter || c.version > 1) {
             return this.getSoloCareerLength(career);
         } else {
             const list = this.getBaseList(c.type);
@@ -169,8 +169,8 @@ export class CareersHelper {
         }
     }
 
-    getCareerByTypeName(typeName: string, type: CharacterType) {
-        const list = this.getBaseList(type);
+    getCareerByTypeName(typeName: string, type: CharacterType, version: number = 1) {
+        const list = (version === 1) ? this.getBaseList(type) : this._soloCareerLengths;
         const filtered = list.filter(c => Career[c.id] === typeName);
         return filtered.length === 0 ? undefined : filtered[0];
     }

@@ -1531,7 +1531,7 @@ export class FantasyGroupsVttExporter {
                             "elements": [
                                 {
                                     "type": "text",
-                                    "text": talent.name
+                                    "text": talent.localizedDisplayName
                                 }
                             ]
                         },

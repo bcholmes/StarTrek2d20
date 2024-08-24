@@ -13,6 +13,8 @@ import { Spaceframe } from "../helpers/spaceframeEnum";
 import { Species } from "../helpers/speciesEnum";
 import { EquipmentType } from "../helpers/equipment";
 import { Construct } from "../common/construct";
+import { CareerEventsHelper } from "../helpers/careerEvents";
+import { CareersHelper } from "../helpers/careers";
 
 const DEFAULT_STARSHIP_ICON = "systems/sta/assets/icons/ship_icon.png";
 const DEFAULT_EQUIPMENT_ICON = "systems/sta/assets/icons/voyagercombadgeicon.svg";
@@ -292,12 +294,21 @@ export class FoundryVttExporter {
                 "assignment": character.assignment,
                 "attributes": {
                 },
+                "careerevents": character
+                    .careerEvents
+                    .map(e => CareerEventsHelper.getCareerEvent(e.id, character.type)?.name)
+                    .filter(e => e?.length)
+                    .join(", "),
+                "characterrole": character.assignmentWithoutShip,
                 "determination": {
                     "value": 1,
                     "max": 3
                 },
                 "disciplines": {
                 },
+                "experience": character.careerStep?.career != null
+                    ? (CareersHelper.instance.getCareer(character.careerStep?.career, character)?.localizedName ?? "")
+                    : "",
                 "milestones": "",
                 "pastimes": character.pastime?.length ? character.pastime.join(", ") : "",
                 "pronouns": character.pronouns ?? "",
@@ -496,7 +507,7 @@ export class FoundryVttExporter {
             let talent = TalentsHelper.getTalent(n);
             if (talent) {
                 result.items.push({
-                    "name": talent.displayName + (talent.maxRank > 1 ? " [x" + character.getRankForTalent(talent.name) + "]" : ""),
+                    "name": talent.localizedDisplayName + (talent.maxRank > 1 ? " [x" + character.getRankForTalent(talent.name) + "]" : ""),
                     "type": "talent",
                     "img": this.determineTalentIcon(talent, options),
                     "system": {

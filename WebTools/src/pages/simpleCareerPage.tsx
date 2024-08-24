@@ -61,7 +61,8 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
                     </div>
                     <div className="col-12 col-lg-6">
                         <Header level={2}>{t('Construct.other.talent')}</Header>
-                        <TalentDescription name={talentModel.localizedName} description={talentModel.localizedDescription} />
+                        <TalentDescription name={talentModel.localizedDisplayName}
+                            description={character.version > 1 ? talentModel.localizedDescription2e : talentModel.localizedDescription} />
                     </div>
                 </div>
                 <div className="text-end">
