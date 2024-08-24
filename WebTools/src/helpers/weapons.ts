@@ -12,7 +12,7 @@ export enum Quality {
 }
 
 export enum InjuryType {
-    Stun, Deadly
+    Stun, Deadly, StunOrDeadly
 }
 
 export class WeaponQuality {
@@ -364,6 +364,7 @@ export class Weapon {
     _qualities: WeaponQuality[];
     _effects: WeaponQuality[];
     hands?: number;
+    injuryType?: InjuryType;
 
     constructor(usage: UsageCategory, name: string, dice: number, type: WeaponType,
             loadType?: EnergyLoadTypeModel|CaptureTypeModel|TorpedoLoadTypeModel|MineTypeModel,
@@ -433,14 +434,6 @@ export class Weapon {
             }
         });
         return result;
-    }
-
-    get injuryType() {
-        if (this.isQualityPresent(Quality.Deadly)) {
-            return InjuryType.Deadly;
-        } else {
-            return InjuryType.Stun;
-        }
     }
 
     get scaleApplies() {
@@ -519,6 +512,17 @@ export class Weapon {
             return result;
         }
     }
+    get injuryTypeEffectsAndQualities() {
+        let result = [];
+        if (this.injuryType != null) {
+            result.push(i18next.t(makeKey("InjuryType.", InjuryType[this.injuryType])));
+        }
+        let temp = this.effectsAndQualities;
+        if (temp.length) {
+            result.push(temp);
+        }
+        return result.join(", ");
+    }
     get effectsAndQualities() {
         if (this.usageCategory === UsageCategory.Character) {
             return this.weaponQualities.map(q => q.localizedDescription).join(", ");
@@ -548,11 +552,12 @@ export class Weapon {
         return this.type === WeaponType.CAPTURE;
     }
 
-    static createCharacterWeapon(name: string, dice: number, effects: WeaponQuality[], qualities: WeaponQuality[], type: WeaponType, hands: number = 1) {
+    static createCharacterWeapon(name: string, injuryType: InjuryType, dice: number, effects: WeaponQuality[], qualities: WeaponQuality[], type: WeaponType, hands: number = 1) {
         let result = new Weapon(UsageCategory.Character, name, dice, type);
         result._qualities = qualities;
         result._effects = effects;
         result.hands = hands;
+        result.injuryType = injuryType;
         return result;
     }
 
@@ -638,74 +643,149 @@ const StarshipWeaponRegistry = new StarshipWeaponList();
 export default StarshipWeaponRegistry;
 
 export class PersonalWeapons {
+
+    private static _instanceVersion1: PersonalWeaponsVersion1;
     private static _instance: PersonalWeapons;
 
     get unarmedStrike() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.Stun, 2,
+            [], [], WeaponType.MELEE);
     }
 
     get unarmedStrikeMean() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.Stun, 2, [], [new WeaponQuality(Quality.Intense)], WeaponType.MELEE);
     }
 
-    get unarmedStrikeIntense() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Intense)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+    get unarmedStrikeMartialArtist() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.StunOrDeadly, 2, [], [], WeaponType.MELEE);
     }
 
-    get unarmedStrikeVicious() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE);
+    // TODO: is this right?
+    get unarmedStrikeBruteForce() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.Stun, 2, [new WeaponQuality(Quality.Debilitating)], [], WeaponType.MELEE);
     }
 
     get phaser1() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), 2, [], [new WeaponQuality(Quality.Charge), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), InjuryType.StunOrDeadly, 3, [], [new WeaponQuality(Quality.Charge), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
     }
 
     get phaser2() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), 3, [], [new WeaponQuality(Quality.Charge)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), InjuryType.StunOrDeadly, 4, [], [new WeaponQuality(Quality.Charge)], WeaponType.ENERGY);
     }
 
     get ushaanTor() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.ushaantor.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.ushaantor.name'), InjuryType.Deadly, 3, [], [], WeaponType.MELEE);
     }
 
     get batLeth() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE, 2);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), InjuryType.Deadly, 3, [new WeaponQuality(Quality.Intense)], [], WeaponType.MELEE, 2);
     }
 
     get tzenkethiHeavyBlade() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.tzenkethiHeavyBlade.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE, 2);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.tzenkethiHeavyBlade.name'), InjuryType.Deadly, 3, [new WeaponQuality(Quality.Intense)], [], WeaponType.MELEE, 2);
     }
 
     get particleRifle() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.particleRifle.name'), 3, [], [new WeaponQuality(Quality.Accurate)], WeaponType.ENERGY, 2);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.particleRifle.name'), InjuryType.StunOrDeadly, 4, [], [new WeaponQuality(Quality.Accurate)], WeaponType.ENERGY, 2);
     }
 
     get dkTagh() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dktahg.name'), 1,
-            [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)],
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dktahg.name'), InjuryType.Deadly, 2,
+            [], [new WeaponQuality(Quality.Hidden, 1)],
             WeaponType.MELEE);
     }
 
     get disruptorPistol() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), InjuryType.Deadly, 4, [new WeaponQuality(Quality.Intense)], [], WeaponType.ENERGY);
     }
 
     get sonaPlasmaDisruptorShotgun() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.sonaPlasmaDisruptorShotgun.name'), 4, [new WeaponQuality(Quality.Vicious, 1), new WeaponQuality(Quality.Debilitating), new WeaponQuality(Quality.Piercing, 1)], [], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.sonaPlasmaDisruptorShotgun.name'), InjuryType.Deadly, 5, [new WeaponQuality(Quality.Intense), new WeaponQuality(Quality.Debilitating), new WeaponQuality(Quality.Piercing, 1)], [], WeaponType.ENERGY);
     }
 
     get energyWhip() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.energyWhip.name'), 3, [new WeaponQuality(Quality.Intense)], [new WeaponQuality(Quality.NonLethal)], WeaponType.ENERGY);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.energyWhip.name'), InjuryType.Stun, 4, [new WeaponQuality(Quality.Intense)], [], WeaponType.ENERGY);
     }
 
     get dagger() {
-        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dagger.name'), 1, [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)], WeaponType.MELEE);
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dagger.name'), InjuryType.Deadly, 2, [], [new WeaponQuality(Quality.Hidden, 1)], WeaponType.MELEE);
     }
 
-    static get instance() {
-        if (PersonalWeapons._instance == null) {
-            PersonalWeapons._instance = new PersonalWeapons();
+    static instance(version: number) {
+        if (version === 1) {
+            if (PersonalWeapons._instanceVersion1 == null) {
+                PersonalWeapons._instanceVersion1 = new PersonalWeaponsVersion1();
+            }
+            return PersonalWeapons._instanceVersion1;
+
+        } else {
+            if (PersonalWeapons._instance == null) {
+                PersonalWeapons._instance = new PersonalWeapons();
+            }
+            return PersonalWeapons._instance;
         }
-        return PersonalWeapons._instance;
+    }
+}
+
+class PersonalWeaponsVersion1 extends PersonalWeapons {
+
+    get unarmedStrike() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.Stun, 2, [new WeaponQuality(Quality.Knockdown)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+    }
+
+    get unarmedStrikeMean() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.Stun, 2, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+    }
+
+    get unarmedStrikeMartialArtist() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.Stun, 2, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Intense)], [new WeaponQuality(Quality.NonLethal)], WeaponType.MELEE);
+    }
+
+    get unarmedStrikeBruteForce() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.strike.name'), InjuryType.Stun, 1, [new WeaponQuality(Quality.Knockdown), new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE);
+    }
+
+    get phaser1() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser1.name'), InjuryType.StunOrDeadly, 2, [], [new WeaponQuality(Quality.Charge), new WeaponQuality(Quality.Hidden, 1)], WeaponType.ENERGY);
+    }
+    get disruptorPistol() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.disruptor.name'), InjuryType.Deadly, 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.ENERGY);
+    }
+
+    get phaser2() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.phaser2.name'), InjuryType.StunOrDeadly, 3, [], [new WeaponQuality(Quality.Charge)], WeaponType.ENERGY);
+    }
+
+    get sonaPlasmaDisruptorShotgun() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.sonaPlasmaDisruptorShotgun.name'), InjuryType.Deadly, 4, [new WeaponQuality(Quality.Vicious, 1), new WeaponQuality(Quality.Debilitating), new WeaponQuality(Quality.Piercing, 1)], [], WeaponType.ENERGY);
+    }
+    get dkTagh() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dktahg.name'), InjuryType.Deadly, 1,
+            [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)],
+            WeaponType.MELEE);
+    }
+
+    get energyWhip() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.energyWhip.name'), InjuryType.Stun, 3, [new WeaponQuality(Quality.Intense)], [new WeaponQuality(Quality.NonLethal)], WeaponType.ENERGY);
+    }
+
+    get dagger() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.dagger.name'), InjuryType.Deadly, 1, [new WeaponQuality(Quality.Vicious, 1)], [new WeaponQuality(Quality.Deadly), new WeaponQuality(Quality.Hidden, 1)], WeaponType.MELEE);
+    }
+
+    get particleRifle() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.particleRifle.name'), InjuryType.StunOrDeadly, 3, [], [new WeaponQuality(Quality.Accurate)], WeaponType.ENERGY, 2);
+    }
+
+    get batLeth() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.batleth.name'), InjuryType.Deadly, 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE, 2);
+    }
+
+    get tzenkethiHeavyBlade() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.tzenkethiHeavyBlade.name'), InjuryType.Deadly, 3, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE, 2);
+    }
+
+    get ushaanTor() {
+        return Weapon.createCharacterWeapon(i18next.t('Weapon.personal.ushaantor.name'), InjuryType.Deadly, 1, [new WeaponQuality(Quality.Vicious, 1)], [], WeaponType.MELEE);
     }
 }

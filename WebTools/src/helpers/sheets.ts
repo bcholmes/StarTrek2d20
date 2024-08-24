@@ -600,7 +600,7 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
             this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + (security + w.dice)));
-            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', w.effectsAndQualities);
+            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', construct.version > 1 ? w.injuryTypeEffectsAndQualities : w.effectsAndQualities);
         });
     }
 

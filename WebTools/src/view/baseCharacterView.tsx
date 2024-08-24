@@ -83,7 +83,7 @@ export abstract class BaseCharacterView extends React.Component<ICharacterViewPr
             let weapons = character.determineWeapons().map((w, i) => {
                 let dice = w.dice;
                 dice += character.skills[Skill.Security].expertise;
-                return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} />);
+                return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} version={character.version} />);
             });
             return (<>
                     <Header level={2} className="mt-4">{t('Construct.other.weapons')}</Header>

@@ -1284,6 +1284,10 @@
     "MissionProfile.klingon.houseGuard": "House Guard",
     "MissionProfile.klingon.warship": "Warship",
 
+    "InjuryType.deadly": "Deadly",
+    "InjuryType.stun": "Stun",
+    "InjuryType.stunOrDeadly": "Stun/Deadly",
+
     "MouthType.mouth1": "Thin Lip",
     "MouthType.mouth2": "Medium Lip",
     "MouthType.mouth3": "Medium Lip Frowning",

@@ -192,7 +192,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
             if (!w.isTractorOrGrappler && this.props.starship.departments) {
                 dice += this.props.starship.departments[Department.Security];
             }
-            return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} />);
+            return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} version={this.props.starship.version} />);
         });
         return (<div>{weapons}</div>);
     }

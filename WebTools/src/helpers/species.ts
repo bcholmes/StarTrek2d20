@@ -2047,7 +2047,8 @@ class _Species {
         let result = undefined;
         for (let species in this._species) {
             if (name === Species[species]) {
-                result = species;
+                let speciesModel = this._species[species];
+                result = speciesModel.id;
                 break;
             }
         }

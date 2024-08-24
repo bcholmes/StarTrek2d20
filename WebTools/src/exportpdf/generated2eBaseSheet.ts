@@ -12,7 +12,7 @@ import { makeKey } from "../common/translationKey";
 import { Character } from "../common/character";
 import { Department, allDepartments } from "../helpers/departments";
 import { System, allSystems } from "../helpers/systems";
-import { WeaponType, WeaponTypeModel } from "../helpers/weapons";
+import { InjuryType, WeaponType, WeaponTypeModel } from "../helpers/weapons";
 import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { Paragraph } from "./paragraph";
 import { XYLocation } from "../common/xyLocation";
@@ -195,6 +195,11 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
             if (personal) {
                 type = w.type === WeaponType.MELEE ? i18next.t("Weapon.common.melee") : i18next.t("Weapon.common.ranged");
             }
+            let injuryType = "";
+            if (construct.version > 1 && w.injuryType != null) {
+                injuryType = i18next.t(makeKey("InjuryType.", InjuryType[w.injuryType])) + " ";
+            }
+
             let qualities = w.weaponQualities.map(q => q.localizedDescription).join(", ");
             if (qualities?.length) {
                 qualities = ", " + qualities;
@@ -203,7 +208,8 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
             }
             const dice = (construct instanceof Starship) ? (construct as Starship).getDiceForWeapon(w, true) : (w.dice + security);
 
-            let text = type + ", " + dice + CHALLENGE_DICE_NOTATION + qualities
+            let text = type + ", " + injuryType + dice
+                + (construct.version === 1 ? CHALLENGE_DICE_NOTATION : "") + qualities
                 + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
 
             paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.symbolFont) : paragraph.nextParagraph(0);

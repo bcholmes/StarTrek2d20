@@ -651,15 +651,15 @@ export class FoundryVttExporter {
 
     determineWeaponIcon(weapon: Weapon, options: FoundryVttExporterOptions, character: Character) {
         if (options.isStaCompendiumUsed) {
-            if (weapon.name === PersonalWeapons.instance.unarmedStrike.name) {
+            if (weapon.name === PersonalWeapons.instance(character.version).unarmedStrike.name) {
                 return "modules/sta-compendia/assets/icons/weapons-core/unarmed-strike.webp";
-            } else if (weapon.name === PersonalWeapons.instance.phaser1.name) {
+            } else if (weapon.name === PersonalWeapons.instance(character.version).phaser1.name) {
                 return "modules/sta-compendia/assets/icons/weapons-core/phaser-type-1.webp";
-            } else if (weapon.name === PersonalWeapons.instance.phaser2.name) {
+            } else if (weapon.name === PersonalWeapons.instance(character.version).phaser2.name) {
                 return "modules/sta-compendia/assets/icons/weapons-core/phaser-type-2.webp";
-            } else if (weapon.name === PersonalWeapons.instance.batLeth.name) {
+            } else if (weapon.name === PersonalWeapons.instance(character.version).batLeth.name) {
                 return "modules/sta-compendia/assets/icons/weapons-core/bat-leth.webp";
-            } else if (weapon.name === PersonalWeapons.instance.disruptorPistol.name) {
+            } else if (weapon.name === PersonalWeapons.instance(character.version).disruptorPistol.name) {
                 if (character.speciesStep.species === Species.Romulan) {
                     return "modules/sta-compendia/assets/icons/weapons-core/romulan-disruptor-pistol.webp";
                 } else if(character.speciesStep.species === Species.Klingon) {

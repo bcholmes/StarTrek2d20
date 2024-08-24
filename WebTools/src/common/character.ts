@@ -813,57 +813,57 @@ export class Character extends Construct {
         let result: Weapon[] = [];
 
         if (this.hasTalent("Mean Right Hook")) {
-            result.push(PersonalWeapons.instance.unarmedStrikeMean);
+            result.push(PersonalWeapons.instance(this.version).unarmedStrikeMean);
         } else if (this.hasTalent("Martial Artist")) {
-            result.push(PersonalWeapons.instance.unarmedStrikeIntense);
+            result.push(PersonalWeapons.instance(this.version).unarmedStrikeMartialArtist);
         } else if (this.hasTalent("Brute Force") || this.hasTalent("Extra Arms")) {
-            result.push(PersonalWeapons.instance.unarmedStrikeVicious);
+            result.push(PersonalWeapons.instance(this.version).unarmedStrikeBruteForce);
         } else {
-            result.push(PersonalWeapons.instance.unarmedStrike);
+            result.push(PersonalWeapons.instance(this.version).unarmedStrike);
         }
 
         if (this.hasTalent("The Ushaan")) {
-            result.push(PersonalWeapons.instance.ushaanTor);
+            result.push(PersonalWeapons.instance(this.version).ushaanTor);
         }
 
         if (this.hasTalent("Warrior's Spirit")) {
-            result.push(PersonalWeapons.instance.batLeth);
+            result.push(PersonalWeapons.instance(this.version).batLeth);
         }
 
         if (this.type === CharacterType.Starfleet) {
             if (this.isSecurityOrSeniorOfficer()) {
-                result.push(PersonalWeapons.instance.phaser2);
+                result.push(PersonalWeapons.instance(this.version).phaser2);
             } else {
-                result.push(PersonalWeapons.instance.phaser1);
+                result.push(PersonalWeapons.instance(this.version).phaser1);
             }
         } else if (this.type === CharacterType.Cadet) {
-            result.push(PersonalWeapons.instance.phaser1);
+            result.push(PersonalWeapons.instance(this.version).phaser1);
         } else if (this.isBajoranMilitia() || this.isCardassianUnion()) {
-            result.push(PersonalWeapons.instance.phaser2);
+            result.push(PersonalWeapons.instance(this.version).phaser2);
         } else if (this.age.isAdult) {
             if (this.isKlingon()) {
-                result.push(PersonalWeapons.instance.dkTagh);
+                result.push(PersonalWeapons.instance(this.version).dkTagh);
             } else if (this.npcGenerationStep?.specialization === Specialization.FerengiDaiMon) {
-                result.push(PersonalWeapons.instance.phaser1);
-                result.push(PersonalWeapons.instance.energyWhip);
+                result.push(PersonalWeapons.instance(this.version).phaser1);
+                result.push(PersonalWeapons.instance(this.version).energyWhip);
             } else if (this.npcGenerationStep?.specialization === Specialization.RomulanCenturion
                 || this.npcGenerationStep?.specialization === Specialization.RomulanTalShiar) {
-                result.push(PersonalWeapons.instance.disruptorPistol);
+                result.push(PersonalWeapons.instance(this.version).disruptorPistol);
             } else if (this.npcGenerationStep?.specialization === Specialization.TzenkethiSoldier) {
                 if (this.rank.id === Rank.LorAA) {
-                    result.push(PersonalWeapons.instance.tzenkethiHeavyBlade);
+                    result.push(PersonalWeapons.instance(this.version).tzenkethiHeavyBlade);
                 } else {
-                    result.push(PersonalWeapons.instance.dagger);
+                    result.push(PersonalWeapons.instance(this.version).dagger);
                 }
-                result.push(PersonalWeapons.instance.particleRifle);
+                result.push(PersonalWeapons.instance(this.version).particleRifle);
             } else if (this.npcGenerationStep?.specialization === Specialization.SonaCommandOfficer) {
-                result.push(PersonalWeapons.instance.sonaPlasmaDisruptorShotgun);
+                result.push(PersonalWeapons.instance(this.version).sonaPlasmaDisruptorShotgun);
             } else if (this.npcGenerationStep?.specialization === Specialization.OrionPirate) {
-                result.push(PersonalWeapons.instance.disruptorPistol);
-                result.push(PersonalWeapons.instance.dagger);
+                result.push(PersonalWeapons.instance(this.version).disruptorPistol);
+                result.push(PersonalWeapons.instance(this.version).dagger);
             } else if (this.type !== CharacterType.Child && this.type !== CharacterType.Civilian
                     && this.type !== CharacterType.AmbassadorDiplomat) {
-                result.push(PersonalWeapons.instance.disruptorPistol);
+                result.push(PersonalWeapons.instance(this.version).disruptorPistol);
             }
         }
         return result;

@@ -1650,6 +1650,9 @@ MissionProfile.klingon.scientificAndSurvey,Scientific and Survey Operations,,,Op
 MissionProfile.klingon.strategicAndDiplomatic,Strategic and Diplomatic Operations,,,Operaciones Estratégicas y Diplomáticas,Opérations stratégiques et diplomatiques,,Operações Estratégicas e Diplomáticas
 MissionProfile.klingon.houseGuard,House Guard,,,Guardia de la Casa,Garde de Maison,,Guarda da Casa
 MissionProfile.klingon.warship,Warship,,,Nave de Guerra,Vaisseau de guerre,,Nave de Guerra
+InjuryType.deadly,Deadly,,,,,,
+InjuryType.stun,Stun,,,,,,
+InjuryType.stunOrDeadly,Stun/Deadly,,,,,,
 MouthType.mouth1,Thin Lip,,,Labios Finos,,,Lábios Finos
 MouthType.mouth2,Medium Lip,,,Labios normales,,,Lábios Médios
 MouthType.mouth3,Medium Lip Frowning,,,Labio normal fruncido,,,Lábios Médios Franzidos
