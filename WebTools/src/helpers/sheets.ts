@@ -797,7 +797,7 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
                     talentName += " [Rank: " + rank + "]";
                 }
                 paragraph.append(talentName, titleStyle);
-                paragraph.append(talent.localizedDescription, paragraphStyle);
+                paragraph.append(character.version > 1 ? talent.localizedDescription2e : talent.localizedDescription, paragraphStyle);
                 paragraph.write();
 
                 paragraph = paragraph.nextParagraph();
