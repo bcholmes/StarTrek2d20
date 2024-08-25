@@ -11,6 +11,9 @@ import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
 import { Construct } from "../common/construct";
 import { Column } from "./column";
+import { XYLocation } from "../common/xyLocation";
+import { FontOptions } from "./fontOptions";
+import { FontType } from "./fontLibrary";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
@@ -60,7 +63,8 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         const page = pdf.getPage(0);
         const labelFont = new FontSpecification(this.boldFont, this.determineLabelFontSize(character));
 
-        this.writeCharacterDetails(page, character);
+        let bottom = this.writeCharacterDetails(page, character);
+        this.writeSpeciesAbility(page, character, bottom);
 
         this.writeLabel(page, i18next.t("Construct.attribute.control"),
             this.controlBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
@@ -182,28 +186,43 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         paragraph.write();
 
         if (character.pronouns?.length) {
-            paragraph = paragraph.nextParagraph();
-            paragraph.append(i18next.t("Construct.other.pronouns").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
-            paragraph.append(character.pronouns, new FontSpecification(this.textFont, 9));
-            paragraph.write();
+            paragraph = paragraph?.nextParagraph();
+            paragraph?.append(i18next.t("Construct.other.pronouns").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph?.append(character.pronouns, new FontSpecification(this.textFont, 9));
+            paragraph?.write();
         }
 
         if (character.speciesStep?.species != null) {
-            paragraph = paragraph.nextParagraph();
-            paragraph.append(i18next.t("Construct.other.species").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
-            paragraph.append(character.localizedSpeciesName, new FontSpecification(this.textFont, 9));
-            paragraph.write();
+            paragraph = paragraph?.nextParagraph();
+            paragraph?.append(i18next.t("Construct.other.species").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph?.append(character.localizedSpeciesName, new FontSpecification(this.textFont, 9));
+            paragraph?.write();
         }
 
-        paragraph = paragraph.nextParagraph();
-        paragraph.append(i18next.t("Construct.other.traits").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
-        paragraph.append(character.getAllTraits(), new FontSpecification(this.textFont, 9));
-        paragraph.write();
+        paragraph = paragraph?.nextParagraph();
+        paragraph?.append(i18next.t("Construct.other.traits").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+        paragraph?.append(character.getAllTraits(), new FontSpecification(this.textFont, 9));
+        paragraph?.write();
 
         if (character.focuses?.length) {
-            paragraph = paragraph.nextParagraph();
-            paragraph.append(i18next.t("Construct.other.focuses").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
-            paragraph.append(character.focuses.join(", "), new FontSpecification(this.textFont, 9));
+            paragraph = paragraph?.nextParagraph();
+            paragraph?.append(i18next.t("Construct.other.focuses").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph?.append(character.focuses.join(", "), new FontSpecification(this.textFont, 9));
+            paragraph?.write();
+        }
+
+        return paragraph?.bottom;
+    }
+
+    writeSpeciesAbility(page: PDFPage, character: Character, offset: XYLocation) {
+        if (character.version > 1 && character.speciesStep?.ability) {
+            let column = this.mainBlock.bottomAfter(offset.y - this.mainBlock.start.y + 16);
+            this.writeSubTitle(page, i18next.t("Construct.other.speciesAbility"), column.topBefore(13));
+
+            column = column.bottomAfter(16);
+            let paragraph = new Paragraph(page, column, this.fonts);
+            paragraph.append(character.speciesStep.ability.name + ": ", new FontOptions(9, FontType.Bold), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph.append(character.speciesStep.ability.description, new FontOptions(9));
             paragraph.write();
         }
     }

@@ -41,6 +41,14 @@ export class Column {
             return null;
         }
     }
+
+    topBefore(deltaY: number) {
+        if (deltaY <= this.height) {
+            return new Column(this.start.x, this.start.y, deltaY, this.width);
+        } else {
+            return null;
+        }
+    }
 }
 
 

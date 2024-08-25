@@ -13,6 +13,8 @@ import { System } from "../helpers/systems";
 import { Department } from "../helpers/departments";
 import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
 import { Column } from "./column";
+import { FontOptions } from "./fontOptions";
+import { FontType } from "./fontLibrary";
 
 export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
@@ -130,9 +132,9 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         paragraph = paragraph.nextParagraph(1);
 
-        paragraph.append(i18next.t("Construct.other.timeline").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
+        paragraph.append(i18next.t("Construct.other.timeline").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
         Generated2eStarshipSheet.tealColour);
-        paragraph.append("" + (starship.serviceYear), new FontSpecification(this.textFont, 9));
+        paragraph.append("" + (starship.serviceYear), new FontOptions(9));
         if (starship.spaceframeModel?.serviceYear != null && starship.serviceYear != null) {
             let yearsOfService = i18next.t("Construct.other.yearsOfService", {
                 count: (Math.max(0, starship.serviceYear -  starship.spaceframeModel.serviceYear)),
@@ -143,19 +145,19 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                 interpolation: { escapeValue: false }
             });
 
-            paragraph.append("(" + yearsOfService + ", " + numberOfRefits + ")", new FontSpecification(this.textFont, 9));
+            paragraph.append("(" + yearsOfService + ", " + numberOfRefits + ")", new FontOptions(9));
         }
         paragraph.write();
 
         if (starship.className?.length) {
             paragraph = paragraph.nextParagraph(1);
 
-            paragraph.append(i18next.t("Construct.other.spaceFrame").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
+            paragraph.append(i18next.t("Construct.other.spaceFrame").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
                 Generated2eStarshipSheet.tealColour);
             if (starship.spaceframeModel != null) {
-                paragraph.append(starship.spaceframeModel?.localizedName, new FontSpecification(this.textFont, 9));
+                paragraph.append(starship.spaceframeModel?.localizedName, new FontOptions(9));
             } else {
-                paragraph.append(starship.className, new FontSpecification(this.textFont, 9));
+                paragraph.append(starship.className, new FontOptions(9));
             }
             paragraph.write();
         }
@@ -163,17 +165,17 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         if (starship.missionProfileModel != null) {
             paragraph = paragraph.nextParagraph(1);
 
-            paragraph.append(i18next.t("Construct.other.missionProfile").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
+            paragraph.append(i18next.t("Construct.other.missionProfile").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
                 Generated2eStarshipSheet.tealColour);
-            paragraph.append(starship.missionProfileModel?.localizedName, new FontSpecification(this.textFont, 9));
+            paragraph.append(starship.missionProfileModel?.localizedName, new FontOptions(9));
             paragraph.write();
         }
 
         paragraph = paragraph.nextParagraph(1);
 
-        paragraph.append(i18next.t("Construct.other.traits").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
+        paragraph.append(i18next.t("Construct.other.traits").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
             Generated2eStarshipSheet.tealColour);
-        paragraph.append(starship.getAllTraits(), new FontSpecification(this.textFont, 9));
+        paragraph.append(starship.getAllTraits(), new FontOptions(9));
         paragraph.write();
 
         let bottom = this.writeThreeColumnDerivedStats(page, starship, paragraph);
@@ -329,8 +331,8 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         let rank = starship.getRankForTalent(t);
                         talentName += " [x" + rank + "]";
                     }
-                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), Generated2eStarshipSheet.tealColour);
-                    paragraph.append(talent.localizedDescription, new FontSpecification(this.textFont, 9));
+                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), Generated2eStarshipSheet.tealColour);
+                    paragraph.append(talent.localizedDescription, new FontOptions(9));
                     paragraph.write();
 
                     if (paragraph.lines.length) {
@@ -364,8 +366,8 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         let rank = starship.getRankForTalent(t);
                         talentName += " [Rank: " + rank + "]";
                     }
-                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), Generated2eStarshipSheet.tealColour);
-                    paragraph.append(talent.localizedDescription, new FontSpecification(this.textFont, 9));
+                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), Generated2eStarshipSheet.tealColour);
+                    paragraph.append(talent.localizedDescription, new FontOptions(9));
                     paragraph.write();
 
                     if (paragraph.lines.length) {
@@ -382,9 +384,9 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         if (paragraph) {
                             paragraph.indent(30);
                             paragraph.append(i18next.t("Construct.other.missionPod") + ":",
-                                new FontSpecification(this.boldFont, 9));
+                                new FontOptions(9, FontType.Bold));
 
-                            paragraph.append(starship.missionPodModel.localizedName, new FontSpecification(this.textFont, 9));
+                            paragraph.append(starship.missionPodModel.localizedName, new FontOptions(9));
                             paragraph.write();
                         }
                     }

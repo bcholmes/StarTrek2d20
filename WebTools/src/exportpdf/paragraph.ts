@@ -6,6 +6,8 @@ import { FontSpecification } from "./fontSpecification";
 import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { TextBlock } from "./textBlock";
 import { FontLibrary, FontType } from "./fontLibrary";
+import { textTokenizer } from "./textTokenizer";
+import { FontOptions } from "./fontOptions";
 
 // A line represents one line of text inside a paragrap and/or column of text. The line can
 // contain different text blocks (including some blocks that have different fonts or font weights),
@@ -189,8 +191,17 @@ export class Paragraph {
         this.indentAmount = amount;
     }
 
-    append(text: string|number, font: FontSpecification, colour?: SimpleColor) {
-        this.lines = this.createLines("" + text, font, this.currentLine(), this.page, colour);
+    append(text: string|number, font: FontSpecification|FontOptions, colour?: SimpleColor) {
+        let fontSpecification = null;
+        let options = null;
+        if (font instanceof FontSpecification) {
+            fontSpecification = font as FontSpecification;
+        } else {
+            options = font as FontOptions;
+            let pdfFont = this.fontLibrary.fontByType(options.fontType);
+            fontSpecification = new FontSpecification(pdfFont, options.size);
+        }
+        this.lines = this.createLines("" + text, fontSpecification, options, this.currentLine(), this.page, colour);
     }
 
     write(colour: SimpleColor = SimpleColor.from("#000000")) {
@@ -232,8 +243,10 @@ export class Paragraph {
         }
     }
 
-    private createLines(text: string, fontSpec: FontSpecification, lines: Line|(Line[]), page: PDFPage, colour?: SimpleColor) {
+    private createLines(text: string, initialFont: FontSpecification, options: FontOptions, lines: Line|(Line[]), page: PDFPage, colour?: SimpleColor) {
         let result: Line[] = [];
+        let fontSpec = initialFont;
+        let fontType = options?.fontType;
         if (lines instanceof Line) {
             result.push(lines as Line);
         } else if (lines.length > 0) {
@@ -241,77 +254,87 @@ export class Paragraph {
             result = [...l];
         }
 
-        let words = text.split(/\s+/);
-        for (let i = 0; i < words.length; i++) {
-            let line = result[result.length-1];
-
-            let word = words[i];
-            if (!line.isEmpty()) {
-                word = " " + word;
-            }
-            let parts = this.containsDelta(word) ? this.separateDeltas(word) : [word];
-            let blocks = parts.map(p => {
-                if (p === CHALLENGE_DICE_NOTATION) {
-                    return TextBlock.create("A", new FontSpecification(this.symbolFont, fontSpec.size), false, colour);
-                } else {
-                    return TextBlock.create(p, fontSpec, false, colour);
-                }
-            });
-
-            let sum = 0;
-            blocks.forEach(b => sum += b.width);
-
-            if (sum < line.availableWidth()) {
-                blocks.forEach(b => line.append(b));
-            } else {
-                line = line.nextLine(this.page);
-                if (line != null) {
-                    result.push(line);
-
-                    let parts = this.separateDeltas(words[i]); // get the original word without the leading space
-                    parts.map(p => {
-                        if (p === CHALLENGE_DICE_NOTATION) {
-                            return TextBlock.create("A", new FontSpecification(this.symbolFont, fontSpec.size), false, colour);
-                        } else {
-                            return TextBlock.create(p, fontSpec, false, colour);
+        let tokens = textTokenizer(text);
+        let skipSpace = false;
+        for (let t = 0; t < tokens.length; t++) {
+            let token = tokens[t];
+            if (token === "_" || token === "**") {
+                // ignore it for now.
+                skipSpace = true;
+                if (options != null) {
+                    if (fontType != options.fontType) {
+                        fontType = options.fontType;
+                        fontSpec = initialFont;
+                    } else if (token === "**") {
+                        let font = this.fontLibrary.fontByType(FontType.Bold);
+                        if (font != null) {
+                            fontType = FontType.Bold;
+                            fontSpec = new FontSpecification(font, options.size);
                         }
-                    }).forEach(p => line.append(p));
+                    } else if (token === "_") {
+                        let font = this.fontLibrary.fontByType(FontType.Italic);
+                        if (font != null) {
+                            fontType = FontType.Italic;
+                            fontSpec = new FontSpecification(font, options.size);
+                        }
+                    }
+                }
+            } else if (token === CHALLENGE_DICE_NOTATION) {
+                let block = TextBlock.create("A", new FontSpecification(this.symbolFont, fontSpec.size), false, colour);
+                let line = result[result.length-1];
+                if (block.width < line.availableWidth()) {
+                    line.append(block);
                 } else {
-                    break;
+                    line = line.nextLine(this.page);
+                    if (line != null) {
+                        result.push(line);
+                        line.append(block);
+
+                        // maybe the latest changes required a column change
+                        let newLine = line.moveToNextColumnIfNecessary(page);
+                        if (newLine !== line) {
+                            result[result.length-1] = newLine;
+                        }
+                    } else {
+                        break;
+                    }
+                }
+            } else {
+                let words = token.split(/\s+/);
+                for (let i = 0; i < words.length; i++) {
+                    let line = result[result.length-1];
+
+                    let word = words[i];
+                    if (!line.isEmpty() && !skipSpace) {
+                        word = " " + word;
+                    } else {
+                        skipSpace = false;
+                    }
+                    let block = TextBlock.create(word, fontSpec, false, colour);
+
+                    if (block.width < line.availableWidth()) {
+                        line.append(block);
+                    } else {
+                        line = line.nextLine(this.page);
+                        if (line != null) {
+                            result.push(line);
+
+                            line.append(TextBlock.create(word.trim(), fontSpec, false, colour));
+                        } else {
+                            tokens = [];
+                            break;
+                        }
+                    }
+
+                    // maybe the latest changes required a column change
+                    let newLine = line.moveToNextColumnIfNecessary(page);
+                    if (newLine !== line) {
+                        result[result.length-1] = newLine;
+                    }
                 }
             }
-
-            // maybe the latest changes required a column change
-            let newLine = line.moveToNextColumnIfNecessary(page);
-            if (newLine !== line) {
-                result[result.length-1] = newLine;
-            }
         }
 
         return result;
     }
-
-    private containsDelta(word: string) {
-        return word.indexOf("[D]") >= 0;
-    }
-
-    private separateDeltas(word: string) {
-        let result: string[] = [];
-        while (word.length > 0) {
-            let index = word.indexOf(CHALLENGE_DICE_NOTATION);
-            if (index > 0) {
-                result.push(word.substring(0, index));
-                result.push(word.substring(index, index+3));
-                word = word.substring(index + 3);
-            } else if (index === 0) {
-                result.push(word.substring(index, index+3));
-                word = word.substring(index + 3);
-            } else {
-                result.push(word);
-                word = "";
-            }
-        }
-        return result;
-    }
-
 }

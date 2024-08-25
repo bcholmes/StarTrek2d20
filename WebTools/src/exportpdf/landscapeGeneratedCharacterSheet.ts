@@ -12,6 +12,8 @@ import { RolesHelper } from "../helpers/roles";
 import { BorgImplants } from "../helpers/borgImplant";
 import { BaseTNGGeneratedCharacterSheet } from "./baseTngGeneratedCharacterSheet";
 import { Column } from "./column";
+import { FontOptions } from "./fontOptions";
+import { FontType } from "./fontLibrary";
 
 export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterSheet {
 
@@ -208,8 +210,8 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
         if (character.role != null) {
             let role = RolesHelper.instance.getRole(character.role, character.type);
             if (role) {
-                paragraph.append(role.localizedName + ": ", new FontSpecification(this.boldFont, 9));
-                paragraph.append(role.localizedAbility, new FontSpecification(this.textFont, 9));
+                paragraph.append(role.localizedName + ": ", new FontOptions(9, FontType.Bold));
+                paragraph.append(role.localizedAbility, new FontOptions(9));
 
                 paragraph.write();
                 paragraph = paragraph.nextParagraph();
@@ -219,8 +221,8 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
         if (character.speciesStep?.ability != null) {
             let ability = character.speciesStep.ability;
             paragraph.append(ability.name + " (" + i18next.t('Construct.other.speciesAbility') + "): ",
-                new FontSpecification(this.boldFont, 9));
-            paragraph.append(ability.description, new FontSpecification(this.textFont, 9));
+                new FontOptions(9, FontType.Bold));
+            paragraph.append(ability.description, new FontOptions(9));
 
             paragraph.write();
             paragraph = paragraph.nextParagraph();
@@ -235,11 +237,11 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
                     let rank = character.getRankForTalent(t);
                     talentName += " [Rank: " + rank + "]";
                 }
-                paragraph.append(talentName + ": ", new FontSpecification(this.boldFont, 9));
+                paragraph.append(talentName + ": ", new FontOptions(9, FontType.Bold));
                 if (character.version === 1) {
-                    paragraph.append(talent.localizedDescription, new FontSpecification(this.textFont, 9));
+                    paragraph.append(talent.localizedDescription, new FontOptions(9));
                 } else {
-                    paragraph.append(talent.localizedDescription2e, new FontSpecification(this.textFont, 9));
+                    paragraph.append(talent.localizedDescription2e, new FontOptions(9));
                 }
                 paragraph.write();
 
@@ -250,8 +252,8 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
                         paragraph = paragraph.nextParagraph(0);
                         if (paragraph) {
                             paragraph.indent(10);
-                            paragraph.append(implant.localizedName + ": ", new FontSpecification(this.boldFont, 9));
-                            paragraph.append(implant.description, new FontSpecification(this.textFont, 9));
+                            paragraph.append(implant.localizedName + ": ", new FontOptions(9, FontType.Bold));
+                            paragraph.append(implant.description, new FontOptions(9));
                             paragraph.write();
                         }
                     });

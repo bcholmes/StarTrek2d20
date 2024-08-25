@@ -41,6 +41,9 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
         const boldFont = await pdf.embedFont(boldFontBytes);
         this.fonts.addFont(FontType.Bold, boldFont);
 
+        const italicFontBytes = await fetch("/static/font/OpenSansCondensed-LightItalic.ttf").then(res => res.arrayBuffer());
+        const italicFont = await pdf.embedFont(italicFontBytes);
+        this.fonts.addFont(FontType.Italic, italicFont);
 
         const fontBytes = await fetch("/static/font/Michroma-Regular.ttf").then(res => res.arrayBuffer());
         this.headingFont = await pdf.embedFont(fontBytes);
