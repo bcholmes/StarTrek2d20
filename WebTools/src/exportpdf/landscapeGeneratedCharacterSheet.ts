@@ -6,7 +6,6 @@ import i18next from "i18next";
 import { Character } from "../common/character";
 import { Construct } from "../common/construct";
 import { TALENT_NAME_BORG_IMPLANTS, TalentsHelper } from "../helpers/talents";
-import { FontSpecification } from "./fontSpecification";
 import { Paragraph } from "./paragraph";
 import { RolesHelper } from "../helpers/roles";
 import { BorgImplants } from "../helpers/borgImplant";

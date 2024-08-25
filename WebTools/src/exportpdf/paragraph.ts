@@ -118,7 +118,7 @@ export class Paragraph {
     }
 
     get symbolFont() {
-        return this.fontLibrary[FontType.Symbol];
+        return this.fontLibrary.fontByType(FontType.Symbol);
     }
 
     get startColumn() {
@@ -259,10 +259,9 @@ export class Paragraph {
         for (let t = 0; t < tokens.length; t++) {
             let token = tokens[t];
             if (token === "_" || token === "**") {
-                // ignore it for now.
                 skipSpace = true;
                 if (options != null) {
-                    if (fontType != options.fontType) {
+                    if (fontType !== options.fontType) {
                         fontType = options.fontType;
                         fontSpec = initialFont;
                     } else if (token === "**") {
@@ -280,7 +279,7 @@ export class Paragraph {
                     }
                 }
             } else if (token === CHALLENGE_DICE_NOTATION) {
-                let block = TextBlock.create("A", new FontSpecification(this.symbolFont, fontSpec.size), false, colour);
+                let block = TextBlock.create("A", new FontSpecification(this.fontLibrary.fontByType(FontType.Symbol), fontSpec.size), false, colour);
                 let line = result[result.length-1];
                 if (block.width < line.availableWidth()) {
                     line.append(block);

@@ -18,6 +18,7 @@ import { Paragraph } from "./paragraph";
 import { XYLocation } from "../common/xyLocation";
 import { Starship } from "../common/starship";
 import { FontLibrary, FontType } from "./fontLibrary";
+import { FontOptions } from "./fontOptions";
 
 export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
@@ -31,7 +32,6 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
     fonts: FontLibrary = new FontLibrary();
     headingFont: PDFFont;
-
 
     async initializeFonts(pdf: PDFDocument) {
         await super.initializeFonts(pdf);
@@ -187,8 +187,8 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
         let indentedColumn = new Column(column.start.x + 15, column.start.y, column.height, column.width - 15);
 
-        let bold = new FontSpecification(this.boldFont, 9);
-        let standard = new FontSpecification(this.textFont, 9);
+        let bold = new FontOptions(9, FontType.Bold);
+        let standard = new FontOptions(9);
         let security = 0;
         let personal = false;
         if (construct instanceof Character) {
