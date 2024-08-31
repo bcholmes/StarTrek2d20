@@ -321,6 +321,10 @@ class SpaceframeOutlineHelper {
             return CROSSFIELD_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Defiant || spaceframe.id === Spaceframe.Defiant_UP) {
             return DEFIANT_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.DDeridex) {
+            return D_DERIDEX_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.DKora) {
+            return D_KORA_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Daedalus || spaceframe.id === Spaceframe.Daedalus_UP) {
             return DAEDALUS_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Eisenberg) {
@@ -337,6 +341,8 @@ class SpaceframeOutlineHelper {
             return GAGARIN_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Galaxy) {
             return GALAXY_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Galor) {
+            return GALOR_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Hermes || spaceframe.id === Spaceframe.ScoutType) {
             return this.isMovieEra(starship.serviceYear) ? HERMES_CLASS_ELABORATE_OUTLINE : HERMES_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Hiawatha) {
@@ -399,6 +405,8 @@ class SpaceframeOutlineHelper {
             return ROSS_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Saber) {
             return SABER_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Sagan) {
+            return SAGAN_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Shepard) {
             return SHEPARD_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Sovereign || spaceframe.id === Spaceframe.Sovereign_UP) {

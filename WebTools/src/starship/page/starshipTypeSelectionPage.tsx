@@ -9,7 +9,7 @@ import { Header } from "../../components/header";
 import { Era, eraDefaultYear } from "../../helpers/eras";
 import { Source } from "../../helpers/sources";
 import { PageIdentity } from "../../pages/pageIdentity";
-import { hasSource } from "../../state/contextFunctions";
+import { hasSource, isSecondEdition } from "../../state/contextFunctions";
 import { createNewStarship } from "../../state/starshipActions";
 import store from "../../state/store";
 import { BuildPoints } from "../model/buildPoints";
@@ -32,7 +32,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
     constructor(props) {
         super(props);
         this.state = {
-            type: CharacterTypeModel.getStarshipTypes()[0],
+            type: CharacterTypeModel.getStarshipTypes(isSecondEdition() ? 2 : 1)[0],
             campaignYear: eraDefaultYear(this.props.era),
             buildType: ShipBuildTypeModel.allTypes()[ShipBuildType.Starship]
         }
@@ -47,7 +47,9 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
                     <p>{t('StarshipTypeSelection.whatShipPolity')}</p>
                     <div>
                         <DropDownSelect
-                            items={ CharacterTypeModel.getStarshipTypes().map((t, i) => new DropDownElement(t.type, t.localizedName)) }
+                            items={ CharacterTypeModel
+                                .getStarshipTypes(isSecondEdition() ? 2 : 1)
+                                .map((t, i) => new DropDownElement(t.type, t.localizedName)) }
                             defaultValue={ this.state.type.type }
                             onChange={(index) => this.selectType(CharacterTypeModel.getByType(index as number)) }/>
                     </div>

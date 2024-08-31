@@ -112,6 +112,7 @@ export class Paragraph {
         if (fontLibrary instanceof FontLibrary) {
             this.fontLibrary = fontLibrary as FontLibrary;
         } else {
+            console.log("Oh noes!");
             let fonts = { [FontType.Symbol] : (fontLibrary as PDFFont)};
             this.fontLibrary = new FontLibrary(fonts);
         }
@@ -211,7 +212,7 @@ export class Paragraph {
     }
 
     nextParagraph(blankLine: number = 0.5) {
-        let result = new Paragraph(this.page, this.endColumn, this.symbolFont);
+        let result = new Paragraph(this.page, this.endColumn, this.fontLibrary);
         if (this.lines.length > 0) {
             let line = this.lines[this.lines.length-1];
             let newLocation = line.location;

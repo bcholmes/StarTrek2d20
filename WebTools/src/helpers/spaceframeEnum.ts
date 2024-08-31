@@ -142,11 +142,19 @@ export enum Spaceframe {
     // Tactical
     HouYi,
 
+    // 2nd edition
+    Sagan,
+    Constitution3,
+    Pioneer,
+    TLiss,
+    DDeridex,
+    Galor,
+    DKora,
+
     // Continuing Mission
     Loknar,
     Chandley,
     Larson,
     Perseus,
-    Pioneer,
     Ptolemy,
 }

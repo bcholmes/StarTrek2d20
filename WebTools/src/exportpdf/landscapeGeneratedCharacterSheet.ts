@@ -5,14 +5,10 @@ import { SheetTag } from "./icharactersheet";
 import i18next from "i18next";
 import { Character } from "../common/character";
 import { Construct } from "../common/construct";
-import { TALENT_NAME_BORG_IMPLANTS, TalentsHelper } from "../helpers/talents";
-import { Paragraph } from "./paragraph";
-import { RolesHelper } from "../helpers/roles";
-import { BorgImplants } from "../helpers/borgImplant";
 import { BaseTNGGeneratedCharacterSheet } from "./baseTngGeneratedCharacterSheet";
 import { Column } from "./column";
-import { FontOptions } from "./fontOptions";
-import { FontType } from "./fontLibrary";
+import { TalentWriter } from "./talentWriter";
+import { assembleWritableItems } from "./generatedsheet";
 
 export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterSheet {
 
@@ -205,62 +201,9 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
 
 
     writeRoleAndTalents(page: PDFPage, character: Character) {
-        let paragraph = new Paragraph(page, LandscapeGeneratedCharacterSheet.talentsColumn, this.fonts);
-        if (character.role != null) {
-            let role = RolesHelper.instance.getRole(character.role, character.type);
-            if (role) {
-                paragraph.append(role.localizedName + ": ", new FontOptions(9, FontType.Bold));
-                paragraph.append(role.localizedAbility, new FontOptions(9));
-
-                paragraph.write();
-                paragraph = paragraph.nextParagraph();
-            }
-        }
-
-        if (character.speciesStep?.ability != null) {
-            let ability = character.speciesStep.ability;
-            paragraph.append(ability.name + " (" + i18next.t('Construct.other.speciesAbility') + "): ",
-                new FontOptions(9, FontType.Bold));
-            paragraph.append(ability.description, new FontOptions(9));
-
-            paragraph.write();
-            paragraph = paragraph.nextParagraph();
-        }
-
-        for (let t of character.getDistinctTalentNameList()) {
-
-            if (paragraph) {
-                const talent = TalentsHelper.getTalent(t);
-                let talentName = talent.localizedDisplayName;
-                if (talent && talent.maxRank > 1) {
-                    let rank = character.getRankForTalent(t);
-                    talentName += " [Rank: " + rank + "]";
-                }
-                paragraph.append(talentName + ": ", new FontOptions(9, FontType.Bold));
-                if (character.version === 1) {
-                    paragraph.append(talent.localizedDescription, new FontOptions(9));
-                } else {
-                    paragraph.append(talent.localizedDescription2e, new FontOptions(9));
-                }
-                paragraph.write();
-
-                if (talent.name === TALENT_NAME_BORG_IMPLANTS) {
-                    character.implants.forEach(implantType => {
-
-                        let implant = BorgImplants.instance.getImplantByType(implantType);
-                        paragraph = paragraph.nextParagraph(0);
-                        if (paragraph) {
-                            paragraph.indent(10);
-                            paragraph.append(implant.localizedName + ": ", new FontOptions(9, FontType.Bold));
-                            paragraph.append(implant.description, new FontOptions(9));
-                            paragraph.write();
-                        }
-                    });
-                }
-
-                paragraph = paragraph ? paragraph.nextParagraph() : null;
-            }
-        };
+        new TalentWriter(page, this.fonts, character.version).writeTalents(
+            assembleWritableItems(character),
+            LandscapeGeneratedCharacterSheet.talentsColumn);
     }
 
     fillFocuses(form: PDFForm, character: Character) {

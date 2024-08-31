@@ -29,6 +29,9 @@ import { GeneratedTngPortraitCharacterSheet } from '../exportpdf/generatedTngPor
 import { Column } from '../exportpdf/column';
 import { GeneratedTngPortraitA4CharacterSheet } from '../exportpdf/generatedTngPortraitA4CharacterSheet';
 import { Standard2eCharacterSheet } from '../exportpdf/standard2eCharacterSheet';
+import { FontLibrary, FontType } from '../exportpdf/fontLibrary';
+import { TalentWriter } from '../exportpdf/talentWriter';
+import { assembleWritableItems } from '../exportpdf/generatedsheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -775,37 +778,33 @@ class KlingonCharacterSheet extends BasicFullCharacterSheet {
 
 class BaseTextCharacterSheet extends BasicFullCharacterSheet {
 
-    writeRoleAndTalents(page: PDFPage, character: Character, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
-        let paragraph = new Paragraph(page, currentColumn, symbolStyle.font);
-        if (character.role != null) {
-            let role = RolesHelper.instance.getRole(character.role, character.type);
-            if (role) {
-                paragraph.append(role.localizedName + ": ", titleStyle);
-                paragraph.append(role.localizedAbility, paragraphStyle);
+    fonts: FontLibrary = new FontLibrary();
 
-                paragraph.write();
-                paragraph = paragraph.nextParagraph();
-            }
-        }
+    async initializeFonts(pdf: PDFDocument) {
+        await super.initializeFonts(pdf);
 
-        for (let t of character.getDistinctTalentNameList()) {
+        const standardFontBytes = await fetch("/static/font/OpenSansCondensed-Light.ttf").then(res => res.arrayBuffer());
+        const standardFont = await pdf.embedFont(standardFontBytes);
+        this.fonts.addFont(FontType.Standard, standardFont);
 
-            if (paragraph) {
-                const talent = TalentsHelper.getTalent(t);
-                let talentName = talent.localizedDisplayName;
-                if (talent && talent.maxRank > 1) {
-                    let rank = character.getRankForTalent(t);
-                    talentName += " [Rank: " + rank + "]";
-                }
-                paragraph.append(talentName, titleStyle);
-                paragraph.append(character.version > 1 ? talent.localizedDescription2e : talent.localizedDescription, paragraphStyle);
-                paragraph.write();
+        const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
+        const boldFont = await pdf.embedFont(boldFontBytes);
+        this.fonts.addFont(FontType.Bold, boldFont);
 
-                paragraph = paragraph.nextParagraph();
-            }
-        };
+        const italicFontBytes = await fetch("/static/font/OpenSansCondensed-LightItalic.ttf").then(res => res.arrayBuffer());
+        const italicFont = await pdf.embedFont(italicFontBytes);
+        this.fonts.addFont(FontType.Italic, italicFont);
+
+        const symbolFontBytes = await fetch("/static/font/Trek_Arrowheads.ttf").then(res => res.arrayBuffer());
+        const symbolFont = await pdf.embedFont(symbolFontBytes);
+        this.fonts.addFont(FontType.Symbol, symbolFont);
     }
 
+    writeRoleAndTalents(page: PDFPage, character: Character, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
+        new TalentWriter(page, this.fonts, character.version).writeTalents(
+            assembleWritableItems(character),
+            currentColumn);
+    }
 }
 
 class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {

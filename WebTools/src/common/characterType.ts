@@ -11,6 +11,11 @@ export enum CharacterType {
     Cadet,
     Child,
     Tribble,
+
+    Romulan,
+    Cardassian,
+    Ferengi,
+
     Other
 }
 
@@ -23,13 +28,16 @@ export class CharacterTypeModel {
         new CharacterTypeModel("Civilian", CharacterType.Civilian),
         new CharacterTypeModel("Cadet", CharacterType.Cadet),
         new CharacterTypeModel("Child", CharacterType.Child),
+
+        new CharacterTypeModel("Romulan", CharacterType.Romulan),
+        new CharacterTypeModel("Ferengi", CharacterType.Ferengi),
+        new CharacterTypeModel("Cardassian", CharacterType.Cardassian),
+
         new CharacterTypeModel("Other", CharacterType.Other)
     ];
 
-    private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = [
-        CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1], CharacterTypeModel.TYPES[2], CharacterTypeModel.TYPES[3],
-        CharacterTypeModel.TYPES[4], CharacterTypeModel.TYPES[5], CharacterTypeModel.TYPES[6]
-    ];
+    private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = CharacterTypeModel.TYPES
+        .filter(t => t.type !== CharacterType.Other);
 
     name: string;
     type: CharacterType;
@@ -52,7 +60,7 @@ export class CharacterTypeModel {
     }
 
 
-    public static getAllTypesExceptOther(sources: Source[]) {
+    public static getCharacterTypesForCharacter(sources: Source[]) {
         return this.TYPES_EXCEPT_OTHER.filter(t => {
             if (t.type === CharacterType.KlingonWarrior) {
                 return sources.indexOf(Source.KlingonCore) >= 0;
@@ -60,6 +68,8 @@ export class CharacterTypeModel {
                 return true;
             } else if (t.type === CharacterType.Civilian || t.type === CharacterType.AmbassadorDiplomat) {
                 return sources.indexOf(Source.PlayersGuide) || sources.indexOf(Source.Core2ndEdition);
+            } else if (t.type === CharacterType.Romulan || t.type === CharacterType.Ferengi || t.type === CharacterType.Cardassian) {
+                return false;
             } else {
                 return sources.indexOf(Source.PlayersGuide) >= 0
             }
@@ -81,8 +91,17 @@ export class CharacterTypeModel {
         );
     }
 
-    public static getStarshipTypes() {
-        return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ];
+    public static getStarshipTypes(version: number) {
+        if (version === 1) {
+            return [ CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1] ];
+        } else {
+            return this.TYPES.filter(t => [
+                CharacterType.Starfleet,
+                CharacterType.KlingonWarrior,
+                CharacterType.Romulan,
+                CharacterType.Cardassian,
+                CharacterType.Ferengi].indexOf(t.type) >= 0);
+        }
     }
 }
 

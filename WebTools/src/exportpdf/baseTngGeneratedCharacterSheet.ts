@@ -1,4 +1,4 @@
-import { PDFDocument, PDFFont, PDFForm, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
 import { Character } from "../common/character";
 import { SimpleColor } from "../common/colour";
 import { Construct, Stereotype } from "../common/construct";
@@ -17,7 +17,6 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingShee
     static readonly orangeColour = SimpleColor.from("#F9A164");
 
     fonts: FontLibrary = new FontLibrary();
-    headingFont: PDFFont;
 
     get determinationPills(): Column[] {
         return [];
@@ -51,6 +50,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingShee
         await super.initializeFonts(pdf);
 
         this.fonts.addFont(FontType.Standard, this.formFont);
+
         const boldFontBytes = await fetch("/static/font/OpenSansCondensed-Bold.ttf").then(res => res.arrayBuffer());
         const boldFont = await pdf.embedFont(boldFontBytes);
         this.fonts.addFont(FontType.Bold, boldFont);
@@ -232,70 +232,6 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingShee
             });
         });
 
-    }
-
-    writeStatLabels(page: PDFPage, character: Character) {
-        let fontSize = 12.5;
-
-        Object.keys(this.statLocations).forEach(key => {
-            let block = this.statLocations[key];
-            if (key === "Construct.other.protection" && character.version === 1) {
-                key = "Construct.other.resistance";
-            }
-            const originalText = i18next.t(key).toLocaleUpperCase();
-            let text = originalText;
-            let width = this.headingFont.widthOfTextAtSize(text, fontSize);
-            while (width > block.width) {
-                fontSize -= 0.25;
-                width = this.headingFont.widthOfTextAtSize(text, fontSize);
-                if (fontSize < 8) {
-                    break;
-                }
-            }
-        })
-
-        Object.keys(this.statLocations).forEach(key => {
-            let block = this.statLocations[key];
-            const originalText = i18next.t(key).toLocaleUpperCase();
-            let text = originalText;
-            let width = this.headingFont.widthOfTextAtSize(text, fontSize);
-            while (width > block.width) {
-                text = text.substring(0, text.length-1);
-                width = this.headingFont.widthOfTextAtSize(text + "...", fontSize);
-            }
-
-            if (text !== originalText) {
-                text += "...";
-            }
-
-            let height = this.headingFont.heightAtSize(fontSize, { descender: false });
-            let offset = Math.max(0, block.height - height) / 2;
-
-            page.drawText(text, {
-                x: block.end.x - width - 2,
-                y: page.getHeight() - (block.end.y - offset),
-                color: SimpleColor.from("#ffffff").asPdfRbg(),
-                font: this.headingFont,
-                size: fontSize
-            });
-        });
-
-    }
-
-
-    determineIdealFontWidth(text: string[], maxWidth: number, idealFontSize: number, minimumFontSize: number) {
-        let fontSize = idealFontSize;
-        text.forEach(t => {
-            let width = this.headingFont.widthOfTextAtSize(t, fontSize);
-            while (width > maxWidth) {
-                fontSize -= 0.25;
-                width = this.headingFont.widthOfTextAtSize(t, fontSize);
-                if (fontSize <= minimumFontSize) {
-                    break;
-                }
-            }
-        });
-        return fontSize;
     }
 
     writeTitle(page: PDFPage) {

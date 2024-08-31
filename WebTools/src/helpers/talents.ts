@@ -28,6 +28,7 @@ export const TALENT_NAME_VISIT_EVERY_STAR = "Visit Every Star";
 export const TALENT_NAME_WISDOM_OF_YEARS = "Wisdom of Years";
 export const TALENT_NAME_BRAK_LUL = "Brak’lul";
 export const TALENT_NAME_MISSION_POD = "Mission Pod";
+export const TALENT_NAME_UNTAPPED_POTENTIAL = "Untapped Potential";
 
 enum TalentCategory {
     General,

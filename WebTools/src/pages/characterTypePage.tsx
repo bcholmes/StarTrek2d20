@@ -106,7 +106,7 @@ class CharacterTypePage extends React.Component<WithTranslation, ICharacterTypeP
         const alliedMilitary = this.renderAlliedMilitaryList();
         const governments = this.renderGovernmentsList();
 
-        const types = CharacterTypeModel.getAllTypesExceptOther(store.getState().context.sources).map(t => {
+        const types = CharacterTypeModel.getCharacterTypesForCharacter(store.getState().context.sources).map(t => {
             return (<option value={t.type} key={'type-' + t.type}>{t.localizedName}</option>);
         });
 

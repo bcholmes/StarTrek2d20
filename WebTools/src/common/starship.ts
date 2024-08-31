@@ -171,7 +171,11 @@ export class Starship extends Construct implements IWeaponDiceProvider {
     }
 
     get resistance() {
-        return this.scale;
+        if (this.version === 1) {
+            return this.scale;
+        } else {
+            return Math.ceil(this.scale / 2);
+        }
     }
 
     get defaultTraits() {

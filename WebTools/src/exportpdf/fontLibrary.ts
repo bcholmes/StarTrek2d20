@@ -16,7 +16,12 @@ export class FontLibrary {
     }
 
     fontByType(type: FontType) {
-        return this.fonts[type];
+        let result = this.fonts[type];
+        if (result == null) {
+            console.log("Cannot find " + FontType[type]);
+            console.log(Object.keys(this.fonts));
+        }
+        return result;
     }
 
     addFont(type: FontType, font: PDFFont) {
