@@ -1,6 +1,10 @@
 import { Source } from "../helpers/sources";
 import store from "./store";
 
+export function isSecondEdition() {
+    return hasSource(Source.Core2ndEdition);
+}
+
 export function hasSource(s: Source) {
     return store.getState().context.sources.indexOf(s) >= 0;
 }

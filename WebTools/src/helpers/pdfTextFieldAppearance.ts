@@ -55,7 +55,8 @@ const getDefaultFontSize = (field: {
         return undefined;
     };
 
-export const staTextFieldAppearanceProvider: AppearanceProviderFor<PDFTextField> = (
+export const staTextFieldAppearanceProvider = (size: number) => {
+    return (
         textField,
         widget,
         font,
@@ -96,7 +97,7 @@ export const staTextFieldAppearanceProvider: AppearanceProviderFor<PDFTextField>
 
             if (textField.getText() == null || textField.getText().length === 0) {
                 textLines = [];
-                fontSize = 9;
+                fontSize = size;
 
             } else {
                 const layout = layoutMultilineText(text, {
@@ -152,4 +153,5 @@ export const staTextFieldAppearanceProvider: AppearanceProviderFor<PDFTextField>
         };
 
         return [...rotate, ...drawTextField(options)];
-    };
+    }
+};

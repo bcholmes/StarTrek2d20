@@ -450,6 +450,8 @@
     "Construct.other.careerEvent2.short": "Event 2",
 
     "Construct.other.careerEvents": "Career Events",
+    "Construct.other.careerPath": "Career Path",
+    "Construct.other.characterRole": "Character Role",
     "Construct.other.characterType": "Character Type",
     "Construct.other.crew": "Crew",
     "Construct.other.crewSupport": "Crew Support",
@@ -462,6 +464,7 @@
     "Construct.other.environment": "Environment",
     "Construct.other.equipment": "Equipment",
     "Construct.other.era": "Era",
+    "Construct.other.experience": "Experience",
     "Construct.other.focus": "Focus",
     "Construct.other.focus1": "Focus 1",
     "Construct.other.focus2": "Focus 2",
@@ -498,6 +501,7 @@
     "Construct.other.specialRules": "Special Rules",
     "Construct.other.species": "Species",
     "Construct.other.speciesAbility": "Species Ability",
+    "Construct.other.speciesAndTraits": "Species & Traits",
     "Construct.other.starshipType": "Starship Type",
     "Construct.other.stats": "Stats",
     "Construct.other.stress": "Stress",
@@ -1501,8 +1505,11 @@
     "Sheet.halfPageSupportingCharacterSheet": "Half-Page Supporting Character Sheet",
     "Sheet.landscapeGeneratedCharacterSheet": "TNG Landscape Character Sheet (US-Letter)",
     "Sheet.standardTngCharacterSheet": "Standard TNG Character Sheet (US-Letter)",
+    "Sheet.standard2eCharacterSheet": "Standard 2nd Ed. Character Sheet (US-Letter)",
 
     "Sheet.text.title": "Starfleet Personnel Record",
+
+    "Sheet.text.title.alt": "Personnel File",
 
     "SheetTag.a4": "A4",
     "SheetTag.halfPage": "Half-Page",

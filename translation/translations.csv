@@ -531,6 +531,8 @@ Construct.other.careerEvent1.short,Event 1,,,Evento 1,Evènement 1,Событи�
 Construct.other.careerEvent2,Career Event 2,,Karriereereignis 2,Evento de Carrera 2,Evénement de Carrière 2,Второе событие карьеры,Evento de Carreira 2
 Construct.other.careerEvent2.short,Event 2,,,Evento 2,Evènement 2,Событие 2,Evento 2
 Construct.other.careerEvents,Career Events,,Karriereereignisse,Eventos de Carrera,Evénements de Carrière,События карьеры,Eventos de Carreira
+Construct.other.careerPath,Career Path,,,,,,
+Construct.other.characterRole,Character Role,,,,,,
 Construct.other.characterType,Character Type,,Art des Charakters,Tpo de personaje,Type de personnage,Тип персонажа,Tipo de Personagem
 Construct.other.crew,Crew,,Crew,Tripulación,Équipage,Персонал,Tripulação
 Construct.other.crewSupport,Crew Support,,,Tripulación de Soporte,Support d'équipage,,Tripulação de Apoio
@@ -543,6 +545,7 @@ Construct.other.education,Education,,Ausbildung,Formación,Education,Образ�
 Construct.other.environment,Environment,,Herkunft,Entorno,Environnement,Среда обитания,Ambiente
 Construct.other.equipment,Equipment,,Ausrüstung,Equipo,Équipement,Снаряжение,Equipamento
 Construct.other.era,Era,,Ära,Era,Ère,Эра,Era
+Construct.other.experience,Experience,,,,,,
 Construct.other.focus,Focus,,Fokus,Especialidad,Spécialités,Специализация,Foco
 Construct.other.focus1,Focus 1,,Fokus 1,Especialidad 1,Spécialité 1,Специализация 1,Foco 1
 Construct.other.focus2,Focus 2,,Fokus 2,Especialidad 2,Spécialité 2,Специализация 2,Foco 2
@@ -579,6 +582,7 @@ Construct.other.spaceFrame,Space Frame,,Schiffsklasse,Plantilla,Modèle de Vaiss
 Construct.other.specialRules,Special Rules,,Spezialregeln,Reglas Especiales,Règles spéciales,Особые Правила,Regras Especiais
 Construct.other.species,Species,,Spezies,Especie,Espèce,Раса,Espécies
 Construct.other.speciesAbility,Species Ability,,,Habilidad de la Especie,Capacités d'espèce,,Habilidade de Espécie
+Construct.other.speciesAndTraits,Species & Traits,,,,,,
 Construct.other.starshipType,Starship Type,,,,,,Tipo de Nave
 Construct.other.stats,Stats,,Werte,Estadísticas,Stats,Значения,Estatísticas
 Construct.other.stress,Stress,,Anstrengung,Estrés,Stress,Стресс,Estresse
@@ -1818,7 +1822,9 @@ Sheet.generatedTngPortraitA4CharacterSheet,TNG Portrait Character Sheet (A4),,,,
 Sheet.halfPageSupportingCharacterSheet,Half-Page Supporting Character Sheet,,,,Feuille de personnage de soutien (demi page),Бланк вспомогательного персонажа на пол листа,Ficha de personagem de Apoio de meia página
 Sheet.landscapeGeneratedCharacterSheet,TNG Landscape Character Sheet (US-Letter),,,,Feuille de personnage TNG (format lettre US paysage),Альбомный бланк персонажа TNG (US-Letter),Ficha de Personagem Paisagem da TNG (US-Letter)
 Sheet.standardTngCharacterSheet,Standard TNG Character Sheet (US-Letter),,,,Feuille de personnage TNG standard (format lettre US),Стандартный бланк персонажа TNG (US-Letter),Ficha de personagem padrão de TNG (US-Letter)
+Sheet.standard2eCharacterSheet,Standard 2nd Ed. Character Sheet (US-Letter),,,,,,
 Sheet.text.title,Starfleet Personnel Record,,,Registro de personal de la Flota Estelar,Registre personnel de Starfleet,Бланк персонажа,Registro de pessoal da Frota Estelar
+Sheet.text.title.alt,Personnel File,,,,,,
 SheetTag.a4,A4,,,A4,A4,,A4
 SheetTag.halfPage,Half-Page,,,Media Página,Demi-page,Пол страницы,Meia página
 SheetTag.landscape,Landscape,,,Paisaje,Paysage,Альбомный,Paisagem

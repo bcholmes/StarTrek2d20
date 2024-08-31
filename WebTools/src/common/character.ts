@@ -23,6 +23,7 @@ import { MilestoneType } from '../modify/model/milestoneType';
 import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equipment';
 import { Era } from '../helpers/eras';
 import { SpeciesAbility, SpeciesAbilityList } from '../helpers/speciesAbility';
+import { IWeaponDiceProvider } from './iWeaponDiceProvider';
 
 export abstract class CharacterTypeDetails {
 }
@@ -360,7 +361,7 @@ export class NpcGenerationStep {
     }
 }
 
-export class Character extends Construct {
+export class Character extends Construct implements IWeaponDiceProvider {
 
     public static ABSOLUTE_MAX_ATTRIBUTE = 12;
 
@@ -790,6 +791,10 @@ export class Character extends Construct {
         let result = [];
         this.talents.forEach(t => result.push.apply(result, t.implants));
         return result;
+    }
+
+    getDiceForWeapon(weapon: Weapon) {
+        return weapon.dice + this.skills[Skill.Security].expertise;
     }
 
     getRankForTalent(talentName: string) {

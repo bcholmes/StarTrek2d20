@@ -28,6 +28,7 @@ import { Generated2eStarshipSheet } from '../exportpdf/generated2eStarshipSheet'
 import { GeneratedTngPortraitCharacterSheet } from '../exportpdf/generatedTngPortraitCharacterSheet';
 import { Column } from '../exportpdf/column';
 import { GeneratedTngPortraitA4CharacterSheet } from '../exportpdf/generatedTngPortraitA4CharacterSheet';
+import { Standard2eCharacterSheet } from '../exportpdf/standard2eCharacterSheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -834,7 +835,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
             if (f instanceof PDFTextField) {
                 let textField = f as PDFTextField;
                 if (textField.isMultiline() && (textField.getText() == null || textField.getText().length === 0)) {
-                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider);
+                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider(9));
                 }
             }
         });
@@ -933,7 +934,7 @@ class TwoPageTngLandscapeCharacterSheet extends BaseTextCharacterSheet {
             if (f instanceof PDFTextField) {
                 let textField = f as PDFTextField;
                 if (textField.isMultiline() && (textField.getText() == null || textField.getText().length === 0)) {
-                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider);
+                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider(9));
                 }
             }
         });
@@ -1026,7 +1027,7 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
             if (f instanceof PDFTextField) {
                 let textField = f as PDFTextField;
                 if (textField.isMultiline() && (textField.getText() == null || textField.getText().length === 0)) {
-                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider);
+                    textField.updateAppearances(helvetica, staTextFieldAppearanceProvider(9));
                 }
             }
         });
@@ -1176,6 +1177,19 @@ class CharacterSheets {
     public getCharacterSheets(character: Character): ICharacterSheet[] {
         if (character.stereotype === Stereotype.SoloCharacter) {
             return [ new CaptainsLogCharacterSheet() ];
+        } else if (character.version > 1) {
+            return [ new Standard2eCharacterSheet(),
+                new GeneratedTngPortraitCharacterSheet(),
+                new StandardGermanCharacterSheet(),
+                new GeneratedTngPortraitA4CharacterSheet(),
+                new StandardRussianCharacterSheet(),
+                new KlingonCharacterSheet(),
+                new StandardTosCharacterSheet(),
+                new LandscapeGeneratedCharacterSheet(),
+                new TwoPageTngLandscapeCharacterSheet(),
+                new TwoPageTngCharacterSheet(),
+                new TwoPageKlingonCharacterSheet(),
+                new RomulanCharacterSheet() ];
         } else if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new GeneratedTngPortraitA4CharacterSheet(),

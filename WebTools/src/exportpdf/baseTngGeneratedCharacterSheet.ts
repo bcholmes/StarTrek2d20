@@ -1,19 +1,15 @@
 import { PDFDocument, PDFFont, PDFForm, PDFPage } from "@cantoo/pdf-lib";
 import { Character } from "../common/character";
-import { CharacterSerializer } from "../common/characterSerializer";
 import { SimpleColor } from "../common/colour";
 import { Construct, Stereotype } from "../common/construct";
-import { BasicGeneratedSheet } from "./generatedsheet";
-import { Skill } from "../helpers/skills";
-import { Attribute } from "../helpers/attributes";
-import { CareerEventsHelper } from "../helpers/careerEvents";
 import { Column } from "./column";
 import { XYLocation } from "../common/xyLocation";
 import i18next from "i18next";
 import { getCurrentLanguageCode } from "../i18n/config";
 import { FontLibrary, FontType } from "./fontLibrary";
+import { BaseFormFillingSheet } from "./baseFormFillingSheet";
 
-export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet {
+export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingSheet {
     static readonly lightPurpleColour = SimpleColor.from("#c3bcde");
     static readonly purpleColour = SimpleColor.from("#B6B2D9");
     static readonly darkPurpleColour = SimpleColor.from("#8964AB")
@@ -99,167 +95,6 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BasicGeneratedSheet
         this.writeStress(pdf, page, character);
         this.createDeterminationCheckmarks(pdf, page);
 
-        this.populateForm(pdf.getForm(), character);
-    }
-
-    populateForm(form: PDFForm, character: Character) {
-        this.fillName(form, character);
-        this.fillField(form, 'Pronouns', character.pronouns);
-        this.fillField(form, 'Assignment', this.serializeAssignment(character));
-        this.fillField(form, 'Ship', character.assignedShip ?? "");
-        this.fillField(form, 'Environment', CharacterSerializer.serializeEnvironment(character.environmentStep?.environment, character.environmentStep?.otherSpecies, character.type));
-        this.fillRank(form, character);
-        this.fillSpecies(form, character);
-        this.fillUpbringing(form, character);
-        this.fillField(form, 'Traits', character.getAllTraits());
-        this.fillFocuses(form, character);
-        this.fillAttributes(form, character);
-        this.fillSkills(form, character);
-        this.fillField(form, 'Resistance', "" + character.resistance);
-        this.fillField(form, 'Reputation', "" + character.reputation);
-        this.fillField(form, 'Reprimands', "" + character.reprimands);
-        this.fillValues(form, character);
-        this.fillEquipment(form, character);
-        this.fillWeapons(form, character);
-
-        if (character.careerEvents && character.careerEvents.length > 0) {
-            let event1 = CareerEventsHelper.getCareerEvent(character.careerEvents[0]?.id, character.type);
-            if (event1) {
-                this.fillField(form, 'Career Event 1', event1.localizedName);
-            }
-
-            if (character.careerEvents && character.careerEvents.length > 1) {
-                let event2 = CareerEventsHelper.getCareerEvent(character.careerEvents[1]?.id, character.type);
-                if (event2) {
-                    this.fillField(form, 'Career Event 2', event2.localizedName);
-                }
-            }
-        }
-    }
-
-    serializeAssignment(character: Character): string {
-        return character.localizedAssignmentWithoutShip;;
-    }
-
-    fillAttributes(form: PDFForm, character: Character) {
-        character.attributes.forEach( (a, i) => {
-            switch (a.attribute) {
-            case Attribute.Control:
-                this.fillField(form, 'Control', "" + a.value);
-                break;
-            case Attribute.Fitness:
-                this.fillField(form, 'Fitness', "" + a.value);
-                break;
-            case Attribute.Presence:
-                this.fillField(form, 'Presence', "" + a.value);
-                break;
-            case Attribute.Daring:
-                this.fillField(form, 'Daring', "" + a.value);
-                break;
-            case Attribute.Insight:
-                this.fillField(form, 'Insight', "" + a.value);
-                break;
-            case Attribute.Reason:
-                this.fillField(form, 'Reason', "" + a.value);
-                break;
-            }
-        });
-    }
-
-    fillSkills(form: PDFForm, character: Character) {
-        character.skills.forEach( (a, i) => {
-            switch (a.skill) {
-            case Skill.Command:
-                this.fillField(form, 'Command', "" + a.expertise);
-                break;
-            case Skill.Security:
-                this.fillField(form, 'Security', "" + a.expertise);
-                break;
-            case Skill.Science:
-                this.fillField(form, 'Science', "" + a.expertise);
-                break;
-            case Skill.Conn:
-                this.fillField(form, 'Conn', "" + a.expertise);
-                break;
-            case Skill.Engineering:
-                this.fillField(form, 'Engineering', "" + a.expertise);
-                break;
-            case Skill.Medicine:
-                this.fillField(form, 'Medicine', "" + a.expertise);
-                break;
-            }
-        });
-    }
-
-    fillField(form: PDFForm, name: string, value: string) {
-        try {
-            const field = form.getTextField(name)
-            if (field) {
-                field.setText(value)
-            }
-        } catch (e) {
-            // ignore it
-        }
-    }
-
-    fillRank(form: PDFForm, character: Character) {
-        this.fillField(form, 'Rank', character.rank?.localizedName);
-    }
-
-    fillSpecies(form: PDFForm, character: Character) {
-        this.fillField(form, 'Species', character.localizedSpeciesName);
-    }
-
-    fillFocuses(form: PDFForm, character: Character) {
-        character.focuses.forEach( (f, i) => {
-            this.fillField(form, 'Focus ' + (i+1), f);
-        });
-    }
-
-    fillName(form: PDFForm, character: Character) {
-        this.fillField(form, 'Name', character.name);
-    }
-
-    findSecurityValue(construct: Construct) {
-        let c = construct as Character;
-        var result = undefined;
-        c.skills.forEach( (s, i) => {
-            if (s.skill === Skill.Security) {
-                result = s.expertise;
-            }
-        });
-        return result;
-    }
-
-    fillEquipment(form: PDFForm, character: Character) {
-        character.equipmentModels.forEach((e, i) => {
-            this.fillField(form, 'Equipment ' + (i+1), e.localizedName);
-        });
-    }
-
-    fillValues(form: PDFForm, character: Character) {
-        character.values.forEach((v, i) => {
-            this.fillField(form, 'Value ' + (i + 1), v);
-        });
-    }
-
-    fillUpbringing(form: PDFForm, character: Character) {
-        this.fillField(form, 'Upbringing', character.upbringingStep?.localizedDescription);
-    }
-
-
-    fillWeapons(form: PDFForm, construct: Construct) {
-        var weapons = construct.determineWeapons();
-        const security = this.findSecurityValue(construct) || 0;
-
-        weapons.forEach( (w, i) => {
-            this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
-            this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + (security + w.dice)));
-            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', construct.version > 1 ? w.injuryTypeEffectsAndQualities : w.effectsAndQualities);
-        });
-    }
-    formatNameWithoutPronouns(character: Character) {
-        return CharacterSerializer.serializeName(character);
     }
 
     createDeterminationCheckmarks(pdf: PDFDocument, page: PDFPage) {

@@ -11,6 +11,7 @@ import { CharacterType } from "./characterType";
 import { Construct, Stereotype } from "./construct";
 import { makeKey } from "./translationKey";
 import { Era } from "../helpers/eras";
+import { IWeaponDiceProvider } from "./iWeaponDiceProvider";
 
 export class SimpleStats {
     departments: number[];
@@ -88,7 +89,7 @@ export class ShipBuildTypeModel {
     }
 }
 
-export class Starship extends Construct {
+export class Starship extends Construct implements IWeaponDiceProvider {
     stereotype: Stereotype = Stereotype.Starship;
     buildType: ShipBuildType = ShipBuildType.Starship;
     registry: string = "";

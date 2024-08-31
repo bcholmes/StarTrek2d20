@@ -31,14 +31,14 @@ export abstract class BasicGeneratedSheet implements ICharacterSheet {
     async initializeFonts(pdf: PDFDocument) {
 
         pdf.registerFontkit(fontkit);
-        const lcarsFontBytes = await fetch(this.getDefaultFontPath()).then(res => res.arrayBuffer());
-        const lcarsFont =  await pdf.embedFont(lcarsFontBytes)
-        this.formFont = lcarsFont;
+        const baseFontBytes = await fetch(this.getDefaultFontPath()).then(res => res.arrayBuffer());
+        const baseFont =  await pdf.embedFont(baseFontBytes)
+        this.formFont = baseFont;
         const form = pdf.getForm()
         if (form) {
             const rawUpdateFieldAppearances = form.updateFieldAppearances.bind(form);
             form.updateFieldAppearances = function () {
-                return rawUpdateFieldAppearances(lcarsFont);
+                return rawUpdateFieldAppearances(baseFont);
             };
         }
     }
