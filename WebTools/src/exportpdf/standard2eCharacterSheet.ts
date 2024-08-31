@@ -8,7 +8,7 @@ import { Construct } from "../common/construct";
 import { Character } from "../common/character";
 import { TextAlign } from "./textAlign";
 import { staTextFieldAppearanceProvider } from "../helpers/pdfTextFieldAppearance";
-import { Talents, TalentsHelper } from "../helpers/talents";
+import { TalentsHelper } from "../helpers/talents";
 import { XYLocation } from "../common/xyLocation";
 import { WeaponDescriber } from "./weaponDescriber";
 import { IWeaponDiceProvider } from "../common/iWeaponDiceProvider";
@@ -16,6 +16,7 @@ import { CharacterTypeModel } from "../common/characterType";
 import { TracksHelper } from "../helpers/tracks";
 import { CareersHelper } from "../helpers/careers";
 import { CheckMarkMaker } from "./checkMarkMaker";
+import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 
 
 export class Standard2eCharacterSheet extends BaseFormFillingSheet {
@@ -42,7 +43,7 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
     }
 
     getTags(): SheetTag[] {
-        return [ SheetTag.Portrait, SheetTag.Style2e, SheetTag.UsLetter ];
+        return [ SheetTag.Portrait, SheetTag.Style2e, SheetTag.UsLetter, SheetTag.LanguageSupport ];
     }
 
     async initializeFonts(pdf: PDFDocument) {
@@ -391,7 +392,7 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
     }
 
     fillPastimes(form: PDFForm, character: Character): void {
-        const pastime = character.pastime.join(", ");
+        const pastime = character.pastime?.join(", ") ?? "";
         this.fillField(form, "Pastimes", pastime);
     }
 
@@ -414,7 +415,7 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
             let attacks = construct.determineWeapons()
                 .map(w =>
                     w.name + ": " +
-                    describer.describeFully(w, construct as IWeaponDiceProvider));
+                    describer.describeFully(w, construct as IWeaponDiceProvider).replace(CHALLENGE_DICE_NOTATION, "\u25B2"));
 
             this.fillField(form, "Attacks", attacks.join("\n"));
         }

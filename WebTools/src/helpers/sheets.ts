@@ -1193,15 +1193,15 @@ class CharacterSheets {
         } else if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new GeneratedTngPortraitA4CharacterSheet(),
-                new StandardRussianCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
+                new StandardRussianCharacterSheet(), new Standard2eCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageTngCharacterSheet(), new RomulanCharacterSheet() ];
         } else if (character.era === Era.NextGeneration) {
             return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
-                new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
+                new Standard2eCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
-                new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngCharacterSheet(),
+                new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(), new Standard2eCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageTngLandscapeCharacterSheet(), new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         }
     }

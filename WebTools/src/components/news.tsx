@@ -12,6 +12,13 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240831</b>
+                <ul>
+                    <li>Support for the new character sheet. I've had to make some tweaks to the original
+                        character sheet, both to support internationalization and to deal with some features
+                        (like rich text) that my PDF library does not support.
+                    </li>
+                </ul>
                 <b>v1.240825</b>
                 <ul>
                     <li>Minor improvements and fixes to some of the PDF sheets.</li>
