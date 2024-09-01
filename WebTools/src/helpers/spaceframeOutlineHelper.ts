@@ -317,6 +317,8 @@ class SpaceframeOutlineHelper {
             return this.isMovieEra(starship.serviceYear)
                 ? CONSTITUTION_MOVIE_ERA_ELABORATE_OUTLINE
                 : CONSTITUTION_TOS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Constitution3) {
+            return NEO_CONSTITUTION_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Crossfield) {
             return CROSSFIELD_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Defiant || spaceframe.id === Spaceframe.Defiant_UP) {

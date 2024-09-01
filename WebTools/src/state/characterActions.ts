@@ -48,6 +48,7 @@ export const ADD_CHARACTER_TALENT_FOCUS = "ADD_CHARACTER_TALENT_FOCUS";
 export const ADD_CHARACTER_TALENT_VALUE = "ADD_CHARACTER_TALENT_VALUE";
 export const SET_SUPPORTING_CHARACTER_DISCIPLINES = "SET_SUPPORTING_CHARACTER_DISCIPLINES";
 export const SET_SUPPORTING_CHARACTER_ATTRIBUTES = "SET_SUPPORTING_CHARACTER_ATTRIBUTES";
+export const ADD_CHARACTER_SPECIES_ABILITY_FOCUS = "ADD_CHARACTER_SPECIES_ABILITY_FOCUS";
 
 export enum StepContext {
     Species,
@@ -171,6 +172,17 @@ export function addCharacterTalentFocus(focus: string, talent: string, index: nu
        payload: payload
     }
 }
+
+
+export function setCharacterSpeciesAbilityFocus(focus: string, index: number = 0) {
+    let payload = { focus: focus, index: index };
+    return {
+       type: ADD_CHARACTER_SPECIES_ABILITY_FOCUS,
+       payload: payload
+    }
+}
+
+
 
 export function addCharacterTalentValue(value: string, talent: string|ITalent) {
     let talentName = typeof talent === "string" ? talent as string : (talent as ITalent).name;

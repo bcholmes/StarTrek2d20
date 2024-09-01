@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
+import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -357,6 +357,12 @@ class Marshaller {
 
         if (character.speciesStep.talent) {
             json["talent"] = this.talentToJson(character.speciesStep.talent);
+        }
+
+        if (character.speciesStep.abilityOptions) {
+            json["abilityOptions"] = {
+                focuses: [...character.speciesStep.abilityOptions.focuses]
+            };
         }
         return json;
     }
@@ -723,7 +729,6 @@ class Marshaller {
     }
 
     decodeCharacter(json: any) {
-        console.log(json);
         let result = new Character();
         if (json["stereotype"] === "npc") {
             result.stereotype = Stereotype.Npc;
@@ -887,6 +892,13 @@ class Marshaller {
                     }
                     if (speciesBlock.talent != null) {
                         result.speciesStep.talent = this.hydrateTalent(speciesBlock.talent);
+                    }
+
+                    if (speciesBlock.abilityOptions != null) {
+                        result.speciesStep.abilityOptions = new SpeciesAbilityOptions();
+                        if (speciesBlock.abilityOptions.focuses) {
+                            result.speciesStep.abilityOptions.focuses = [...speciesBlock.abilityOptions.focuses];
+                        }
                     }
                 }
 

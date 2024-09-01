@@ -1,4 +1,4 @@
-import { CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesStep, SupportingStep, UpbringingStep } from "../common/character";
+import { CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from "../common/character";
 import { CharacterType } from "../common/characterType";
 import { Stereotype } from "../common/construct";
 import AgeHelper from "../helpers/age";
@@ -7,7 +7,7 @@ import { SpeciesAbilityList } from "../helpers/speciesAbility";
 import { Species } from "../helpers/speciesEnum";
 import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_UNTAPPED_POTENTIAL } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
-import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_TALENT, ADD_CHARACTER_TALENT_FOCUS,
+import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_SPECIES_ABILITY_FOCUS, ADD_CHARACTER_TALENT, ADD_CHARACTER_TALENT_FOCUS,
     ADD_CHARACTER_TALENT_VALUE, ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE,
     MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, REMOVE_CHARACTER_BORG_IMPLANT,
     SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_AGE, SET_CHARACTER_ASSIGNED_SHIP,
@@ -376,6 +376,25 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 if (index >= 0) {
                     talent.implants.splice(index, 1);
                 }
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case ADD_CHARACTER_SPECIES_ABILITY_FOCUS: {
+            let temp = state.currentCharacter.copy();
+            if (temp.speciesStep != null && temp.speciesStep?.abilityOptions == null) {
+                temp.speciesStep.abilityOptions = new SpeciesAbilityOptions();
+            }
+            if (temp.speciesStep?.abilityOptions != null) {
+                let index = action.payload.index;
+                let focus = action.payload.focus;
+                while (temp.speciesStep.abilityOptions.focuses.length < index) {
+                    temp.speciesStep.abilityOptions.focuses[temp.speciesStep.abilityOptions.focuses.length] = "";
+                }
+                temp.speciesStep.abilityOptions.focuses[index] = focus;
             }
             return {
                 ...state,
