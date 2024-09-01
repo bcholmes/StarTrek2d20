@@ -29,6 +29,8 @@ const CareerLengthPage: React.FC<ICharacterProperties> = ({character}) => {
         store.dispatch(setCharacterCareerLength(careerLength.id));
         if (character.stereotype === Stereotype.SoloCharacter) {
             Navigation.navigateToPage(PageIdentity.SoloCareerLengthDetails);
+        } else if (careerLength.id === Career.Young) {
+            Navigation.navigateToPage(PageIdentity.NoviceOrCadetExperience);
         } else {
             Navigation.navigateToPage(PageIdentity.CareerLengthDetails);
         }

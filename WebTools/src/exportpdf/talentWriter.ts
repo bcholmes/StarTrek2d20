@@ -1,7 +1,7 @@
 import { PDFPage } from "@cantoo/pdf-lib";
 import { FontLibrary, FontType } from "./fontLibrary";
 import { SimpleColor } from "../common/colour";
-import { TALENT_NAME_BORG_IMPLANTS, TalentModel } from "../helpers/talents";
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_UNTAPPED_POTENTIAL, TalentModel } from "../helpers/talents";
 import { RoleModel } from "../helpers/roles";
 import { SpeciesAbility } from "../helpers/speciesAbility";
 import { Column } from "./column";
@@ -12,6 +12,7 @@ import { MissionPodModel } from "../helpers/missionPods";
 import { FontOptions } from "./fontOptions";
 import { Paragraph } from "./paragraph";
 import i18next from "i18next";
+import { makeKey } from "../common/translationKey";
 
 export class ReadableTalentModel {
     characterType: CharacterType;
@@ -88,6 +89,19 @@ export class TalentWriter {
                                 paragraph.append(implant.description, new FontOptions(fontSize));
                             }
                         });
+                    } else if (talent.talent.name === TALENT_NAME_UNTAPPED_POTENTIAL && talent.attribute != null) {
+                        paragraph = paragraph.nextParagraph(0);
+                        if (paragraph) {
+                            paragraphs.push(paragraph);
+                            paragraph.indent(10);
+                            paragraph.append(i18next.t("Construct.other.attribute") + ": ", new FontOptions(fontSize, FontType.Bold));
+                            paragraph.append(i18next.t(makeKey("Construct.attribute.", Attribute[talent.attribute])), new FontOptions(fontSize));
+                        }
+
+
+                    }
+                    if (talent.talent.name === TALENT_NAME_UNTAPPED_POTENTIAL && talent.attribute == null) {
+                        console.log("Sadness");
                     }
 
                     paragraph = paragraph?.nextParagraph();

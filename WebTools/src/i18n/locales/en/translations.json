@@ -236,6 +236,9 @@
     "NpcConfigurationPage.specialization": "Specialization",
     "NpcConfigurationPage.text": "Specify what kind of NPC you're trying to create.",
 
+    "NoviceOrCadetExperiencePage.attribute.instruction": "Choose 1 attribute to use with this talent.",
+    "NoviceOrCadetExperiencePage.attribute.error": "Please choose an attribute.",
+
     "OtherToolsPage.instruction": "This section contains a number of miscellaneous additional tools that might be used in your STA game.",
 
     "OtherToolsPage.safetyChecklist.instruction": "This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie. This list is divided into several categories, each of which includes a number of topics. This online version of the safety checklist can allow GMs or players to review the topics and evaluate how they want those topics handled in-game.",
@@ -3070,7 +3073,7 @@
     "Talent.untappedPotential": "Untapped Potential",
 
     "Talent.untappedPotential.description": "The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1[D]. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.",
-    "Talent.untappedPotential.description2e": "Select one of your attributes when you receive this talent. You’re inexperienced, but talented and with a bright future. You may not have or increase any attribute to above 11, or any department to above 4 while you have this talent (and may have to adjust attributes and departments accordingly at the end of character creation).\n\nWhenever you succeed at a task for which you bought one or more additional dice (by any means), roll a d20 after the roll. If you roll equal to or less than the chosen attribute, gain 1 bonus Momentum; if you roll higher, add 1 Threat instead. While you possess this talent, you can- not gain any higher rank than Lieutenant (junior grade), or a higher enlisted rate than Petty Officer.",
+    "Talent.untappedPotential.description2e": "Select one of your attributes when you receive this talent. You’re inexperienced, but talented and with a bright future. You may not have or increase any attribute to above 11, or any department to above 4 while you have this talent (and may have to adjust attributes and departments accordingly at the end of character creation).\n\nWhenever you succeed at a task for which you bought one or more additional dice (by any means), roll a d20 after the roll. If you roll equal to or less than the chosen attribute, gain 1 bonus Momentum; if you roll higher, add 1 Threat instead. While you possess this talent, you cannot gain any higher rank than Lieutenant (junior grade), or a higher enlisted rate than Petty Officer.",
 
     "Talent.variableGeometryWarpField": "Variable Geometry Warp Field",
 

@@ -198,7 +198,7 @@ const EducationDetailsPage: React.FC<ICharacterProperties> = ({character}) => {
             if (character.age.isChild) {
                 Navigation.navigateToPage(PageIdentity.ChildCareer);
             } else if (character.type === CharacterType.Cadet) {
-                Navigation.navigateToPage(PageIdentity.CadetCareer);
+                Navigation.navigateToPage(PageIdentity.NoviceOrCadetExperience);
             } else {
                 Navigation.navigateToPage(PageIdentity.CareerLength);
             }

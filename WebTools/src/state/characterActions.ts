@@ -41,6 +41,7 @@ export const SET_CHARACTER_TYPE = 'SET_CHARACTER_TYPE';
 export const ADD_CHARACTER_CAREER_EVENT = "ADD_CHARACTER_CAREER_EVENT";
 export const SET_CHARACTER_CAREER_EVENT_TRAIT = "SET_CHARACTER_CAREER_EVENT_TRAIT";
 export const ADD_CHARACTER_BORG_IMPLANT = "ADD_CHARACTER_BORG_IMPLANT";
+export const ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE = "ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE";
 export const REMOVE_CHARACTER_BORG_IMPLANT = "REMOVE_CHARACTER_BORG_IMPLANT";
 export const ADD_CHARACTER_TALENT = "ADD_CHARACTER_TALENT";
 export const ADD_CHARACTER_TALENT_FOCUS = "ADD_CHARACTER_TALENT_FOCUS";
@@ -72,6 +73,14 @@ export function addCharacterBorgImplant(type: BorgImplantType) {
     let payload = { type: type };
     return {
        type: ADD_CHARACTER_BORG_IMPLANT,
+       payload: payload
+    }
+}
+
+export function addCharacterUntappedPotentialAttribute(attribute: Attribute) {
+    let payload = { attribute: attribute };
+    return {
+       type: ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE,
        payload: payload
     }
 }

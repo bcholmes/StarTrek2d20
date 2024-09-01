@@ -135,10 +135,6 @@ export enum Spaceframe {
     Kirk,
 
 
-    // 2nd Edition
-    Constituion3,
-
-
     // Tactical
     HouYi,
 

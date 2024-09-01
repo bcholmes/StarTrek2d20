@@ -60,12 +60,12 @@ const CharacterCreationBreadcrumbs : React.FC<ICharacterBreadcrumbProperties> = 
 
     const renderCareerLength = () => {
         if ((character?.careerEvents?.length && pageIdentity === PageIdentity.CareerLengthDetails) || pageIdentity === PageIdentity.CareerLength
-            || pageIdentity === PageIdentity.ChildCareer || pageIdentity === PageIdentity.CadetCareer) {
+            || pageIdentity === PageIdentity.ChildCareer || pageIdentity === PageIdentity.NoviceOrCadetExperience) {
             return (<li className="breadcrumb-item active" aria-current="page">{t('Page.title.soloCareerLength')}</li>);
         } else if (character?.careerStep != null) {
             let page = PageIdentity.CareerLength;
             if (character.type === CharacterType.Cadet) {
-                page = PageIdentity.CadetCareer;
+                page = PageIdentity.NoviceOrCadetExperience;
             } else if (character.type === CharacterType.Child) {
                 page = PageIdentity.ChildCareer;
             }

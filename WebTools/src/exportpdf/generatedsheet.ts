@@ -101,6 +101,7 @@ export const assembleWritableItems = (character: Character) => {
                 );
             } else if (talent.name === TALENT_NAME_UNTAPPED_POTENTIAL && character.version > 1) {
                 readableTalent.attribute = character.careerStep?.talent?.attribute;
+                console.log("Attribute: " + character.careerStep?.talent?.attribute);
             }
             result.push(readableTalent);
         }

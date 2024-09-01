@@ -378,7 +378,7 @@ class Marshaller {
             talent["value"] = t.value;
         }
         if (t.attribute != null) {
-            talent["attribute"] = t.attribute;
+            talent["attribute"] = Attribute[t.attribute];
         }
         return talent;
     }
@@ -723,6 +723,7 @@ class Marshaller {
     }
 
     decodeCharacter(json: any) {
+        console.log(json);
         let result = new Character();
         if (json["stereotype"] === "npc") {
             result.stereotype = Stereotype.Npc;

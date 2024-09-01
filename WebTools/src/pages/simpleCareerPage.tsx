@@ -48,7 +48,7 @@ const SimpleCareerPage: React.FC<ISimpleCareerPageProperties> = ({character, tal
 
     return (
         <div className="page container ms-0">
-            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.CadetCareer}/>
+            <CharacterCreationBreadcrumbs pageIdentity={PageIdentity.NoviceOrCadetExperience}/>
             <main>
                 <Header>{t('Page.title.careerLength')}</Header>
                 <InstructionText text={t(instruction)} />

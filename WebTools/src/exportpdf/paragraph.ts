@@ -1,4 +1,4 @@
-import { PDFFont, PDFPage } from "@cantoo/pdf-lib";
+import { PDFPage } from "@cantoo/pdf-lib";
 import { Column } from "./column";
 import { SimpleColor } from "../common/colour";
 import { XYLocation } from "../common/xyLocation";
@@ -106,16 +106,10 @@ export class Paragraph {
     // in PDF coordinate system
     private start?: XYLocation;
 
-    constructor(page: PDFPage, column: Column, fontLibrary: FontLibrary|PDFFont) {
+    constructor(page: PDFPage, column: Column, fontLibrary: FontLibrary) {
         this.column = column;
         this.page = page;
-        if (fontLibrary instanceof FontLibrary) {
-            this.fontLibrary = fontLibrary as FontLibrary;
-        } else {
-            console.log("Oh noes!");
-            let fonts = { [FontType.Symbol] : (fontLibrary as PDFFont)};
-            this.fontLibrary = new FontLibrary(fonts);
-        }
+        this.fontLibrary = fontLibrary;
     }
 
     get symbolFont() {

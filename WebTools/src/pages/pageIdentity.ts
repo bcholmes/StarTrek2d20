@@ -19,7 +19,7 @@ export enum PageIdentity {
     Career,
     CareerDetails,
     CareerLength,
-    CadetCareer,
+    NoviceOrCadetExperience,
     CadetSeniority,
     ChildCareer,
     ChildEducationPage,

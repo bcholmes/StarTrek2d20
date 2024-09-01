@@ -5,10 +5,10 @@ import AgeHelper from "../helpers/age";
 import { Skill } from "../helpers/skills";
 import { SpeciesAbilityList } from "../helpers/speciesAbility";
 import { Species } from "../helpers/speciesEnum";
-import { TALENT_NAME_BORG_IMPLANTS } from "../helpers/talents";
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_UNTAPPED_POTENTIAL } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
 import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_TALENT, ADD_CHARACTER_TALENT_FOCUS,
-    ADD_CHARACTER_TALENT_VALUE, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE,
+    ADD_CHARACTER_TALENT_VALUE, ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE,
     MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, REMOVE_CHARACTER_BORG_IMPLANT,
     SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_AGE, SET_CHARACTER_ASSIGNED_SHIP,
     SET_CHARACTER_CAREER_EVENT_TRAIT, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION,
@@ -341,6 +341,18 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 isModified: true
             }
         }
+        case ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE: {
+            let temp = state.currentCharacter.copy();
+            let talent = temp.getTalentByName(TALENT_NAME_UNTAPPED_POTENTIAL);
+            if (talent) {
+                talent.attribute = action.payload.attribute;
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
         case ADD_CHARACTER_BORG_IMPLANT: {
             let temp = state.currentCharacter.copy();
             let talent = temp.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
@@ -409,10 +421,14 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             } else if (action.payload.context === StepContext.Education) {
                 temp.educationStep.talent = talent;
             } else if (action.payload.context === StepContext.Career) {
+                let original = temp.careerStep;
                 if (temp.careerStep == null) {
                     temp.careerStep = new CareerStep();
                 }
                 temp.careerStep.talent = talent;
+                if (original?.talent?.talent === talent.talent) {
+                    temp.careerStep.talent.attribute = original?.talent?.attribute;
+                }
             } else if (action.payload.context === StepContext.FinishingTouches) {
                 if (temp.finishingStep == null) {
                     temp.finishingStep = new FinishingStep();

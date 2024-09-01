@@ -36,6 +36,7 @@ import SourceSelectionPage from './sourceSelectionPage';
 import { StepContext } from '../state/characterActions';
 import toast from 'react-hot-toast';
 import ExtraTalentChoicesPage from './extraTalentChoicesPage';
+import NoviceOrCadetExperiencePage from './noviceOrCadetExperiencePage';
 
 export interface IPageFactoryRegistry {
     findFactory(page: PageIdentity);
@@ -83,7 +84,7 @@ export class PageFactory {
         this.factories[PageIdentity.CareerEvent2] = () => <CareerEventPage context={StepContext.CareerEvent2}/>;
         this.factories[PageIdentity.CareerEvent2Details] = () => <CareerEventDetailsPage context={StepContext.CareerEvent2}/>;
         this.factories[PageIdentity.ChildCareer] = () => <SimpleCareerPage talent="Childhood Insight" nextPage={PageIdentity.AttributesAndDisciplines}/>;
-        this.factories[PageIdentity.CadetCareer] = () => <SimpleCareerPage talent="Untapped Potential"  nextPage={PageIdentity.CadetSeniority} />;
+        this.factories[PageIdentity.NoviceOrCadetExperience] = () => <NoviceOrCadetExperiencePage />;
         this.factories[PageIdentity.CadetSeniority] = () => <CadetSeniorityPage />;
         this.factories[PageIdentity.ChildEducationPage] = () => <ChildEducationPage/>;
         this.factories[PageIdentity.ChildEducationDetailsPage] = () => <ChildEducationDetailsPage/>;
