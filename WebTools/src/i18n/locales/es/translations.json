@@ -761,6 +761,8 @@
     "CharacterType.name.cadet": "Cadete",
     "CharacterType.name.child": "Niño",
     "CharacterType.name.other": "Otro",
+    "CharacterType.name.cardassian": "Unión Cardassiana",
+    "CharacterType.name.romulan": "Imperio Estelar Romulano",
 
     "EarlyOutlook.MilitaryOrExploration": "Flota Estelar",
 

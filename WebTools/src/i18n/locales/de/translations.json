@@ -637,6 +637,8 @@
     "CharacterType.name.cadet": "Kadetten",
     "CharacterType.name.child": "Kinder",
     "CharacterType.name.other": "Andere",
+    "CharacterType.name.cardassian": "Cardassianische Union",
+    "CharacterType.name.romulan": "Romulanisches Sternenimperium",
 
     "Environment.common.homeworld.name": "Heimatwelt",
     "Environment.common.homeworld.description": "Der Charakter stammt von der Heimatwelt seiner oder ihrer Zivilisation und ist umgeben von dem kulturellen sowie spirituellen Erbe seines oder ihres Volkes aufgewachsen. Heimatwelten spiegeln oft die Ideale ihres Volkes wider und sind äußerst utopisch und idyllisch. Sie sind Horte der Tradition und sind die Zentren des wirtschaftlichen und politischen Lebens ihrer Zivilisation.",

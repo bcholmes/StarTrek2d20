@@ -96,6 +96,8 @@ export class SpaceframeModel {
             let key = makeKey('Spaceframe.', Spaceframe[this.id]);
             if (key.indexOf("_UP") >= 0) {
                 key = key.substring(0, key.indexOf("_UP"));
+            } else if (key.indexOf("_2E") >= 0) {
+                key = key.substring(0, key.indexOf("_2E"));
             }
             return key;
         } else {
@@ -132,8 +134,7 @@ export class SpaceframeModel {
     static createStandardSpaceframe(id: Spaceframe, type: CharacterType, name: string, serviceYear: number, source: Source[], systems: number[], departments: number[],
         scale: number, attacks: string[], talents: TalentSelection[], additionalTraits: string[] = [ "Federation Starship" ], maxServiceYear: number = 99999,
         soloStats?: SoloSpaceframeStats) {
-        let sourcePrerequisite = new SourcePrerequisite();
-        sourcePrerequisite.sources = source;
+        let sourcePrerequisite = new SourcePrerequisite(...source);
         let prerequisites: IConstructPrerequisite<Starship>[] = [
             sourcePrerequisite, new StarshipTypePrerequisite(type), new ServiceYearPrerequisite(serviceYear) ];
         if (serviceYear > 3100 || id === Spaceframe.ScoutType) {

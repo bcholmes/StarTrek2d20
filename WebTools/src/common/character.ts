@@ -794,7 +794,11 @@ export class Character extends Construct implements IWeaponDiceProvider {
     }
 
     getDiceForWeapon(weapon: Weapon) {
-        return weapon.dice + this.skills[Skill.Security].expertise;
+        if (this.version === 1) {
+            return weapon.dice + this.skills[Skill.Security].expertise;
+        } else {
+            return weapon.dice;
+        }
     }
 
     getRankForTalent(talentName: string) {

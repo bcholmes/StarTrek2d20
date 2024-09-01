@@ -139,6 +139,11 @@ export enum Spaceframe {
     HouYi,
 
     // 2nd edition
+    NX_2E,
+    Excelsior_2E,
+    Galaxy_2E,
+    Intrepid_2E,
+    Sovereign_2E,
     Sagan,
     Constitution3,
     Pioneer,

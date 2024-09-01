@@ -49,8 +49,8 @@ export function createStarship(starship: Starship) {
  }
 
 export function createNewStarship(type: CharacterType, era: Era, serviceYear?: number, simple: SimpleStats = undefined, workflow?: ShipBuildWorkflow,
-        buildType: ShipBuildType = ShipBuildType.Starship) {
-    let payload = { type: type, era: era, serviceYear: serviceYear, simple: simple, workflow: workflow, buildType: buildType };
+        buildType: ShipBuildType = ShipBuildType.Starship, version: number = 1) {
+    let payload = { type: type, era: era, serviceYear: serviceYear, simple: simple, workflow: workflow, buildType: buildType, version: version };
     return {
        type: CREATE_NEW_STARSHIP,
        payload: payload

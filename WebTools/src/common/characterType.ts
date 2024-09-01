@@ -10,11 +10,12 @@ export enum CharacterType {
     Civilian,
     Cadet,
     Child,
-    Tribble,
 
     Romulan,
     Cardassian,
     Ferengi,
+
+    Tribble,
 
     Other
 }
@@ -30,14 +31,16 @@ export class CharacterTypeModel {
         new CharacterTypeModel("Child", CharacterType.Child),
 
         new CharacterTypeModel("Romulan", CharacterType.Romulan),
-        new CharacterTypeModel("Ferengi", CharacterType.Ferengi),
         new CharacterTypeModel("Cardassian", CharacterType.Cardassian),
+        new CharacterTypeModel("Ferengi", CharacterType.Ferengi),
+
+        new CharacterTypeModel("Tribble", CharacterType.Tribble),
 
         new CharacterTypeModel("Other", CharacterType.Other)
     ];
 
     private static TYPES_EXCEPT_OTHER: CharacterTypeModel[] = CharacterTypeModel.TYPES
-        .filter(t => t.type !== CharacterType.Other);
+        .filter(t => t.type !== CharacterType.Other && t.type !== CharacterType.Tribble);
 
     name: string;
     type: CharacterType;

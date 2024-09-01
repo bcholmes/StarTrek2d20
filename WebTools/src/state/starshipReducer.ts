@@ -17,8 +17,7 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
             }
         }
         case CREATE_NEW_STARSHIP: {
-            let s = new Starship();
-            s.type = action.payload.type;
+            let s = Starship.createStandardStarship(action.payload.era, action.payload.type, action.payload.version);
             s.serviceYear = action.payload.serviceYear;
             if (action.payload.buildType != null) {
                 s.buildType = action.payload.buildType;

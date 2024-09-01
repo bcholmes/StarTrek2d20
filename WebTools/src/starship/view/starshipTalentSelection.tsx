@@ -112,7 +112,7 @@ export class StarshipTalentSelectionList extends React.Component<IStarshipTalent
             }
             return (
                 <tr key={i}>
-                    <td className="selection-header-small">{t.talent.displayName}</td>
+                    <td className="selection-header-small">{t.talent.localizedName}</td>
                     <td>{replaceDiceWithArrowhead(t.talent.description)} {prerequisites}</td>
                     <td>
                         <CheckBox

@@ -890,6 +890,9 @@
     "CharacterType.name.cadet": "Cadet",
     "CharacterType.name.child": "Child",
     "CharacterType.name.other": "Other",
+    "CharacterType.name.cardassian": "Cardassian Union",
+    "CharacterType.name.romulan": "Romulan Star Empire",
+    "CharacterType.name.ferengi": "Ferengi Alliance",
 
     "EarlyOutlook.MilitaryOrExploration": "Starfleet",
 
@@ -2096,6 +2099,10 @@
 
     "Talent.abruptInsights.description": "Your insight into the minds of others can give you an edge when interacting with them, though not everyone is comfortable having someone else speak their mind. When you attempt a task as part of a social conflict, you can increase the complication range by 1, 2, or 3; if you succeed, you generate bonus Momentum equal to the complication range increase. Bonus Momentum may not be saved.",
 
+    "Talent.abundantPersonnel": "Abundant Personnel",
+
+    "Talent.abundantPersonnel.description": "The ship’s Crew Support is doubled, after any other modifiers, and any effects or abilities which would increase Crew Support have twice the normal effect aboard a ship with this special rule. Further, when you introduce a supporting character, you may use one additional Crew Support to grant them an improvement immediately.",
+
     "Talent.acuteSenses": "Acute Senses",
 
     "Talent.acuteSenses.description2e": "The Aenar have honed their senses to the point that they are able to respond to stimuli just as well as, if not superior to, those who possess the ability to see. When attempting a task to detect something which is hidden from conventional senses, or which would normally be difficult to perceive, you may re-roll 1d20.",
@@ -2350,6 +2357,10 @@
     "Talent.commandShip.soloDescription": "The ship has command and control systems allowing it to coordinate easily with allies during a crisis.",
     "Talent.commandShip.description2e": "When a character on the ship succeeds at a Command task to create a trait, they may always be assisted by the ship’s Communications + Command, and they may confer the trait to allied ships, landing parties, or away teams with whom the ship maintains a communication link.",
 
+    "Talent.compactVessel": "Compact Vessel",
+
+    "Talent.compactVessel.description": "This spaceframe has a Scale of 2, but it does not count as a small craft. It has no small craft capability of its own, and cannot launch or receive shuttlepods, shuttlecraft, or any comparable craft.",
+
     "Talent.computerExpertise": "Computer Expertise",
 
     "Talent.computerExpertise.description": "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
@@ -2575,6 +2586,10 @@
 
     "Talent.glancingImpact.description2e": "Whenever you succeed at the Evasive Action major ac- tion, increase the Resistance of the ship you are piloting by 2; this bonus lasts until the start of your next turn.",
 
+    "Talent.grapplerCableSpecialRule": "Grappler Cable",
+
+    "Talent.grapplerCableSpecialRule.description": "The ship utilizes a physical cable with a magnetic hook at the end, in place of the graviton-based tractor beams used by ships in later eras. This functions as a tractor beam, but if the target breaks free, roll a d20: if you roll above the ship’s Weapons system, the cable is damaged, and cannot be used until repaired. Repairing the cable is treated as repairing a breach.",
+
     "Talent.greedIsEternal": "Greed is Eternal",
 
     "Talent.greedIsEternal.description2e": "When engaged in negotiations—including in social conflict—that have the potential for you to profit personally, you may add 1 Threat to re-roll your dice pool.",
@@ -2718,6 +2733,10 @@
     "Talent.labRat": "Lab Rat",
 
     "Talent.labRat.description2e": "When attempting an extended task while using a laboratory, increase your Impact by 1.",
+
+    "Talent.landingGear": "Landing Gear",
+
+    "Talent.landingGear.description": "The vessel is equipped to land safely on a planetary surface, and can return to space afterward. To land a ship requires **Reserve Power** be rerouted to Structure, and then requires someone at the helm to attempt a **Control + Conn** task with a Difficulty equal to the ship’s Scale, assisted by the ship’s **Structure + Conn**. This can Succeed at Cost. Success means the ship lands on the planet’s surface. Taking off requires the same task attempt, but the Difficulty is reduced by 2.",
 
     "Talent.leadInvestigator": "Lead Investigator",
 
@@ -2870,6 +2889,10 @@
     "Talent.pointDefenseSystem.description2e": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction the torpedo is traveling from, potentially destroying it before it impacts the shields or the ship’s hull.\n\nThis system does not function while the ship is travelling at warp. The ship is considered to have Cover against torpedo attacks, increasing the Difficulty of the attack by 1. This talent stops functioning if the ship has suffered one or more breaches to the Weapons system.",
     "Talent.pointDefenseSystem.soloDescription": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction it is traveling from, potentially destroying it before it impacts the shields or the ship’s hull. This system only works at subwarp speeds.",
 
+    "Talent.polarizedHullPlatingSpecialRule": "Polarized Hull Plating",
+
+    "Talent.polarizedHullPlatingSpecialRule.description": "Vessels of this spaceframe lack deflector shields common to many other ships, and instead rely upon polarization of the hull plating to resist damage. The ship’s Shields track instead represents the state of the ship’s polarized hull. The ship’s Shields are equal to its Structure, with no additional modifiers. However, these do not count as shields for the purposes of blocking transporter use.",
+
     "Talent.positiveReinforcement": "Positive Reinforcement",
 
     "Talent.positiveReinforcement.description2e": "Once per mission, you may attempt a Presence + Medicine task with a Difficulty of 3, while providing emotional or mental treatment for another character. Success creates a character trait for your patient that lasts until the end of the mission: Boosted Confidence. In addition to the normal effects of the trait, that character can reroll their dice pool, as if they’d spent Determination, once be- fore the end of the mission. If the task the character used their reroll on fails, they lose the trait created by this talent.",
@@ -2898,6 +2921,10 @@
     "Talent.proceduralCompliance": "Procedural Compliance",
 
     "Talent.proceduralCompliance.description2e": "When you attempt an Engineering task, you may remove one d20 from your dice pool before rolling. If you do so, you gain one automatic success on your task.",
+
+    "Talent.prototypeCloakingDevice": "Prototype",
+
+    "Talent.prototypeCloakingDevice.description": "The cloaking device employed on this vessel has some notable limitations. The vessel cannot travel at warp while cloaked, and the difficulty of the task roll to activate the cloak increases to 3.",
 
     "Talent.proudAndHonorable": "Proud and Honorable",
 
@@ -3002,7 +3029,12 @@
 
     "Talent.saucerSeparation": "Saucer Separation",
 
+    "Talent.saucerSeparation.description2e": "Vessels of this class have the capability to detach their saucer section in an emergency. Once the saucer has detached, the two sections of the ship cannot be reconnected outside of a drydock. Ship’s systems are halved (round up) for the saucer and the secondary hull when separated, the saucer is unable to enter warp speeds or launch small craft, and each section is considered a separate vessel with Scale 1 less than the original vessel; the secondary hull is commanded from main engineering. The saucer can land on a planetary surface with emergency landing gear.",
     "Talent.saucerSeparation.soloDescription": "The ship is designed so that the saucer section can be separated from the engineering section, to operate as two distinct ships. Each section has the same Systems and Departments, as well as the same weapons. The saucer section, which contains the crew quarters and recreational areas, does not have the capacity to go to warp.",
+
+    "Talent.saucerSeparationAndReconnect": "Saucer Separation and Reconnect",
+
+    "Talent.saucerSeparationAndReconnect.description": "The ship is designed so the saucer section can be separated from the engineering section to operate as two distinct ships. Each section has the same systems, talents, and weapons, but their Scale is 1 lower than that of the original vessel (recalculate anything derived from Scale). Further, if the ship suffered any breaches prior to separating, ongoing effects of those breaches apply equally to both sections. The saucer section, which usually contains the crew quarters and recreation areas, does not have the capacity to go to warp. The secondary hull is commanded from main engineering.\n\nSeparating is a major action attempted from the bridge (Operations panel) or main engineering, requiring a **Control + Conn** task with a Difficulty of 3, assisted by the ship’s **Structure + Engineering**. Reconnecting takes a major action, but the process is automated and requires no task attempt. Separating and reconnecting cannot be completed if the ship (or either part of it) has suffered one or more breaches to Structure.",
 
     "Talent.secondaryReactors": "Secondary Reactors",
 

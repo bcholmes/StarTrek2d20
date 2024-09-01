@@ -717,6 +717,8 @@
     "CharacterType.name.cadet": "Cadet",
     "CharacterType.name.child": "Enfant",
     "CharacterType.name.other": "Autre",
+    "CharacterType.name.cardassian": "Union Cardassienne",
+    "CharacterType.name.romulan": "Empire Stellaire Romulien",
 
     "EarlyOutlook.MilitaryOrExploration": "Starfleet",
 

@@ -3468,13 +3468,13 @@ export class Talents {
             new TalentModel(
                 "Polarized Hull Plating",
                 "The ship does not have deflector shielding, but rather is equipped with layers of hull plating that can be polarized to resist attack. This functions in the same way as Shields do, with one difference: the ship suffers a Breach if four or more damage is suffered after deductions for Resistance.",
-                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
+                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia), new NotSourcePrerequisite(Source.Core2ndEdition)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Grappler Cables",
                 "This precursor to tractor beams uses sturdy cables and magnetic grapplers to grab on to objects and ships. This functions as a tractor beam, but if the target breaks free, roll 1[D] — on an Effect, the cables have been Damaged and cannot be used again until repaired.",
-                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia)],
+                [new StarshipPrerequisite(), new MaxServiceYearPrerequisite(2199), new SourcePrerequisite(Source.CommandDivision, Source.UtopiaPlanitia), new NotSourcePrerequisite(Source.Core2ndEdition)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -3887,6 +3887,49 @@ export class Talents {
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.DiscoveryCampaign)],
             1,
             "Starship", true),
+        new TalentModel(
+            "Abundant Personnel",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Compact Vessel",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Grappler Cable (Special Rule)",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Landing Gear",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Polarized Hull Plating (Special Rule)",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Saucer Separation and Reconnect",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Prototype Cloaking Device",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+
 
         new TalentModel(
             "First into Battle",
@@ -4342,6 +4385,7 @@ export class Talents {
             [new CharacterStereotypePrerequisite(Stereotype.Npc), new SpeciesPrerequisite(Species.Pakled, false)],
             1,
             "Pakled", true),
+
     ];
 
     getTalents() {

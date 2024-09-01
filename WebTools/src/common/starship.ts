@@ -117,7 +117,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         return result;
     }
 
-    static createStandardStarship(era: Era = Era.NextGeneration, type: CharacterType = CharacterType.Starfleet) {
+    static createStandardStarship(era: Era = Era.NextGeneration, type: CharacterType = CharacterType.Starfleet, version: number = 1) {
         const result = new Starship();
         result.stereotype = Stereotype.Starship;
         result.type = type;
@@ -572,6 +572,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
 
     public copy(): Starship {
         let result = new Starship();
+        result.version = this.version;
         result.era = this.era;
         result.type = this.type;
         result.stereotype = this.stereotype;

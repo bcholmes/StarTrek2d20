@@ -2878,8 +2878,215 @@ export class SpaceframeHelper {
                 [3, 2, 3, 3, 2, 2]
             )),
 
-
-
+        [Spaceframe.NX_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.NX_2E,
+            CharacterType.Starfleet,
+            "NX Class",
+            2151,
+            [ Source.UtopiaPlanitia ],
+            [5, 5, 6, 6, 6, 6],
+            [0, 1, 0, 1, 1, 0],
+            3,
+            [
+                "Phase Cannons",
+                "Spatial Torpedoes",
+                "Grappler Cable (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Polarized Hull Plating (Special Rule)"),
+                TalentSelection.selectTalent("Grappler Cable (Special Rule)"),
+            ],
+            [ "Federation Starship" ],
+            2170,
+        ),
+        [Spaceframe.Excelsior_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Excelsior_UP,
+            CharacterType.Starfleet,
+            "Excelsior Class",
+            2285,
+            [ Source.Core2ndEdition ],
+            [8, 7, 9, 8, 9, 8],
+            [1, 0, 0, 2, 0, 0],
+            5,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+                TalentSelection.selectTalent("Excelsior Saucer Separation")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Galaxy_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Galaxy_2E,
+            CharacterType.Starfleet,
+            "Galaxy Class",
+            2359,
+            [ Source.Core2ndEdition ],
+            [9, 10, 10, 8, 10, 10],
+            [1, 0, 0, 0, 1, 1],
+            6,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 5)"
+            ],
+            [
+                TalentSelection.selectTalent("Abundant Personnel"),
+                TalentSelection.selectTalent("Saucer Separation and Reconnect"),
+                TalentSelection.selectTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("Redundant Systems")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Intrepid_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Intrepid_2E,
+            CharacterType.Starfleet,
+            "Intrepid Class",
+            2371,
+            [ Source.Core2ndEdition ],
+            [9, 11, 11, 10, 8, 8],
+            [0, 1, 0, 1, 1, 0],
+            4,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Landing Gear")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Sovereign_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Sovereign_2E,
+            CharacterType.Starfleet,
+            "Sovereign Class",
+            2371,
+            [ Source.Core2ndEdition ],
+            [10, 9, 10, 10, 10, 10],
+            [1, 0, 1, 0, 1, 0],
+            6,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 5)"
+            ],
+            [
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Saucer Separation")
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Constitution3]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Constitution3,
+            CharacterType.Starfleet,
+            "Constitution III",
+            2396,
+            [ Source.Core2ndEdition ],
+            [9, 10, 11, 10, 10, 10],
+            [0, 1, 0, 1, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+            ],
+            [ "Federation Starship", "Legacy Components" ],
+            99999),
+        [Spaceframe.TLiss]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.TLiss,
+            CharacterType.Romulan,
+            "T'Liss",
+            2260,
+            [ Source.Core2ndEdition ],
+            [6, 8, 7, 9, 7, 9],
+            [0, 1, 1, 1, 0, 0],
+            4,
+            [
+                "Disruptor Banks",
+                "Plasma Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Prototype Cloaking Device"),
+            ],
+            [ "Romulan Starship", "Bird of Prey", "Experimental" ],
+            99999),
+        [Spaceframe.DDeridex]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.DDeridex,
+            CharacterType.Romulan,
+            "D'Deridex",
+            2348,
+            [ Source.Core2ndEdition ],
+            [8, 9, 10, 10, 11, 9],
+            [1, 0, 1, 1, 0, 0],
+            6,
+            [
+                "Disruptor Banks",
+                "Plasma Torpedoes",
+                "Tractor Beam (Strength 5)"
+            ],
+            [
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Abundant Personnel"),
+            ],
+            [ "Romulan Starship", "Imposing" ],
+            99999),
+        [Spaceframe.Galor]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Galor,
+            CharacterType.Cardassian,
+            "Galor",
+            2348,
+            [ Source.Core2ndEdition ],
+            [8, 8, 9, 7, 8, 9],
+            [1, 0, 1, 1, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Disruptor Spinal Lance",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+            ],
+            [ "Cardassian Starship" ],
+            99999),
+        [Spaceframe.DKora]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.DKora,
+            CharacterType.Ferengi,
+            "D'Kora",
+            2350,
+            [ Source.Core2ndEdition ],
+            [9, 8, 10, 9, 10, 7],
+            [1, 0, 0, 1, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Electromagnetic Cannon",
+                "Disruptor Banks",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+            ],
+            [ "Ferengi Starship", "Marauder", "The Best Latinum Can Buy" ],
+            99999),
 
         //[Spaceframe.]: SpaceframeModel.createStandardSpaceframe(
         //    CharacterType.Starfleet,
