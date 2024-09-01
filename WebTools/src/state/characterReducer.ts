@@ -79,6 +79,7 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.speciesStep.mixedSpecies = originalStep.mixedSpecies;
                     temp.speciesStep.originalSpecies = originalStep.originalSpecies;
                     temp.speciesStep.talent = originalStep.talent?.copy();
+                    temp.speciesStep.abilityOptions = originalStep.abilityOptions?.copy();
                 }
             }
             if (temp.version > 1) {

@@ -2085,6 +2085,7 @@
     "Talent.ablativeArmor": "Ablative Armor",
 
     "Talent.ablativeArmor.description": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.",
+    "Talent.ablativeArmor.description2e": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures. Increase the ship's Resistance by 2.",
     "Talent.ablativeArmor.soloDescription": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy and protecting the ship. This plating is replaced periodically.",
 
     "Talent.ablativeFieldProjector": "Ablative Field Projector",
@@ -2102,28 +2103,38 @@
     "Talent.adaptableEnergyWeapons": "Adaptable Energy Weapons",
 
     "Talent.adaptableEnergyWeapons.soloDescription": "The ship’s weapon delivery systems are enhanced by multiparticle emitters. These emitters allow for the ship’s energy weapon capabilities to be modified when fired. This could create distinct advantages during a battle.",
+    "Talent.adaptableEnergyWeapons.description2e": "When you select this talent, select one of the energy weapons on your ship, and choose a different energy weapon type (the emitter remains unchanged). When you make an attack using that energy weapon, you may use the alternate energy weapon type for the attack, but the complication range of that attack is increased by 1.\n\nYou may select this talent multiple times, choosing a different energy weapon type each time.",
+
+    "Talent.adaptiveShieldModulator": "Adaptive Shield Modulator",
+
+    "Talent.adaptiveShieldModulator.description": "When the Modulate Shields action is taken, the ship’s Resistance is increased by a further +1 by that action. Further, the ship may have its shields raised when operating in silent running.",
 
     "Talent.advancedEmergencyCrewHolograms": "Advanced Emergency Crew Holograms",
 
     "Talent.advancedEmergencyCrewHolograms.soloDescription": "The starship has the entirety of its interior spaces and some critical areas on its exterior outfitted with holoemitters, allowing the computer to project simulated personnel during emergencies. They cannot operate away from the ship.",
+    "Talent.advancedEmergencyCrewHolograms.description2e": "The ship has several holographic supporting characters equal to half the ship’s Computers score (round up); their appearance and personality are determined when the ship is created, though the supporting characters have a species trait of Hologram. These can be activated or deactivated as a minor action, and they do not require any Crew Support to appear. They cannot operate outside of the ship, and they do not improve when introduced in subsequent adventures. However, if any character advances are used to improve these supporting characters, all the supporting characters granted by this talent receive the advance.",
 
-    "Talent.advancedSickbay": "Advanced Sickbay",
+    "Talent.advancedSickbay": "Advanced Medical Ward / Sickbay",
 
     "Talent.advancedSickbay.soloDescription": "The ship’s medical ward or sickbay is well equipped, and larger than normal for a ship of this size.",
+    "Talent.advancedSickbay.description2e": "The ship gains the Advanced Medical Ward or Advanced Sickbay trait, which applies to all tasks relat- ed to medicine and biology performed within the ward or sickbay, and stacks with the normal benefits of being in sickbay. This trait is lost if the ship’s Computers system is disabled. In addition, the ship receives one additional Crew Support, which may only be used to introduce supporting characters from the Medical department.",
 
     "Talent.advancedResearchFacilities": "Advanced Research Facilities",
 
     "Talent.advancedResearchFacilities.description": "The vessel is equipped with additional laboratories and long-term research facilities, which allow the crew to study phenomena over a protracted period, and thus generate a wealth of useful information. Whenever a character on board the ship attempts a Task to perform research, and they are assisted by the ship’s Computers + Science, the character gains one bonus Momentum, which must be used for the Obtain Information Momentum Spend.",
+    "Talent.advancedResearchFacilities.description2e": "The vessel is equipped with additional laboratories and long-term research facilities. Whenever a character aboard the ship succeeds at a task to perform research, and they are assisted by the ship’s Computers + Science, they may ask two additional questions, as if they had spent Momentum to Obtain Information.",
     "Talent.advancedResearchFacilities.soloDescription": "The vessel is equipped with additional laboratories and long-term research facilities, which allow the crew to study phenomena over a protracted period, and thus generate a wealth of useful information.",
 
     "Talent.advancedSensorSuites": "Advanced Sensor Suites",
 
     "Talent.advancedSensorSuites.description": "The vessel’s sensors are amongst the most sophisticated and advanced available in the fleet. Unless the ship’s Sensors have suffered one or more Breaches, whenever a character performs a Task assisted by the ship’s Sensors, they may reduce the Difficulty of the Task by one, to a minimum of 0.",
+    "Talent.advancedSensorSuites.description2e": "Whenever a character performs a task roll assisted by the ship’s Sensors, the ship may roll 2d20 for assistance rather than only one (if Reserve Power is rerouted to Sensors, one of these dice is set to a 1). This talent cannot be used if the ship is suffering one or more breaches to Sensors.",
     "Talent.advancedSensorSuites.soloDescription": "The vessel’s sensors are among the most sophisticated and advanced available in the fleet.",
 
     "Talent.advancedShields": "Advanced Shields",
 
     "Talent.advancedShields.description": "The vessel’s shields are state of the art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure. The ship’s maximum Shields are increased by 5.",
+    "Talent.advancedShields.description2e": "The ship’s shields are state-of-the-art, using the latest developments. The ship's maximum shield capacity is increased by 5.",
     "Talent.advancedShields.soloDescription": "The vessel’s shields are state-of-the-art, using developments that other cultures have not yet learned to overcome, or which simply provide greater protection for the same power expenditure.",
 
     "Talent.advancedTeamDynamics": "Advanced Team Dynamics",
@@ -2133,6 +2144,7 @@
     "Talent.advancedTransporters": "Advanced Transporters",
 
     "Talent.advancedTransporters.soloDescription": "The ship is outfitted with dozens of transporter emitter array pads, allowing targeting scanners to lock on to their targets and destination more easily.",
+    "Talent.advancedTransporters.description2e": "When you use the transporters, if you have rerouted Reserve Power to the ship’s Sensors, select one trait in play that is negatively affecting the transporter’s task. If the trait is increasing the task’s Difficulty, ignore the effects of that trait. If the trait instead makes the transporter’s task impossible, change that effect to instead increase the Difficulty by 1.",
 
     "Talent.advisor": "Advisor",
 
@@ -2151,6 +2163,10 @@
     "Talent.anAnswerForEverything": "An Answer for Everything",
 
     "Talent.anAnswerForEverything.description": "You relish intense debate, where you can see your opponent’s argument unfold, then turn it back against them. When you succeed at a task as part of an extended task in a social conflict, you may reroll a number of [D] up to your Command score.",
+
+    "Talent.annularConfinementJacketing": "Annular Confinement Jacketing",
+
+    "Talent.annularConfinementJacketing.description2e": "The ship may make an attack with its energy weapons while at warp; however, the range of these attacks is limited to Close range, and the Difficulty for the attack is increased by 1.",
 
     "Talent.appliedForce": "Applied Force",
 
@@ -2171,10 +2187,16 @@
     "Talent.automatedDefenses": "Automated Defenses",
 
     "Talent.automatedDefenses.soloDescription": "The ship’s weapons systems can automatically lock on to a target and fire even if the crew is incapacitated or unavailable.",
+    "Talent.automatedDefenses.description2e": "At the end of a round, if no attacks were made using the ship’s weapons, the ship may make an energy weapon attack using its Weapons + Security (without assis- tance) against a target within Close range. Momentum may be used and generated as normal for this attack.",
+
+    "Talent.automatedReturn": "Automatic Return",
+
+    "Talent.automatedReturn.description2e": "The ship’s computer is programmed to recognize a starbase, colony, or some other location as its home base. The shuttles on board have the same programming and recognize the ship as their home base. If the ship’s Computers system goes for 10 days without commands from the crew, it will automatically pilot the ship back to the home base at maximum impulse.\n",
 
     "Talent.backupEpsConduits": "Backup EPS Conduits",
 
     "Talent.backupEpsConduits.soloDescription": "The ship’s power conduits have additional redundancies, which can be activated to reroute power more easily in case of emergency, keeping it from being lost when the ship is damaged.",
+    "Talent.backupEpsConduits.description2e": "When the ship is shaken and loses Reserve Power, roll 1d20; if you roll equal to or under your ship’s Structure, regain Reserve Power.",
 
     "Talent.backUpPlans": "Back-Up Plans",
 
@@ -2235,6 +2257,7 @@
     "Talent.captainsYacht": "Captain's Yacht",
 
     "Talent.captainsYacht.soloDescription": "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer section of the ship. These craft, larger\nthan most shuttles, are often used for diplomatic missions and special excursions by the commanding officer and are often known as the Captain’s Yacht.",
+    "Talent.captainsYacht.description2e": "The vessel has a single additional support craft, normally mounted in a dedicated port under the saucer of the ship. These craft, larger than most shuttles, are often used for diplomatic missions and special excursions.\n\nThe ship has one additional small craft, which does not count against the ship’s small craft capacity and does not launch from the shuttlebay.",
 
     "Talent.cautiousCommand": "Cautious: Command",
 
@@ -2275,6 +2298,7 @@
     "Talent.cloakingDevice": "Cloaking Device",
 
     "Talent.cloakingDevice.soloDescription": "The vessel has a device that allows it to vanish from sensors. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker finds some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down.",
+    "Talent.cloakingDevice.description2e": "Activating the device is a major action which requires Reserve Power, and which requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Engines + Security. This is operated from the ship’s Tactical position. If successful, the vessel gains the Cloaked trait. While cloaked, the vessel cannot attempt any attacks, nor can it be the target of an attack unless the attacker has found some way of detecting the cloaked vessel. While cloaked, a vessel’s shields are down. Deactivating the cloaking device requires a minor action.",
 
     "Talent.closeKnitCrew": "Close-Knit Crew",
 
@@ -2324,6 +2348,7 @@
     "Talent.commandShip": "Command Ship",
 
     "Talent.commandShip.soloDescription": "The ship has command and control systems allowing it to coordinate easily with allies during a crisis.",
+    "Talent.commandShip.description2e": "When a character on the ship succeeds at a Command task to create a trait, they may always be assisted by the ship’s Communications + Command, and they may confer the trait to allied ships, landing parties, or away teams with whom the ship maintains a communication link.",
 
     "Talent.computerExpertise": "Computer Expertise",
 
@@ -2391,10 +2416,12 @@
     "Talent.dedicatedSubspaceTransceiverArray": "Dedicated Subspace Tranceiver Array",
 
     "Talent.dedicatedSubspaceTransceiverArray.soloDescription": "A starship with this talent has a section of its hull that slides away where a long, tether-like subspace transceiver array can be deployed to enhance the vessel’s communication range and clarity, even at warp.",
+    "Talent.dedicatedSubspaceTransceiverArray.description": "This talent enhances the vessel’s communication range and clarity, even at warp. Any tasks involving sending, receiving, or intercepting subspace or standard communications may re-roll the ship’s assistance dice as long as the ship’s Communications system is not disabled.",
 
     "Talent.deluxeGalley": "Deluxe Galley",
 
     "Talent.deluxeGalley.soloDescription": "The ship’s mess hall is equipped with top-of-the- line food preparation systems as well as vast stores of non-replicated food.",
+    "Talent.deluxeGalley.description2e": "The ship’s mess hall is equipped with top-of-the-line food preparation systems as well as vast stores of non-replicated food.\n\nOnce per adventure, you may create a Fine Dining trait for free when the ship is visited by a VIP, diplomat, or other important guest. When a character attempts a task using Presence and/or Command and benefits from this trait, the character receives 1 bonus Momentum, which may not be saved.",
 
     "Talent.demolitionist": "Demolitionist",
 
@@ -2411,6 +2438,7 @@
     "Talent.diplomaticSuites": "Diplomatic Suites",
 
     "Talent.diplomaticSuites.soloDescription": "The ship has numerous high-quality staterooms for hosting VIPs, as well as briefing rooms and other facilities that allow the ship to serve as a neutral ground for diplomatic summits, trade negotiations, and similar functions.",
+    "Talent.diplomaticSuites.description2e": "The ship has numerous high-quality staterooms for hosting VIPs, as well as briefing rooms and other facilities that allow the ship to serve as a neutral ground for diplomatic summits, trade negotiations, and similar functions, including making environmental adjustments to make alien diplomats more comfortable.\n\nWhen hosting negotiations, members of the crew may be assisted by the ship’s Computers + Command or Structure + Command.",
 
     "Talent.doctorsOrders": "Doctor’s Orders",
 
@@ -2423,6 +2451,7 @@
 
     "Talent.dualEnvironment": "Dual Environment",
 
+    "Talent.dualEnvironment.description2e": "The ship is outfitted with redundant system rooms that can be filled with gases or liquids that allow crew members requiring different atmospheric conditions to work side by side with the rest of the crew. A character who is in a redundant system room may assist others in the connected system room as if they were in the same room.",
     "Talent.dualEnvironment.soloDescription": "The ship is outfitted with redundant system rooms that can be filled with gases or liquids that allow crew members requiring different atmospheric conditions to work side by side with the rest of the crew. In addition, passages that can be filled with the necessary liquids or gases run parallel to all passages in the ship, allowing these crew members to move freely throughout.",
 
     "Talent.durability": "Durability",
@@ -2435,10 +2464,12 @@
 
     "Talent.electronicWarfareSystems": "Electronic Warfare Systems",
 
+    "Talent.electronicWarfareSystems.description2e": "Whenever a character at the communications station on the ship creates a trait to represent intercepting enemy communications, or to create interference or jamming signals which would hinder enemy communications, they may spend 1 Momentum to increase the Potency of that trait by one step, or to affect a second enemy vessel.",
     "Talent.electronicWarfareSystems.soloDescription": "The ship’s communications systems have been specially designed to intercept and disrupt enemy communications in battle.",
 
     "Talent.emergencyMedicalHologram": "Emergency Medical Hologram",
 
+    "Talent.emergencyMedicalHologram.description2e": "The ship has one additional supporting character, an Emergency Medical Hologram (EMH), using the attributes, departments, and so forth as shown in the sidebar, which does not cost any Crew Support to introduce, and which does not automatically improve when introduced. This character can only go to locations on the ship which are equipped with holo-emitters.\n\nAfter 2380, this talent is obsolete, as all Starfleet vessels are outfitted with an EMH.\n",
     "Talent.emergencyMedicalHologram.soloDescription": "The ship’s sickbay is equipped with holoemitters and a state-of-the-art holographic doctor, able to assist medical personnel during emergencies. This character cannot go into any location not equipped with holoemitters.",
 
     "Talent.empath": "Empath",
@@ -2449,6 +2480,18 @@
 
     "Talent.empathy2e.description": "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this task if the situation is stressful, if there are a lot of beings present, if the target has resist- ance to telepathy, and other relevant factors.",
 
+    "Talent.expandedEmergencyMedicalFacilities": "Expanded Emergency Medical Facilities",
+
+    "Talent.expandedEmergencyMedicalFacilities.description": "Whenever a character attempts a task to identify specific illnesses or injuries, or to determine the severity of a patient’s condition, they may diagnose a number of pa- tients equal to the ship’s Medical rating. If the character also has the Triage talent, they may diagnose two addi- tional patients by spending 1 Momentum (Repeatable).\n\nDuring an extended task to process and treat many sick or injured patients, a character aboard the ship increas- es their Impact by 1.",
+
+    "Talent.expandedMunitions": "Expanded Munitions",
+
+    "Talent.expandedMunitions.description2e": "The ship may add one weapon to its profile: either an energy weapon (choose an energy type and a delivery mechanism) or a torpedo type. This talent is often taken by Starfleet vessels to add Quantum Torpedoes to a ship’s arsenal.\n\nThis talent may be taken multiple times, adding a different weapon each time.",
+
+    "Talent.expansiveDepartment": "Expansive Department",
+
+    "Talent.expansiveDepartment.description2e": "When you select this talent, select a single department on the ship with a score of 5. Whenever a ship assists a task roll using the chosen department, you may ignore a complication by spending 1 Momentum (Immediate, Repeatable).",
+
     "Talent.expeditionExpert": "Expedition Expert",
 
     "Talent.expeditionExpert.description2e": "Prior to participating in an away team mission, you may make additional preparations by spending 2 Momentum (Immediate). During the expedition, any member of the away team may re-roll a single d20 on any task to navigate the terrain or circumvent a hazard or obstacle. The away team may re-roll a total number of dice in this way equal to your Science rating.",
@@ -2457,8 +2500,17 @@
 
     "Talent.exploitWeakness.description": "You are trained in surprising your opponent and taking advantage of any weaknesses they have. When you attempt an attack against an unaware enemy, or an enemy suffering from a trait that represents weakness or vulnerability, the attack gains the Piercing 2 effect.",
 
+    "Talent.extensiveAutomation": "Extensive Automation",
+
+    "Talent.extensiveAutomation.description": "The ship has been configured to operate on a much smaller crew, relying on automation to handle tasks normally performed by personnel. Even purely physical tasks can be replaced by automation, using compact technical drones, such as the DOT-7 present on some 23rd century Starfleet vessels, like the U.S.S. Discovery.\n\nThe ship’s Crew Support is reduced to half its normal value (rounded up). However, the ship may attempt tasks by itself, and may even take a turn during a combat round by itself. If it does so, add 1 Threat before a task is attempted, and make the roll using the ship’s systems and departments.",
+
+    "Talent.extensiveMedicalLaboratories": "Extensive Medical Laboratories",
+
+    "Talent.extensiveMedicalLaboratories.description": "While in sickbay, when an extended task is attempted to study an unknown medical condition, or to develop a treatment for one, the characters performing the extended task each adds 1 to their Impact.",
+
     "Talent.extensiveShuttlebays": "Extensive Shuttlebays",
 
+    "Talent.extensiveShuttlebays.description2e": "The vessel’s shuttlebays are large, well-supplied, and able to support a larger number of active shuttle missions simultaneously. The ship’s Small Craft Readiness is increased by an amount equal to the ship’s Scale minus 1, and it may carry up to two Scale 2 small craft (typically runabouts).",
     "Talent.extensiveShuttlebays.soloDescription": "The vessel’s shuttlebays are large, well-supplied, and able to support a larger number of active shuttle missions simultaneously.",
 
     "Talent.extraEffort": "Extra Effort",
@@ -2472,6 +2524,7 @@
     "Talent.fastTargetingSystems": "Fast Targeting Systems",
 
     "Talent.fastTargetingSystems.soloDescription": "The ship’s targeting systems can lock weapons on target much faster and more accurately than other ships of its class, giving it an edge in battle.",
+    "Talent.fastTargetingSystems.description2e": "When you use the Targeting Solution minor action, you may gain both benefits: re-roll a d20 on the next attack and choose the system hit by the attack.",
 
     "Talent.fellowshipSpeciality": "Fellowship Specialty",
 
@@ -2538,13 +2591,22 @@
 
     "Talent.handsOnPilot.description2e": "When you perform the Warp, Evasive Action, or Attack Pattern major actions, the ship may count its focus range as double the relevant department rating (i.e., if the ship has a Conn of 3, it will score a critical success on any roll of 6 or less). However, when anyone else pilots the ship, increase the complication range by 1.",
 
+    "Talent.highIntensityEnergyWeapons": "High-Intensity Energy Weapons",
+
+    "Talent.highIntensityEnergyWeapons.description": "If Reserve Power is rerouted to Weapons, the next attack using one of the ship’s energy weapons increases Damage by 2.",
+
     "Talent.highResolutionSensors": "High-Resolution Sensors",
 
     "Talent.highResolutionSensors.soloDescription": "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive.",
 
     "Talent.highPowerTractorBeam": "High-Power Tractor Beam",
 
+    "Talent.highPowerTractorBeam.description2e": "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target. Increase the strength of the ship’s tractor beam by 2.",
     "Talent.highPowerTractorBeam.soloDescription": "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target.",
+
+    "Talent.highResolutionSensors": "High-Resolution Sensors",
+
+    "Talent.highResolutionSensors.description2e": "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive. While the vessel is not in combat, any successful task assisted by the ship’s Sensors gains 1 bonus Momentum. Bonus Momentum may not be saved.",
 
     "Talent.iKnowMyShip": "I Know My Ship",
 
@@ -2557,30 +2619,41 @@
 
     "Talent.improvedDamageControl": "Improved Damage Control",
 
+    "Talent.improvedDamageControl.description2e": "When a character takes the Damage Control action aboard the ship, they may re-roll a single d20. When attempting an extended task related to repairing the ship, anyone working on that extended task adds 1 to their Impact.",
     "Talent.improvedDamageControl.soloDescription": "The ship has more efficient damage reporting systems, and better-trained teams of technicians, allowing the crew to respond more quickly to damage during a crisis.",
 
     "Talent.improvedHullIntegrity": "Improved Hull Integrity",
 
+    "Talent.improvedHullIntegrity.description2e": "The ship’s hull has been reinforced to better endure stress and damage. The ship’s Resistance is increased by 1.",
     "Talent.improvedHullIntegrity.soloDescription": "The ship’s hull has been reinforced to hold together better under stress and damage.",
 
     "Talent.improvedImpulseDrive": "Improved Impulse Drive",
 
+    "Talent.improvedImpulseDrive.description2e": "When a character uses the Impulse minor action while on this ship, they may spend 2 Momentum to increase the Difficulty of attacks against the ship by +1 until the start of that character’s next turn, due to the ship’s rapid acceleration.",
     "Talent.improvedImpulseDrive.soloDescription": "The ship’s Impulse drives are more powerful than on most ships, allowing the ship to accelerate much more quickly.",
 
     "Talent.improvedPowerSystems": "Improved Power Systems",
 
+    "Talent.improvedPowerSystems.description2e": "When a character attempts the Regain Power action, the Difficulty is reduced by 1, to a minimum of 1, and you may spend 1 Momentum (Immediate) to ignore complications suffered on that task roll.",
     "Talent.improvedPowerSystems.soloDescription": "The ship’s power systems are extremely efficient, allowing power to be redirected and rerouted from different systems very quickly.",
+
+    "Talent.improvedProbeBay": "Improved Probe Bay",
+
+    "Talent.improvedProbeBay.description": "When a character uses the Launch Probe minor action, the probe may be launched to a location up to five zones away. In addition, the probes are no longer destroyed if they take any damage; instead, each probe has 3 Shield points, and are destroyed if they take one breach.",
 
     "Talent.improvedReactionControlSystem": "Improved Reaction Control System",
 
+    "Talent.improvedReactionControlSystem.description2e": "Whenever the ship attempts to move through difficult terrain, reduce the Momentum cost of the difficult ter- rain by 1, to a minimum of 0.",
     "Talent.improvedReactionControlSystem.soloDescription": "The ship’s maneuvering thrusters operate with greater precision, allowing the ship to adjust its course more carefully.",
 
     "Talent.improvedShieldRecharge": "Improved Shield Recharge",
 
+    "Talent.improvedShieldRecharge.description2e": "Whenever the Regenerate Shields action is successful, the ship regains shields equal to the character’s Engineering department rating +1, plus 3 more by spending 1 Momentum (Repeatable), instead of the normal amount.",
     "Talent.improvedShieldRecharge.soloDescription": "The ship’s deflector shields have redundant capacitors and emitter arrays that allow the shields to be recharged and replenished much more efficiently.",
 
     "Talent.improvedWarpDrive": "Improved Warp Drive",
 
+    "Talent.improvedWarpDrive.description2e": "Whenever the ship takes the Warp major action, roll a d20; if you roll equal to or under the ship’s Engines, you do not spend Reserve Power for the ship.",
     "Talent.improvedWarpDrive.soloDescription": "The ship’s warp drive is more efficient, capitalizing on improved field dynamics, better control of antimatter flow rates, or some other advancement that allows the ship to expend less energy when traveling at warp.",
 
     "Talent.improvisedWeaponTraining": "Improvised Weapon Training",
@@ -2692,7 +2765,8 @@
 
     "Talent.modularLaboratories": "Modular Laboratories",
 
-    "Talent.modularLaboratories.soloDescription": "The ship has considerable numbers of empty, multi- purpose compartments that can be converted to laboratories as and when required.",
+    "Talent.modularLaboratories.description2e": "The opportunity cost of establishing a science lab is reduced to 0 for the first laboratory estab- lished, and to 1 for the second.",
+    "Talent.modularLaboratories.soloDescription": "The ship has considerable numbers of empty, multi-purpose compartments that can be converted to laboratories as and when required.",
 
     "Talent.movingTarget": "Moving Target",
 
@@ -2793,6 +2867,7 @@
 
     "Talent.pointDefenseSystem": "Point Defense System",
 
+    "Talent.pointDefenseSystem.description2e": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction the torpedo is traveling from, potentially destroying it before it impacts the shields or the ship’s hull.\n\nThis system does not function while the ship is travelling at warp. The ship is considered to have Cover against torpedo attacks, increasing the Difficulty of the attack by 1. This talent stops functioning if the ship has suffered one or more breaches to the Weapons system.",
     "Talent.pointDefenseSystem.soloDescription": "The ship is equipped with a system of small energy weapon emitters that operates independently from the main weapons systems. When a torpedo targets the ship, these emitters start firing in the direction it is traveling from, potentially destroying it before it impacts the shields or the ship’s hull. This system only works at subwarp speeds.",
 
     "Talent.positiveReinforcement": "Positive Reinforcement",
@@ -2871,6 +2946,7 @@
 
     "Talent.rapidFireTorpedoLauncher": "Rapid-Fire Torpedo Launcher",
 
+    "Talent.rapidFireTorpedoLauncher.description2e": "The vessel’s torpedo launchers have been designed to allow the ship to fire multiple torpedoes much more quickly and accurately. When the ship fires a torpedo salvo, the character at Tactical may re-roll a d20 on the Attack. Also, the weapon’s Damage rating is increased by 1.",
     "Talent.rapidFireTorpedoLauncher.soloDescription": "The vessel’s torpedo launchers have been redesigned to allow the ship to fire multiple torpedoes much more quickly and accurately.",
 
     "Talent.reasonedDiscourse": "Reasoned Discourse",
@@ -2880,6 +2956,11 @@
     "Talent.reassuring": "Reassuring",
 
     "Talent.reassuring.description2e": "When you succeed at a task using your Presence, you may spend Momentum to reassure your allies, so long as they are able to hear you. You may spend 1 Momentum (Repeatable) to allow one ally who can see and hear you to recover 1 Stress. That ally may not recover more than 3 Stress from one use of this talent.",
+
+    "Talent.redundantSystems": "Redundant Systems",
+
+    "Talent.redundantSystems.description": "The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.",
+    "Talent.redundantSystems.description2e": "Select a single system when this talent is chosen. When that system suffers a breach, the crew may choose to activate this talent in response; doing so immediately patches the breach inflicted. These redundant systems may only be activated once per adventure.",
 
     "Talent.repairTeamLeader": "Repair Team Leader",
 
@@ -2908,6 +2989,7 @@
 
     "Talent.ruggedDesign": "Rugged Design",
 
+    "Talent.ruggedDesign.description2e": "Whenever a task roll is attempted to patch or repair a breach, a d20 may be re-rolled. Further, if the task is successful, the crew may spend Momentum to patch a second breach; this will cost 2 Momentum, +1 per additional step of Potency on that second breach.",
     "Talent.ruggedDesign.soloDescription": "The ship is designed with the frontier in mind, with a durable construction and easy access to critical systems that allow repairs to be made easily.",
 
     "Talent.saboteur": "Saboteur",
@@ -2924,6 +3006,7 @@
 
     "Talent.secondaryReactors": "Secondary Reactors",
 
+    "Talent.secondaryReactors.description2e": "The ship has additional impulse and fusion reactors which allow the ship to generate far greater quantities of energy. Once per scene, when you take the Reroute Power action, you may spend 2 Momentum (Immediate) to immediately regain the use of Reserve Power.",
     "Talent.secondaryReactors.soloDescription": "The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy.",
 
     "Talent.secondWind": "Second Wind",
@@ -2940,11 +3023,17 @@
 
     "Talent.siphoningShields": "Siphoning Shields",
 
+    "Talent.siphoningShields.description2e": "When the ship is hit by an energy weapon, after the attack is resolved, you may add 2 Threat to restore Shields equal to the ship’s Security department.",
     "Talent.siphoningShields.soloDescription": "The vessel’s shield emitters are connected to a network of particle siphons that capture some of the energy released when hit by an energy weapon, channeling it back into the shields.",
 
-    "Talent.slimSensorSilhouette": "Slim Sensor Silhouette",
+    "Talent.slimSensorSilhouette": "Reduced Sensor Silhouette",
 
+    "Talent.slimSensorSilhouette.description2e": "Through a combination of advanced alloys, EM shielding, and electronic countermeasures, the starship is difficult to detect via electromagnetic radiation and subspace sensors. Tasks attempting to scan or detect the vessel increase in Difficulty by 1.",
     "Talent.slimSensorSilhouette.soloDescription": "This ship is designed to present a minimal sensor return to a searching ship’s sensors through advanced hull plating, jamming, and passive subspace baffles.",
+
+    "Talent.sophisticatedAstrometricsFacilities": "Sophisticated Astrometrics Facilities",
+
+    "Talent.sophisticatedAstrometricsFacilities.description": "When a character in the stellar cartography laboratory or at navigation attempts a task to plot a course or map a large region of space, they may re-roll a d20. Further, if such a task creates a trait to represent a planned course or knowledge about the region, this trait automatically increases its Potency by one step.",
 
     "Talent.spacewalk": "Spacewalk",
 
@@ -3065,6 +3154,10 @@
 
     "Talent.transporterChief.description2e": "You’re well-versed in the operation of transporter systems and can often get them to function in extreme circumstances or to achieve outcomes that few could manage. Such efforts are never without risk, given the delicacy of the technology. When you attempt a task to use, repair, or modify a transporter, you may add 2 Threat to reduce the Difficulty of the task by 2, to a minimum of 0.",
 
+    "Talent.transportInhibitors": "Transport Inhibitors",
+
+    "Talent.transportInhibitors.description": "While transporter inhibitors are active on the ship, nobody may transport onto or off the ship: all tasks to transport people or materials to or from the ship immediately fail. This necessarily means that the ship’s own transporters are shut down, as they will not function alongside the inhibitors.",
+
     "Talent.triage": "Triage",
 
     "Talent.triage.description": "When you attempt a Task to identify specific injuries or illnesses, or to determine the severity of a patient’s condition, you may spend one Momentum (Repeatable) to diagnose one additional patient.",
@@ -3078,6 +3171,7 @@
     "Talent.variableGeometryWarpField": "Variable Geometry Warp Field",
 
     "Talent.variableGeometryWarpField.soloDescription": "An extension of the variable pitch warp nacelles seen on the Intrepid-class and the warp vector technology found on many Vulcan-designed starships, a ship with a variable geometry warp field can adjust its subspace field in highly turbulent spacetime and can continue to provide propulsive force even then.",
+    "Talent.variableGeometryWarpField.description2e": "A ship with a variable geometry warp field can adjust its subspace field in highly turbulent spacetime and can continue to provide propulsive force even then. When you attempt a task to go to warp, you may select one trait in play which negatively affects the task roll, and ignore its effects.",
 
     "Talent.versatileTractorBeam": "Versatile Tractor Beam",
 
@@ -3114,6 +3208,7 @@
 
     "Talent.wormholeRelaySystem": "Wormhole Relay System",
 
+    "Talent.wormholeRelaySystem.description2e": "The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes. The Difficulty of all Science tasks to send or receive data through a wormhole is reduced by 2, to a minimum of 0.",
     "Talent.wormholeRelaySystem.soloDescription": "The ship has an additional sensor system outfitted with high-energy transceivers, verteron sensors, and neutrino sensors. These sensors, combined with field-generation devices, allow the ship to send and receive data streams through wormholes.",
 
     "Talent.zeroGCombat": "Zero-G Combat",

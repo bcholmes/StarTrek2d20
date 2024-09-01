@@ -57,6 +57,7 @@
 
     "TokenCreator.section.mouth.shape": "Boca",
     "TokenCreator.section.mouth.colour": "Color de Barra de Labios",
+    "TokenCreator.section.mouth.shadow": "Sombra",
     "TokenCreator.section.mouth.moustache": "Bigote",
     "TokenCreator.section.mouth.beard": "Barba",
 
@@ -75,14 +76,14 @@
     "TokenCreator.section.extras.ears": "Orejas",
     "TokenCreator.section.extras.face": "Cara",
     "TokenCreator.section.extras.forehead": "Frente",
-    "TokenCreator.section.extras.headwear": "Accesorios para la  Cabeza",
+    "TokenCreator.section.extras.headwear": "Accesorios para la Cabeza",
 
     "ViewPage.viewSupportingCharacter": "Ver Personaje de Apoyo",
     "ViewPage.viewNpc": "Ver PNJ",
     "ViewPage.viewMainCharacter": "Ver Personaje Principal",
     "ViewPage.viewSoloCharacter": "Ver Personaje en Solitario",
     "ViewPage.viewStarship": "Ver Nave Estelar",
-    "ViewPage.errorMessage": "Las cosas han ido terriblemente, terriblemente mal. Podríamos estar en el universo espejo.",
+    "ViewPage.errorMessage": "Las cosas han ido terriblemente mal. Podríamos estar en el universo espejo.",
     "ViewPage.unnamedStarship": "Nave Estelar sin Nombre",
 
     "CareerEvents.instruction": "Tu carrera es un tapiz de sucesos y experiencias, pero entre ellos, algunos habrán sido momentos cruciales en tu vida. Define qué momentos de tu vida son importantes en retrospectiva, y lo que parecía decisivo para un alférez de veintitantos años puede no tener importancia para ese mismo oficial décadas después.",
@@ -92,7 +93,7 @@
 
     "CareerEventDetails.errorAttribute": "Por favor, seleciona un atributo.",
     "CareerEventDetails.errorDiscipline": "Por favor, seleciona una disciplina.",
-    "CareerEventDetails.errorFocus": "Por favor, seleciona un foco.",
+    "CareerEventDetails.errorFocus": "Por favor, seleciona una especialidad.",
 
     "ChildSelectionPage.instruction": "Naturalmente, un niño aún no ha asistido a la Academia de la Flota Estelar (ni a ninguna de sus equivalentes), ni a ninguna institución de educación superior. De hecho, todavía está en las primeras etapas su educación.\n\nSelecciona una edad para tu personaje.",
 
@@ -184,10 +185,12 @@
 
     "FinalStarshipDetails.name.instruction": "Toda nave estelar necesita un nombre. No existe una convención universal para el nombre de las naves, pero a menudo se les ponen nombres de lugares, personas históricas importantes (normalmente solo el apellido de la persona), barcos antiguos, figuras míticas o incluso ideales, virtudes o conceptos más abstractos. En muchos casos, estas vagas convenciones de nombres se superponen, un barco podría llevar el nombre de un antiguo barco que lleva el nombre de un lugar, por ejemplo, pero esto no debería suponer ningún problema.\n\nEl nombre idealmente debería ser una sola palabra o, más raramente, dos.",
 
-    "FinalStarshipDetails.traits.instruction": "Ahora puedes definir Rasgos adicionales para tu nave estelar. Tu nave ya tiene los siguientes rasgos:",
-    "FinalStarshipDetails.traits.note": "El DJ podría permitir la elección de rasgos adicionales que describan tu nave. Los ejemplos incluyen: Prototipo, Nave Antigua, Renombrada y Larga Duración.",
+    "FinalStarshipDetails.registry.instruction": "Muchas naves tienen algún tipo de número de registro que acompaña al nombre. Las naves de la Federación, por ejemplo, tienen un número de registro que empieza por NCC.",
 
-    "FinishPage.instruction": "Tu personaje está termiando. Exporta tu personaje a PDF, o utiliza la opción de \"Perfil\" en la barra lateral izquierda para ver las opciones elegidas y transcribirlas manualmente en otra hoja de personaje.",
+    "FinalStarshipDetails.traits.instruction": "Ahora puedes definir Rasgos adicionales para tu nave estelar. Tu nave ya tiene los siguientes rasgos:",
+    "FinalStarshipDetails.traits.note": "El DJ podría permitir la elección de rasgos adicionales que describan tu nave. Los ejemplos incluyen: Prototipo, Nave Legado, Célebre y Veterana.",
+
+    "FinishPage.instruction": "Tu personaje está terminado. Exporta tu personaje a PDF, o utiliza la opción de \"Perfil\" en la barra lateral izquierda para ver las opciones elegidas y transcribirlas manualmente en otra hoja de personaje.",
 
     "FinishPage.rank.instruction": "Selecciona el rango de tu personaje.",
 
@@ -196,6 +199,8 @@
     "FinishPage.trait.instruction": "Puedes especificar rasgos adicionales aquí.",
 
     "FinishPage.role.instruction": "Selecciona el papel del personaje, así como la nave en la que sirve. Esta elección se basa en disciplinas más altas. La opción más adecuada aparecerá en primer lugar, mientras que las otras opciones también estarán disponibles en caso de que quieras crear un personaje diferente.",
+
+    "FinishPage.pastime.instruction": "Puedes elegir un pasatiempo, que representa una afición o pasión que el personaje disfruta cuando no está de servicio. Esto sólo debería ser útil ocasionalmente, pero puede ser un divertido recurso para rolear.",
 
     "FinishPage.values.instruction": "Si no indicaste tus valores durante la creación de personajes, o si quieres cambiar alguno de ellos, ahora es el momento de pensar en los valores que tiene tu personaje.",
 
@@ -216,19 +221,30 @@
     "MissionProfileSelectionPage.text": "El perfil de misión es lo que diferencia a una nave estelar de otra de su misma clase. Determina el equipo especializado que se instala antes de aventurarse hacia lo desconocido, la prioridad de personal que la Flota Estelar proporciona a la nave y el objetivo general de su misión. Todas las plantillas tienen un perfil de misión.",
     "MissionProfileSelectionPage.errorNoSelection": "Selecciona un perfil de misión antes de continuar, por favor.",
 
+    "MissionProfileTalentSelection.instruction": "Elige 1 talento de la lista de talentos asociados al perfil de misión.",
+
     "ModificationCompletePage.instruction": "El personaje ha sido modificado. Puedes ver el personaje revisado o realizar otra modificación.\n\nEs posible que quieras guardar la URL del personaje revisado.",
 
     "ModificationTypeSelectionPage.instruction": "Selecciona la modificación que quieres aplicar a este personaje.",
-    "ModificationTypeSelectionPage.whatMilestoneType": "¿Qué tipo de hito está siendo aplicado?",
+    "ModificationTypeSelectionPage.whatMilestoneType": "¿Qué tipo de hito se está aplicando?",
 
     "NpcConfigurationPage.option.anyMajorSpecies": "Cualquier Especie Principal",
     "NpcConfigurationPage.option.anySpecialization": "Cualquier Especialización",
 
     "NpcConfigurationPage.npcType": "Tipo de PNJ",
-    "NpcConfigurationPage.specialization": "Especialidad",
+    "NpcConfigurationPage.specialization": "Especialización",
     "NpcConfigurationPage.text": "Especifíca qué tipo de PNJ estás creando.",
 
+    "NoviceOrCadetExperiencePage.attribute.instruction": "Elige 1 atributo para utilizar con este talento.",
+    "NoviceOrCadetExperiencePage.attribute.error": "Por favor, elige un atributo.",
+
+    "OtherToolsPage.instruction": "Esta sección contiene una serie de herramientas adicionales diversas que pueden utilizarse en tu partida de STA.",
+
+    "OtherToolsPage.safetyChecklist.instruction": "Esta lista de control es una herramienta que el director de juego puede utilizar para ayudar a los jugadores a debatir dónde pueden estar sus límites personales para determinados temas de esta campaña. La lista se divide en varias categorías, cada una de las cuales incluye una serie de temas. Esta versión en línea de la lista de control de seguridad puede permitir a los DJ o a los jugadores revisar los temas y evaluar cómo quieren que se traten en el juego.",
+
     "PromotionPage.instruction": "Selecciona un nuevo rango para el personaje.",
+
+    "RandomStarshipPage.instructions": "Indica qué tipo de nave estelar quieres crear.",
 
     "ReputationChangePage.instruction": "Ajusta la reputación del personaje según corresponda.",
 
@@ -254,7 +270,7 @@
     "SoloEducationDetailsPage.errorDisciplines": "Selecciona 1 disciplina principal y 2 secundarias, por favor.",
     "SoloEducationDetailsPage.errorAttributes": "Selecciona tres Atributos, por favor.",
     "SoloEducationDetailsPage.errorValue": "Selecciona un Valor, por favor.",
-    "SoloEducationDetailsPage.errorFocuses": "Selecciona tus especizalidades, por favor.",
+    "SoloEducationDetailsPage.errorFocuses": "Selecciona tus Especialidades, por favor.",
 
     "SoloEducationPage.instruction.alliedMilitary": "Ha elegido comprometer su vida con el ejército de su gobierno. Ha recibido el entrenamiento necesario para prepararse para su rol militar, ya sea educación formal para oficiales o entrenamiento de guerrilla mucho más informal.",
     "SoloEducationPage.instruction.ambassadorDiplomat": "Los años pasados ​​en formación son algunos de los más memorables y determinantes de la vida de un diplomático y marcan la dirección de su futura carrera. La formación diplomática lleva años y abarca una combinación de intensa preparación, estudios académicos y experiencias prácticas.",
@@ -271,7 +287,7 @@
 
     "SoloEnvironmentDetailsPage.speciesText": "¿Entre qué especie(s) creció el personaje?",
     "SoloEnvironmentDetailsPage.errorAttribute": "Selecciona un Atributo, por favor.",
-    "SoloEnvironmentDetailsPage.errorDiscipline": "Selecciona una disciplina, por favor.",
+    "SoloEnvironmentDetailsPage.errorDiscipline": "Selecciona una Disciplina, por favor.",
     "SoloEnvironmentDetailsPage.errorValue": "Selecciona un Valor, por favor.",
 
     "SoloEnvironmentPage.instruction": "Al elegir el entorno de tu personaje, seleccionarás un escenario o una condición. Cada uno ofrece diferentes sugerencias para la historia, pero ambos proporcionan el mismo tipo de beneficios para el personaje.\n\nTambién puedes determinar al azar una de esas opciones.",
@@ -302,6 +318,8 @@
     "SpaceframeSelectionPage.ignoreEndOfService": "Ignora fecha de fin de servicio (decisión del DJ)",
     "SpaceframeSelectionPage.error": "Selecciona una Plantilla antes de continuar.",
 
+    "SpeciesAbilityView.instruction": "Cada especie proporciona un talento en forma de Habilidad de Especie, que refleja algún aspecto único de su fisiología, psicología o cultura. Recibes este talento automáticamente. Las Habilidades de Especie no pueden seleccionarse tras la creación del personaje. Son distintas de los talentos que tienen como requisito una especie concreta, que siempre son opcionales.",
+
     "SpeciesDetails.options": "Opciones de Especie",
     "SpeciesDetails.selectThree": "(Selecciona tres)",
     "SpeciesDetails.allowCrossSpecies": "Permitir talentos inter-especies (decisión del DJ)",
@@ -328,20 +346,23 @@
     "SpeciesPage.mixedSpeciesNote": "Selecciona dos especies. Obtendrás Rasgos de ambas especies y podrás seleccionar Talentos de las dos especies, pero solo la principal te proporciona los beneficios de Atributo.",
     "SpeciesPage.selectTwoSpeciesError": "Selecciona la especie primaria y secundaria, por favor.",
 
-    "StarshipTalentSelection.instruction_one": "Slecciona {{count}} talento, por favor.",
-    "StarshipTalentSelection.instruction_other": "Slecciona {{count}} talentos, por favor.",
+    "StarshipRefits.instruction_one": "\nLas naves se actualizan con el paso de los años. Reciben una modificación por cada 10 años de diferencia entre el año en que se juega y el año en que entró en servicio.\n\nTienes {{count}} puntos para asignar.",
+    "StarshipRefits.instruction_other": "Las naves se actualizan con el paso de los años. Reciben una modificación por cada 10 años de diferencia entre el año en que se juega y el año en que entró en servicio.\n\nTienes {{count}} puntos para asignar.",
+
+    "StarshipTalentSelection.instruction_one": "Selecciona {{count}} talento, por favor.",
+    "StarshipTalentSelection.instruction_other": "Selecciona {{count}} talentos, por favor.",
 
     "StarshipToolSelection.instruction": "Selecciona una opción",
     "StarshipToolSelection.standardBuild": "Creación Estándar",
-    "StarshipToolSelection.standardBuildDescription": "El proceso estándar de creación de Nave Estelar sigue los pasos de creación descritos en los libros de reglas. Por ejemplo: las naves estelares eligen una Plantillal, un perfil de misión, etc.",
+    "StarshipToolSelection.standardBuildDescription": "El proceso estándar de creación de Nave Estelar sigue los pasos de creación descritos en los libros de reglas. Por ejemplo: las naves estelares eligen una Plantilla, un perfil de misión, etc.",
     "StarshipToolSelection.simplifiedBuild": "Creación Simplificada",
     "StarshipToolSelection.simplifiedBuildDescription": "La creación simplificada es una buena opción para traspasar un conjunto de estadísticas, por ejemplo, de una fuente en línea u otra referencia.",
 
     "StarshipTypeSelection.campaignYear": "Año de Campaña",
-    "StarshipTypeSelection.instruction": "¿Cuál es el año actual en la campaña? Probablemente necesitarás consultar a tu DJ.\n\nUn año predeterminado se rellenará automáticamente dependiendo de la Época elegida.",
+    "StarshipTypeSelection.instruction": "¿Cuál es el año actual en la campaña? Probablemente necesitarás consultar a tu DJ.\n\nSe rellenará automáticamente un año por defecto en función de la Era elegida.",
     "StarshipTypeSelection.year": "Año",
     "StarshipTypeSelection.shipPolity": "Tipo de Nave",
-    "StarshipTypeSelection.whatShipPolity": "¿Que tipo de nave estar es?",
+    "StarshipTypeSelection.whatShipPolity": "¿Que tipo de nave estelar es?",
     "StarshipTypeSelection.shipBuildType": "Escala de Nave",
     "StarshipTypeSelection.whatShipBuildType": "¿Como de grande es la nave?",
 
@@ -370,7 +391,7 @@
     "SupportingCharacter.nameAndRank": "Nombre y Rango",
     "SupportingCharacter.nameAndRankInstruction": "Proporciona al personaje un nombre y rango apropiado. Los Personajes de Apoyo nunca deberían tener un rango por encima de Teniente y la mayoría de las veces será personal alistado en vez de oficiales.",
     "SupportingCharacter.numericalValue": "Valor",
-    "SupportingCharacter.speciesBonus": "Bonus de Especie",
+    "SupportingCharacter.speciesBonus": "Bonificación por Especie",
 
     "ToolSelection.instruction": "¿Qué quieres crear?",
     "ToolSelection.mainCharacter": "Personaje principal",
@@ -378,6 +399,7 @@
     "ToolSelection.starship": "Nave estelar",
     "ToolSelection.spaceSector": "Sector espacial",
     "ToolSelection.randomNpc": "PNJ Aleatorio",
+    "ToolSelection.randomStarship": "Nave estelar aleatoria",
 
     "Common.button.random": "Aleatorio",
     "Common.button.select": "Seleccionar",
@@ -428,37 +450,39 @@
     "Construct.other.careerEvents": "Eventos de Carrera",
     "Construct.other.characterType": "Tpo de personaje",
     "Construct.other.crew": "Tripulación",
-    "Construct.other.crewSupport": "Tripulación de Soporte",
+    "Construct.other.crewSupport": "Apoyo de la Tripulación",
     "Construct.other.department": "Departamento",
     "Construct.other.departments": "Departamentos",
     "Construct.other.determination": "Determinación",
     "Construct.other.discipline": "Disciplina",
     "Construct.other.disciplines": "Disciplinas",
-    "Construct.other.education": "Formación",
+    "Construct.other.education": "Educacion",
     "Construct.other.environment": "Entorno",
     "Construct.other.equipment": "Equipo",
     "Construct.other.era": "Era",
+    "Construct.other.experience": "Experiencia",
     "Construct.other.focus": "Especialidad",
     "Construct.other.focus1": "Especialidad 1",
     "Construct.other.focus2": "Especialidad 2",
     "Construct.other.focus3": "Especialidad 3",
     "Construct.other.focuses": "Especialidades",
+    "Construct.other.house": "Casa",
     "Construct.other.injuries": "Heridas",
     "Construct.other.job": "Trabajo",
     "Construct.other.launchYear": "Año de Lanzamiento",
     "Construct.other.missionPod": "Módulo de Misión",
     "Construct.other.missionProfile": "Perfil de Misión",
     "Construct.other.name": "Nombre",
-    "Construct.other.numberOfRefits_one": "{{count}} reparacion",
-    "Construct.other.numberOfRefits_other": "{{count}} reparaciones",
-    "Construct.other.pastimes": "Hobbies",
+    "Construct.other.numberOfRefits_one": "{{count}} modificación",
+    "Construct.other.numberOfRefits_other": "{{count}} modificaciones",
+    "Construct.other.pastimes": "Pasatiempos",
     "Construct.other.personalThreat": "Amenaza Personal",
     "Construct.other.pronouns": "Pronombres",
     "Construct.other.protection": "Protección",
     "Construct.other.power": "Energía",
     "Construct.other.purpose": "Proposito",
     "Construct.other.rank": "Rango",
-    "Construct.other.refits": "Reparaciones",
+    "Construct.other.refits": "Modificaciones",
     "Construct.other.registry": "Registro",
     "Construct.other.resistance": "Resistencia",
     "Construct.other.reprimands": "Reprimendas",
@@ -472,6 +496,8 @@
     "Construct.other.specialRules": "Reglas Especiales",
     "Construct.other.species": "Especie",
     "Construct.other.speciesAbility": "Habilidad de la Especie",
+    "Construct.other.speciesAndTraits": "Especies y Rasgos",
+    "Construct.other.starshipType": "Tipo de nave estelar",
     "Construct.other.stats": "Estadísticas",
     "Construct.other.stress": "Estrés",
     "Construct.other.systems": "Sistemas",
@@ -490,7 +516,11 @@
     "Construct.other.yearsOfService_one": "{{count}} año de servicio",
     "Construct.other.yearsOfService_other": "{{count}} años de servicio",
 
+    "Construct.assetStat.medical": "Médico",
+    "Construct.assetStat.military": "Militar",
+    "Construct.assetStat.personal": "Personal",
     "Construct.assetStat.science": "Ciencia",
+    "Construct.assetStat.social": "Social",
 
     "Construct.attribute.control": "Control",
     "Construct.attribute.daring": "Osadía",
@@ -514,13 +544,15 @@
     "Construct.department.medicine": "Medicina",
 
     "Construct.system.comms": "Comunicaciones",
-    "Construct.system.computer": "Ordenador",
+    "Construct.system.computer": "Ordenadores",
     "Construct.system.engines": "Motores",
     "Construct.system.sensors": "Sensores",
     "Construct.system.structure": "Estructura",
     "Construct.system.weapons": "Armas",
 
     "Page.title.attributesAndDisciplines": "Retoques Finales",
+    "Page.title.career": "Carrera",
+    "Page.title.careerDetails": "Detalles de la Carrera",
     "Page.title.careerEvent": "Evento de Carrera",
     "Page.title.careerEvent1": "Evento de Carrera 1",
     "Page.title.careerEvent2": "Evento de Carrera 2",
@@ -545,8 +577,9 @@
     "Page.title.home": "Página principal",
     "Page.title.missionPodSelection": "Selección de Módulo de Misión",
     "Page.title.missionProfileSelection": "Selección de Perfil de Misión",
-    "Page.title.missionProfileTalentSelection": "Talento de Perfil de Meisión",
+    "Page.title.missionProfileTalentSelection": "Talento de Perfil de Misión",
     "Page.title.otherTools": "Otras Herramientas",
+    "Page.title.randomStarship": "Configuración aleatoria de nave estelar",
     "Page.title.sectorDetails": "Detalles del sector",
     "Page.title.simpleStarship": "Creación Simplificada de Nave Estelar",
     "Page.title.smallCraftStats": "Estadísticas de Lanzadera",
@@ -591,101 +624,101 @@
     "Page.breadcrumb.starshipCreation": "Creación de Nave Estelar",
     "Page.breadcrumb.supportingCharacterCreation": "Creación de Personaje de Apoyo",
 
-    "CareerEvent.common.1.name": "Nave Destruída",
-    "CareerEvent.common.1.description": "La nave en el que servía el personaje se perdió, fue destruido durante una misión y el personaje fue uno de los pocos que sobrevivió.\n\n- ¿Cuál era la misión del barco? ¿Fue algo rutinario que salió terriblemente mal o fue algo peligroso? ¿Qué destruyó la nave?\n- ¿Cuántos supervivientes hubo? ¿Cuánto tiempo pasó hasta que fueron rescatados?",
-    "CareerEvent.common.1.focusSuggestion": "El personaje gana una Especialidad que debería reflejar las experiencias vividas. Los ejemplos incluyen: operaciones extravehiculares, vehículos pequeños o supervivencia.",
+    "CareerEvent.common.1.name": "Nave destruída",
+    "CareerEvent.common.1.description": "La nave en que servía el personaje se perdió, destruida en el transcurso de una misión, y el personaje fue uno de los pocos que sobrevivieron.\n\n- ¿Cuál era la misión de la nave? ¿Era algo rutinario que salió terriblemente mal o algo arriesgado? ¿Qué destruyó la nave? \n- ¿Cuántos supervivientes hubo? ¿Cuánto pasó hasta que los rescataron?",
+    "CareerEvent.common.1.focusSuggestion": "El personaje gana una Especialidad que debería reflejar las experiencias vividas. Los ejemplos incluyen: Operaciones Extravehiculares, Vehículos Pequeños o Supervivencia.",
 
-    "CareerEvent.common.2.name": "La Muerte de un Amigo",
-    "CareerEvent.common.2.description": "Durante una misión importante, uno de los amigos del personaje murió en acción.\n\n- ¿Quién era el amigo? ¿Cómo los conoció el personaje?\n- ¿Cuál fue la misión? ¿Cómo murió el amigo? ¿Quién tuvo la culpa?",
-    "CareerEvent.common.2.focusSuggestion": "El personaje gana una Especialidad que debería reflejar las experiencias vividas. Los ejemplos incluyen: Asesoramiento, pero también puede representar una habilidad o actividad que el personaje emprende en memoria de su amigo caído o para evitar que suceda lo mismo en el futuro.",
+    "CareerEvent.common.2.name": "Muerte de un amigo",
+    "CareerEvent.common.2.description": "Durante una importante misión, uno de los amigos del personaje murió en cumplimiento del deber.\n\n- ¿Quién era ese amigo? ¿Cómo lo conoció el personaje?\n- ¿Cuál era la misión? ¿Cómo murió su amigo? ¿Quién tuvo la culpa?",
+    "CareerEvent.common.2.focusSuggestion": "El personaje gana una Especialidad que debería reflejar las experiencias vividas. Como ejemplo se ofrece Aconsejar, pero también puede representar una habilidad o meta que el personaje se ha propuesto en memoria de su amigo caído o para evitar que suceda lo mismo en el futuro.",
 
-    "CareerEvent.common.3.name": "Elogiado por Otra Cultura",
-    "CareerEvent.common.3.description": "El personaje estuvo involucrado en una misión que se ganó los elogios oficiales de una cultura ajena a la Federación; ahora se les considera amigos de ese pueblo.\n\n- ¿A qué cultura ayudó esta misión? ¿Cuál fue la misión? ¿Por qué fue particularmente digno de elogio?\n- ¿Tiene el personaje algún amigo o contacto en esa cultura a quien pueda contactar para pedir ayuda?",
-    "CareerEvent.common.3.focusSuggestion": "El personaje obtiene una Especialidad, que debería reflejar la experiencia del personaje con esa cultura. Una Especialidad de la Cultura X, reemplazando la X con el nombre de esa cultura, es un buen ejemplo, al igual que cualquiera que represente habilidades o técnicas específicas de esa cultura.",
-    "CareerEvent.common.3.traitDescription": "El personaje puede adquirir un Rasgo, que debería reflejar este evento. Un buen ejemplo podría ser Amigo de las/los X, reemplazando la X con el nombre de la cultura. Esto refleja el renombre del personaje entre esa cultura y los beneficios y problemas que trae consigo ese estatus.",
+    "CareerEvent.common.3.name": "Elogiado por otra cultura",
+    "CareerEvent.common.3.description": "El personaje participó en una misión donde ganó el reconocimiento oficial de una cultura que no pertenece a la Federación. Ahora se le considera amigo de ese pueblo.\n\n- ¿Qué cultura recibió la ayuda de dicha misión? ¿Cuál era la misión? ¿Por qué fue especialmente loable?\n- ¿Tiene el personaje amigos o contactos en dicha cultura a los que pueda recurrir para obtener ayuda?",
+    "CareerEvent.common.3.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar las experiencias vividas con la cultura en cuestión. Una Especialidad de Cultura X (sustituyendo la X por el nombre de dicha cultura) es un buen ejemplo, puesto que representaría habilidades o técnicas específicas de esa cultura.",
+    "CareerEvent.common.3.traitDescription": "El personaje puede recibir un Rasgo, que debería reflejar este acontecimiento. Un buen ejemplo sería Amigo de los X (sustituyendo la X por el nombre de dicha cultura). Eso refleja el renombre del personaje entre los miembros de esa cultura y los beneficios y problemas que conlleva ese estatus.",
 
-    "CareerEvent.common.4.name": "Negociación un Tratado",
-    "CareerEvent.common.4.description": "El personaje formaba parte de una delegación que ayudó a negociar un tratado, acuerdo o alianza con una cultura ajena a la Federación. ¿Con qué cultura fue el tratado? ¿Para qué era?",
-    "CareerEvent.common.4.focusSuggestion": "El personaje gana una Especialidad, que debería reflejar la experiencia del personaje con las negociaciones. Los ejemplos incluyen: diplomacia, negociación o política galáctica.",
+    "CareerEvent.common.4.name": "Negociación de un tratado",
+    "CareerEvent.common.4.description": "El personaje formó parte de una delegación que ayudó a negociar un tratado, acuerdo o alianza con una cultura ajena a la Federación.\n\n- ¿Con quién se logró el tratado? ¿Con qué fin?",
+    "CareerEvent.common.4.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar su experiencia durante las negociaciones. Como ejemplos se ofrecen: Diplomacia, Negociación o Política Galáctica. ",
 
-    "CareerEvent.common.5.name": "Tuvo que Tomar el Mando",
-    "CareerEvent.common.5.description": "Durante una misión, una crisis dejó al líder del equipo incapaz de liderar. Esto requerió que el personaje tomara el mando, algo para lo que quizás no estaba preparado.\n\n- ¿Cuál fue la misión? ¿Qué salió mal?\n- ¿La misión tuvo éxito a pesar de la perder al líder de equipo?",
-    "CareerEvent.common.5.focusSuggestion": "El personaje gana una Especialidad, que debería reflejar las experiencias del personaje durante la crisis. Los ejemplos incluyen: liderar con el ejemplo, inspiración o serenidad.",
+    "CareerEvent.common.5.name": "Tuvo que tomar el mando",
+    "CareerEvent.common.5.description": "Durante una misión, una crisis dejó a su comandante incapaz de ejercer el liderazgo. Eso requirió que el personaje tomase el mando, algo para lo que puede que no estuviese preparado.\n\n- ¿Cuál era la misión? ¿Qué salió mal?\n- ¿Tuvo éxito la misión pese a la pérdida de su líder?",
+    "CareerEvent.common.5.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar las experiencias vividas durante la crisis. Como ejemplos se ofrecen: Liderar con el Ejemplo, Inspiración o Autocontrol.",
 
     "CareerEvent.common.6.name": "Encuentro con un ser realmente alienígena",
-    "CareerEvent.common.6.description": "El personaje encontró una forma de vida que era verdaderamente alienígena, algo que apenas está dentro de la comprensión de la vida humanoide. Podría haber sido alguna entidad divina o una criatura que nada por el espacio, pero fuera lo que fuese, no era vida tal como la conocemos.\n\n- ¿Qué clase de criatura era? ¿Qué aprendió el personaje de la experiencia?\n- ¿Qué pasó después con la criatura? ¿Se ha vuelto a ver?",
-    "CareerEvent.common.6.focusSuggestion": "El personaje obtiene una Especialidad, que debería reflejar las experiencias del personaje con la entidad. Los ejemplos incluyen: empatía, filosofía, xenobiología.",
+    "CareerEvent.common.6.description": "El personaje se encontró con una forma de vida realmente alienígena, algo que apenas entra en la comprensión de un ser humanoide. Puede que se tratase de una entidad divina o de una criatura que surca el espacio pero, fuera lo que fuese, no se trataba de vida tal y como la conocemos.\n\n- ¿Qué clase de criatura era? ¿Qué aprendió el personaje de esa experiencia?\n- ¿Qué pasó a continuación con la criatura? ¿Se la ha vuelto a ver?",
+    "CareerEvent.common.6.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar las experiencias vividas con la entidad. Como ejemplos se ofrecen: Empatía, Filosofía o Xenobiología.",
 
-    "CareerEvent.common.7.name": "Herida Grave",
-    "CareerEvent.common.7.description": "El personaje resultó gravemente herido y necesitó pasar una cantidad considerable de tiempo recuperándose.\n\n- ¿Qué estaba pasando cuando el personaje resultó herido? ¿Quién fue el responsable?\n- ¿Qué supuso la recuperación? ¿El personaje necesitó una prótesis o un implante cibernético después?",
-    "CareerEvent.common.7.focusSuggestion": "El personaje obtiene una Especialidad, que debe reflejar las circunstancias de la lesión del personaje, algo que le ayudó durante la recuperación o algo que tomó después de recuperarse. Los ejemplos incluyen: atletismo, arte o filosofía.",
-    "CareerEvent.common.7.traitDescription": "El personaje puede adquirir un Rasgo, que debería reflejar algún efecto duradero de la lesión del personaje o de la forma en que se recuperó. Los ejemplos incluyen: Implante protésico o alguna forma de discapacidad.",
+    "CareerEvent.common.7.name": "Lesión grave",
+    "CareerEvent.common.7.description": "El personaje sufrió una lesión grave y tuvo que pasar una cantidad de tiempo considerable recuperándose.\n\n- ¿Qué estaba pasando cuando el personaje resultó herido? ¿Quién fue el responsable?\n- ¿Qué conllevó la recuperación? ¿Necesita el personaje una prótesis o implante desde entonces?",
+    "CareerEvent.common.7.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar las circunstancias en las que tuvo la lesión, algo que le ayudó durante la recuperación o alguna actividad que iniciase tras recuperarse. Como ejemplos se ofrecen: Atletismo, Arte o Filosofía.",
+    "CareerEvent.common.7.traitDescription": "El personaje puede recibir un Rasgo, que debería reflejar algún efecto duradero de la lesión del personaje o de la manera en que se recuperó. Como ejemplos se ofrecen: Implante Protésico o alguna clase de discapacidad.",
 
-    "CareerEvent.common.8.name": "Conflicto con una Cultura Hostil",
-    "CareerEvent.common.8.description": "El personaje estuvo involucrado en una batalla importante con una fuerza hostil y es poco probable que olvide la experiencia.\n\n- ¿Quién era el enemigo en esta batalla? ¿Por qué se produjo la batalla? ¿Se combatió en el espacio, en tierra o en ambos?\n- ¿Qué tuvo que hacer el personaje para sobrevivir? ¿Se ganó o se perdió la batalla?",
-    "CareerEvent.common.8.focusSuggestion": "El personaje obtiene un enfoque, que debería reflejar las habilidades que perfeccionó durante la lucha. Los ejemplos incluyen: fáseres de mano, combate cuerpo a cuerpo o sistemas tácticos de a bordo.",
+    "CareerEvent.common.8.name": "Conflicto con una cultura hostil",
+    "CareerEvent.common.8.description": "El personaje se vio implicado en una batalla con una fuerza hostil y es poco probable que olvide la experiencia.\n\n- ¿Quién era el enemigo en dicha batalla? ¿Por qué tuvo lugar la batalla? ¿Se libró en el espacio, en tierra o en ambos?\n- ¿Qué tuvo que hacer el personaje para sobrevivir? ¿La batalla terminó en victoria o en derrota?",
+    "CareerEvent.common.8.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar las habilidades que perfeccionó durante la lucha. Como ejemplos se ofrecen: Fásers de Mano, Combate Cuerpo a Cuerpo o Sistemas Tácticos de a Bordo.",
 
     "CareerEvent.common.9.name": "Tutelado",
-    "CareerEvent.common.9.description": "Un oficial muy respetado se fijó en la carrera del personaje. Durante un tiempo, el personaje sirvió como piloto y ayudante del oficial, beneficiándose de sus experiencias y lecciones. ¿Quién era el oficial? ¿El oficial sigue siendo un contacto o incluso un amigo del personaje?",
-    "CareerEvent.common.9.focusSuggestion": "El personaje gana una Especialidad, que refleja las lecciones aprendidas. Los ejemplos incluyen: compostura o etiqueta, aunque cualquier Especialidad que refleje las especialidades del oficial sería apropiado.",
+    "CareerEvent.common.9.description": "Un oficial muy respetado reparó en la carrera del personaje. Durante un tiempo, este sirvió como piloto y asistente de dicho oficial, beneficiándose de su experiencia y lecciones.\n\n- ¿Quién era ese oficial? ¿Sigue estando en contacto con el personaje o incluso tiene amistad con él?",
+    "CareerEvent.common.9.focusSuggestion": "El personaje recibe una Especialidad, que refleja lo aprendido. Como ejemplos se ofrecen: Autocontrol o Etiqueta, aunque cualquier Especialidad que refleje las cualidades del oficial sería apropiada.",
 
-    "CareerEvent.common.10.name": "Accidente de Transportador",
-    "CareerEvent.common.10.description": "El personaje sufrió algún tipo de extraño accidente mientras usaba un transportador.\n\n- ¿Qué le pasó al personaje durante el accidente? ¿Hubo alguna repercusión duradera?\n- ¿Cómo se siente ahora el personaje con respecto a los transportadores?",
-    "CareerEvent.common.10.focusSuggestion": "El personaje obtiene una Especialidad, que debería reflejar algo que aprendió debido al accidente o después del mismo. Los ejemplos incluyen: transportadores y replicadores, vehículos pequeños o mecánica cuántica.",
+    "CareerEvent.common.10.name": "Accidente de transportador",
+    "CareerEvent.common.10.description": "El personaje sufrió algún tipo de extraño accidente cuando usaba un transportador.\n\n- ¿Qué le sucedió al personaje en el accidente? ¿Hubo repercusiones a largo plazo?\n- ¿Qué impresión le dan ahora los transportadores al personaje?",
+    "CareerEvent.common.10.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar algo que aprendiese durante su accidente o a raíz de este. Como ejemplos se ofrecen: Transportadores y Replicadores, Vehículos Pequeños o Mecánica Cuántica.",
 
-    "CareerEvent.common.11.name": "Lidió con una plaga",
-    "CareerEvent.common.11.description": "La nave estelar del personaje fue asignada para proporcionar ayuda a un mundo que se enfrentaba a una epidemia.\n\n- ¿Cuál era la enfermedad que se estaba extendiendo? ¿A qué planeta estaba afectando?\n- ¿El personaje trataba directamente con los enfermos? ¿Cómo estuvo involucrado el personaje?",
-    "CareerEvent.common.11.focusSuggestion": "El personaje gana una Especialidad, que debería reflejar cómo ayudó durante la crisis. Los ejemplos incluyen: enfermedades infecciosas, medicina de urgencia o triaje.",
+    "CareerEvent.common.11.name": "Lidió con una epidemia",
+    "CareerEvent.common.11.description": "Se asignó a la nave del personaje la misión de ofrecer ayuda a un mundo que sufría una epidemia.\n\n- ¿Qué enfermedad se había descontrolado? ¿A qué planeta afectaba?\n- ¿El personaje interactuó directamente con la enfermedad? ¿Cuál fue el su papel?",
+    "CareerEvent.common.11.focusSuggestion": "El personaje recibe una Especialidad, que debería reflejar cómo ayudó durante la crisis. Como ejemplos se ofrecen: Enfermedades Infecciosas, Medicina de Urgencia o Triaje.",
 
-    "CareerEvent.common.12.name": "Traicionó sus Ideales por un Superior",
-    "CareerEvent.common.12.description": "El personaje se vio en una situación en la que tenía que elegir entre un superior de confianza y sus propios ideales, y decidió seguir al superior.\n\n- ¿Quién era el superior? ¿Qué le pidieron al personaje que hiciera? ¿Cómo se siente el personaje ahora?\n- ¿Cuáles fueron las repercusiones de esto? ¿Están registrados los detalles de este evento? ¿Tenía razón el personaje?",
-    "CareerEvent.common.12.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: persuasión, inspiración, investigación.",
+    "CareerEvent.common.12.name": "Traicionó sus ideales por un superior",
+    "CareerEvent.common.12.description": "El personaje se encontró en una situación en que tuvo que escoger entre un superior en quien confiaba y sus propios ideales... y se decantó por su superior.\n\n- ¿Quién era su superior? ¿Qué pidió al personaje que hiciera? ¿Cómo se siente ahora al respecto?\n- ¿Cuáles fueron las repercusiones del incidente? ¿Hay registros de los detalles del suceso? ¿Tenía razón el personaje?",
+    "CareerEvent.common.12.focusSuggestion": "El personaje recibe una Especialidad que refleja el suceso y sus consecuencias. Como ejemplos se ofrecen: Persuasión, Inspiración o Investigación.",
 
     "CareerEvent.common.13.name": "Desafió a un Superior",
-    "CareerEvent.common.13.description": "El personaje se vio en una situación en la que tenía que elegir entre un superior de confianza y sus propios ideales, y decidió seguir sus ideales.\n\n- ¿Quién era el superior? ¿Qué le pidieron al personaje que hiciera? ¿Cómo se siente el personaje ahora?\n- ¿Cuáles fueron las repercusiones de esto? ¿Están registrados los detalles de este evento? ¿Tenía razón el personaje?",
-    "CareerEvent.common.13.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: Código de Justicia de la Federación, Historia o Protocolo de la Flota Estelar.",
+    "CareerEvent.common.13.description": "El personaje se encontró en una situación en que tuvo que escoger entre un superior en quien confiaba y sus propios ideales... y decidió seguir sus ideales.\n\n- ¿Quién era su superior? ¿Qué pidió al personaje que hiciera? ¿Cómo se siente ahora al respecto?\n- ¿Cuáles fueron las repercusiones del incidente? ¿Hay registros de los detalles del suceso? ¿Tenía razón el personaje?",
+    "CareerEvent.common.13.focusSuggestion": "El personaje recibe una Especialidad que refleja el suceso y sus consecuencias. Como ejemplos se ofrecen: Código de Justicia de la Federación, Historia o Protocolo de la Flota Estelar.",
 
-    "CareerEvent.common.14.name": "Nueva Estrategia de Batalla",
-    "CareerEvent.common.14.description": "En combate con una fuerza hostil, el personaje ideó una nueva estrategia o táctica.\n\n- ¿Contra quién fue la batalla?\n- ¿Fue en el espacio o en la Tierra? ¿Cuál fue la estrategia ideada?",
-    "CareerEvent.common.14.focusSuggestion": "El personaje obtiene una Especialidad, que refleja su liderazgo decisivo en el campo de batalla. Los ejemplos incluyen: tácticas de combate, conciencia de la amenaza o liderar con el ejemplo.",
+    "CareerEvent.common.14.name": "Nueva estrategia de batalla",
+    "CareerEvent.common.14.description": "Librando un combate contra una fuerza hostil, el personaje diseñó una nueva táctica o estrategia.\n\n- ¿Contra quién se libraba la batalla? ¿Fue en el espacio o en tierra?\n- ¿Cuál fue la estrategia desarrollada?",
+    "CareerEvent.common.14.focusSuggestion": "El personaje recibe una Especialidad que refleja su decisivo liderazgo en el campo de batalla. Como ejemplos se ofrecen: Tácticas de Combate, Consciencia de la Amenaza o Liderar con el Ejemplo.",
 
-    "CareerEvent.common.15.name": "Aprendió un Lenguaje Único",
-    "CareerEvent.common.15.description": "El personaje encontró una especie con una forma inusual de comunicación y aprendió a comunicarse con ella.\n\n- ¿Quiénes eran los alienígenas con los que se encontró?¿El encuentro fue tenso o cordial?\n- ¿Qué método de comunicación empleaban los alienígenas? ¿Cómo lo aprendió el personaje?",
-    "CareerEvent.common.15.focusSuggestion": "El personaje obtiene una Especialidad, que refleja lo que aprendió del evento. Los ejemplos incluyen: Lingüística, Estudios Culturales o Negociaciones.",
+    "CareerEvent.common.15.name": "Aprendió una lengua única",
+    "CareerEvent.common.15.description": "El personaje se encontró con una especie con una forma de comunicación inusual y aprendió a comunicarse con ella.\n\n- ¿Quiénes eran los alienígenas con los que se encontró? ¿El encuentro fue tenso o cordial?\n- ¿Qué método de comunicación empleaban los alienígenas? ¿Cómo lo aprendió el personaje?",
+    "CareerEvent.common.15.focusSuggestion": "El personaje recibe una Especialidad que refleja lo que aprendió de este acontecimiento. Como ejemplos se ofrecen: Lingüística, Estudios Culturales o Negociación.",
 
-    "CareerEvent.common.16.name": "Descubrió un Artefacto",
-    "CareerEvent.common.16.description": "Durante una misión de reconocimiento, el personaje descubrió un dispositivo o fragmento de tecnología de una civilización ahora extinta.\n\n- ¿Qué hizo esta pieza de tecnología? ¿Sigue funcionando ahora?\n- ¿Qué se sabe sobre la civilización que lo creó?",
-    "CareerEvent.common.16.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: tecnología antigua, informática, ingeniería inversa.",
+    "CareerEvent.common.16.name": "Descubrió un artefacto",
+    "CareerEvent.common.16.description": "En el transcurso de una misión de vigilancia, el personaje descubrió un aparato o elemento de tecnología de una civilización ahora extinta.\n\n- ¿Qué hace ese elemento de tecnología? ¿Sigue funcionando?\n- ¿Qué se sabe de la civilización que lo fabricó?",
+    "CareerEvent.common.16.focusSuggestion": "El personaje recibe una Especialidad que refleja el incidente y sus consecuencias. Como ejemplos se ofrecen: Tecnología Antigua, Informática o Ingeniería Inversa.",
 
-    "CareerEvent.common.17.name": "Mención Especial",
-    "CareerEvent.common.17.description": "Durante una crisis, el personaje salvó la vida de varios compañeros, ayudándolos a ponerse a salvo, lo que le valió un elogio especial.\n\n- ¿Cuál fue la crisis? ¿Por qué estaba en peligro la misión?\n- ¿Cuáles fueron las repercusiones de esto? ¿Están registrados los detalles de este evento?",
-    "CareerEvent.common.17.focusSuggestion": "El personaje gana una Especialidad, que refleja el evento y sus consecuencias. Los ejemplos incluyen: atletismo, supervivencia o medicina de urgencia.",
+    "CareerEvent.common.17.name": "Mención especial",
+    "CareerEvent.common.17.description": "En el transcurso de una crisis, el personaje salvó las vidas de varios compañeros y los llevó a un lugar seguro. Esto le mereció una mención especial.\n\n- ¿Cuál fue la crisis? ¿Por qué estuvo en peligro la misión?\n- ¿Cuáles fueron las repercusiones del suceso? ¿Hay registros de los detalles de este incidente?",
+    "CareerEvent.common.17.focusSuggestion": "El personaje recibe una Especialidad que refleja el incidente y sus consecuencias. Como ejemplos se ofrecen: Atletismo, Supervivencia o Medicina de Urgencia.",
 
-    "CareerEvent.common.18.name": "Resolvió una Crisis de Ingeniería",
-    "CareerEvent.common.18.description": "El personaje jugó un papel decisivo para poner fin a una crisis causada por un fallo tecnológico y salvó muchas vidas en el proceso. ¿Qué tecnología había fallado y por qué era peligrosa? ¿Cómo resolvió el personaje el problema?",
-    "CareerEvent.common.18.focusSuggestion": "El personaje gana una Especialidad, que refleja la tecnología involucrada en el evento. Los ejemplos incluyen: sistemas de energía de electroplasma, reactores de fusión o motores warp.",
+    "CareerEvent.common.18.name": "Resolvió una crisis de ingeniería",
+    "CareerEvent.common.18.description": "El personaje fue clave en la resolución de una crisis provocada por un fallo tecnológico y salvó muchas vidas en el proceso.\n\n-¿Qué elemento tecnológico falló y por qué era peligroso?  \n-¿Cómo solucionó el personaje el problema?",
+    "CareerEvent.common.18.focusSuggestion": "El personaje recibe una Especialidad que refleja la tecnología relacionada con el incidente. Como ejemplos se ofrecen: Sistemas de Energía de Electroplasma, Reactores de Fusión o Motores de Curvatura.",
 
-    "CareerEvent.common.19.name": "Descubrimiento o Invención",
-    "CareerEvent.common.19.description": "El personaje hizo un descubrimiento tecnológico importante, ideó una nueva forma de utilizar una tecnología en particular o inventó alguna tecnología nueva que será imprescindible en el futuro.\n\n- ¿Cuál fue el descubrimiento, avance o invención?\n- ¿Cómo será útil?",
-    "CareerEvent.common.19.focusSuggestion": "El personaje gana una Especialidad, que refleja el logro del personaje. Los ejemplos incluyen: tecnología experimental, invención o improvisación.",
+    "CareerEvent.common.19.name": "Descubrimiento o invención",
+    "CareerEvent.common.19.description": "El personaje llevó a cabo un importante descubrimiento tecnológico, desarrolló una nueva manera de emplear un tipo concreto de tecnología o inventó una tecnología nueva que será inestimable en un futuro.\n\n- ¿Cuál fue el descubrimiento, hallazgo o invención? ¿Cómo resultará útil?",
+    "CareerEvent.common.19.focusSuggestion": "El personaje recibe una Especialidad que refleja el logro del personaje. Como ejemplos se ofrecen: Tecnología Experimental, Invención o Improvisación.",
 
-    "CareerEvent.common.20.name": "Primer Contacto",
-    "CareerEvent.common.20.description": "El personaje fue elegido para participar en una de las misiones más importantes de la Flota Estelar: el primer contacto con otra cultura. ¿Con qué cultura tuvo el primer contacto el personaje? ¿La misión salió bien?",
-    "CareerEvent.common.20.focusSuggestion": "El personaje gana una Especialidad, que refleja la naturaleza de la misión. Los ejemplos incluyen: estudios culturales, diplomacia o infiltración.",
+    "CareerEvent.common.20.name": "Primer contacto",
+    "CareerEvent.common.20.description": "El personaje fue elegido para participar en una de las misiones más importantes de la Flota Estelar: un primer contacto con otra cultura.\n\n-¿Con qué cultura estableció el personaje un primer contacto? ¿Fue bien la misión?",
+    "CareerEvent.common.20.focusSuggestion": "El personaje recibe una Especialidad que refleja la naturaleza de la misión. Como ejemplos se ofrecen: Estudios Culturales, Diplomacia o Infiltración.",
 
     "CareerEvent.common.99.name": "Reclutado para la inteligencia de la Flota Estelar",
 
-    "CareerType.core.young.name": "Oficial Junior",
-    "CareerType.core.young.description": "El personaje se define por su potencial más que por su habilidad. Su talento en bruto y sus expectativas sobre cómo es el universo aún no se han visto templadas por la realidad.",
-    "CareerType.core.young.valueInstruction": "El personaje recibe un Valor, que debe reflejar de alguna manera su inexperiencia e ingenuidad.",
+    "CareerType.core.young.name": "Joven oficial",
+    "CareerType.core.young.description": "El personaje se distingue por su potencial más que por su habilidad. La realidad aún no ha templado su talento en bruto y sus expectativas sobre el universo.",
+    "CareerType.core.young.valueInstruction": "El personaje recibe un Valor, que debe reflejar de algún modo la inexperiencia del personaje y su ingenuidad.",
 
-    "CareerType.core.experienced.name": "Oficial Experimentado",
-    "CareerType.core.experienced.description": "El personaje tiene varios años de experiencia al servicio de la Flota Estelar y disfruta de una carrera prometedora.",
-    "CareerType.core.experienced.valueInstruction": "El personaje recibe un Valor, que puede elegir libremente.",
+    "CareerType.core.experienced.name": "Oficial experimentado",
+    "CareerType.core.experienced.description": "El personaje lleva varios años al servicio de la Flota Estelar y goza de una carrera prometedora.",
+    "CareerType.core.experienced.valueInstruction": "El personaje recibe un Valor, que se puede escoger libremente",
 
-    "CareerType.core.veteran.name": "Oficial Veterano",
-    "CareerType.core.veteran.description": "El personaje tiene décadas de experiencia al servicio de la Flota Estelar y ha servido en muchas naves y bases estelares. El juicio y las opiniones del personaje son muy apreciados por subordinados, compañeros e incluso superiores.",
-    "CareerType.core.veteran.valueInstruction": "El personaje recibe un Valor, que debe reflejar los años de experiencia del personaje y las creencias que ha formado a lo largo de su larga carrera.",
+    "CareerType.core.veteran.name": "Oficial veterano",
+    "CareerType.core.veteran.description": "El personaje tiene décadas de experiencia al servicio de la Flota Estelar y ha servido en muchas naves y bases estelares. Los juicios y opiniones del personaje son muy valorados por sus subordinados, compañeros e incluso superiores.",
+    "CareerType.core.veteran.valueInstruction": "El personaje recibe un Valor, que debe reflejar los años de experiencia del personaje y las creencias que ha desarrollado a lo largo de su dilatada carrera.",
 
     "CareerType.civilian.young.name": "Joven",
     "CareerType.civilian.young.description": "El personaje se define por su potencial más que por su habilidad. Su talento en bruto y sus expectativas sobre cómo es el universo aún no se han visto templadas por la realidad.",
