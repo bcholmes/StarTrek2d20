@@ -174,7 +174,19 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         if (this.version === 1) {
             return this.scale;
         } else {
-            return Math.ceil(this.scale / 2);
+            let base = Math.ceil(this.scale / 2);
+            let structure = this.systems[System.Structure];
+            if (structure >= 13) {
+                return base + 4;
+            } else if (structure >= 11) {
+                return base + 3;
+            } else if (structure >= 9) {
+                return base + 2;
+            } else if (structure >= 7) {
+                return base + 1;
+            } else {
+                return base;
+            }
         }
     }
 

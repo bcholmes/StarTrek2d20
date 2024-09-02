@@ -333,7 +333,8 @@ class SpaceframeOutlineHelper {
             return EISENBERG_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Engle) {
             return ENGLE_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Excelsior || spaceframe.id === Spaceframe.Excelsior_UP) {
+        } else if (spaceframe.id === Spaceframe.Excelsior || spaceframe.id === Spaceframe.Excelsior_UP
+            || spaceframe.id === Spaceframe.Excelsior_2E) {
             return EXCELSIOR_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Freedom) {
             return FREEDOM_CLASS_ELABORATE_OUTLINE;
@@ -341,7 +342,7 @@ class SpaceframeOutlineHelper {
             return FRIENDSHIP_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Gagarin) {
             return GAGARIN_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Galaxy) {
+        } else if (spaceframe.id === Spaceframe.Galaxy || spaceframe.id === Spaceframe.Galaxy_2E) {
             return GALAXY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Galor) {
             return GALOR_CLASS_ELABORATE_OUTLINE;
@@ -353,7 +354,8 @@ class SpaceframeOutlineHelper {
             return HOOVER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Inquiry) {
             return INQUIRY_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Intrepid || spaceframe.id === Spaceframe.Intrepid_UP) {
+        } else if (spaceframe.id === Spaceframe.Intrepid || spaceframe.id === Spaceframe.Intrepid_UP
+            || spaceframe.id === Spaceframe.Intrepid_2E) {
             return INTREPID_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.IntrepidType) {
             return INTREPID_TYPE_ELABORATE_OUTLINE;
@@ -385,7 +387,8 @@ class SpaceframeOutlineHelper {
             return NORWAY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Nova) {
             return NOVA_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.NX || spaceframe.id === Spaceframe.NX_UP) {
+        } else if (spaceframe.id === Spaceframe.NX || spaceframe.id === Spaceframe.NX_UP
+            || spaceframe.id === Spaceframe.NX_2E) {
             return NX_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Obena) {
             return OBENA_CLASS_ELABORATE_OUTLINE;
@@ -411,7 +414,8 @@ class SpaceframeOutlineHelper {
             return SAGAN_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Shepard) {
             return SHEPARD_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Sovereign || spaceframe.id === Spaceframe.Sovereign_UP) {
+        } else if (spaceframe.id === Spaceframe.Sovereign || spaceframe.id === Spaceframe.Sovereign_UP
+            || spaceframe.id === Spaceframe.Sovereign_2E) {
             return SOVEREIGN_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Soyuz) {
             return SOYUZ_CLASS_ELABORATE_OUTLINE;
@@ -423,7 +427,7 @@ class SpaceframeOutlineHelper {
             return SUTHERLAND_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Sydney) {
             return SYDNEY_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.TLiss) {
+        } else if (spaceframe.id === Spaceframe.Tliss) {
             return TLISS_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Vesta) {
             return VESTA_CLASS_ELABORATE_OUTLINE;
@@ -433,11 +437,11 @@ class SpaceframeOutlineHelper {
 
         // ----------- Klingon -----------------
 
-        } else if (spaceframe.id === Spaceframe.Brel) {
+        } else if (spaceframe.id === Spaceframe.Brel || spaceframe.id === Spaceframe.Brel_2E) {
             return BIRD_OF_PREY_ELABORATE_CLASS;
         } else if (spaceframe.id === Spaceframe.D5) {
             return D5_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.D7) {
+        } else if (spaceframe.id === Spaceframe.D7 || spaceframe.id === Spaceframe.D7_2E) {
             return D7_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.D12) {
             return BIRD_OF_PREY_ELABORATE_CLASS;

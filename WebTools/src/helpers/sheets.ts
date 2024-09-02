@@ -104,10 +104,6 @@ abstract class BasicSheet implements ICharacterSheet {
         }
     }
 
-    findSecurityValue(construct: Construct) {
-        return 0;
-    }
-
     fillWeapons(form: PDFForm, construct: Construct) {
         var weapons = construct.determineWeapons();
         weapons.forEach( (w, i) => {
@@ -116,10 +112,9 @@ abstract class BasicSheet implements ICharacterSheet {
     }
 
     fillWeapon(form: PDFForm, weapon: Weapon, index: number, construct: Construct) {
-        const security = this.findSecurityValue(construct) || 0;
 
         this.fillField(form, 'Weapon ' + index + ' name', weapon.name);
-        this.fillField(form, 'Weapon ' + index + ' dice', (weapon.dice == null) ? "" : ("" + (security + weapon.dice)));
+        this.fillField(form, 'Weapon ' + index + ' dice', (weapon.dice == null) ? "" : ("" + construct.getDiceForWeapon(weapon)));
         this.fillField(form, 'Weapon ' + index + ' qualities', weapon.effectsAndQualities);
     }
 
@@ -251,10 +246,6 @@ abstract class BasicStarshipSheet extends BasicSheet {
         }
     }
 
-    findSecurityValue(construct: Construct) {
-        return (construct as Starship).departments[Department.Security];
-    }
-
     fillSystems(form: PDFForm, construct: Construct) {
         let starship = construct as Starship;
         this.fillFieldWithNumber(form, "Engines", starship.getSystemValue(System.Engines));
@@ -282,22 +273,9 @@ abstract class BasicStarshipSheet extends BasicSheet {
     }
 
     fillWeapon(form: PDFForm, weapon: Weapon, index: number, construct: Construct) {
-        let starship = construct as Starship;
-        const security = this.findSecurityValue(construct) || 0;
-
-        let dice = security + weapon.dice;
-        if (weapon.isTractorOrGrappler) {
-            dice = starship.scale - 1;
-            if (starship.hasTalent("High-Power Tractor Beam")) {
-                dice += 2;
-            }
-        } else if (weapon.scaleApplies) {
-            const scale = starship && starship.scale ? starship.scale : 0;
-            dice += scale;
-        }
 
         this.fillField(form, 'Weapon ' + index + ' name', weapon.description);
-        this.fillField(form, 'Weapon ' + index + ' dice', "" + dice);
+        this.fillField(form, 'Weapon ' + index + ' dice', "" + construct.getDiceForWeapon(weapon));
         this.fillField(form, 'Weapon ' + index + ' qualities', weapon.effectsAndQualities);
     }
 }
@@ -584,24 +562,12 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
         this.fillWeapons(form, construct);
     }
 
-    findSecurityValue(construct: Construct) {
-        let c = construct as Character;
-        var result = undefined;
-        c.skills.forEach( (s, i) => {
-            if (s.skill === Skill.Security) {
-                result = s.expertise;
-            }
-        });
-        return result;
-    }
-
     fillWeapons(form: PDFForm, construct: Construct) {
         var weapons = construct.determineWeapons();
-        const security = this.findSecurityValue(construct) || 0;
 
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
-            this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + (security + w.dice)));
+            this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + construct.getDiceForWeapon(w)));
             this.fillField(form, 'Weapon ' + (i+1) + ' qualities', construct.version > 1 ? w.injuryTypeEffectsAndQualities : w.effectsAndQualities);
         });
     }

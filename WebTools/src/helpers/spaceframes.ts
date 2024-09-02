@@ -143,8 +143,11 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Excelsior Class",
             2285,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
-                new ServiceYearPrerequisite(2285) ],
+            [
+                new SourcePrerequisite(Source.Core),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.Core2ndEdition),
+                new ServiceYearPrerequisite(2285)
+            ],
             [8, 8, 9, 8, 9, 9],
             [1, 0, 0, 2, 0, 0],
             5,
@@ -159,12 +162,15 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Galaxy]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Galaxy]: new SpaceframeModel(
             Spaceframe.Galaxy,
             CharacterType.Starfleet,
             "Galaxy Class",
             2359,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.Core, Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.Core2ndEdition)
+             ],
             [9, 10, 10, 9, 10, 10],
             [1, 0, 0, 0, 1, 1],
             6,
@@ -192,6 +198,7 @@ export class SpaceframeHelper {
             [
                 new SourcePrerequisite(Source.Core),
                 new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.Core2ndEdition),
                 new ServiceYearPrerequisite(2371)
             ],
             [10, 11, 11, 10, 8, 9],
@@ -283,6 +290,7 @@ export class SpaceframeHelper {
             [
                 new SourcePrerequisite(Source.CommandDivision),
                 new NotSourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.Core2ndEdition),
                 new ServiceYearPrerequisite(2151)
             ],
             [6, 6, 6, 6, 7, 6],
@@ -568,7 +576,7 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Sovereign Class",
             2371,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.Core2ndEdition),
                 new ServiceYearPrerequisite(2371) ],
             [9, 11, 11, 9, 10, 10],
             [1, 0, 1, 0, 1, 0],
@@ -1604,12 +1612,16 @@ export class SpaceframeHelper {
                 [9, 9, 8, 9, 8, 13],
                 [2, 3, 5, 2, 1, 2],
             )),
-        [Spaceframe.Excelsior_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Excelsior_UP]: new SpaceframeModel(
             Spaceframe.Excelsior_UP,
             CharacterType.Starfleet,
             "Excelsior Class",
             2285,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new ServiceYearPrerequisite(2285),
+                new NotSourcePrerequisite(Source.Core2ndEdition),
+            ],
             [8, 8, 9, 8, 9, 8],
             [1, 0, 0, 2, 0, 0],
             5,
@@ -1629,12 +1641,15 @@ export class SpaceframeHelper {
                 [8, 8, 10, 10, 9, 8],
                 [4, 1, 2, 4, 2, 2]
             )),
-        [Spaceframe.Intrepid_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Intrepid_UP]: new SpaceframeModel(
             Spaceframe.Intrepid_UP,
             CharacterType.Starfleet,
             "Intrepid Class",
             2371,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.Core2ndEdition)
+            ],
             [9, 11, 11, 10, 8, 9],
             [0, 1, 0, 0, 2, 0],
             4,
@@ -1824,12 +1839,12 @@ export class SpaceframeHelper {
                 [10, 11, 10, 11, 9, 7],
                 [2, 2, 2, 1, 3, 5],
             )),
-        [Spaceframe.Sovereign_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Sovereign_UP]: new SpaceframeModel(
             Spaceframe.Sovereign_UP,
             CharacterType.Starfleet,
             "Sovereign Class",
             2371,
-            [ Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.UtopiaPlanitia), new NotSourcePrerequisite(Source.Core2ndEdition) ],
             [10, 9, 10, 10, 10, 10],
             [1, 0, 1, 0, 1, 0],
             6,
@@ -2262,12 +2277,15 @@ export class SpaceframeHelper {
                 "Bird-of-Prey"
             ],
             2299),
-        [Spaceframe.D7]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.D7]: new SpaceframeModel(
             Spaceframe.D7,
             CharacterType.KlingonWarrior,
             "D7-Class Battle Cruiser",
             2250,
-            [ Source.KlingonCore ],
+            [
+                new SourcePrerequisite(Source.KlingonCore),
+                new NotSourcePrerequisite(Source.Core2ndEdition)
+            ],
             [7, 7, 8, 7, 8, 9],
             [0, 1, 2, 0, 0, 0],
             4,
@@ -2286,12 +2304,15 @@ export class SpaceframeHelper {
                 "Long-Serving (24th century)"
             ],
             2350),
-        [Spaceframe.Brel]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Brel]: new SpaceframeModel(
             Spaceframe.Brel,
             CharacterType.KlingonWarrior,
             "B'rel-Class Bird-of-Prey",
             2280,
-            [ Source.KlingonCore ],
+            [
+                new SourcePrerequisite(Source.KlingonCore),
+                new NotSourcePrerequisite(Source.Core2ndEdition),
+            ],
             [8, 7, 9, 7, 7, 9],
             [0, 2, 1, 0, 0, 0],
             3,
@@ -3010,8 +3031,56 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship", "Legacy Components" ],
             99999),
-        [Spaceframe.TLiss]: SpaceframeModel.createStandardSpaceframe(
-            Spaceframe.TLiss,
+        [Spaceframe.D7_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.D7_2E,
+            CharacterType.KlingonWarrior,
+            "D7-Class Battle Cruiser",
+            2257,
+            [ Source.KlingonCore ],
+            [7, 7, 8, 8, 8, 9],
+            [0, 1, 2, 0, 0, 0],
+            4,
+            [
+                "Disruptor Cannons",
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Rugged Design")
+            ],
+            [
+                "Klingon Starship",
+                "Symbol of Klingoon Unity"
+            ],
+            2350),
+        [Spaceframe.Brel_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Brel_2E,
+            CharacterType.KlingonWarrior,
+            "B'rel-Class Bird-of-Prey",
+            2280,
+            [ Source.KlingonCore ],
+            [8, 7, 9, 7, 7, 9],
+            [0, 1, 2, 0, 0, 0],
+            3,
+            [
+                "Disruptor Cannons",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Fast Targeting Systems"),
+                TalentSelection.selectTalent("Landing Gear")
+            ],
+            [
+                "Klingon Starship",
+                "Bird-of-Prey",
+                "Agile Raider"
+            ],
+            99999),
+        [Spaceframe.Tliss]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Tliss,
             CharacterType.Romulan,
             "T'Liss",
             2260,

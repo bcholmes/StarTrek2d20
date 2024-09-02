@@ -2,6 +2,7 @@ import { Era } from "../helpers/eras";
 import { Weapon } from "../helpers/weapons";
 import { CharacterType } from "./characterType";
 import { IConstruct } from "./iconstruct";
+import { IWeaponDiceProvider } from "./iWeaponDiceProvider";
 
 export enum ConstructType {
     Character,
@@ -17,7 +18,7 @@ export enum Stereotype {
     SoloStarship
 }
 
-export abstract class Construct implements IConstruct {
+export abstract class Construct implements IConstruct, IWeaponDiceProvider {
     public stereotype: Stereotype;
     public name?: string;
     public type: CharacterType = CharacterType.Starfleet;
@@ -36,5 +37,9 @@ export abstract class Construct implements IConstruct {
 
     hasTalent(talentName: string) {
         return false;
+    }
+
+    getDiceForWeapon(weapon: Weapon) {
+        return weapon.dice;
     }
 }

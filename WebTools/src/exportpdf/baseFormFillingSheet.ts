@@ -193,11 +193,10 @@ export abstract class BaseFormFillingSheet extends BasicGeneratedSheet {
 
     fillWeapons(form: PDFForm, construct: Construct) {
         var weapons = construct.determineWeapons();
-        const security = this.findSecurityValue(construct) || 0;
 
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
-            this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + (security + w.dice)));
+            this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + construct.getDiceForWeapon(w)));
             this.fillField(form, 'Weapon ' + (i+1) + ' qualities', construct.version > 1 ? w.injuryTypeEffectsAndQualities : w.effectsAndQualities);
         });
     }
