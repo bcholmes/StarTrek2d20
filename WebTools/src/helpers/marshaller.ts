@@ -428,6 +428,7 @@ class Marshaller {
             "year": starship.serviceYear,
             "name": starship.name,
             "registry": starship.registry,
+            "version": starship.version,
             "refits": [],
             "talents": [],
             "traits": this.parseTraits(starship.traits)
@@ -572,7 +573,11 @@ class Marshaller {
 
     decodeStarship(s: string) {
         let json = this.decode(s);
+        console.log(json);
         let result = new Starship();
+        if (json.version) {
+            result.version = json.version;
+        }
         result.name = json.name;
         if (json.stereotype === "soloStarship") {
             result.stereotype = Stereotype.SoloStarship;

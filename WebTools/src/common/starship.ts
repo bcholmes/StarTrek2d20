@@ -122,6 +122,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         result.stereotype = Stereotype.Starship;
         result.type = type;
         result.era = era;
+        result.version = version;
         return result;
     }
 
@@ -407,6 +408,9 @@ export class Starship extends Construct implements IWeaponDiceProvider {
     get shields() {
         if (this.departments) {
             let base = this.getSystemValue(System.Structure) + this.departments[Department.Security];
+            if (this.version > 1) {
+                base += this.scale;
+            }
             if (this.buildType !== ShipBuildType.Starship) {
                 base = this.power;
             }

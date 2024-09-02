@@ -115,7 +115,7 @@ class StarshipTypeSelectionPage extends React.Component<StarshipTypeSelectionPag
             Navigation.navigateToPage(workflow.currentStep().page);
        } else if (this.state.type != null) {
             let workflow = ShipBuildWorkflow.createStarshipBuildWorkflow();
-            store.dispatch(createNewStarship(this.state.type.type, this.props.era, this.state.campaignYear, undefined, workflow));
+            store.dispatch(createNewStarship(this.state.type.type, this.props.era, this.state.campaignYear, undefined, workflow, ShipBuildType.Starship, isSecondEdition() ? 2 : 1));
 
             Navigation.navigateToPage(workflow.currentStep().page);
         }
