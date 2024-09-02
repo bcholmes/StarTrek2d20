@@ -6,8 +6,9 @@ import { ReadableTalentModel } from "./talentWriter";
 import { RoleModel, RolesHelper } from "../helpers/roles";
 import { SpeciesAbility } from "../helpers/speciesAbility";
 import { Character } from "../common/character";
-import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_UNTAPPED_POTENTIAL, TalentsHelper } from "../helpers/talents";
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_MISSION_POD, TALENT_NAME_UNTAPPED_POTENTIAL, TalentsHelper } from "../helpers/talents";
 import { BorgImplants } from "../helpers/borgImplant";
+import { Starship } from "../common/starship";
 
 export abstract class BasicGeneratedSheet implements ICharacterSheet {
 
@@ -105,6 +106,38 @@ export const assembleWritableItems = (character: Character) => {
             }
             result.push(readableTalent);
         }
+    }
+
+    return result;
+}
+
+export const assembleStarshipTalents = (starship: Starship, includeSpecialRules: boolean = false) => {
+    let result: (ReadableTalentModel|RoleModel|SpeciesAbility)[] = [];
+    let specialRules: (ReadableTalentModel|RoleModel|SpeciesAbility)[] = [];
+
+    for (let t of starship.getDistinctTalentNameList()) {
+
+        const talent = TalentsHelper.getTalent(t);
+        if (talent) {
+            const readableTalent = new ReadableTalentModel(starship.type, talent);
+
+            if (talent.maxRank > 1) {
+                readableTalent.rank = starship.getRankForTalent(t);
+            }
+
+            if (talent.name === TALENT_NAME_MISSION_POD) {
+                readableTalent.missionPod = starship.missionPodModel;
+            }
+            if (talent.specialRule) {
+                specialRules.push(readableTalent);
+            } else {
+                result.push(readableTalent);
+            }
+        }
+    }
+
+    if (includeSpecialRules) {
+        specialRules.forEach(t => result.push(t));
     }
 
     return result;

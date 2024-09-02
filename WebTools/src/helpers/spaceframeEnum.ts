@@ -160,4 +160,6 @@ export enum Spaceframe {
     Larson,
     Perseus,
     Ptolemy,
+
+    Valdore,
 }

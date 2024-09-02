@@ -332,7 +332,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         talentName += " [x" + rank + "]";
                     }
                     paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), Generated2eStarshipSheet.tealColour);
-                    paragraph.append(talent.localizedDescription, new FontOptions(9));
+                    paragraph.append(starship.version === 1 ? talent.localizedDescription : talent.localizedDescription2e, new FontOptions(9));
                     paragraph.write();
 
                     if (paragraph.lines.length) {
@@ -367,7 +367,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         talentName += " [Rank: " + rank + "]";
                     }
                     paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), Generated2eStarshipSheet.tealColour);
-                    paragraph.append(talent.localizedDescription, new FontOptions(9));
+                    paragraph.append(starship.version === 1 ? talent.localizedDescription : talent.localizedDescription2e, new FontOptions(9));
                     paragraph.write();
 
                     if (paragraph.lines.length) {

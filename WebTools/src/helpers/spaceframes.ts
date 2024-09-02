@@ -3140,7 +3140,7 @@ export class SpaceframeHelper {
         [Spaceframe.DKora]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.DKora,
             CharacterType.Ferengi,
-            "D'Kora",
+            "D'Kora class",
             2350,
             [ Source.Core2ndEdition ],
             [9, 8, 10, 9, 10, 7],
@@ -3156,7 +3156,27 @@ export class SpaceframeHelper {
             ],
             [ "Ferengi Starship", "Marauder", "The Best Latinum Can Buy" ],
             99999),
-
+        [Spaceframe.Valdore]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Valdore,
+            CharacterType.Romulan,
+            "Valdore class",
+            2285,
+            [ Source.ContinuingMissions ],
+            [9, 9, 11, 10, 10, 10],
+            [1, 0, 1, 1, 0, 0],
+            6,
+            [
+                "Disruptor Banks",
+                "Plasma Torpedoes",
+                "Tractor Beam (Strength 5)"
+            ],
+            [
+                TalentSelection.selectTalent("Cloaking Device"),
+                TalentSelection.selectTalent("Improved Shield Recharge"),
+                TalentSelection.selectTalent("Secondary Reactors"),
+            ],
+            [ "Romulan Starship" ],
+            99999),
         //[Spaceframe.]: SpaceframeModel.createStandardSpaceframe(
         //    CharacterType.Starfleet,
         //    "",

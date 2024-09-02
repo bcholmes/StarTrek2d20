@@ -15,8 +15,9 @@ export class Column {
     }
 
     contains(point: XYLocation, page: PDFPage) {
-        return point.x >= this.start.x && point.x <= (this.start.x + this.width)
-            && point.y <= (page.getSize().height - this.start.y) && point.y >= (page.getSize().height - this.start.y - this.height);
+        let untranslatedPoint = this.untranslateLocation(page, point);
+        return untranslatedPoint.x >= this.start.x && untranslatedPoint.x <= (this.start.x + this.width)
+            && untranslatedPoint.y >= this.start.y && untranslatedPoint.y <= (this.start.y + this.height);
     }
     translatedStart(page: PDFPage) {
         let x = this.start.x;

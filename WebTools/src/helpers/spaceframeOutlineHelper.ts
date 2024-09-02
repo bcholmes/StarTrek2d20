@@ -429,6 +429,8 @@ class SpaceframeOutlineHelper {
             return SYDNEY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Tliss) {
             return TLISS_CLASS_ELABORATE_OUTLINE;
+        } else if (spaceframe.id === Spaceframe.Valdore) {
+            return VALDORE_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Vesta) {
             return VESTA_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Walker) {

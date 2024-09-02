@@ -196,7 +196,7 @@ export class Paragraph {
             let pdfFont = this.fontLibrary.fontByType(options.fontType);
             fontSpecification = new FontSpecification(pdfFont, options.size);
         }
-        this.lines = this.createLines("" + text, fontSpecification, options, this.currentLine(), this.page, colour);
+        this.lines = this.createLines("" + text, fontSpecification, options, this.page, colour);
     }
 
     write(colour: SimpleColor = SimpleColor.from("#000000")) {
@@ -216,6 +216,9 @@ export class Paragraph {
                 let currentColumn = line.column;
                 let newLine = new Line(newLocation, currentColumn);
                 line = newLine.moveToNextColumnIfNecessary(this.page);
+                if (line) {
+                    newLocation = new XYLocation(line.bottom().x, line.bottom().y);
+                }
             }
 
             if (line) {
@@ -238,15 +241,15 @@ export class Paragraph {
         }
     }
 
-    private createLines(text: string, initialFont: FontSpecification, options: FontOptions, lines: Line|(Line[]), page: PDFPage, colour?: SimpleColor) {
-        let result: Line[] = [];
+    private createLines(text: string, initialFont: FontSpecification, options: FontOptions, page: PDFPage, colour?: SimpleColor) {
+        let result: Line[] = [...this.lines];
         let fontSpec = initialFont;
         let fontType = options?.fontType;
-        if (lines instanceof Line) {
-            result.push(lines as Line);
-        } else if (lines.length > 0) {
-            const l = lines as (Line[]);
-            result = [...l];
+        if (result.length === 0) {
+            let temp = this.currentLine();
+            if (temp != null) {
+                result.push(temp);
+            }
         }
 
         let tokens = textTokenizer(text);
@@ -286,7 +289,9 @@ export class Paragraph {
 
                         // maybe the latest changes required a column change
                         let newLine = line.moveToNextColumnIfNecessary(page);
-                        if (newLine !== line) {
+                        if (newLine == null) {
+                            // skip it
+                        } else if (newLine !== line) {
                             result[result.length-1] = newLine;
                         }
                     } else {
@@ -298,32 +303,37 @@ export class Paragraph {
                 for (let i = 0; i < words.length; i++) {
                     let line = result[result.length-1];
 
-                    let word = words[i];
-                    if (!line.isEmpty() && !skipSpace) {
-                        word = " " + word;
-                    } else {
-                        skipSpace = false;
-                    }
-                    let block = TextBlock.create(word, fontSpec, false, colour);
+                    if (line) {
 
-                    if (block.width < line.availableWidth()) {
-                        line.append(block);
-                    } else {
-                        line = line.nextLine(this.page);
-                        if (line != null) {
-                            result.push(line);
-
-                            line.append(TextBlock.create(word.trim(), fontSpec, false, colour));
+                        let word = words[i];
+                        if (!line?.isEmpty() && !skipSpace) {
+                            word = " " + word;
                         } else {
-                            tokens = [];
-                            break;
+                            skipSpace = false;
                         }
-                    }
+                        let block = TextBlock.create(word, fontSpec, false, colour);
 
-                    // maybe the latest changes required a column change
-                    let newLine = line.moveToNextColumnIfNecessary(page);
-                    if (newLine !== line) {
-                        result[result.length-1] = newLine;
+                        if (block.width < line.availableWidth()) {
+                            line.append(block);
+                        } else {
+                            line = line.nextLine(this.page);
+                            if (line != null) {
+                                result.push(line);
+
+                                line.append(TextBlock.create(word.trim(), fontSpec, false, colour));
+                            } else {
+                                tokens = [];
+                                break;
+                            }
+                        }
+
+                        // maybe the latest changes required a column change
+                        let newLine = line.moveToNextColumnIfNecessary(page);
+                        if (newLine != null && newLine !== line) {
+                            result[result.length-1] = newLine;
+                        }
+                    } else {
+                        break;
                     }
                 }
             }
