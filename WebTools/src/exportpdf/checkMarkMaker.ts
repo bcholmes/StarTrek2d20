@@ -1,4 +1,4 @@
-import { PDFDocument, PDFForm, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
 import { Column } from "./column";
 import { SimpleColor } from "../common/colour";
 

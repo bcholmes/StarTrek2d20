@@ -560,18 +560,28 @@ export class Starship extends Construct implements IWeaponDiceProvider {
 
     getDiceForWeapon(weapon: Weapon) {
 
-        let security = this.departments[Department.Security];
-        let dice = weapon.dice + security
         if (weapon.isTractorOrGrappler) {
-            dice = this.scale - 1;
+            let dice = this.scale - 1;
 
             if (this.hasTalent("High-Power Tractor Beam")) {
                 dice += 2;
             }
-        } else if (weapon.scaleApplies) {
-            dice += this.scale;
+            return dice;
+        } else if (this.version === 1) {
+            let security = this.departments[Department.Security];
+            let dice = weapon.dice + security
+            if (weapon.scaleApplies) {
+                dice += this.scale;
+            }
+            return dice;
+        } else {
+            let dice = weapon.dice;
+            if (weapon.scaleApplies) {
+                return dice + this.scale;
+            } else {
+                return dice;
+            }
         }
-        return dice;
     }
 
     getDiceForWeaponForRoll20(weapon: Weapon) {

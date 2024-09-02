@@ -625,7 +625,7 @@ class Marshaller {
             }
         }
         if (json.missionProfile && result.type != null) {
-            result.missionProfileModel = MissionProfileHelper.getMissionProfileByName(json.missionProfile.name, result.type);
+            result.missionProfileModel = MissionProfileHelper.getMissionProfileByName(json.missionProfile.name, result.type, result.version);
 
             if (json.missionProfile.talent) {
                 let talent = TalentsHelper.getTalent(json.missionProfile.talent.name);

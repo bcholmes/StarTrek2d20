@@ -1,12 +1,7 @@
 import i18next from "i18next";
 import { InjuryType, Weapon, WeaponType, WeaponTypeModel } from "../helpers/weapons";
 import { makeKey } from "../common/translationKey";
-import { Construct } from "../common/construct";
-import { Starship } from "../common/starship";
 import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
-import { Character } from "../common/character";
-import { Skill } from "../helpers/skills";
-import { Department } from "../helpers/departments";
 import { IWeaponDiceProvider } from "../common/iWeaponDiceProvider";
 
 export class WeaponDescriber {

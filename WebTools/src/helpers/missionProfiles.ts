@@ -378,7 +378,9 @@ class MissionProfiles {
 
     getMissionProfiles(starship: Starship) {
         let profiles: MissionProfileModel[] = [];
-        let list = (starship.type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
+        let list = (starship.type === CharacterType.KlingonWarrior && starship.version === 1)
+            ? this._klingonProfiles
+            : this._profiles;
         for (let profile of Object.values(list)) {
             if (profile && profile.isPrerequisitesFulfilled(starship)) {
                 profiles.push(profile);
@@ -392,16 +394,8 @@ class MissionProfiles {
         return profiles;
     }
 
-    getMissionProfile(profile: MissionProfile, type: CharacterType) {
-        if (type === CharacterType.KlingonWarrior && profile === MissionProfile.Tactical) {
-            return this.getMissionProfile(MissionProfile.Warship, type); // backward compatibility
-        } else {
-            return (type === CharacterType.KlingonWarrior) ? this._klingonProfiles[profile] : this._profiles[profile];
-        }
-    }
-
-    getMissionProfileByName(profile: string, type: CharacterType) {
-        let list = (type === CharacterType.KlingonWarrior) ? this._klingonProfiles : this._profiles;
+    getMissionProfileByName(profile: string, type: CharacterType, version: number) {
+        let list = (type === CharacterType.KlingonWarrior && version === 1) ? this._klingonProfiles : this._profiles;
         let result = null;
         for (let id in list) {
             if (profile === MissionProfile[id]) {

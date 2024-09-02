@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240902</b>
+                <ul>
+                    <li>Preliminary support for 2nd-edition starships. There's still a bit of work to do on
+                        weapons and mission profiles, and I don't yet support Service Records.
+                    </li>
+                </ul>
                 <b>v1.240831</b>
                 <ul>
                     <li>Support for the new character sheet. I've had to make some tweaks to the original
@@ -250,15 +256,6 @@ class News extends React.Component<INewsProperties, {}> {
                     </li>
                     <li>
                         Minor internal tweaks, and prep for new books.
-                    </li>
-                </ul>
-                <b>v1.240228</b>
-                <ul>
-                    <li>
-                        Some small, mostly-invisible revisions.
-                    </li>
-                    <li>
-                        A bug fix for some talent text.
                     </li>
                 </ul>
 

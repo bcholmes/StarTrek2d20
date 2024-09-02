@@ -12,13 +12,11 @@ import { makeKey } from "../common/translationKey";
 import { Character } from "../common/character";
 import { Department, allDepartments } from "../helpers/departments";
 import { System, allSystems } from "../helpers/systems";
-import { InjuryType, WeaponType, WeaponTypeModel } from "../helpers/weapons";
-import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { Paragraph } from "./paragraph";
 import { XYLocation } from "../common/xyLocation";
-import { Starship } from "../common/starship";
 import { FontLibrary, FontType } from "./fontLibrary";
 import { FontOptions } from "./fontOptions";
+import { WeaponDescriber } from "./weaponDescriber";
 
 export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
@@ -189,42 +187,11 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
         let bold = new FontOptions(9, FontType.Bold);
         let standard = new FontOptions(9);
-        let security = 0;
-        let personal = false;
-        if (construct instanceof Character) {
-            let character = construct as Character;
-            security = character.skills[Skill.Security].expertise;
-            personal = true;
-        } else if (construct instanceof Starship) {
-            let starship = construct as Starship;
-            security = starship.departments[Department.Security];
-        }
-
         let paragraph = null;
         let bottom = column.start;
 
         construct.determineWeapons().forEach(w => {
-            let type = WeaponTypeModel.TYPES[w.type].description;
-            if (personal) {
-                type = w.type === WeaponType.MELEE ? i18next.t("Weapon.common.melee") : i18next.t("Weapon.common.ranged");
-            }
-            let injuryType = "";
-            if (construct.version > 1 && w.injuryType != null) {
-                injuryType = i18next.t(makeKey("InjuryType.", InjuryType[w.injuryType])) + " ";
-            }
-
-            let qualities = w.weaponQualities.map(q => q.localizedDescription).join(", ");
-            if (qualities?.length) {
-                qualities = ", " + qualities;
-            } else {
-                qualities = "";
-            }
-            const dice = (construct instanceof Starship) ? (construct as Starship).getDiceForWeapon(w) : (w.dice + security);
-
-            let text = type + ", " + injuryType + dice
-                + (construct.version === 1 ? CHALLENGE_DICE_NOTATION : "") + qualities
-                + (w.hands != null ? ", " + i18next.t("Weapon.common.size", { hands: w.hands }) : "");
-
+            const text = new WeaponDescriber(construct.version, false).describeFully(w, construct);
             paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.fonts) : paragraph.nextParagraph(0);
             paragraph.append(w.description + ": ", bold);
             paragraph.append(text, standard);

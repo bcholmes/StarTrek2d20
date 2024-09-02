@@ -15,6 +15,7 @@ export enum Stereotype {
     SupportingCharacter,
     Npc,
     Starship,
+    SimpleStarship,
     SoloStarship
 }
 

@@ -8,11 +8,11 @@ import { Button } from "../components/button";
 import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
 import { StatView } from "../components/StatView";
-import WeaponView from "../components/weaponView";
 import { withTranslation, WithTranslation } from 'react-i18next';
 import { makeKey } from "../common/translationKey";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
 import TalentsBlockView from "./talentsBlockView";
+import WeaponBlockView from "./weaponBlockView";
 
 const OutlineImage = lazy(() => import(/* webpackChunkName: 'spaceframeOutline' */ '../components/outlineImage'));
 
@@ -178,23 +178,9 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     renderWeapons() {
-        let weapons = this.props.starship.determineWeapons().map((w, i) => {
-            let dice = w.dice;
-            if (w.scaleApplies && this.props.starship.scale) {
-                dice += this.props.starship.scale;
-            }
-            if (w.isTractorOrGrappler) {
-                dice = this.props.starship.scale - 1;
-                if (this.props.starship.hasTalent("High-Power Tractor Beam")) {
-                    dice += 2;
-                }
-            }
-            if (!w.isTractorOrGrappler && this.props.starship.departments) {
-                dice += this.props.starship.departments[Department.Security];
-            }
-            return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} version={this.props.starship.version} />);
-        });
-        return (<div>{weapons}</div>);
+        return (<>
+            <div><WeaponBlockView construct={this.props.starship} /></div>
+        </>);
     }
 
     showVttExportDialog() {

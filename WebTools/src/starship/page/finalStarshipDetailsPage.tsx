@@ -23,7 +23,7 @@ const FinalStarshipDetailsPage: React.FC<IFinalStarshipDetailsPageProperties> = 
     const { t } = useTranslation();
 
     const renderRegistry = () => {
-        if (starship.type !== CharacterType.KlingonWarrior) {
+        if (starship.type === CharacterType.Starfleet) {
             return (<div className="mt-5">
 
                 <Header level={2}>{t('Construct.other.registry')}</Header>

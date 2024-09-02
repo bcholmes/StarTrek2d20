@@ -30,6 +30,7 @@ import { Standard2eCharacterSheet } from '../exportpdf/standard2eCharacterSheet'
 import { FontLibrary, FontType } from '../exportpdf/fontLibrary';
 import { TalentWriter } from '../exportpdf/talentWriter';
 import { assembleWritableItems } from '../exportpdf/generatedsheet';
+import { WeaponDescriber } from '../exportpdf/weaponDescriber';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -563,12 +564,13 @@ abstract class BasicFullCharacterSheet extends BasicShortCharacterSheet {
     }
 
     fillWeapons(form: PDFForm, construct: Construct) {
-        var weapons = construct.determineWeapons();
+        const weapons = construct.determineWeapons();
+        const describer = new WeaponDescriber(construct.version, true);
 
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
             this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + construct.getDiceForWeapon(w)));
-            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', construct.version > 1 ? w.injuryTypeEffectsAndQualities : w.effectsAndQualities);
+            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', describer.describe(w));
         });
     }
 

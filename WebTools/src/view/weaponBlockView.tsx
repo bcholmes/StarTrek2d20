@@ -1,9 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Character } from "../common/character";
 import { Construct } from "../common/construct";
 import { Header } from "../components/header";
 import WeaponView from "../components/weaponView";
-import { Skill } from "../helpers/skills";
 
 interface IWeaponBlockViewProperties {
     construct: Construct;
@@ -15,11 +13,7 @@ const WeaponBlockView: React.FC<IWeaponBlockViewProperties> = ({construct}) => {
 
     if (construct.determineWeapons().length) {
         let weapons = construct.determineWeapons().map((w, i) => {
-            let dice = w.dice;
-            if (construct instanceof Character) {
-                let character = construct as Character;
-                dice += character.skills[Skill.Security].expertise;
-            }
+            let dice = construct.getDiceForWeapon(w);
             return (<WeaponView key={'weapon-' + i} weapon={w} dice={dice} version={construct.version} />);
         });
         return (<>
