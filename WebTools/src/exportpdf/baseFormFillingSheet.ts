@@ -10,6 +10,7 @@ import { Column } from "./column";
 import i18next from "i18next";
 import { SimpleColor } from "../common/colour";
 import { TextAlign } from "./textAlign";
+import { WeaponDescriber } from "./weaponDescriber";
 
 export abstract class BaseFormFillingSheet extends BasicGeneratedSheet {
 
@@ -192,12 +193,13 @@ export abstract class BaseFormFillingSheet extends BasicGeneratedSheet {
 
 
     fillWeapons(form: PDFForm, construct: Construct) {
-        var weapons = construct.determineWeapons();
+        const weapons = construct.determineWeapons();
+        const describer = new WeaponDescriber(construct.version, construct instanceof Character);
 
         weapons.forEach( (w, i) => {
             this.fillField(form, 'Weapon ' + (i+1) + ' name', w.name);
             this.fillField(form, 'Weapon ' + (i+1) + ' dice', (w.dice == null) ? "" : ("" + construct.getDiceForWeapon(w)));
-            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', construct.version > 1 ? w.injuryTypeEffectsAndQualities : w.effectsAndQualities);
+            this.fillField(form, 'Weapon ' + (i+1) + ' qualities', describer.describe(w));
         });
     }
     formatNameWithoutPronouns(character: Character) {

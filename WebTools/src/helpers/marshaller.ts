@@ -668,20 +668,20 @@ class Marshaller {
         }
 
         if (json.additionalWeapons) {
-            result.additionalWeapons = json.additionalWeapons.map(j => this.decodeWeapon(j));
+            result.additionalWeapons = json.additionalWeapons.map(j => this.decodeWeapon(j, result.version));
         }
 
         if (json.talentDetails) {
             result.talentDetailSelections = json.talentDetails.map(detail => {
                 let w = detail.weapon;
-                return new ShipTalentDetailSelection(this.decodeWeapon(w));
+                return new ShipTalentDetailSelection(this.decodeWeapon(w, result.version));
             });
         }
 
         return result;
     }
 
-    private decodeWeapon(json) {
+    private decodeWeapon(json, version: number) {
 
         let usageCategory = null;
         [UsageCategory.Character, UsageCategory.Starship].forEach(c => { if (UsageCategory[c] === json["usageCategory"]) usageCategory = c; });
@@ -711,7 +711,7 @@ class Marshaller {
                 }
             });
         } else if (weaponType === WeaponType.TORPEDO) {
-            TorpedoLoadTypeModel.allTypes().forEach(l => {
+            TorpedoLoadTypeModel.allTypes(version).forEach(l => {
                 if (TorpedoLoadType[l.type] === json["loadType"]) {
                     loadType = l;
                 }

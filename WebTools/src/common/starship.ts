@@ -466,7 +466,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
             let secondary = [];
             for (var attack of spaceframe.attacks) {
 
-                for (let weapon of StarshipWeaponRegistry.list) {
+                for (let weapon of (this.version === 1 ? StarshipWeaponRegistry.list : StarshipWeaponRegistry.list2e)) {
                     if (weapon.description === 'Spatial Torpedoes' && talents.indexOf('Nuclear Warheads') >= 0) {
                         // skip it
                     } else if (attack === weapon.description) {

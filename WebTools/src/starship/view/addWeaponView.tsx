@@ -7,6 +7,7 @@ interface IAddWeaponViewProperties {
     serviceYear?: number;
     addWeapon: (Weapon) => void;
     onClose: () => void;
+    version: number;
 }
 interface IAddWeaponViewState {
     weaponType: WeaponTypeModel;
@@ -59,9 +60,9 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
 
     getTorpedoLoadTypes() {
         if (this.props.serviceYear) {
-            return TorpedoLoadTypeModel.allTypesByYear(this.props.serviceYear);
+            return TorpedoLoadTypeModel.allTypesByYear(this.props.serviceYear, this.props.version);
         } else {
-            return TorpedoLoadTypeModel.allTypes();
+            return TorpedoLoadTypeModel.allTypes(this.props.version);
         }
     }
 

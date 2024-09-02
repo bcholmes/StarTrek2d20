@@ -53,7 +53,7 @@ export class WeaponQuality {
         if (this.rank != null) {
             return i18next.t(makeKey("Weapon.quality.", Quality[this.quality], ".name"), {rank: this.rank});
         } else {
-            return i18next.t(makeKey("Weapon.quality.", Quality[this.quality], ".name"));
+            return i18next.t(makeKey("Weapon.quality.", Quality[this.quality], ".name"), {rank: ""}).trim();
         }
     }
 }
@@ -195,7 +195,23 @@ export class TorpedoLoadTypeModel {
         new TorpedoLoadTypeModel(TorpedoLoadType.Tetryonic,   "Tetryonic",   2, [new WeaponQuality(Quality.Depleting)],     [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  25),
         new TorpedoLoadTypeModel(TorpedoLoadType.Transphasic, "Transphasic", 3, [new WeaponQuality(Quality.Piercing, 2)],   [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Devastating)],25),
         new TorpedoLoadTypeModel(TorpedoLoadType.Tricobolt,   "Tricobolt",   3, [new WeaponQuality(Quality.Area)],          [new WeaponQuality(Quality.Calibration)],                                        25),
+    ];
 
+    static readonly TYPES_2E = [
+        new TorpedoLoadTypeModel(TorpedoLoadType.Chroniton,   "Chroniton",   3, [], [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Slowing)],                                                                                   25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Gravimetric, "Gravimetric", 5, [], [new WeaponQuality(Quality.Cumbersome), new WeaponQuality(Quality.Piercing, 1), new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],  24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Neutronic,   "Neutronic",   4, [], [new WeaponQuality(Quality.Dampening), new WeaponQuality(Quality.Calibration)],                                                                                 25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Nuclear,     "Nuclear",     3, [], [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Intense)],                                                                                   20),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Photon,      "Photon",      3, [], [new WeaponQuality(Quality.HighYield)],                                                                                                                         23),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Photonic,    "Photonic",    2, [], [new WeaponQuality(Quality.HighYield)],                                                                                                                         22),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Plasma,      "Plasma",      5, [], [new WeaponQuality(Quality.Calibration, 8), new WeaponQuality(Quality.Cumbersome), new WeaponQuality(Quality.PersistentX)],                                     23),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Polaron,     "Polaron",     3, [], [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Piercing, 2)],                                                                               24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Positron,    "Positron",    5, [], [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Cumbersome),new WeaponQuality(Quality.Dampening) ],                                          24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Quantum,     "Quantum",     4, [], [new WeaponQuality(Quality.Vicious, 1), new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.HighYield)],                                          24),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Spatial,     "Spatial",     2, [], [],                                                                                                                                                             22),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Tetryonic,   "Tetryonic",   2, [], [new WeaponQuality(Quality.Depleting), new WeaponQuality(Quality.HighYield)],                                                                                   25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Transphasic, "Transphasic", 4, [], [new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Devastating), new WeaponQuality(Quality.Piercing)],                                          25),
+        new TorpedoLoadTypeModel(TorpedoLoadType.Tricobolt,   "Tricobolt",   6, [], [new WeaponQuality(Quality.Area), new WeaponQuality(Quality.Calibration), new WeaponQuality(Quality.Cumbersome)],                                               25),
     ];
 
     readonly type: TorpedoLoadType;
@@ -214,12 +230,12 @@ export class TorpedoLoadTypeModel {
         this.century = century;
     }
 
-    static allTypes() {
+    static allTypes(version: number) {
         return TorpedoLoadTypeModel.TYPES;
     }
 
-    static allTypesByYear(year: number) {
-        return this.allTypes().filter(l => year > centuryToYear(l.century));
+    static allTypesByYear(year: number, version: number) {
+        return this.allTypes(version).filter(l => year > centuryToYear(l.century));
     }
 
     get effectAndQualities() {
@@ -596,24 +612,32 @@ class StarshipWeaponList {
             EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
             DeliverySystemModel.allTypes()[DeliverySystem.Banks],
             [[], [Era.NextGeneration]]),
+        Weapon.createStarshipWeapon('Disruptor Spinal Lance', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            DeliverySystemModel.allTypes()[DeliverySystem.SpinalLances],
+            [[], [Era.NextGeneration]]),
+        Weapon.createStarshipWeapon('Electromagnetic Cannon', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.ElectroMagneticIonic],
+            DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
+            [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Spatial Torpedoes', WeaponType.TORPEDO,
-            TorpedoLoadTypeModel.allTypes()[TorpedoLoadType.Spatial],
+            TorpedoLoadTypeModel.allTypes(1)[TorpedoLoadType.Spatial],
             undefined,
             [[ Era.Enterprise ], []]),
         Weapon.createStarshipWeapon('Nuclear Warheads', WeaponType.TORPEDO,
-            TorpedoLoadTypeModel.allTypes()[TorpedoLoadType.Nuclear],
+            TorpedoLoadTypeModel.allTypes(1)[TorpedoLoadType.Nuclear],
             undefined,
             [[ Era.Enterprise ], []], true),
         Weapon.createStarshipWeapon('Photon Torpedoes', WeaponType.TORPEDO,
-            TorpedoLoadTypeModel.allTypes()[TorpedoLoadType.Photon],
+            TorpedoLoadTypeModel.allTypes(1)[TorpedoLoadType.Photon],
             undefined,
             [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
         Weapon.createStarshipWeapon('Plasma Torpedoes', WeaponType.TORPEDO,
-            TorpedoLoadTypeModel.allTypes()[TorpedoLoadType.Plasma],
+            TorpedoLoadTypeModel.allTypes(1)[TorpedoLoadType.Plasma],
             undefined,
             [[], []]),
         Weapon.createStarshipWeapon('Quantum Torpedoes', WeaponType.TORPEDO,
-            TorpedoLoadTypeModel.allTypes()[TorpedoLoadType.Quantum],
+            TorpedoLoadTypeModel.allTypes(1)[TorpedoLoadType.Quantum],
             undefined,
             [[ Era.NextGeneration ], []], true),
         Weapon.createStarshipWeapon('Grappler Cables', WeaponType.CAPTURE,
@@ -626,6 +650,68 @@ class StarshipWeaponList {
             [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
     ];
 
+    readonly list2e: Weapon[] = [
+        Weapon.createStarshipWeapon('Phase Cannons', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.PhasePulse],
+            DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
+            [[ Era.Enterprise ],[]]),
+        Weapon.createStarshipWeapon('Phaser Cannons', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
+            [[ Era.OriginalSeries, Era.NextGeneration ], []]),
+        Weapon.createStarshipWeapon('Phaser Banks', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            DeliverySystemModel.allTypes()[DeliverySystem.Banks],
+            [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.OriginalSeries, Era.NextGeneration ]]),
+        Weapon.createStarshipWeapon('Phaser Arrays', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            DeliverySystemModel.allTypes()[DeliverySystem.Arrays],
+            [[ Era.NextGeneration ], []]),
+        Weapon.createStarshipWeapon('Disruptor Cannons', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
+            [[], [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration]]),
+        Weapon.createStarshipWeapon('Disruptor Banks', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            DeliverySystemModel.allTypes()[DeliverySystem.Banks],
+            [[], [Era.NextGeneration]]),
+        Weapon.createStarshipWeapon('Disruptor Spinal Lance', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            DeliverySystemModel.allTypes()[DeliverySystem.SpinalLances],
+            [[], [Era.NextGeneration]]),
+        Weapon.createStarshipWeapon('Electromagnetic Cannon', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes()[EnergyLoadType.ElectroMagneticIonic],
+            DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
+            [[], [Era.NextGeneration]]),
+        Weapon.createStarshipWeapon('Spatial Torpedoes', WeaponType.TORPEDO,
+            TorpedoLoadTypeModel.allTypes(2)[TorpedoLoadType.Spatial],
+            undefined,
+            [[ Era.Enterprise ], []]),
+        Weapon.createStarshipWeapon('Nuclear Warheads', WeaponType.TORPEDO,
+            TorpedoLoadTypeModel.allTypes(2)[TorpedoLoadType.Nuclear],
+            undefined,
+            [[ Era.Enterprise ], []], true),
+        Weapon.createStarshipWeapon('Photon Torpedoes', WeaponType.TORPEDO,
+            TorpedoLoadTypeModel.allTypes(2)[TorpedoLoadType.Photon],
+            undefined,
+            [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
+        Weapon.createStarshipWeapon('Plasma Torpedoes', WeaponType.TORPEDO,
+            TorpedoLoadTypeModel.allTypes(2)[TorpedoLoadType.Plasma],
+            undefined,
+            [[], []]),
+        Weapon.createStarshipWeapon('Quantum Torpedoes', WeaponType.TORPEDO,
+            TorpedoLoadTypeModel.allTypes(2)[TorpedoLoadType.Quantum],
+            undefined,
+            [[ Era.NextGeneration ], []], true),
+        Weapon.createStarshipWeapon('Grappler Cables', WeaponType.CAPTURE,
+            CaptureTypeModel.allTypes()[CaptureType.Grappler],
+            undefined,
+            [[ Era.Enterprise ], []]),
+        Weapon.createStarshipWeapon('Tractor Beam', WeaponType.CAPTURE,
+            CaptureTypeModel.allTypes()[CaptureType.Tractor],
+            undefined,
+            [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.Enterprise, Era.OriginalSeries, Era.NextGeneration ]]),
+    ];
     availableWeapons(type: CharacterType, era: Era) {
         if (type === CharacterType.Other) {
             return Weapon[0];

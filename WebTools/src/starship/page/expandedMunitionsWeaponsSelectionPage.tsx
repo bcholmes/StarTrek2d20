@@ -106,7 +106,8 @@ class ExpandedMunitionsWeaponsSelectionPage extends React.Component<IExpandedMun
 
     modalContents() {
         return (<AddWeaponView onClose={() => this.closeModal()} serviceYear={this.props.starship.serviceYear}
-            addWeapon={(weapon) => store.dispatch(addStarshipTalentDetailSelection(new ShipTalentDetailSelection(weapon)))} />)
+            addWeapon={(weapon) => store.dispatch(addStarshipTalentDetailSelection(new ShipTalentDetailSelection(weapon)))}
+            version={this.props.starship.version} />)
     }
 
     confirmationContents(selection: ShipTalentDetailSelection) {

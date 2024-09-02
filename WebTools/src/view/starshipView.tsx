@@ -124,7 +124,6 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
                             </div>
                         </div>
                     </div>
-                    <Header level={2} className="mt-4">{t('Construct.other.weapons')}</Header>
                     {this.renderWeapons()}
                 </div>
             </div>
@@ -178,9 +177,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
     }
 
     renderWeapons() {
-        return (<>
-            <div><WeaponBlockView construct={this.props.starship} /></div>
-        </>);
+        return (<div><WeaponBlockView construct={this.props.starship} /></div>);
     }
 
     showVttExportDialog() {
