@@ -586,7 +586,7 @@ export class Roll20VttExporter {
     convertMissionProfile(starship: Starship, id: IdHelper) {
         return {
             "name": "ship_ship-mission-profile",
-            "current": starship.missionProfileModel?.localizedName ?? "",
+            "current": starship.missionProfileStep?.type?.localizedName ?? "",
             "max": "",
             "id": id.nextId()
         };

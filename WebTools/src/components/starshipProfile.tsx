@@ -85,7 +85,7 @@ const StarshipProfile: React.FC<IStarshipProfileProperties> = ({showProfile, era
                                 ? undefined
                                 : (<div className="sheet-panel d-flex">
                                         <div className="sheet-label-purple text-uppercase">{t('Construct.other.serviceDate')}</div>
-                                        <div className="sheet-data">{starship?.missionProfileModel?.localizedName ?? ""}</div>
+                                        <div className="sheet-data">{starship?.missionProfileStep?.type?.localizedName ?? ""}</div>
                                     </div>)}
 
                             {starship?.stereotype === Stereotype.SoloStarship

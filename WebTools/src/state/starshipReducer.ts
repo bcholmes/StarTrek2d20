@@ -1,5 +1,5 @@
 import { Stereotype } from "../common/construct";
-import { SimpleStats, Starship } from "../common/starship";
+import { MissionProfileStep, SimpleStats, Starship } from "../common/starship";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
 import { ADD_STARSHIP_REFIT, ADD_STARSHIP_TALENT_SELECTION, ADD_STARSHIP_WEAPON, CHANGE_STARSHIP_SCALE, CHANGE_STARSHIP_SIMPLE_CLASS_NAME, CHANGE_STARSHIP_SIMPLE_DEPARTMENT, CHANGE_STARSHIP_SIMPLE_SYSTEM, CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME, CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT, CHANGE_STARSHIP_SPACEFRAME_SCALE, CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR, CHANGE_STARSHIP_SPACEFRAME_SYSTEM, CREATE_NEW_STARSHIP, CREATE_STARSHIP, DELETE_STARSHIP_REFIT, DELETE_STARSHIP_WEAPON, NEXT_STARSHIP_WORKFLOW_STEP, REMOVE_ALL_STARSHIP_TALENT_SELECTION, REMOVE_STARSHIP_TALENT_SELECTION, REWIND_TO_STARSHIP_WORKFLOW_STEP, SET_ADDITIONAL_TALENTS, SET_STARSHIP_MISSION_POD, SET_STARSHIP_MISSION_PROFILE, SET_STARSHIP_MISSION_PROFILE_TALENT, SET_STARSHIP_NAME, SET_STARSHIP_REGISTRY, SET_STARSHIP_SERVICE_YEAR, SET_STARSHIP_SPACEFRAME, SET_STARSHIP_TRAITS } from "./starshipActions";
 
@@ -127,7 +127,14 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         }
         case SET_STARSHIP_MISSION_PROFILE: {
             let s = state.starship.copy();
-            s.missionProfileModel = action.payload.missionProfile;
+            const original = s.missionProfileStep;
+            s.missionProfileStep = new MissionProfileStep(action.payload.missionProfile);
+            if (original?.type?.id === s.missionProfileStep?.type?.id) {
+                s.missionProfileStep.system = original?.system;
+            }
+            if (action.payload.system != null) {
+                s.missionProfileStep.system = action.payload.system;
+            }
             s.profileTalent = undefined;
             return {
                 ...state,

@@ -1,5 +1,5 @@
 import { CharacterType } from "../../common/characterType";
-import { Starship } from "../../common/starship";
+import { MissionProfileStep, Starship } from "../../common/starship";
 import RegistryNumber from "../../components/registryNumberGenerator";
 import { Era } from "../../helpers/eras";
 import { MissionPodHelper } from "../../helpers/missionPods";
@@ -50,9 +50,9 @@ export const starshipGenerator = (config: IStarshipConfiguration) => {
     const missionProfiles = MissionProfileHelper.getMissionProfiles(result);
 
     if (missionProfiles?.length) {
-        result.missionProfileModel = missionProfiles[Math.floor(Math.random() * missionProfiles.length)];
+        result.missionProfileStep = new MissionProfileStep(missionProfiles[Math.floor(Math.random() * missionProfiles.length)]);
 
-        const missionProfileTalents = result.missionProfileModel.talents.filter(
+        const missionProfileTalents = result.missionProfileStep?.type?.talents?.filter(
             t => result.spaceframeModel == null || result.spaceframeModel.talents.map(t => t.name).indexOf(t.name) < 0);
         if (missionProfileTalents?.length) {
             result.profileTalent = missionProfileTalents[Math.floor(Math.random() * missionProfileTalents.length)];

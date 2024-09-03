@@ -162,12 +162,12 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             paragraph.write();
         }
 
-        if (starship.missionProfileModel != null) {
+        if (starship.missionProfileStep?.type != null) {
             paragraph = paragraph.nextParagraph(1);
 
             paragraph.append(i18next.t("Construct.other.missionProfile").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
                 Generated2eStarshipSheet.tealColour);
-            paragraph.append(starship.missionProfileModel?.localizedName, new FontOptions(9));
+            paragraph.append(starship.missionProfileStep?.type?.localizedName, new FontOptions(9));
             paragraph.write();
         }
 

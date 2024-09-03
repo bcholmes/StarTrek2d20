@@ -160,7 +160,7 @@ abstract class BasicStarshipSheet extends BasicSheet {
             this.fillField(form, 'Scale', starship.scale.toString());
         }
         this.fillField(form, 'Traits', starship.getAllTraits());
-        const missionProfile = starship.missionProfileModel;
+        const missionProfile = starship.missionProfileStep?.type;
         if (missionProfile) {
             this.fillField(form, 'Mission Profile', missionProfile.localizedName);
         }

@@ -52,6 +52,21 @@ export const refitCalculator = (starship: Starship) => {
     }
 }
 
+export class MissionProfileStep {
+    readonly type: MissionProfileModel;
+    system: System;
+
+    constructor(type: MissionProfileModel) {
+        this.type = type;
+    }
+
+    copy() {
+        let result = new MissionProfileStep(this.type);
+        result.system = this.system;
+        return result;
+    }
+}
+
 export class ServiceRecordStep {
     readonly type: ServiceRecordModel;
     specialRule?: TalentModel;
@@ -125,7 +140,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
     serviceYear?: number;
     private _spaceframe?: SpaceframeModel = undefined;
     missionPodModel?: MissionPodModel;
-    missionProfileModel?: MissionProfileModel;
+    missionProfileStep?: MissionProfileStep;
     profileTalent?: TalentModel;
     additionalTalents: TalentViewModel[] = [];
     refits: System[] = [];
@@ -232,10 +247,8 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         if (this.spaceframeModel) {
             trait = [...this.spaceframeModel.additionalTraits];
         }
-        if (this.missionProfileModel && this.missionProfileModel.traits && this.missionProfileModel.traits !== "") {
-            if (this.missionProfileModel.traits) {
-                this.missionProfileModel.traits.split(", ").forEach(t => trait.push(t.trim()));
-            }
+        if (this.missionProfileStep?.type?.traits?.length) {
+            this.missionProfileStep.type.traits.split(", ").forEach(t => trait.push(t.trim()));
         }
         return trait;
     }
@@ -309,6 +322,9 @@ export class Starship extends Construct implements IWeaponDiceProvider {
                 result += this.spaceframeModel.soloStats?.systems[system];
             } else {
                 result += this.spaceframeModel.systems[system];
+                if (this.missionProfileStep?.system != null) {
+                    result += (this.missionProfileStep?.system === system) ? 1 : 0;
+                }
                 if (this.spaceframeModel.isMissionPodAvailable && this.missionPodModel) {
                     result += this.missionPodModel.systems[system];
                 }
@@ -548,7 +564,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         if (this.spaceframeModel !== undefined) {
             const frame = this.spaceframeModel;
             const missionPod = this.missionPodModel;
-            const profile = this.missionProfileModel;
+            const profile = this.missionProfileStep?.type;
 
             if (this.stereotype === Stereotype.SoloStarship) {
                 frame.soloStats?.departments.forEach((d, i) => {
@@ -565,7 +581,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
                     });
                 }
 
-                if (this.missionProfileModel !== undefined) {
+                if (profile != undefined) {
                     profile.departments.forEach((d, i) => {
                         result[i] += d;
                     });
@@ -638,7 +654,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         result.serviceYear = this.serviceYear;
         result.spaceframeModel = this.spaceframeModel;
         result.missionPodModel = this.missionPodModel;
-        result.missionProfileModel = this.missionProfileModel;
+        result.missionProfileStep = this.missionProfileStep?.copy();
         result.profileTalent = this.profileTalent;
         result.additionalTalents = [...this.additionalTalents];
         result.refits = [...this.refits];

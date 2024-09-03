@@ -57,7 +57,7 @@ class StarshipView extends React.Component<IStarshipViewProperties, {}> {
 
             <div className="row" style={{alignItems: "baseline"}}>
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.missionProfile')}:</div>
-                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileModel ? this.props.starship.missionProfileModel.localizedName : NBSP}</div></div>
+                <div className="col-md-4 text-white"><div className="view-border-bottom pb-2">{this.props.starship.missionProfileStep?.type ? this.props.starship.missionProfileStep?.type?.localizedName : NBSP}</div></div>
 
                 <div className="col-md-2 view-field-label pb-2">{t('Construct.other.refits')}:</div>
                 <div className="col-md-4 text-white"><div className="view-border-bottom pb-2 small">{this.refitAsString()}</div></div>

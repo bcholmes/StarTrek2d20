@@ -3,7 +3,7 @@ import pako from 'pako';
 import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
-import { ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
+import { MissionProfileStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
 import AgeHelper from './age';
 import { Attribute, AttributesHelper } from './attributes';
 import { Career } from './careerEnum';
@@ -19,7 +19,7 @@ import { SpaceframeModel } from './spaceframeModel';
 import { SpaceframeHelper } from './spaceframes';
 import { SpeciesHelper } from './species';
 import { Species } from './speciesEnum';
-import { allSystems, System } from './systems';
+import { allSystems, System, systemByName } from './systems';
 import { TALENT_NAME_BORG_IMPLANTS, TalentsHelper } from './talents';
 import { TalentSelection } from './talentSelection';
 import { getAllTracks, Track } from './trackEnum';
@@ -466,9 +466,12 @@ class Marshaller {
                 }
             }
         }
-        if (starship.missionProfileModel) {
+        if (starship.missionProfileStep?.type) {
             let temp = {
-                "name": MissionProfile[starship.missionProfileModel.id]
+                "name": MissionProfile[starship.missionProfileStep?.type?.id]
+            }
+            if (starship.missionProfileStep.system != null) {
+                temp["system"] = System[starship.missionProfileStep.system];
             }
             if (starship.profileTalent) {
                 temp['talent'] = { "name": starship.profileTalent.name }
@@ -637,7 +640,13 @@ class Marshaller {
             }
         }
         if (json.missionProfile && result.type != null) {
-            result.missionProfileModel = MissionProfileHelper.getMissionProfileByName(json.missionProfile.name, result.type, result.version);
+            const missionProfileModel = MissionProfileHelper.getMissionProfileByName(json.missionProfile.name, result.type, result.version);
+            if (missionProfileModel != null) {
+                result.missionProfileStep = new MissionProfileStep(missionProfileModel);
+                if (json.missionProfile.system != null) {
+                    result.missionProfileStep.system = systemByName(json.missionProfile.system);
+                }
+            }
 
             if (json.missionProfile.talent) {
                 let talent = TalentsHelper.getTalent(json.missionProfile.talent.name);

@@ -11,39 +11,45 @@ import store from "../../state/store";
 import { ShipBuildWorkflow } from "../model/shipBuildWorkflow";
 import MissionProfileSelection from "../view/missionProfileSelection";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
+import { MissionProfileModel } from "../../helpers/missionProfiles";
 
-interface IMissionProfileSelectionPageProperties extends WithTranslation {
+interface IMissionProfileSelectionPageProperties {
     starship: Starship;
     workflow: ShipBuildWorkflow;
 }
 
-class MissionProfileSelectionPage extends React.Component<IMissionProfileSelectionPageProperties, {}> {
-    render() {
-        const { t } = this.props;
-        return (<div className="page container ms-0">
-            <ShipBuildingBreadcrumbs />
-            <Header>{t('Page.title.missionProfileSelection')}</Header>
-            <p>{t('MissionProfileSelectionPage.text')}
-            </p>
-            <MissionProfileSelection
-                initialSelection={this.props.starship.missionProfileModel}
-                starship={this.props.starship}
-                onSelection={(profile) => store.dispatch(setStarshipMissionProfile(profile))} />
-            <div className="text-end mt-4">
-                <Button onClick={() => this.nextPage()}>Next</Button>
-            </div>
-        </div>);
+const MissionProfileSelectionPage: React.FC<IMissionProfileSelectionPageProperties> = ({ starship }) => {
+
+    const { t } = useTranslation();
+
+    const onSelectProfile = (profile: MissionProfileModel) => {
+        const system = profile.systems?.length === 1 ? profile.systems[0] : undefined;
+        store.dispatch(setStarshipMissionProfile(profile, system));
     }
 
-    nextPage() {
-        const { t } = this.props;
-        if (this.props.starship.missionProfileModel == null) {
+    const nextPage = () => {
+        if (starship.missionProfileStep?.type == null) {
             Dialog.show(t('MissionProfileSelectionPage.errorNoSelection'));
         } else {
             Navigation.navigateToPage(PageIdentity.MissionProfileTalentSelection);
         }
     }
+
+    return (<div className="page container ms-0">
+        <ShipBuildingBreadcrumbs />
+        <Header>{t('Page.title.missionProfileSelection')}</Header>
+        <p>{t('MissionProfileSelectionPage.text')}
+        </p>
+        <MissionProfileSelection
+            initialSelection={starship.missionProfileStep?.type}
+            starship={starship}
+            onSelection={(profile) => onSelectProfile(profile)} />
+        <div className="text-end mt-4">
+            <Button onClick={() => nextPage()}>Next</Button>
+        </div>
+    </div>);
+
 }
 
 function mapStateToProps(state, ownProps) {
@@ -53,4 +59,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default withTranslation()(connect(mapStateToProps)(MissionProfileSelectionPage));
+export default connect(mapStateToProps)(MissionProfileSelectionPage);

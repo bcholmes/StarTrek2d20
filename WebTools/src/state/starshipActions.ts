@@ -121,8 +121,8 @@ export function setStarshipSpaceframe(spaceframe: SpaceframeModel) {
     }
 }
 
-export function setStarshipMissionProfile(missionProfile: MissionProfileModel) {
-    let payload = { missionProfile: missionProfile };
+export function setStarshipMissionProfile(missionProfile: MissionProfileModel, system?: System) {
+    let payload = { missionProfile: missionProfile, system: system };
     return {
        type: SET_STARSHIP_MISSION_PROFILE,
        payload: payload

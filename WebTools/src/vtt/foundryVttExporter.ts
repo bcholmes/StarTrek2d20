@@ -54,7 +54,7 @@ export class FoundryVttExporter {
                 "departments": {
                 },
                 "designation": starship.registry ?? "",
-                "missionprofile": starship.missionProfileModel?.name ?? "",
+                "missionprofile": starship.missionProfileStep?.type?.localizedName ?? "",
                 "power": {
                   "value": starship.power,
                   "max": starship.power

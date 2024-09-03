@@ -5,6 +5,7 @@ import { IConstructPrerequisite, SourcePrerequisite } from './prerequisite';
 import { Source } from './sources';
 import {TalentsHelper, TalentModel} from './talents';
 import { makeKey } from '../common/translationKey';
+import { allSystems, System } from './systems';
 
 export enum MissionProfile {
     StrategicAndDiplomatic,
@@ -31,15 +32,19 @@ export enum MissionProfile {
 
 export class MissionProfileModel {
     id: MissionProfile;
-    name: string;
+    private name: string;
     departments: number[];
+    systems: System[];
     talents: TalentModel[];
     traits: string;
     notes: string;
     prerequisites: IConstructPrerequisite<Starship>[];
     type: CharacterType;
 
-    constructor(id: MissionProfile, name: string, departments: number[], talents: TalentModel[], type?: CharacterType, traits: string = "", notes: string = "", ...prerequisites: IConstructPrerequisite<Starship>[]) {
+    constructor(id: MissionProfile, name: string, departments: number[],
+        talents: TalentModel[], type?: CharacterType, systems: System[] = [],
+        traits: string = "", notes: string = "",
+        ...prerequisites: IConstructPrerequisite<Starship>[]) {
         this.id = id;
         this.name = name;
         this.departments = departments;
@@ -47,6 +52,8 @@ export class MissionProfileModel {
         this.notes = notes;
         this.prerequisites = prerequisites;
         this.type = type;
+        this.traits = traits;
+        this.systems = systems;
     }
 
     public isPrerequisitesFulfilled(starship) {
@@ -58,12 +65,171 @@ export class MissionProfileModel {
     }
 
     get localizedName() {
-        let prefix = this.type === CharacterType.KlingonWarrior ? "MissionProfile.klingon." : "MissionProfile.default.";
-        return i18next.t(makeKey(prefix, MissionProfile[this.id]));
+        const prefix = this.type === CharacterType.KlingonWarrior ? "MissionProfile.klingon." : "MissionProfile.default.";
+        const key = makeKey(prefix, MissionProfile[this.id]);
+        let result = i18next.t(key);
+        return result === key ? this.name : result;
     }
 }
 
 class MissionProfiles {
+    private _profiles2e: { [id: number]: MissionProfileModel } = {
+        [MissionProfile.Battlecruiser]: new MissionProfileModel(
+            MissionProfile.Battlecruiser,
+            "Battlecruiser",
+            [2, 2, 3, 2, 2, 1],
+            [
+                TalentsHelper.getTalent("Ablative Armor"),
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Fast Targeting Systems"),
+                TalentsHelper.getTalent("Improved Damage Control"),
+                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher"),
+            ],
+            undefined,
+            [System.Weapons],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.CrisisAndEmergencyResponse]: new MissionProfileModel(
+            MissionProfile.CrisisAndEmergencyResponse,
+            "Crisis and Emergency Response",
+            [2, 2, 2, 1, 3, 2],
+            [
+                TalentsHelper.getTalent("Advanced Sickbay"),
+                TalentsHelper.getTalent("Emergency Medical Hologram"),
+                TalentsHelper.getTalent("Extensive Shuttlebays"),
+                TalentsHelper.getTalent("Modular Laboratories"),
+            ],
+            undefined,
+            [System.Sensors],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.EspionageIntelligence]: new MissionProfileModel(
+            MissionProfile.EspionageIntelligence,
+            "Espionage / Intelligence",
+            [2, 2, 3, 1, 3, 1],
+            [
+                TalentsHelper.getTalent("Electronic Warfare Systems"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
+                TalentsHelper.getTalent("Improved Reaction Control System"),
+                TalentsHelper.getTalent("Slim Sensor Silhouette"),
+            ],
+            undefined,
+            [System.Sensors],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.Flagship]: new MissionProfileModel(
+            MissionProfile.Flagship,
+            "Flagship",
+            [3, 1, 3, 2, 2, 1],
+            [
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Dedicated Subspace Transceiver Array"),
+                TalentsHelper.getTalent("Diplomatic Suites"),
+                TalentsHelper.getTalent("Redundant Systems [Communications]"),
+            ],
+            undefined,
+            [System.Comms],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.MultiroleExplorer]: new MissionProfileModel(
+            MissionProfile.MultiroleExplorer,
+            "Multirole Explorer",
+            [2, 2, 2, 2, 2, 2],
+            [
+                TalentsHelper.getTalent("Improved Hull Integrity"),
+                TalentsHelper.getTalent("Improved Power Systems"),
+                TalentsHelper.getTalent("Redundant Systems"),
+                TalentsHelper.getTalent("Rugged Design"),
+                TalentsHelper.getTalent("Secondary Reactors"),
+            ],
+            undefined,
+            [...allSystems()],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.PathfinderAndReconaissance]: new MissionProfileModel(
+            MissionProfile.PathfinderAndReconaissance,
+            "Pathfinder and Reconnaissance Operations",
+            [2, 3, 2, 2, 2, 1],
+            [
+                TalentsHelper.getTalent("Improved Reaction Control System"),
+                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentsHelper.getTalent("Rugged Design"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
+            ],
+            undefined,
+            [System.Engines],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.Patrol]: new MissionProfileModel(
+            MissionProfile.Patrol,
+            "Patrol",
+            [1, 3, 3, 1, 2, 2],
+            [
+                TalentsHelper.getTalent("Fast Targeting Systems"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
+                TalentsHelper.getTalent("Improved Power Systems"),
+            ],
+            undefined,
+            [System.Sensors],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.ScientificAndSurvey]: new MissionProfileModel(
+            MissionProfile.ScientificAndSurvey,
+            "Scientific and Survey Operations",
+            [2, 1, 1, 3, 3, 2],
+            [
+                TalentsHelper.getTalent("Advanced Research Facilities"),
+                TalentsHelper.getTalent("Advanced Sensor Suites"),
+                TalentsHelper.getTalent("High-Resolution Sensors"),
+                TalentsHelper.getTalent("Modular Laboratories"),
+            ],
+            undefined,
+            [System.Computer],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.StrategicAndDiplomatic]: new MissionProfileModel(
+            MissionProfile.StrategicAndDiplomatic,
+            "Strategic and Diplomatic Operations",
+            [2, 2, 2, 1, 3, 2],
+            [
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Diplomatic Suites"),
+                TalentsHelper.getTalent("Electronic Warfare Systems"),
+                TalentsHelper.getTalent("Extensive Shuttlebays"),
+            ],
+            undefined,
+            [System.Comms],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+        [MissionProfile.Tactical]: new MissionProfileModel(
+            MissionProfile.Tactical,
+            "Tactical Operations",
+            [2, 2, 3, 2, 1, 2],
+            [
+                TalentsHelper.getTalent("Ablative Armor"),
+                TalentsHelper.getTalent("Fast Targeting Systems"),
+                TalentsHelper.getTalent("Improved Damage Control"),
+                TalentsHelper.getTalent("Improved Impulse Drive"),
+            ],
+            undefined,
+            [System.Weapons],
+            undefined,
+            undefined,
+            new SourcePrerequisite(Source.Core2ndEdition)),
+
+    }
+
+
+
     private _profiles: { [id: number]: MissionProfileModel } = {
         [MissionProfile.StrategicAndDiplomatic]: new MissionProfileModel(
             MissionProfile.StrategicAndDiplomatic,
@@ -147,6 +313,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Expanded Connectivity")
             ],
             undefined,
+            [],
             "Expanded sensor footprint, Prototype",
             "Used in the adventure \"Plague of Arias\"",
             new SourcePrerequisite(Source.TheseAreTheVoyages)),
@@ -162,6 +329,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia)),
@@ -176,6 +344,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Secondary Reactors"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia)),
@@ -190,6 +359,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rugged Design"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -204,6 +374,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("High-Power Tractor Beam"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -216,6 +387,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Diplomatic Suites"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -230,6 +402,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Slim Sensor Silhouette"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -244,6 +417,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Redundant Systems [Communications]"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -257,6 +431,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rugged Design"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -270,6 +445,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Improved Power Systems"),
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -285,6 +461,7 @@ class MissionProfiles {
                 TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
             ],
             undefined,
+            [],
             "",
             "",
             new SourcePrerequisite(Source.UtopiaPlanitia)),
@@ -378,9 +555,12 @@ class MissionProfiles {
 
     getMissionProfiles(starship: Starship) {
         let profiles: MissionProfileModel[] = [];
-        let list = (starship.type === CharacterType.KlingonWarrior && starship.version === 1)
-            ? this._klingonProfiles
-            : this._profiles;
+        let list = this._profiles2e;
+        if (starship.version === 1) {
+            list = (starship.type === CharacterType.KlingonWarrior && starship.version === 1)
+                ? this._klingonProfiles
+                : this._profiles;
+        }
         for (let profile of Object.values(list)) {
             if (profile && profile.isPrerequisitesFulfilled(starship)) {
                 profiles.push(profile);
@@ -388,14 +568,19 @@ class MissionProfiles {
         };
 
         profiles.sort((p1, p2) => {
-            return p1.name.localeCompare(p2.name);
+            return p1.localizedName.localeCompare(p2.localizedName);
         })
 
         return profiles;
     }
 
     getMissionProfileByName(profile: string, type: CharacterType, version: number) {
-        let list = (type === CharacterType.KlingonWarrior && version === 1) ? this._klingonProfiles : this._profiles;
+        let list = this._profiles2e;
+        if (version === 1) {
+            list = (type === CharacterType.KlingonWarrior && version === 1)
+                ? this._klingonProfiles
+                : this._profiles;
+        }
         let result = null;
         for (let id in list) {
             if (profile === MissionProfile[id]) {

@@ -34,7 +34,7 @@ const MissionProfileTalentSelectionPage: React.FC<IMissionProfileTalentSelection
 
     const getTalents = () => {
         let talents: TalentViewModel[] = [];
-        starship?.missionProfileModel?.talents?.forEach(t => {
+        starship?.missionProfileStep?.type?.talents?.forEach(t => {
             if (!t.isSourcePrerequisiteFulfilled(starship)) {
                 // skip it
             } else if (!starship.spaceframeModel?.hasTalent(t.name)) {
