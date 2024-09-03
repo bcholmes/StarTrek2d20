@@ -3929,6 +3929,42 @@ export class Talents {
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
             1,
             "Starship", true),
+        new TalentModel(
+            "Larger Crew",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Reliable",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Prestigious Posting",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Mission of Mercy",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Experimental Vessel",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Ready for Battle",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
 
 
         new TalentModel(

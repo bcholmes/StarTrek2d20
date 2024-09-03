@@ -153,6 +153,8 @@ export enum Spaceframe {
     DDeridex,
     Galor,
     DKora,
+    VorCha_2E,
+    Mogai,
 
     // Continuing Mission
     Loknar,
@@ -161,5 +163,4 @@ export enum Spaceframe {
     Perseus,
     Ptolemy,
 
-    Valdore,
 }

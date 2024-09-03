@@ -2508,12 +2508,12 @@ export class SpaceframeHelper {
                 "Klingon Ship",
                 "Small Craft"
             ]),
-        [Spaceframe.VorCha]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.VorCha]: new SpaceframeModel(
             Spaceframe.VorCha,
             CharacterType.KlingonWarrior,
             "Vor'Cha-Class Attack Cruiser",
             2367,
-            [ Source.KlingonCore ],
+            [ new SourcePrerequisite(Source.KlingonCore), new ServiceYearPrerequisite(2367), new NotSourcePrerequisite(Source.GmToolkit2e) ],
             [9, 9, 10, 9, 10, 10],
             [1, 0, 2, 0, 0, 0],
             5,
@@ -3156,26 +3156,48 @@ export class SpaceframeHelper {
             ],
             [ "Ferengi Starship", "Marauder", "The Best Latinum Can Buy" ],
             99999),
-        [Spaceframe.Valdore]: SpaceframeModel.createStandardSpaceframe(
-            Spaceframe.Valdore,
-            CharacterType.Romulan,
-            "Valdore class",
-            2285,
-            [ Source.ContinuingMissions ],
-            [9, 9, 11, 10, 10, 10],
-            [1, 0, 1, 1, 0, 0],
-            6,
+        [Spaceframe.VorCha_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.VorCha_2E,
+            CharacterType.KlingonWarrior,
+            "Vor'Cha-Class Attack Cruiser",
+            2367,
+            [ Source.GmToolkit2e ],
+            [9, 9, 10, 9, 10, 10],
+            [1, 0, 2, 0, 0, 0],
+            5,
             [
+                "Disruptor Cannons",
                 "Disruptor Banks",
-                "Plasma Torpedoes",
-                "Tractor Beam (Strength 5)"
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
             ],
             [
                 TalentSelection.selectTalent("Cloaking Device"),
-                TalentSelection.selectTalent("Improved Shield Recharge"),
-                TalentSelection.selectTalent("Secondary Reactors"),
+                TalentSelection.selectTalent("Fast Targeting Systems")
             ],
-            [ "Romulan Starship" ],
+            [
+                "Klingon Starship", "Formidable Reputation"
+            ],
+            99999),
+
+        [Spaceframe.Mogai]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Mogai,
+            CharacterType.Romulan,
+            "Valdore class",
+            2285,
+            [ Source.GmToolkit2e ],
+            [9, 9, 10, 10, 10, 10],
+            [0, 1, 1, 1, 0, 0],
+            5,
+            [
+                "Disruptor Banks",
+                "Plasma Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Cloaking Device"),
+            ],
+            [ "Romulan Starship", "Warbird" ],
             99999),
         //[Spaceframe.]: SpaceframeModel.createStandardSpaceframe(
         //    CharacterType.Starfleet,

@@ -1505,6 +1505,31 @@
     "SafetySectionType.helplessness": "Helplessness",
     "SafetySectionType.warCrimes": "War Crimes",
 
+    "ServiceRecord.agingRelic": "Aging Relic",
+
+    "ServiceRecord.agingRelic.description": "The ship has been in service for decades, and has been home to many crews. Only the longest-serving crew are likely to remember when it was new.",
+
+    "ServiceRecord.dependableWorkhorse": "Dependable Workhorse",
+
+    "ServiceRecord.dependableWorkhorse.description": "The ship is dependable, with a solid record of successful missions and accomplishments. While overshadowed by more famous ships, this vessel is nevertheless a mainstay of the fleet, with a competent, dedicated crew.",
+
+    "ServiceRecord.legendary": "Legendary",
+
+    "ServiceRecord.legendary.description": "This ship is famous, having been at the center of one or more major events that shaped the history and politics of one or more civilizations. This comes with great prestige for those involved.",
+
+    "ServiceRecord.hopeShip": "Hope Ship",
+
+    "ServiceRecord.hopeShip.description": "This vessel’s service has been spent responding to distress calls and disasters, warping to the rescue of those in danger or subjected to great hardship. The ship is heavily refitted for disaster relief, evacuation, and medical catastrophes, and the crew often have additional emergency medical training.",
+
+    "ServiceRecord.prototype": "Prototype",
+
+    "ServiceRecord.prototype.description": "The ship is brand new, first of her class, and laden with the newest technologies, assembled to be tested and studied. There are potentially a whole host of unknown problems and challenges to face, as novel systems clash or malfunction as they interact in unexpected ways.",
+
+    "ServiceRecord.survivorOfX": "Survivor of X",
+
+    "ServiceRecord.survivorOfX.description": "This ship was involved in some of the fiercest battles, surviving the fighting, though not without scars. The crew is battle-hardened and prepared for anything.",
+    "ServiceRecord.survivorOfX.trait": "Survivor of {{X}}",
+
     "Sheet.basicGeneratedHalfPageCharacterSheet": "New Half-Page 2nd Ed.-style Character Sheet",
     "Sheet.generatedTngPortraitCharacterSheet": "TNG Portrait Character Sheet (US-Letter)",
     "Sheet.generatedTngPortraitA4CharacterSheet": "TNG Portrait Character Sheet (A4)",
@@ -2507,6 +2532,10 @@
 
     "Talent.expeditionExpert.description2e": "Prior to participating in an away team mission, you may make additional preparations by spending 2 Momentum (Immediate). During the expedition, any member of the away team may re-roll a single d20 on any task to navigate the terrain or circumvent a hazard or obstacle. The away team may re-roll a total number of dice in this way equal to your Science rating.",
 
+    "Talent.experimentalVessel": "Experimental Vessel",
+
+    "Talent.experimentalVessel.description": "When the ship is created, apply two additional refits to the ship. In addition, whenever the ship assists a task attempt, the ship’s die increases its complication range by 2 (to 18–20). A milestone refit can remove this complication range increase, representing the ship’s crew working out the problems in the prototype design.",
+
     "Talent.exploitWeakness": "Exploit Weakness",
 
     "Talent.exploitWeakness.description": "You are trained in surprising your opponent and taking advantage of any weaknesses they have. When you attempt an attack against an unaware enemy, or an enemy suffering from a trait that represents weakness or vulnerability, the attack gains the Piercing 2 effect.",
@@ -2738,6 +2767,10 @@
 
     "Talent.landingGear.description": "The vessel is equipped to land safely on a planetary surface, and can return to space afterward. To land a ship requires **Reserve Power** be rerouted to Structure, and then requires someone at the helm to attempt a **Control + Conn** task with a Difficulty equal to the ship’s Scale, assisted by the ship’s **Structure + Conn**. This can Succeed at Cost. Success means the ship lands on the planet’s surface. Taking off requires the same task attempt, but the Difficulty is reduced by 2.",
 
+    "Talent.largerCrew": "Larger Crew",
+
+    "Talent.largerCrew.description": "The ship’s Crew Support is increased by 1.",
+
     "Talent.leadInvestigator": "Lead Investigator",
 
     "Talent.leadInvestigator.description2e": "Whenever you attempt a task to retrieve or analyze evidence of a crime, you may re-roll 1d20. When you spend one or more Momentum to Obtain Information to ask questions about a crime scene or evidence, you may ask one additional question.",
@@ -2781,6 +2814,10 @@
     "Talent.miracleWorker": "Miracle Worker",
 
     "Talent.miracleWorker.description2e": "Whenever you succeed at an Engineering task to over- come an extended task, you may increase your Impact by 1 by spending 1 Momentum instead of 2.",
+
+    "Talent.missionOfMercy": "Mission of Mercy",
+
+    "Talent.missionOfMercy.description": "The first time in a scene when an enemy makes an attack against this ship, the gamemaster must spend 1 Threat. The hope ship must add 1 Threat the first time in any scene it makes an attack.",
 
     "Talent.modularLaboratories": "Modular Laboratories",
 
@@ -2918,6 +2955,10 @@
 
     "Talent.precisionTargeting.description2e": "You can more easily pick out and target specific systems when making an Attack against an enemy vessel. When you make an Attack with starship weapons that targets a specific ship system, you may re-roll a d20.",
 
+    "Talent.prestigiousPosting": "Prestigious Posting",
+
+    "Talent.prestigiousPosting.description": "When a new supporting character is first introduced, apply a single improvement to them immediately, like a milestone.",
+
     "Talent.proceduralCompliance": "Procedural Compliance",
 
     "Talent.proceduralCompliance.description2e": "When you attempt an Engineering task, you may remove one d20 from your dice pool before rolling. If you do so, you gain one automatic success on your task.",
@@ -2984,10 +3025,18 @@
 
     "Talent.reassuring.description2e": "When you succeed at a task using your Presence, you may spend Momentum to reassure your allies, so long as they are able to hear you. You may spend 1 Momentum (Repeatable) to allow one ally who can see and hear you to recover 1 Stress. That ally may not recover more than 3 Stress from one use of this talent.",
 
+    "Talent.readyForBattle": "Ready for Battle",
+
+    "Talent.readyForBattle.description": "During the first round of ship combat, the gamemaster must spend 1 additional Threat to allow an enemy ship to take the first turn.",
+
     "Talent.redundantSystems": "Redundant Systems",
 
     "Talent.redundantSystems.description": "The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.",
     "Talent.redundantSystems.description2e": "Select a single system when this talent is chosen. When that system suffers a breach, the crew may choose to activate this talent in response; doing so immediately patches the breach inflicted. These redundant systems may only be activated once per adventure.",
+
+    "Talent.reliable": "Reliable",
+
+    "Talent.reliable.description": "Whenever the ship rolls to assist a task attempt, the group may spend 1 Momentum to ignore any complications rolled on the ship’s die.",
 
     "Talent.repairTeamLeader": "Repair Team Leader",
 
@@ -3224,7 +3273,7 @@
 
     "Talent.walkingEncyclopedia": "Walking Encyclopedia",
 
-    "Talent.walkingEncyclopedia.description2e": "Once per session, when you attempt a task, you may spend 2 Momentum (Immediate) to gain an addition- al focus for the remainder of the session, due to your breadth of knowledge. However, any task using that focus increases its complication range by 1, as you are not a true expert on that subject.",
+    "Talent.walkingEncyclopedia.description2e": "Once per session, when you attempt a task, you may spend 2 Momentum (Immediate) to gain an additional focus for the remainder of the session, due to your breadth of knowledge. However, any task using that focus increases its complication range by 1, as you are not a true expert on that subject.",
 
     "Talent.warriorsSpirit": "Warrior's Spirit",
 
