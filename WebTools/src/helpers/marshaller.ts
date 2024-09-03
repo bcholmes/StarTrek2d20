@@ -419,9 +419,19 @@ class Marshaller {
         return traits ? traits.split(',').map(t => t.trim()).filter(t => t.length > 0) : [];
     }
 
+    private encodeStarshipStereoType(stereotype: Stereotype) {
+        if (stereotype === Stereotype.SimpleStarship) {
+            return "simple";
+        } else if (stereotype === Stereotype.SoloStarship) {
+            return "soloStarship";
+        } else {
+            return "starship";
+        }
+    }
+
     encodeStarship(starship: Starship) {
         let sheet = {
-            "stereotype": starship.stereotype === Stereotype.SoloStarship ? "soloStarship" : "starship",
+            "stereotype": this.encodeStarshipStereoType(starship.stereotype),
             "type": CharacterType[starship.type],
             "era": Era[starship.era],
             "buildType": ShipBuildType[starship.buildType],
@@ -581,6 +591,8 @@ class Marshaller {
         result.name = json.name;
         if (json.stereotype === "soloStarship") {
             result.stereotype = Stereotype.SoloStarship;
+        } else if (json.stereotype === "simple") {
+            result.stereotype = Stereotype.SimpleStarship;
         }
         if (json.era) {
             let era = ErasHelper.getEraByName(json.era);

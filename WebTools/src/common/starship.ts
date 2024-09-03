@@ -12,6 +12,7 @@ import { Construct, Stereotype } from "./construct";
 import { makeKey } from "./translationKey";
 import { Era } from "../helpers/eras";
 import { IWeaponDiceProvider } from "./iWeaponDiceProvider";
+import { ServiceRecord, ServiceRecordList, ServiceRecordModel } from "../starship/model/serviceRecord";
 
 export class SimpleStats {
     departments: number[];
@@ -48,6 +49,33 @@ export const refitCalculator = (starship: Starship) => {
 
     } else {
         return 0;
+    }
+}
+
+export class ServiceRecordStep {
+    readonly type: ServiceRecordModel;
+    specialRule?: TalentModel;
+    selection: string;
+
+    constructor(type: ServiceRecordModel) {
+        this.type = type;
+    }
+
+    get trait() {
+        const key = makeKey("ServiceRecord.", ServiceRecord[this.type.type], ".trait");
+        let result = i18next.t(key, { "X": this.selection });
+        if (result === key) {
+            return this.type.name;
+        } else {
+            return result;
+        }
+    }
+
+    copy() {
+        let result = new ServiceRecordStep(this.type);
+        result.specialRule = this.specialRule;
+        result.selection = this.selection;
+        return result;
     }
 }
 
@@ -104,6 +132,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
     simpleStats: SimpleStats;
     additionalWeapons: Weapon[] = [];
     talentDetailSelections: ShipTalentDetailSelection[] = [];
+    serviceRecordStep?: ServiceRecordStep;
 
     constructor() {
         super(Stereotype.Starship);
@@ -623,6 +652,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
             result.simpleStats.scale = this.simpleStats.scale;
         }
         result.talentDetailSelections = [...this.talentDetailSelections];
+        result.serviceRecordStep = this.serviceRecordStep?.copy();
         return result;
     }
 }

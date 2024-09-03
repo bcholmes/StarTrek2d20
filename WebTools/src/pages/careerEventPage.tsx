@@ -18,6 +18,7 @@ import store from "../state/store";
 import { ICharacterProperties, characterMapStateToProperties } from "../solo/page/soloCharacterProperties";
 import { connect } from "react-redux";
 import { makeKey } from "../common/translationKey";
+import rehypeExternalLinks from 'rehype-external-links';
 
 enum EventsTab {
     Standard,
@@ -99,7 +100,7 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
 
         return (<>
             <div className="mt-4">
-                <ReactMarkdown children={t('CareerEvents.unofficialNote')} linkTarget="_blank" />
+                <ReactMarkdown children={t('CareerEvents.unofficialNote')} rehypePlugins={[[rehypeExternalLinks, { target: '_blank' }]]} />
             </div>
             <div className="my-4">
                 <Button className="btn btn-primary btn-sm me-3" onClick={() => setRandomEventWithUnofficial( generateRandomEvent(true)) }>
