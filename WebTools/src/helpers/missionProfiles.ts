@@ -70,6 +70,13 @@ export class MissionProfileModel {
         let result = i18next.t(key);
         return result === key ? this.name : result;
     }
+
+    get localizedDescription() {
+        const prefix = this.type === CharacterType.KlingonWarrior ? "MissionProfile.klingon." : "MissionProfile.default.";
+        const key = makeKey(prefix, MissionProfile[this.id], ".description");
+        let result = i18next.t(key);
+        return result === key ? "" : result;
+    }
 }
 
 class MissionProfiles {

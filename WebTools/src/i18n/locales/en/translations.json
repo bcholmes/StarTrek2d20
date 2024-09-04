@@ -587,6 +587,7 @@
     "Page.title.missionPodSelection": "Mission Pod Selection",
     "Page.title.missionProfileSelection": "Mission Profile Selection",
     "Page.title.missionProfileTalentSelection": "Mission Profile Talent",
+    "Page.title.missionProfileDetails": "Mission Profile Details",
     "Page.title.otherTools": "Other Tools",
     "Page.title.randomStarship": "Random Starship Configuration",
     "Page.title.sectorDetails": "Sector Details",
@@ -1268,22 +1269,67 @@
     "MissionPod.warpPropulsionPod": "Warp Propulsion Pod",
 
     "MissionProfile.default.strategicAndDiplomatic": "Strategic and Diplomatic Operations",
+
+    "MissionProfile.default.strategicAndDiplomatic.description": "Vessels equipped for this profile are often placed under the command of flag officers and used as the heart of squadrons, battlegroups, and even whole fleets. These ships, and the prestige and standing that accompanies them, are also used for major diplomatic undertakings where they can serve as mobile embassies and represent the best of the Federation.",
+
     "MissionProfile.default.pathfinderAndReconaissance": "Pathfinder and Reconnaissance Operations",
+
+    "MissionProfile.default.pathfinderAndReconaissance.description": "Long-range missions often employ the most advanced stellar cartography and astrometric facilities, allowing them to chart and navigate unknown regions of space more effectively, especially where spatial distortions make those regions difficult to navigate. These vessels are relied upon for extended exploratory missions, intelligence-gathering military operations, and risky “pathfinder” operations into the unknown.",
+
     "MissionProfile.default.technicalTestBed": "Technical Test-Bed",
+
+    "MissionProfile.default.technicalTestBed.description": "The ship is equipped with numerous state-of-the-art or even prototype technologies, allowing them to be tested or studied in practical conditions so that flaws can be discovered and overcome, and that systems can be refined and improved upon. These ships are often deployed on a broad range of resource-intensive missions to provide a diverse range of conditions for equipment and technology testing.",
+
     "MissionProfile.default.tactical": "Tactical Operations",
+
+    "MissionProfile.default.tactical.description": "While Starfleet is not a military, the defense of the Federation is one of Starfleet’s responsibilities, and Starfleet has been required to prepare for war on numerous occasions. Thus, many ships are equipped for peacekeeping and military actions, though the number of vessels outfitted in this manner varies depending on the politics of the day.",
+
     "MissionProfile.default.scientificAndSurvey": "Scientific and Survey Operations",
+
+    "MissionProfile.default.scientificAndSurvey.description": "Starfleet’s mission of exploration and discovery means that it employs many vessels for purely scientific missions, studying unknown phenomena, or supporting ongoing research. While most Federation starships are expected to have at least some capacity for scientific endeavor, some vessels are outfitted specifically for such missions.",
+
     "MissionProfile.default.crisisAndEmergencyResponse": "Crisis and Emergency Response",
+
+    "MissionProfile.default.crisisAndEmergencyResponse.description": "These vessels are equipped to respond quickly to a crisis, whatever it may be. Normally capable of supporting expansive shuttlebays, they can deploy large quantities of personnel or cargo to, or evacuate large populations from, disaster areas. Such vessels also serve as hospital ships and troop transport during conflicts.",
+
     "MissionProfile.default.multiroleExplorer": "Multirole Explorer",
+
+    "MissionProfile.default.multiroleExplorer.description": "Many of Starfleet’s most renowned and revered vessels have been jack-of-all-trades ships, rather than specialized for a single type of mission. This versatility allowed the likes of Jonathan Archer, Christopher Pike, James Kirk, and Jean-Luc Picard to explore strange new worlds, seek out new life and new civilizations, and boldly go where no one has gone before.",
+
     "MissionProfile.default.projectEscalante": "Project Escalante",
     "MissionProfile.default.battlecruiser": "Battlecruiser",
+
+    "MissionProfile.default.battlecruiser.description": "In the mid-23rd century, the lessons of the Earth-Romulan War are still firmly in the minds of those on the core Federation worlds, and some vessels are outfitted as vessels of war in case hostilities begin with the Klingon or Romulan Empires. A similar push to develop heavy combat vessels arose during the Borg crisis and Dominion War in the 2360s and 2370s. These vessels are rare in Starfleet, and those outfitted as such rarely stray far from important starbases or the worlds they guard.",
+
     "MissionProfile.default.reserveFleet": "Reserve Fleet",
+
+    "MissionProfile.default.reserveFleet.description": "These starships are often older vessels that have been withdrawn from active duty and are equipped as standby vessels in case of disasters both natural and manufactured. Some new ships are also outfitted in this manner, but are classified as “fleet support,” assisting flotillas in deployments away from the supply lines of core worlds.",
+
     "MissionProfile.default.civilianMerchantMarine": "Civilian Merchant Marine",
+
+    "MissionProfile.default.civilianMerchantMarine.description": "Many decommissioned Starfleet vessels find their way into the Merchant Marines, an active reserve where starships and personnel go to continue service to the Federation in a less formal and less risky way. Merchant Marines may be called upon by Starfleet to serve as logistical vessels in times of need, and many of these starships act in the place of active service Starfleet vessels when no others are available. Most other spacefaring civilizations have similar services.",
+
     "MissionProfile.default.colonySupport": "Colony Support",
+
+    "MissionProfile.default.colonySupport.description": "Vessels equipped to assist colonies in their initial stages provide necessary supplies, as well as scientific and medical backup to new colony worlds, the kinds of places that deal with unknowns which may still present themselves years after initial settlement.",
+
     "MissionProfile.default.entertainmentPleasureShip": "Entertainment/Pleasure Ship",
     "MissionProfile.default.espionageIntelligence": "Espionage/Intelligence",
+
+    "MissionProfile.default.espionageIntelligence.description": "Vessels equipped for espionage are rare in active Starfleet service, but are used by member cultures within the Federation, and by other polities such as the Romulan Empire and Cardassian Union, whose intelligence agencies often employ dedicated vessels (whether or not they are legally permitted to), and in many cultures, intelligence agencies may commandeer existing vessels for their needs. These vessels are often equipped with highly sensitive monitoring devices, enhanced sensors, and stealth systems (though stopping short of actual cloaking devices for Starfleet vessels). These vessels range close to—and sometimes beyond—foreign borders. Serving on these ships is often a dangerous and thankless proposition.",
+
     "MissionProfile.default.flagship": "Flagship",
+
+    "MissionProfile.default.flagship.description": "Flagships are a specialized form of command ship, with a dedicated flag bridge or strategic operations center within the vessel. These ships can act as a mobile fleet headquarters, with systems and personnel dedicated to ensuring the operations of whole fleets, or even serving as a vessel for the continuity of command should disaster strike.",
+
     "MissionProfile.default.logisticalQuartermaster": "Logistical/Quartermaster",
+
+    "MissionProfile.default.logisticalQuartermaster.description": "These vessels provide the backbone of any fleet, even in the era of the replicator. Whenever vital equipment or personnel need to be moved, vessels like this are often central to ensuring that those tools and people get where they’re needed most. In Starfleet in particular, these vessels also serve as a second line of operations following the important business of first contact, providing material and infrastructure support to worlds recently contacted or who seek membership in the Federation.",
+
     "MissionProfile.default.patrol": "Patrol",
+
+    "MissionProfile.default.patrol.description": "Patrol vessels are dedicated to acting as peacekeepers in regions of space where hostility is not only possible, but likely. These vessels tend to operate along borders with other polities, and act as picket vessels during fleet actions. In times of peace, patrol vessels can be assigned to survey missions, or operate patrols against pirates, smugglers, and similar dangers.",
+
     "MissionProfile.default.warship": "Warship",
 
     "MissionProfile.klingon.crisisAndEmergencyResponse": "Crisis Response and Interception",
@@ -1762,7 +1808,7 @@
     "Species.andorian.name": "Andorian",
     "Species.andorian.aboutNames": "Andorian names tend to be somewhat harsh-sounding, and have a personal name followed by a clan name. Amongst some Andorians, it’s common to begin the clan name with a gender-specific prefix: 'zh' or 'sh' for females, and 'ch' or 'th' for males. This is placed before the family name, separated by an apostrophe. Longer or more complicated Andorian names are commonly shortened, especially when dealing with other species. Examples: Ishrelia zh’Azonan (female), Atheth th’Zynes(male)",
     "Species.andorian.description": "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the United Federation of Planets since its foundation, having been firm allies of Humanity for several years beforehand. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as Ushaan, using razorsharp ice-mining tools.",
-    "Species.andorian.description2e": "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the Federation since its foundation. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as _Ushaan_, using razor-sharp ice-mining tools.\n\nAndorians have developed powerful traditions of ritual, convention, and personal honor to help direct their intensity and energy towards constructive ends.\n",
+    "Species.andorian.description2e": "An aggressive, passionate people from the frozen moon Andoria, the Andorians have been part of the Federation since its foundation. Their blue skin, pale hair, and antennae give them a distinctive appearance, and while the Andorian Imperial Guard was demobilized when the Federation was founded, they still maintain strong military traditions, and a tradition of ritualized honor-duels known as _Ushaan_, using razor-sharp ice-mining tools.\n\nAndorians have developed powerful traditions of ritual, convention, and personal honor to help direct their intensity and energy towards constructive ends.",
     "Species.andorian.soloDescription": "An aggressive, passionate people from a frozen moon. Founding member of the Federation. Blue-skinned, pale-haired in appearance, with antennae. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, among other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury.",
     "Species.andorian.exampleValue": "Proud Son/Daughter of Andoria",
     "Species.andorian.traitDescription": "This trait may reduce the Difficulty of Tasks to resist extreme cold, or Tasks impacted by extremely low temperatures. Their antennae aid in balance and spatial awareness; a lost antenna can be debilitating until it regrows. Andorians also have a high metabolism, meaning, amongst other things, that they tire more quickly than Humans; this also makes them more vulnerable to infection from certain types of injury. Before the Federation, Andorians and Vulcans had numerous disputes; though these issues are largely considered to be ancient history, Andorians and Vulcans don’t always get along.",
@@ -2223,7 +2269,7 @@
 
     "Talent.automatedReturn": "Automatic Return",
 
-    "Talent.automatedReturn.description2e": "The ship’s computer is programmed to recognize a starbase, colony, or some other location as its home base. The shuttles on board have the same programming and recognize the ship as their home base. If the ship’s Computers system goes for 10 days without commands from the crew, it will automatically pilot the ship back to the home base at maximum impulse.\n",
+    "Talent.automatedReturn.description2e": "The ship’s computer is programmed to recognize a starbase, colony, or some other location as its home base. The shuttles on board have the same programming and recognize the ship as their home base. If the ship’s Computers system goes for 10 days without commands from the crew, it will automatically pilot the ship back to the home base at maximum impulse.",
 
     "Talent.backupEpsConduits": "Backup EPS Conduits",
 

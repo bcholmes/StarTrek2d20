@@ -48,7 +48,9 @@ const starshipEnterpriseEraNames = [
     "Ibn Zuhr",
     "Salk",
     "Winton",
-    "Lumumba"
+    "Lumumba",
+    "Christopher",
+    "Kelly"
 ]
 
 const klingonEnterpriseEraNames = [

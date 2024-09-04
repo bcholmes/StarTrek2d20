@@ -55,6 +55,7 @@ export const refitCalculator = (starship: Starship) => {
 export class MissionProfileStep {
     readonly type: MissionProfileModel;
     system: System;
+    talent?: TalentModel;
 
     constructor(type: MissionProfileModel) {
         this.type = type;
@@ -63,6 +64,7 @@ export class MissionProfileStep {
     copy() {
         let result = new MissionProfileStep(this.type);
         result.system = this.system;
+        result.talent = this.talent;
         return result;
     }
 }
@@ -141,7 +143,6 @@ export class Starship extends Construct implements IWeaponDiceProvider {
     private _spaceframe?: SpaceframeModel = undefined;
     missionPodModel?: MissionPodModel;
     missionProfileStep?: MissionProfileStep;
-    profileTalent?: TalentModel;
     additionalTalents: TalentViewModel[] = [];
     refits: System[] = [];
     simpleStats: SimpleStats;
@@ -244,8 +245,16 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         } else if (this.buildType !== ShipBuildType.Starship) {
             trait.push("Small Craft");
         }
+
         if (this.spaceframeModel) {
-            trait = [...this.spaceframeModel.additionalTraits];
+            this.spaceframeModel.additionalTraits.forEach(t => {
+                if (trait.indexOf(t) < 0) {
+                    trait.push(t);
+                }
+            });
+        }
+        if (this.version > 1 && this.localizedClassName?.length) {
+            trait.push(this.localizedClassName);
         }
         if (this.missionProfileStep?.type?.traits?.length) {
             this.missionProfileStep.type.traits.split(", ").forEach(t => trait.push(t.trim()));
@@ -312,7 +321,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
 
     get allTraitsAsArray() {
         let traits = this.getAllTraits();
-        return traits.split(',').map(t => t.trim()).filter(t => t?.length > 0);
+        return traits.split(',').map(t => t.trim()).filter(t => t?.length);
     }
 
     getBaseSystem(system: System) {
@@ -371,8 +380,8 @@ export class Starship extends Construct implements IWeaponDiceProvider {
             talents = [...this.spaceframeModel.talents.map(t => { return t.description; })];
         }
 
-        if (this.profileTalent && this.stereotype !== Stereotype.SoloStarship) {
-            talents.push(this.profileTalent.name);
+        if (this.missionProfileStep?.talent && this.stereotype !== Stereotype.SoloStarship) {
+            talents.push(this.missionProfileStep?.talent.name);
         }
         this.additionalTalents.forEach(t => {
             talents.push(t.name);
@@ -387,8 +396,8 @@ export class Starship extends Construct implements IWeaponDiceProvider {
 
     getNonSpaceframeTalentSelectionList() {
         let talents: Map<string, TalentSelection> = new Map();
-        if (this.profileTalent && this.stereotype !== Stereotype.SoloStarship) {
-            this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.profileTalent.name)), talents);
+        if (this.missionProfileStep?.talent && this.stereotype !== Stereotype.SoloStarship) {
+            this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.missionProfileStep?.talent?.name)), talents);
         }
 
         this.additionalTalents.forEach(t => {
@@ -413,8 +422,8 @@ export class Starship extends Construct implements IWeaponDiceProvider {
             });
         }
 
-        if (this.profileTalent && this.stereotype !== Stereotype.SoloStarship) {
-            this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.profileTalent.name)), talents);
+        if (this.missionProfileStep?.talent && this.stereotype !== Stereotype.SoloStarship) {
+            this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.missionProfileStep?.talent.name)), talents);
         }
 
         this.additionalTalents.forEach(t => {
@@ -655,10 +664,8 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         result.spaceframeModel = this.spaceframeModel;
         result.missionPodModel = this.missionPodModel;
         result.missionProfileStep = this.missionProfileStep?.copy();
-        result.profileTalent = this.profileTalent;
         result.additionalTalents = [...this.additionalTalents];
         result.refits = [...this.refits];
-        result.traits = this.traits;
         result.additionalWeapons = [...this.additionalWeapons];
         if (this.simpleStats != null) {
             result.simpleStats = new SimpleStats();

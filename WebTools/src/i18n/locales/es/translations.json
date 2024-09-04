@@ -152,7 +152,7 @@
     "EducationPage.type.ambassadorDiplomat": "Formación Diplomática",
 
     "EducationPage.starfleet.academy": "Academia de Oficiales",
-    "EducationPage.starfleet.enlisted": "Formación de reclutas",
+    "EducationPage.starfleet.enlisted": "Formación de Alistados",
     "EducationPage.starfleet.other": "Otro",
 
     "EnvironmentPage.showAlt": "Permitir Entornos alternativos (decisión del DJ)",
@@ -674,7 +674,7 @@
     "CareerEvent.common.12.description": "El personaje se encontró en una situación en que tuvo que escoger entre un superior en quien confiaba y sus propios ideales... y se decantó por su superior.\n\n- ¿Quién era su superior? ¿Qué pidió al personaje que hiciera? ¿Cómo se siente ahora al respecto?\n- ¿Cuáles fueron las repercusiones del incidente? ¿Hay registros de los detalles del suceso? ¿Tenía razón el personaje?",
     "CareerEvent.common.12.focusSuggestion": "El personaje recibe una Especialidad que refleja el suceso y sus consecuencias. Como ejemplos se ofrecen: Persuasión, Inspiración o Investigación.",
 
-    "CareerEvent.common.13.name": "Desafió a un Superior",
+    "CareerEvent.common.13.name": "Desafió a un superior",
     "CareerEvent.common.13.description": "El personaje se encontró en una situación en que tuvo que escoger entre un superior en quien confiaba y sus propios ideales... y decidió seguir sus ideales.\n\n- ¿Quién era su superior? ¿Qué pidió al personaje que hiciera? ¿Cómo se siente ahora al respecto?\n- ¿Cuáles fueron las repercusiones del incidente? ¿Hay registros de los detalles del suceso? ¿Tenía razón el personaje?",
     "CareerEvent.common.13.focusSuggestion": "El personaje recibe una Especialidad que refleja el suceso y sus consecuencias. Como ejemplos se ofrecen: Código de Justicia de la Federación, Historia o Protocolo de la Flota Estelar.",
 
@@ -761,7 +761,7 @@
     "CharacterType.name.cadet": "Cadete",
     "CharacterType.name.child": "Niño",
     "CharacterType.name.other": "Otro",
-    "CharacterType.name.cardassian": "Unión Cardasiana",
+    "CharacterType.name.cardassian": "Unión Cardassiana",
     "CharacterType.name.romulan": "Imperio Estelar Romulano",
     "CharacterType.name.ferengi": "Alianza Ferengi",
 
@@ -851,7 +851,7 @@
     "AlliedMilitaryType.name.klingonDefenceForce": "Fuerza de Defensa Klingon",
     "AlliedMilitaryType.name.romulanStarEmpire": "Imperio Estelar Romulano",
     "AlliedMilitaryType.name.bajoranMilitia": "Milicia Bajorana",
-    "AlliedMilitaryType.name.cardassianUnion": "Unión Cardasiana",
+    "AlliedMilitaryType.name.cardassianUnion": "Unión Cardassiana",
     "AlliedMilitaryType.name.dominion": "El Dominio",
     "AlliedMilitaryType.name.ferengiMilitary": "Militar Ferengi",
     "AlliedMilitaryType.name.other": "Otro",
@@ -916,7 +916,7 @@
     "Focus.astronomy": "Astronomía",
     "Focus.astrophysics": "Astrofísica",
     "Focus.atmosphericFlight": "Vuelo Atmosférico",
-    "Focus.attackRun": "Ataque a la Carrera",
+    "Focus.attackRun": "Ataque de pasada",
     "Focus.bargain": "Negociar",
     "Focus.bladeWeapons": "Armas de Filo",
     "Focus.botany": "Botánica",
@@ -1071,7 +1071,7 @@
 
     "GovernmentType.name.andorian": "Andoriano",
     "GovernmentType.name.bajoran": "Bajorano",
-    "GovernmentType.name.cardassian": "Cardasiano",
+    "GovernmentType.name.cardassian": "Cardassiano",
     "GovernmentType.name.dominion": "El Dominio",
     "GovernmentType.name.federation": "Federación",
     "GovernmentType.name.klingon": "Klingon",
@@ -1496,10 +1496,176 @@
     "Specialization.starfleetScientist": "Científico",
 
     "Species.aenar.name": "Aenar",
+    "Species.aenar.aboutNames": "Los Aenar suelen tener un único nombre de pila, ya que sus sentidos mejorados les permiten distinguir entre dos individuos con el mismo nombre basándose en la cadencia de su voz, los latidos de su corazón y otros rasgos fisiológicos.",
+    "Species.aenar.description": "\nUna rama de los andorianos, los Aenar son una especie telepática cuya falta de visión se ve compensada por sus sentidos mejorados y sus habilidades telepáticas. Antaño considerados un mito, los Aenar prefieren la soledad y viven en comunidades protegidas lejos de sus compatriotas andorianos. Aunque son pocos, los Aenar son muy apreciados por sus capacidades sensoriales. El gobierno andoriano les ha concedido cierto grado de soberanía para gestionar sus propios asuntos. Aunque la mayoría prefiere quedarse en los casquetes polares de su mundo natal, algunos Aenar han abandonado Andoria para hacer carrera en la Flota Estelar u otros esfuerzos. Conocidos por su fascinación por la tecnología, algunos se han convertido en valiosos ingenieros.",
+    "Species.aenar.description2e": "Los Aenar son una subespecie de andorianos originarios de una región aislada de los páramos del norte de Andoria. Aunque suelen ser ciegos, son telepáticos y sus otros sentidos están aumentados. Aunque se creía que eran un mito, los Aenar son pocos y la mayoría prefiere permanecer en sus asentamientos aislados, y rara vez se preocupan por asuntos ajenos a sus propias comunidades. Carecen de la pigmentación azul distintiva de la piel de otros andorianos, en su lugar tienen tonos de piel que van del blanco, al azul hielo y al gris pálido. Los Aenar deploran la violencia y suelen seguir una ideología estrictamente pacifista.\n\nEn comparación con sus parientes andorianos, los Aenar suelen parecer tranquilos y comedidos. No están menos orgullosos de su herencia, pero lo expresan de forma diferente, a menudo enorgulleciéndose de sus habilidades y del trabajo que realizan. Los pocos Aenar que abandonan su mundo natal suelen mostrarse muy motivados y seguros de sí mismos, manteniendo su autoestima incluso lejos de sus familias.",
+    "Species.aenar.exampleValue": "Puede que sea ciego, pero lo veo tan claro como el día",
+    "Species.aenar.soloDescription": "Los Aenar eran una subespecie de Andorianos que estaban al borde de la extinción a mediados del siglo XXII. Tenían dos antenas y carecían de pigmentación en la piel y el pelo. Su rasgo más distintivo eran sus habilidades telepáticas, que incluían leer la mente y proyectarse psíquicamente en la mente de otros humanoides.",
+    "Species.aenar.trait": "Aenar",
+    "Species.aenar.traitDescription": "Aunque biológicamente son similares a los andorianos, los Aenar han desarrollado su propia cultura y habilidades que los diferencian de sus primos. Aunque muchos consideran que su falta de visión es un obstáculo, los Aenar poseen sentidos que les permiten leer texto con los dedos y son capaces de calcular distancias basándose en lo lejos que les suena algo. Sus capacidades telepáticas los hacen muy apreciados también por otras especies, y con ayuda tecnológica algunos son capaces de proyectar sus pensamientos a grandes distancias. Algunos Aenar tienen una visión sardónica del mundo, mientras que otros parecen estar llenos de una curiosidad infinita por lo que pueden experimentar fuera de sus comunas.",
+    "Species.aenar.traitDescription2e": "Biológicamente similares a los andorianos, los aenar difieren en varios aspectos. Los Aenar suelen ser ciegos, pero sus otros sentidos están tan desarrollados que compensan con creces su falta de visión. También son telepáticos, lo que contribuye a que sean más conscientes de su entorno. Los Aenar suelen ser pacifistas, por lo que pueden ser reacios, o incluso negarse rotundamente, a llevar a cabo actos violentos.",
+
+    "Species.andorian.name": "Andoriano",
+    "Species.andorian.aboutNames": "Los nombres andorianos tienden a sonar severos y se componen de un nombre de pila seguido del nombre del clan. Entre los andorianos es común que el nombre del clan empiece con un prefijo asociado al género: “zh” o “sh” para las mujeres y “ch” o “th” para los hombres. Este se sitúa antes del apellido y separado por un apóstrofe. Los nombres andorianos más largos o complicados suelen abreviarse, especialmente al tratar con otras especies.",
+    "Species.andorian.description": "Los andorianos, un pueblo agresivo y apasionado de la luna helada de Andoria, son parte de la Federación Unida de Planetas desde su fundación y también son firmes aliados de la humanidad desde varios años antes. Su piel azul, pelo claro y antenas les confieren un aspecto distintivo y, aunque la Guardia Imperial Andoriana se desmovilizó al fundarse la Federación, siguen manteniendo fuertes hábitos militares y una tradición de duelos de honor rituales conocidos como Ushaan, en los que se emplean herramientas de minería de hielo afiladas como cuchillas.",
+    "Species.andorian.description2e": "Los andorianos, un pueblo agresivo y apasionado de la luna helada de Andoria, son parte de la Federación Unida de Planetas desde su fundación y también son firmes aliados de la humanidad desde varios años antes. Su piel azul, pelo claro y antenas les confieren un aspecto distintivo y, aunque la Guardia Imperial Andoriana se desmovilizó al fundarse la Federación, siguen manteniendo fuertes hábitos militares y una tradición de duelos de honor rituales conocidos como Ushaan, en los que se emplean herramientas de minería de hielo afiladas como cuchillas.\n\nLos andorianos han desarrollado poderosas tradiciones de rituales, convenciones y honor personal para ayudar a dirigir su intensidad y energía hacia fines constructivos.",
+    "Species.andorian.exampleValue": "Orgulloso/a hijo/a de Andoria",
+    "Species.andorian.traitDescription": "Este Rasgo puede reducir la Dificultad de Tareas para resistir el frío extremo o aquellas afectadas por temperaturas extremadamente bajas. Sus antenas les ayudan a mantener el equilibrio y el sentido espacial, la pérdida de una antena puede resultar perjudicial hasta que vuelva a crecer. Los andorianos también tienen un metabolismo rápido, lo que supone (entre otras cosas) que son más rápidos que los humanos pero también que son más vulnerables a infecciones causadas por determinados tipos de daño. Antes de la fundación de la Federación, andorianos y vulcanos tuvieron numerosas disputas, y aunque esos asuntos se consideran en general como cosa del pasado, los andorianos y los vulcanos no siempre se llevan bien.",
+
+    "Species.bajoran.name": "Bajorano",
+    "Species.bajoran.aboutNames": "Los nombres bajoranos empiezan por el apellido, seguido del nombre de pila. Los nombres propiamente dichos suelen ser breves (rara vez tienen más de dos sílabas) y suenan de forma suave o melódica. Bajor tiene una tradición matriarcal y los niños adoptan el apellido de la madre.",
+    "Species.bajoran.description": "Los bajoranos, un pueblo espiritual e intrépido del planeta Bajor, han perdido mucho durante las décadas de ocupación por parte de la Unión Cardassiana. Durante la invasión, muchos bajoranos se dispersaron por el Cuadrante Alfa, mientras que los que permanecieron en Bajor a menudo llevaban a cabo actos de insurgencia o cultivaban en los campos de trabajo bajo el gobierno cardassiano. La ocupación terminó hace poco tiempo, pero sus cicatrices tardarán años en curarse. Bajor no es miembro de la Federación pero muchos bajoranos llevados por el éxodo llegaron a ingresar en la Flota Estelar. La cultura bajorana cree firmemente en los Profetas, seres celestiales que se dice que han cuidado de Bajor durante milenios. La doctrina religiosa actual afirma que el Agujero de Gusano Bajorano es el Templo Celestial de los Profetas.",
+    "Species.bajoran.description2e": "Los bajoranos, un pueblo espiritual e intrépido del planeta Bajor, han perdido mucho durante las décadas de ocupación por parte de la Unión Cardassiana. Durante la invasión, muchos bajoranos se dispersaron por el Cuadrante Alfa, mientras que los que permanecieron en Bajor a menudo llevaban a cabo actos de insurgencia o cultivaban en los campos de trabajo bajo el gobierno cardassiano. La ocupación terminó hace poco tiempo, pero sus cicatrices tardarán años en curarse. Bajor no es miembro de la Federación pero muchos bajoranos llevados por el éxodo llegaron a ingresar en la Flota Estelar. La cultura bajorana cree firmemente en los Profetas, seres celestiales que se dice que han cuidado de Bajor durante milenios. La doctrina religiosa actual afirma que el Agujero de Gusano Bajorano es el Templo Celestial de los Profetas.\n\nLa espiritualidad bajorana ha sido durante mucho tiempo un factor poderoso en sus vidas, incluso para los bajoranos que no creían firmemente en los Profetas. La presencia unificadora de su religión proporcionaba una fuente de esperanza y coraje. Un signo común de esta fe es el _D'ja pagh_, un pendiente simbólico.",
+    "Species.bajoran.exampleValue": "Fe en los Profetas",
+    "Species.bajoran.traitDescription": "Por razones obvias, los bajoranos tienden a ser hostiles con los cardassianos y guardan rencor a quienes desprecian o cierran los ojos ante el sufrimiento de su pueblo. Aunque no todos los bajoranos tienen el mismo grado de espiritualidad o religiosidad, la mayoría tiene una noción cultural del papel de los Profetas en la sociedad bajorana.",
+    "Species.bajoran.traitDescription2e": "Los bajoranos tienden a ser hostiles con los cardassianos y guardan rencor a quienes desprecian o cierran los ojos ante el sufrimiento de su pueblo. Aunque no todos los bajoranos tienen el mismo grado de espiritualidad o religiosidad, la mayoría tiene una noción cultural del papel de los Profetas en la sociedad bajorana.",
+
+    "Species.benzite.name": "Benzita",
+    "Species.benzite.soloDescription": "La fisiología benzita otorga a los miembros de esta especie una piel suave, sin pelo y de un tono verdoso o azulado. Su cráneo tiene una gruesa protuberancia que se extiende sobre la nariz y el ceño, con dos barbos faciales justo encima de los labios. Hasta el año 2370, los benzitas de la Flota Estelar tenían problemas para respirar la atmósfera de oxígeno-nitrógeno estándar y dependían de un aparato respirador.",
+
+    "Species.betazoid.name": "Betazoide",
+    "Species.betazoid.aboutNames": "Los nombres betazoides suelen tener al menos dos sílabas y un sonido melódico y se componen de un nombre de pila seguido de un apellido. Los apellidos tienden a sonar más duros. Los betazoides son de tradición matriarcal y los niños adoptan el apellido de la madre.",
+    "Species.betazoid.description": "El pacífico pueblo betazoide procede del idílico y frondoso mundo Betazed. Este planeta es un apreciado miembro de la Federación y su gente se puede encontrar por todo el espacio de esta, incluyendo la Flota Estelar. Los betazoides parecen casi idénticos a los humanos pero difieren en un aspecto importante: son telépatas natos que desarrollan sus capacidades mentales durante la adolescencia. La intensidad de esta capacidad varía de un individuo a otro, pero ha dado lugar a una cultura en que la honestidad y la franqueza son algo fundamental: es difícil mantener secretos cuando todos los que te rodean pueden leer la mente.",
+    "Species.betazoid.description2e": "El pacífico pueblo betazoide procede del idílico y frondoso mundo Betazed. Este planeta es un apreciado miembro de la Federación y su gente se puede encontrar por todo el espacio de esta, incluyendo la Flota Estelar. Los betazoides parecen casi idénticos a los humanos pero difieren en un aspecto importante: son telépatas natos que desarrollan sus capacidades mentales durante la adolescencia. La intensidad de esta capacidad varía de un individuo a otro.\n\nDebido a su telepatía generalizada, los betazoides tienen una cultura en la que honestidad y la franqueza son algo fundamental: es difícil mantener secretos cuando todos los que te rodean pueden leer la mente. Entre los no telépatas, e incluso telépatas de otras especies, esto puede hacer que algunos betazoides parezcan bruscos o incluso groseros. Los betazoides que pasan mucho tiempo entre otras culturas tienden a inclinarse por esta noción o eligen moderar su honestidad con tacto.",
+    "Species.betazoid.exampleValue": "Compasión mediante la comprensión",
+    "Species.betazoid.traitDescription": "Todos los los betazoides son telépatas en mayor o menor medida e incluso cuando no utilizan sus capacidades activamente, son muy perceptivos respecto a quienes los rodean, aunque también muy sensibles a las perturbaciones telepáticas y los asaltos mentales. Están poco familiarizados con las mentiras y los engaños dada su cultura abierta y su capacidad para leer los pensamientos y emociones de los demás. Como son sensibles a las mentes de otros seres vivos, tienden a no estar cómodos entre los animales por miedo a perderse en las mentes de las criaturas salvajes.",
+    "Species.betazoid.traitDescription2e": "Todos los los betazoides son telépatas en mayor o menor medida e incluso cuando no utilizan sus capacidades activamente, son muy perceptivos respecto a quienes los rodean, aunque también muy sensibles a las perturbaciones telepáticas y los asaltos mentales. Están poco familiarizados con las mentiras y los engaños dada su cultura abierta y su capacidad para leer los pensamientos y emociones de los demás. Como son sensibles a las mentes de otros seres vivos, tienden a no estar cómodos entre los animales por miedo a perderse en las mentes de las criaturas salvajes. Del mismo modo, las especies inmunes a la telepatía pueden resultarles desagradables.",
+
+    "Species.bolian.name": "Boliano",
+    "Species.bolian.soloDescription": "Nativos del planeta Bolarus IX, los bolianos son muy famosos por su hospitalidad y por su personalidad extrovertida. Fáciles de identificar gracias a una cresta cartilaginosa vertical que les cruza la cabeza dividiéndola en dos partes y que llega hasta el pecho. Su tono de piel va desde el azul claro hasta el verde oscuro con manchas púrpuras, y algunos tienen bandas más oscuras en el cráneo. Aunque la mayoría son calvos, algunas mujeres tienen algo de cabello en sus cabezas. Los matrimonios bolianos están formados por más de dos miembros, de ambos sexos, pero la procreación con otras especies no es común, dada la incompatibilidad genética boliana. Los humanos, en particular, notan varios efectos secundarios al tener relaciones interespecies, incluyendo náuseas, fatiga e inflamaciones.",
+
+    "Species.borg.name": "Borg",
+    "Species.borg.description": "Una persona no nace borg sino que se le obliga a convertirse en uno (aunque en el caso de bebés y niños asimilados por el Colectivo, puede que tengan pocos o ningún recuerdo de su vida anterior). Los borg combinan biología con tecnología y un dron contará con innumerables implantes, resultado de una cirugía intrusiva y de una agresiva nanotecnología. En 2371, solo un individuo ha abandonado el Colectivo Borg: Jean-Luc Picard, que había sido capturado apenas unos días antes (lo que implica que sus implantes eran menos significativos que los de alguien que llevara años o décadas asimilado). Todos los PNJ borg son híbridos: pertenecen a su especie original y a su nueva realidad como miembros del Colectivo.",
+    "Species.borg.traitDescription": "Los borg son extremadamente fuertes y resistentes gracias a su fisiología potenciada tecnológicamente. Carecen de autodeterminación e intuición, puesto que dependen de directrices y protocolos del Colectivo y de la consciencia gestáltica de incontables drones borg.",
+
+    "Species.cardassian.name": "Cardassiano",
+    "Species.cardassian.description2e": "A menudo vilipendiados y desconfiados debido a las acciones de su gobierno, los cardassianos tienen fama de ser despiadados, engañosos y agresivos. Debido a la escasez de recursos naturales y a un colapso económico, la cultura cardassiana fue dominada por un régimen autoritario opresivo dominado por los militares, que iniciaron una campaña de expansión, conquista y explotación que duró décadas y que incluyó la ocupación de Bajor y un largo conflicto fronterizo con la Federación. Tras la Guerra del Dominio, y una vez derrocado el gobierno militar, la reconstrucción de Cardassia fue un proceso difícil, entre otras cosas por los antiguos sentimientos de resentimiento hacia los cardassianos.\n\nLos cardassianos son un pueblo creativo y dedicado, con una fuerte fascinación cultural por la intriga. Los cardassianos tienden a guardar secretos y a considerar la sospecha como sabiduría, y el desvelamiento de secretos se considera una habilidad valiosa.",
+    "Species.cardassian.traitDescription2e": "Los cardassianos son una especie pseudorreptiliana, acostumbrados a un entorno algo más cálido y húmedo de lo que es cómodo para los humanos, y tienden a encontrar incómoda la luz brillante. Su cultura valora la disciplina mental y la obediencia a jerarquías estrictas, y tienen fama de arrogantes, crueles y engreídos.",
+
+    "Species.denobulan.name": "Denobulano",
+    "Species.denobulan.aboutNames": "Los denobulanos suelen tener un solo nombre (un mismo denobulano puede pertenecer a diversas familias a la vez). Algunos pueden emplear el nombre de uno de sus cónyuges como apellido improvisado, llegado el caso. A menudo eso sirve para indicar alguna relación ante especies que tal vez no entiendan las familias denobulanas. Los nombres denobulanos tienden a ser breves y bruscos, especialmente los masculinos.",
+    "Species.denobulan.description": "Los denobulanos, que provienen del planeta Denobula, son un pueblo gregario y curioso que está aliado con la humanidad desde los años 2130. Aunque Denobula no fue uno de los fundadores de la Federación, los denobulanos se unieron poco después de su creación. Los denobulanos son un pueblo sociable, con rasgos faciales distintivos, que suelen vivir en lugares abigarrados y de intensa comunidad y cuyos extensos grupos familiares resultan vastos y complejos: un denobulano puede tener varias esposas, cada una de las cuales puede tener varios compañeros a su vez, y docenas de niños en total. Culturalmente, son intelectualmente curiosos, perceptivos y están interesados en una amplia gama de filosofías, aunque su naturaleza erudita y gregaria y sus grandes familias implican que relativamente pocos de los suyos se aventuran lejos de su planeta natal.",
+    "Species.denobulan.description2e": "Los denobulanos, que provienen del planeta Denobula, son un pueblo gregario y curioso que está aliado con la humanidad desde los años 2130. Aunque Denobula no fue uno de los fundadores de la Federación, los denobulanos se unieron poco después de su creación. Los denobulanos son un pueblo sociable, con rasgos faciales distintivos, que suelen vivir en lugares abigarrados y de intensa comunidad y cuyos extensos grupos familiares resultan vastos y complejos: un denobulano puede tener varias esposas, cada una de las cuales puede tener varios compañeros a su vez, y docenas de niños en total. Culturalmente, son intelectualmente curiosos, perceptivos y están interesados en una amplia gama de filosofías. Sus largas vidas les permiten dedicarse a una amplia gama de campos de estudio, lo que a menudo les otorga perspectivas inusuales sobre las diferentes filosofías y campos de especialización que han estudiado.\n\nLos Denobulanos disfrutan aprendiendo cosas nuevas, conociendo gente nueva, y se deleitan con el drama, la intriga y los cotilleos que surgen de un entorno social rico y complejo. Son extraordinariamente pacientes y tienen una visión a largo plazo de los cambios que se producen en la vida, pero no les gusta la soledad, e incluso una nave estelar o una base estelar muy ocupadas pueden parecer a veces un poco vacías para un denobulano.",
+    "Species.denobulan.exampleValue": "Seguridad en la cantidad",
+    "Species.denobulan.traitDescription": "Los denobulanos tienen un sistema inmunológico resistente pero son vulnerables a varias formas de intoxicación por radiación. Son escaladores natos que se arrastran por paredes empinadas como algunas formas de lagarto terrícola. Los debobulanos no necesitan dormir pero deben hibernar varios días al año y se desorientan si permanecen despiertos durante ese período.",
+    "Species.denobulan.traitDescription2e": "Los denobulanos tienen un sistema inmunológico resistente pero son vulnerables a varias formas de intoxicación por radiación. Son escaladores natos que se arrastran por paredes empinadas como algunas formas de lagarto terrícola. Los debobulanos no necesitan dormir pero deben hibernar varios días al año y se desorientan si permanecen despiertos durante ese período.",
+
+    "Species.efrosian.name": "Efrosiano",
+
+    "Species.ferengi.name": "Ferengi",
+    "Species.ferengi.aboutNames": "Los ferengis suelen tener un solo nombre, que suele ser de una o dos sílabas, aunque hay excepciones. Entre las culturas que tienen apellidos, los ferengis se refieren a sí mismos ocasionalmente como «hijo de...», «hija de...», «hijo de...», etc., pero como se espera que cada ferengi haga su propio camino en la vida, los apellidos son inusuales entre los ferengis.",
+    "Species.ferengi.description2e": "Los ferengis, una especie codiciosa nativa de Ferenginar, son seres poco imponentes, conocidos sobre todo como mercaderes y comerciantes. Su cultura promueve la adqui-sición de riqueza material y su sociedad es extremadamente capitalista: hasta las actividades más triviales conllevan el intercambio de una sustancia no replicable llamada latinio (un metal líquido a temperatura ambiente que se suele contener en «hojas», «fichas», «barras» y « lingotes» de oro). La sociedad ferengi es fuertemente patriarcal, y a las mujeres ferengis se les prohíbe tradicionalmente poseer propiedades o incluso llevar ropa (y los hombres ferengis suelen tener actitudes muy desagradables hacia las mujeres no ferengis), aunque estas actitudes empiezan a cambiar a finales del siglo XXIV.\n\nLos ferengis se enorgullecen de su capacidad para adquirir riqueza, aunque existen muchos enfoques diferentes al respecto. Durante siglos, la cultura ferengi ha estado dominada por las filosofías y lecciones de las Reglas de Adquisición, aunque éstas pueden interpretarse de diferentes maneras y aplicarse a la vida de un ferengi.",
+    "Species.ferengi.traitDescription2e": "La fisiología ferengi no se presta a la actividad física, y su cultura tampoco la valora, aunque tienen una gran resistencia a muchas enfermedades comunes. Los ferengi tienen un oído excepcionalmente fino y unas orejas muy sensibles, aunque eso también implica que los sonidos intensos (y la fuerza física aplicada a sus orejas) puede causarles un dolor incapacitante. Su estructura cerebral inusual hace que los telépatas no puedan leer las mentes de los ferengi. Culturalmente son codiciosos, ven la acumulación de riqueza como la mayor virtud y aunque eso les ha valido una reputación de astutos negociadores, también ha llevado a que se les vea como individuos propensos al engaño y la manipulación.",
+
+    "Species.gorn.name": "Gorn",
+
+    "Species.human.name": "Humano",
+    "Species.human.aboutNames": "Los nombres humanos varían ampliamente y, en lugar de hacer grandes generalizaciones, es mejor que los Jugadores busquen fuentes para sus nombres, teniendo en cuenta la vasta diversidad de lenguas, culturas y tradiciones que engloba la humanidad.",
+    "Species.human.description": "Los humanos, originarios del planeta Tierra del sistema solar, son una especie resistente, diversa y adaptable que pasó de estar conformada por naciones divididas y en guerra al borde de la aniquilación mutua a ser una sociedad unida y pacífica en menos de un siglo. También consiguió forjar alianzas entre antiguos enemigos menos de 100 años después de lograr su primer viaje interestelar. La tierra es un miembro fundador y esencial de la Federación Unida de Planetas y muchas de las instituciones de la Federación tienen su sede en la Tierra. Los humanos suelen manifestar una naturaleza dual (se rigen tanto por intensas emociones como por una prudente razón) y, aunque han dejado muy atrás su pasado divisivo y beligerante, su impulso y capacidad de agresión son causa de su éxito tanto como su \ncuriosidad y su mente analítica.",
+    "Species.human.description2e": "Los humanos, originarios del planeta Tierra del sistema solar, son una especie resistente, diversa y adaptable que pasó de estar conformada por naciones divididas y en guerra al borde de la aniquilación mutua a ser una sociedad unida y pacífica en menos de un siglo. También consiguió forjar alianzas entre antiguos enemigos menos de 100 años después de lograr su primer viaje interestelar. La tierra es un miembro fundador y esencial de la Federación Unida de Planetas y muchas de las instituciones de la Federación tienen su sede en la Tierra. Los humanos suelen manifestar una naturaleza dual (se rigen tanto por intensas emociones como por una prudente razón) y, aunque han dejado muy atrás su pasado divisivo y beligerante, su impulso y capacidad de agresión son causa de su éxito tanto como su curiosidad y su mente analítica.\n\nLos humanos tienden a basarse en dos conjuntos de valores culturales. Como miembro central y fundador de la Federación, las tradiciones y los ideales de la Federación (o incluso los de la Flota Estelar) se consideran a menudo sinónimos de \"cultura humana\" (aunque la Federación toma mucho de cada uno de sus miembros), hasta el punto de que nadie está completamente seguro de dónde acaba la Tierra y dónde empieza la Federación. Sin embargo, a la inversa, esto también puede llevar a que los Humanos encuentren valor en preservar las tradiciones y culturas de sus antepasados pre-warp.",
+    "Species.human.exampleValue": "La Llamada de la exploración",
+    "Species.human.traitDescription": "Los humanos son adaptables y resistentes, su resolución y su ambición suelen permitirles superar grandes adversidades y triunfar ante enormes dificultades. Sin embargo, los humanos también pueden resultar temerarios, testarudos, irracionales e impredecibles.",
+
+    "Species.jemHadar.name": "Jem'Hadar",
+
+    "Species.klingon.name": "Klingon",
+    "Species.klingon.description2e": "Los klingons son un pueblo orgulloso y marcial, nativo del planeta Qo'noS en el Cuadrante Beta. Su físico alto y fuerte, sus dientes afilados y la densa cresta distintiva que les recorre desde la frente, sobre la cabeza y por la columna vertebral, contribuyen a una apariencia que es sinónimo de destreza marcial y ferocidad. Duros y agresivos, los klingons combinan un sentimiento de orgullo y convicción personal con una vena fatalista, considerando preferible una muerte honorable a lo que ellos considerarían una vida vergonzosa o cobarde.\n\nLos klingons aceptan la vida y la muerte sin miedo. También son un pueblo con un gran sentido del honor, tanto personal como familiar, y no tardan en enfadarse cuando se les ataca; los mayores desaires pueden dar lugar a enemistades de sangre que duren generaciones.",
+    "Species.klingon.traitDescription2e": "La fisiología klingon es resistente, con un esqueleto reforzado y muchos órganos internos redundantes que les permiten resistir daños y numerosas toxinas que serían mortales para otras especies, aunque esto tiene el potencial de provocar complicaciones médicas. Son mucho más fuertes y resistentes que los humanos, aunque toleran peor el frío.",
+
+    "Species.orion.name": "Orion",
+    "Species.orion.description2e": "Los oriones, una especie con una reputación pintoresca, son objeto de rumores, especulaciones y fantasías, hasta el punto de que existen numerosos conceptos erróneos sobre su especie y su cultura. Esto parece ser, al menos en parte, intencionado. Los Oriones están acostumbrados a aprovechar al máximo cualquier oportunidad que se les presente, y la incertidumbre y el malentendido que les rodea es una ventaja considerable. La influencia de los comerciantes de Orión y del Sindicato de Orión se puede sentir en los Cuadrantes Alfa y Beta, a menudo de forma contraria a las leyes de otras culturas, y a menudo empleando agentes de otras especies.\n\nLa cultura de Orión parece estar dividida en función del género, y hay pruebas que sugieren que tienen una cultura matriarcal, con las mujeres desempeñando funciones de liderazgo, mientras que los hombres de Orión sirven más a menudo como músculo, trabajadores y operativos menores, aunque esto ha cambiado un poco a lo largo de los siglos. Esto parece ser debido a un rasgo de algunas hembras de Orión, que se ha observado que producen feromonas que pueden hacer que los Oriones masculinos (y los machos de algunas otras especies, incluidos los Humanos) sean obedientes. No se sabe hasta qué punto está extendido este rasgo.",
+    "Species.orion.traitDescription2e": "Los Oriones tienen una tolerancia medioambiental similar a la de los Humanos y están física y culturalmente bien acostumbrados a los viajes interestelares. La reputación de los Oriones como ladrones, piratas y comerciantes ilícitos puede hacer que otros desconfíen de ellos, pero también puede abrir puertas y crear oportunidades en partes más desagradables de la Galaxia.",
+
+    "Species.reman.name": "Remano",
+
+    "Species.romulan.name": "Romulano",
+    "Species.romulan.description": "Los romulanos son similares a los vulcanos pero no idénticos, puesto que vienen de antepasados comunes pero no adoptaron el estoicismo y la lógica de sus primos. En lugar de eso, los romulanos son un pueblo cruel e implacable, dado a la ira y muy visceral. Su cultura militarista parece destinar a sus peores miembros a fines útiles, aunque la paranoia y el interés personal motivan la política romulana tanto como la búsqueda del bien común. A veces se diría que lo único que mantiene unido al Imperio Estelar Romulano es el hecho de que desprecian a otras especies más que los unos a los otros. Los personajes romulanos tienen los siguientes modificadores:",
+    "Species.romulan.description2e": "\nUna rama divergente de la especie vulcana, los romulanos huyeron de su mundo natal original hace milenios. Estos vulcanos, _los que marcharon bajo las alas del Raptor_, se negaron a aceptar las enseñanzas de Surak, y por tanto no abrazaron la lógica ni el estoicismo, y con el tiempo sus naves llegarían a los mundos conocidos como Rómulo y Remo. Gran parte de lo que se sabe sobre los romulanos se ha reconstruido a partir de fuentes secundarias y terciarias, ya que los propios romulanos son reservados, rozando la paranoia, y no revelan ninguna información sobre sí mismos a menos que la consideren vital. De hecho, la Federación ni siquiera supo cómo eran los romulanos hasta un siglo después de la guerra Tierra-Romulanos.\n\nPara los romulanos, la confianza es algo que sólo debe depositarse en unos pocos, ya que la confianza mal depositada puede ser un arma mortal. Un romulano sólo confía en los miembros más cercanos de su familia, y pone cada vez más capas de secretismo, ofuscación y despiste a medida que las relaciones se distancian. Hay excepciones a esto, como la escrupulosamente cándida orden \"Qowat Milat\", pero la mayoría de los romulanos son muy reservados y desconfían de todo el mundo.",
+    "Species.romulan.traitDescription": "La fisiología romulana no es muy diferente de la vulcana, aunque una parte de la especie romulana cuenta con un ceño en forma de V que no se da en los vulcanos. La mayor diferencia es que los romulanos carecen de la intensiva disciplina mental común entre los vulcanos. Fisiológica y culturalmente, los romulanos valoran la astucia y la fuerza de voluntad, aparte de desconfiar de otras especies. Este sentimiento es mutuo, puesto que los romulanos tienen fama de ser manipuladores, engañosos y traicioneros.",
+    "Species.romulan.traitDescription2e": "La fisiología romulana no es muy diferente de la vulcana, aunque una parte de la especie romulana cuenta con un ceño en forma de V que no se da en los vulcanos. La mayor diferencia es que los romulanos carecen de la intensiva disciplina mental común entre los vulcanos. Fisiológica y culturalmente, los romulanos valoran la astucia y la fuerza de voluntad, aparte de desconfiar de otras especies. Este sentimiento es mutuo, puesto que los romulanos tienen fama de ser manipuladores, engañosos y traicioneros.",
+
+    "Species.suliban.name": "Suliban",
+
+    "Species.tellarite.name": "Tellarita",
+    "Species.tellarite.aboutNames": "Los nombres tellaritas manifiestan una gran diversidad pero tienden a componerse de ruidos broncos, incluso guturales. Sus nombres se componen de un nombre de pila y un apellido, aunque el apellido suele ser compuesto, lo que indica que es un patronímico (el nombre del padre), matronímico (el de la madre), toponímico (derivado de un nombre de lugar) o algo similar. En este aspecto, los prefijos funcionan de modo similar a “o’”, “Mc”, “von” y otros elementos similares en los nombres humanos.",
+    "Species.tellarite.description": "La robusta y hosca especie tellarita procede de Tellar Prime, un planeta templado del Cuadrante Alfa. La suya es una cultura caracterizada por la hosquedad y la tendencia a discutir, por ser gente testarudamente orgullosa, malhumorada y poco paciente. Sin embargo, esa es solo la imagen superficial: aunque los tellaritas son dados a discutir, se debe a su sentido de honestidad intelectual y riguroso escepticismo. Para un tellarita, ninguna idea, concepto o persona está por encima de pruebas y análisis y cualquier noción que no pueda superar su verificación no vale la pena. Los tellaritas disfrutan debatiendo y tienden a recibirse entre sí con críticas, quejas e incluso insultos. No pagar con la misma moneda está mal visto, puesto que representa un carácter débil y poca disposición a enfrentarse a los defectos y errores.",
+    "Species.tellarite.traitDescription": "Los tellaritas tienen un potente sentido del olfato y una alta tolerancia a muchas drogas, toxinas y estupefacientes comunes (los tellaritas no se emborrachan, solo se vuelven más pendencieros). También tienen una vista excelente y una percepción de la distancia, profundidad y volumen más agudas que las humanas.",
+
+    "Species.trill.name": "Trill",
+    "Species.trill.aboutNames": "Los nombres trill se componen de un nombre de pila y un apellido aunque, en el caso de un trill Unido, el apellido se sustituye por el nombre del simbionte.",
+    "Species.trill.description": "La especie trill, nativa del mundo homónimo, parece casi idéntica a los humanos salvo por las hileras de lunares que recorren los costados de sus cuerpos de la cabeza a los pies. Sin embargo, esta semejanza superficial oculta un diferencia considerable: los trill son capaces de unirse a un organismo conocido como simbionte, dando lugar a un ser diferente de las dos criaturas originales. Los simbiontes pueden vivir muchos siglos y se alojan en sucesivos anfitriones, transfiriendo los recuerdos y conocimientos de los anfitriones anteriores a los nuevos en cada nueva generación. Este hecho no es de dominio público salvo entre los propios trill, pero tampoco es un secreto: sencillamente es un tema del que no se habla mucho y el número de trill Unidos a simbiontes es relativamente pequeño. Los trill son parte de la Federación desde hace bastante más de un siglo y varios trill célebres han jugado un papel importante en la formación de la Federación. Los trill, como cultura, tienden a anteponer ante todo las metas intelectuales, puesto que el aprendizaje y la sabiduría son muy apreciados por los simbiontes que alojan.",
+    "Species.trill.description2e": "\nLos trill son un par de especies originarias del mundo del mismo nombre. Los trill que la mayoría de los forasteros conocen parecen casi idénticos a los humanos o los betazoides, salvo por una hilera de manchas irregulares que recorren los costados de sus cuerpos. La otra especie de trill son pequeños invertebrados que viven en cavernas subterráneas. Hay relativamente pocos de esta segunda especie, pero son extremadamente inteligentes y pueden vivir durante siglos.\n\nAunque no es un secreto, no se habla mucho de que una pequeña parte de los humanoides trill son capaces de unirse a los invertebrados, a los que se conoce como simbiontes, y en este vínculo -llamado Unión- se crea una persona gestalt, una combinación de las mentes, recuerdos y personalidades de ambas criaturas. Aunque un simbionte no puede ser extirpado sin matar a su anfitrión, a la muerte de éste, el simbionte pasará a un nuevo anfitrión, preservando así sus conocimientos y memoria a lo largo de generaciones.\n\nLa sociedad trill ha sido moldeada por la Unión, y la cultura trill tiende a adoptar una visión a largo plazo del desarrollo social y a buscar el desarrollo intelectual y filosófico por encima del conflicto interpersonal. Los trill son miembros firmes y dedicados de la Federación.",
+    "Species.trill.exampleValue": "Cuatro vidas de aventuras",
+    "Species.trill.traitDescription": "Los trill son especialmente resistentes a los parásitos, como efecto secundario de su capacidad para Unirse a los simbiontes. Los trill Unidos son totalmente inmunes a las infecciones parasitarias. Sin embargo, tienden a sufrir fuertes reacciones alérgicas a las picaduras de insecto y a otras formas de veneno, que pueden interferir en su neuroquímica, sobre todo si están Unidos. Como muchos detalles de la fisiología trill (especialmente los relacionados con su simbiosis) no son de conocimiento público, pueden darse complicaciones médicas.",
+    "Species.trill.traitDescription2e": "Los trill son especialmente resistentes a los parásitos, como efecto secundario de su capacidad para Unirse a los simbiontes. Los trill Unidos son totalmente inmunes a las infecciones parasitarias. Sin embargo, tienden a sufrir fuertes reacciones alérgicas a las picaduras de insecto y a otras formas de veneno, que pueden interferir en su neuroquímica, sobre todo si están Unidos. Como muchos detalles de la fisiología trill (especialmente los relacionados con su simbiosis) no son de conocimiento público, pueden darse complicaciones médicas.",
+
+    "Species.vulcan.name": "Vulcano",
+    "Species.vulcan.aboutNames": "A efectos prácticos, los vulcanos solo tienen un nombre (aunque sí tienen apellidos, no se habla de ellos con otras especies) y tienden a ser tradicionales en cuanto a su asignación. Los hombres vulcanos tienden (aunque no todos, ni de lejos) a tener nombres que empiezan por S, mientras que los de las mujeres a menudo empiezan por T. Sin embargo, no es algo generalizado.",
+    "Species.vulcan.description": "Los vulcanos son un pueblo estoico y racional. Aunque comúnmente se afirma que no tienen emociones, en realidad los vulcanos sienten de forma profunda e intensa... a su pesar. Su estoicismo se debe a una cultura de lógica y autodisciplina en que las emociones se analizan y diseccionan para arrebatarles su poder, de modo que no puedan desbordar el control del individuo. Los vulcanos abrazan la ciencia y la razón pero sus vidas no están totalmente dedicadas a la lógica: también tienen un lado profundamente filosófico en el que el arte y la música son tan vitales para su cultura como la lógica. Son un pueblo fuertemente reservado y muchos aspectos de su cultura (como los ritos de pon farr) no se comentan con gente de otras especies.",
+    "Species.vulcan.description2e": "\nLos vulcanos, la primera especie que contactó con los humanos, son personas estoicas y racionales. Se dice que no tienen emociones, pero en realidad las sienten profunda e intensamente, en su propio detrimento. Los antiguos vulcanos eran propensos a la ira asesina y a los ataques de paranoia, y casi se destruyeron a sí mismos hace milenios, antes de que Surak les enseñara la lógica y la purga de las emociones. Sus enseñanzas condujeron a la paz entre los vulcanos y al establecimiento de una cultura guiada por la razón.\n\nLos vulcanos abrazan la ciencia y la lógica, pero sus vidas no están puramente dedicadas a estas cosas: tienen un lado profundamente filosófico y espiritual, con el arte y la música tan vitales para su cultura como la lógica. También son un pueblo muy reservado, y muchos aspectos de su cultura se mantienen en secreto.",
+    "Species.vulcan.exampleValue": "El bienestar de la mayoría supera al bienestar de la minoría o de uno solo",
+    "Species.vulcan.traitDescription": "Al provenir de un mundo árido, duro y de alta gravedad, los vulcanos tienen una resistencia natural al calor extremo y a la deshidratación. Son extremadamente fuertes y tienen unos agudos sentidos del oído y el olfato. También poseen telepatía, aunque requiere formación manifestarla adecuadamente, y desarrollan desde la infancia la disciplina mental y el control de las emociones. Sin embargo, mantener este control requiere meditaciones regulares, y su naturaleza aucontrolada unida a su deseo de intimidad puede alejarles de los demás y hacer que la interacción con ellos resulte ocasionalmente incómoda.",
+    "Species.vulcan.traitDescription2e": "Los vulcanos tienen una alta tolerancia natural al calor extremo, son resistentes a la deshidratación y pueden proteger sus ojos de la luz cegadora con un par de párpados secundarios. Sus sentidos auditivo y olfativo son extremadamente agudos, y la gravedad de su mundo natal significa que un vulcano medio es tres veces más fuerte que un humano de tamaño y peso similares. Los vulcanos son telepáticos por naturaleza y, gracias a un exhaustivo entrenamiento desde la infancia, sus mentes pueden suprimir sus respuestas emocionales e incluso influir en los procesos biológicos, aunque para ello necesitan meditar con regularidad.",
 
     "Species.mixedSpecies.text": "{{primarySpecies}} / {{secondarySpecies}}",
 
     "Species.formerSpecies.text": "{{primarySpecies}} (originally {{otherSpecies}})",
+
+    "SpeciesAbility.andorian": "Intenso",
+
+    "SpeciesAbility.andorian.description": "Cuando tienes éxito en una tarea en la que has comprado uno o más d20 sumando Amenaza, generas 1 de Inercia adicional por cada d20 comprado. La Inercia adicional no puede guardarse.",
+
+    "SpeciesAbility.aenar": "Telepático",
+
+    "SpeciesAbility.aenar.description": "Los Aenar pueden sentir las mentes de otros seres vivos cercanos y leer los pensamientos de los demás, aunque tienen tabúes estrictos sobre la lectura de la mente sin permiso. .",
+
+    "SpeciesAbility.bajoran": "La voluntad de los Profetas",
+
+    "SpeciesAbility.bajoran.description": "Puedes encontrar fuerza en los Profetas incluso cuando la situación es calamitosa: una vez por aventura, cuando el director de juego gasta 3 o más Amenazas a la vez, ganas 1 Determinación.",
+
+    "SpeciesAbility.betazoid": "Telepático",
+
+    "SpeciesAbility.betazoid.description": "\nLos betazoides pueden sentir la mente de los seres vivos de su entorno y leer los pensamientos y emociones de los demás. Cada betazoide posee **Telepatía** o **Empatía**. Los personajes parcialmente betazoides suelen tener Empatía en lugar de Telepatía.",
+
+    "SpeciesAbility.cardassian": "Sospechas saludables",
+
+    "SpeciesAbility.cardassian.description": "Puedes añadir 1 Amenaza cuando interactúes con un PNJ para preguntar al director de juego si ese PNJ está mintiendo sobre algo. El director de juego debe responder Sí o No, y esta respuesta debe ser precisa, pero el director de juego no tiene que especificar sobre qué está mintiendo el PNJ.",
+
+    "SpeciesAbility.denobulan": "Amplitud de estudios",
+
+    "SpeciesAbility.denobulan.description": "Puedes seleccionar dos especializaciones adicionales.",
+
+    "SpeciesAbility.ferengi": "La Gran Continuidad Material",
+
+    "SpeciesAbility.ferengi.description": "Una vez por sesión, al obtener equipo adicional, puedes reducir el **Coste de Oportunidad** de un objeto en 1, hasta un mínimo de 0.",
+
+    "SpeciesAbility.human": "La fe del corazón",
+
+    "SpeciesAbility.human.description": "Cuando usas uno de tus valores para gastar o ganar Determinación, también puedes añadir 1 de Inercia a la reserva del grupo.",
+
+    "SpeciesAbility.klingon": "Brak'lul",
+
+    "SpeciesAbility.klingon.description": "Ganas 1 Protección que se acumula con los beneficios de cualquier armadura que lleves. Además, cuando otro personaje intente _Primeros auxilios_ para curarte, puede repetir la tirada de un d20.",
+
+    "SpeciesAbility.orion": "Nunca al pie de la letra",
+
+    "SpeciesAbility.orion.description": "Una vez por escena, puedes añadir 1 Amenaza para hacer una pregunta al director de juego sobre la situación, como si hubieras gastado Inercia para _Obtener Información_.",
+
+    "SpeciesAbility.romulan": "Paranoia",
+
+    "SpeciesAbility.romulan.description": "Cuando comienza una escena de acción, si el director de juego desea que un adversario lleve a\ncabo el primer Turno, deberá gastar 1 Amenaza más de lo normal.",
+
+    "SpeciesAbility.tellarite": "Recio",
+
+    "SpeciesAbility.tellarite.description": "Ganas +1 Protección sólo contra _Ataques no letales_. Además, cuando sufras una complicación que represente un impedimento físico o estar aturdido, atontado o desorientado, puedes sufrir 1 Estrés para ignorar esa complicación (y eliminar cualquier rasgo asociado).",
+
+    "SpeciesAbility.trill": "Paciente",
+
+    "SpeciesAbility.trill.description": "Cuando tienes éxito en una tarea en la que has comprado uno o más d20 gastando Inercia, generas 1 Inercia adicional por cada d20 comprado. La Inercia adicional no puede guardarse.",
+
+    "SpeciesAbility.vulcan": "Disciplina mental",
+
+    "SpeciesAbility.vulcan.description": "Aunque los Vulcanos tienen algunas capacidades psíquicas, requieren entrenamiento para usarlas eficazmente (ver el talento **Fusión Mental**). Además, tu Estrés máximo se basa en tu Control y no en tu Forma Física, y puedes sufrir 2 de Estrés para evitar sufrir cualquier rasgo que represente un estado emocional. Sin embargo, si quedas Fatigado, aumentas en 1 la Potencia de cualquier rasgo relacionado con la emoción.",
 
     "StarSystem.common.coordinates": "Coordenadas",
     "StarSystem.common.innerZone": "Zona Interna",
@@ -1514,9 +1680,280 @@
 
     "Talent.ablativeArmor": "Armadura Ablativa",
 
+    "Talent.ablativeArmor.description": "El blindaje del casco de la nave tiene una capa ablativa adicional que se desintegra lentamente a temperaturas extremas, como las causadas por las armas de energía y las explosiones de los torpedos, disipando la energía y protegiendo la nave. Este blindaje se sustituye periódicamente. La Resistencia de la nave aumenta en 2.",
+    "Talent.ablativeArmor.description2e": "El blindaje del casco de la nave tiene una capa ablativa adicional que se desintegra lentamente bajo temperaturas extremas. Aumenta la Resistencia de la nave en 2.",
+
+    "Talent.acuteSenses": "Sentidos agudos",
+
+    "Talent.acuteSenses.description2e": "Los Aenar han perfeccionado sus sentidos hasta el punto de ser capaces de responder a estímulos tan bien, o incluso mejor, que los que poseen la capacidad de ver. Cuando intentes detectar algo que esté oculto a los sentidos convencionales o que normalmente sería difícil de percibir, puedes repetir la tirada 1d20.",
+
+    "Talent.adaptableEnergyWeapons": "Armas de energía adaptables",
+
+    "Talent.adaptableEnergyWeapons.description2e": "\nCuando selecciones este talento, elige una de las armas de energía de tu nave y elige un tipo de arma de energía diferente (el emisor permanece inalterado). Cuando realices un ataque con esa arma de energía, puedes utilizar el tipo de arma de energía alternativo para el ataque, pero el rango de complicación de ese ataque aumenta en 1.\n\nPuedes seleccionar este talento varias veces, eligiendo un tipo de arma de energía diferente cada vez.",
+
+    "Talent.advancedEmergencyCrewHolograms": "Personal de emergencia holográfico avanzado",
+
+    "Talent.advancedEmergencyCrewHolograms.description2e": "La nave tiene varios personajes holográficos de apoyo equivalentes a la mitad de la puntuación de Ordenadores de la nave (redondeando hacia arriba); su apariencia y personalidad se determinan cuando se crea la nave, aunque los personajes de apoyo tienen un rasgo de especie de Holograma. Pueden activarse o desactivarse como una acción menor, y no requieren ningún Apoyo de Tripulación para aparecer. No pueden operar fuera de la nave, y no mejoran cuando se introducen en aventuras posteriores. Sin embargo, si se utiliza cualquier avance de personaje para mejorar estos personajes de apoyo, todos los personajes de apoyo otorgados por este talento reciben el avance.",
+
+    "Talent.advancedSickbay": "Enfermería avanzada",
+
+    "Talent.advancedSickbay.soloDescription": "La enfermería está bien equipada y es más grande de lo normal para una nave de este tamaño.",
+    "Talent.advancedSickbay.description2e": "La enfermería de la nave está extremadamente bien equipada y es mayor de lo habitual para una nave de su talla. La nave recibe la Ventaja Enfermería Avanzada, que se aplica a todas las Tareas relacionadas con medicina y biología que se realicen en la propia enfermería. Esta Ventaja se pierde si el Sistema de Ordenadores queda Incapacitado. Además, la nave recibe un Apoyo de Tripulación adicional, que sólo puede utilizarse para introducir personajes de apoyo del departamento Médico.",
+
+    "Talent.advancedResearchFacilities": "Instalaciones de investigación avanzadas",
+
+    "Talent.advancedResearchFacilities.description": "La nave está equipada con más laboratorios e instalaciones de investigación a largo plazo de los que son habituales. Esto permite a la tripulación estudiar fenómenos durante un tiempo prolongado y generar una gran cantidad de información útil. Cuando un personaje a bordo de la nave emprenda una Tarea para realizar investigaciones y cuente con la ayuda de Ordenadores + Ciencia de la nave, el personaje recibe un punto de Inercia adicional que debe emplearse en el Uso de Inercia Obtener Información.",
+    "Talent.advancedResearchFacilities.description2e": "La nave está equipada con más laboratorios e instalaciones de investigación a largo plazo de los que son habituales. Esto permite a la tripulación estudiar fenómenos durante un tiempo prolongado y generar una gran cantidad de información útil. Cuando un personaje a bordo de la nave emprenda una Tarea para realizar investigaciones y cuente con la ayuda de Ordenadores + Ciencia de la nave, el personaje puede hacer dos preguntas adicionales, como si hubiera gastado Inercia para Obtener información.",
+
+    "Talent.advancedSensorSuites": "Módulos de sensores avanzados",
+
+    "Talent.advancedSensorSuites.description": "Los sensores de la nave se cuentan entre los más sofisticados y avanzados de entre los disponibles en la flota. Salvo que los Sensores hayan sufrido una o más Brechas, cuando un personaje emprenda una Tarea con la ayuda de los Sensores de la nave, puede reducir la Dificultad de la Tarea en uno, hasta un mínimo de 0.",
+    "Talent.advancedSensorSuites.description2e": "Siempre que un personaje realice una tirada de tarea de Ayudar con los Sensores de la nave, podrá tirar 2d20 por Ayudar en lugar de sólo uno (si la Energía de Reserva se redirige a los Sensores, uno de estos dados se pone a 1). Este talento no puede usarse si la nave sufre una o más brechas en los Sensores.",
+    "Talent.advancedSensorSuites.soloDescription": "Los sensores de la nave se cuentan entre los más sofisticados y avanzados de entre los disponibles en la flota.",
+
+    "Talent.advancedShields": "Escudos avanzados",
+
+    "Talent.advancedShields.description": "Los escudos de la nave son de última generación y usan avances que las demás culturas aún no han aprendido a compensar o que, sencillamente, ofrecen mayor protección por el mismo consumo de energía. Los escudos máximos de la nave aumentan en 5.",
+    "Talent.advancedShields.description2e": "Los escudos de la nave son de última generación y usan avances que las demás culturas aún no han aprendido a compensar o que, sencillamente, ofrecen mayor protección por el mismo consumo de energía. Los escudos máximos de la nave aumentan en 5.",
+
+    "Talent.advancedTeamDynamics": "Dinámicas de equipo avanzadas",
+
+    "Talent.advancedTeamDynamics.description2e": "La primera vez que introduces un personaje secundario en una misión, ese personaje secundario puede tomar una opción adicional para mejorar el personaje secundario.",
+
+    "Talent.advancedTransporters": "Transportadores avanzados",
+
+    "Talent.advancedTransporters.description2e": "Cuando utilices los transportadores, si has redirigido Energía de Reserva a los Sensores de la nave, selecciona un rasgo en juego que esté afectando negativamente a la tarea del transportador. Si el rasgo aumenta la Dificultad de la tarea, ignora los efectos de ese rasgo. Si, por el contrario, el rasgo hace imposible la tarea del transportador, cambia ese efecto para que aumente la Dificultad en 1.",
+
+    "Talent.advisor": "Consejero",
+
+    "Talent.advisor.description": "Siempre que ayudes a otro personaje usando tu Disciplina de Mando, el personaje ayudado puede volver a tirar un d20.",
+    "Talent.advisor.description2e": "Siempre que ayudes a otro personaje usando tu Disciplina de Mando, el personaje ayudado puede volver a tirar un d20.",
+
+    "Talent.aLittleMorePower": "Más energía",
+
+    "Talent.aLittleMorePower.description": "Siempre que tengas éxito en una Tarea de Ingeniería a bordo de tu propia nave, puedes gastar una Inercia para recuperar un Poder gastado.",
+    "Talent.aLittleMorePower.description2e": "Siempre que tengas éxito en una Tarea de Ingeniería a bordo de tu propia nave, puedes gastar una Inercia para recuperar un Poder gastado.",
+
+    "Talent.ambushTactics": "Tácticas de emboscada",
+
+    "Talent.ambushTactics.description2e": "Cuando tienes éxito en un Ataque contra un enemigo que no es consciente de tu presencia, o que sufre un rasgo o complicación que representa una debilidad o vulnerabilidad, aumenta la Gravedad del Ataque en 2.",
+
+    "Talent.annularConfinementJacketing": "Revestimiento de confinamiento anular",
+
+    "Talent.annularConfinementJacketing.description2e": "La nave puede realizar un ataque con sus armas de energía mientras está en warp; sin embargo, el alcance de estos ataques se limita a Corto alcance, y la Dificultad del ataque se incrementa en 1.",
+
+    "Talent.appliedForce": "Fuerza aplicada",
+
+    "Talent.appliedForce.description2e": "\nCuando realizas un Ataque cuerpo a cuerpo, puedes utilizar Forma física en lugar de Osadía. Además, sumas 1 a la Gravedad de tus Ataques Desarmados.",
+
+    "Talent.appliedResearch": "Investigación aplicada",
+
+    "Talent.appliedResearch.description2e": "Una vez por escena, cuando intentes una tarea relacionada con la información que recibiste anteriormente en esa escena de una pregunta de Obtener Información, el primer dado adicional que compres es gratis.",
+
+    "Talent.askingTheRightQuestions": "Formular las preguntas adecuadas",
+
+    "Talent.askingTheRightQuestions.description": "Cuando intentas una tarea relacionada con la información que has recibido de las preguntas de Obtener Información en la escena actual, puedes volver a tirar 1d20.",
+
+    "Talent.attackRun": "Ataque de pasada",
+
+    "Talent.attackRun.description2e": "Siempre que tengas éxito en la acción mayor Patrón de Ataque, los Ataques enemigos contra ti no reducen su Dificultad debido a esa acción.",
+
+    "Talent.automatedDefenses": "Defensas automatizadas",
+
+    "Talent.automatedDefenses.description2e": "\nAl final de un asalto, si no se han realizado ataques con las armas de la nave, ésta puede realizar un ataque con un arma de energía utilizando sus Armas + Seguridad (sin ayudas) contra un objetivo que se encuentre a Corto Alcance. La Inercia puede usarse y generarse de forma normal para este ataque.",
+
+    "Talent.automatedReturn": "Retorno automático",
+
+    "Talent.automatedReturn.description2e": "El ordenador de la nave está programado para reconocer una base estelar, una colonia o cualquier otro lugar como su base de operaciones. Las lanzaderas a bordo tienen la misma programación y reconocen la nave como su base de operaciones. Si el sistema informático de la nave pasa 10 días sin recibir órdenes de la tripulación, pilotará automáticamente la nave de vuelta a la base de origen a impulso máximo.",
+
+    "Talent.backupEpsConduits": "Conductos EPS de reserva",
+
+    "Talent.backupEpsConduits.description2e": "Cuando la nave está sacudida y pierde Energía de Reserva, tira 1d20; si sacas igual o menos que la Estructura de tu nave, recuperas la Energía de Reserva.",
+
+    "Talent.backUpPlans": "Planes de emergencia",
+
+    "Talent.backUpPlans.description2e": "Cada vez que tú o un aliado falléis una tarea (siempre que estéis presentes en la escena), podéis añadir 1 punto a la reserva de Inercia del grupo.",
+
+    "Talent.boldCommand": "Audaz: Mando",
+
+    "Talent.boldCommand.description": "Cuando emprendas una Tarea con Mando y adquieras 1 o más d20 aumentando la Amenaza, puedes repetir un único d20.",
+
+    "Talent.boldConn": "Audaz: Pilotaje",
+
+    "Talent.boldConn.description": "Cuando emprendas una Tarea con Pilotaje y adquieras 1 o más d20 aumentando la Amenaza, puedes repetir un único d20.",
+
+    "Talent.boldEngineering": "Audaz: Ingeniería",
+
+    "Talent.boldEngineering.description": "Cuando emprendas una Tarea con Ingeniería y adquieras 1 o más d20 aumentando la Amenaza, puedes repetir un único d20.",
+
+    "Talent.boldMedicine": "Audaz: Medicina",
+
+    "Talent.boldMedicine.description": "Cuando emprendas una Tarea con Medicina y adquieras 1 o más d20 aumentando la Amenaza, puedes repetir un único d20.",
+
+    "Talent.boldScience": "Audaz: Ciencia",
+
+    "Talent.boldScience.description": "Cuando emprendas una Tarea con Ciencia y adquieras 1 o más d20 aumentando la Amenaza, puedes repetir un único d20.",
+
+    "Talent.boldSecurity": "Audaz: Seguridad",
+
+    "Talent.boldSecurity.description": "Cuando emprendas una Tarea con Seguridad y adquieras 1 o más d20 aumentando la Amenaza, puedes repetir un único d20.",
+
+    "Talent.calmAndLogical": "Tranquilidad y lógica",
+
+    "Talent.calmAndLogical.description2e": "Cuando obtienes un rasgo que representa un estado de ánimo o emocional, puedes suprimir ese rasgo (ignorando su efecto) durante la duración de una única tarea o un único turno en combate sufriendo 1 de Estrés.",
+
+    "Talent.cautiousCommand": "Prudente: Mando",
+
+    "Talent.cautiousCommand.description": "Cuando emprendas una Tarea con Mando y adquieras 1 o más d20 gastando Inercia, puedes repetir un único d20. ",
+
+    "Talent.cautiousConn": "Prudente: Pilotaje",
+
+    "Talent.cautiousConn.description": "Cuando emprendas una Tarea con Pilotaje y adquieras 1 o más d20 gastando Inercia, puedes repetir un único d20. ",
+
+    "Talent.cautiousEngineering": "Prudente: Ingeniería",
+
+    "Talent.cautiousEngineering.description": "Cuando emprendas una Tarea con Ingeniería y adquieras 1 o más d20 gastando Inercia, puedes repetir un único d20. ",
+
+    "Talent.cautiousMedicine": "Prudente: Medicina",
+
+    "Talent.cautiousMedicine.description": "Cuando emprendas una Tarea con Medicina y adquieras 1 o más d20 gastando Inercia, puedes repetir un único d20. ",
+
+    "Talent.cautiousScience": "Prudente: Ciencia",
+
+    "Talent.cautiousScience.description": "Cuando emprendas una Tarea con Ciencia y adquieras 1 o más d20 gastando Inercia, puedes repetir un único d20. ",
+
+    "Talent.cautiousSecurity": "Prudente: Seguridad",
+
+    "Talent.cautiousSecurity.description": "Cuando emprendas una Tarea con Seguridad y adquieras 1 o más d20 gastando Inercia, puedes repetir un único d20. ",
+
+    "Talent.closeKnitCrew": "Tripulación estrechamente unida",
+
+    "Talent.closeKnitCrew.description2e": "Cuando comienza una escena, si hay menos puntos de Inercia en la reserva del grupo que personajes en la escena que tengan este talento, añade inmediatamente 1 Inercia a la reserva del grupo.",
+
+    "Talent.collaborationCommand": "Colaboración: Mando",
+
+    "Talent.collaborationCommand.description": "Siempre que un aliado emprenda una Tarea usando Mando, puedes gastar un punto de Inercia (Inmediato) para permitirle usar tu valor en la Disciplina en cuestión y una de tus Especialidades.",
+
+    "Talent.collaborationConn": "Colaboración: Pilotaje",
+
+    "Talent.collaborationConn.description": "Siempre que un aliado emprenda una Tarea usando Pilotaje, puedes gastar un punto de Inercia (Inmediato) para permitirle usar tu valor en la Disciplina en cuestión y una de tus Especialidades.",
+
+    "Talent.collaborationEngineering": "Colaboración: Ingeniería",
+
+    "Talent.collaborationEngineering.description": "Siempre que un aliado emprenda una Tarea usando Ingeniería, puedes gastar un punto de Inercia (Inmediato) para permitirle usar tu valor en la Disciplina en cuestión y una de tus Especialidades.",
+
+    "Talent.collaborationMedicine": "Colaboración: Medicina",
+
+    "Talent.collaborationMedicine.description": "Siempre que un aliado emprenda una Tarea usando Medicina, puedes gastar un punto de Inercia (Inmediato) para permitirle usar tu valor en la Disciplina en cuestión y una de tus Especialidades.",
+
+    "Talent.collaborationScience": "Colaboración: Ciencia",
+
+    "Talent.collaborationScience.description": "Siempre que un aliado emprenda una Tarea usando Ciencia, puedes gastar un punto de Inercia (Inmediato) para permitirle usar tu valor en la Disciplina en cuestión y una de tus Especialidades.",
+
+    "Talent.collaborationSecurity": "Colaboración: Seguridad",
+
+    "Talent.collaborationSecurity.description": "Siempre que un aliado emprenda una Tarea usando Seguridad, puedes gastar un punto de Inercia (Inmediato) para permitirle usar tu valor en la Disciplina en cuestión y una de tus Especialidades.",
+
+    "Talent.constantlyWatching": "Siempre alerta",
+
+    "Talent.constantlyWatching.description": "Cuando emprendas una Tarea para detectar peligros o enemigos ocultos, reduce la Dificultad en uno.",
+    "Talent.constantlyWatching.description2e": "Al comienzo de una escena de acción, el director de juego debe gastar 2 Amenaza adicionales para que un PNJ lleve a\ncabo el primer Turno. También puedes volver a tirar 1d20 en cualquier tarea en la que se intente localizar a un enemigo o peligro oculto.",
+
+    "Talent.dauntless": "Intrépido",
+
+    "Talent.dauntless.description": "Cuando emprendas una Tarea para resistir intimidación o amenazas, puedes añadir 1d20 adicional a tu reserva de dados.",
+    "Talent.dauntless.description2e": "Siempre que otro personaje intente intimidarte o amenazarte, puedes sufrir 2 de Estrés para ignorar su intento.",
+
+    "Talent.extraEffort": "Esfuerzo adicional",
+
+    "Talent.extraEffort.description2e": "Cuando intentas una tarea, puedes reducir la Dificultad de la tarea en 1, hasta un mínimo de 0. Sin embargo, una vez completada la tarea, sufres inmediatamente un Estrés igual a la Dificultad original de la tarea.",
+
+    "Talent.gutFeeling": "Intuición",
+
+    "Talent.gutFeeling.description2e": "Cuando el director de juego gasta Amenaza para introducir refuerzos o provocar una Reversión, debe gastar 2 Amenazas adicionales para hacerlo. Se trata de 2 Amenazas adicionales en total, no por refuerzo.",
+
+    "Talent.indefatigable": "Inagotable",
+
+    "Talent.indefatigable.description2e": "Cuando fallas una tarea, y vuelves a intentar esa tarea durante la misma escena, reduces la Dificultad del segundo intento (y de cualquier intento posterior si sigues fallando) en 1.",
+
+    "Talent.methodicalPlanning": "Planificación metódica",
+
+    "Talent.methodicalPlanning.description2e": "Cuando un aliado intenta una tarea que se beneficia de un rasgo creado por ti que representa tu plan o estrategia, puedes Ayudar en una tarea de ese aliado aunque no estés presente. En combate, esta ayuda no requiere que utilices tu tarea para ayudar a ese aliado.",
+
+    "Talent.noHesitation": "Sin vacilaciones",
+
+    "Talent.noHesitation.description2e": "Al comienzo de cualquier ronda en una escena de acción, puedes sumar 1 Amenaza para que lleve a cabo el primer Turno, independientemente de quién hubiera actuado primero en caso contrario.",
+
+    "Talent.noPainNoGain": "Sin esfuerzo no hay recompensa",
+
+    "Talent.noPainNoGain.description2e": "Cuando fallas una tarea (pero no una tarea opuesta) en la que has utilizado tu Osadía, siempre puedes elegir tener éxito con un coste.",
+
+    "Talent.personalEffects": "Efectos personales",
+
+    "Talent.personalEffects.description": "Posees algún objeto o aparato significativo y poco común que no forma parte del equipo estándar de la Flota Estelar pero que, en todo caso, es útil para las misiones. Puedes elegir un objeto con un Coste de Oportunidad de 2 o dos objetos con un Coste de Oportunidad de 1 cada uno. Ningún objeto puede tener un Coste de Intensificación superior a 1.",
+    "Talent.personalEffects.description2e": "Posees algún objeto o aparato significativo y poco común que no forma parte del equipo estándar de la Flota Estelar pero que, en todo caso, es útil para las misiones. Puedes escoger este Talento más de una vez, consiguiendo un objeto diferente cada vez.",
+
+    "Talent.reassuring": "Reconfortante",
+
+    "Talent.reassuring.description2e": "Cuando tienes éxito en una tarea utilizando tu Presencia, puedes gastar Inercia para tranquilizar a tus aliados, siempre que puedan oírte. Puedes gastar 1 de Inercia (repetible) para que un aliado que pueda verte y oírte recupere 1 de Estrés. Ese aliado no puede recuperar más de 3 de Estrés con un solo uso de este talento.",
+
+    "Talent.secondWind": "Tomar aliento",
+
+    "Talent.secondWind.description2e": "Puedes gastar Determinación al comienzo de tu turno para eliminar el estado de Derrotado y recuperar hasta la mitad de tu Estrés máximo. Se siguen aplicando los requisitos normales para gastar un punto de Determinación.",
+
+    "Talent.selfReliant": "Autosuficiente",
+
+    "Talent.selfReliant.description2e": "Siempre que tengas éxito en una tarea en la que no hayas comprado dados adicionales gastando Inercia o añadiendo a Amenaza, generas una Inercia adicional igual a la Dificultad de la tarea. La Inercia adicional no puede guardarse.",
+
+    "Talent.studious": "Aplicado",
+
+    "Talent.studious.description": "Cuando gastes uno o más puntos de Inercia para Obtener Información, puedes realizar una pregunta adicional (en total, no por cada punto de Inercia así gastado).",
+    "Talent.studious.description2e": "Cuando gastes uno o más puntos de Inercia para Obtener Información, puedes realizar una pregunta adicional (en total, no por cada punto de Inercia así gastado).",
+
+    "Talent.technicalExpertise": "Pericia técnica",
+
+    "Talent.technicalExpertise.description": "Cuando emprendas una Tarea con la ayuda de los ordenadores o sensores de la nave, puedes repetir 1d20 (que puede ser el dado de la nave).",
+    "Talent.technicalExpertise.description2e": "Cuando emprendas una Tarea con la ayuda de los ordenadores o sensores de la nave, puedes repetir 1d20 (que puede ser el dado de la nave).",
+
+    "Talent.tough": "Duro",
+
+    "Talent.tough.description": "Cuando Evites una Herida, el coste se reduce en 1 (hasta un mínimo de 1).",
+    "Talent.tough.description2e": "Tu Estrés máximo aumenta en 2.",
+
+    "Talent.untappedPotential": "Potencial latente",
+
+    "Talent.untappedPotential.description": "Eres inexperto pero tienes talento y un brillante futuro en la Flota Estelar. No puedes tener ningún Atributo por encima de 11 ni ninguna Disciplina por encima de 4 mientras tengas este Talento (y puede que tengas que ajustar tus Atributos y Disciplinas en consecuencia al final de la creación de personaje). Cuando superes una Tarea en la que hayas adquirido uno o más dados mediante Inercia o Amenaza, puedes tirar 1[D] . Recibes una cantidad de Inercia igual a la tirada del [D] y sumas un punto de Amenaza si obtienes un Efecto. No puedes acceder a un rango superior al de teniente júnior mientras poseas este Talento.",
+    "Talent.untappedPotential.description2e": "Selecciona uno de tus atributos cuando recibas este talento. Eres inexperto, pero con talento y un futuro brillante. No puedes tener ni aumentar ningún atributo por encima de 11, ni ningún departamento por encima de 4 mientras tengas este talento (y puede que tengas que ajustar los atributos y departamentos en consecuencia al final de la creación del personaje).\n\nSiempre que tengas éxito en una tarea para la que hayas comprado uno o más dados adicionales (por cualquier medio), tira un d20 después de la tirada. Si obtienes un resultado igual o inferior al atributo elegido, obtienes 1 Inercia adicional; si obtienes un resultado superior, añade 1 Amenaza en su lugar.  No puedes acceder a un rango superior al de teniente júnior mientras poseas este Talento, ni un rango de alistado superior al de Contramaestre.",
+
+    "Talent.veteran": "Veterano",
+
+    "Talent.veteran.description": "Tienes experiencia, sabiduría y accedes a tus reservas interiores de fuerza de voluntad y determinación de forma más comedida y concienzuda. Cuando gastas un punto de Determinación, tiras 1[D] . Si obtienes un Efecto, recuperas inmediatamente el punto de Determinación gastado. Tienes un rango mínimo de teniente comandante.",
+    "Talent.veteran.description2e": "Tienes experiencia, sabiduría y accedes a tus reservas interiores de fuerza de voluntad y determinación de forma más comedida y concienzuda. Cuando gastas un punto de Determinación, tiras un d20. Si obtienes un resultado igual o inferior a tu valor de Control, recuperas inmediatamente ese punto de Determinación. Si eres de la Flota Estelar o militar, tienes un rango de al menos Teniente Comandante, o si eres alistado un rango de al menos Contramaestre.",
+
+    "Talent.voiceOfAuthority": "Voz de la autoridad",
+
+    "Talent.voiceOfAuthority.description2e": "Cuando Ayudas a alguien, y usas tu Presencia para hacerlo, puedes añadir 2 de Amenaza para considerar tu dado de asistencia como si hubiera salido un 1 en lugar de tirarlo.",
+
+    "Talent.wellInformed": "Bien informado",
+
+    "Talent.wellInformed.description2e": "Tienes contactos por doquier y escuchas noticias y rumores de todas partes. Al comienzo de una escena, puedes añadir 1 Amenaza para hacer al director de juego dos preguntas sobre la situación o el lugar, como si hubieras gastado Inercia en el gasto Obtener Información. Las respuestas que recibas serán conocimientos que hayas obtenido de tus contactos y de las noticias y rumores que hayas oído.",
+
+    "Track.starfleet.command": "División de mando",
+
+    "Track.starfleet.command.description": "La División de Mando es para aquellos cadetes que aspiran a comandar algún día su propia nave. Se centra en el liderazgo y las aptitudes interpersonales, la diplomacia, la toma de decisiones en situaciones de crisis, la comprensión del protocolo, del procedimiento y las operaciones navales (lo que incluye el control de vuelo). Muchos cadetes de la División de Mando empiezan sus carreras como oficiales de control de vuelo y timoneles, donde se puede poner a prueba su formación a menor escala mientras obtienen la experiencia necesaria para adquirir mayor autoridad y res-ponsabilidad. Como costumbre, los cadetes de la División de Mando se enfrentan en su último año al infame examen del Kobayashi Maru.",
+
+    "Track.starfleet.operations": "División de operaciones",
+
+    "Track.starfleet.operations.description": "La División de Operaciones es práctica, funcional y se ocupa de muchos de los aspectos materiales de la misión de la Flota Estelar. Los cadetes de la División de Operaciones, que se divide a grandes rasgos en los departamentos de Ingeniería y Seguridad, se distinguen por su sentido pragmático, ya sea en relación a aspectos técnicos o tácticos.",
+
+    "Track.starfleet.sciences": "División de ciencias",
+
+    "Track.starfleet.sciences.description": "La División de Ciencias, un tanto aislada de las otras Divisiones, es principalmente académica. La Academia de la Flota Estelar genera muchos científicos consumados. Incluido en la División de Ciencias pero separada mediante un temario diferenciado se encuentra el Departamento Médico de la Flota Estelar, que forma a los doctores, enfermeros y con-sejeros que servirán a bordo de naves de la Flota Estelar e instalaciones de toda la Federación.",
+
     "UniformEra.bynar": "Bynar",
     "UniformEra.cardassian": "Militar Cardassiano",
     "UniformEra.civilian": "Civil",
+    "UniformEra.discovery23": "Discovery (siglo 23)",
     "UniformEra.dominionWar": "Guerra del Dominio",
     "UniformEra.ferengi": "Ferengi",
     "UniformEra.enterprise": "Enterprise",
@@ -1533,6 +1970,28 @@
     "UniformEra.voyagerDS9": "Voyager/DS9",
 
     "Upbringing.starfleet.militaryOrExploration.name": "Flota Estelar",
+    "Upbringing.starfleet.militaryOrExploration.description": "Puede que la familia del personaje tenga una gran tradición de servicio en la Flota Estelar y que al menos un miembro de la familia de cada generación sirva de ese modo a la Federación. Quizá ambos progenitores del personaje fueran oficiales de la Flota Estelar y se conocieran estando de servicio. En ambos casos, los años de formación del personaje reciben la influencia de la Flota Estelar.",
+    "Upbringing.starfleet.militaryOrExploration.focusDescription": "La Especialidad del personaje debería estar relacionada con sus lazos con la Flota Estelar y cubrir habilidades adquiridas durante sus años de formación. ",
+
+    "Upbringing.starfleet.businessOrTrade.name": "Negocios o comercio",
+    "Upbringing.starfleet.businessOrTrade.description": "Puede que la familia del personaje tenga contactos en incontables mundos, que supervise y dirija un gran proyecto empresarial. Puede que hayan sido comerciantes o que trabajasen en transportes interplanetarios. En cualquier caso, el personaje ha crecido encontrándose con toda clase de gente, incluyendo de fuera de la Federación, y su punto de vista sobre la vida se ha adaptado en consecuencia.",
+    "Upbringing.starfleet.businessOrTrade.focusDescription": "La Especialidad del personaje debería estar relacionada con la naturaleza del negocio familiar y cubrir habilidades útiles para el comercio o que ayuden de otro modo al negocio familiar. ",
+
+    "Upbringing.starfleet.agricultureOrRural.name": "Agricultura o rural",
+    "Upbringing.starfleet.agricultureOrRural.description": "El personaje creció rodeado de naturaleza más que de personas, en una comunidad rural, en la frontera o en algún otro lugar alejado del bullicio de las ciudades. Puede que estuviese muy implicado en la agricultura y cultivase comida genuina que complementase los alimentos sintéticos o replicados.",
+    "Upbringing.starfleet.agricultureOrRural.focusDescription": "La Especialidad del personaje debería estar relacionada con el estilo de vida rural y las habilidades desarrolladas en el campo. ",
+
+    "Upbringing.starfleet.scienceAndTechnology.name": "Ciencia y tecnología",
+    "Upbringing.starfleet.scienceAndTechnology.description": "La casa del personaje estaba repleta de toda la ciencia posible y la tecnología punta era algo con lo que estaban familiarizados en su hogar. Quizá al personaje lo criaran científicos o ingenieros o tuviera mentores y maestros que le animasen con su talento en los campos técnicos.",
+    "Upbringing.starfleet.scienceAndTechnology.focusDescription": "La Especialidad del personaje debería estar relacionada con sus campos de estudio e investigación preferidos. ",
+
+    "Upbringing.starfleet.artisticAndCreative.name": "Arte y creatividad",
+    "Upbringing.starfleet.artisticAndCreative.description": "La vida del personaje estuvo llena de toda clase de arte y creatividad y, sin importar las actividades que prefiriera el personaje, ha recibido influencia de grandes obras de muchas culturas y se le ha dado la oportunidad de expresarse.",
+    "Upbringing.starfleet.artisticAndCreative.focusDescription": "La Especialidad del personaje debería estar relacionada con la manera preferida por este de aplicar sus aptitudes.",
+
+    "Upbringing.starfleet.diplomacyAndPolitics.name": "Diplomacía y política",
+    "Upbringing.starfleet.diplomacyAndPolitics.description": "El personaje lleva expuesto a las complejidades del pensamiento político y las sutilezas de la diplomacia desde que era joven, quizá porque un miembro de su familia se implicase en tales campos.",
+    "Upbringing.starfleet.diplomacyAndPolitics.focusDescription": "La Especialidad del personaje debería estar relacionada con la manera preferida por este para aplicar sus aptitudes.",
 
     "Value.environment.text": "Este Valor debería reflejar el entorno y cultura en el que se crio el personaje. Es una buena oportunidad para plantearse cómo ve el personaje su propia cultura y su implicación (en caso de tenerla) con las filosofías y tradiciones de su pueblo.",
 
@@ -1568,7 +2027,7 @@
 
     "Weapon.personal.batleth.name": "Bat'leth",
 
-    "Weapon.personal.dktahg.name": "Dague d’k tahg",
+    "Weapon.personal.dktahg.name": "Daga d’k tahg",
 
     "Weapon.personal.ushaantor.name": "Ushaan-tor",
 
@@ -1583,6 +2042,8 @@
     "Weapon.quality.accurate.name": "Preciso",
 
     "Weapon.quality.area.name": "Área",
+
+    "Weapon.quality.areaOrSpread.name": "Área o Dispersión",
 
     "Weapon.quality.charge.name": "Carga",
 
@@ -1606,19 +2067,21 @@
 
     "Weapon.quality.jamming.name": "Interferencias",
 
-    "Weapon.quality.knockdown.name": "Derribar",
+    "Weapon.quality.knockdown.name": "Derribo",
 
     "Weapon.quality.nonLethal.name": "No Letal",
 
-    "Weapon.quality.piercing.name": "Punzante {{rank}}",
+    "Weapon.quality.piercing.name": "Perforante {{rank}}",
 
     "Weapon.quality.persistentX.name": "Persistente X",
 
     "Weapon.quality.slowing.name": "Ralentizante",
 
+    "Weapon.quality.spread.name": "Dispersión",
+
     "Weapon.quality.versatile.name": "Versátil {{rank}}",
 
-    "Weapon.quality.vicious.name": "Atroz {{rank}}",
+    "Weapon.quality.vicious.name": "Cruel {{rank}}",
 
     "World.attribute.atmosphereType": "Tipo de Atmósfera",
     "World.attribute.atmosphericDensity": "Densidad Atmosférica",

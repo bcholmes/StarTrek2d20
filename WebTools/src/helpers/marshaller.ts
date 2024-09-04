@@ -473,8 +473,8 @@ class Marshaller {
             if (starship.missionProfileStep.system != null) {
                 temp["system"] = System[starship.missionProfileStep.system];
             }
-            if (starship.profileTalent) {
-                temp['talent'] = { "name": starship.profileTalent.name }
+            if (starship.missionProfileStep?.talent) {
+                temp['talent'] = { "name": starship.missionProfileStep.talent.name }
             }
             sheet['missionProfile'] = temp;
         }
@@ -586,7 +586,6 @@ class Marshaller {
 
     decodeStarship(s: string) {
         let json = this.decode(s);
-        console.log(json);
         let result = new Starship();
         if (json.version) {
             result.version = json.version;
@@ -651,7 +650,7 @@ class Marshaller {
             if (json.missionProfile.talent) {
                 let talent = TalentsHelper.getTalent(json.missionProfile.talent.name);
                 if (talent) {
-                    result.profileTalent = talent;
+                    result.missionProfileStep.talent = talent;
                 }
             }
         }

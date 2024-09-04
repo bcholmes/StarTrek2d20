@@ -131,11 +131,11 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
             s.missionProfileStep = new MissionProfileStep(action.payload.missionProfile);
             if (original?.type?.id === s.missionProfileStep?.type?.id) {
                 s.missionProfileStep.system = original?.system;
+                s.missionProfileStep.talent = original?.talent;
             }
             if (action.payload.system != null) {
                 s.missionProfileStep.system = action.payload.system;
             }
-            s.profileTalent = undefined;
             return {
                 ...state,
                 starship: s
@@ -143,7 +143,9 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
         }
         case SET_STARSHIP_MISSION_PROFILE_TALENT: {
             let s = state.starship.copy();
-            s.profileTalent = action.payload.talent;
+            if (s.missionProfileStep) {
+                s.missionProfileStep.talent = action.payload.talent;
+            }
             return {
                 ...state,
                 starship: s
