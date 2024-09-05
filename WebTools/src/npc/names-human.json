@@ -12709,6 +12709,14 @@
         ]
     },
     {
+        "name": "Åsa",
+        "gender": "Female",
+        "type": "FirstName",
+        "tags": [
+            "Scandinavian"
+        ]
+    },
+    {
         "name": "Asadi",
         "gender": "Male",
         "type": "FirstName",
@@ -37901,6 +37909,14 @@
         "type": "FirstName",
         "tags": [
             "German"
+        ]
+    },
+    {
+        "name": "Einar",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Scandinavian"
         ]
     },
     {
@@ -79446,6 +79462,22 @@
         ]
     },
     {
+        "name": "Malte",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Scandinavian"
+        ]
+    },
+    {
+        "name": "Ove",
+        "gender": "Male",
+        "type": "FirstName",
+        "tags": [
+            "Scandinavian"
+        ]
+    },
+    {
         "name": "Martens",
         "gender": "Unisex",
         "type": "LastName",
@@ -89906,6 +89938,14 @@
         ]
     },
     {
+        "name": "Niska",
+        "gender": "Female",
+        "type": "FirstName",
+        "tags": [
+            "Scandinavian"
+        ]
+    },
+    {
         "name": "Niskam",
         "gender": "Male",
         "type": "FirstName",
@@ -96786,7 +96826,8 @@
         "gender": "Female",
         "type": "FirstName",
         "tags": [
-            "Spanish"
+            "Spanish",
+            "Scandinavian"
         ]
     },
     {

@@ -54,7 +54,9 @@ const MissionProfileTalentSelectionPage: React.FC<IMissionProfileTalentSelection
 
     const nextPage = () => {
         if (starship.missionProfileStep?.talent == null) {
-            Dialog.show("Please select a talent before proceeding.");
+            Dialog.show(t('MissionProfileTalentSelection.error.talent'));
+        } else if (starship.version > 1 && starship.missionProfileStep?.system == null) {
+            Dialog.show(t("MissionProfileTalentSelection.error.system"));
         } else {
             let step = workflow.peekNextStep();
             store.dispatch(nextStarshipWorkflowStep());
