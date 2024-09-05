@@ -1136,7 +1136,12 @@ export class Character extends Construct implements IWeaponDiceProvider {
                 return result;
             }
         } else if (this.stereotype === Stereotype.SupportingCharacter) {
-            return this.supportingStep?.focuses?.filter(f => f.trim().length);
+            let result = [];
+            if (this.speciesStep?.abilityOptions?.focuses?.length) {
+                result.push(...this.speciesStep.abilityOptions.focuses);
+            }
+            result.push(...this.supportingStep?.focuses?.filter(f => f.trim().length));
+            return result;
         } else {
             return this._focuses;
         }

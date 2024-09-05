@@ -13,7 +13,7 @@ const SpeciesAbilityBlockView: React.FC<ISpeciesAbilityPageProperties> = ({chara
     const renderSpeciesAbility = () => {
         return (<>
             <Header level={2} className="mt-4">{t('Construct.other.speciesAbility')}</Header>
-            <div className="text-white view-border-bottom pt-2">
+            <div className="text-white view-border-bottom pt-2 pb-4">
                 <ReactMarkdown className="markdown-sm">
                     {"**" + character.speciesStep.ability.name + ":** " +
                     character.speciesStep.ability.description}

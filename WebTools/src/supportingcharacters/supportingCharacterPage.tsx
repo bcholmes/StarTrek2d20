@@ -28,6 +28,7 @@ import D20IconButton from '../solo/component/d20IconButton';
 import { CheckBox } from '../components/checkBox';
 import ReactMarkdown from 'react-markdown';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
+import { SpeciesAbilityView } from '../components/speciesAbilityView';
 
 
 const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
@@ -188,6 +189,15 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         }
     }
 
+    const renderSpeciesAbility = () => {
+        const speciesAbility = character?.speciesStep?.ability;
+        if (speciesAbility) {
+            return (<SpeciesAbilityView character={character} showInstruction={false} skill={character?.supportingStep?.disciplines[0]}/>)
+        } else {
+            return undefined;
+        }
+    }
+
     let ageDiv = hasSource(Source.PlayersGuide) && character?.age?.isChild
         ? (<div className="mt-4">
                 <div className="page-text-aligned">
@@ -203,7 +213,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         : null;
 
 
-    let supervisoryDiv = character && character?.type !== CharacterType.Child
+    let supervisoryDiv = character && character?.version > 1 && character?.type !== CharacterType.Child
         ? (<div className="mt-4">
                 <div>
                     <CheckBox text={t('Construct.other.supervisory')}
@@ -292,6 +302,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                     {renderValues()}
                 </div>
                 <div className="col-12 col-lg-6 mt-4 mb-5">
+                    {renderSpeciesAbility()}
                     <Header level={2}>{t('Construct.other.focuses')}</Header>
                     <p>
                         {t('SupportingCharacter.focusInstruction')}

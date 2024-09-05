@@ -354,6 +354,9 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                     temp.age = AgeHelper.getAllChildAges()[0];
                 }
             }
+            if (temp.type === CharacterType.Child && temp.supportingStep) {
+                temp.supportingStep.supervisory = false;
+            }
             return {
                 ...state,
                 currentCharacter: temp,
