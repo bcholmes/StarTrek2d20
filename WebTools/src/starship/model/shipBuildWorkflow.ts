@@ -41,6 +41,7 @@ export class ShipBuildWorkflow {
             new ShipBuildWorkflowStep("Mission Profile", PageIdentity.MissionProfileSelection),
             new ShipBuildWorkflowStep("Talent Selection", PageIdentity.StarshipTalentSelection),
             new ShipBuildWorkflowStep("Refits", PageIdentity.StarshipRefits),
+            new ShipBuildWorkflowStep("Service Record", PageIdentity.StarshipServiceRecord),
             new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)], 1);
     }
 

@@ -10,6 +10,12 @@ export enum ServiceRecord {
     SurvivorOfX
 }
 
+export const allServiceRecords = (): ServiceRecord[] => {
+    return Object.keys(ServiceRecord).filter((item) => {
+        return !isNaN(Number(item));
+    }).map(item => Number(item));
+}
+
 export class ServiceRecordModel {
     type: ServiceRecord;
     specialRule: string;
@@ -38,7 +44,8 @@ export class ServiceRecordList {
         new ServiceRecordModel(ServiceRecord.AgingRelic, "Larger Crew"),
         new ServiceRecordModel(ServiceRecord.DependableWorkhorse, "Reliable"),
         new ServiceRecordModel(ServiceRecord.Legendary, "Prestigious Posting"),
-        new ServiceRecordModel(ServiceRecord.HopeShip, "Experimental Vessel"),
+        new ServiceRecordModel(ServiceRecord.HopeShip, "Mission of Mercy"),
+        new ServiceRecordModel(ServiceRecord.Prototype, "Experimental Vessel"),
         new ServiceRecordModel(ServiceRecord.SurvivorOfX, "Ready for Battle"),
     ]
 
@@ -49,5 +56,9 @@ export class ServiceRecordList {
         return ServiceRecordList._instance;
     }
 
+    getByType(type: ServiceRecord) {
+        let result = this.records.filter(s => s.type === type);
+        return result.length > 0 ? result[0] : undefined;
+    }
 
 }

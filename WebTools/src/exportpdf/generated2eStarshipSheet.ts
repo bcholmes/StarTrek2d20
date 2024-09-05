@@ -344,7 +344,8 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         });
                     }
 
-                    result = { column: column, bottomOfTalents: new XYLocation(paragraph.column.start.x, paragraph.bottom.y) }
+                    let currentColumn = paragraph.endColumn;
+                    result = { column: currentColumn, bottomOfTalents: new XYLocation(currentColumn.start.x, paragraph.bottom.y) }
 
                     paragraph = paragraph.nextParagraph();
                 }

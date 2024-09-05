@@ -3,7 +3,7 @@ import pako from 'pako';
 import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
-import { MissionProfileStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
+import { MissionProfileStep, ServiceRecordStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
 import AgeHelper from './age';
 import { Attribute, AttributesHelper } from './attributes';
 import { Career } from './careerEnum';
@@ -33,6 +33,7 @@ import { Asset, AssetStat } from '../asset/asset';
 import { AssetType } from '../asset/assetType';
 import { AssetStatType, allAssetStatTypes } from '../asset/assetStat';
 import { SpeciesAbilityList } from './speciesAbility';
+import { allServiceRecords, ServiceRecord, ServiceRecordList } from '../starship/model/serviceRecord';
 
 class Marshaller {
 
@@ -483,6 +484,11 @@ class Marshaller {
                 "name": MissionPod[starship.missionPodModel.id]
             }
         }
+        if (starship.serviceRecordStep) {
+            sheet["serviceRecord"] = {
+                "type": ServiceRecord[starship.serviceRecordStep.type.type]
+            }
+        }
         if (starship.refits != null) {
             starship.refits.forEach(s => sheet.refits.push(System[s]));
         }
@@ -656,6 +662,14 @@ class Marshaller {
         }
         if (json.missionPod) {
             result.missionPodModel = MissionPodHelper.instance().getMissionPodByName(json.missionPod.name);
+        }
+        if (json.serviceRecord) {
+            let types = allServiceRecords().filter(t => ServiceRecord[t] === json.serviceRecord.type);
+            if (types.length === 1) {
+                const serviceRecord = ServiceRecordList.instance.getByType(types[0]);
+                result.serviceRecordStep = new ServiceRecordStep(serviceRecord);
+                result.serviceRecordStep.specialRule = TalentsHelper.getTalent(serviceRecord.specialRule);
+            }
         }
         if (json.traits) {
             result.traits = json.traits.join(", ");

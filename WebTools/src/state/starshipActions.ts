@@ -8,6 +8,7 @@ import { SpaceframeModel } from "../helpers/spaceframeModel";
 import { System } from "../helpers/systems";
 import { TalentModel, TalentViewModel } from "../helpers/talents";
 import { Weapon } from "../helpers/weapons";
+import { ServiceRecordModel } from "../starship/model/serviceRecord";
 import { ShipBuildWorkflow } from "../starship/model/shipBuildWorkflow";
 
 export const CREATE_NEW_STARSHIP = "CREATE_NEW_STARSHIP";
@@ -39,6 +40,7 @@ export const REMOVE_STARSHIP_TALENT_SELECTION = "REMOVE_STARSHIP_TALENT_SELECTIO
 export const REMOVE_ALL_STARSHIP_TALENT_SELECTION = "REMOVE_ALL_STARSHIP_TALENT_SELECTION";
 export const DELETE_STARSHIP_REFIT = "DELETE_STARSHIP_REFIT";
 export const SET_STARSHIP_SERVICE_YEAR = "SET_STARSHIP_SERVICE_YEAR";
+export const SET_STARSHIP_SERVICE_RECORD = "SET_STARSHIP_SERVICE_RECORD";
 
 export function createStarship(starship: Starship) {
     let payload = { starship: starship }
@@ -120,6 +122,15 @@ export function setStarshipSpaceframe(spaceframe: SpaceframeModel) {
        payload: payload
     }
 }
+
+export function setStarshipServiceRecord(serviceRecord: ServiceRecordModel, talent: TalentModel) {
+    let payload = { serviceRecord: serviceRecord, talent: talent };
+    return {
+       type: SET_STARSHIP_SERVICE_RECORD,
+       payload: payload
+    }
+}
+
 
 export function setStarshipMissionProfile(missionProfile: MissionProfileModel, system?: System) {
     let payload = { missionProfile: missionProfile, system: system };

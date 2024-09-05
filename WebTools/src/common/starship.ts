@@ -426,6 +426,10 @@ export class Starship extends Construct implements IWeaponDiceProvider {
             this.addTalent(new TalentSelection(TalentsHelper.getTalent(this.missionProfileStep?.talent.name)), talents);
         }
 
+        if (this.serviceRecordStep?.specialRule) {
+            this.addTalent(new TalentSelection(this.serviceRecordStep?.specialRule), talents);
+        }
+
         this.additionalTalents.forEach(t => {
             this.addTalent(new TalentSelection(TalentsHelper.getTalent(t.name)), talents);
         });

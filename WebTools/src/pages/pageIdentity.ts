@@ -45,6 +45,7 @@ export enum PageIdentity {
     SpaceframeOption,
     SpaceframeSelection,
     StarshipRefits,
+    StarshipServiceRecord,
     StarshipToolSelection,
     StarshipTypeSelection,
     StarshipTalentSelection,
