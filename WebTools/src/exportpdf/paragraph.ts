@@ -116,7 +116,7 @@ export class Paragraph {
         return this.fontLibrary.fontByType(FontType.Symbol);
     }
 
-    get startColumn() {
+    get startColumn(): Column {
         if (this.lines?.length) {
             let firstLine = this.lines[0];
             return Paragraph.unindentedColumn(firstLine.column, this.indentAmount);
@@ -125,7 +125,7 @@ export class Paragraph {
         }
     }
 
-    get endColumn() {
+    get endColumn(): Column {
         if (this.lines?.length) {
             let lastLine = this.lines[this.lines.length - 1];
             return Paragraph.unindentedColumn(lastLine.column, this.indentAmount);
@@ -174,7 +174,7 @@ export class Paragraph {
             column.nextColumn ? Paragraph.indentedColumn(column.nextColumn, indentAmount) : undefined)
     }
 
-    private static unindentedColumn(column: Column, indentAmount: number) {
+    private static unindentedColumn(column: Column, indentAmount: number): Column {
         if (indentAmount) {
             return new Column(column.start.x - indentAmount, column.start.y, column.height, column.width + indentAmount,
                 column.nextColumn ? Paragraph.unindentedColumn(column.nextColumn, indentAmount) : undefined)

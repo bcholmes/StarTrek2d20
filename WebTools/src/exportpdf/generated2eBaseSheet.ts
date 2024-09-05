@@ -17,6 +17,7 @@ import { XYLocation } from "../common/xyLocation";
 import { FontLibrary, FontType } from "./fontLibrary";
 import { FontOptions } from "./fontOptions";
 import { WeaponDescriber } from "./weaponDescriber";
+import { bullet2EWriter } from "./bullet2eWriter";
 
 export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
@@ -183,8 +184,6 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
     writeAttacks(page: PDFPage, construct: Construct, column: Column) {
 
-        let indentedColumn = new Column(column.start.x + 15, column.start.y, column.height, column.width - 15);
-
         let bold = new FontOptions(9, FontType.Bold);
         let standard = new FontOptions(9);
         let paragraph = null;
@@ -192,23 +191,19 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
         construct.determineWeapons().forEach(w => {
             const text = new WeaponDescriber(construct.version, false).describeFully(w, construct);
-            paragraph = paragraph == null ? new Paragraph(page, indentedColumn, this.fonts) : paragraph.nextParagraph(0);
-            paragraph.append(w.description + ": ", bold);
-            paragraph.append(text, standard);
-            paragraph.write();
+            paragraph = paragraph == null ? new Paragraph(page, column, this.fonts) : paragraph.nextParagraph(0);
+            paragraph?.indent(15);
+            paragraph?.append(w.description + ": ", bold);
+            paragraph?.append(text, standard);
+            paragraph?.write();
 
-            if (paragraph.lines.length) {
-                let location = column.untranslateLocation(page, paragraph.lines[0].location);
-                page.moveTo(column.start.x, page.getHeight() - (location.y + 3));
-                page.drawSvgPath(BaseNonForm2eSheet.bulletPath, {
-                    color: BaseNonForm2eSheet.tealColour.asPdfRbg(),
-                    borderWidth: 0
-                });
+            if (paragraph?.lines?.length) {
+                bullet2EWriter(page, paragraph, BaseNonForm2eSheet.tealColour);
             }
 
-            bottom = paragraph.bottom;
+            bottom = paragraph?.bottom;
         });
 
-        return new XYLocation(column.start.x, bottom.y);
+        return bottom ? new XYLocation(column.start.x, bottom.y) : null;
     }
 }

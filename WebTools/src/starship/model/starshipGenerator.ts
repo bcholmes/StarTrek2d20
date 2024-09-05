@@ -1,5 +1,6 @@
 import { CharacterType } from "../../common/characterType";
-import { MissionProfileStep, Starship } from "../../common/starship";
+import { D20 } from "../../common/die";
+import { MissionProfileStep, ServiceRecordStep, Starship } from "../../common/starship";
 import RegistryNumber from "../../components/registryNumberGenerator";
 import { Era } from "../../helpers/eras";
 import { MissionPodHelper } from "../../helpers/missionPods";
@@ -7,7 +8,9 @@ import { MissionProfileHelper } from "../../helpers/missionProfiles";
 import { SpaceframeHelper } from "../../helpers/spaceframes";
 import { allSystems } from "../../helpers/systems";
 import { TalentsHelper } from "../../helpers/talents";
+import { isSecondEdition } from "../../state/contextFunctions";
 import { RandomStarshipCharacterType } from "./randomStarshipCharacterTypes";
+import { ServiceRecord, ServiceRecordList } from "./serviceRecord";
 import { StarshipRandomNameTable } from "./starshipNameTable";
 
 export interface IStarshipConfiguration {
@@ -38,7 +41,7 @@ const determinePrefix = (starship: Starship) => {
 
 export const starshipGenerator = (config: IStarshipConfiguration) => {
 
-    let result = Starship.createStandardStarship(config.era, convertStarshipType(config.type));
+    let result = Starship.createStandardStarship(config.era, convertStarshipType(config.type), isSecondEdition() ? 2 : 1);
     result.serviceYear = config.campaignYear;
     const frames = SpaceframeHelper.instance().getSpaceframes(result, false)
         .filter(s => !s.isCivilian && !s.isSmallCraft);
@@ -76,6 +79,17 @@ export const starshipGenerator = (config: IStarshipConfiguration) => {
         if (talents?.length) {
             let viewModel = talents[Math.floor(Math.random() * talents.length)];
             result.additionalTalents.push(viewModel);
+        }
+    }
+
+    if (result.version > 1) {
+        if (D20.roll() > 12) {
+
+            const records = ServiceRecordList.instance.records;
+            let record = records[Math.floor(Math.random() * records.length)];
+
+            result.serviceRecordStep = new ServiceRecordStep(record);
+            result.serviceRecordStep.specialRule = TalentsHelper.getTalent(record.specialRule);
         }
     }
 

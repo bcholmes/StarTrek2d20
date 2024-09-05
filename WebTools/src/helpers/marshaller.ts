@@ -83,7 +83,11 @@ class Marshaller {
             sheet["supporting"] = {
                 "focuses": [...character.supportingStep.focuses.filter(f => f.trim().length)],
                 "attributes": [...character.supportingStep.attributes.map(a => Attribute[a])],
-                "disciplines": [...character.supportingStep.disciplines.map(d => Skill[d])]
+                "disciplines": [...character.supportingStep.disciplines.map(d => Skill[d])],
+                "supervisory": character.supportingStep.supervisory
+            }
+            if (character.supportingStep.value?.length) {
+                sheet["supporting"]["value"] = character.supportingStep.value;
             }
         }
 
@@ -1136,6 +1140,12 @@ class Marshaller {
             }
             if (json.supporting.disciplines) {
                 result.supportingStep.disciplines = [...json.supporting.disciplines.map(d => SkillsHelper.findSkill(d))];
+            }
+            if (json.supporting.value?.length) {
+                result.supportingStep.value = json.supporting.value;
+            }
+            if (json.supporting.supervisory) {
+                result.supportingStep.supervisory = json.supporting.supervistory === true;
             }
         }
 

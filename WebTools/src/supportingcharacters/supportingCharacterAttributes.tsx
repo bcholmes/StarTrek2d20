@@ -44,19 +44,19 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
         ? SpeciesHelper.getSpeciesByType(character?.speciesStep?.species)
         : undefined;
 
-    const selectValue = (index: Attribute) => {
+    const selectAttributeValue = (index: Attribute) => {
         if (index > -1) {
             if (selectedAttribute === undefined) {
                 setSelectedAttribute(index);
             } else {
-                swapValues(selectedAttribute, index);
+                swapAttributeValues(selectedAttribute, index);
             }
         } else {
             setSelectedAttribute(undefined);
         }
     }
 
-    const swapValues = (from: Attribute, to: Attribute) => {
+    const swapAttributeValues = (from: Attribute, to: Attribute) => {
         let attributeList = [...character.supportingStep?.attributes];
         let newList = attributeList.map(d => {
             if (d === from) {
@@ -86,7 +86,10 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
 
     const attributes = AttributesHelper.getAllAttributes().map((a, i) => {
         const index = character?.supportingStep?.attributes.indexOf(a);
-        const val = character.age.attributes[index];
+        let val = character.age.attributes[index];
+        if (character.supportingStep?.supervisory) {
+            val = [10, 10, 9, 9, 8, 8][index];
+        }
 
         if (character?.speciesStep?.species === Species.Custom || speciesModel?.attributes?.length > 3) {
             const isChecked = character?.speciesStep?.attributes?.indexOf(a) >= 0;
@@ -97,7 +100,7 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
                         <Value
                             index={a}
                             value={val}
-                            onSelect={(index) => selectValue(index) }
+                            onSelect={(index) => selectAttributeValue(index) }
                             isSelected={selectedAttribute === a} />
                     </td>
                     <td>
@@ -107,8 +110,8 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
                             isChecked={isChecked }
                             onChanged={(_) => toggleSpeciesAttribute(a) }/>
                     </td>
-                    <td>{isChecked ? "+1" : "-"}</td>
-                    <td>{val + (isChecked ? 1 : 0) }</td>
+                    <td className='text-center'>{isChecked ? "+1" : "-"}</td>
+                    <td className='text-center'>{val + (isChecked ? 1 : 0) }</td>
                 </tr>
             );
         } else if (speciesModel?.attributes?.length === 3) { // most species
@@ -120,11 +123,11 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
                         <Value
                             index={a}
                             value={val}
-                            onSelect={(index) => selectValue(index) }
+                            onSelect={(index) => selectAttributeValue(index) }
                             isSelected={selectedAttribute === a} />
                     </td>
-                    <td>{speciesHasAttribute ? "+1" : "-"}</td>
-                    <td>{val + (speciesHasAttribute ? 1 : 0) }</td>
+                    <td className='text-center'>{speciesHasAttribute ? "+1" : "-"}</td>
+                    <td className='text-center'>{val + (speciesHasAttribute ? 1 : 0) }</td>
                 </tr>
             );
         } else { // Ktarians have two attributes pre-defined, and can choose from Secondary Attributes as a third attribute
@@ -148,12 +151,12 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
                     <Value
                         index={a}
                         value={val}
-                        onSelect={(index) => selectValue(index) }
+                        onSelect={(index) => selectAttributeValue(index) }
                         isSelected={selectedAttribute === a} />
                 </td>
                 {checkBox}
-                <td>{speciesHasAttribute || isChecked ? "+1" : "-"}</td>
-                <td>{val + (speciesHasAttribute || isChecked ? 1 : 0) }</td>
+                <td className='text-center'>{speciesHasAttribute || isChecked ? "+1" : "-"}</td>
+                <td className='text-center'>{val + (speciesHasAttribute || isChecked ? 1 : 0) }</td>
             </tr>);
         }
     });
@@ -169,8 +172,8 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
                     <td>{t('Construct.other.attribute')}</td>
                     <td>{t('SupportingCharacter.numericalValue')}</td>
                     {checkValue}
-                    <td>{t('SupportingCharacter.speciesBonus')}</td>
-                    <td>{t('Common.text.total')}</td>
+                    <td className='text-center'>{t('SupportingCharacter.speciesBonus')}</td>
+                    <td className='text-center'>{t('Common.text.total')}</td>
                 </tr>
             </thead>
             <tbody>

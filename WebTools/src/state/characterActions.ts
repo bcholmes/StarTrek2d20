@@ -48,6 +48,7 @@ export const ADD_CHARACTER_TALENT_FOCUS = "ADD_CHARACTER_TALENT_FOCUS";
 export const ADD_CHARACTER_TALENT_VALUE = "ADD_CHARACTER_TALENT_VALUE";
 export const SET_SUPPORTING_CHARACTER_DISCIPLINES = "SET_SUPPORTING_CHARACTER_DISCIPLINES";
 export const SET_SUPPORTING_CHARACTER_ATTRIBUTES = "SET_SUPPORTING_CHARACTER_ATTRIBUTES";
+export const SET_SUPPORTING_CHARACTER_SUPERVISORY = "SET_SUPPORTING_CHARACTER_SUPERVISORY";
 export const ADD_CHARACTER_SPECIES_ABILITY_FOCUS = "ADD_CHARACTER_SPECIES_ABILITY_FOCUS";
 
 export enum StepContext {
@@ -99,6 +100,14 @@ export function setCharacterSpecies(species: Species, attributes: Attribute[] = 
         originalSpecies: originalSpecies, customSpeciesName: customSpeciesName };
     return {
        type: SET_CHARACTER_SPECIES,
+       payload: payload
+    }
+}
+
+export function setSupportingCharacterSupervisorty(supervisory: boolean) {
+    let payload = { supervisory: supervisory };
+    return {
+       type: SET_SUPPORTING_CHARACTER_SUPERVISORY,
        payload: payload
     }
 }

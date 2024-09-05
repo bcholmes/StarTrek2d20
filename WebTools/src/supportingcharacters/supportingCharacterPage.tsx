@@ -21,10 +21,13 @@ import { useTranslation } from 'react-i18next';
 import { ICharacterPageProperties } from '../common/iCharacterPageProperties';
 import { connect } from 'react-redux';
 import { characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
-import { StepContext, setCharacter, setCharacterAge, setCharacterAssignment, setCharacterFocus, setCharacterName, setCharacterPronouns, setCharacterRank, setCharacterSpecies, setCharacterType } from '../state/characterActions';
+import { StepContext, setCharacter, setCharacterAge, setCharacterAssignment, setCharacterFocus, setCharacterName, setCharacterPronouns, setCharacterRank, setCharacterSpecies, setCharacterType, setCharacterValue, setSupportingCharacterSupervisorty } from '../state/characterActions';
 import { localizedFocus } from '../components/focusHelper';
 import { FocusRandomTableWithHints } from '../solo/table/focusRandomTable';
 import D20IconButton from '../solo/component/d20IconButton';
+import { CheckBox } from '../components/checkBox';
+import ReactMarkdown from 'react-markdown';
+import { ValueRandomTable } from '../solo/table/valueRandomTable';
 
 
 const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
@@ -127,6 +130,17 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         }
     }
 
+    const selectRandomValue = () => {
+        let done = false;
+        while (!done) {
+            let value = ValueRandomTable(character.speciesStep?.species, character.supportingStep?.disciplines[0]);
+            if (character.values.indexOf(value) < 0) {
+                done = true;
+                store.dispatch(setCharacterValue(value, StepContext.FinishingTouches));
+            }
+        }
+    }
+
     useEffect(() => {
         let character = Character.createSupportingCharacter(store.getState().context.era, hasSource(Source.Core2ndEdition) ? 2 : 1);
         store.dispatch(setCharacter(character));
@@ -150,6 +164,30 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         return result;
     }
 
+    const onSupervisoryChange = (value: boolean) => {
+        store.dispatch(setSupportingCharacterSupervisorty(value));
+    }
+
+    const renderValues = () => {
+        if (character?.supportingStep?.supervisory) {
+            return (<div className="mt-4">
+                <Header level={2}>{t("Construct.other.value")}</Header>
+                <ReactMarkdown>{t("SupportingCharacter.valueInstruction")}</ReactMarkdown>
+                <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
+                    <InputFieldAndLabel labelName={t('Construct.other.value')} value={character.supportingStep.value ?? ""}
+                        id="value" onChange={(value) => {
+                            store.dispatch(setCharacterValue(value, StepContext.FinishingTouches));
+                        }} />
+                    <div style={{ flexShrink: 0 }} className="mt-1">
+                        <D20IconButton onClick={() => selectRandomValue()}/>
+                    </div>
+                </div>
+            </div>)
+        } else {
+            return undefined;
+        }
+    }
+
     let ageDiv = hasSource(Source.PlayersGuide) && character?.age?.isChild
         ? (<div className="mt-4">
                 <div className="page-text-aligned">
@@ -161,6 +199,20 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                         defaultValue={characterAgeAsIndex()}
                         onChange={(index) => selectAge(index as number) }/>
                 </div>
+            </div>)
+        : null;
+
+
+    let supervisoryDiv = character && character?.type !== CharacterType.Child
+        ? (<div className="mt-4">
+                <div>
+                    <CheckBox text={t('Construct.other.supervisory')}
+                        isChecked={character?.supportingStep?.supervisory ?? false}
+                        value={"supervisor"}
+                        onChanged={v => onSupervisoryChange(v)}
+                    />
+                </div>
+                <ReactMarkdown className="markdown-sm">{t('SupportingCharacter.supervisoryNote')}</ReactMarkdown>
             </div>)
         : null;
 
@@ -188,6 +240,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                         </div>
 
                         {ageDiv}
+                        {supervisoryDiv}
                     </div>
                     <div className="col-12 col-lg-6 my-4">
                         <Header level={2}>{t('SupportingCharacter.purposeOrDepartment')}</Header>
@@ -235,6 +288,8 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                         </p>
                         <SupportingCharacterDisciplines />
                     </div>
+
+                    {renderValues()}
                 </div>
                 <div className="col-12 col-lg-6 mt-4 mb-5">
                     <Header level={2}>{t('Construct.other.focuses')}</Header>
@@ -242,7 +297,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                         {t('SupportingCharacter.focusInstruction')}
                     </p>
                     <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
-                        <InputFieldAndLabel labelName={t('Construct.other.focus1')} value={character.focuses[0] ?? ""}
+                        <InputFieldAndLabel labelName={t('Construct.other.focus1')} value={character.supportingStep.focuses[0] ?? ""}
                             id="focus1" onChange={(value) => {
                                 store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 0));
                             }} />
@@ -251,7 +306,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                         </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
-                        <InputFieldAndLabel labelName={t('Construct.other.focus2')} value={character.focuses[1] ?? ""}
+                        <InputFieldAndLabel labelName={t('Construct.other.focus2')} value={character.supportingStep.focuses[1] ?? ""}
                             id="focus2" onChange={(value) => {
                                 store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 1));
                             }} />
@@ -260,7 +315,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                         </div>
                     </div>
                     <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
-                        <InputFieldAndLabel labelName={t('Construct.other.focus3')} value={character.focuses[2] ?? ""}
+                        <InputFieldAndLabel labelName={t('Construct.other.focus3')} value={character.supportingStep.focuses[2] ?? ""}
                             id="focus3" onChange={(value) => {
                                 store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 2));
                             }} />
@@ -268,6 +323,18 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                             <D20IconButton onClick={() => selectRandomFocus(2)}/>
                         </div>
                     </div>
+
+                    {character?.supportingStep?.supervisory
+                        ? (<div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
+                            <InputFieldAndLabel labelName={t('Construct.other.focus4')} value={character.supportingStep.focuses[3] ?? ""}
+                                id="focus4" onChange={(value) => {
+                                    store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 3));
+                                }} />
+                            <div style={{ flexShrink: 0 }} className="mt-1">
+                                <D20IconButton onClick={() => selectRandomFocus(3)}/>
+                            </div>
+                        </div>)
+                        : undefined}
                     <Header level={2} className="mt-5">{t('SupportingCharacter.nameAndRank')}</Header>
                     <p>
                         {t('SupportingCharacter.nameAndRankInstruction')}

@@ -14,6 +14,7 @@ import { Column } from "./column";
 import { XYLocation } from "../common/xyLocation";
 import { FontOptions } from "./fontOptions";
 import { FontType } from "./fontLibrary";
+import { bullet2EWriter } from "./bullet2eWriter";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
@@ -209,6 +210,21 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
             paragraph?.append(i18next.t("Construct.other.focuses").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
             paragraph?.append(character.focuses.join(", "), new FontSpecification(this.textFont, 9));
             paragraph?.write();
+        }
+
+        if (character.values?.length) {
+            paragraph = paragraph?.nextParagraph();
+            paragraph?.append(i18next.t("Construct.other.values").toLocaleUpperCase() + ":", new FontOptions(9, FontType.Bold), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph?.write();
+
+            character.values.forEach((v, i) => {
+                paragraph = paragraph?.nextParagraph();
+                paragraph?.indent(15);
+                paragraph?.append(v, new FontOptions(9));
+                paragraph?.write();
+
+                bullet2EWriter(page, paragraph, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            })
         }
 
         return paragraph?.bottom;

@@ -15,7 +15,7 @@ import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_S
     SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE,
     SET_CHARACTER_LINEAGE, SET_CHARACTER_NAME, SET_CHARACTER_PASTIME, SET_CHARACTER_PRONOUNS, SET_CHARACTER_RANK,
     SET_CHARACTER_ROLE, SET_CHARACTER_SPECIES, SET_CHARACTER_TYPE, SET_CHARACTER_VALUE, SET_SUPPORTING_CHARACTER_ATTRIBUTES,
-    SET_SUPPORTING_CHARACTER_DISCIPLINES, StepContext } from "./characterActions";
+    SET_SUPPORTING_CHARACTER_DISCIPLINES, SET_SUPPORTING_CHARACTER_SUPERVISORY, StepContext } from "./characterActions";
 
 interface CharacterState {
     currentCharacter?: Character;
@@ -254,6 +254,24 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                         temp.finishingStep.attributes.splice(index, 1);
                     }
                 }
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+        case SET_SUPPORTING_CHARACTER_SUPERVISORY: {
+            let temp = state.currentCharacter.copy();
+            if (temp.supportingStep == null) {
+                temp.supportingStep = new SupportingStep();
+            }
+            temp.supportingStep.supervisory = action.payload.supervisory;
+            if (!temp.supportingStep.supervisory && temp.supportingStep.value?.length) {
+                temp.supportingStep.value = null;
+            }
+            if (!temp.supportingStep.supervisory && temp.supportingStep.focuses.length > 3) {
+                temp.supportingStep.focuses.splice(3);
             }
             return {
                 ...state,
@@ -563,7 +581,12 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case SET_CHARACTER_VALUE: {
             let temp = state.currentCharacter.copy();
-            if (action.payload.context === StepContext.Environment && temp.environmentStep != null) {
+            if (temp.stereotype === Stereotype.SupportingCharacter) {
+                if (temp.supportingStep == null) {
+                    temp.supportingStep = new SupportingStep();
+                }
+                temp.supportingStep.value = action.payload.value;
+            } else if (action.payload.context === StepContext.Environment && temp.environmentStep != null) {
                 temp.environmentStep.value = action.payload.value;
             } else if (action.payload.context === StepContext.Education && temp.educationStep != null) {
                 temp.educationStep.value = action.payload.value;

@@ -119,9 +119,11 @@ export class CharacterRank {
 }
 
 export class SupportingStep {
-    focuses: string[]
+    focuses: string[];
     attributes: Attribute[];
     disciplines: Skill[];
+    value: string;
+    supervisory: boolean = false;
 
     constructor() {
         this.focuses = ["", "", ""];
@@ -134,6 +136,8 @@ export class SupportingStep {
         result.focuses = [...this.focuses];
         result.attributes = [...this.attributes];
         result.disciplines = [...this.disciplines];
+        result.supervisory = this.supervisory;
+        result.value = this.value;
         return result;
     }
 }
@@ -534,6 +538,9 @@ export class Character extends Construct implements IWeaponDiceProvider {
             return result;
         } else if (this.stereotype === Stereotype.SupportingCharacter && !this.legacyMode) {
             let values = this.age.attributes;
+            if (this.version > 1 && this.type !== CharacterType.Child && this.supportingStep?.supervisory) {
+                values = [10, 10, 9, 9, 8, 8];
+            }
             return AttributesHelper.getAllAttributes().map(a => {
                 let index = this.supportingStep?.attributes?.indexOf(a);
                 let speciesBonus = this.speciesStep?.attributes?.filter(att => att === a).length;
@@ -574,6 +581,9 @@ export class Character extends Construct implements IWeaponDiceProvider {
             return result;
         } else if (this.stereotype === Stereotype.SupportingCharacter && !this.legacyMode) {
             let values = this.age.disciplines;
+            if (this.version > 1 && this.type !== CharacterType.Child && this.supportingStep?.supervisory) {
+                values = [4, 4, 3, 2, 2, 1];
+            }
             return SkillsHelper.getSkills().map(s => {
                 let index = this.supportingStep?.disciplines?.indexOf(s);
                 return new CharacterSkill(s, values[index]);
@@ -744,6 +754,12 @@ export class Character extends Construct implements IWeaponDiceProvider {
     get values() {
         if (this.stereotype === Stereotype.Npc) {
             return this.npcGenerationStep?.values ?? [];
+        } else if (this.stereotype === Stereotype.SupportingCharacter) {
+            let result =[];
+            if (this.supportingStep?.value) {
+                result.push(this.supportingStep.value);
+            }
+            return result;
         } else {
             let result = [];
             if (this.environmentStep?.value) {
