@@ -118,8 +118,15 @@ const starshipReducer = (state: StarshipState = { starship: undefined, workflow:
             if (action.payload.serviceRecord == null) {
                 s.serviceRecordStep = null;
             } else {
+                let original = s.serviceRecordStep;
                 s.serviceRecordStep = new ServiceRecordStep(action.payload.serviceRecord);
                 s.serviceRecordStep.specialRule = action.payload.talent;
+                if (original?.type?.type === s.serviceRecordStep.type.type) {
+                    s.serviceRecordStep.selection = original.selection;
+                }
+                if (action.payload.selection != null) {
+                    s.serviceRecordStep.selection = action.payload.selection;
+                }
             }
             return {
                 ...state,

@@ -580,6 +580,7 @@
     "Page.title.missionProfileTalentSelection": "Talento de Perfil de Misión",
     "Page.title.otherTools": "Otras Herramientas",
     "Page.title.randomStarship": "Configuración aleatoria de nave estelar",
+    "Page.title.safetyChecklist": "Lista de Verificación de Seguridad",
     "Page.title.sectorDetails": "Detalles del sector",
     "Page.title.simpleStarship": "Creación Simplificada de Nave Estelar",
     "Page.title.smallCraftStats": "Estadísticas de Lanzadera",
@@ -614,7 +615,6 @@
     "Page.title.normalMilestone": "Hito Normal",
     "Page.title.modificationComplete": "Modificación Completada",
     "Page.title.npcConfiguration": "Configuración Aleatoria de PNJ",
-    "Page.title.safetyChecklist": "Lista de Verificación de Seguridad",
     "Page.title.tokenCreationPage": "Creación de Token",
     "Page.title.upbringing": "Perspectiva Temprana",
     "Page.title.upbringingDetails": "Detalles de Perspectiva Temprana",
@@ -856,9 +856,9 @@
     "AlliedMilitaryType.name.ferengiMilitary": "Militar Ferengi",
     "AlliedMilitaryType.name.other": "Otro",
 
-    "BodyType.averageMale": "Hombre Promedio",
-    "BodyType.averageNonBinary": "No Binarie Promedio",
-    "BodyType.averageFemale": "Mujer Promedio",
+    "BodyType.averageMale": "Hombre promedio",
+    "BodyType.averageNonBinary": "No binarie promedio",
+    "BodyType.averageFemale": "Mujer promedio",
 
     "Division.command": "Mando",
     "Division.science": "Ciencia",
@@ -1139,12 +1139,33 @@
     "MissionPod.warpPropulsionPod": "Módulo de Propulsión de Curvatura",
 
     "MissionProfile.default.strategicAndDiplomatic": "Operaciones estratégicas y diplomáticas",
+
+    "MissionProfile.default.strategicAndDiplomatic.description": "Las naves equipadas para Operaciones Estratégicas y Diplomáticas suelen estar bajo el mando de oficiales de alto rango y ser el núcleo de escuadrones, grupos de combate e incluso flotas enteras. Estas naves (así como el prestigio y estatus que conllevan) también se emplean en encuentros diplomáticos de gran relevancia, en los que sirven como embajadas móviles y representan la flor y la nata de la Federación.",
+
     "MissionProfile.default.pathfinderAndReconaissance": "Operaciones de exploración y reconocimiento",
+
+    "MissionProfile.default.pathfinderAndReconaissance.description": "Las misiones de largo alcance suelen contar con la cartogra-fía estelar y las instalaciones astrométricas más avanzadas, lo que les permite orientarse por regiones desconocidas del espacio y cartografiarlas de manera eficaz. Se cuenta con estas naves para misiones de reconocimiento prolongadas, operaciones de recopilación de información militar y arriesgadas misiones de exploración del espacio desconocido.",
+
     "MissionProfile.default.technicalTestBed": "Banco de pruebas técnico",
+
+    "MissionProfile.default.technicalTestBed.description": "La nave está equipada con gran cantidad de tecnologías punteras o incluso prototipos, lo que permite probarlas y estudiarlas en condiciones prácticas para poder descubrir y corregir sus defectos, así como mejorar y perfeccionar sus sistemas. Estas naves suelen destinarse a gran variedad de misiones para contar con la máxima diversidad de condiciones para las pruebas de los equipos.",
+
     "MissionProfile.default.tactical": "Operaciones tácticas",
+
+    "MissionProfile.default.tactical.description": "Aunque la Flota Estelar no es un ejército, la defensa de la Federación es una de sus responsabilidades, por lo que se ha visto en múltiples ocasiones en la necesidad de prepararse para la guerra. Así pues, muchas naves están equipadas para acciones militares o como fuerzas del orden, aunque la cantidad de naves así preparada varía dependiendo de la política del momento.",
+
     "MissionProfile.default.scientificAndSurvey": "Operaciones científicas y de observación",
+
+    "MissionProfile.default.scientificAndSurvey.description": "La misión de exploración y descubrimiento de la Flota Estelar supone que dedica muchas naves a misiones puramente científicas, como estudiar fenómenos desconocidos o res-paldar investigaciones en curso. Aunque se espera que la mayoría de naves estelares de la Federación tenga una capacidad científica mínima, muchas de ellas están equipadas específicamente para tales misiones.",
+
     "MissionProfile.default.crisisAndEmergencyResponse": "Respuesta a crisis y emergencias",
+
+    "MissionProfile.default.crisisAndEmergencyResponse.description": "Estas naves están equipadas para responder rápidamente a una crisis, sea cual sea. Normalmente pueden albergar hangares de gran tamaño, por lo que les es posible desplegar grandes cantidades de personal o materiales a zonas afectadas o evacuar de ellas a un gran volumen de población. Este tipo de naves también se utiliza como hospitales de campaña y transportes de tropas en tiempos de guerra.",
+
     "MissionProfile.default.multiroleExplorer": "Exploradora versátil",
+
+    "MissionProfile.default.multiroleExplorer.description": "Algunas de las naves más célebres y respetadas de la Flota Estelar han sido más bien “naves para todo” en lugar de estar especializadas en un único tipo de misión. Esta versa-tilidad permitió a individuos como Jonathan Archer y James Kirk explorar nuevos y desconocidos mundos, buscar des-conocidas formas de vida y nuevas civilizaciones e ir audazmente donde nadie había ido jamás.",
+
     "MissionProfile.default.projectEscalante": "Proyecto Escalante",
     "MissionProfile.default.battlecruiser": "Crucero de Batalla",
     "MissionProfile.default.reserveFleet": "Flota de Reserva",
@@ -1254,13 +1275,13 @@
     "Rank.chiefPettyOfficer.abbrev": "Jefe",
 
     "Rank.pettyOfficer1stClass.name": "Suboficial de 1ª Clase",
-    "Rank.pettyOfficer1stClass.abbrev": "S.",
+    "Rank.pettyOfficer1stClass.abbrev": "S. O.",
 
     "Rank.pettyOfficer2ndClass.name": "Suboficial de 2ª Clase / especialista",
-    "Rank.pettyOfficer2ndClass.abbrev": "E.",
+    "Rank.pettyOfficer2ndClass.abbrev": "S. O.",
 
     "Rank.pettyOfficer3rdClass.name": "Suboficial de 3ª Clase / ayudante",
-    "Rank.pettyOfficer3rdClass.abbrev": "A.",
+    "Rank.pettyOfficer3rdClass.abbrev": "S. O.",
 
     "Rank.crewman1stClass.name": "Tripulante de 1ª Clase",
     "Rank.crewman1stClass.abbrev": "Trip.",
@@ -1826,6 +1847,10 @@
 
     "Talent.cautiousSecurity.description": "Cuando emprendas una Tarea con Seguridad y adquieras 1 o más d20 gastando Inercia, puedes repetir un único d20. ",
 
+    "Talent.chosenSpeaker": "Portavoz designado",
+
+    "Talent.chosenSpeaker.description2e": "Entre las comunidades de Aenar, los líderes y mediadores se eligen cuando surge la necesidad, nombrando a un individuo para servir como Portavoz. Has sido elegido para este papel a menudo y eres experto en usar tus sentidos y tu telepatía para facilitar la comunicación. Cuando intentes comunicarte telepáticamente con un ser dispuesto, puedes repetir la tirada de 1d20.",
+
     "Talent.closeKnitCrew": "Tripulación estrechamente unida",
 
     "Talent.closeKnitCrew.description2e": "Cuando comienza una escena, si hay menos puntos de Inercia en la reserva del grupo que personajes en la escena que tengan este talento, añade inmediatamente 1 Inercia a la reserva del grupo.",
@@ -1888,10 +1913,24 @@
 
     "Talent.noPainNoGain.description2e": "Cuando fallas una tarea (pero no una tarea opuesta) en la que has utilizado tu Osadía, siempre puedes elegir tener éxito con un coste.",
 
+    "Talent.orbExperience": "Experiencia del orbe",
+
+    "Talent.orbExperience.description": "Has recibido una visión de los Profetas bajoranos mediante uno de los Orbes. Esta singular experiencia, aunque confusa en principio, ha cambiado tu vida y tu visión del mundo. Tienes un Valor adicional, que refleja las revelaciones que recibiste en dicha experiencia. La primera vez que te Enfrentes a este Valor, tira 1[D] ; si sacas un Efecto, ha acontecido alguno de los elementos predichos y el Valor no se tacha como sería habitual.",
+    "Talent.orbExperience.description2e": "Has recibido una visión de los Profetas bajoranos mediante uno de los Orbes. Esta singular experiencia, aunque confusa en principio, ha cambiado tu vida y tu visión del mundo. Tienes un Valor adicional, que refleja alguna profecía o visión del futuro obtenida de tu visión. Además, una vez por sesión, cuando se utiliza ese valor, obtienes el doble del beneficio normal: si gastas Determinación, puedes obtener dos beneficios de la lista, mientras que si ganaras Determinación, ganarías 2 puntos en lugar de 1.",
+
+    "Talent.openBook": "Libro abierto",
+
+    "Talent.openBook.description": "Cuando un personaje entra en escena, puedes gastar 1 Inercia (Inmediato) para hacer inmediatamente al director de juego una pregunta sobre las emociones actuales o los pensamientos superficiales de ese personaje. No puedes hacer esto con personajes inmunes a la telepatía.",
+
     "Talent.personalEffects": "Efectos personales",
 
     "Talent.personalEffects.description": "Posees algún objeto o aparato significativo y poco común que no forma parte del equipo estándar de la Flota Estelar pero que, en todo caso, es útil para las misiones. Puedes elegir un objeto con un Coste de Oportunidad de 2 o dos objetos con un Coste de Oportunidad de 1 cada uno. Ningún objeto puede tener un Coste de Intensificación superior a 1.",
     "Talent.personalEffects.description2e": "Posees algún objeto o aparato significativo y poco común que no forma parte del equipo estándar de la Flota Estelar pero que, en todo caso, es útil para las misiones. Puedes escoger este Talento más de una vez, consiguiendo un objeto diferente cada vez.",
+
+    "Talent.proudAndHonorable": "Orgulloso y Honorable",
+
+    "Talent.proudAndHonorable.description": "Tu integridad personal es intachable y no romperás voluntariamente una promesa que hayas hecho. Cuando emprendas una Tarea para resistir un intento de coaccionarte para romper una promesa, traicionar a tus aliados o actuar de algún otro modo deshonroso, reduces la Dificultad en 1.",
+    "Talent.proudAndHonorable.description2e": "Siempre que intentes una tarea para resistirte a ser forzado a romper una promesa, traicionar a tus aliados o actuar de cualquier otra forma deshonrosa, puedes añadir Amenaza para tener éxito inmediatamente en la tarea. La cantidad de Amenaza que añadas es igual a la Dificultad de la tarea.",
 
     "Talent.reassuring": "Reconfortante",
 
@@ -1905,6 +1944,11 @@
 
     "Talent.selfReliant.description2e": "Siempre que tengas éxito en una tarea en la que no hayas comprado dados adicionales gastando Inercia o añadiendo a Amenaza, generas una Inercia adicional igual a la Dificultad de la tarea. La Inercia adicional no puede guardarse.",
 
+    "Talent.strongPagh": "Pagh fuerte",
+
+    "Talent.strongPagh.description": "Crees profundamente en los Profetas y te apoyas firmemente en esa fe para superar la adversidad. Cuando emprendas una Tarea para resistir coacción o amenazas, reduces la Dificultad de dicha Tarea en 1.",
+    "Talent.strongPagh.description2e": "Crees profundamente en los Profetas y te apoyas firmemente en esa fe para superar la adversidad. Cuando emprendas una Tarea para resistir coacción o amenazas, puedes sufrir Estres igual a la Dificultad de la tarea para tener éxito automáticamente.",
+
     "Talent.studious": "Aplicado",
 
     "Talent.studious.description": "Cuando gastes uno o más puntos de Inercia para Obtener Información, puedes realizar una pregunta adicional (en total, no por cada punto de Inercia así gastado).",
@@ -1914,6 +1958,11 @@
 
     "Talent.technicalExpertise.description": "Cuando emprendas una Tarea con la ayuda de los ordenadores o sensores de la nave, puedes repetir 1d20 (que puede ser el dado de la nave).",
     "Talent.technicalExpertise.description2e": "Cuando emprendas una Tarea con la ayuda de los ordenadores o sensores de la nave, puedes repetir 1d20 (que puede ser el dado de la nave).",
+
+    "Talent.theUshaan": "El Ushaan",
+
+    "Talent.theUshaan.description": "Tienes experiencia en la tradición de duelos de honor conocidos como Ushaan con lo que has derramado mucha sangre sobre el hielo. Cuando realices un Ataque cuerpo a cuerpo o seas el objetivo de uno y adquieras uno o más d20 aumentando la Amenaza, puedes repetir la reserva de dados de esa Tarea. Además, posees un Ushaan-tor, una herramienta de minería de hielo afilada como una cuchilla que se usa en estos duelos.",
+    "Talent.theUshaan.description2e": "Tienes experiencia en la tradición de duelos de honor conocidos como Ushaan con lo que has derramado mucha sangre sobre el hielo. Cuando realices un Ataque cuerpo a cuerpo o seas el objetivo de uno y adquieras uno o más d20 aumentando la Amenaza, puedes repetir la reserva de dados de esa Tarea. Además, posees un Ushaan-tor, una herramienta de minería de hielo afilada como una cuchilla que se usa en estos duelos. El Ushaan-tor es un arma de filo, y cuenta como equipamiento estándar para ti.",
 
     "Talent.tough": "Duro",
 

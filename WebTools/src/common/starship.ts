@@ -12,7 +12,7 @@ import { Construct, Stereotype } from "./construct";
 import { makeKey } from "./translationKey";
 import { Era } from "../helpers/eras";
 import { IWeaponDiceProvider } from "./iWeaponDiceProvider";
-import { ServiceRecord, ServiceRecordList, ServiceRecordModel } from "../starship/model/serviceRecord";
+import { ServiceRecord, ServiceRecordModel } from "../starship/model/serviceRecord";
 
 export class SimpleStats {
     departments: number[];
@@ -80,7 +80,7 @@ export class ServiceRecordStep {
 
     get trait() {
         const key = makeKey("ServiceRecord.", ServiceRecord[this.type.type], ".trait");
-        let result = i18next.t(key, { "X": this.selection });
+        let result = i18next.t(key, { "X": this.selection?.length ? this.selection : "X" });
         if (result === key) {
             return this.type.name;
         } else {
@@ -255,6 +255,9 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         }
         if (this.version > 1 && this.localizedClassName?.length) {
             trait.push(this.localizedClassName);
+        }
+        if (this.serviceRecordStep) {
+            trait.push(this.serviceRecordStep.trait);
         }
         if (this.missionProfileStep?.type?.traits?.length) {
             this.missionProfileStep.type.traits.split(", ").forEach(t => trait.push(t.trim()));
@@ -594,7 +597,7 @@ export class Starship extends Construct implements IWeaponDiceProvider {
                     });
                 }
 
-                if (profile != undefined) {
+                if (profile != null) {
                     profile.departments.forEach((d, i) => {
                         result[i] += d;
                     });

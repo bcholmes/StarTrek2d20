@@ -222,7 +222,12 @@
     "MissionProfileSelectionPage.text": "A mission profile is what makes one starship different from another in her same class. It determines the specialized equipment that is installed before venturing into the unknown, the priority in personnel that Starfleet gives the vessel, and its overall mission goal. All spaceframes have a mission profile.",
     "MissionProfileSelectionPage.errorNoSelection": "Please select a mission profile before proceeding.",
 
+    "MissionProfileTalentSelection.error.talent": "Please select a talent before proceeding.",
+    "MissionProfileTalentSelection.error.system": "Please select a System before proceeding.",
+
     "MissionProfileTalentSelection.instruction": "Choose 1 talent from the list of talents associated with the mission profile.",
+
+    "MissionProfileTalentSelection.instruction.system": "This mission profile requires you to select 1 system from the below list.",
 
     "ModificationCompletePage.instruction": "The character has been modified. You can view the revised character, or make another modification.\n\nYou might want to save the URL for the revised character.",
 
@@ -250,6 +255,10 @@
     "ReputationChangePage.instruction": "Adjust the character's reputation as appropriate.",
 
     "SafetyChecklist.instruction": "This checklist is a tool which the gamemaster can use to help players in discussing where their personal boundaries for certain themes in this campaign may lie.\n\n- **Always OK**: This means the player is always comfortable with this topic being described, shown and represented in a game.\n\n- **Yellow Alert**: This means the player is generally comfortable with this topic being discussed in a game, but prefers for the more vivid descriptions to be handled “off-screen.”\n\n- **Red Alert**: This means the player does not want this subject to be discussed in a game; they may have any number of reasons for this. Some reasons may include objection to the topic on moral principles, traumatic personal experience, a dislike of the topic being trivialized in a fictional entertainment medium like a game, and so on. Don’t ask  what the reason is for the player who feels this way; it isn’t anyone’s place to change that player’s mind. Simply accept their stance, respect it, and do not include the topic in question.",
+
+    "ServiceRecordPage.instruction": "You may optionally choose a service record for your starship to represent key elements of a starship's life of service. Selecting a service record provides an additional trait for the ship.",
+
+    "ServiceRecordPage.survivorOfX.selection": "Battle or War",
 
     "SoloCareerEvent.instruction": "Your character’s career is a tapestry of events and experiences, but a few will have been pivotal moments in the character’s life. A character defines which moments of their life are important in retrospect, and what seemed definitive to a young ensign may be inconsequential to that same officer decades later.\n\nYour character has two defining career events, chosen or determined randomly from the list below, and gains whatever benefits they provide.\n\nFor characters that chose Novice Career Length, assume that these career events took place during the character’s time at the Academy or equivalent, perhaps during a field training assignment aboard a starship.",
 
@@ -558,7 +567,6 @@
     "Construct.system.structure": "Structure",
     "Construct.system.weapons": "Weapons",
 
-    "Page.title.tacticalAssets": "Tactical Assets",
     "Page.title.attributesAndDisciplines": "Finishing Touches",
     "Page.title.career": "Career",
     "Page.title.careerDetails": "Career Details",
@@ -590,6 +598,7 @@
     "Page.title.missionProfileDetails": "Mission Profile Details",
     "Page.title.otherTools": "Other Tools",
     "Page.title.randomStarship": "Random Starship Configuration",
+    "Page.title.safetyChecklist": "Safety Checklist",
     "Page.title.sectorDetails": "Sector Details",
     "Page.title.simpleStarship": "Simplified Starship Creation",
     "Page.title.smallCraftStats": "Small Craft Stats",
@@ -610,11 +619,13 @@
     "Page.title.starshipTypeSelection": "Starship Type",
     "Page.title.starshipWeaponsSelection": "Starship Weapons",
     "Page.title.starSystemDetails": "Star System Details",
+    "Page.title.starshipServiceRecord": "Service Record",
     "Page.title.starshipToolSelection": "Starship Tool Selection",
     "Page.title.starshipTraits": "Starship Traits",
     "Page.title.supportingCharacter": "Supporting Character",
     "Page.title.systemGeneration": "System Generation",
     "Page.title.tableList": "Table List",
+    "Page.title.tacticalAssets": "Tactical Assets",
     "Page.title.talentsOverview": "Talents Overview",
     "Page.title.toolSelection": "Tool Selection",
     "Page.title.viewSheet": "View Sheet",
@@ -624,7 +635,6 @@
     "Page.title.normalMilestone": "Normal Milestone",
     "Page.title.modificationComplete": "Modification Completed",
     "Page.title.npcConfiguration": "Random NPC Configuration",
-    "Page.title.safetyChecklist": "Safety Checklist",
     "Page.title.tokenCreationPage": "Token Creation",
     "Page.title.upbringing": "Early Outlook",
     "Page.title.upbringingDetails": "Early Outlook Details",
@@ -2653,6 +2663,10 @@
     "Talent.formerInitiate.description": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are Symbionts, you were one of the many who failed, but the quality of even a failed initiate is enough for Starfleet to recruit you. When you attempt a Task using Control or Reason, and spend Determination to buy a bonus d20 for that Task, you may re-roll your dice pool. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
     "Talent.formerInitiate.description2e": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are symbionts, you were one of many who failed, but the capabilities of even a failed Initiate are highly sought after by Starfleet and other organizations. When you attempt a task using Control or Reason, and you spend Determination to set a die as a 1, you may also re-roll your dice pool after the roll. You cannot select this talent if you have the Joined talent.",
 
+    "Talent.fourNacelleStability": "Four-Nacelle Stability",
+
+    "Talent.fourNacelleStability.description": "The vessel’s configuration of four warp nacelles can be used to produce a stable and long-lasting warp field. The Difficulty of any task attempted to go to warp, or to maintain warp speed despite hazards, damage, or anomalies, is reduced by 1, to a minimum of 1.",
+
     "Talent.getDown": "Get Down!",
 
     "Talent.getDown.description": "You and any allies within Close range gain +1 Protection while in Cover.",
@@ -2689,7 +2703,7 @@
 
     "Talent.highResolutionSensors.soloDescription": "The vessel’s sensors can gain large amounts of accurate data, though they are extremely sensitive.",
 
-    "Talent.highPowerTractorBeam": "High-Power Tractor Beam",
+    "Talent.highPowerTractorBeam": "High Powered Tractor Beam",
 
     "Talent.highPowerTractorBeam.description2e": "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target. Increase the strength of the ship’s tractor beam by 2.",
     "Talent.highPowerTractorBeam.soloDescription": "The ship’s tractor beam systems channel far greater quantities of power and exert much more force on the target.",
@@ -2859,15 +2873,19 @@
 
     "Talent.miracleWorker": "Miracle Worker",
 
-    "Talent.miracleWorker.description2e": "Whenever you succeed at an Engineering task to over- come an extended task, you may increase your Impact by 1 by spending 1 Momentum instead of 2.",
+    "Talent.miracleWorker.description2e": "Whenever you succeed at an Engineering task to overcome an extended task, you may increase your Impact by 1 by spending 1 Momentum instead of 2.",
 
     "Talent.missionOfMercy": "Mission of Mercy",
 
     "Talent.missionOfMercy.description": "The first time in a scene when an enemy makes an attack against this ship, the gamemaster must spend 1 Threat. The hope ship must add 1 Threat the first time in any scene it makes an attack.",
 
+    "Talent.missionPod": "Mission Pod",
+
+    "Talent.missionPod.description2e": "All vessels of this class are fitted with a mission pod, which provides two talents as well as adjustments to the ship’s system and department ratings. The mission pod can be changed as if it were a single talent; replacing it takes 12–24 hours at a starbase or other facility.",
+
     "Talent.modularLaboratories": "Modular Laboratories",
 
-    "Talent.modularLaboratories.description2e": "The opportunity cost of establishing a science lab is reduced to 0 for the first laboratory estab- lished, and to 1 for the second.",
+    "Talent.modularLaboratories.description2e": "The opportunity cost of establishing a science lab is reduced to 0 for the first laboratory established, and to 1 for the second.",
     "Talent.modularLaboratories.soloDescription": "The ship has considerable numbers of empty, multi-purpose compartments that can be converted to laboratories as and when required.",
 
     "Talent.movingTarget": "Moving Target",
@@ -2880,7 +2898,7 @@
 
     "Talent.multiTasking": "Multi-Tasking",
 
-    "Talent.multiTasking.description2e": "When you attempt the Override major action while at a bridge station that includes one or both helm or nav- igator positions, you may use your Conn department instead of the department usually required for that task.",
+    "Talent.multiTasking.description2e": "When you attempt the Override major action while at a bridge station that includes one or both helm or navigator positions, you may use your Conn department instead of the department usually required for that task.",
 
     "Talent.multiVectorAssaultMode": "Multi-Vector Assault Mode",
 
@@ -2913,7 +2931,7 @@
 
     "Talent.novice": "Novice",
 
-    "Talent.novice.description": "Select one of your attributes when you receive this talent. You’re inexperienced, but talented and with a bright future. You may not have or increase any attribute to above 11, or any department to above 4 while you have this talent (and may have to adjust attributes and depart- ments accordingly at the end of character creation).\n\nWhenever you succeed at a task for which you bought one or more additional dice (by any means), roll a d20 after the roll. If you roll equal to or less than the chosen attribute, gain 1 bonus Momentum; if you roll higher, add 1 Threat instead. While you possess this talent, you can- not gain any higher rank than Lieutenant (junior grade), or a higher enlisted rate than Petty Officer.",
+    "Talent.novice.description": "Select one of your attributes when you receive this talent. You’re inexperienced, but talented and with a bright future. You may not have or increase any attribute to above 11, or any department to above 4 while you have this talent (and may have to adjust attributes and departments accordingly at the end of character creation).\n\nWhenever you succeed at a task for which you bought one or more additional dice (by any means), roll a d20 after the roll. If you roll equal to or less than the chosen attribute, gain 1 bonus Momentum; if you roll higher, add 1 Threat instead. While you possess this talent, you cannot gain any higher rank than Lieutenant (junior grade), or a higher enlisted rate than Petty Officer.",
 
     "Talent.orbExperience": "Orb Experience",
 
@@ -2926,7 +2944,7 @@
 
     "Talent.openBook": "Open Book",
 
-    "Talent.openBook.description": "When a character enters a scene, you may spend 1 Momentum (Immediate) to immediately ask the gam- emaster one question about that character’s current emotions or surface thoughts. You cannot do this for characters immune to telepathy.",
+    "Talent.openBook.description": "When a character enters a scene, you may spend 1 Momentum (Immediate) to immediately ask the gamemaster one question about that character’s current emotions or surface thoughts. You cannot do this for characters immune to telepathy.",
 
     "Talent.packTactics": "Pack Tactics",
 
@@ -2940,7 +2958,7 @@
 
     "Talent.pastTheRedline": "Past the Redline",
 
-    "Talent.pastTheRedline.description2e": "When you use advanced technology, including at- tempting a task assisted by the ship, you may choose to increase the complication range by 1, 2, or 3. If you succeed, then you gain bonus Momentum equal to the amount by which the complication range was increased. Bonus Momentum cannot be saved.",
+    "Talent.pastTheRedline.description2e": "When you use advanced technology, including attempting a task assisted by the ship, you may choose to increase the complication range by 1, 2, or 3. If you succeed, then you gain bonus Momentum equal to the amount by which the complication range was increased. Bonus Momentum cannot be saved.",
 
     "Talent.pathfinder": "Pathfinder",
 
@@ -2948,7 +2966,7 @@
 
     "Talent.percussiveMaintenance": "Percussive Maintenance",
 
-    "Talent.percussiveMaintenance.description2e": "When you attempt a Control + Engineering task, you may add 1 Threat to use your Daring instead of your Control. If you do this, and the task succeeds, then you may reduce the time taken by 1 interval without spend- ing Momentum.",
+    "Talent.percussiveMaintenance.description2e": "When you attempt a Control + Engineering task, you may add 1 Threat to use your Daring instead of your Control. If you do this, and the task succeeds, then you may reduce the time taken by 1 interval without spending Momentum.",
 
     "Talent.personalEffects": "Personal Effects",
 
@@ -2978,7 +2996,7 @@
 
     "Talent.positiveReinforcement": "Positive Reinforcement",
 
-    "Talent.positiveReinforcement.description2e": "Once per mission, you may attempt a Presence + Medicine task with a Difficulty of 3, while providing emotional or mental treatment for another character. Success creates a character trait for your patient that lasts until the end of the mission: Boosted Confidence. In addition to the normal effects of the trait, that character can reroll their dice pool, as if they’d spent Determination, once be- fore the end of the mission. If the task the character used their reroll on fails, they lose the trait created by this talent.",
+    "Talent.positiveReinforcement.description2e": "Once per mission, you may attempt a Presence + Medicine task with a Difficulty of 3, while providing emotional or mental treatment for another character. Success creates a character trait for your patient that lasts until the end of the mission: Boosted Confidence. In addition to the normal effects of the trait, that character can reroll their dice pool, as if they’d spent Determination, once before the end of the mission. If the task the character used their reroll on fails, they lose the trait created by this talent.",
 
     "Talent.practiceMakesPerfect": "Practice Makes Perfect",
 
@@ -3016,7 +3034,7 @@
     "Talent.proudAndHonorable": "Proud and Honorable",
 
     "Talent.proudAndHonorable.description": "Your personal integrity is unimpeachable, and you will not willingly break a promise made. Whenever you attempt a Task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you reduce the Difficulty by 1.",
-    "Talent.proudAndHonorable.description2e": "Whenever you attempt a task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you may add Threat to immediately succeed at the task. The amount of Threat you add is equal to the task’s Difficulty.\n",
+    "Talent.proudAndHonorable.description2e": "Whenever you attempt a task to resist being coerced into breaking a promise, betraying your allies, or otherwise acting dishonorably, you may add Threat to immediately succeed at the task. The amount of Threat you add is equal to the task’s Difficulty.",
 
     "Talent.psychoanalyst": "Psychoanalyst",
 
@@ -3029,7 +3047,7 @@
     "Talent.pushTheLimits": "Push the Limits",
 
     "Talent.pushTheLimits.description": "When you attempt a Conn Task that has increased in Difficulty due to environmental conditions or damage to the engines, reduce the Difficulty by 1, to a minimum of 1.",
-    "Talent.pushTheLimits.description2e": "When you attempt a Conn task that has increased in Difficulty due to environmental conditions or damage to the engines, you may add 1 Threat to ignore the difficul- ty increase.",
+    "Talent.pushTheLimits.description2e": "When you attempt a Conn task that has increased in Difficulty due to environmental conditions or damage to the engines, you may add 1 Threat to ignore the difficulty increase.",
 
     "Talent.quantumTorpedoes": "Quantum Torpedoes",
 
@@ -3231,11 +3249,11 @@
 
     "Talent.telepathicProjection": "Telepathic Projection",
 
-    "": "Your telepathic ability is more potent than most, and you are accustomed to projecting your thoughts into other minds. You can send your thoughts into the minds of other creatures—other than those immune to telepathy—even if those creatures are not tele- pathic themselves. You can ‘hear’ their responses by reading their minds. You are also capable of using this ability offensively, overwhelming a target’s mind with pain-inducing psychic noise. This requires a Presence + Security task with a Difficulty of 2 (increasing by 1 for each range category beyond Close); success inflicts a Stun or Deadly Injury with Severity 3 and the Piercing effect.",
+    "": "Your telepathic ability is more potent than most, and you are accustomed to projecting your thoughts into other minds. You can send your thoughts into the minds of other creatures—other than those immune to telepathy—even if those creatures are not telepathic themselves. You can ‘hear’ their responses by reading their minds. You are also capable of using this ability offensively, overwhelming a target’s mind with pain-inducing psychic noise. This requires a Presence + Security task with a Difficulty of 2 (increasing by 1 for each range category beyond Close); success inflicts a Stun or Deadly Injury with Severity 3 and the Piercing effect.",
 
     "Talent.telepathy2e": "Telepathy",
 
-    "Talent.telepathy2e.description": "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate tele- pathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those resistant to telepathy. It requires effort and a task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Increase the Difficulty if the situation is stressful, if there are many beings present, if the target target is resistant to telepathy, etc.",
+    "Talent.telepathy2e.description": "You can sense the surface thoughts and emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions or read the surface thoughts of those nearby, except for those resistant to telepathy. It requires effort and a task to pick out the emotions or thoughts of a specific individual in a crowd, to search a creature’s mind for specific thoughts or memories, or to block out the minds of those nearby. Increase the Difficulty if the situation is stressful, if there are many beings present, if the target target is resistant to telepathy, etc.",
 
     "Talent.technicalExpertise": "Technical Expertise",
 
@@ -3249,7 +3267,7 @@
 
     "Talent.thatWasntMe": "That Wasn't Me",
 
-    "Talent.thatWasntMe.description2e": "The Orions are known as one of the most untrustworthy species in the Galaxy, next to the Ferengi, and yet people are willing to do business with them or are often tricked or misled by them. You’ve learned the subtle interplay\nof social interactions, reputations, and plausible denials that allow others to trust you despite what they’ve heard about ‘those other Orions’. When another character at- tempts a task to determine if they can trust you, you may spend 2 Momentum if you are sincere, or add 2 Threat if you’re attempting to deceive them. Either way, the char- acter does not need to make a task roll: you convince them you are trustworthy.",
+    "Talent.thatWasntMe.description2e": "The Orions are known as one of the most untrustworthy species in the Galaxy, next to the Ferengi, and yet people are willing to do business with them or are often tricked or misled by them. You’ve learned the subtle interplay\nof social interactions, reputations, and plausible denials that allow others to trust you despite what they’ve heard about ‘those other Orions’. When another character attempts a task to determine if they can trust you, you may spend 2 Momentum if you are sincere, or add 2 Threat if you’re attempting to deceive them. Either way, the char- acter does not need to make a task roll: you convince them you are trustworthy.",
 
     "Talent.theEndsJustifyTheMeans": "The Ends Justify the Means",
 

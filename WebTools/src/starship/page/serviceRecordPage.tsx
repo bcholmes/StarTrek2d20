@@ -8,10 +8,11 @@ import { useTranslation } from "react-i18next";
 import { nextStarshipWorkflowStep, setStarshipServiceRecord } from "../../state/starshipActions";
 import store from "../../state/store";
 import { Navigation } from "../../common/navigator";
-import { ServiceRecordList, ServiceRecordModel } from "../model/serviceRecord";
+import { ServiceRecord, ServiceRecordList, ServiceRecordModel } from "../model/serviceRecord";
 import { TalentsHelper } from "../../helpers/talents";
 import { CheckBox } from "../../components/checkBox";
 import { connect } from "react-redux";
+import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 
 
 interface IServiceRecordPageProperties {
@@ -26,6 +27,13 @@ const ServiceRecordPage: React.FC<IServiceRecordPageProperties> = ({starship, wo
         let step = workflow.peekNextStep();
         store.dispatch(nextStarshipWorkflowStep());
         Navigation.navigateToPage(step.page);
+    }
+
+    const onExtraDetailChange = (selection?: string) => {
+        if (starship.serviceRecordStep) {
+            store.dispatch(setStarshipServiceRecord(starship.serviceRecordStep.type,
+                starship.serviceRecordStep.specialRule, selection));
+        }
     }
 
     const onServiceRecordSelection = (serviceRecord: ServiceRecordModel) => {
@@ -52,15 +60,26 @@ const ServiceRecordPage: React.FC<IServiceRecordPageProperties> = ({starship, wo
                             value={r.type}
                             onChanged={() => { onServiceRecordSelection(r); } }/></td>
                 </tr>
+                {starship.serviceRecordStep?.type?.type === ServiceRecord.SurvivorOfX &&
+                r.type === ServiceRecord.SurvivorOfX
+                    ? (<tr>
+                        <td></td>
+                        <td rowSpan={4}><InputFieldAndLabel
+                            id="selection"
+                            value={starship.serviceRecordStep?.selection ?? ""}
+                            labelName={t('ServiceRecordPage.survivorOfX.selection')}
+                            onChange={(v) => onExtraDetailChange(v)}
+                        /></td>
+                    </tr>)
+                    : undefined
+                }
             </tbody>);
     });
-
-    console.log(starship);
 
     return (<div className="page container ms-0">
         <ShipBuildingBreadcrumbs />
         <Header>{t('Page.title.starshipServiceRecord')}</Header>
-        <ReactMarkdown>{t('StarshipServiceRecordPage.instruction')}</ReactMarkdown>
+        <ReactMarkdown>{t('ServiceRecordPage.instruction')}</ReactMarkdown>
 
         <table className="selection-list w-100">
             <thead>
@@ -73,7 +92,6 @@ const ServiceRecordPage: React.FC<IServiceRecordPageProperties> = ({starship, wo
             </thead>
             {serviceRecords}
         </table>
-
         <div className="text-end mt-4">
             <Button onClick={() => nextPage()}>{t('Common.button.next')}</Button>
         </div>

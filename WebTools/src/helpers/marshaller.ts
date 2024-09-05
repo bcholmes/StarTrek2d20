@@ -488,6 +488,9 @@ class Marshaller {
             sheet["serviceRecord"] = {
                 "type": ServiceRecord[starship.serviceRecordStep.type.type]
             }
+            if (starship.serviceRecordStep.selection?.length) {
+                sheet["serviceRecord"]["selection"] = starship.serviceRecordStep.selection;
+            }
         }
         if (starship.refits != null) {
             starship.refits.forEach(s => sheet.refits.push(System[s]));
@@ -669,6 +672,9 @@ class Marshaller {
                 const serviceRecord = ServiceRecordList.instance.getByType(types[0]);
                 result.serviceRecordStep = new ServiceRecordStep(serviceRecord);
                 result.serviceRecordStep.specialRule = TalentsHelper.getTalent(serviceRecord.specialRule);
+                if (json.serviceRecord.selection) {
+                    result.serviceRecordStep.selection = json.serviceRecord.selection;
+                }
             }
         }
         if (json.traits) {
@@ -739,7 +745,7 @@ class Marshaller {
 
         let loadType = null;
         if (weaponType === WeaponType.ENERGY) {
-            EnergyLoadTypeModel.allTypes().forEach(l => {
+            EnergyLoadTypeModel.allTypes(version).forEach(l => {
                 if (EnergyLoadType[l.type] === json["loadType"]) {
                     loadType = l;
                 }

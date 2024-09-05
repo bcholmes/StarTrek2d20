@@ -3872,7 +3872,7 @@ export class Talents {
         new TalentModel(
             "Mission Pod",
             "Ships of this class have a mission pod. This mission pod provides two talents to the vessel that count toward the maximum normally allowed, but the entire mission pod (and all of its benefits) may be swapped out as if it were a single talent. If equipping a mission pod results in a talent being taken twice, a new talent may be chosen.",
-            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia)],
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e)],
             1,
             "Starship", true),
         new TalentModel(
@@ -3963,6 +3963,12 @@ export class Talents {
             "Ready for Battle",
             "",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Four-Nacelle Stability",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
             1,
             "Starship", true),
 

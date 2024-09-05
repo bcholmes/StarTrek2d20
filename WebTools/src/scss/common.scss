@@ -41,8 +41,13 @@ p {
     font-weight: normal;
 }
 
-.markdown-sm p {
-    font-size: small !important;
+.markdown-sm {
+    p {
+        font-size: small !important;
+    }
+    p:last-of-type {
+        margin-bottom: 0;
+    }
 }
 
 .container ul li {

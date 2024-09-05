@@ -137,6 +137,19 @@ export class EnergyLoadTypeModel {
         new EnergyLoadTypeModel(EnergyLoadType.Tetryon,              "Tetryon",                [new WeaponQuality(Quality.Depleting)],                [],            25)
     ];
 
+    static readonly TYPES_2E = [
+        new EnergyLoadTypeModel(EnergyLoadType.AntiProton,           "Antiproton Beam",        [], [new WeaponQuality(Quality.HighYield)],                                           25),
+        new EnergyLoadTypeModel(EnergyLoadType.Disruptor,            "Disruptor",              [], [new WeaponQuality(Quality.Intense)],                                             23),
+        new EnergyLoadTypeModel(EnergyLoadType.ElectroMagneticIonic, "Electro-Magnetic/Ionic", [], [new WeaponQuality(Quality.Dampening), new WeaponQuality(Quality.Piercing)],      22),
+        new EnergyLoadTypeModel(EnergyLoadType.FreeElectron,         "Free Electron Laser",    [], [],                                                                               21),
+        new EnergyLoadTypeModel(EnergyLoadType.Graviton,             "Graviton",               [], [new WeaponQuality(Quality.Devastating), new WeaponQuality(Quality.Piercing)],    23),
+        new EnergyLoadTypeModel(EnergyLoadType.PhasePulse,           "Phase / Pulse",          [], [new WeaponQuality(Quality.Versatile, 1)],                                        22),
+        new EnergyLoadTypeModel(EnergyLoadType.PhasedPolaron,        "Phased Polaron Beam",    [], [new WeaponQuality(Quality.Piercing), new WeaponQuality(Quality.Intense)],        24),
+        new EnergyLoadTypeModel(EnergyLoadType.Phaser,               "Phaser",                 [], [new WeaponQuality(Quality.Versatile, 2)],                                        23),
+        new EnergyLoadTypeModel(EnergyLoadType.Proton,               "Proton Beam",            [], [new WeaponQuality(Quality.PersistentX)],                                         25),
+        new EnergyLoadTypeModel(EnergyLoadType.Tetryon,              "Tetryon",                [], [new WeaponQuality(Quality.Depleting)],                                           25)
+    ];
+
     readonly type: EnergyLoadType;
     readonly description: string;
     readonly _qualities: WeaponQuality[];
@@ -151,12 +164,12 @@ export class EnergyLoadTypeModel {
         this.century = century;
     }
 
-    static allTypes() {
-        return EnergyLoadTypeModel.TYPES;
+    static allTypes(version: number) {
+        return version === 1 ? EnergyLoadTypeModel.TYPES : EnergyLoadTypeModel.TYPES_2E;
     }
 
-    static allTypesByYear(year: number) {
-        return this.allTypes().filter(e => year > centuryToYear(e.century));
+    static allTypesByYear(year: number, version: number) {
+        return this.allTypes(version).filter(e => year > centuryToYear(e.century));
     }
 
     get effectsAndQualities() {
@@ -589,35 +602,35 @@ export class Weapon {
 class StarshipWeaponList {
     readonly list: Weapon[] = [
         Weapon.createStarshipWeapon('Phase Cannons', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.PhasePulse],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.PhasePulse],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[ Era.Enterprise ],[]]),
         Weapon.createStarshipWeapon('Phaser Cannons', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.Phaser],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[ Era.OriginalSeries, Era.NextGeneration ], []]),
         Weapon.createStarshipWeapon('Phaser Banks', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.Phaser],
             DeliverySystemModel.allTypes()[DeliverySystem.Banks],
             [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.OriginalSeries, Era.NextGeneration ]]),
         Weapon.createStarshipWeapon('Phaser Arrays', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.Phaser],
             DeliverySystemModel.allTypes()[DeliverySystem.Arrays],
             [[ Era.NextGeneration ], []]),
         Weapon.createStarshipWeapon('Disruptor Cannons', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.Disruptor],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[], [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Disruptor Banks', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.Disruptor],
             DeliverySystemModel.allTypes()[DeliverySystem.Banks],
             [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Disruptor Spinal Lance', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.Disruptor],
             DeliverySystemModel.allTypes()[DeliverySystem.SpinalLances],
             [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Electromagnetic Cannon', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.ElectroMagneticIonic],
+            EnergyLoadTypeModel.allTypes(1)[EnergyLoadType.ElectroMagneticIonic],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Spatial Torpedoes', WeaponType.TORPEDO,
@@ -652,35 +665,35 @@ class StarshipWeaponList {
 
     readonly list2e: Weapon[] = [
         Weapon.createStarshipWeapon('Phase Cannons', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.PhasePulse],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.PhasePulse],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[ Era.Enterprise ],[]]),
         Weapon.createStarshipWeapon('Phaser Cannons', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.Phaser],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[ Era.OriginalSeries, Era.NextGeneration ], []]),
         Weapon.createStarshipWeapon('Phaser Banks', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.Phaser],
             DeliverySystemModel.allTypes()[DeliverySystem.Banks],
             [[ Era.OriginalSeries, Era.NextGeneration ], [ Era.OriginalSeries, Era.NextGeneration ]]),
         Weapon.createStarshipWeapon('Phaser Arrays', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Phaser],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.Phaser],
             DeliverySystemModel.allTypes()[DeliverySystem.Arrays],
             [[ Era.NextGeneration ], []]),
         Weapon.createStarshipWeapon('Disruptor Cannons', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.Disruptor],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[], [Era.Enterprise, Era.OriginalSeries, Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Disruptor Banks', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.Disruptor],
             DeliverySystemModel.allTypes()[DeliverySystem.Banks],
             [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Disruptor Spinal Lance', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.Disruptor],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.Disruptor],
             DeliverySystemModel.allTypes()[DeliverySystem.SpinalLances],
             [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Electromagnetic Cannon', WeaponType.ENERGY,
-            EnergyLoadTypeModel.allTypes()[EnergyLoadType.ElectroMagneticIonic],
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.ElectroMagneticIonic],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[], [Era.NextGeneration]]),
         Weapon.createStarshipWeapon('Spatial Torpedoes', WeaponType.TORPEDO,

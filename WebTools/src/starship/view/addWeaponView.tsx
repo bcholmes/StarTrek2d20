@@ -52,9 +52,9 @@ class AddWeaponView extends React.Component<IAddWeaponViewProperties, IAddWeapon
 
     getEnergyLoadTypes() {
         if (this.props.serviceYear) {
-            return EnergyLoadTypeModel.allTypesByYear(this.props.serviceYear);
+            return EnergyLoadTypeModel.allTypesByYear(this.props.serviceYear, this.props.version);
         } else {
-            return EnergyLoadTypeModel.allTypes();
+            return EnergyLoadTypeModel.allTypes(this.props.version);
         }
     }
 

@@ -15,7 +15,7 @@ import SpaceframeSelectionPage from "./spaceframeSelectionPage";
 import StarshipTalentsPage from "./starshipTalentsPage";
 import StarshipTypeSelectionPage from "./starshipTypeSelectionPage";
 import StarshipWeaponsPage from "./starshipWeaponsPage";
-import ServiceRecordPage from "./starshipServiceRecord";
+import ServiceRecordPage from "./serviceRecordPage";
 
 export class StarshipPageFactory implements IPageFactoryRegistry {
 
