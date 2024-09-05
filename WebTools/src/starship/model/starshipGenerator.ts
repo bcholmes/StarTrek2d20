@@ -10,7 +10,7 @@ import { allSystems } from "../../helpers/systems";
 import { TalentsHelper } from "../../helpers/talents";
 import { isSecondEdition } from "../../state/contextFunctions";
 import { RandomStarshipCharacterType } from "./randomStarshipCharacterTypes";
-import { ServiceRecord, ServiceRecordList } from "./serviceRecord";
+import { ServiceRecordList } from "./serviceRecord";
 import { StarshipRandomNameTable } from "./starshipNameTable";
 
 export interface IStarshipConfiguration {

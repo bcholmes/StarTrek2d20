@@ -12,6 +12,16 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240905</b>
+                <ul>
+                    <li>
+                        I think I have all the Starship support from the 2nd edition core rulebook (but have not
+                        yet integrated the additional bits from the GM's tookit).
+                    </li>
+                    <li>
+                        I've added some extra 2nd edition support for supporting characters.
+                    </li>
+                </ul>
                 <b>v1.240904</b>
                 <ul>
                     <li>More work on 2nd edition starship support.</li>
