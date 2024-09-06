@@ -3510,13 +3510,13 @@ export class Talents {
             new TalentModel(
                 "Ablative Armor Generator",
                 "The ship is fitted with a number of external replicators pre-set to materialize an outer layer of armor plating over the hull, reinforced with structural integrity fields that make it extraordinarily resilient. When the ship raises its Shields, it may deploy armor instead, by spending 3 Power. This increases the maximum Shields capacity by 5 and increases the ship’s Resistance by 3. While armor is deployed, the Modulate Shields and Regenerate Shields actions cannot be taken – the armor cannot be fine-tuned in those ways.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia), new CenturyPrerequisite(25)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e), new CenturyPrerequisite(25)],
                 1,
                 "Starship"),
             new TalentModel(
                 "Ablative Field Projector",
                 "The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in Close range. These projectors charge the target’s shields while dissipating its own. Doing so requires a Difficulty 1 Control + Security task. On a success, your ship loses 1 Shield point and the target gains 1 Shield point. This process can be repeated any number of times by spending 1 Momentum for each swap.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog), new CenturyPrerequisite(25)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog, Source.GmToolkit2e), new CenturyPrerequisite(25)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -3623,7 +3623,7 @@ export class Talents {
             new TalentModel(
                 "Regenerative Hull",
                 "The ship’s hull is infused with reverse-engineered Borg nanite technology that seeks out and repairs the hull immediately when it is damaged, often preventing a breach before it can happen. The amount of Stress needed for the ship to sustain a breach is increased by 1.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog), new CenturyPrerequisite(25)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog, Source.GmToolkit2e), new CenturyPrerequisite(25)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -3649,7 +3649,7 @@ export class Talents {
             new TalentModel(
                 "Tachyon Detection Field",
                 "The ship is equipped with a field generator that projects a cloud of tachyons around it. Activating the field generator requires a Control + Engineering task with a Difficulty of 2, assisted by the ship’s Sensors + Science, and has a Power requirement of 2. The field remains active until the ship moves. While the field is active, the ship is notified of any cloaked vessels that are within or pass into Close range. The ship may attack a cloaked target within the field, though the Difficulty for the attack is increased by 2.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog), new CenturyPrerequisite(25), new DepartmentPrerequisite(Department.Science, 3)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog, Source.GmToolkit2e), new CenturyPrerequisite(25), new DepartmentPrerequisite(Department.Science, 3)],
                 1,
                 "Starship"),
             new TalentModel(
@@ -3661,7 +3661,7 @@ export class Talents {
             new TalentModel(
                 "Versatile Tractor Beam",
                 "The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. When the tractor beam is activated, the operator may choose to add one of the following effects:\nDepleting: At the end of each round a target remains within the tractor beam, it loses 1 Shield.\nDraining: At the end of each round a target remains within the tractor beam, it loses 1 Power.",
-                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog), new CenturyPrerequisite(25)],
+                [new StarshipPrerequisite(), new SourcePrerequisite(Source.UtopiaPlanitia, Source.CaptainsLog, Source.GmToolkit2e), new CenturyPrerequisite(25)],
                 1,
                 "Starship"),
             new TalentModel(

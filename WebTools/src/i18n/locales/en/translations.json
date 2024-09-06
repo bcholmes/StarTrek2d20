@@ -2176,9 +2176,14 @@
     "Talent.ablativeArmor.description2e": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures. Increase the ship's Resistance by 2.",
     "Talent.ablativeArmor.soloDescription": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy and protecting the ship. This plating is replaced periodically.",
 
+    "Talent.ablativeArmorGenerator": "Ablative Armor Generator",
+
+    "Talent.ablativeArmorGenerator.description2e": "The ship is fitted with several external replicators pre-set to materialize an outer layer of armor plating over the hull, reinforced with structural integrity fields.\n\nWhen the ship raises its shields, it may deploy armor instead, but this requires using Reserve Power. Deploying the armor increases the ship’s maximum shields capacity by 5 and increases the ship’s Resistance by\n3. While armor is deployed, the _Modulate Shields_ and _Regenerate Shields_ actions cannot be taken—the armor cannot be fine-tuned.",
+
     "Talent.ablativeFieldProjector": "Ablative Field Projector",
 
     "Talent.ablativeFieldProjector.soloDescription": "The ship’s shield emitters are combined with an ablative field projector that allows its graviton field to be shared with another target in close range. Complications could mean shield failure or power loss to key systems.",
+    "Talent.ablativeFieldProjector.description2e": "The ship’s shield emitters are combined with an ablative field projector, allowing its graviton field to be shared with another target in Close range. These projectors charge the target’s shields while dissipating its own.\n\nWhen you attempt the _Regenerate Shields_ action, any Momentum you spend to increase shields regenerated may restore shields on an allied vessel within Close range.",
 
     "Talent.abruptInsights": "Abrupt Insights",
 
@@ -3133,6 +3138,7 @@
 
     "Talent.regenerativeHull": "Regenerative Hull",
 
+    "Talent.regenerativeHull.description2e": "The ship’s hull is infused with reverse-engineered Borg nanite technology that seeks out and repairs the hull immediately when it is damaged, often preventing a breach before it can happen. Each time the ship suffers one or more breaches, roll a d20. If you roll equal to or under your ship’s Structure, ignore one breach inflicted.",
     "Talent.regenerativeHull.soloDescription": "The ship’s hull is infused with reverse-engineered Borg nanite technology that seeks out and repairs the hull immediately when it is damaged, often preventing a breach before it can happen.",
 
     "Talent.regimentedMind": "Regimented Mind",
@@ -3261,6 +3267,7 @@
 
     "Talent.tachyonDetectionField": "Tachyon Detection Field",
 
+    "Talent.tachyonDetectionField.description2e": "The ship is equipped with a field generator that projects a cloud of tachyons around it. When a character at sensor operations succeeds at a _Reveal_ major action, all cloaked or hidden vessels within Long range are revealed, rather than only one.",
     "Talent.tachyonDetectionField.soloDescription": "The ship is equipped with a field generator that projects a cloud of tachyons around it. While the field is active, the ship is notified of any cloaked vessels that are within or pass into close range.",
 
     "Talent.teacher": "Teacher",
@@ -3344,6 +3351,7 @@
 
     "Talent.versatileTractorBeam": "Versatile Tractor Beam",
 
+    "Talent.versatileTractorBeam.description2e": "The ship has exotic particle emitters integrated with its tractor beam system. When the tractor beam is activated, the operator may inflict a negative trait upon the target ship by spending 1 Momentum, rather than the normal cost of 2.",
     "Talent.versatileTractorBeam.soloDescription": "The ship has exotic particle emitters integrated with its tractor beam system. With a few simple adjustments, the tractor beam can become even more useful against ships trapped within. The tractor beam can even deplete energy from a vessel trapped in its field.",
 
     "Talent.veteran": "Veteran",
