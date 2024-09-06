@@ -65,6 +65,120 @@ export class MissionPodHelper {
         return MissionPodHelper._instance;
     }
 
+    private _missionPods2e: { [id: number]: MissionPodModel } = {
+        [MissionPod.AstrometricsAndNavigation]: new MissionPodModel(
+            MissionPod.AstrometricsAndNavigation,
+            "Astrometrics and Navigation",
+            "This pod contains sensors specifically tuned to detect, triangulate, and time distant quasar signals and map gravitic distortions. Combined with a secondary navigational defelctor, this pod allows a vessel to be highly accurate in warp and quickly ascertain its position even after travel through wormholds.",
+            [0, 1, 0, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0],
+            [
+                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentsHelper.getTalent("Advanced Sensor Suites")
+            ],
+            []),
+        [MissionPod.CommandAndControl]: new MissionPodModel(
+            MissionPod.CommandAndControl,
+            "Command and Control",
+            "The pod contains additional subspace antennae and supplementary computer cores, allowing it to serve as a command vessel for fleet actions.",
+            [1, 0, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0, 0],
+            [
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Electronic Warfare Systems")
+            ]),
+        [MissionPod.DefensiveShieldEnhancement]: new MissionPodModel(
+            MissionPod.DefensiveShieldEnhancement,
+            "Defensive Shield Enhancement",
+            "This pod contains extra shield generators, structural integrity field systems, and a network of graviton emitters capable of improving the defensive field around a starship",
+            [0, 0, 0, 1, 0, 0],
+            [0, 0, 1, 0, 1, 0],
+            [
+                TalentsHelper.getTalent("Advanced Shields"),
+                TalentsHelper.getTalent("Improved Shield Recharge")
+            ]),
+        [MissionPod.EmergencyRecovery]: new MissionPodModel(
+            MissionPod.EmergencyRecovery,
+            "Emergency Recovery",
+            "The pod contains extensive and robust tractor beam emitters and graviton buffers, along with mission-adaptable cargo space to allow the vessel to act as a fleet tender, or emergency recovery starship for vessels without propulsion.",
+            [0, 1, 0, 0, 0, 0],
+            [0, 0, 1, 0, 1, 0],
+            [
+                TalentsHelper.getTalent("High-Power Tractor Beam"),
+                TalentsHelper.getTalent("Redundant Systems")
+            ]),
+        [MissionPod.FieldHospital]: new MissionPodModel(
+            MissionPod.FieldHospital,
+            "Field Hospital",
+            "The pod has an isolated environment able to contain even the most virulent diseases known to Federation science, along with an independent life support system, holoemitters, medical repliators able to house hundreds of patients.",
+            [0, 0, 0, 0, 0, 1],
+            [0, 2, 0, 0, 0, 0],
+            [
+                TalentsHelper.getTalent("Emergency Medical Hologram"),
+                TalentsHelper.getTalent("Advanced Sickbay")
+            ]),
+        [MissionPod.FleetCarrier]: new MissionPodModel(
+            MissionPod.FleetCarrier,
+            "Fleet Carrier",
+            "The pod contains a cavernous shuttlecraft bay along with the maintenance facilities for them. It is capable of handling craft as large as runabouts.",
+            [0, 0, 1, 0, 0, 0],
+            [1, 0, 0, 0, 1, 0],
+            [
+                TalentsHelper.getTalent("Extensive Shuttlebays"),
+                TalentsHelper.getTalent("Command Ship")
+            ]),
+        [MissionPod.FleetCommandSupport]: new MissionPodModel(
+            MissionPod.FleetCommandSupport,
+            "Fleet Command Support",
+            "This is a specialized pod containing subspace communications transceivers that link into powerful sensor arrays, allowing starships in communications with the command ship to synchronize their fire systems together.",
+            [1, 0, 0, 0, 0, 0],
+            [1, 1, 0, 0, 0, 0],
+            [
+                TalentsHelper.getTalent("Command Ship"),
+                TalentsHelper.getTalent("Fast Targeting Systems")
+            ]),
+        [MissionPod.MobileDrydock]: new MissionPodModel(
+            MissionPod.MobileDrydock,
+            "Mobile Drydock",
+            "This pod contains a folded dry dock that can be unfurled and deployed for assisting in repairing other starships. Inside the remaining pod there are replicator facilities capable of disassembling asteroids and comets to produce replacement parts and hull for damaged vessels, plus a large work bee bay.",
+            [0, 0, 0, 1, 0, 0],
+            [0, 1, 0, 0, 1, 0],
+            [
+                TalentsHelper.getTalent("Improved Damage Control"),
+                TalentsHelper.getTalent("Rugged Design")
+            ]),
+        [MissionPod.Sensors]: new MissionPodModel(
+            MissionPod.Sensors,
+            "Sensors",
+            "The pod contains additional sensor systems, allowing the ship to serve a range of scientific and reconnaissance roles.",
+            [0, 0, 0, 0, 1, 0],
+            [0, 0, 0, 2, 0, 0],
+            [
+                TalentsHelper.getTalent("Advanced Sensor Suites"),
+                TalentsHelper.getTalent("High Resolution Sensors")
+            ]),
+        [MissionPod.WarpPropulsionPod]: new MissionPodModel(
+            MissionPod.WarpPropulsionPod,
+            "Warp Propulsion Pod",
+            "The pod contains an advanced warp nacelle with paired coils, along with extra fusion reactors that can either assist the ship in maintaining a high warp velocity, or maintain a warp field after saucer separation.",
+            [0, 1, 0, 0, 0, 0],
+            [0, 0, 2, 0, 0, 0],
+            [
+                TalentsHelper.getTalent("Improved Warp Drive"),
+                TalentsHelper.getTalent("Secondary Reactors")
+            ]),
+        [MissionPod.Weapons]: new MissionPodModel(
+            MissionPod.Weapons,
+            "Weapons",
+            "The pod contains additional torpedo launchers, phaser arrays, and targeting sensors.",
+            [0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 1, 0, 1],
+            [
+                TalentsHelper.getTalent("Fast Targeting Systems"),
+                TalentsHelper.getTalent("Rapid-Fire Torpedo Launcher")
+            ]),
+        }
+
     private _missionPods: { [id: number]: MissionPodModel } = {
         [MissionPod.CommandAndControl]: new MissionPodModel(
             MissionPod.CommandAndControl,
@@ -187,11 +301,12 @@ export class MissionPodHelper {
 
     };
 
-    getMissionPodByName(name: string) {
+    getMissionPodByName(name: string, version: number) {
         let result = undefined;
-        for (let id in this._missionPods) {
+        const list = version === 1 ? this._missionPods : this._missionPods2e;
+        for (let id in list) {
             if (MissionPod[id] === name) {
-                result = this._missionPods[id];
+                result = list[id];
                 break;
             }
         }
@@ -201,22 +316,14 @@ export class MissionPodHelper {
     getMissionPods(starship: Starship) {
         let missionPods: MissionPodModel[] = [];
 
-        for (var pod in this._missionPods) {
-            let p = this._missionPods[pod];
+        const list = starship.version === 1 ? this._missionPods : this._missionPods2e;
+        for (var pod in list) {
+            let p = list[pod];
             if (p.isPrerequisitesFulfilled(starship)) {
                 missionPods.push(p);
             }
         }
 
         return missionPods;
-    }
-
-    getMissionPod(pod: MissionPod) {
-        if (pod == null) {
-            return null;
-        }
-
-        let model = this._missionPods[pod];
-        return model == null ? null : model;
     }
 }

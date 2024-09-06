@@ -668,7 +668,7 @@ class Marshaller {
             }
         }
         if (json.missionPod) {
-            result.missionPodModel = MissionPodHelper.instance().getMissionPodByName(json.missionPod.name);
+            result.missionPodModel = MissionPodHelper.instance().getMissionPodByName(json.missionPod.name, result.version);
         }
         if (json.serviceRecord) {
             let types = allServiceRecords().filter(t => ServiceRecord[t] === json.serviceRecord.type);
