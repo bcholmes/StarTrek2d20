@@ -57,7 +57,11 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Akira Class",
             2368,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia), new ServiceYearPrerequisite(2368) ],
+            [
+                new SourcePrerequisite(Source.Core),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2368)
+            ],
             [9, 9, 10, 9, 11, 11],
             [0, 0, 2, 0, 0, 1],
             5,
@@ -78,8 +82,11 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Constellation Class",
             2285,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
-                new ServiceYearPrerequisite(2285) ],
+            [
+                new SourcePrerequisite(Source.Core),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2285)
+            ],
             [8, 7, 9, 9, 8, 9],
             [0, 1, 1, 1, 0, 0],
             4,
@@ -120,8 +127,11 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Defiant Class",
             2371,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
-                new ServiceYearPrerequisite(2371) ],
+            [
+                new SourcePrerequisite(Source.Core),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2371)
+            ],
             [9, 9, 10, 9, 8, 13],
             [0, 1, 2, 0, 0, 0],
             3,
@@ -221,9 +231,11 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Miranda Class",
             2274,
-            [ new SourcePrerequisite(Source.Core),
-                new NotSourcePrerequisite(Source.UtopiaPlanitia),
-                new ServiceYearPrerequisite(2274) ],
+            [
+                new SourcePrerequisite(Source.Core),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2274)
+            ],
             [8, 8, 8, 9, 8, 9],
             [1, 1, 0, 0, 1, 0],
             4,
@@ -237,12 +249,16 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Nova]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Nova]: new SpaceframeModel(
             Spaceframe.Nova,
             CharacterType.Starfleet,
             "Nova Class",
             2368,
-            [ Source.Core, Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.Core, Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2368)
+            ],
             [10, 10, 9, 10, 8, 8],
             [0, 0, 0, 1, 2, 0],
             3,
@@ -360,7 +376,9 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Oberth Class",
             2269,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+            [
+                new SourcePrerequisite(Source.CommandDivision),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e),
                 new ServiceYearPrerequisite(2269) ],
             [8, 9, 7, 9, 8, 7],
             [0, 1, 0, 0, 2, 0],
@@ -445,7 +463,9 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Nebula Class",
             2361,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+            [
+                new SourcePrerequisite(Source.CommandDivision),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e),
                 new ServiceYearPrerequisite(2361) ],
             [9, 10, 10, 8, 10, 9],
             [0, 0, 0, 2, 0, 0],
@@ -600,8 +620,11 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Luna Class",
             2372,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
-                new ServiceYearPrerequisite(2372) ],
+            [
+                new SourcePrerequisite(Source.CommandDivision),
+                new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2372)
+            ],
             [10, 11, 10, 11, 8, 9],
             [0, 0, 0, 1, 2, 0],
             5,
@@ -641,12 +664,16 @@ export class SpaceframeHelper {
                 [9, 8, 10, 9, 6, 6],
                 [2, 4, 2, 2, 3, 1]
             )),
-        [Spaceframe.Walker]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Walker]: new SpaceframeModel(
             Spaceframe.Walker,
             CharacterType.Starfleet,
             "Walker Class",
             2195,
-            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2195)
+            ],
             [6, 7, 6, 8, 6, 6],
             [0, 0, 0, 1, 1, 1],
             3,
@@ -834,12 +861,16 @@ export class SpaceframeHelper {
                 [10, 7, 7, 7, 7, 7],
                 [5, 1, 3, 1, 3, 1]
             )),
-        [Spaceframe.Crossfield]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Crossfield]: new SpaceframeModel(
             Spaceframe.Crossfield,
             CharacterType.Starfleet,
             "Crossfield Class",
             2255,
-            [ Source.DiscoveryCampaign, Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.DiscoveryCampaign, Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2255),
+            ],
             [7, 8, 8, 8, 8, 7],
             [0, 0, 0, 1, 2, 0],
             4,
@@ -1386,12 +1417,16 @@ export class SpaceframeHelper {
                 [9, 9, 12, 10, 9, 12],
                 [2, 3, 4, 3, 1, 2],
             )),
-        [Spaceframe.Odyssey]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Odyssey]: new SpaceframeModel(
             Spaceframe.Odyssey,
             CharacterType.Starfleet,
             "Odyssey",
             2381,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2381)
+            ],
             [11, 11, 10, 10, 11, 10],
             [1, 0, 1, 1, 0, 0],
             7,
@@ -1445,7 +1480,11 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Akira Class",
             2368,
-            [ new SourcePrerequisite(Source.UtopiaPlanitia), new ServiceYearPrerequisite(2368) ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2368)
+            ],
             [9, 9, 9, 9, 10, 11],
             [0, 0, 2, 0, 0, 1],
             5,
@@ -1510,12 +1549,16 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             99999),
-        [Spaceframe.Constellation_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Constellation_UP]: new SpaceframeModel(
             Spaceframe.Constellation_UP,
             CharacterType.Starfleet,
             "Constellation Class",
             2285,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2285)
+            ],
             [8, 7, 9, 9, 8, 7],
             [0, 1, 1, 1, 0, 0],
             4,
@@ -1586,12 +1629,16 @@ export class SpaceframeHelper {
                 [7, 7, 7, 8, 10, 10],
                 [2, 2, 1, 5, 4, 2]
             )),
-        [Spaceframe.Defiant_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Defiant_UP]: new SpaceframeModel(
             Spaceframe.Defiant_UP,
             CharacterType.Starfleet,
             "Defiant Class",
             2371,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2371)
+            ],
             [9, 9, 8, 9, 8, 13],
             [0, 1, 2, 0, 0, 0],
             3,
@@ -1669,12 +1716,16 @@ export class SpaceframeHelper {
                 [9, 11, 11, 10, 8, 8],
                 [2, 4, 2, 2, 4, 1],
             )),
-        [Spaceframe.Luna_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Luna_UP]: new SpaceframeModel(
             Spaceframe.Luna_UP,
             CharacterType.Starfleet,
             "Luna Class",
             2372,
-            [ Source.UtopiaPlanitia, Source.LowerDecksCampaign ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia, Source.LowerDecksCampaign),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2372)
+            ],
             [10, 10, 10, 10, 8, 8],
             [0, 0, 0, 1, 1, 0],
             5,
@@ -1695,12 +1746,16 @@ export class SpaceframeHelper {
                 [10, 10, 10, 12, 8, 8],
                 [2, 2, 2, 3, 4, 2],
             )),
-        [Spaceframe.Miranda_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Miranda_UP]: new SpaceframeModel(
             Spaceframe.Miranda_UP,
             CharacterType.Starfleet,
             "Miranda Class",
             2264,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2264)
+            ],
             [7, 8, 8, 8, 8, 8],
             [1, 1, 0, 0, 1, 0],
             4,
@@ -1718,12 +1773,16 @@ export class SpaceframeHelper {
                 [7, 8, 8, 9, 8, 8],
                 [3, 3, 2, 2, 3, 2]
             )),
-        [Spaceframe.Nebula_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Nebula_UP]: new SpaceframeModel(
             Spaceframe.Nebula_UP,
             CharacterType.Starfleet,
             "Nebula Class",
             2361,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2361)
+            ],
             [9, 10, 10, 8, 9, 9],
             [0, 0, 0, 2, 0, 0],
             5,
@@ -1791,12 +1850,16 @@ export class SpaceframeHelper {
                 [6, 6, 6, 6, 6, 6],
                 [3, 2, 2, 3, 3, 2]
             )),
-        [Spaceframe.Oberth_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Oberth_UP]: new SpaceframeModel(
             Spaceframe.Oberth_UP,
             CharacterType.Starfleet,
             "Oberth Class",
             2269,
-            [ Source.UtopiaPlanitia ],
+            [
+                new SourcePrerequisite(Source.UtopiaPlanitia),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2269)
+            ],
             [8, 9, 7, 9, 6, 6],
             [0, 1, 0, 0, 2, 0],
             3,
@@ -2103,12 +2166,16 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship" ],
             2280),
-        [Spaceframe.Pioneer]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Pioneer]: new SpaceframeModel(
             Spaceframe.Pioneer,
             CharacterType.Starfleet,
             "Pioneer Class",
             2238,
-            [ Source.ContinuingMissions ],
+            [
+                new SourcePrerequisite(Source.ContinuingMissions),
+                new NotSourcePrerequisite(Source.GmToolkit2e),
+                new ServiceYearPrerequisite(2238)
+            ],
             [8, 7, 7, 7, 8, 7],
             [0, 0, 0, 1, 1, 1],
             3,
@@ -3031,6 +3098,321 @@ export class SpaceframeHelper {
             ],
             [ "Federation Starship", "Legacy Components" ],
             99999),
+        [Spaceframe.Freedom_22ndCentury]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Freedom_22ndCentury,
+            CharacterType.Starfleet,
+            "Freedome",
+            2148,
+            [ Source.GmToolkit2e ],
+            [5, 5, 5, 6, 5, 6],
+            [0, 2, 0, 1, 0, 0],
+            2,
+            [
+                "Phaser Cannons",
+                "Spatial Torpedoes",
+                "Grappler Cables (Strength 1)"
+            ],
+            [
+                TalentSelection.selectTalent("Compact Vessel"),
+                TalentSelection.selectTalent("Polarized Hull Plating"),
+            ],
+            [ "United Earth Starship", "Compact Size", "No Personnel Transporter" ],
+            2200),
+        [Spaceframe.Walker_2E]: new SpaceframeModel(
+            Spaceframe.Walker_2E,
+            CharacterType.Starfleet,
+            "Walker",
+            2396,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2195) ],
+            [6, 7, 6, 7, 6, 8],
+            [0, 0, 0, 1, 1, 1],
+            3,
+            [
+                "Phaser Cannons",
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Rugged Design"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Pioneer_2E]: new SpaceframeModel(
+            Spaceframe.Pioneer_2E,
+            CharacterType.Starfleet,
+            "Pioneer class",
+            2241,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2241) ],
+            [8, 7, 8, 7, 7, 6],
+            [0, 0, 0, 1, 1, 1],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Rugged Design"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Crossfield_2E]: new SpaceframeModel(
+            Spaceframe.Crossfield_2E,
+            CharacterType.Starfleet,
+            "Crossfield",
+            2255,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2255) ],
+            [7, 8, 8, 8, 7, 7],
+            [0, 0, 0, 1, 2, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("Classified Design"),
+            ],
+            [ "Federation Starship", "Experimental" ],
+            99999),
+        [Spaceframe.Miranda_2E]: new SpaceframeModel(
+            Spaceframe.Miranda_2E,
+            CharacterType.Starfleet,
+            "Miranda",
+            2264,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2264) ],
+            [7, 8, 8, 8, 8, 8],
+            [1, 1, 0, 0, 1, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+            ],
+            [ "Federation Starship", "Long-serving" ],
+            99999),
+        [Spaceframe.Oberth_2E]: new SpaceframeModel(
+            Spaceframe.Oberth_2E,
+            CharacterType.Starfleet,
+            "Oberth",
+            2269,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2269) ],
+            [8, 9, 7, 9, 6, 6],
+            [0, 0, 0, 1, 2, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Columbia]: new SpaceframeModel(
+            Spaceframe.Columbia,
+            CharacterType.Starfleet,
+            "Columbia",
+            2284,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2284) ],
+            [8, 8, 8, 8, 7, 8],
+            [0, 1, 1, 0, 1, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Preferential Targeting"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Constellation_2E]: new SpaceframeModel(
+            Spaceframe.Constellation_2E,
+            CharacterType.Starfleet,
+            "Constellation",
+            2285,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2285) ],
+            [8, 7, 9, 9, 8, 7],
+            [0, 1, 1, 1, 0, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Four-Nacelle Stability"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Nebula_2E]: new SpaceframeModel(
+            Spaceframe.Nebula_2E,
+            CharacterType.Starfleet,
+            "Nebula",
+            2361,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2361) ],
+            [9, 10, 10, 8, 9, 9],
+            [0, 0, 0, 2, 0, 0],
+            5,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Mission Pod"),
+                TalentSelection.selectTalent("Saucer Separation and Reconnect"),
+            ],
+            [ "Federation Starship", "Adaptable" ],
+            99999),
+        [Spaceframe.Akira_2E]: new SpaceframeModel(
+            Spaceframe.Akira_2E,
+            CharacterType.Starfleet,
+            "Akira",
+            2368,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2368) ],
+            [9, 9, 9, 9, 10, 11],
+            [1, 0, 2, 0, 0, 0],
+            5,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+                TalentSelection.selectTalent("Rapid-Fire Torpedo Launcher"),
+                TalentSelection.selectTalent("Specialized Shuttlebay"),
+            ],
+            [ "Federation Starship", "Extensive Tactival Systems" ],
+            99999),
+        [Spaceframe.Nova_2E]: new SpaceframeModel(
+            Spaceframe.Nova_2E,
+            CharacterType.Starfleet,
+            "Nova",
+            2368,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2368) ],
+            [10, 10, 9, 10, 8, 8],
+            [0, 0, 0, 1, 2, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+            ],
+            [ "Federation Starship", "Efficient but Austere" ],
+            99999),
+        [Spaceframe.Defiant_2E]: new SpaceframeModel(
+            Spaceframe.Defiant_2E,
+            CharacterType.Starfleet,
+            "Defiant",
+            2371,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2371) ],
+            [9, 9, 8, 9, 8, 13],
+            [0, 1, 2, 0, 0, 0],
+            3,
+            [
+                "Phaser Arrays",
+                "Pulse Phaser Cannons",
+                "Photon Torpedoes",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Ablative Armor"),
+                TalentSelection.selectTalent("Pulse Phaser Cannons"),
+                TalentSelection.selectTalent("Landing Gear"),
+            ],
+            [ "Federation Starship", "Warship" ],
+            99999),
+        [Spaceframe.Luna_2E]: new SpaceframeModel(
+            Spaceframe.Luna_2E,
+            CharacterType.Starfleet,
+            "Luna",
+            2372,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2372) ],
+            [10, 10, 10, 10, 8, 8],
+            [0, 0, 0, 1, 0, 1],
+            5,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Research Facilities"),
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Emergency Medical Hologram"),
+                TalentSelection.selectTalent("Mission Pod"),
+            ],
+            [ "Federation Starship" ],
+            99999),
+        [Spaceframe.Sagan]: new SpaceframeModel(
+            Spaceframe.Sagan,
+            CharacterType.Starfleet,
+            "Sagan",
+            2401,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2401) ],
+            [10, 10, 11, 11, 10, 9],
+            [0, 1, 0, 1, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("Advanced Sensor Suites"),
+                TalentSelection.selectTalent("Advanced Shields"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Four-Nacelle Stability"),
+            ],
+            [ "Federation Starship", "Borg Technology" ],
+            99999),
+        [Spaceframe.Odyssey_2E]: new SpaceframeModel(
+            Spaceframe.Odyssey_2E,
+            CharacterType.Starfleet,
+            "Odyssey",
+            2401,
+            [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2381) ],
+            [10, 11, 10, 10, 11, 10],
+            [1, 0, 1, 1, 0, 0],
+            7,
+            [
+                "Phaser Arrays",
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Quantum Torpedoes",
+                "Tractor Beam (Strength 6)"
+            ],
+            [
+                TalentSelection.selectTalent("Command Ship"),
+                TalentSelection.selectTalent("Improved Warp Drive"),
+                TalentSelection.selectTalent("Redundant Systems [Engines]"),
+                TalentSelection.selectTalent("Aquarius Escort"),
+                TalentSelection.selectTalent("Quantum Slipstream Burst Drive"),
+                TalentSelection.selectTalent("Saucer Separation and Reconnect"),
+            ],
+            [ "Federation Starship", "Borg Technology" ],
+            99999),
         [Spaceframe.D7_2E]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.D7_2E,
             CharacterType.KlingonWarrior,
@@ -3156,6 +3538,8 @@ export class SpaceframeHelper {
             ],
             [ "Ferengi Starship", "Marauder", "The Best Latinum Can Buy" ],
             99999),
+
+
         [Spaceframe.VorCha_2E]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.VorCha_2E,
             CharacterType.KlingonWarrior,

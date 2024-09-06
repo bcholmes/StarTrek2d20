@@ -1890,6 +1890,14 @@
     "Talent.dauntless.description": "Cuando emprendas una Tarea para resistir intimidación o amenazas, puedes añadir 1d20 adicional a tu reserva de dados.",
     "Talent.dauntless.description2e": "Siempre que otro personaje intente intimidarte o amenazarte, puedes sufrir 2 de Estrés para ignorar su intento.",
 
+    "Talent.empath": "Émpata",
+
+    "Talent.empath.description": "Puedes percibir las emociones de la mayoría de seres vivos cercanos y puedes comunicarte telepáticamente con otros émpatas y con telépatas, así como con aquellos con los que tengas una familiaridad extrema. No puedes decidir no percibir las emociones de los seres cercanos, salvo aquellos resistentes a la telepatía. Puede suponer un esfuerzo y una Tarea localizar las emociones de un individuo concreto entre una multitud o bloquear las emociones de los seres cercanos. Aumenta la Dificultad de esta Tarea en situaciones estresantes, si hay muchos seres presentes, si el personaje es resistente a la telepatía o cualquier otro factor relevante.",
+
+    "Talent.empathy2e": "Empatía",
+
+    "Talent.empathy2e.description": "Puedes percibir las emociones de la mayoría de seres vivos cercanos y puedes comunicarte telepáticamente con otros émpatas y con telépatas, así como con aquellos con los que tengas una familiaridad extrema. No puedes decidir no percibir las emociones de los seres cercanos, salvo aquellos resistentes a la telepatía. Puede suponer un esfuerzo y una Tarea localizar las emociones de un individuo concreto entre una multitud o bloquear las emociones de los seres cercanos. Aumenta la Dificultad de esta Tarea en situaciones estresantes, si hay muchos seres presentes, si el personaje es resistente a la telepatía o cualquier otro factor relevante.",
+
     "Talent.extraEffort": "Esfuerzo adicional",
 
     "Talent.extraEffort.description2e": "Cuando intentas una tarea, puedes reducir la Dificultad de la tarea en 1, hasta un mínimo de 0. Sin embargo, una vez completada la tarea, sufres inmediatamente un Estrés igual a la Dificultad original de la tarea.",
@@ -1954,6 +1962,14 @@
 
     "Talent.studious.description": "Cuando gastes uno o más puntos de Inercia para Obtener Información, puedes realizar una pregunta adicional (en total, no por cada punto de Inercia así gastado).",
     "Talent.studious.description2e": "Cuando gastes uno o más puntos de Inercia para Obtener Información, puedes realizar una pregunta adicional (en total, no por cada punto de Inercia así gastado).",
+
+    "Talent.telepath": "Telépata",
+
+    "Talent.telepath.description": "Puedes percibir los pensamientos superficiales y las emociones de la mayoría de seres vivos cercanos y puedes comunicarte telepáticamente con otros émpatas y telépatas, así como con aquellos con los que tengas una familiaridad extrema. Los pensamientos superficiales son aquello en lo que esté pensando una criatura en un momento determinado. No puedes elegir no percibir las emociones o leer los pensamientos superficiales de los seres cercanos, salvo aquellos resis-tentes a la telepatía. Requiere esfuerzo y una Tarea localizar las emociones o pensamientos de un individuo concreto entre una multitud, buscar en la mente de una criatura pensamientos o recuerdos concretos, o bloquear las mentes de los seres cercanos. Los objetivos no voluntarios pueden resistirse mediante una Tarea Enfrentada.",
+
+    "Talent.telepathy2e": "Telepatía",
+
+    "Talent.telepathy2e.description": "Puedes percibir los pensamientos superficiales y las emociones de la mayoría de seres vivos cercanos y puedes comunicarte telepáticamente con otros émpatas y telépatas, así como con aquellos con los que tengas una familiaridad extrema. Los pensamientos superficiales son aquello en lo que esté pensando una criatura en un momento determinado. No puedes elegir no percibir las emociones o leer los pensamientos superficiales de los seres cercanos, salvo aquellos resis-tentes a la telepatía. Requiere esfuerzo y una Tarea localizar las emociones o pensamientos de un individuo concreto entre una multitud, buscar en la mente de una criatura pensamientos o recuerdos concretos, o bloquear las mentes de los seres cercanos. Los objetivos no voluntarios pueden resistirse mediante una Tarea Enfrentada.",
 
     "Talent.technicalExpertise": "Pericia técnica",
 

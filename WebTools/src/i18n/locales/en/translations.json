@@ -2383,6 +2383,10 @@
 
     "Talent.chosenSpeaker.description2e": "Among Aenar communities, leaders and mediators are chosen as and when the need arises, nominating an individual to serve as Speaker. You’ve been chosen for this role often and are adept at using your senses and your telepathy to aid communication. When attempting a task to communicate telepathically with a willing being, you may re-roll 1d20.",
 
+    "Talent.classifiedDesign": "Classified Design",
+
+    "Talent.classifiedDesign.description": "As the _Crossfield_ class is a highly experimental spaceframe, Starfleet outfitted all ships of this class with the Technical Testbed mission profile.",
+
     "Talent.cloakedMines": "Cloaked Mines",
 
     "Talent.cloakedMines.soloDescription": "The ship’s mines are equipped with state-of- the-art cloaking technology, making them almost impossible to detect.",
@@ -3027,6 +3031,10 @@
 
     "Talent.prestigiousPosting.description": "When a new supporting character is first introduced, apply a single improvement to them immediately, like a milestone.",
 
+    "Talent.preferentialTargeting": "Preferential Targeting",
+
+    "Talent.preferentialTargeting.description": "Using its sensitive scientific equipment, a _Columbia_ can locate and exploit weaknesses in an enemy ship’s defenses. When a _Columbia_-class ship causes a breach to an enemy ship, the crew may spend 3 Momentum to immediately attack again with a different weapon.",
+
     "Talent.proceduralCompliance": "Procedural Compliance",
 
     "Talent.proceduralCompliance.description2e": "When you attempt an Engineering task, you may remove one d20 from your dice pool before rolling. If you do so, you gain one automatic success on your task.",
@@ -3048,6 +3056,10 @@
 
     "Talent.psychokinesis.description2e": "You can manipulate and control objects using only the power of the mind. You may exert a psychic force upon an object within Close range equivalent to the force that you would normally be able to exert physically, though this takes concentration and cannot be done violently.\n\nYou may spend 1 Momentum (Immediate, Repeatable) to increase the magnitude of the force you apply, with each Momentum spent counting as an additional person’s worth of force applied (that is, you can move or manipulate objects that would take two people to move or manipulate by spending 1 Momentum). Momentum (Immediate) may also be spent to increase the range of this: 1 Momentum to affect objects in Medium range, 2 Momentum to affect objects at Long range, and gamemaster’s discretion for distances beyond. To apply force violently instead, add 1 Threat to make a Control + Security task with a Difficulty of 2 to strike an opponent (as a Ranged Attack), inflicting a Stun or Deadly Injury with a Severity of 3.",
 
+    "Talent.pulsePhaserCannons": "Pulse Phaser Cannons",
+
+    "Talent.pulsePhaserCannons.description": "The armament of _Defiant_-class starships is designed to deliver punishing firepower at Close range, overwhelming the defenses of most enemies. These function as Phaser Cannons with the Spread quality.",
+
     "Talent.pushTheLimits": "Push the Limits",
 
     "Talent.pushTheLimits.description": "When you attempt a Conn Task that has increased in Difficulty due to environmental conditions or damage to the engines, reduce the Difficulty by 1, to a minimum of 1.",
@@ -3056,6 +3068,10 @@
     "Talent.quantumTorpedoes": "Quantum Torpedoes",
 
     "Talent.quantumTorpedoes.soloDescription": "The vessel has been equipped with the latest in ship-to-ship munitions: quantum torpedoes. The ship has quantum torpedoes in addition to any other form of torpedo it carries.",
+
+    "Talent.quantumSlipstreamBurstDrive": "Quantum Slipstream Burst Drive",
+
+    "Talent.quantumSlipstreamBurstDrive.description": "This experimental drive allows the ship to enter quantum slipstream for 30 minutes at a time, moving the ship up to 150 light-years before shutting down. The drive requires 12 hours to reset. As experimental technology, this drive may require extensive maintenance and be prone to failure. This is an independent system, so the crew may operate the warp drive in between slipstream bursts.",
 
     "Talent.quickStudy": "Quick Study",
 
@@ -3187,6 +3203,10 @@
     "Talent.spacewalk": "Spacewalk",
 
     "Talent.spacewalk.description2e": "Whenever the Difficulty of a task would be increased due to low- or zero-gravity, ignore that Difficulty increase. If a task that was normally possible would be made impossible because of low- or zero-gravity, you may attempt the task at +1 Difficulty instead.",
+
+    "Talent.specializedShuttlebay": "Specialized Shuttlebay",
+
+    "Talent.specializedShuttlebay.description": "_Akira_-class vessels are built with a shuttlebay running the length of the saucer section, allowing small craft to depart from the prow and return safely via the aft. Any friendly small craft within Close range may count the ship as providing Cover (+1 Difficulty on attacks targeting them). Any small craft launching from the bay may take one additional helm minor action at no additional cost after they launch.",
 
     "Talent.spiritOfDiscovery": "Spirit of Discovery",
 

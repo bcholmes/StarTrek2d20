@@ -68,8 +68,6 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
             <div className="col-xl-6 mt-4">
                 <CharacterStatBlock character={character} />
 
-                <ValuesBlockView character={character} />
-
                 <SpeciesAbilityBlockView character={character} />
             </div>
             <div className="col-xl-6">
@@ -87,6 +85,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
 
                 </div>
 
+                <ValuesBlockView character={character} />
                 <WeaponBlockView construct={character} />
             </div>
         </div>

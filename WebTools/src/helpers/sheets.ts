@@ -1128,15 +1128,8 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
 
 class CharacterSheets {
     public getSupportingCharacterSheet(c: Character): ICharacterSheet[] {
-        if (c.isKlingon()) {
-            return [ new KlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new StandardTosCharacterSheet(), new HalfPageSupportingCharacterSheet() ];
-        } else if (c.era === Era.NextGeneration) {
-            return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),  new BasicGeneratedHalfPageCharacterSheet(),
-                new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet()  ];
-        } else {
-            return [ new StandardTosCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
-                new BasicGeneratedHalfPageCharacterSheet(), new HalfPageSupportingCharacterSheet(), new KlingonCharacterSheet() ];
-        }
+        return [ new GeneratedTngPortraitCharacterSheet(), new GeneratedTngPortraitA4CharacterSheet(), new BasicGeneratedHalfPageCharacterSheet(),
+            new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new Standard2eCharacterSheet() ];
     }
 
     public getCharacterSheets(character: Character): ICharacterSheet[] {

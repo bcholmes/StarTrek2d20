@@ -3971,6 +3971,36 @@ export class Talents {
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
             1,
             "Starship", true),
+        new TalentModel(
+            "Classified Design",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Preferential Targeting",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Specialized Shuttlebay",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Pulse Phaser Cannons",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Quantum Slipstream Burst Drive",
+            "",
+            [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
+            1,
+            "Starship", true),
 
 
         new TalentModel(

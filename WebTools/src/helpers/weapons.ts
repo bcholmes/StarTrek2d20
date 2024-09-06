@@ -120,7 +120,7 @@ export class CaptureTypeModel {
 
 export enum EnergyLoadType {
     AntiProton, Disruptor, ElectroMagneticIonic, FreeElectron, Graviton,
-    PhasedPolaron, Phaser, PhasePulse, Proton, Tetryon
+    PhasedPolaron, Phaser, PhasePulse, Proton, Tetryon, PulsePhaser
 }
 
 export class EnergyLoadTypeModel {
@@ -147,7 +147,8 @@ export class EnergyLoadTypeModel {
         new EnergyLoadTypeModel(EnergyLoadType.PhasedPolaron,        "Phased Polaron Beam",    [], [new WeaponQuality(Quality.Piercing), new WeaponQuality(Quality.Intense)],        24),
         new EnergyLoadTypeModel(EnergyLoadType.Phaser,               "Phaser",                 [], [new WeaponQuality(Quality.Versatile, 2)],                                        23),
         new EnergyLoadTypeModel(EnergyLoadType.Proton,               "Proton Beam",            [], [new WeaponQuality(Quality.PersistentX)],                                         25),
-        new EnergyLoadTypeModel(EnergyLoadType.Tetryon,              "Tetryon",                [], [new WeaponQuality(Quality.Depleting)],                                           25)
+        new EnergyLoadTypeModel(EnergyLoadType.Tetryon,              "Tetryon",                [], [new WeaponQuality(Quality.Depleting)],                                           25),
+        new EnergyLoadTypeModel(EnergyLoadType.PulsePhaser,          "Pulse Phaser",           [], [new WeaponQuality(Quality.Versatile, 2), new WeaponQuality(Quality.Spread)],     24),
     ];
 
     readonly type: EnergyLoadType;
@@ -670,6 +671,10 @@ class StarshipWeaponList {
             [[ Era.Enterprise ],[]]),
         Weapon.createStarshipWeapon('Phaser Cannons', WeaponType.ENERGY,
             EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.Phaser],
+            DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
+            [[ Era.OriginalSeries, Era.NextGeneration ], []]),
+        Weapon.createStarshipWeapon('Pulse Phaser Cannons', WeaponType.ENERGY,
+            EnergyLoadTypeModel.allTypes(2)[EnergyLoadType.PulsePhaser],
             DeliverySystemModel.allTypes()[DeliverySystem.Cannons],
             [[ Era.OriginalSeries, Era.NextGeneration ], []]),
         Weapon.createStarshipWeapon('Phaser Banks', WeaponType.ENERGY,

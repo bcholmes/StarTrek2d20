@@ -98,7 +98,6 @@ const TalentsBlockView: React.FC<IConstructPageProperties> = ({construct}) => {
                 let t = TalentsHelper.getTalent(tName);
                 let talentName = t.localizedDisplayName + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "");
                 return (<div className="text-white view-border-bottom py-2" key={'talent-' + i}>
-                    <strong>{t.localizedDisplayName + (t.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
                     {renderDescription(talentName, t)}
                 </div>);
             })}

@@ -301,7 +301,12 @@ export class Starship extends Construct implements IWeaponDiceProvider {
 
     get crewSupport() {
         if (this.buildType === ShipBuildType.Starship) {
-            return this.scale;
+            let result = this.scale;
+            if (this.hasTalent("Larger Crew")) {
+                result += 1;
+            }
+
+            return result;
         } else {
             return 0;
         }

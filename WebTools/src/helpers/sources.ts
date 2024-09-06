@@ -123,7 +123,7 @@ class Sources {
         [Source.ContinuingMissions]: new SourceViewModel(Source.ContinuingMissions, SourceType.Unofficial, "Continuing Mission"),
         [Source.AnimatedSeries]: new SourceViewModel(Source.AnimatedSeries, SourceType.Expansion, "Animated Series"),
         [Source.FederationKlingonWar]: new SourceViewModel(Source.FederationKlingonWar, SourceType.Expansion, "Federation-Klingon War"),
-        [Source.GmToolkit2e]: new SourceViewModel(Source.GmToolkit2e, SourceType.Expansion, "GM Toolkit 2e", false),
+        [Source.GmToolkit2e]: new SourceViewModel(Source.GmToolkit2e, SourceType.Expansion, "GM Toolkit 2e"),
     };
 
     getSources() {
