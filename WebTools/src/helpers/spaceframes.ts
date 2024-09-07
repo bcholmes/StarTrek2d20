@@ -1421,11 +1421,11 @@ export class SpaceframeHelper {
             Spaceframe.Odyssey,
             CharacterType.Starfleet,
             "Odyssey",
-            2381,
+            2401,
             [
                 new SourcePrerequisite(Source.UtopiaPlanitia),
                 new NotSourcePrerequisite(Source.GmToolkit2e),
-                new ServiceYearPrerequisite(2381)
+                new ServiceYearPrerequisite(2401)
             ],
             [11, 11, 10, 10, 11, 10],
             [1, 0, 1, 1, 0, 0],
@@ -3391,7 +3391,7 @@ export class SpaceframeHelper {
             Spaceframe.Odyssey_2E,
             CharacterType.Starfleet,
             "Odyssey",
-            2401,
+            2381,
             [ new SourcePrerequisite(Source.GmToolkit2e), new ServiceYearPrerequisite(2381) ],
             [10, 11, 10, 10, 11, 10],
             [1, 0, 1, 1, 0, 0],
