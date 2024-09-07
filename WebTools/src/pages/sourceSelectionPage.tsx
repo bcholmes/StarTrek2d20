@@ -133,7 +133,7 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
     }
 
     private sourceChanged(source: Source) {
-        if (source === Source.Core) {
+        if (source === Source.Core && this.props.sources.indexOf(Source.Core2ndEdition) < 0) {
             // do nothing
         } else if (this.hasSource(source)) {
             store.dispatch(removeSource(source));
@@ -154,12 +154,16 @@ class SourceSelectionPage extends React.Component<ISourceSelectionPageProperties
             }
             store.dispatch(setSources(sources));
         } else {
-            store.dispatch(setSources([ Source.Core ]));
+            if (this.props.sources.indexOf(Source.Core2ndEdition) >= 0) {
+                store.dispatch(setSources([ Source.Core2ndEdition ]));
+            } else {
+                store.dispatch(setSources([ Source.Core ]));
+            }
         }
     }
 
     hasSource(source: Source) {
-        return this.props.sources.indexOf(source) > -1 || source === Source.Core;
+        return this.props.sources.indexOf(source) > -1;
     }
 }
 

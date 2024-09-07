@@ -28,6 +28,9 @@ const getInitialData = () => {
                         }
                     });
                 }
+                if (selectedSources.indexOf(Source.Core) >= 0 && selectedSources.indexOf(Source.Core2ndEdition) >= 0) {
+                    selectedSources.splice(selectedSources.indexOf(Source.Core), 1);
+                }
                 if (selectedSources.length) {
                     initialData.sources = selectedSources;
                 }
@@ -41,30 +44,53 @@ const getInitialData = () => {
 
 const contextReducer = (state = getInitialData(), action) => {
     switch (action.type) {
-        case SET_SOURCES:
-            persistContext(action.payload);
+        case SET_SOURCES: {
+            let newSources = action.payload;
+            if (newSources.indexOf(Source.Core2ndEdition) >= 0 && state.sources.indexOf(Source.Core) >= 0) {
+                newSources.splice(newSources.indexOf(Source.Core2ndEdition), 1);
+            } else if (newSources.indexOf(Source.Core) >= 0 && state.sources.indexOf(Source.Core2ndEdition) >= 0) {
+                newSources.splice(newSources.indexOf(Source.Core), 1);
+            }
+            persistContext(newSources);
             return {
                 ...state,
-                sources: action.payload
+                sources: newSources
             }
-        case ADD_SOURCE:
+        }
+        case ADD_SOURCE: {
+
             if (state.sources.indexOf(action.payload) >= 0) {
                 return state;
             } else {
-                persistContext([...state.sources, action.payload ]);
+                let newSource = action.payload;
+                let existing = [...state.sources];
+                if (newSource === Source.Core2ndEdition && existing.indexOf(Source.Core) >= 0) {
+                    existing.splice(existing.indexOf(Source.Core), 1);
+                } else if (newSource === Source.Core && existing.indexOf(Source.Core2ndEdition) >= 0) {
+                    existing.splice(existing.indexOf(Source.Core2ndEdition), 1);
+                }
+                existing.push(newSource);
+                persistContext(existing);
                 return {
                     ...state,
-                    sources: [...state.sources, action.payload ]
+                    sources: existing
                 }
             }
+        }
         case REMOVE_SOURCE:
             if (state.sources.indexOf(action.payload) >= 0) {
-                let sources = [...state.sources];
-                sources.splice(state.sources.indexOf(action.payload), 1);
-                persistContext(sources);
-                return {
-                    ...state,
-                    sources: sources
+                if (action.payload === Source.Core && state.sources.indexOf(Source.Core2ndEdition) < 0) {
+                    return state;
+                } else if (action.payload === Source.Core2ndEdition && state.sources.indexOf(Source.Core) < 0) {
+                    return state;
+                } else {
+                    let sources = [...state.sources];
+                    sources.splice(state.sources.indexOf(action.payload), 1);
+                    persistContext(sources);
+                    return {
+                        ...state,
+                        sources: sources
+                    }
                 }
             } else {
                 return state;
