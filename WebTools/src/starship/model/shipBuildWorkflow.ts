@@ -41,8 +41,8 @@ export class ShipBuildWorkflow {
                 new ShipBuildWorkflowStep("Spaceframe", PageIdentity.SpaceframeOption),
                 new ShipBuildWorkflowStep("Mission Profile", PageIdentity.MissionProfileSelection),
                 new ShipBuildWorkflowStep("Talent Selection", PageIdentity.StarshipTalentSelection),
-                new ShipBuildWorkflowStep("Refits", PageIdentity.StarshipRefits),
                 new ShipBuildWorkflowStep("Service Record", PageIdentity.StarshipServiceRecord),
+                new ShipBuildWorkflowStep("Refits", PageIdentity.StarshipRefits),
                 new ShipBuildWorkflowStep("Final Details", PageIdentity.FinalStarshipDetails)], 1);
         } else {
             return new ShipBuildWorkflow([ new ShipBuildWorkflowStep("Starship Type", PageIdentity.StarshipTypeSelection),

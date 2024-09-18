@@ -774,7 +774,7 @@ export class SpaceframeHelper {
             [0, 0, 1, 1, 1, 0],
             4,
             [
-                "Phase Cannons",
+                "Phaser Cannons",
                 "Photon Torpedoes",
                 "Tractor Beam (Strength 3)"
             ],
@@ -797,7 +797,7 @@ export class SpaceframeHelper {
             [0, 0, 2, 1, 0, 0],
             3,
             [
-                "Phase Cannons",
+                "Phaser Banks",
                 "Photon Torpedoes",
                 "Tractor Beam (Strength 2)"
             ],

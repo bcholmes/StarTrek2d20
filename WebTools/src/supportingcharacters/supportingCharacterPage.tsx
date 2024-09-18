@@ -76,18 +76,8 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         return CharacterTypeModel.getAllTypes().map((t, i) => new DropDownElement(t.type, t.localizedName));
     }
     const getRanks = () => {
-        var result = [];
-
-        const ranks = RanksHelper.instance().getRanks(character, true)
-            .filter(r => r.id !== Rank.Captain &&
-                         r.id !== Rank.Commander &&
-                         r.id !== Rank.LtCommander);
-
-        ranks.forEach(r => {
-            result.push(new DropDownElement(r.id, r.localizedName));
-        });
-
-        return result;
+        return RanksHelper.instance().getRanks(character, true)
+            .map(r => new DropDownElement(r.id, r.localizedName));
     }
 
     const selectRank = (rank: Rank) => {
@@ -336,15 +326,18 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                     </div>
 
                     {character?.supportingStep?.supervisory
-                        ? (<div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
-                            <InputFieldAndLabel labelName={t('Construct.other.focus4')} value={character.supportingStep.focuses[3] ?? ""}
-                                id="focus4" onChange={(value) => {
-                                    store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 3));
-                                }} />
-                            <div style={{ flexShrink: 0 }} className="mt-1">
-                                <D20IconButton onClick={() => selectRandomFocus(3)}/>
+                        ? (<>
+                            <ReactMarkdown className="mt-4">{t('SupportingCharacter.additionalFocusInstruction')}</ReactMarkdown>
+                            <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
+                                <InputFieldAndLabel labelName={t('Construct.other.focus4')} value={character.supportingStep.focuses[3] ?? ""}
+                                    id="focus4" onChange={(value) => {
+                                        store.dispatch(setCharacterFocus(value, StepContext.FinishingTouches, 3));
+                                    }} />
+                                <div style={{ flexShrink: 0 }} className="mt-1">
+                                    <D20IconButton onClick={() => selectRandomFocus(3)}/>
+                                </div>
                             </div>
-                        </div>)
+                        </>)
                         : undefined}
                     <Header level={2} className="mt-5">{t('SupportingCharacter.nameAndRank')}</Header>
                     <p>

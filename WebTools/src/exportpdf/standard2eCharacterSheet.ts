@@ -295,7 +295,7 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
     }
 
     fillAssignment(form: PDFForm, character: Character): void {
-        this.fillField(form, "Asssignment", character.assignedShip ?? "");
+        this.fillField(form, "Assignment", character.assignedShip ?? "");
     }
 
     populateForm(form: PDFForm, character: Character) {

@@ -214,6 +214,8 @@
     "Home.tokenCreator": "Tokens",
     "Home.otherTools": "Other Tools",
 
+    "ModifySupportingCharacter.instruction": "Whenever a supporting character is introduced to an adventure, and this is _not_ the first time they have been introduced (i.e., they have been introduced before), they receive an improvement. Choose an improvement type.",
+
     "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
 
     "MissionPodSelectionPage.text": "Certain spaceframes have the ability to be fitted with a single mission pod, chosen from the list below. The talents provided by the pod may not be swapped out normally, but the entire mission pod (and all its benefits) may be swapped out as if it were a single talent.",
@@ -399,6 +401,7 @@
     "SupportingCharacter.supervisoryNote": "Supervisory supporting characters represent department heads or, in the caes of _Lower Decks_ campaigns, senior officers who outrank the players.",
     "SupportingCharacter.disciplineInstruction": "Assign the character's Disciplines. The highest value should match up with the department/purpose of the character. Select two different values to swap them.",
     "SupportingCharacter.focusInstruction": "Choose three Focuses for the character. At least one should reflect the department/purpose of the character.",
+    "SupportingCharacter.additionalFocusInstruction": "Supervisory characters get an additional focus.",
     "SupportingCharacter.valueInstruction": "Supervisory characters start with a single value.",
     "SupportingCharacter.nameAndRank": "Name & Rank",
     "SupportingCharacter.nameAndRankInstruction": "Give the character an appropriate name and rank. Supporting Characters should never have a rank above Lieutenant and may often be enlisted personnel rather than officers.",
@@ -444,6 +447,7 @@
     "Common.text.suggestions": "Suggestions",
     "Common.text.total": "Total",
     "Common.text.yes": "Yes",
+    "Common.text.modify": "Modify",
     "Common.text.no": "No",
     "Common.text.other": "Other",
 
@@ -596,6 +600,7 @@
     "Page.title.finish": "Finishing Touches",
     "Page.title.gamemasterTrackerPage": "Tracking",
     "Page.title.home": "Home",
+    "Page.title.modifySupportingCharacter": "Modify Supporting Character",
     "Page.title.missionPodSelection": "Mission Pod Selection",
     "Page.title.missionProfileSelection": "Mission Profile Selection",
     "Page.title.missionProfileTalentSelection": "Mission Profile Talent",
@@ -3315,7 +3320,7 @@
 
     "Talent.theoryIntoPractice": "Theory into Practice",
 
-    "Talent.theoryIntoPractice.description2e": "When you succeed at a task using Engineering or Science where you gain the additional d20 from the Testing a Theory talent, or which benefits from a\ntrait that represents a hypothesis you’ve made, you generate 2 bonus Momentum. Bonus Momentum may not be saved.",
+    "Talent.theoryIntoPractice.description2e": "When you succeed at a task using Engineering or Science where you gain the additional d20 from the Testing a Theory talent, or which benefits from a trait that represents a hypothesis you’ve made, you generate 2 bonus Momentum. Bonus Momentum may not be saved.",
 
     "Talent.tough": "Tough",
 

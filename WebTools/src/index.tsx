@@ -13,6 +13,7 @@ import { PageIdentity } from './pages/pageIdentity';
 import { PageFactory } from './pages/pageFactory';
 import ImportTablePage from './table/page/importTablePage';
 import OtherToolsPage from './pages/otherToolsPage';
+import ModifySupportCharacterPage from './supportingcharacters/modify/modifySupportCharacterPage';
 
 const CreditsPage = React.lazy(() => import('./pages/creditsPage'));
 const TalentsOverviewMainPage = React.lazy(() => import('./pages/talentsOverviewMainPage'));
@@ -41,6 +42,7 @@ root.render(
             <Suspense fallback={<LoadingPage />}>
                 <Routes>
                     <Route path="/modify" element={<ModificationFramePage />} />
+                    <Route path="/modify/supporting" element={<ModifySupportCharacterPage />} />
                     <Route path="/gmtracker" element={<GMTrackerPage />} />
                     <Route path="/talents" element={<TalentsOverviewMainPage />} />
                     <Route path="/view" element={<ViewSheetPage />} />

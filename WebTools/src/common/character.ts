@@ -24,6 +24,7 @@ import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equip
 import { Era } from '../helpers/eras';
 import { SpeciesAbility, SpeciesAbilityList } from '../helpers/speciesAbility';
 import { IWeaponDiceProvider } from './iWeaponDiceProvider';
+import { TalentModel } from '../helpers/talents';
 
 export abstract class CharacterTypeDetails {
 }
@@ -138,6 +139,24 @@ export class SupportingStep {
         result.disciplines = [...this.disciplines];
         result.supervisory = this.supervisory;
         result.value = this.value;
+        return result;
+    }
+}
+
+export class SupportingImrovementStep {
+    value: string;
+    attribute: Attribute;
+    discipline: Skill;
+    focus: string;
+    talent: SelectedTalent;
+
+    copy() {
+        let result = new SupportingImrovementStep();
+        result.value = this.value;
+        result.attribute = this.attribute;
+        result.discipline = this.discipline;
+        result.focus = this.focus;
+        result.talent = this.talent?.copy();
         return result;
     }
 }
@@ -401,6 +420,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
     public npcGenerationStep?: NpcGenerationStep;
     public supportingStep?: SupportingStep;
 
+    public improvements: SupportingImrovementStep[];
+
     public legacyMode: boolean;
 
     constructor() {
@@ -580,14 +601,20 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
             return result;
         } else if (this.stereotype === Stereotype.SupportingCharacter && !this.legacyMode) {
-            let values = this.age.disciplines;
+            let values = [...this.age.disciplines];
             if (this.version > 1 && this.type !== CharacterType.Child && this.supportingStep?.supervisory) {
                 values = [4, 4, 3, 2, 2, 1];
             }
-            return SkillsHelper.getSkills().map(s => {
+            let result = SkillsHelper.getSkills().map(s => {
                 let index = this.supportingStep?.disciplines?.indexOf(s);
                 return new CharacterSkill(s, values[index]);
             });
+            this.improvements?.forEach(i => {
+                if (i.discipline != null) {
+                    result[i.discipline].expertise = result[i.discipline].expertise + 1;
+                }
+            })
+            return result;
         } else {
             return SkillsHelper.getSkills().map(s => new CharacterSkill(s, this._skills[s]));
         }
@@ -752,16 +779,14 @@ export class Character extends Construct implements IWeaponDiceProvider {
     }
 
     get values() {
+        let result =[];
         if (this.stereotype === Stereotype.Npc) {
             return this.npcGenerationStep?.values ?? [];
         } else if (this.stereotype === Stereotype.SupportingCharacter) {
-            let result =[];
             if (this.supportingStep?.value) {
                 result.push(this.supportingStep.value);
             }
-            return result;
         } else {
-            let result = [];
             if (this.environmentStep?.value) {
                 result.push(this.environmentStep.value);
             }
@@ -791,8 +816,15 @@ export class Character extends Construct implements IWeaponDiceProvider {
                 result.push(this.finishingStep.talent?.value);
             }
 
-            return result;
         }
+
+        this.improvements?.forEach(i => {
+            if (i.value != null) {
+                result.push(i.value);
+            }
+        })
+
+        return result;
     }
 
     get nameAndFullRank() {
@@ -1315,6 +1347,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
         character.house = this.house;
         character.era = this.era;
         character.pastime = this.pastime == null ? [] : [...this.pastime];
+        character.improvements = this.improvements?.map(i => i.copy());
         return character;
     }
 
