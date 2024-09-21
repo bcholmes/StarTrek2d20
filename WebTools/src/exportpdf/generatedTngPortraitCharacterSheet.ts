@@ -8,6 +8,7 @@ import i18next from "i18next";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { TalentsHelper } from "../helpers/talents";
 import { Column } from "./column";
+import { Construct } from "../common/construct";
 
 export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacterSheet {
 
@@ -169,8 +170,8 @@ export class GeneratedTngPortraitCharacterSheet extends BaseTNGGeneratedCharacte
         });
     }
 
-    writeDetailLabels(page: PDFPage, colour?: SimpleColor): void {
-        super.writeDetailLabels(page, SimpleColor.from("#9676A9"));
+    writeDetailLabels(page: PDFPage, construct: Construct, colour?: SimpleColor): void {
+        super.writeDetailLabels(page, construct, SimpleColor.from("#9676A9"));
     }
 
     writeWeaponLabels(page: PDFPage) {

@@ -24,7 +24,6 @@ import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equip
 import { Era } from '../helpers/eras';
 import { SpeciesAbility, SpeciesAbilityList } from '../helpers/speciesAbility';
 import { IWeaponDiceProvider } from './iWeaponDiceProvider';
-import { TalentModel } from '../helpers/talents';
 
 export abstract class CharacterTypeDetails {
 }

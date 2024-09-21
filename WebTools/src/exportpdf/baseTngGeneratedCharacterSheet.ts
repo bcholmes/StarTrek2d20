@@ -8,6 +8,8 @@ import i18next from "i18next";
 import { getCurrentLanguageCode } from "../i18n/config";
 import { FontLibrary, FontType } from "./fontLibrary";
 import { BaseFormFillingSheet } from "./baseFormFillingSheet";
+import { labelWriter } from "./labelWriter";
+import { TextAlign } from "./textAlign";
 
 export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingSheet {
     static readonly lightPurpleColour = SimpleColor.from("#c3bcde");
@@ -89,7 +91,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingShee
         this.writeTitle(page);
         this.writeSubTitles(page, character);
         this.writeStatLabels(page, character);
-        this.writeDetailLabels(page);
+        this.writeDetailLabels(page, construct);
         this.writeWeaponLabels(page);
 
         this.writeStress(pdf, page, character);
@@ -146,7 +148,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingShee
         });
     }
 
-    writeDetailLabels(page: PDFPage, colour: SimpleColor = BaseTNGGeneratedCharacterSheet.darkPurpleColour) {
+    writeDetailLabels(page: PDFPage, construct: Construct, colour: SimpleColor = BaseTNGGeneratedCharacterSheet.darkPurpleColour) {
 
         let minWidth = Math.min.apply(Math,
             Object.keys(this.detailLabels).map(key => this.detailLabels[key].width));
@@ -154,11 +156,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingShee
             Object.keys(this.detailLabels).map(key => i18next.t(key).toLocaleUpperCase()),
             minWidth, 16.5, 9);
 
-        Object.keys(this.detailLabels).forEach(key => {
-            let block = this.detailLabels[key];
-            const originalText = i18next.t(key).toLocaleUpperCase();
-            this.writeLabel(page, originalText, fontSize, block, colour, ":");
-        });
+        labelWriter(page, this.detailLabels, construct.version, this.headingFont, 16.5, colour, TextAlign.Left, ": ");
 
         this.writeLabel(page, i18next.t("Construct.other.determination").toLocaleUpperCase(), fontSize,
             this.determinationLabelBlock, colour, ":");

@@ -3701,7 +3701,7 @@ export class Talents {
                 1,
                 "Starship"),
             new TalentModel(
-                "Sophisticaed Astrometrics Facilities",
+                "Sophisticated Astrometrics Facilities",
                 "",
                 [new StarshipPrerequisite(), new SourcePrerequisite(Source.Core2ndEdition)],
                 1,

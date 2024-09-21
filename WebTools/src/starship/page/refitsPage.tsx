@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Navigation } from "../../common/navigator";
-import { refitCalculator, Starship } from "../../common/starship";
+import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
 import { Dialog } from "../../components/dialog";
 import { Header } from "../../components/header";

@@ -16,7 +16,8 @@ const changeLabelForVersion = (key: string, version: number) => {
 export const labelWriter = (page: PDFPage, locations: {[key: string]: Column},
     version: number, font: PDFFont, originalFontSize: number,
     colour: SimpleColor|((label: string) => SimpleColor) = SimpleColor.from("#000000"),
-    textAlign: TextAlign = TextAlign.Left) => {
+    textAlign: TextAlign = TextAlign.Left,
+    suffix: string = "") => {
 
     const minimumFontSize = originalFontSize * 0.75;
     let colourProvider = (label: string) => SimpleColor.from("#000000");
@@ -32,7 +33,7 @@ export const labelWriter = (page: PDFPage, locations: {[key: string]: Column},
         let block = locations[key];
         key = changeLabelForVersion(key, version);
         const originalText = i18next.t(key).toLocaleUpperCase();
-        let text = originalText;
+        let text = originalText + suffix;
         let width = font.widthOfTextAtSize(text, fontSize);
         while (width > block.width) {
             fontSize -= 0.25;
@@ -60,9 +61,13 @@ export const labelWriter = (page: PDFPage, locations: {[key: string]: Column},
             text += "...";
         }
 
+        text += suffix;
+
         let x = block.start.x;
         if (textAlign === TextAlign.Centre) {
             x = block.start.x + ((block.width - width) / 2);
+        } else if (textAlign === TextAlign.Right) {
+            x = block.end.x - width - 2;
         }
 
         page.drawText(text, {

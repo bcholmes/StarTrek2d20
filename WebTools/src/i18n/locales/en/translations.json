@@ -2593,7 +2593,7 @@
 
     "Talent.expandedEmergencyMedicalFacilities": "Expanded Emergency Medical Facilities",
 
-    "Talent.expandedEmergencyMedicalFacilities.description": "Whenever a character attempts a task to identify specific illnesses or injuries, or to determine the severity of a patient’s condition, they may diagnose a number of pa- tients equal to the ship’s Medical rating. If the character also has the Triage talent, they may diagnose two addi- tional patients by spending 1 Momentum (Repeatable).\n\nDuring an extended task to process and treat many sick or injured patients, a character aboard the ship increas- es their Impact by 1.",
+    "Talent.expandedEmergencyMedicalFacilities.description": "Whenever a character attempts a task to identify specific illnesses or injuries, or to determine the severity of a patient’s condition, they may diagnose a number of patients equal to the ship’s Medical rating. If the character also has the Triage talent, they may diagnose two additional patients by spending 1 Momentum (Repeatable).\n\nDuring an extended task to process and treat many sick or injured patients, a character aboard the ship increases their Impact by 1.",
 
     "Talent.expandedMunitions": "Expanded Munitions",
 
@@ -2766,7 +2766,7 @@
 
     "Talent.improvedReactionControlSystem": "Improved Reaction Control System",
 
-    "Talent.improvedReactionControlSystem.description2e": "Whenever the ship attempts to move through difficult terrain, reduce the Momentum cost of the difficult ter- rain by 1, to a minimum of 0.",
+    "Talent.improvedReactionControlSystem.description2e": "Whenever the ship attempts to move through difficult terrain, reduce the Momentum cost of the difficult terrain by 1, to a minimum of 0.",
     "Talent.improvedReactionControlSystem.soloDescription": "The ship’s maneuvering thrusters operate with greater precision, allowing the ship to adjust its course more carefully.",
 
     "Talent.improvedShieldRecharge": "Improved Shield Recharge",
@@ -2790,7 +2790,7 @@
 
     "Talent.indefatigable": "Indefatigable",
 
-    "Talent.indefatigable.description2e": "When you fail a task, and attempt that task again during the same scene, reduce the Difficulty of the second at- tempt (and any subsequent attempts if you still fail) by 1.",
+    "Talent.indefatigable.description2e": "When you fail a task, and attempt that task again during the same scene, reduce the Difficulty of the second attempt (and any subsequent attempts if you still fail) by 1.",
 
     "Talent.independentPhaserSupply": "Independent Phaser Supply",
 
@@ -2860,7 +2860,7 @@
 
     "Talent.maintenanceSpecialist": "Maintenance Specialist",
 
-    "Talent.maintenanceSpecialist.description2e": "You may ignore the first complication rolled on any Engineering task. Further, when you create any equip- ment trait, any character who uses that piece of equip- ment in a task may ignore the first complication rolled.",
+    "Talent.maintenanceSpecialist.description2e": "You may ignore the first complication rolled on any Engineering task. Further, when you create any equipment trait, any character who uses that piece of equipment in a task may ignore the first complication rolled.",
 
     "Talent.martialArtist": "Martial Artist",
 
@@ -3304,7 +3304,7 @@
 
     "Talent.thatWasntMe": "That Wasn't Me",
 
-    "Talent.thatWasntMe.description2e": "The Orions are known as one of the most untrustworthy species in the Galaxy, next to the Ferengi, and yet people are willing to do business with them or are often tricked or misled by them. You’ve learned the subtle interplay\nof social interactions, reputations, and plausible denials that allow others to trust you despite what they’ve heard about ‘those other Orions’. When another character attempts a task to determine if they can trust you, you may spend 2 Momentum if you are sincere, or add 2 Threat if you’re attempting to deceive them. Either way, the char- acter does not need to make a task roll: you convince them you are trustworthy.",
+    "Talent.thatWasntMe.description2e": "The Orions are known as one of the most untrustworthy species in the Galaxy, next to the Ferengi, and yet people are willing to do business with them or are often tricked or misled by them. You’ve learned the subtle interplay\nof social interactions, reputations, and plausible denials that allow others to trust you despite what they’ve heard about ‘those other Orions’. When another character attempts a task to determine if they can trust you, you may spend 2 Momentum if you are sincere, or add 2 Threat if you’re attempting to deceive them. Either way, the character does not need to make a task roll: you convince them you are trustworthy.",
 
     "Talent.theEndsJustifyTheMeans": "The Ends Justify the Means",
 
