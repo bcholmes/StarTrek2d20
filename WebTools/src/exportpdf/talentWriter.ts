@@ -42,24 +42,27 @@ export class TalentWriter {
         this.headingColour = headingColour;
     }
 
-    writeTalents(talents: (ReadableTalentModel|RoleModel|SpeciesAbility)[], column: Column, fontSize: number = 9) {
+    writeTalents(talents: (ReadableTalentModel|RoleModel|SpeciesAbility)[], column: Column, fontSize: number = 9, nameFontSize?: number) {
         let paragraphs = [];
         let paragraph = new Paragraph(this.page, column, this.fonts);
         paragraphs.push(paragraph);
+        if (nameFontSize == null) {
+            nameFontSize = fontSize;
+        }
 
         talents.forEach(talent => {
             if (paragraph) {
                 if (talent instanceof RoleModel) {
-                    paragraph.append(talent.localizedName + ": ", new FontOptions(9, FontType.Bold), this.headingColour);
-                    paragraph.append(talent.localizedAbility, new FontOptions(9));
+                    paragraph.append(talent.localizedName + ": ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
+                    paragraph.append(talent.localizedAbility, new FontOptions(fontSize));
 
                     paragraph = paragraph.nextParagraph();
                     if (paragraph) {
                         paragraphs.push(paragraph);
                     }
                 } else if (talent instanceof SpeciesAbility) {
-                    paragraph.append(talent.name + " (" + i18next.t('Construct.other.speciesAbility') + "): ", new FontOptions(9, FontType.Bold), this.headingColour);
-                    paragraph.append(talent.description, new FontOptions(9));
+                    paragraph.append(talent.name + " (" + i18next.t('Construct.other.speciesAbility') + "): ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
+                    paragraph.append(talent.description, new FontOptions(fontSize));
 
                     paragraph = paragraph.nextParagraph();
                     if (paragraph) {
@@ -72,7 +75,7 @@ export class TalentWriter {
                         let rank = talent.rank;
                         talentName += " [Rank: " + rank + "]";
                     }
-                    paragraph.append(talentName + ": ", new FontOptions(9, FontType.Bold), this.headingColour);
+                    paragraph.append(talentName + ": ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
                     if (this.version === 1) {
                         paragraph.append(talent.talent.localizedDescription, new FontOptions(fontSize));
                     } else {
@@ -97,11 +100,6 @@ export class TalentWriter {
                             paragraph.append(i18next.t("Construct.other.attribute") + ": ", new FontOptions(fontSize, FontType.Bold));
                             paragraph.append(i18next.t(makeKey("Construct.attribute.", Attribute[talent.attribute])), new FontOptions(fontSize));
                         }
-
-
-                    }
-                    if (talent.talent.name === TALENT_NAME_UNTAPPED_POTENTIAL && talent.attribute == null) {
-                        console.log("Sadness");
                     }
 
                     paragraph = paragraph?.nextParagraph();

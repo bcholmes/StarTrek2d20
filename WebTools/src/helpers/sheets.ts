@@ -31,6 +31,7 @@ import { FontLibrary, FontType } from '../exportpdf/fontLibrary';
 import { TalentWriter } from '../exportpdf/talentWriter';
 import { assembleWritableItems } from '../exportpdf/generatedsheet';
 import { WeaponDescriber } from '../exportpdf/weaponDescriber';
+import { Landscape2eCharacterSheet } from '../exportpdf/landscape2eCharacterSheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -1137,6 +1138,7 @@ class CharacterSheets {
             return [ new CaptainsLogCharacterSheet() ];
         } else if (character.version > 1) {
             return [ new Standard2eCharacterSheet(),
+                new Landscape2eCharacterSheet(),
                 new GeneratedTngPortraitCharacterSheet(),
                 new StandardGermanCharacterSheet(),
                 new GeneratedTngPortraitA4CharacterSheet(),
@@ -1151,15 +1153,24 @@ class CharacterSheets {
         } else if (character.isKlingon()) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new GeneratedTngPortraitA4CharacterSheet(),
-                new StandardRussianCharacterSheet(), new Standard2eCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
+                new StandardRussianCharacterSheet(), new Standard2eCharacterSheet(),
+                new Landscape2eCharacterSheet(),
+                new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(),
                 new TwoPageTngCharacterSheet(), new RomulanCharacterSheet() ];
         } else if (character.era === Era.NextGeneration) {
-            return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(), new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
-                new Standard2eCharacterSheet(), new StandardTosCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
+            return [ new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
+                new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(), new KlingonCharacterSheet(),
+                new Standard2eCharacterSheet(),
+                new Landscape2eCharacterSheet(),
+                new StandardTosCharacterSheet(),
+                new LandscapeGeneratedCharacterSheet(), new TwoPageTngLandscapeCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         } else {
             return [ new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
-                new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(), new Standard2eCharacterSheet(), new LandscapeGeneratedCharacterSheet(), new TwoPageTngCharacterSheet(),
+                new GeneratedTngPortraitA4CharacterSheet(), new StandardRussianCharacterSheet(),
+                new Standard2eCharacterSheet(),
+                new Landscape2eCharacterSheet(),
+                new LandscapeGeneratedCharacterSheet(), new TwoPageTngCharacterSheet(),
                 new TwoPageTngLandscapeCharacterSheet(), new TwoPageKlingonCharacterSheet(), new RomulanCharacterSheet() ];
         }
     }

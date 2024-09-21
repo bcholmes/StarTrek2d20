@@ -3567,8 +3567,8 @@ export class SpaceframeHelper {
         [Spaceframe.Mogai]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Mogai,
             CharacterType.Romulan,
-            "Valdore class",
-            2285,
+            "Mogai class",
+            2374,
             [ Source.GmToolkit2e ],
             [9, 9, 10, 10, 10, 10],
             [0, 1, 1, 1, 0, 0],
