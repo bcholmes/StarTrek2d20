@@ -3,7 +3,7 @@ import { SimpleColor } from "../common/colour";
 import { BaseFormFillingSheet } from "./baseFormFillingSheet";
 import { Column } from "./column";
 import { SheetTag } from "./icharactersheet";
-import { PDFDocument, PDFPage } from "@cantoo/pdf-lib";
+import { PDFDocument, PDFForm, PDFPage, PDFTextField } from "@cantoo/pdf-lib";
 import { Construct, Stereotype } from "../common/construct";
 import { TalentWriter } from "./talentWriter";
 import { Character } from "../common/character";
@@ -13,6 +13,12 @@ import { labelWriter } from "./labelWriter";
 import { TextAlign } from "./textAlign";
 import { Era } from "../helpers/eras";
 import { CheckMarkMaker } from "./checkMarkMaker";
+import { staTextFieldAppearanceProvider } from "../helpers/pdfTextFieldAppearance";
+import { CareersHelper } from "../helpers/careers";
+import { WeaponDescriber } from "./weaponDescriber";
+import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
+import { CharacterTypeModel } from "../common/characterType";
+import { TracksHelper } from "../helpers/tracks";
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
@@ -217,7 +223,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         const triangle = "M 60.232529,54.856579 V 44.842907 l 8.671875,5.009766 z m 0.580078,-1.001953 6.9375,-4.001953 -6.9375,-4.007813 z"
 
 
-        let widthOfTab = Math.max(146.205, width + 30);
+        let widthOfTab = Math.max(146.205, width + 35);
         let startOffset = 54.966797;
 
         let farthestEdge = widthOfTab + startOffset;
@@ -259,4 +265,87 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
             size: fontSize
         });
     }
-}
+
+    populateForm(form: PDFForm, character: Character) {
+        form.getFields().forEach(f => {
+            if (f instanceof PDFTextField) {
+                let textField = f as PDFTextField;
+                if (textField.isMultiline() && (textField.getText() == null || textField.getText().length === 0)) {
+                    textField.updateAppearances(this.formFont, staTextFieldAppearanceProvider(8));
+                }
+            }
+        });
+
+        super.populateForm(form, character);
+
+        this.fillCharacterRole(form, character);
+        this.fillPastimes(form, character);
+        this.fillStressBox(form, character);
+        this.fillCareerPath(form, character);
+        this.fillExperience(form, character);
+    }
+
+    fillReputation(form: PDFForm, character: Character) {
+    }
+
+    fillCharacterRole(form: PDFForm, character: Character) {
+        this.fillField(form, "Character Role", character.assignmentWithoutShip);
+    }
+
+    fillAssignment(form: PDFForm, character: Character): void {
+        this.fillField(form, "Assignment", character.assignedShip ?? "");
+    }
+
+    fillStressBox(form: PDFForm, character: Character): void {
+        this.fillField(form, "Stress", "" + character.stress);
+    }
+
+
+    fillCareerPath(form: PDFForm, character: Character): void {
+        let path = CharacterTypeModel.getByType(character.type)?.localizedName ?? "";
+        if (character.educationStep) {
+            path += " / " + TracksHelper.instance.getTrack(character.educationStep?.track, character.type, character.version).localizedName;
+        }
+
+        this.fillField(form, "Career Path", path);
+    }
+
+    fillEquipment(form: PDFForm, character: Character): void {
+        const equipment = character.equipment.join(", ");
+        this.fillField(form, "Equipment", equipment);
+    }
+
+    fillFocuses(form: PDFForm, character: Character): void {
+        const focuses = character.focuses.join(", ");
+        this.fillField(form, "Focuses", focuses);
+    }
+
+    fillPastimes(form: PDFForm, character: Character): void {
+        const pastime = character.pastime?.join(", ") ?? "";
+        this.fillField(form, "Pastimes", pastime);
+    }
+
+    fillValues(form: PDFForm, character: Character): void {
+        const values = character.values.join("\n");
+        this.fillField(form, "Values", values);
+    }
+
+    fillExperience(form: PDFForm, character: Character): void {
+        if (character.careerStep?.career != null) {
+            const career = CareersHelper.instance.getCareer(character.careerStep.career, character);
+            this.fillField(form, "Experience", career.localizedName);
+        }
+    }
+
+    fillWeapons(form: PDFForm, construct: Construct): void {
+        const describer = new WeaponDescriber(construct.version, true);
+
+        if (construct instanceof Character) {
+            let attacks = construct.determineWeapons()
+                .map(w =>
+                    w.name + ": " +
+                    describer.describeFully(w, construct).replace(CHALLENGE_DICE_NOTATION, "\u25B2"));
+
+            this.fillField(form, "Attacks", attacks.join("\n"));
+        }
+    }}

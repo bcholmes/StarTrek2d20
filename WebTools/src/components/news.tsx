@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240921</b>
+                <ul>
+                    <li>
+                        My awkward truth is that I just like tinkering with character sheets. So, I made a new one.
+                    </li>
+                </ul>
                 <b>v1.240920</b>
                 <ul>
                     <li>
@@ -238,7 +244,7 @@ class News extends React.Component<INewsProperties, {}> {
                         version of the uniform. Although we primarily see M'Benga and Chapel wearing variants (M'Benga's
                         medical tunic/smock and Chapel's nursing jumpsuit), they do wear the V-necks when they
                         take part in landing teams. See the episodes, "All Those Who Wander" and "Hegemony," for example.
-                        In the future, I'll support variants for the medical smock, nursing jumpsuit and, or course, the
+                        In the future, I'll support variants for the medical smock, nursing jumpsuit and, of course, the
                         skant.
                         </div>
                         <div className="mt-2">
@@ -250,51 +256,6 @@ class News extends React.Component<INewsProperties, {}> {
                     <li>
                         Some additional improvements have been made with respect to national languages, thanks to a
                         code contribution.
-                    </li>
-                </ul>
-                <b>v1.240316</b>
-                <ul>
-                    <li>
-                        Some minor revisions to the system generation tool, including addressing one bug.
-                    </li>
-                    <li>
-                        A few additional options for token generation.
-                    </li>
-                </ul>
-                <b>v1.240309</b>
-                <ul>
-                    <li>
-                        Still more minor improvements.
-                    </li>
-                </ul>
-                <b>v1.240308</b>
-                <ul>
-                    <li>
-                        More minor improvements and bug fixes.
-                    </li>
-                </ul>
-                <b>v1.240306</b>
-                <ul>
-                    <li>
-                        Minor tweaks and bug fixes.
-                    </li>
-                </ul>
-                <b>v1.240305</b>
-                <ul>
-                    <li>
-                        An excellent contribution from Hanzo and LoranRendel fixed a problem with Cyrillic characters in exported PDFs. One of the
-                        effects of this update is that PDF files now use a different font (one with broader international character support).
-                        The new font takes up a bit more space for the descender, and the net effect is that the overall font size is smaller.
-                        I've tweaked some of the character sheets to make the text fields larger to compensate.
-                    </li>
-                </ul>
-                <b>v1.240303</b>
-                <ul>
-                    <li>
-                        A number of updates for token generation. New species! New uniforms!
-                    </li>
-                    <li>
-                        Minor internal tweaks, and prep for new books.
                     </li>
                 </ul>
 
