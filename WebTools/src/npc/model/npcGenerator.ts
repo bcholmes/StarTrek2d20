@@ -7,7 +7,7 @@ import { RanksHelper, Rank } from "../../helpers/ranks";
 import { Skill, SkillsHelper } from "../../helpers/skills";
 import { Species } from "../../helpers/speciesEnum";
 import { SpeciesHelper, SpeciesModel } from "../../helpers/species";
-import { TalentsHelper, ToViewModel } from "../../helpers/talents";
+import { TalentsHelper } from "../../helpers/talents";
 import { NameGenerator } from "../nameGenerator";
 import { NpcType, NpcTypes } from "./npcType";
 import { SpecializationModel, Specializations } from "./specializations";
@@ -577,16 +577,16 @@ export class NpcGenerator {
             let n = 0;
 
             if (i === 0 && species.id === Species.Klingon && hasAnySource([Source.KlingonCore, Source.BetaQuadrant]) && character.version === 1) {
-                character.addTalent(ToViewModel(TalentsHelper.getTalent("Brak'lul"), 1, character.type));
+                character.addTalent(TalentsHelper.getTalent("Brak'lul"));
             } else if (i === 0 && species.id === Species.Betazoid) {
                 if (character.version === 1) {
-                    character.addTalent(ToViewModel(TalentsHelper.getTalent("Telepath"), 1, character.type));
+                    character.addTalent(TalentsHelper.getTalent("Telepath"));
                 } else {
-                    character.addTalent(ToViewModel(TalentsHelper.getTalent("Telepathy2e"), 1, character.type));
+                    character.addTalent(TalentsHelper.getTalent("Telepathy2e"));
                 }
                 numberOfTalents += 1;
             } else if (i === 0 && species.id === Species.CyberneticallyEnhanced && hasSource(Source.SciencesDivision)) {
-                character.addTalent(ToViewModel(TalentsHelper.getTalent("Neural Interface"), 1, character.type));
+                character.addTalent(TalentsHelper.getTalent("Neural Interface"));
             } else {
                 while (!done) {
                     let talentList = TalentsHelper.getAllAvailableTalentsForCharacter(character);

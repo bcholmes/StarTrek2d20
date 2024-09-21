@@ -46,7 +46,7 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
             }
         }
 
-        let talentViewModels = talents.map(n => ToViewModel(TalentsHelper.getTalent(n), 1, CharacterType.Starfleet));
+        let talentViewModels = talents.map(n => ToViewModel(TalentsHelper.getTalent(n), 1, CharacterType.Starfleet, starship.version));
         store.dispatch(setAdditionalTalents(talentViewModels));
     }
 
@@ -63,7 +63,7 @@ const SoloStarshipTalentsPage: React.FC<ISoloStarshipTalentsProperties> = ({star
         if (starship.hasTalent(talent.name)) {
             talents = talents.filter(t => t.name !== talent.name);
         } else {
-            talents.push(ToViewModel(talent, 1, CharacterType.Starfleet));
+            talents.push(ToViewModel(talent, 1, CharacterType.Starfleet, starship.version));
             while (talents.length > starship.scale) {
                 talents.splice(0, 1);
             }

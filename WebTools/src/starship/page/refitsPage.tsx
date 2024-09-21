@@ -17,12 +17,12 @@ import ReactMarkdown from "react-markdown";
 interface IRefitPageProperties {
     starship: Starship;
     workflow: ShipBuildWorkflow;
-    refitCount: number;
 }
 
-const RefitPage: React.FC<IRefitPageProperties> = ({starship, refitCount, workflow}) => {
+const RefitPage: React.FC<IRefitPageProperties> = ({starship, workflow}) => {
 
     const { t } = useTranslation();
+    const refitCount = starship.numberOfRefits;
 
     const addRefit = (system: System) => {
         store.dispatch(addStarshipRefit(system));
@@ -61,7 +61,6 @@ const RefitPage: React.FC<IRefitPageProperties> = ({starship, refitCount, workfl
 function mapStateToProps(state, ownProps) {
     return {
         starship: state.starship.starship,
-        refitCount: refitCalculator(state.starship.starship),
         workflow: state.starship.workflow
     };
 }

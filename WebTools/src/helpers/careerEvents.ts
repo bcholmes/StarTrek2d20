@@ -16,11 +16,11 @@ export class CareerEventModel {
     special?: string;
     prefix: string;
     focuses: string[];
-    source: Source;
+    source?: Source;
 
     constructor(name: string, description: string, attributes: Attribute[], disciplines: Skill[], focusSuggestions: string,
         traitDescription: string, roll: number, onApply: () => void, special: string = undefined, prefix: string = "common.",
-        focuses: string[] = [], source: Source = Source.Core) {
+        focuses: string[] = [], source?: Source) {
         this.name = name;
         this.description = description;
         this.attributes = attributes;
@@ -1245,7 +1245,7 @@ class CareerEvents {
 
     getCareerEvents(type: CharacterType) {
         let list = type === CharacterType.KlingonWarrior ? this._klingonEvents : this._events;
-        list = list.filter(e => hasSource(e.source));
+        list = list.filter(e => e.source == null || hasSource(e.source));
         return [...list].sort((e1, e2) => {
             return e1.localizedName.localeCompare(e2.localizedName);
         })

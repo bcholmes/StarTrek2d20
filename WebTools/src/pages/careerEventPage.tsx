@@ -98,6 +98,8 @@ const CareerEventPage: React.FC<ICareerEventProperties> = ({character, context})
             ? toTableRow(CareerEventsHelper.getCareerEvent(randomEventWithUnofficial, character.type) , 0)
             : CareerEventsHelper.getCareerEventsIncludingUnofficial(character.type).map((c, i) => toTableRow(c, i));
 
+console.log(events);
+
         return (<>
             <div className="mt-4">
                 <ReactMarkdown children={t('CareerEvents.unofficialNote')} rehypePlugins={[[rehypeExternalLinks, { target: '_blank' }]]} />

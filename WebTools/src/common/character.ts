@@ -1074,7 +1074,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
                 traits.push("Ambassador");
             }
         }
-        return traits;
+        return traits.filter(t => t?.length);
     }
 
     addTrait(trait: string) {

@@ -44,9 +44,9 @@ const MissionProfileTalentSelectionPage: React.FC<IMissionProfileTalentSelection
             if (!t.isSourcePrerequisiteFulfilled(starship)) {
                 // skip it
             } else if (!starship.spaceframeModel?.hasTalent(t.name)) {
-                talents.push(ToViewModel(t, 1, starship?.type));
+                talents.push(ToViewModel(t, 1, starship?.type, starship?.version));
             } else if (t.maxRank > 1) {
-                talents.push(ToViewModel(t, 2, starship?.type));
+                talents.push(ToViewModel(t, 2, starship?.type, starship?.version));
             }
         });
         return talents;
