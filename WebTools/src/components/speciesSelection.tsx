@@ -31,8 +31,11 @@ interface ISpeciesSelectionProperties extends ICharacterProperties {
 }
 
 const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onSelection}) => {
+    const initialSpecies: Species = character?.speciesStep?.species == Species.Custom
+        ? null
+        : character?.speciesStep?.species;
     const [allowAllSpecies, setAllowAllSpecies ] = useState(false);
-    const [randomSpecies, setRandomSpecies] = useState(character?.speciesStep?.species);
+    const [randomSpecies, setRandomSpecies] = useState<Species>(initialSpecies);
 
     const { t } = useTranslation();
     const [mode, setMode] = useState(RandomMode.All);
@@ -51,7 +54,7 @@ const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onS
         ? [SpeciesHelper.getSpeciesByType(randomSpecies)]
         : speciesOptions;
 
-    const determineRandomSpecies = (mode: RandomMode) => {
+    const determineRandomSpecies = (mode: RandomMode): Species => {
         if (mode === RandomMode.Core) {
             let speciesSelection = SpeciesHelper.generateSpecies();
             return speciesSelection;

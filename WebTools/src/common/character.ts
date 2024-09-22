@@ -389,7 +389,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     private _attributeInitialValue: number = 7;
 
-    public reputation = 10;
+    public _reputation = undefined;
     public reprimands = 0;
     public _attributes: CharacterAttribute[] = [];
     public _skills: number[] = [];
@@ -440,6 +440,20 @@ export class Character extends Construct implements IWeaponDiceProvider {
         this._focuses = [];
         this.careerEvents = [];
         this.age = AgeHelper.getAdultAge();
+    }
+
+    get reputation() {
+        if (this._reputation != null) {
+            return this._reputation;
+        } else if (this.version === 1) {
+            return 10;
+        } else {
+            return 3;
+        }
+    }
+
+    set reputation(reputation: number) {
+        this._reputation = reputation;
     }
 
     get enlisted() {
@@ -1281,6 +1295,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
         character.type = this.type;
         character.stereotype = this.stereotype;
         character.typeDetails = this.typeDetails;
+        character._reputation = this._reputation;
         character.version = this.version;
         this._attributes.forEach(a => {
             character._attributes[a.attribute].attribute = a.attribute;
