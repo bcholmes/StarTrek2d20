@@ -28,8 +28,8 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
 
         if (primarySpecies != null) {
             let speciesModel = SpeciesHelper.getSpeciesByType(primarySpecies);
-            let attributes = speciesModel.attributes?.length > 3 ? undefined : speciesModel.attributes;
-            store.dispatch(setCharacterSpecies(primarySpecies, character?.speciesStep?.attributes ?? attributes, species));
+            let attributes = speciesModel.isAttributeSelectionRequired ? undefined : speciesModel.attributes;
+            store.dispatch(setCharacterSpecies(primarySpecies, character?.speciesStep?.attributes ?? attributes, species, undefined, undefined, speciesModel.decrementAttributes));
         }
     }
 
@@ -37,8 +37,8 @@ const MixedSpeciesSelection: React.FC<ICharacterProperties> = ({character}) => {
         setPrimarySpecies(species);
 
         let speciesModel = SpeciesHelper.getSpeciesByType(species);
-        let attributes = speciesModel.attributes?.length > 3 ? undefined : speciesModel.attributes;
-        store.dispatch(setCharacterSpecies(species, character?.speciesStep?.attributes ?? attributes, secondarySpecies));
+        let attributes = speciesModel.isAttributeSelectionRequired ? undefined : speciesModel.attributes;
+        store.dispatch(setCharacterSpecies(species, character?.speciesStep?.attributes ?? attributes, secondarySpecies, undefined, undefined, speciesModel.decrementAttributes));
     }
 
 
