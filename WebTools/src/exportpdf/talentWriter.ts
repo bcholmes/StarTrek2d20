@@ -75,16 +75,23 @@ export class TalentWriter {
                         let rank = talent.rank;
                         talentName += " [Rank: " + rank + "]";
                     }
-                    paragraph.append(talentName + ": ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
-                    if (this.version === 1) {
-                        paragraph.append(talent.talent.localizedDescription, new FontOptions(fontSize));
-                    } else {
-                        paragraph.append(talent.talent.localizedDescription2e, new FontOptions(fontSize));
-                    }
+                    paragraph?.append(talentName + ": ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
+                    let description = this.version === 1 ? talent.talent.localizedDescription : talent.talent.localizedDescription2e;
+
+                    let descriptionParagraphs = description.split('\n');
+                    descriptionParagraphs.forEach((p, i) => {
+                        if (i > 0) {
+                            paragraph = paragraph?.nextParagraph();
+                            if (paragraph) {
+                                paragraphs.push(paragraph);
+                            }
+                        }
+                        paragraph?.append(p, new FontOptions(fontSize));
+                    });
 
                     if (talent.talent.name === TALENT_NAME_BORG_IMPLANTS && talent.implants?.length) {
                         talent.implants?.forEach(implant => {
-                            paragraph = paragraph.nextParagraph(0);
+                            paragraph = paragraph?.nextParagraph(0);
                             if (paragraph) {
                                 paragraphs.push(paragraph);
                                 paragraph.indent(10);
@@ -93,7 +100,7 @@ export class TalentWriter {
                             }
                         });
                     } else if (talent.talent.name === TALENT_NAME_UNTAPPED_POTENTIAL && talent.attribute != null) {
-                        paragraph = paragraph.nextParagraph(0);
+                        paragraph = paragraph?.nextParagraph(0);
                         if (paragraph) {
                             paragraphs.push(paragraph);
                             paragraph.indent(10);

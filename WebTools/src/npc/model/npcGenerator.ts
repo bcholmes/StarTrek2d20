@@ -655,7 +655,7 @@ export class NpcGenerator {
 
         let hasMax = character.hasMaxedAttribute();
         let speciesAttributes = [];
-        if (species.attributes.length <= 3) {
+        if (!species.isAttributeSelectionRequired) {
             for (let i = 0; i < species.attributes.length; i++) {
                 let attr = species.attributes[i];
                 if (character.attributes[attr].value < 12 &&

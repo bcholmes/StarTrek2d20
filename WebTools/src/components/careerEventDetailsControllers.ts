@@ -68,6 +68,9 @@ export class CareerEventAttributeController implements IAttributeController {
     getValue(attribute: Attribute): number {
         return this.character.attributes[attribute].value;
     }
+    getDeltaValue(attribute: Attribute): number|undefined {
+        return undefined;
+    }
     canIncrease(attribute: Attribute): boolean {
         return this.getValue(attribute) < Character.maxAttribute(this.character) &&
             (this.getValue(attribute) < (Character.maxAttribute(this.character) - 1) || !this.character.hasMaxedAttribute())

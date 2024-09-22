@@ -1044,7 +1044,7 @@ export class Talents {
             new TalentModel(
                 "Precision Targeting",
                 "Having extensive knowledge of ship systems and operations, the character can easily target specific systems when attacking an enemy vessel. When the character makes an attack that targets a specific System they may  reroll 1d20 in their dice pool, and the attack gains the Piercing 1 damage effect.",
-                [new DisciplinePrerequisite(Skill.Security, 4), new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.OperationsDivision)],
+                [new DisciplinePrerequisite(Skill.Security, 4), new DisciplinePrerequisite(Skill.Conn, 3), new SourcePrerequisite(Source.OperationsDivision), new NotSourcePrerequisite(Source.Core2ndEdition)],
                 1),
             new TalentModel(
                 "Ambush Tactics",
@@ -3227,7 +3227,7 @@ export class Talents {
                 1,
                 "Security"),
             new TalentModel(
-                "Precision Targeting",
+                "Precision Targeting (2e)",
                 "",
                 [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Security, 3), new DisciplinePrerequisite(Skill.Conn, 3)],
                 1,
@@ -3244,7 +3244,12 @@ export class Talents {
                 [new SourcePrerequisite(Source.Core2ndEdition), new DisciplinePrerequisite(Skill.Medicine, 3), new AttributePrerequisite(Attribute.Presence, 9)],
                 1,
                 "Medicine"),
-
+            new TalentModel(
+                "Engineering/Science Affinity (Unofficial)",
+                "",
+                [new SourcePrerequisite(Source.ContinuingMissions), new SpeciesPrerequisite(Species.Napean, false)],
+                1,
+                "Napean"),
         ];
 
         private _starshipTalents: TalentModel[] = [

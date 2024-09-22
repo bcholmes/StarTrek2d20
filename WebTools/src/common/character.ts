@@ -242,6 +242,7 @@ export class SpeciesStep {
     public originalSpecies: Species;
     public customSpeciesName: string;
     public attributes: Attribute[];
+    public decrementAttributes: Attribute[] = [];
     public talent?: SelectedTalent;
     public ability?: SpeciesAbility;
     public abilityOptions: SpeciesAbilityOptions;
@@ -266,6 +267,7 @@ export class SpeciesStep {
             result.ability = this.ability;
         }
 
+        result.decrementAttributes = [...this.decrementAttributes];
         result.abilityOptions = this.abilityOptions?.copy();
         return result;
     }
@@ -548,6 +550,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
             let result = [];
             AttributesHelper.getAllAttributes().forEach(a => result.push(new CharacterAttribute(a, 7)));
             this.speciesStep?.attributes?.forEach(a => result[a].value = result[a].value + 1);
+            this.speciesStep?.decrementAttributes?.forEach(a => result[a].value = result[a].value - 1);
             if (this.environmentStep?.attribute != null) {
                 result[this.environmentStep.attribute].value = result[this.environmentStep.attribute].value + 1;
             }
@@ -578,7 +581,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
             return AttributesHelper.getAllAttributes().map(a => {
                 let index = this.supportingStep?.attributes?.indexOf(a);
                 let speciesBonus = this.speciesStep?.attributes?.filter(att => att === a).length;
-                return new CharacterAttribute(a, values[index] + speciesBonus);
+                let speciesminuses = this.speciesStep?.decrementAttributes?.filter(att => att === a).length;
+                return new CharacterAttribute(a, values[index] + speciesBonus - speciesminuses);
             });
         } else {
             return this._attributes;

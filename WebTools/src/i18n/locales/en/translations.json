@@ -2007,6 +2007,11 @@
     "Species.megarite.exampleValue": "As Swift as the Tide, As Strong as the Glacier",
     "Species.megarite.traitDescription": "Megarites believe that every moment should be appreciated for what it is. Their thick hides protect them from most threats, which leads Megarites to take risks if it means they can accomplish their tasks. Though Megarites prefer to keep to themselves, they become energetic when others have similar interests as them, and one of the greatest gifts they can give another is a custom poem composed in their honor.",
 
+    "Species.napean.name": "Napean",
+    "Species.napean.description": "Napeans, native to Napea II (Beta quadrant), are humanoids with putty-colored skin & a large, leaf-shaped bone ridge that runs down from the crown of the high foreheads to the top of the nose. A tiny, egg-shaped organ near the base of the brain, created as a mutation by an experiment in genetic engineering, receives empathic signals & transmits them to the brain proper. They have terraformed their homeworld to a state of conformity that strikes many outsiders as obsessive. While their empathic powers have forged social stability, they also struggle to suppress negative emotions & embarrassing feelings. This is quite impossible among their own kind, but they try anyway, since absolute emotional transparency has a way of straining familial & social relationships. Their history has taught them to place great faith in advanced technology as a way to solve serious problems. However, the idea of genetically altering lifeforms appalls them.",
+    "Species.napean.exampleValue": "Learning more about the universe needs to be both a work of logic & passion. ",
+    "Species.napean.traitDescription": "Physically, the Napeans resemble Terrans & Betazoids & genetic analysis leads to the supposition that the Napean race is a transplanted cross between the 2 races, with enough genetic differences to be detected. They are physically similar to most humanoids except for their large, leaf-shaped forehead ridge.",
+
     "Species.nausicaan.name": "Nausicaan",
     "Species.nausicaan.traitDescription": "Nausicaans are a tall, very strong species hailing from Nausicaa. They are generally stronger than an average Human, though often somewhat less intelligent, preferring brute force over finesse and direct methods as opposed to subtlety. They have little patience for organized forms of government, though they will tolerate following a captain for as long as that captain earns their capricious loyalty. Nausicaans are somewhat resistant to pain and injury, and almost never back down from a challenge, especially when it involves games that carry the potential for serious bodily harm to themselves or their opponents.",
 
@@ -2144,6 +2149,10 @@
     "SpeciesAbility.klingon": "Brak'lul",
 
     "SpeciesAbility.klingon.description": "You gain 1 Protection which stacks with the benefits of any armor worn. Further, when another character attempts _First Aid_ to heal you, they may re-roll a d20.",
+
+    "SpeciesAbility.napean": "Empathic/Mind Shield",
+
+    "SpeciesAbility.napean.description": "Napeans automatically get the Empathic talent. In addition, you constantly use Mind Shield so as to conceal your empathic abilities from other species.",
 
     "SpeciesAbility.orion": "Never at Face Value",
 
@@ -2591,6 +2600,10 @@
 
     "Talent.empathy2e.description": "You can sense the emotions of most living beings nearby, and can communicate telepathically with other empaths and telepaths, as well as those with whom you are extremely familiar. You cannot choose not to sense the emotions of those nearby, except for those who are resistant to telepathy. It may require effort and a task to pick out the emotions of a specific individual in a crowd, or to block out the emotions of those nearby. Increase the Difficulty of this task if the situation is stressful, if there are a lot of beings present, if the target has resist- ance to telepathy, and other relevant factors.",
 
+    "Talent.engineeringScienceAffinityUnofficial": "Engineering/Science Affinity",
+
+    "Talent.engineeringScienceAffinityUnofficial.description": "Napeans have an affinity for the Engineering & Science Disciplines. Whenever, you use these you gain a bonus 1d20 for your rolls. ",
+
     "Talent.expandedEmergencyMedicalFacilities": "Expanded Emergency Medical Facilities",
 
     "Talent.expandedEmergencyMedicalFacilities.description": "Whenever a character attempts a task to identify specific illnesses or injuries, or to determine the severity of a patient’s condition, they may diagnose a number of patients equal to the ship’s Medical rating. If the character also has the Triage talent, they may diagnose two additional patients by spending 1 Momentum (Repeatable).\n\nDuring an extended task to process and treat many sick or injured patients, a character aboard the ship increases their Impact by 1.",
@@ -3034,9 +3047,9 @@
 
     "Talent.precisionManeuvering.description2e": "Whenever you attempt a task that requires precise or careful maneuvering, or where there is a risk of colliding with another object, you may re-roll 1d20.",
 
-    "Talent.precisionTargeting": "Precision Targeting",
+    "Talent.precisionTargeting2e": "Precision Targeting",
 
-    "Talent.precisionTargeting.description2e": "You can more easily pick out and target specific systems when making an Attack against an enemy vessel. When you make an Attack with starship weapons that targets a specific ship system, you may re-roll a d20.",
+    "Talent.precisionTargeting2e.description": "You can more easily pick out and target specific systems when making an Attack against an enemy vessel. When you make an Attack with starship weapons that targets a specific ship system, you may re-roll a d20.",
 
     "Talent.prestigiousPosting": "Prestigious Posting",
 

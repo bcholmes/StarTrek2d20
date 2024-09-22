@@ -25,6 +25,10 @@ export class SpeciesAttributeController implements IAttributeController {
     getValue(attribute: Attribute): number {
         return this.character.attributes[attribute].value;
     }
+    getDeltaValue(attribute: Attribute): number {
+        return (this.character.speciesStep?.attributes?.filter(a => a === attribute)?.length ?? 0)
+            - (this.character.speciesStep?.decrementAttributes?.filter(a => a === attribute)?.length ?? 0);
+    }
     canIncrease(attribute: Attribute): boolean {
         return this.isEditable(attribute) && this.character.speciesStep?.attributes?.length < 3 && this.character.speciesStep?.attributes?.indexOf(attribute) < 0;
     }
@@ -46,6 +50,8 @@ export class SpeciesAttributeController implements IAttributeController {
             return new KtarianSpeciesAttributeController(character, species);
         } else if (species.id === Species.Kobali) {
             return new KobaliSpeciesAttributeController(character, species);
+        } else if (species.id === Species.Napean) {
+            return new NapeanSpeciesAttributeController(character, species);
         } else {
             return new SpeciesAttributeController(character, species);
         }
@@ -67,6 +73,10 @@ export class CustomSpeciesAttributeController implements IAttributeController {
     }
     getValue(attribute: Attribute): number {
         return this.character.attributes[attribute].value;
+    }
+    getDeltaValue(attribute: Attribute): number {
+        return (this.character.speciesStep?.attributes?.filter(a => a === attribute)?.length ?? 0)
+            - (this.character.speciesStep?.decrementAttributes?.filter(a => a === attribute)?.length ?? 0);
     }
     canIncrease(attribute: Attribute): boolean {
         return this.isEditable(attribute) && this.character.speciesStep?.attributes?.length < 3 && this.character.speciesStep?.attributes?.indexOf(attribute) < 0;
@@ -93,6 +103,17 @@ class KtarianSpeciesAttributeController extends SpeciesAttributeController {
     }
     isEditable(attribute: Attribute) {
         return this.species.secondaryAttributes.indexOf(attribute) >= 0;
+    }
+}
+
+class NapeanSpeciesAttributeController extends SpeciesAttributeController {
+
+    isEditable(attribute: Attribute) {
+        return false;
+    }
+
+    isShown(attribute: Attribute) {
+        return [Attribute.Control, Attribute.Insight, Attribute.Presence, Attribute.Reason].indexOf(attribute) >= 0;
     }
 }
 

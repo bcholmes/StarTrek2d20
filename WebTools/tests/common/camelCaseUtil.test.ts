@@ -29,5 +29,9 @@ describe('testing Camel Case Utility', () => {
         expect(toCamelCase("Telepathy2e")).toBe("telepathy2e");
     });
 
+    test('handle brackets', () => {
+        expect(toCamelCase("Engineering/Science Affinity (Unofficial)")).toBe("engineeringScienceAffinityUnofficial");
+    });
+
 
 });

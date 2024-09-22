@@ -116,6 +116,8 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
             );
         } else if (speciesModel?.attributes?.length === 3) { // most species
             const speciesHasAttribute = speciesModel?.attributes?.indexOf(a) > -1;
+            let deltaValue = character.speciesStep?.attributes?.filter(at => at === a)?.length ?? 0;
+            deltaValue -= (character.speciesStep?.decrementAttributes?.filter(at => at === a)?.length ?? 0)
             return (
                 <tr key={i}>
                     <td className="selection-header">{t(makeKey('Construct.attribute.', Attribute[a]))}</td>
@@ -126,8 +128,8 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
                             onSelect={(index) => selectAttributeValue(index) }
                             isSelected={selectedAttribute === a} />
                     </td>
-                    <td className='text-center'>{speciesHasAttribute ? "+1" : "-"}</td>
-                    <td className='text-center'>{val + (speciesHasAttribute ? 1 : 0) }</td>
+                    <td className='text-center'>{deltaValue !== 0 ? (deltaValue > 0 ? "+" : "") + deltaValue : "-"}</td>
+                    <td className='text-center'>{character.attributes[a].value }</td>
                 </tr>
             );
         } else { // Ktarians have two attributes pre-defined, and can choose from Secondary Attributes as a third attribute

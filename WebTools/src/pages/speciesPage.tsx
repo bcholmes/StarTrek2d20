@@ -71,10 +71,10 @@ const SpeciesPage: React.FC<ICharacterProperties> = ({character}) => {
 
     const selectStandardSpecies = (species: Species) => {
         let speciesModel = SpeciesHelper.getSpeciesByType(species);
-        if (speciesModel.attributes?.length <= 3) {
-            store.dispatch(setCharacterSpecies(speciesModel.id, speciesModel.attributes));
-        } else {
+        if (speciesModel.isAttributeSelectionRequired) {
             store.dispatch(setCharacterSpecies(speciesModel.id));
+        } else {
+            store.dispatch(setCharacterSpecies(speciesModel.id, speciesModel.attributes, undefined, undefined, undefined, speciesModel.decrementAttributes));
         }
 
         if (species === Species.Kobali) {

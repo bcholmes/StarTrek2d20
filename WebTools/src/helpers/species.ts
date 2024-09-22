@@ -65,6 +65,23 @@ export class SpeciesModel implements ISpecies {
         return result;
     }
 
+    get isAttributeSelectionRequired() {
+        let definedAttributeCount = this.attributes.length - this.decrementAttributes.length;
+        if (definedAttributeCount <= 3) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    get decrementAttributes() {
+        if (this.id === Species.Napean) {
+            return [Attribute.Presence, Attribute.Presence];
+        } else {
+            return [];
+        }
+    }
+
     get localizedName() {
         const key = makeKey('Species.', this.speciesKeyName, ".name");
         const localized = i18next.t(key);
@@ -1931,6 +1948,19 @@ class _Species {
             "",
             "",
             [TalentsHelper.getTalent("Technological Savvy"), TalentsHelper.getTalent("Tiburonian Charm")],
+            "",
+            []),
+        [Species.Napean]: new SpeciesModel(
+            Species.Napean,
+            "Napean",
+            [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+            [Source.ContinuingMissions],
+            [],
+            [Attribute.Control, Attribute.Insight, Attribute.Insight, Attribute.Reason, Attribute.Reason],
+            "Napean",
+            "",
+            "",
+            [TalentsHelper.getTalent("Engineering/Science Affinity (Unofficial)")],
             "",
             []),
 

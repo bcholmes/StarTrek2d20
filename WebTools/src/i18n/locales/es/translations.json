@@ -2360,9 +2360,9 @@
 
     "Talent.precisionManeuvering.description2e": "Siempre que intentes una tarea que requiera maniobras precisas o cuidadosas, o en la que exista el riesgo de chocar con otro objeto, puedes volver a tirar 1d20.",
 
-    "Talent.precisionTargeting": "Puntería de precisión",
+    "Talent.precisionTargeting2e": "Puntería de precisión",
 
-    "Talent.precisionTargeting.description2e": "Puedes elegir y apuntar más fácilmente a sistemas específicos cuando realices un Ataque contra una nave enemiga. Cuando realizas un Ataque con las armas de una nave espacial que tenga como objetivo un sistema de nave específico, puedes repetir la tirada de un d20.",
+    "Talent.precisionTargeting2e.description": "Puedes elegir y apuntar más fácilmente a sistemas específicos cuando realices un Ataque contra una nave enemiga. Cuando realizas un Ataque con las armas de una nave espacial que tenga como objetivo un sistema de nave específico, puedes repetir la tirada de un d20.",
 
     "Talent.proceduralCompliance": "Cumplimiento de los procedimientos",
 

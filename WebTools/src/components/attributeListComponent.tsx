@@ -26,6 +26,7 @@ class AttributeListComponent extends React.Component<IAttributeListComponentsPro
             return (<AttributeImprovement attribute={attribute}
                 onIncrease={() => { }} onDecrease={() => { }}
                 value={this.props.controller.getValue(attribute)}
+                deltaValue={this.props.controller.getDeltaValue(attribute)}
                 showIncrease={false}  showDecrease={false} key={'attribute-' + attribute} />);
         }
     }

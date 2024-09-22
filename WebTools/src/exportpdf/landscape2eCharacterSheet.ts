@@ -59,7 +59,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     }
 
     getTags(): SheetTag[] {
-        return [ SheetTag.Landscape, SheetTag.Style2e, SheetTag.UsLetter, SheetTag.LanguageSupport ];
+        return [ SheetTag.Landscape, SheetTag.Style2e, SheetTag.UsLetter, SheetTag.LanguageSupport, SheetTag.TalentText ];
     }
 
     async initializeFonts(pdf: PDFDocument) {

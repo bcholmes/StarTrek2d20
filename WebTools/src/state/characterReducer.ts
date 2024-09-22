@@ -64,6 +64,9 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             if (action.payload.attributes) {
                 temp.speciesStep.attributes = [...action.payload.attributes];
             }
+            if (action.payload.decrementAttributes?.length) {
+                temp.speciesStep.decrementAttributes = [...action.payload.decrementAttributes];
+            }
             if (originalStep) {
                 if (originalStep.species === temp.speciesStep.species) {
                     if (originalStep.attributes?.length) {

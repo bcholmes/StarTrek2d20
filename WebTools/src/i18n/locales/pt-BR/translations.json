@@ -2806,9 +2806,9 @@
 
     "Talent.precisionManeuvering.description2e": "Sempre que tentar realizar uma tarefa que exija manobras precisas ou cuidadosas, ou quando houver risco de colisão com outro objeto, você poderá rolar novamente 1d20.",
 
-    "Talent.precisionTargeting": "Precisão de Mira",
+    "Talent.precisionTargeting2e": "Precisão de Mira",
 
-    "Talent.precisionTargeting.description2e": "Você pode escolher e mirar sistemas específicos com mais facilidade ao fazer um ataque contra uma nave inimiga. Quando fizer um Ataque com armas da nave estelar que tenha como alvo um sistema específico da nave, você pode rolar novamente um d20.",
+    "Talent.precisionTargeting2e.description": "Você pode escolher e mirar sistemas específicos com mais facilidade ao fazer um ataque contra uma nave inimiga. Quando fizer um Ataque com armas da nave estelar que tenha como alvo um sistema específico da nave, você pode rolar novamente um d20.",
 
     "Talent.proceduralCompliance": "Conformidade de Procedimentos",
 

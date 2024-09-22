@@ -144,7 +144,7 @@ export enum Species {
     Hupyrian,
     Talarian,
     Tiburonian,
-
+    Napean,
 
     // Federation-Klingon War
     Arcadian,

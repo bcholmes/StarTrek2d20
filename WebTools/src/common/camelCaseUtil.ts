@@ -12,7 +12,7 @@ export const toCamelCase = (phrase: string) => {
                 c = c.toLocaleLowerCase();
             }
             result += c;
-        } else if (" " === c || "-" === c) {
+        } else if (" " === c || "-" === c || "/" === c) {
             upperCase = true;
         }
     }

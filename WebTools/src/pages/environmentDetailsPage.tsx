@@ -48,6 +48,9 @@ class EnvironmentAttributeController implements IAttributeController {
     getValue(attribute: Attribute): number {
         return this.character.attributes[attribute].value;
     }
+    getDeltaValue(attribute: Attribute): number|undefined {
+        return undefined;
+    }
     canIncrease(attribute: Attribute): boolean {
         return this.isEditable(attribute) && this.character.environmentStep?.attribute == null;
     }

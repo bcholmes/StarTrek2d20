@@ -35,6 +35,7 @@ export class SpeciesAbilityList {
         [Species.Ferengi]: new SpeciesAbility(Species.Ferengi),
         [Species.Human]: new SpeciesAbility(Species.Human),
         [Species.Klingon]: new SpeciesAbility(Species.Klingon),
+        [Species.Napean]: new SpeciesAbility(Species.Napean),
         [Species.Orion]: new SpeciesAbility(Species.Orion),
         [Species.Romulan]: new SpeciesAbility(Species.Romulan),
         [Species.Tellarite]: new SpeciesAbility(Species.Tellarite),

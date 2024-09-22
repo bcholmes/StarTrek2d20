@@ -29,6 +29,7 @@ import { CheckBox } from '../components/checkBox';
 import ReactMarkdown from 'react-markdown';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
 import { SpeciesAbilityView } from '../components/speciesAbilityView';
+import { Attribute } from '../helpers/attributes';
 
 
 const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
@@ -62,10 +63,10 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     const selectSpecies = (selection: Species) => {
         if (selection !== Species.Custom) {
             let speciesModel = SpeciesHelper.getSpeciesByType(selection);
-            if (speciesModel.attributes?.length <= 3) {
-                store.dispatch(setCharacterSpecies(selection, speciesModel.attributes));
-            } else {
+            if (speciesModel.isAttributeSelectionRequired) {
                 store.dispatch(setCharacterSpecies(selection));
+            } else {
+                store.dispatch(setCharacterSpecies(selection, speciesModel.attributes, undefined, undefined, undefined, speciesModel.decrementAttributes));
             }
         } else {
             store.dispatch(setCharacterSpecies(selection));
@@ -272,9 +273,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                     </div>)
                     : null}
                     <div className="my-3">
-                        <SupportingCharacterAttributes age={character.age}
-                            species={character?.speciesStep?.species}
-                            onUpdate={() => {  }}/>
+                        <SupportingCharacterAttributes />
                     </div>
                 </div>
             </div>

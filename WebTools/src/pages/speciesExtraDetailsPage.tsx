@@ -33,7 +33,7 @@ const SpeciesExtraDetailsPage: React.FC<ISpeciesExtraDetailsPageProperties> = ({
         if (species === Species.CyberneticallyEnhanced) {
             store.dispatch(setCharacterSpecies(character.speciesStep?.species, character.speciesStep?.attributes, speciesModel.id));
         } else if (species === Species.Kobali) {
-            store.dispatch(setCharacterSpecies(character.speciesStep?.species, speciesModel.attributes.length <= 3 ? speciesModel.attributes : undefined, undefined, speciesModel.id));
+            store.dispatch(setCharacterSpecies(character.speciesStep?.species, speciesModel.attributes, undefined, speciesModel.id));
         } else {
             store.dispatch(setCharacterSpecies(character.speciesStep?.species, character.speciesStep?.attributes, undefined, speciesModel.id));
         }

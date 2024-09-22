@@ -369,6 +369,11 @@ class Marshaller {
                 focuses: [...character.speciesStep.abilityOptions.focuses]
             };
         }
+
+        if (character.speciesStep.decrementAttributes?.length) {
+            json["decrementStats"] = character.speciesStep.decrementAttributes.map(a => Attribute[a]);
+        }
+
         return json;
     }
 
@@ -938,6 +943,9 @@ class Marshaller {
                     }
                     if (speciesBlock.stats != null) {
                         result.speciesStep.attributes = speciesBlock.stats.map(s => AttributesHelper.getAttributeByName(s));
+                    }
+                    if (speciesBlock.decrementStats != null) {
+                        result.speciesStep.decrementAttributes = speciesBlock.decrementStats.map(s => AttributesHelper.getAttributeByName(s));
                     }
                     if (speciesBlock.talent != null) {
                         result.speciesStep.talent = this.hydrateTalent(speciesBlock.talent);

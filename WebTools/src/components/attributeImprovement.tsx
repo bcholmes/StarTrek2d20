@@ -6,6 +6,7 @@ import { makeKey } from '../common/translationKey';
 interface IAttributeImprovementProperties extends WithTranslation {
     attribute: Attribute;
     value: number;
+    deltaValue?: number;
     showIncrease: boolean;
     showDecrease: boolean;
     onDecrease: () => void;
@@ -15,7 +16,7 @@ interface IAttributeImprovementProperties extends WithTranslation {
 class AttributeImprovement extends React.Component<IAttributeImprovementProperties, {}> {
 
     render() {
-        const {attribute, value, showDecrease, showIncrease, t} = this.props;
+        const {attribute, value, deltaValue, showDecrease, showIncrease, t} = this.props;
 
         const dec = showDecrease
             ? (<img style={{ float: "left" }} height="20" src="static/img/dec.png" onClick={ () => { this.props.onDecrease() } } alt="-"/>)
@@ -33,6 +34,7 @@ class AttributeImprovement extends React.Component<IAttributeImprovementProperti
                 <div className="stat-entry-value">
                     {dec}
                     {value}
+                    {(deltaValue == null || deltaValue == 0) ? "" : (" (" + (deltaValue > 0 ? "+" : "") + deltaValue + ")")}
                     {inc}
                 </div>
             </div>

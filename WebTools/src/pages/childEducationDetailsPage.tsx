@@ -42,6 +42,9 @@ class ChildDecrementAttributeController implements IAttributeController {
     getValue(attribute: Attribute): number {
         return this.character.attributes[attribute].value;
     }
+    getDeltaValue(attribute: Attribute): number|undefined {
+        return undefined;
+    }
     canIncrease(attribute: Attribute): boolean {
         return this.character.educationStep?.decrementAttributes?.indexOf(attribute) >= 0;
     }
@@ -77,6 +80,9 @@ export class ChildIncrementAttributeController implements IAttributeController {
     }
     getValue(attribute: Attribute): number {
         return this.character.attributes[attribute].value;
+    }
+    getDeltaValue(attribute: Attribute): number|undefined {
+        return undefined;
     }
     canIncrease(attribute: Attribute): boolean {
         return this.getValue(attribute) < Character.maxAttribute(this.character)
