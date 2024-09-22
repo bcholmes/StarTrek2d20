@@ -321,15 +321,13 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     if (character.isKlingon()) {
         extra = (<div className="col-lg-6 my-5">
             <Header level={2}>LINEAGE and House</Header>
-            <div className="row">
-                <div className="col-lg-6 mb-3">
-                    <InputFieldAndLabel labelName={t('Construct.other.lineage')} id="lineage" onChange={(value) => onLineageChanged(value)} value={character.lineage ?? ""} />
-                    <div className="text-white mt-1"><small><b>Example: </b> <i>Daughter of Martok</i> or <i>Child of Koloth</i></small></div>
-                </div>
-                <div className="col-lg-6 mb-3">
-                    <InputFieldAndLabel labelName={t('Construct.other.house')} id="house" onChange={(value) => onHouseChanged(value)} value={character.house ?? ""} />
-                    <div className="text-white mt-1"><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
-                </div>
+            <div className="mb-4">
+                <InputFieldAndLabel labelName={t('Construct.other.lineage')} id="lineage" onChange={(value) => onLineageChanged(value)} value={character.lineage ?? ""} />
+                <div className="text-white mt-1"><small><b>Example: </b> <i>Daughter of Martok</i> or <i>Child of Koloth</i></small></div>
+            </div>
+            <div className="mb-4">
+                <InputFieldAndLabel labelName={t('Construct.other.house')} id="house" onChange={(value) => onHouseChanged(value)} value={character.house ?? ""} />
+                <div className="text-white mt-1"><small><b>Example: </b> <i>House Duras</i> or <i>House Kor</i></small></div>
             </div>
         </div>);
     }
