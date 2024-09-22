@@ -29,7 +29,6 @@ import { CheckBox } from '../components/checkBox';
 import ReactMarkdown from 'react-markdown';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
 import { SpeciesAbilityView } from '../components/speciesAbilityView';
-import { Attribute } from '../helpers/attributes';
 
 
 const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {

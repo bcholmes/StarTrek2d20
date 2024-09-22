@@ -115,7 +115,6 @@ const SupportingCharacterAttributes: React.FC<ICharacterProperties> = ({characte
                 </tr>
             );
         } else if (speciesModel?.attributes?.length === 3) { // most species
-            const speciesHasAttribute = speciesModel?.attributes?.indexOf(a) > -1;
             let deltaValue = character.speciesStep?.attributes?.filter(at => at === a)?.length ?? 0;
             deltaValue -= (character.speciesStep?.decrementAttributes?.filter(at => at === a)?.length ?? 0)
             return (
