@@ -6,7 +6,7 @@ import i18next from "i18next";
 import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
 import { Skill } from "../helpers/skills";
-import { Character } from "../common/character";
+import { Character, Division } from "../common/character";
 import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
 import { Construct } from "../common/construct";
@@ -15,6 +15,7 @@ import { XYLocation } from "../common/xyLocation";
 import { FontOptions } from "./fontOptions";
 import { FontType } from "./fontLibrary";
 import { bullet2EWriter } from "./bullet2eWriter";
+import { divisionColour2e } from "./colourProvider2e";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
@@ -94,30 +95,30 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
             this.valueBlock(this.reasonBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
 
         this.writeLabel(page, i18next.t("Construct.discipline.command"),
-            this.commandBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.goldColour);
+            this.commandBlock, labelFont, divisionColour2e(construct.era, Division.Command));
         this.writeLabel(page, i18next.t("Construct.discipline.conn"),
-            this.connBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.goldColour);
+            this.connBlock, labelFont, divisionColour2e(construct.era, Division.Command));
         this.writeLabel(page, i18next.t("Construct.discipline.engineering"),
-            this.engineeringBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.redColour);
+            this.engineeringBlock, labelFont, divisionColour2e(construct.era, Division.Operations));
         this.writeLabel(page, i18next.t("Construct.discipline.security"),
-            this.securityBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.redColour);
+            this.securityBlock, labelFont, divisionColour2e(construct.era, Division.Operations));
         this.writeLabel(page, i18next.t("Construct.discipline.science"),
-            this.scienceBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.blueColour);
+            this.scienceBlock, labelFont, divisionColour2e(construct.era, Division.Science));
         this.writeLabel(page, i18next.t("Construct.discipline.medicine"),
-            this.medicineBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.blueColour);
+            this.medicineBlock, labelFont, divisionColour2e(construct.era, Division.Science));
 
         this.writeLabel(page, "" + character.skills[Skill.Command].expertise,
-            this.valueBlock(this.commandBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.goldColour);
+            this.valueBlock(this.commandBlock), labelFont, divisionColour2e(construct.era, Division.Command));
         this.writeLabel(page, "" + character.skills[Skill.Conn].expertise,
-            this.valueBlock(this.connBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.goldColour);
+            this.valueBlock(this.connBlock), labelFont, divisionColour2e(construct.era, Division.Command));
         this.writeLabel(page, "" + character.skills[Skill.Engineering].expertise,
-            this.valueBlock(this.engineeringBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.redColour);
+            this.valueBlock(this.engineeringBlock), labelFont, divisionColour2e(construct.era, Division.Operations));
         this.writeLabel(page, "" + character.skills[Skill.Security].expertise,
-            this.valueBlock(this.securityBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.redColour);
+            this.valueBlock(this.securityBlock), labelFont, divisionColour2e(construct.era, Division.Operations));
         this.writeLabel(page, "" + character.skills[Skill.Science].expertise,
-            this.valueBlock(this.scienceBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.blueColour);
+            this.valueBlock(this.scienceBlock), labelFont, divisionColour2e(construct.era, Division.Science));
         this.writeLabel(page, "" + character.skills[Skill.Medicine].expertise,
-            this.valueBlock(this.medicineBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.blueColour);
+            this.valueBlock(this.medicineBlock), labelFont, divisionColour2e(construct.era, Division.Science));
 
         this.writeSubTitle(page, i18next.t("Construct.other.attributes"), this.attributeTitleBlock);
         if (character.version > 1) {

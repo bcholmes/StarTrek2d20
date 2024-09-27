@@ -613,7 +613,7 @@ export class RolesHelper {
             "Merchant",
             "You’re a merchant or trader, exchanging valuable goods for latinum, or for other goods. Even in the Federation, a civilization which has largely evolved beyond scarcity and the personal accumulation of wealth, merchants are necessary for ensuring that resources can easily move from place to place, and the Federation and its members maintain reserves of latinum and other precious commodities to allow them to trade with other civilizations. In a practical, day-to-day sense, merchants are well-connected and often have access to unusual items or specialized resources that might not be available normally.",
             Skill.Command,
-            "Once per adventure, you can waive the Opportunity costs on up to three items of equip- ment being acquired by other player characters. You may even allow other player characters to obtain items that are not normally available to them (such as disruptors to a Starfleet crew, or items which are restricted or illegal), though you add 1 to Threat for each such item provided.",
+            "Once per adventure, you can waive the Opportunity costs on up to three items of equipment being acquired by other player characters. You may even allow other player characters to obtain items that are not normally available to them (such as disruptors to a Starfleet crew, or items which are restricted or illegal), though you add 1 to Threat for each such item provided.",
             new SourcePrerequisite(Source.PlayersGuide, Source.Core2ndEdition),
             new NotTalentPrerequisite("Advanced Team Dynamics"),
             new CivilianPrerequisite()),

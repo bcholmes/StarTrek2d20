@@ -15,6 +15,8 @@ import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
 import { Column } from "./column";
 import { FontOptions } from "./fontOptions";
 import { FontType } from "./fontLibrary";
+import { blueColour2e, divisionColour2e, goldColour2e, redColour2e } from "./colourProvider2e";
+import { Division } from "../common/character";
 
 export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
@@ -224,9 +226,9 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             });
 
             let colours = [
-                Generated2eStarshipSheet.goldColour,
-                Generated2eStarshipSheet.redColour,
-                Generated2eStarshipSheet.blueColour
+                divisionColour2e(construct.era, Division.Command),
+                divisionColour2e(construct.era, Division.Operations),
+                divisionColour2e(construct.era, Division.Science)
             ];
 
             let column = new Column(x, location.y, 11.8, 72.2 * 0.8);

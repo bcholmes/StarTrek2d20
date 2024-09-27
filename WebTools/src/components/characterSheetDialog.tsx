@@ -99,7 +99,7 @@ const _CharacterSheetDialog: React.FC<ICharacterSheetDialogProperties> = ({sheet
                     {s.getName()}
                 </div>
                 <div className="sheet-selection-item-thumbnail">
-                    <img className="thumbnail" src={s.getThumbnailUrl()} alt={i18n.t('CharacterSheetDialog.thumbnail')} />
+                    <img className="thumbnail" src={s.getThumbnailUrl()} alt={i18n.t('CharacterSheetDialog.thumbnail')} width={200} />
                     {overlay}
                 </div>
             </div>
