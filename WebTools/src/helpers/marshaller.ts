@@ -757,6 +757,7 @@ class Marshaller {
             });
         }
 
+        console.log(result);
         return result;
     }
 

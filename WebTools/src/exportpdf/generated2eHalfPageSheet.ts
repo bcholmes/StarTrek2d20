@@ -15,7 +15,7 @@ import { XYLocation } from "../common/xyLocation";
 import { FontOptions } from "./fontOptions";
 import { FontType } from "./fontLibrary";
 import { bullet2EWriter } from "./bullet2eWriter";
-import { divisionColour2e } from "./colourProvider2e";
+import { divisionColour2e, tealColour2e } from "./colourProvider2e";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
@@ -251,7 +251,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
             if (rank) {
                 name = rank + " " + name;
             }
-            this.writeName(page, name);
+            this.writeName(page, name, tealColour2e);
         }
     }
 

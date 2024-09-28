@@ -15,9 +15,17 @@ import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
 import { Column } from "./column";
 import { FontOptions } from "./fontOptions";
 import { FontType } from "./fontLibrary";
-import { labelColourProvider } from "./colourProvider2e";
+import { cardassianBrownColour2e, ferengiOrangeColour2e, klingonRedColour2e, labelColourProvider, romulanGreenColour2e, tealColour2e } from "./colourProvider2e";
+import { CharacterType } from "../common/characterType";
+import { politySymbolArrowHead, politySymbolArrowHeadCommand, politySymbolCardassianSymbolInner, politySymbolCardassianSymbolOutline, politySymbolFerengiSymbol, politySymbolKlingonSymbol, politySymbolKlingonSymbolCircle, politySymbolRomulanSymbolBackground, politySymbolRomulanSymbolBird } from "./politySymbols";
 
 export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
+
+    static readonly sideBubblesOpen = "m 559.5048,680.4048 h 5.533 c 0.917,0 1.662,0.746 1.662,1.662 v 10.464 c 0,0.917 -0.745,1.662 -1.662,1.662 h -5.533 c -0.916,0 -1.662,-0.745 -1.662,-1.662 v -10.464 c 0,-0.916 0.746,-1.662 1.662,-1.662 m 0,-18.1846 h 5.533 c 0.917,0 1.662,-0.746 1.662,-1.662 v -13.025 c 0,-0.916 -0.745,-1.662 -1.662,-1.662 h -5.533 c -0.916,0 -1.662,0.746 -1.662,1.662 v 13.025 c 0,0.916 0.746,1.662 1.662,1.662";
+    static readonly sideBubblesClosed = "m 559.505,664.1688 h 5.534 c 1.051,0 1.912,0.86 1.912,1.912 v 10.465 c 0,1.05 -0.861,1.912 -1.912,1.912 h -5.534 c -1.053,0 -1.912,-0.862 -1.912,-1.912 v -10.465 c 0,-1.052 0.859,-1.912 1.912,-1.912 m 0,45.4336 h 5.534 c 1.051,0 1.912,-0.861 1.912,-1.912 v -9.639 c 0,-1.051 -0.861,-1.912 -1.912,-1.912 h -5.534 c -1.053,0 -1.912,0.861 -1.912,1.912 v 9.639 c 0,1.051 0.859,1.912 1.912,1.912 m 0,11.852 h 5.534 c 1.051,0 1.912,-0.86 1.912,-1.912 v -6.331 c 0,-1.052 -0.861,-1.912 -1.912,-1.912 h -5.534 c -1.053,0 -1.912,0.86 -1.912,1.912 v 6.331 c 0,1.052 0.859,1.912 1.912,1.912";
+    static readonly bottomDots = "m 508.491,766.488 c -1.828,0 -3.311,-1.481 -3.312,-3.311 0.001,-1.831 1.484,-3.313 3.312,-3.313 1.829,0 3.312,1.483 3.313,3.313 0,1.829 -1.484,3.311 -3.313,3.311 m 0,-5.808 h 0.001 v 0 h -0.001 z m -423.915,7.6998 c 0,1.829 -1.481,3.312 -3.311,3.313 -1.831,-0.001 -3.313,-1.484 -3.313,-3.313 0,-1.829 1.483,-3.311 3.313,-3.312 1.829,0 3.311,1.483 3.311,3.312 m -5.808,0 h 0.001 v -0.001 h -0.001 z";
+    static readonly cornerDecoration = "m 228.401,-15.305 19.12,19.12 c 4.34,4.34 12.864,7.871 19.002,7.871 h 251.115 c 2.359,0 5.513,1.306 7.182,2.975 l 5.594,5.594 c 4.341,4.341 12.865,7.872 19.003,7.872 h 78.37818";
+    static readonly mainBorder = "m 53.798,63.6928 c -5.977,0 -10.839,4.862 -10.839,10.839 v 646.833 c 0,2.895 1.128,5.617 3.175,7.664 2.047,2.047 4.769,3.174 7.664,3.174 l 508.61,-0.01 c 5.976,0 10.839,-4.862 10.839,-10.839 v -76.298 c 0,-3.197 -1.802,-7.676 -4.015,-9.983 l -6.712,-6.995 c -4.406,-4.591 -7.99,-13.502 -7.991,-19.866 l -0.049,-533.68 c -10e-4,-5.977 -4.864,-10.839 -10.84,-10.839 z";
 
     static readonly starshipStatFrame = "M 2.835,0 C 1.269,0 0,1.269 0,2.835 V 9 c 0,1.565 1.269,2.835 2.835,2.835 h 66.567 c 1.565,0 2.835,-1.27 2.835,-2.835 V 2.835 C 72.237,1.269 70.967,0 69.402,0 Z"
 
@@ -43,15 +51,15 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         return new Column(75, 48, 15, 550-75);
     }
 
-    writeStarshipName(page: PDFPage, starship: Starship) {
+    writeStarshipName(page: PDFPage, starship: Starship, colour: SimpleColor) {
         if (starship.name?.length) {
             let name = starship.name;
             if (starship.registry?.length) {
                 name += " (" + starship.registry + ")";
             }
-            this.writeName(page, name);
+            this.writeName(page, name, colour);
         } else {
-            this.writeName(page, i18next.t('ViewPage.unnamedStarship'));
+            this.writeName(page, i18next.t('ViewPage.unnamedStarship'), colour);
         }
     }
 
@@ -120,10 +128,15 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let starship = construct as Starship;
         let page = pdf.getPage(0);
-        this.writeStarshipName(page, starship);
+
+        const colour = this.deriveSheetColour(construct);
+        this.drawSheetDecorations(page, colour);
+
+        this.writeStarshipName(page, starship, colour);
 
         const { SheetOutlineOptions, SpaceframeOutline } = await import(/* webpackChunkName: 'spaceframeOutline' */ "../helpers/spaceframeOutlineHelper");
-        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(56.7, 80), Generated2eStarshipSheet.tealColour.asPdfRbg(), 1.2, 1.2), starship);
+        SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(56.7, 80), colour.asPdfRbg(), 1.2, 1.2), starship);
+        this.drawArrowHead(page, construct, colour);
 
         let paragraph = new Paragraph(page, Generated2eStarshipSheet.column1, this.fonts);
         paragraph.append(i18next.t("Construct.other.launchYear").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
@@ -272,6 +285,136 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         }
 
     }
+
+    drawArrowHead(page: PDFPage, construct: Construct, colour: SimpleColor) {
+        if (construct.type === CharacterType.Starfleet) {
+
+            page.moveTo(513.5, page.getHeight() - 185.9);
+
+            page.drawSvgPath(politySymbolArrowHead, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: SimpleColor.from("#ffffff").asPdfRbg(),
+                borderWidth: 1,
+                scale: 0.6
+            });
+
+            page.drawSvgPath(politySymbolArrowHeadCommand, {
+                borderColor: colour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+        } else if (construct.type === CharacterType.KlingonWarrior) {
+            page.moveTo(513.5, page.getHeight() - 185.9);
+
+            page.drawSvgPath(politySymbolKlingonSymbolCircle, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: SimpleColor.from("#ffffff").asPdfRbg(),
+                borderWidth: 1,
+                scale: 0.6
+            });
+
+            page.drawSvgPath(politySymbolKlingonSymbol, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+        } else if (construct.type === CharacterType.Cardassian) {
+            page.moveTo(513.5, page.getHeight() - 185.9);
+
+            page.drawSvgPath(politySymbolCardassianSymbolInner, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+            page.drawSvgPath(politySymbolCardassianSymbolOutline, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+        } else if (construct.type === CharacterType.Romulan) {
+            page.moveTo(499.5, page.getHeight() - 187.9);
+
+            page.drawSvgPath(politySymbolRomulanSymbolBackground, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+            page.drawSvgPath(politySymbolRomulanSymbolBird, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+        } else if (construct.type === CharacterType.Ferengi) {
+            page.moveTo(509.5, page.getHeight() - 191.9);
+
+            page.drawSvgPath(politySymbolFerengiSymbol, {
+                borderColor: Generated2eStarshipSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+        }
+    }
+
+    deriveSheetColour(construct: Construct) {
+        if (construct.type === CharacterType.Starfleet) {
+            return tealColour2e;
+        } else if (construct.type === CharacterType.KlingonWarrior) {
+            return klingonRedColour2e;
+        } else if (construct.type === CharacterType.Romulan) {
+            return romulanGreenColour2e;
+        } else if (construct.type === CharacterType.Cardassian) {
+            return cardassianBrownColour2e;
+        } else if (construct.type === CharacterType.Ferengi) {
+            return ferengiOrangeColour2e;
+        } else {
+            return tealColour2e;
+        }
+    }
+
+    drawSheetDecorations(page: PDFPage, colour: SimpleColor) {
+        console.log("Sheet decorations: " + colour.asHex());
+        page.moveTo(0, page.getHeight());
+
+        page.drawSvgPath(Generated2eStarshipSheet.sideBubblesOpen, {
+            borderColor: colour.asPdfRbg(),
+            borderWidth: 0.5
+        });
+
+        page.drawSvgPath(Generated2eStarshipSheet.sideBubblesClosed, {
+            borderColor: colour.asPdfRbg(),
+            color: colour.asPdfRbg(),
+            borderWidth: 0.5
+        });
+
+        page.drawSvgPath(Generated2eStarshipSheet.bottomDots, {
+            borderColor: colour.asPdfRbg(),
+            color: colour.asPdfRbg(),
+            borderWidth: 0
+        });
+
+        page.drawSvgPath(Generated2eStarshipSheet.mainBorder, {
+            borderColor: colour.asPdfRbg(),
+            borderWidth: 1
+        });
+
+        page.drawSvgPath(Generated2eStarshipSheet.cornerDecoration, {
+            borderColor: colour.asPdfRbg(),
+            borderWidth: 1
+        });
+    }
+
 
     hasSpecialRules(starship: Starship) {
         return starship.getDistinctTalentNameList().map(t => TalentsHelper.getTalent(t)).filter(t => t.specialRule).length > 0;
