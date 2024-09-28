@@ -3187,8 +3187,11 @@
 
     "Talent.saucerSeparation": "Saucer Separation",
 
-    "Talent.saucerSeparation.description2e": "Vessels of this class have the capability to detach their saucer section in an emergency. Once the saucer has detached, the two sections of the ship cannot be reconnected outside of a drydock. Ship’s systems are halved (round up) for the saucer and the secondary hull when separated, the saucer is unable to enter warp speeds or launch small craft, and each section is considered a separate vessel with Scale 1 less than the original vessel; the secondary hull is commanded from main engineering. The saucer can land on a planetary surface with emergency landing gear.",
     "Talent.saucerSeparation.soloDescription": "The ship is designed so that the saucer section can be separated from the engineering section, to operate as two distinct ships. Each section has the same Systems and Departments, as well as the same weapons. The saucer section, which contains the crew quarters and recreational areas, does not have the capacity to go to warp.",
+
+    "Talent.saucerSeparation2ndEdition": "Saucer Separation",
+
+    "Talent.saucerSeparation2ndEdition.description2e": "Vessels of this class have the capability to detach their saucer section in an emergency. Once the saucer has detached, the two sections of the ship cannot be reconnected outside of a drydock. Ship’s systems are halved (round up) for the saucer and the secondary hull when separated, the saucer is unable to enter warp speeds or launch small craft, and each section is considered a separate vessel with Scale 1 less than the original vessel; the secondary hull is commanded from main engineering. The saucer can land on a planetary surface with emergency landing gear.",
 
     "Talent.saucerSeparationAndReconnect": "Saucer Separation and Reconnect",
 

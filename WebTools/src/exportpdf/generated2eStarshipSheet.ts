@@ -15,8 +15,7 @@ import { TALENT_NAME_MISSION_POD, TalentsHelper } from "../helpers/talents";
 import { Column } from "./column";
 import { FontOptions } from "./fontOptions";
 import { FontType } from "./fontLibrary";
-import { blueColour2e, divisionColour2e, goldColour2e, redColour2e } from "./colourProvider2e";
-import { Division } from "../common/character";
+import { labelColourProvider } from "./colourProvider2e";
 
 export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
@@ -225,19 +224,13 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                 borderWidth: 0.5
             });
 
-            let colours = [
-                divisionColour2e(construct.era, Division.Command),
-                divisionColour2e(construct.era, Division.Operations),
-                divisionColour2e(construct.era, Division.Science)
-            ];
-
             let column = new Column(x, location.y, 11.8, 72.2 * 0.8);
-            this.writeLabel(page, i18next.t(makeKey("Construct.department.", Department[d])), column, new FontSpecification(this.boldFont, statFontSize),
-                colours[i % 3]);
+            const key = makeKey("Construct.department.", Department[d]);
+            this.writeLabel(page,i18next.t(key), column, new FontSpecification(this.boldFont, statFontSize),
+                labelColourProvider(construct.era, key));
 
             this.writeLabel(page, "" + starship.departments[d], this.valueBlock(column), new FontSpecification(this.boldFont, statFontSize),
-                colours[i % 3]);
-
+                labelColourProvider(construct.era, key));
         });
 
         let attacksArea = new XYLocation(departmentBoxes.x, departmentBoxes.y + 15.4 * 2 + 16);

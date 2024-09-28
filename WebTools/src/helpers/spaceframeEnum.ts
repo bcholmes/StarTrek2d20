@@ -140,6 +140,7 @@ export enum Spaceframe {
 
     // 2nd edition
     NX_2E,
+    Constitution_2E,
     Excelsior_2E,
     Galaxy_2E,
     Intrepid_2E,

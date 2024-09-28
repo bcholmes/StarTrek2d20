@@ -73,7 +73,7 @@ export class TalentWriter {
                     let talentName = talent.talent.localizedDisplayName;
                     if (talent && talent.talent.maxRank > 1) {
                         let rank = talent.rank;
-                        talentName += " [Rank: " + rank + "]";
+                        talentName = i18next.t("Talent.text.rank", {talentName: talentName, rank: rank});
                     }
                     paragraph?.append(talentName + ": ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
                     let description = this.version === 1 ? talent.talent.localizedDescription : talent.talent.localizedDescription2e;

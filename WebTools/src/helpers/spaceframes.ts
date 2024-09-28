@@ -106,7 +106,7 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Constitution Class",
             2243,
-            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+            [ new SourcePrerequisite(Source.Core), new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.Core2ndEdition),
                 new ServiceYearPrerequisite(2243) ],
             [7, 7, 8, 8, 8, 8],
             [1, 0, 1, 0, 1, 0],
@@ -1578,12 +1578,12 @@ export class SpaceframeHelper {
                 [10, 9, 11, 11, 9, 8],
                 [2, 4, 3, 2, 2, 1]
             )),
-        [Spaceframe.Constitution_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Constitution_UP]: new SpaceframeModel(
             Spaceframe.Constitution_UP,
             CharacterType.Starfleet,
             "Constitution Class",
             2243,
-            [ Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.UtopiaPlanitia), new NotSourcePrerequisite(Source.Core2ndEdition) ],
             [7, 7, 8, 8, 7, 7],
             [1, 0, 1, 0, 1, 0],
             4,
@@ -2988,6 +2988,27 @@ export class SpaceframeHelper {
             [ "Federation Starship" ],
             2170,
         ),
+        [Spaceframe.Constitution_2E]: new SpaceframeModel(
+            Spaceframe.Constitution_2E,
+            CharacterType.Starfleet,
+            "Constitution Class",
+            2243,
+            [ new SourcePrerequisite(Source.Core2ndEdition) ],
+            [7, 7, 8, 8, 7, 7],
+            [1, 0, 1, 0, 1, 0],
+            4,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Rugged Design"),
+                TalentSelection.selectTalent("Modular Laboratories"),
+                TalentSelection.selectTalent("Saucer Separation (2nd Edition)")
+            ],
+            [ "Federation Starship" ],
+            2290),
         [Spaceframe.Excelsior_2E]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Excelsior_UP,
             CharacterType.Starfleet,
@@ -3072,7 +3093,7 @@ export class SpaceframeHelper {
                 TalentSelection.selectTalent("Command Ship"),
                 TalentSelection.selectTalent("Emergency Medical Hologram"),
                 TalentSelection.selectTalent("Improved Warp Drive"),
-                TalentSelection.selectTalent("Saucer Separation")
+                TalentSelection.selectTalent("Saucer Separation (2nd Edition)")
             ],
             [ "Federation Starship" ],
             99999),

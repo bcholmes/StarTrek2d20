@@ -17,13 +17,19 @@ export const blueColour2e: SimpleColor = SimpleColor.from("#2384B3");
 
 export const labelColourProvider = (era: Era, label: string) => {
     if (label === "Construct.discipline.command" ||
-        label === "Construct.discipline.conn") {
+        label === "Construct.discipline.conn" ||
+        label === "Construct.department.command" ||
+        label === "Construct.department.conn") {
         return era === Era.NextGeneration ? redColour2e : goldColour2e;
     } else if (label === "Construct.discipline.engineering" ||
-            label === "Construct.discipline.security") {
+            label === "Construct.discipline.security" ||
+            label === "Construct.department.engineering" ||
+            label === "Construct.department.security") {
         return era === Era.NextGeneration ? goldColour2e : redColour2e;
     } else if (label === "Construct.discipline.medicine" ||
-            label === "Construct.discipline.science") {
+            label === "Construct.discipline.science" ||
+            label === "Construct.department.medicine" ||
+            label === "Construct.department.science") {
         return blueColour2e;
     } else {
         return tealColour2e;

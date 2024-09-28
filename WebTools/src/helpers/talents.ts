@@ -3401,7 +3401,12 @@ export class Talents {
             new TalentModel(
                 "Saucer Separation",
                 "The ship is designed so that the saucer section can be separated from the engineering section, to operate as two distinct ships. Each section has the same Systems, Departments, Talents, and weapons, but their Scale is one lower than the whole ship (recalculate anything derived from Scale), and each section only has half the Power (round down) that the ship had before separation. Further, if the ship has suffered any damage, ongoing effects of that damage apply equally to both sections. The saucer section, which contains the crew quarters and recreational areas, does not have the capacity to go to warp.",
-                [new StarshipPrerequisite(), new AnyOfPrerequisite(new SpaceframePrerequisite(Spaceframe.Galaxy), new GMsDiscretionPrerequisite()), new SourcePrerequisite(Source.Core, Source.CaptainsLog)],
+                [
+                    new StarshipPrerequisite(),
+                    new AnyOfPrerequisite(new SpaceframePrerequisite(Spaceframe.Galaxy), new GMsDiscretionPrerequisite()),
+                    new SourcePrerequisite(Source.Core, Source.CaptainsLog),
+                    new NotSourcePrerequisite(Source.Core2ndEdition)
+                ],
                 1,
                 "Starship"),
             new TalentModel(
@@ -4004,6 +4009,15 @@ export class Talents {
             "Quantum Slipstream Burst Drive",
             "",
             [new StarshipPrerequisite(), new SourcePrerequisite(Source.GmToolkit2e)],
+            1,
+            "Starship", true),
+        new TalentModel(
+            "Saucer Separation (2nd Edition)",
+            "",
+            [
+                new StarshipPrerequisite(),
+                new SourcePrerequisite(Source.Core2ndEdition)
+            ],
             1,
             "Starship", true),
 
