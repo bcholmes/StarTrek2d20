@@ -933,7 +933,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
         } else if (this.isBajoranMilitia() || this.isCardassianUnion()) {
             result.push(PersonalWeapons.instance(this.version).phaser2);
         } else if (this.age.isAdult) {
-            if (this.isKlingon()) {
+            if (this.isKlingonImperialCitizen) {
                 result.push(PersonalWeapons.instance(this.version).dkTagh);
             } else if (this.npcGenerationStep?.specialization === Specialization.FerengiDaiMon) {
                 result.push(PersonalWeapons.instance(this.version).phaser1);
@@ -1227,6 +1227,11 @@ export class Character extends Construct implements IWeaponDiceProvider {
         return this.type === CharacterType.KlingonWarrior ||
             (this.type === CharacterType.AlliedMilitary &&
                 (this.typeDetails as AlliedMilitaryDetails)?.alliedMilitary.type === AlliedMilitaryType.KlingonDefenceForce);
+    }
+
+    get isKlingonImperialCitizen() {
+        return this.isKlingon() ||
+                (this.type === CharacterType.AmbassadorDiplomat && this.typeDetails?.type === Polity.Klingon);
     }
 
     get isRomulanStarEmpire() {

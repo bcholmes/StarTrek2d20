@@ -318,7 +318,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     });
 
     let extra = null;
-    if (character.isKlingon()) {
+    if (character.isKlingonImperialCitizen) {
         extra = (<div className="col-lg-6 my-5">
             <Header level={2}>LINEAGE and House</Header>
             <div className="mb-4">

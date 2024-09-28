@@ -1152,7 +1152,7 @@ class CharacterSheets {
                 new TwoPageTngCharacterSheet(),
                 new TwoPageKlingonCharacterSheet(),
                 new RomulanCharacterSheet() ];
-        } else if (character.isKlingon()) {
+        } else if (character.isKlingonImperialCitizen) {
             return [ new KlingonCharacterSheet(), new TwoPageKlingonCharacterSheet(), new GeneratedTngPortraitCharacterSheet(), new StandardGermanCharacterSheet(),
                 new GeneratedTngPortraitA4CharacterSheet(),
                 new StandardRussianCharacterSheet(), new Standard2eCharacterSheet(),

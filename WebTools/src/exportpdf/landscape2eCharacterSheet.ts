@@ -18,7 +18,7 @@ import { WeaponDescriber } from "./weaponDescriber";
 import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { CharacterType, CharacterTypeModel } from "../common/characterType";
 import { TracksHelper } from "../helpers/tracks";
-import { cardassianBrownColour2e, divisionColour2e, ferengiOrangeColour2e, greyColour2e, klingonRedColour2e, labelColourProvider, orionGreenColour2e, redColour2e, romulanGreenColour2e, tealColour2e } from "./colourProvider2e";
+import { cardassianBrownColour2e, divisionColour2e, ferengiOrangeColour2e, greyColour2e, klingonRedColour2e, labelColourProvider, orionGreenColour2e, romulanGreenColour2e, tealColour2e } from "./colourProvider2e";
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
@@ -121,7 +121,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         if (character.type === CharacterType.Starfleet || character.type === CharacterType.Cadet) {
             const division = character.division;
             return division != null ? divisionColour2e(character.era, division) : tealColour2e;
-        } else if (character.isKlingon()) {
+        } else if (character.isKlingonImperialCitizen) {
             return klingonRedColour2e;
         } else if (character.isRomulanStarEmpire) {
             return romulanGreenColour2e;
@@ -205,7 +205,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
                     });
                 }
             }
-        } else if (character.isKlingon()) {
+        } else if (character.isKlingonImperialCitizen) {
             page.moveTo(704, page.getHeight() - 63);
 
             page.drawSvgPath(Landscape2eCharacterSheet.klingonSymbolCircle, {

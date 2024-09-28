@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
+import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, GovernmentDetails, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { MissionProfileStep, ServiceRecordStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -35,6 +35,7 @@ import { AssetStatType, allAssetStatTypes } from '../asset/assetStat';
 import { SpeciesAbilityList } from './speciesAbility';
 import { allServiceRecords, ServiceRecord, ServiceRecordList } from '../starship/model/serviceRecord';
 import AllyHelper, { AlliedMilitary, AlliedMilitaryType } from './alliedMilitary';
+import Governments, { Government, Polity } from './governments';
 
 class Marshaller {
 
@@ -159,6 +160,15 @@ class Marshaller {
             let details = {
                 type: AlliedMilitaryType[typeDetails.alliedMilitary.type],
                 typeName: typeDetails.alliedMilitary.name,
+                name: typeDetails.name
+            }
+            return details;
+        } else if (character.type === CharacterType.AmbassadorDiplomat && character.typeDetails != null
+            && character.typeDetails instanceof GovernmentDetails) {
+            let typeDetails = character.typeDetails as GovernmentDetails;
+            let details = {
+                type: Polity[typeDetails.government.type],
+                typeName: typeDetails.government.name,
                 name: typeDetails.name
             }
             return details;
@@ -845,7 +855,18 @@ class Marshaller {
                     alliedMilitary = new AlliedMilitary(typeName, type, []);
                 }
                 result.typeDetails = new AlliedMilitaryDetails(alliedMilitary, name);
+            } else if (result.type === CharacterType.AmbassadorDiplomat) {
+                const name = json.typeDetails.name;
+                const typeName = json.typeDetails.typeName;
+                const type = Governments.findTypeByName(json.typeDetails.type);
+
+                let government = Governments.findOption(type);
+                if (government == null) {
+                    government = new Government(typeName, type);
+                }
+                result.typeDetails = new GovernmentDetails(government, name);
             }
+
         }
 
         if (json.role != null) {

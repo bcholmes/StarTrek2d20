@@ -54,6 +54,11 @@ class _Governments {
         let temp = this.options.filter(o => o.type === type);
         return temp ? temp[0] : null;
     }
+
+    findTypeByName(name: string) {
+        let results = this.options.filter(o => Polity[o.type] === name);
+        return results.length === 0 ? undefined : results[0].type;
+    }
 }
 
 
