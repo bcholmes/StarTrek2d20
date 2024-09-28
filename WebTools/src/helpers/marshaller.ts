@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
+import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { MissionProfileStep, ServiceRecordStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -34,6 +34,7 @@ import { AssetType } from '../asset/assetType';
 import { AssetStatType, allAssetStatTypes } from '../asset/assetStat';
 import { SpeciesAbilityList } from './speciesAbility';
 import { allServiceRecords, ServiceRecord, ServiceRecordList } from '../starship/model/serviceRecord';
+import AllyHelper, { AlliedMilitary, AlliedMilitaryType } from './alliedMilitary';
 
 class Marshaller {
 
@@ -73,6 +74,8 @@ class Marshaller {
                 "length" : Career[character.careerStep.career]
             }
         }
+
+        sheet["typeDetails"] = this.encodeTypeDetails(character);
 
         if (character.stereotype === Stereotype.Npc || character.legacyMode) {
             sheet["attributes"] = this.toAttributeObject(character.attributes);
@@ -149,6 +152,21 @@ class Marshaller {
         return this.encode(this.encodeFullCharacterAsJson(character, "soloCharacter"));
     }
 
+    encodeTypeDetails(character: Character) {
+        if (character.type === CharacterType.AlliedMilitary && character.typeDetails != null
+            && character.typeDetails instanceof AlliedMilitaryDetails) {
+            let typeDetails = character.typeDetails as AlliedMilitaryDetails;
+            let details = {
+                type: AlliedMilitaryType[typeDetails.alliedMilitary.type],
+                typeName: typeDetails.alliedMilitary.name,
+                name: typeDetails.name
+            }
+            return details;
+        } else {
+            return undefined;
+        }
+    }
+
     private encodeFullCharacterAsJson(character: Character, stereotype: string) {
         let sheet = {
             "stereotype": stereotype,
@@ -174,6 +192,8 @@ class Marshaller {
             }
             sheet["upbringing"] = upbringing;
         }
+
+        sheet["typeDetails"] = this.encodeTypeDetails(character);
 
         if ((character.stereotype !== Stereotype.MainCharacter && character.stereotype !== Stereotype.SoloCharacter) || character.legacyMode) {
             sheet["focuses"] = [...character.focuses];
@@ -814,6 +834,20 @@ class Marshaller {
         if (json.version) {
             result.version = json.version;
         }
+        if (json.typeDetails) {
+            if (result.type === CharacterType.AlliedMilitary) {
+                const name = json.typeDetails.name;
+                const typeName = json.typeDetails.typeName;
+                const type = AllyHelper.instance.findTypeByName(json.typeDetails.type);
+
+                let alliedMilitary = AllyHelper.instance.findOption(type);
+                if (alliedMilitary == null) {
+                    alliedMilitary = new AlliedMilitary(typeName, type, []);
+                }
+                result.typeDetails = new AlliedMilitaryDetails(alliedMilitary, name);
+            }
+        }
+
         if (json.role != null) {
             let role = json.role;
             if (typeof role === 'string') {

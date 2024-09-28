@@ -25,34 +25,33 @@ import { Era } from '../helpers/eras';
 import { SpeciesAbility, SpeciesAbilityList } from '../helpers/speciesAbility';
 import { IWeaponDiceProvider } from './iWeaponDiceProvider';
 
-export abstract class CharacterTypeDetails {
-}
-
 export enum Division {
     Command,
     Science,
     Operations
 }
 
-export class AlliedMilitaryDetails extends CharacterTypeDetails {
+export class AlliedMilitaryDetails {
 
     alliedMilitary: AlliedMilitary;
     name: string;
 
     constructor(alliedMilitary: AlliedMilitary, name: string) {
-        super();
         this.alliedMilitary = alliedMilitary;
         this.name = name;
     }
+
+    get type() {
+        return this.alliedMilitary.type;
+    }
 }
 
-export class GovernmentDetails extends CharacterTypeDetails {
+export class GovernmentDetails {
 
     government: Government;
     name: string;
 
     constructor(government: Government, name: string) {
-        super();
         this.government = government;
         this.name = name;
     }
@@ -65,6 +64,10 @@ export class GovernmentDetails extends CharacterTypeDetails {
         } else {
             return "";
         }
+    }
+
+    get type() {
+        return this.government.type;
     }
 }
 
@@ -407,7 +410,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
     public assignedShip?: string;
     public secondaryRole?: Role;
     public _focuses: string[];
-    public typeDetails: CharacterTypeDetails;
+    public typeDetails: AlliedMilitaryDetails|GovernmentDetails;
     public pronouns: string = '';
     public pastime: string[];
 
@@ -1222,8 +1225,42 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     isKlingon() {
         return this.type === CharacterType.KlingonWarrior ||
-            (this.type === CharacterType.AlliedMilitary && this.typeDetails
-                && (this.typeDetails as AlliedMilitaryDetails).alliedMilitary.type === AlliedMilitaryType.KlingonDefenceForce);
+            (this.type === CharacterType.AlliedMilitary &&
+                (this.typeDetails as AlliedMilitaryDetails)?.alliedMilitary.type === AlliedMilitaryType.KlingonDefenceForce);
+    }
+
+    get isRomulanStarEmpire() {
+        return this.type === CharacterType.Romulan ||
+            (this.type === CharacterType.AlliedMilitary && this.typeDetails?.type === AlliedMilitaryType.RomulanStarEmpire) ||
+            (this.type === CharacterType.AmbassadorDiplomat && this.typeDetails?.type === Polity.Romulan);
+    }
+
+    get isCardassian() {
+        return this.type === CharacterType.Cardassian ||
+            (this.type === CharacterType.AlliedMilitary && this.typeDetails?.type === AlliedMilitaryType.CardassianUnion) ||
+            (this.type === CharacterType.AmbassadorDiplomat && this.typeDetails?.type === Polity.Cardassian);
+    }
+
+    get isFerengi() {
+        return this.type === CharacterType.Ferengi ||
+            (this.type === CharacterType.AlliedMilitary && this.typeDetails?.type === AlliedMilitaryType.FerengiMilitary)||
+            (this.speciesStep?.species === Species.Ferengi &&
+                [
+                    Specialization.SketchyTraderCaptain,
+                    Specialization.IndependentTraderCaptain,
+                    Specialization.FerengiBartender,
+                    Specialization.FerengiMerchant,
+                    Specialization.FerengiDaiMon,
+                    Specialization.FerengiEliminator,
+                    Specialization.FerengiLiquidator,
+                ].indexOf(this.npcGenerationStep?.specialization) >= 0);
+    }
+
+    get isOrion() {
+        return this.stereotype === Stereotype.Npc &&
+            (this.npcGenerationStep?.specialization === Specialization.OrionPirate ||
+                (this.speciesStep?.species === Species.Orion &&
+                    [Specialization.SketchyTraderCaptain, Specialization.IndependentTraderCaptain].indexOf(this.npcGenerationStep?.specialization) >= 0));
     }
 
     hasMaxedAttribute() {

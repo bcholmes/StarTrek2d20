@@ -1130,7 +1130,9 @@ class CaptainsLogCharacterSheet extends BasicFullCharacterSheet {
 class CharacterSheets {
     public getSupportingCharacterSheet(c: Character): ICharacterSheet[] {
         return [ new GeneratedTngPortraitCharacterSheet(), new GeneratedTngPortraitA4CharacterSheet(), new BasicGeneratedHalfPageCharacterSheet(),
-            new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new Standard2eCharacterSheet() ];
+            new HalfPageSupportingCharacterSheet(), new StandardTosCharacterSheet(), new KlingonCharacterSheet(), new Standard2eCharacterSheet(),
+            new Landscape2eCharacterSheet()
+        ];
     }
 
     public getCharacterSheets(character: Character): ICharacterSheet[] {

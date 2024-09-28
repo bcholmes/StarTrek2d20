@@ -20,6 +20,12 @@ export enum AlliedMilitaryType {
     Other
 }
 
+export const allAlliedMilitaryTypes = (): AlliedMilitaryType[] => {
+    return Object.keys(AlliedMilitaryType).filter((item) => {
+        return !isNaN(Number(item));
+    }).map(item => Number(item));
+}
+
 export class AlliedMilitary {
     name: string;
     species: Species[];
@@ -75,6 +81,16 @@ class AllyHelper {
     findOption(type: AlliedMilitaryType) {
         let temp = this.options.filter(o => o.type === type);
         return temp ? temp[0] : null;
+    }
+
+    findTypeByName(name: string): AlliedMilitaryType|undefined {
+        let result = undefined;
+        allAlliedMilitaryTypes().forEach(t => {
+            if (AlliedMilitaryType[t] === name) {
+                result = t;
+            }
+        });
+        return result;
     }
 }
 

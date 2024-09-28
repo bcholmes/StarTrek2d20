@@ -3,11 +3,17 @@ import { SimpleColor } from "../common/colour"
 import { Era } from "../helpers/eras";
 
 export const romulanGreenColour2e: SimpleColor = SimpleColor.from("#1A6847");
+export const orionGreenColour2e: SimpleColor = SimpleColor.from("#84C98B");
+export const ferengiOrangeColour2e: SimpleColor = SimpleColor.from("#E76E24");
+export const cardassianBrownColour2e: SimpleColor = SimpleColor.from("#603826");
+export const klingonRedColour2e: SimpleColor = SimpleColor.from("#C9242B");
+
 export const tealColour2e: SimpleColor = SimpleColor.from("#39AAA3");
+export const greyColour2e: SimpleColor = SimpleColor.from("#979696");
+
 export const goldColour2e: SimpleColor = SimpleColor.from("#D49F00");
 export const redColour2e: SimpleColor = SimpleColor.from("#C51A1B");
 export const blueColour2e: SimpleColor = SimpleColor.from("#2384B3");
-export const greyColour2e: SimpleColor = SimpleColor.from("#979696");
 
 export const labelColourProvider = (era: Era, label: string) => {
     if (label === "Construct.discipline.command" ||
@@ -22,7 +28,6 @@ export const labelColourProvider = (era: Era, label: string) => {
     } else {
         return tealColour2e;
     }
-
 }
 
 
