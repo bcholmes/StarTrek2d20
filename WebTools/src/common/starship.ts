@@ -642,6 +642,17 @@ export class Starship extends Construct implements IWeaponDiceProvider {
             return dice;
         } else {
             let dice = weapon.dice;
+
+            if (this.systems[System.Weapons] >= 13) {
+                dice += 4;
+            } else if (this.systems[System.Weapons] >= 11) {
+                dice += 3;
+            } else if (this.systems[System.Weapons] >= 9) {
+                dice += 2;
+            } else if (this.systems[System.Weapons] >= 7) {
+                dice += 1;
+            }
+
             if (weapon.scaleApplies) {
                 return dice + this.scale;
             } else {

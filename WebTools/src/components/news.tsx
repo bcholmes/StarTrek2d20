@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240928</b>
+                <ul>
+                    <li>
+                        Tweaks and bug fixes.
+                    </li>
+                </ul>
                 <b>v1.240922</b>
                 <ul>
                     <li>
@@ -236,32 +242,6 @@ class News extends React.Component<INewsProperties, {}> {
                     </li>
                     <li>
                         Minor NPC updates.
-                    </li>
-                </ul>
-                <b>v1.240323</b>
-                <ul>
-                    <li>
-                        The primary change is in the token generator. I posted a poll on Farcebook recently, asking
-                        which uniform I should support next. The result was overwhelmingly in favour of the {' '}
-                        <cite>Strange New Worlds</cite> uniform. Not gonna lie: this uniform has a few complicated bits,
-                        but I think I have a reasonable first version in place.
-                        <div className="mt-2">
-                        There are some notes I should probably make: at the moment, I'm only supporting the V-neck
-                        version of the uniform. Although we primarily see M'Benga and Chapel wearing variants (M'Benga's
-                        medical tunic/smock and Chapel's nursing jumpsuit), they do wear the V-necks when they
-                        take part in landing teams. See the episodes, "All Those Who Wander" and "Hegemony," for example.
-                        In the future, I'll support variants for the medical smock, nursing jumpsuit and, of course, the
-                        skant.
-                        </div>
-                        <div className="mt-2">
-                        The second big issue is related to ranks. I think the show isn't terribly consistent about how it
-                        represents ranks. So, I ended up making a wild swing at rank insignia that's in line with
-                        how <cite>TOS</cite> represents ranks.
-                        </div>
-                    </li>
-                    <li>
-                        Some additional improvements have been made with respect to national languages, thanks to a
-                        code contribution.
                     </li>
                 </ul>
 
