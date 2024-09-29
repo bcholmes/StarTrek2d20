@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.240929</b>
+                <ul>
+                    <li>
+                        A number of cosmetic changes and internal improvements.
+                    </li>
+                </ul>
                 <b>v1.240928</b>
                 <ul>
                     <li>
@@ -230,18 +236,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>
                         I had a recent contribution of Brazilian Portuguese translation for the app.
-                    </li>
-                </ul>
-                <b>v1.240329</b>
-                <ul>
-                    <li>
-                        Some additional tweaks to the token generator.
-                    </li>
-                    <li>
-                        Initial support for the <cite>Federation-Klingon War</cite> book.
-                    </li>
-                    <li>
-                        Minor NPC updates.
                     </li>
                 </ul>
 

@@ -15,6 +15,8 @@ import { EquipmentType } from "../helpers/equipment";
 import { Construct } from "../common/construct";
 import { CareerEventsHelper } from "../helpers/careerEvents";
 import { CareersHelper } from "../helpers/careers";
+import { CharacterTypeModel } from "../common/characterType";
+import { TracksHelper } from "../helpers/tracks";
 
 const DEFAULT_STARSHIP_ICON = "systems/sta/assets/icons/ship_icon.png";
 const DEFAULT_EQUIPMENT_ICON = "systems/sta/assets/icons/voyagercombadgeicon.svg";
@@ -300,6 +302,7 @@ export class FoundryVttExporter {
                     .filter(e => e?.length)
                     .join(", "),
                 "characterrole": character.assignmentWithoutShip,
+                "careerpath": this.convertCareerPath(character),
                 "determination": {
                     "value": 1,
                     "max": 3
@@ -591,6 +594,14 @@ export class FoundryVttExporter {
         });
 
         return result;
+    }
+
+    convertCareerPath(character: Character) {
+        let path = CharacterTypeModel.getByType(character.type)?.localizedName ?? "";
+        if (character.educationStep) {
+            path += " / " + TracksHelper.instance.getTrack(character.educationStep?.track, character.type, character.version).localizedName;
+        }
+        return path;
     }
 
     determineFocusIcon(focus: string, options: FoundryVttExporterOptions) {
