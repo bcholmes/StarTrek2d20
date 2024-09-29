@@ -18,6 +18,7 @@ import { FontLibrary, FontType } from "./fontLibrary";
 import { FontOptions } from "./fontOptions";
 import { WeaponDescriber } from "./weaponDescriber";
 import { bullet2EWriter } from "./bullet2eWriter";
+import { tealColour2e } from "./colourProvider2e";
 
 export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
@@ -61,7 +62,7 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
     }
 
     get nameColumn() {
-        return new Column(90, 48, 15, 550-90);
+        return new Column(75, 48, 15, 550-90);
     }
 
     writeName(page: PDFPage, name: string, colour: SimpleColor) {
@@ -191,7 +192,7 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
     }
 
 
-    writeAttacks(page: PDFPage, construct: Construct, column: Column) {
+    writeAttacks(page: PDFPage, construct: Construct, column: Column, colour: SimpleColor = tealColour2e) {
 
         let bold = new FontOptions(9, FontType.Bold);
         let standard = new FontOptions(9);
@@ -207,7 +208,7 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
             paragraph?.write();
 
             if (paragraph?.lines?.length) {
-                bullet2EWriter(page, paragraph, BaseNonForm2eSheet.tealColour);
+                bullet2EWriter(page, paragraph, colour);
             }
 
             bottom = paragraph?.bottom;

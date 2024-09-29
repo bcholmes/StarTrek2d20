@@ -1474,6 +1474,18 @@
     "Rank.private.name": "Private",
     "Rank.private.abbrev": "Pvt.",
 
+    "Rank.cadetFirstClass.name": "Cadet, First Class",
+    "Rank.cadetFirstClass.abbrev": "Cdt, 1st Cl.",
+
+    "Rank.cadetSecondClass.name": "Cadet, Second Class",
+    "Rank.cadetSecondClass.abbrev": "Cdt, 2nd Cl.",
+
+    "Rank.cadetThirdClass.name": "Cadet, Third Class",
+    "Rank.cadetThirdClass.abbrev": "Cdt, 3rd Cl.",
+
+    "Rank.cadetFourthClass.name": "Cadet, Fourth Class",
+    "Rank.cadetFourthClass.abbrev": "Cdt, 4th Cl.",
+
     "Role.commandingOfficer": "Commanding Officer",
 
     "Role.commandingOfficer.description": "The captain. Even if the commanding officer does not hold the rank of captain, they will be referred to as captain by their subordinates. Every ship must have a commanding officer.",

@@ -1796,6 +1796,14 @@ Rank.corporal.name,Corporal,,Corporal,Cabo,Caporal,Капрал,Cabo
 Rank.corporal.abbrev,Cpl.,,Cpl.,Cab.,Cap.,капр.,Cb.
 Rank.private.name,Private,,Private,Soldado raso,Soldat,Рядовой,Soldado
 Rank.private.abbrev,Pvt.,,Pvt.,Sol.,Sol.,ряд.,Sd.
+Rank.cadetFirstClass.name,"Cadet, First Class",,,,,,
+Rank.cadetFirstClass.abbrev,"Cdt, 1st Cl.",,,,,,
+Rank.cadetSecondClass.name,"Cadet, Second Class",,,,,,
+Rank.cadetSecondClass.abbrev,"Cdt, 2nd Cl.",,,,,,
+Rank.cadetThirdClass.name,"Cadet, Third Class",,,,,,
+Rank.cadetThirdClass.abbrev,"Cdt, 3rd Cl.",,,,,,
+Rank.cadetFourthClass.name,"Cadet, Fourth Class",,,,,,
+Rank.cadetFourthClass.abbrev,"Cdt, 4th Cl.",,,,,,
 Role.commandingOfficer,Commanding Officer,,Kommandierende/-r Offizier/-in,Oficial al mando,Commandant,Командир,Oficial Comandante
 Role.commandingOfficer.description,"The captain. Even if the commanding officer does not hold the rank of captain, they will be referred to as captain by their subordinates. Every ship must have a commanding officer.",,"Der Captain. Selbst wenn ein Kommandierender Offizier nicht den Rang eines Captain hält, wird er oder sie von Untergebenen dennoch als Captain angesprochen werden. Jedes Schiff muss einen Kommandierenden Offizier besitzen.","El capitán. Aunque el oficial al mando no ostente el rango de capitán, sus subordinados se referirán a él como tal. Toda nave tiene un oficial al mando.","seulement. Le capitaine. Même s’il n’a pas le grade de capitaine, ses subordonnés l’appelleront ainsi. Chaque vaisseau doit avoir un commandant.","Капитан.
 Даже если командир не в звании капитана, подчинённые будут называть его капитаном. Командир должен быть у каждого корабля.","O capitão. Mesmo se o oficial de comando não tiver o posto de capitão, ele será chamado de capitão por seus subordinados. Toda nave precisa ter um oficial comandante."

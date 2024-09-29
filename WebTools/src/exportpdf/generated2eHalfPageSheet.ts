@@ -19,7 +19,7 @@ import { divisionColour2e, tealColour2e } from "./colourProvider2e";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
-    mainBlock: Column = new Column(74, 72, 338-72, 304-74);
+    mainBlock: Column = new Column(59, 72, 338-72, 304-59);
 
     attributeTitleBlock: Column = new Column(322, 72, 13, 550-322);
     departmentTitleBlock: Column = new Column(322, 127, 13, 550-322);

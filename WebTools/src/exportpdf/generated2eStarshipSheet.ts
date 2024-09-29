@@ -64,20 +64,20 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
     }
 
     // if we can stick the three stats together, then we should do so
-    writeThreeColumnDerivedStats(page: PDFPage, starship: Starship, previousParagraph: Paragraph) {
+    writeThreeColumnDerivedStats(page: PDFPage, starship: Starship, previousParagraph: Paragraph, colour: SimpleColor) {
         let resistanceParagraph = previousParagraph.nextParagraph(1);
         resistanceParagraph.append(i18next.t("Construct.other.resistance").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
-            Generated2eStarshipSheet.tealColour);
+            colour);
         resistanceParagraph.append(starship.resistance, new FontSpecification(this.textFont, 9));
 
         let scaleParagraph = previousParagraph.nextParagraph(1);
         scaleParagraph.append(i18next.t("Construct.other.scale").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
-            Generated2eStarshipSheet.tealColour);
+            colour);
         scaleParagraph.append(starship.scale, new FontSpecification(this.textFont, 9));
 
         let crewParagraph = previousParagraph.nextParagraph(1);
         crewParagraph.append(i18next.t("Construct.other.crewSupport").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
-            Generated2eStarshipSheet.tealColour);
+            colour);
         crewParagraph.append(starship.crewSupport, new FontSpecification(this.textFont, 9));
 
         if (resistanceParagraph.lines.length === 1 && scaleParagraph.lines.length === 1 && crewParagraph.lines.length === 1
@@ -109,13 +109,13 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
             scaleParagraph = resistanceParagraph.nextParagraph(0);
             scaleParagraph.append(i18next.t("Construct.other.scale").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
-                Generated2eStarshipSheet.tealColour);
+                colour);
             scaleParagraph.append(starship.scale, new FontSpecification(this.textFont, 9));
             scaleParagraph.write();
 
             let crewParagraph = scaleParagraph.nextParagraph(0);
             crewParagraph.append(i18next.t("Construct.other.crewSupport").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
-                Generated2eStarshipSheet.tealColour);
+                colour);
             crewParagraph.append(starship.crewSupport, new FontSpecification(this.textFont, 9));
             crewParagraph.write();
 
@@ -140,14 +140,14 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let paragraph = new Paragraph(page, Generated2eStarshipSheet.column1, this.fonts);
         paragraph.append(i18next.t("Construct.other.launchYear").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
-            Generated2eStarshipSheet.tealColour);
+            colour);
         paragraph.append("" + (starship.spaceframeModel?.serviceYear ?? (starship.serviceYear ?? "")), new FontSpecification(this.textFont, 9));
         paragraph.write();
 
         paragraph = paragraph.nextParagraph(1);
 
         paragraph.append(i18next.t("Construct.other.timeline").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
-        Generated2eStarshipSheet.tealColour);
+            colour);
         paragraph.append("" + (starship.serviceYear), new FontOptions(9));
         if (starship.spaceframeModel?.serviceYear != null && starship.serviceYear != null) {
             let yearsOfService = i18next.t("Construct.other.yearsOfService", {
@@ -167,7 +167,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             paragraph = paragraph.nextParagraph(1);
 
             paragraph.append(i18next.t("Construct.other.spaceFrame").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
-                Generated2eStarshipSheet.tealColour);
+                colour);
             if (starship.spaceframeModel != null) {
                 paragraph.append(starship.spaceframeModel?.localizedName, new FontOptions(9));
             } else {
@@ -180,7 +180,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             paragraph = paragraph.nextParagraph(1);
 
             paragraph.append(i18next.t("Construct.other.missionProfile").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
-                Generated2eStarshipSheet.tealColour);
+                colour);
             paragraph.append(starship.missionProfileStep?.type?.localizedName, new FontOptions(9));
             paragraph.write();
         }
@@ -188,11 +188,11 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         paragraph = paragraph.nextParagraph(1);
 
         paragraph.append(i18next.t("Construct.other.traits").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
-            Generated2eStarshipSheet.tealColour);
+            colour);
         paragraph.append(starship.getAllTraits(), new FontOptions(9));
         paragraph.write();
 
-        let bottom = this.writeThreeColumnDerivedStats(page, starship, paragraph);
+        let bottom = this.writeThreeColumnDerivedStats(page, starship, paragraph, colour);
 
         let statFontSize = this.determineFontSizeForWidth(this.determineAllStatLabels(starship), 72.2 * 0.8 - 2);
 
@@ -252,7 +252,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let bottomOfAttacks = this.writeAttacks(page, starship, new Column(attacksArea.x, attacksArea.y + 13 + 4,
             Generated2eStarshipSheet.column1.start.y + Generated2eStarshipSheet.column1.height - (attacksArea.y + 13 + 4),
-            Generated2eStarshipSheet.column1.width));
+            Generated2eStarshipSheet.column1.width), colour);
 
         this.writeSubTitle(page, i18next.t("Construct.other.shields"), new Column(bottomOfAttacks.x, bottomOfAttacks.y + 16,
             13, Generated2eStarshipSheet.column1.width));
@@ -267,7 +267,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             Generated2eStarshipSheet.column1.start.y + Generated2eStarshipSheet.column1.height - (bottomOfShields.y + 13 + 4),
             Generated2eStarshipSheet.column1.width, Generated2eStarshipSheet.column2);
 
-        let { bottomOfTalents, column} = this.writeTalents(page, starship, talentsColumn);
+        let { bottomOfTalents, column} = this.writeTalents(page, starship, talentsColumn, colour);
 
         if (this.hasSpecialRules(starship)) {
 
@@ -280,7 +280,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                 this.writeSubTitle(page, i18next.t("Construct.other.specialRules"), new Column(finalColumn.start.x, finalColumn.start.y,
                     13, finalColumn.width));
 
-                this.writeSpecialRules(page, starship, finalColumn.bottomAfter(13 + 4));
+                this.writeSpecialRules(page, starship, finalColumn.bottomAfter(13 + 4), colour);
             }
         }
 
@@ -455,7 +455,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         return column.untranslateLocation(page, new XYLocation(column.translatedStart(page).x, y -= 12));
     }
 
-    writeTalents(page: PDFPage, starship: Starship, column: Column) {
+    writeTalents(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
         let paragraph = new Paragraph(page, column, this.fonts);
         let result = { column: column, bottomOfTalents: paragraph.bottom }
         for (let t of starship.getDistinctTalentNameList()) {
@@ -469,7 +469,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         let rank = starship.getRankForTalent(t);
                         talentName += " [x" + rank + "]";
                     }
-                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), Generated2eStarshipSheet.tealColour);
+                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), colour);
                     paragraph.append(starship.version === 1 ? talent.localizedDescription : talent.localizedDescription2e, new FontOptions(9));
                     paragraph.write();
 
@@ -477,7 +477,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         let location = column.untranslateLocation(page, paragraph.lines[0].location);
                         page.moveTo(paragraph.lines[0].column.start.x - 15, page.getHeight() - (location.y + 3));
                         page.drawSvgPath(Generated2eStarshipSheet.bulletPath, {
-                            color: Generated2eStarshipSheet.tealColour.asPdfRbg(),
+                            color: colour.asPdfRbg(),
                             borderWidth: 0
                         });
                     }
@@ -492,7 +492,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         return result;
     }
 
-    writeSpecialRules(page: PDFPage, starship: Starship, column: Column) {
+    writeSpecialRules(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
         let paragraph = new Paragraph(page, column, this.fonts);
         for (let t of starship.getDistinctTalentNameList()) {
 
@@ -505,7 +505,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         let rank = starship.getRankForTalent(t);
                         talentName += " [Rank: " + rank + "]";
                     }
-                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), Generated2eStarshipSheet.tealColour);
+                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), colour);
                     paragraph.append(starship.version === 1 ? talent.localizedDescription : talent.localizedDescription2e, new FontOptions(9));
                     paragraph.write();
 
@@ -513,7 +513,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                         let location = column.untranslateLocation(page, paragraph.lines[0].location);
                         page.moveTo(paragraph.lines[0].column.start.x - 15, page.getHeight() - (location.y + 3));
                         page.drawSvgPath(Generated2eStarshipSheet.bulletPath, {
-                            color: Generated2eStarshipSheet.tealColour.asPdfRbg(),
+                            color: colour.asPdfRbg(),
                             borderWidth: 0
                         });
                     }
