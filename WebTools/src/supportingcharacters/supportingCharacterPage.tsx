@@ -14,7 +14,7 @@ import { Source } from '../helpers/sources';
 import { marshaller } from '../helpers/marshaller';
 import { Species } from '../helpers/speciesEnum';
 import store from '../state/store';
-import { hasSource } from '../state/contextFunctions';
+import { hasSource, isSecondEdition } from '../state/contextFunctions';
 import { Header } from '../components/header';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import { useTranslation } from 'react-i18next';
@@ -73,10 +73,10 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     }
 
     const getTypes = () => {
-        return CharacterTypeModel.getAllTypes().map((t, i) => new DropDownElement(t.type, t.localizedName));
+        return CharacterTypeModel.getSupportingCharacterTypes().map((t, i) => new DropDownElement(t.type, t.localizedName));
     }
     const getRanks = () => {
-        return RanksHelper.instance().getRanks(character, true)
+        return RanksHelper.instance().getRanksByType(character.type, character.version)
             .map(r => new DropDownElement(r.id, r.localizedName));
     }
 
@@ -102,11 +102,18 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
             store.dispatch(setCharacterRank(rank.name, rank.id));
             setShowRank(true);
         } else {
-            if (character.rank === null) {
-                let rank = RanksHelper.instance().getRank(Rank.Lieutenant);
-                store.dispatch(setCharacterRank(rank.name, rank.id));
-                setShowRank(true);
+            let ranks = RanksHelper.instance().getRanksByType(characterType, character.version);
+            if (character.rank === null || ranks.filter(r => r.id === character.rank?.id).length === 0) {
+                if (ranks.length > 0) {
+                    if (characterType === CharacterType.Starfleet) {
+                        selectRank(Rank.Ensign);
+                    } else {
+                        let middleRank = ranks[Math.floor(ranks.length / 2)];
+                        selectRank(middleRank.id);
+                    }
+                }
             }
+            setShowRank(ranks.length > 0);
         }
     }
 
@@ -133,7 +140,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     }
 
     useEffect(() => {
-        let character = Character.createSupportingCharacter(store.getState().context.era, hasSource(Source.Core2ndEdition) ? 2 : 1);
+        let character = Character.createSupportingCharacter(store.getState().context.era, isSecondEdition() ? 2 : 1);
         store.dispatch(setCharacter(character));
     }, [])
 

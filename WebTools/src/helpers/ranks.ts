@@ -6,7 +6,7 @@ import {Track} from './trackEnum';
 import {AlliedMilitaryDetails, Character, CharacterRank } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import { AlliedMilitaryType } from './alliedMilitary';
-import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, AnyEraPrerequisite, IConstructPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite } from './prerequisite';
+import { AllOfPrerequisite, AnyOfPrerequisite, CareersPrerequisite, CharacterTypePrerequisite, EnlistedPrerequisite, AnyEraPrerequisite, IConstructPrerequisite, NotPrerequisite, OfficerPrerequisite, SourcePrerequisite, KlingonPrerequisite } from './prerequisite';
 import store from '../state/store';
 import { makeKey } from '../common/translationKey';
 import i18next from 'i18next';
@@ -374,7 +374,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "MCSP"),
         new RankModel(
@@ -392,7 +393,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "SCSP"),
         new RankModel(
@@ -410,7 +412,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Experienced, Career.Veteran),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "Chief"),
         new RankModel(
@@ -446,7 +449,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "SP"),
         new RankModel(
@@ -455,7 +459,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "SP"),
         new RankModel(
@@ -464,7 +469,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "SP"),
         new RankModel(
@@ -473,7 +479,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "Yeo"),
         new RankModel(
@@ -482,7 +489,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "Yeo"),
         new RankModel(
@@ -491,7 +499,8 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new CareersPrerequisite(Career.Young, Career.Experienced),
-                new CharacterTypePrerequisite(CharacterType.Starfleet)
+                new CharacterTypePrerequisite(CharacterType.Starfleet),
+                new SourcePrerequisite(Source.Core)
             ],
             "Yeo"),
         new RankModel(
@@ -626,7 +635,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new NotTrackPrerequisite(Track.Laborer),
-                new CharacterTypePrerequisite(CharacterType.KlingonWarrior)
+                new KlingonPrerequisite(),
             ],
             "bu'"),
         new RankModel(
@@ -635,7 +644,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new NotTrackPrerequisite(Track.Laborer),
-                new CharacterTypePrerequisite(CharacterType.KlingonWarrior)
+                new KlingonPrerequisite()
             ],
             "Da'"),
         new RankModel(
@@ -644,7 +653,7 @@ export class RanksHelper {
             [
                 new EnlistedPrerequisite(),
                 new NotTrackPrerequisite(Track.Laborer),
-                new CharacterTypePrerequisite(CharacterType.KlingonWarrior)
+                new KlingonPrerequisite()
             ],
             "beq"),
         new RankModel(
@@ -690,10 +699,7 @@ export class RanksHelper {
                 new OfficerPrerequisite(),
                 new SourcePrerequisite(Source.PlayersGuide),
                 new CareersPrerequisite(Career.Veteran),
-                new AnyOfPrerequisite(
-                    new CharacterTypePrerequisite(CharacterType.KlingonWarrior),
-                    new AlliedMilitaryPrerequisite(AlliedMilitaryType.Maco, AlliedMilitaryType.KlingonDefenceForce)
-                )
+                new KlingonPrerequisite(),
             ],
             "Brig."),
         new RankModel(
@@ -1051,6 +1057,39 @@ export class RanksHelper {
 
     getRanks(character: Character, ignorePrerequisites?: boolean) {
         return !ignorePrerequisites ? this._ranks.filter(r => r.prerequisites.every(p => p.isPrerequisiteFulfilled(character))) : [...this._ranks];
+    }
+
+    getRanksByType(type: CharacterType, version: number) {
+        let ranks = [];
+        switch (type) {
+            case CharacterType.Starfleet:
+                ranks = [ Rank.FleetAdmiral, Rank.Admiral, Rank.ViceAdmiral, Rank.RearAdmiral, Rank.Commodore, Rank.Captain,
+                    Rank.Commander, Rank.LtCommander, Rank.Lieutenant, Rank.LieutenantJG, Rank.Ensign,
+                    Rank.MasterChiefPettyOfficer,  Rank.SeniorChiefPettyOfficer, Rank.ChiefPettyOfficer, Rank.PettyOfficer1stClass,
+                    Rank.PettyOfficer2ndClass, Rank.PettyOfficer3rdClass, Rank.Crewman1stClass, Rank.Crewman2ndClass,
+                    Rank.Crewman3rdClass, Rank.CadetFirstClass, Rank.CadetSecondClass, Rank.CadetThirdClass,
+                    Rank.CadetFourthClass]
+                break;
+            case CharacterType.KlingonWarrior:
+                ranks = [ Rank.General, Rank.Brigadier, Rank.Colonel, Rank.Captain, Rank.Commander, Rank.Lieutenant,
+                    Rank.Ensign, Rank.Sergeant, Rank.Corporal, Rank.Bekk ];
+                break;
+            case CharacterType.Romulan:
+                ranks = [ Rank.General, Rank.Admiral, Rank.Colonel, Rank.Commander, Rank.Major, Rank.SubCommander, Rank.SubLieutenant,
+                    Rank.Centurion, Rank.Uhlan ];
+                break;
+            case CharacterType.Cardassian:
+                ranks = [ Rank.GrandGul, Rank.Legate, Rank.Jagul, Rank.Gul, Rank.Dal, Rank.Glinn, Rank.Gil,
+                    Rank.Garresh ];
+                break;
+            case CharacterType.Ferengi:
+                ranks = [ Rank.DaiMon ];
+                break;
+            case CharacterType.Cadet:
+                ranks = [ Rank.CadetFirstClass, Rank.CadetSecondClass, Rank.CadetThirdClass, Rank.CadetFourthClass ];
+                break;
+        }
+        return ranks.map(r => this.getRank(r))
     }
 
     getSortedRanks(character: Character, ignorePrerequisites?: boolean) {

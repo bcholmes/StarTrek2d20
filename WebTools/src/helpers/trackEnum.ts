@@ -40,10 +40,8 @@ export enum Track {
     Enlisted,
 }
 
-export const getAllTracks = () => {
-    let result = [];
-    for (let i = Track.Command; i <= Track.TraderOrMerchant; i++) {
-        result.push(i);
-    }
-    return result;
+export const getAllTracks = (): Track[] => {
+    return Object.keys(Track).filter((item) => {
+        return !isNaN(Number(item));
+    }).map(item => Number(item));
 }

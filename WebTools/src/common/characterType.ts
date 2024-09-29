@@ -84,6 +84,10 @@ export class CharacterTypeModel {
         return matches.length === 0 ? undefined : matches[0];
     }
 
+    public static getSupportingCharacterTypes() {
+        return CharacterTypeModel.TYPES_EXCEPT_OTHER;
+    }
+
     public static getNpcCharacterTypes() {
         return [ CharacterTypeModel.TYPES[0] ];
     }

@@ -1472,7 +1472,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
         }
 
         result.supportingStep = new SupportingStep();
-        let rank = RanksHelper.instance().getRank(Rank.Lieutenant);
+        let rank = RanksHelper.instance().getRank(Rank.Ensign);
         result.rank = new CharacterRank(rank.localizedName, rank.id);
         return result;
     }
