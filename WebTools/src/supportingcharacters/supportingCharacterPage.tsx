@@ -214,9 +214,9 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
         ? (<div className="mt-4">
                 <div>
                     <CheckBox text={t('Construct.other.supervisory')}
-                        isChecked={character?.supportingStep?.supervisory ?? false}
+                        isChecked={character?.supportingStep?.supervisory ? true : false}
                         value={"supervisor"}
-                        onChanged={v => onSupervisoryChange(v)}
+                        onChanged={v => onSupervisoryChange(character?.supportingStep?.supervisory ? false : true)}
                     />
                 </div>
                 <ReactMarkdown className="markdown-sm">{t('SupportingCharacter.supervisoryNote')}</ReactMarkdown>

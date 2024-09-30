@@ -82,8 +82,8 @@ export class CharacterAttribute {
 }
 
 export class CharacterSkill {
-    skill: Skill;
-    expertise: number;
+    readonly skill: Skill;
+    readonly expertise: number;
 
     constructor(skill: Skill, expertise: number) {
         this.skill = skill;
@@ -631,7 +631,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
             });
             this.improvements?.forEach(i => {
                 if (i.discipline != null) {
-                    result[i.discipline].expertise = result[i.discipline].expertise + 1;
+                    result[i.discipline] = new CharacterSkill(i.discipline, result[i.discipline].expertise + 1);
                 }
             })
             return result;

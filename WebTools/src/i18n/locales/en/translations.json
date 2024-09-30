@@ -214,7 +214,19 @@
     "Home.tokenCreator": "Tokens",
     "Home.otherTools": "Other Tools",
 
-    "ModifySupportingCharacter.instruction": "Whenever a supporting character is introduced to an adventure, and this is _not_ the first time they have been introduced (i.e., they have been introduced before), they receive an improvement. Choose an improvement type.",
+    "ModifySupportingCharacter.instruction": "Whenever a supporting character is introduced to an adventure, and this is _not_ the first time they have been introduced (i.e., they have been introduced before), they receive an improvement. ",
+
+    "ModifySupportingCharacter.improvementType.instruction": "Choose an improvement type.",
+
+    "ModifySupportingCharacter.value.instruction": "The supporting character gains a single value. This option may be chosen up to four times, gaining a new value each time. Once a supporting character has at least one value, they also gain a Stress track, and can take Stress to avoid Injuries and other consequences.",
+
+    "ModifySupportingCharacter.focus.instruction": "The supporting character chooses one additional focus. This option may be chosen three times, gaining a new focus each time.",
+
+    "ModifySupportingCharacter.attribute.instruction": "The supporting character increases a single attribute by 1. This option may only be chosen once.",
+
+    "ModifySupportingCharacter.department.instruction": "The supporting character increases a single department by 1. This option may only be chosen once.",
+
+    "ModifySupportingCharacter.error.improvementType": "Please select an improvement type.",
 
     "MilestonePage.instruction": "Select what type of modification you want to apply for this milestone.",
 
@@ -436,6 +448,7 @@
     "Common.button.create": "Create",
     "Common.button.modify": "Modify",
     "Common.button.next": "Next",
+    "Common.button.previous": "Previous",
     "Common.button.view": "View",
 
     "Common.text.description": "Description",

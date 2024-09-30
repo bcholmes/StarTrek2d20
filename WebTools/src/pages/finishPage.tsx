@@ -22,6 +22,7 @@ import { setCharacterAdditionalTraits, setCharacterAssignedShip, setCharacterAss
 import AllCharacterValues from '../components/allCharacterValues';
 import { PageIdentity } from './pageIdentity';
 import ReactMarkdown from 'react-markdown';
+import { LoadingButton } from '../common/loadingButton';
 
 interface IFinishPageProperties {
     character: Character;
@@ -31,6 +32,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     const { t } = useTranslation();
     const [ roleSelectionAllowed, setRoleSelectionAllowed] = useState(null);
     const [ roleOther, setRoleOther] = useState(character.jobAssignment);
+    const [loadingExport, setLoadingExport] = useState(false);
 
     const currentRole = character.role;
 
@@ -74,7 +76,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
             return (
                 <tr key={i}>
                     <td className="selection-header-small">{r.localizedName}</td>
-                    <td>{replaceDiceWithArrowhead(r.localizedDescription)}</td>
+                    <td>{replaceDiceWithArrowhead(character.version === 1 ? r.localizedDescription : r.localizedDescription2e)}</td>
                     <td>
                         <CheckBox
                             text=""
@@ -235,11 +237,15 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
         store.dispatch(setCharacterAssignedShip(ship));
     }
 
-    const showDialog = () => {
-        setTimeout(() => {
-            let c = store.getState().character.currentCharacter;
-            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character", c);
-        }, 200);
+    function showDialog() {
+        setLoadingExport(true);
+        import(/* webpackChunkName: 'export' */ '../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
+            setLoadingExport(false);
+            setTimeout(() => {
+                let c = store.getState().character.currentCharacter;
+                CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character", character);
+            }, 200);
+        });
     }
 
     const onNameChanged = (value: string) => {
@@ -369,7 +375,7 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
                 {renderAssignment(roleList)}
                 <AllCharacterValues />
                 <div className="button-container mb-5">
-                    <Button className="button-small me-2" onClick={() => showDialog() } >{t('Common.button.exportPdf')}</Button>
+                    <LoadingButton loading={loadingExport} className="button-small me-2" onClick={() => showDialog() } >{t('Common.button.exportPdf')}</LoadingButton>
                     <Button className="button-small me-2" onClick={() => showViewPage() }>{t('Common.button.view')}</Button>
                 </div>
             </main>

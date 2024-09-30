@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
@@ -20,6 +20,7 @@ import FocusBlockView from "./focusBlockView";
 import WeaponBlockView from "./weaponBlockView";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
 import { TracksHelper } from "../helpers/tracks";
+import { LoadingButton } from "../common/loadingButton";
 
 export interface ICharacterViewProperties {
     character: Character;
@@ -40,6 +41,7 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
 
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const [loadingExport, setLoadingExport] = useState(false);
 
     function renderStats() {
         return (<>
@@ -137,7 +139,11 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     }
 
     function showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character", character);
+        setLoadingExport(true);
+        import(/* webpackChunkName: 'export' */ '../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
+            setLoadingExport(false);
+            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character", character);
+        });
     }
 
     function showVttExportDialog() {
@@ -184,7 +190,7 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
         {(showButtons == null || showButtons === true)
             ? (<div className="d-flex justify-content-between">
                     <div className="mt-5 mb-3">
-                        <Button className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</Button>
+                        <LoadingButton loading={loadingExport} className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</LoadingButton>
                         <Button className="button-small me-3" onClick={() => showVttExportDialog() }>{t('Common.button.exportVtt')}</Button>
                     </div>
                     <div className="mt-5 mb-3">
