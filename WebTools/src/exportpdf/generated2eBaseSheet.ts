@@ -22,10 +22,6 @@ import { tealColour2e } from "./colourProvider2e";
 
 export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
 
-    static readonly tealColour: SimpleColor = SimpleColor.from("#39AAA3");
-    static readonly goldColour: SimpleColor = SimpleColor.from("#D49F00");
-    static readonly redColour: SimpleColor = SimpleColor.from("#C51A1B");
-    static readonly blueColour: SimpleColor = SimpleColor.from("#2384B3");
     static readonly greyColour: SimpleColor = SimpleColor.from("#979696");
 
     static readonly bulletPath = "M 1.98633,0 C 0.88552,0 0,0.887478 0,1.988281 v 2.52539 C 0,5.614474 0.88552,6.5 1.98633,6.5 H 7.35 C 9.1505,6.5 10.6,5.050496 10.6,3.25 10.6,1.449502 9.1505,0 7.35,0 Z";

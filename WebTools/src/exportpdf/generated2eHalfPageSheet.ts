@@ -69,30 +69,30 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         this.writeSpeciesAbility(page, character, bottom);
 
         this.writeLabel(page, i18next.t("Construct.attribute.control"),
-            this.controlBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.controlBlock, labelFont, tealColour2e);
         this.writeLabel(page, i18next.t("Construct.attribute.daring"),
-            this.daringBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.daringBlock, labelFont, tealColour2e);
         this.writeLabel(page, i18next.t("Construct.attribute.fitness"),
-            this.fitnessBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.fitnessBlock, labelFont, tealColour2e);
         this.writeLabel(page, i18next.t("Construct.attribute.insight"),
-            this.insightBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.insightBlock, labelFont, tealColour2e);
         this.writeLabel(page, i18next.t("Construct.attribute.presence"),
-            this.presenceBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.presenceBlock, labelFont, tealColour2e);
         this.writeLabel(page, i18next.t("Construct.attribute.reason"),
-            this.reasonBlock, labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.reasonBlock, labelFont, tealColour2e);
 
         this.writeLabel(page, "" + character.attributes[Attribute.Control].value,
-            this.valueBlock(this.controlBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.valueBlock(this.controlBlock), labelFont, tealColour2e);
         this.writeLabel(page, "" + character.attributes[Attribute.Daring].value,
-            this.valueBlock(this.daringBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.valueBlock(this.daringBlock), labelFont, tealColour2e);
         this.writeLabel(page, "" + character.attributes[Attribute.Fitness].value,
-            this.valueBlock(this.fitnessBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.valueBlock(this.fitnessBlock), labelFont, tealColour2e);
         this.writeLabel(page, "" + character.attributes[Attribute.Insight].value,
-            this.valueBlock(this.insightBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.valueBlock(this.insightBlock), labelFont, tealColour2e);
         this.writeLabel(page, "" + character.attributes[Attribute.Presence].value,
-            this.valueBlock(this.presenceBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.valueBlock(this.presenceBlock), labelFont, tealColour2e);
         this.writeLabel(page, "" + character.attributes[Attribute.Reason].value,
-            this.valueBlock(this.reasonBlock), labelFont, BasicGeneratedHalfPageCharacterSheet.tealColour);
+            this.valueBlock(this.reasonBlock), labelFont, tealColour2e);
 
         this.writeLabel(page, i18next.t("Construct.discipline.command"),
             this.commandBlock, labelFont, divisionColour2e(construct.era, Division.Command));
@@ -183,39 +183,32 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
     writeCharacterDetails(page: PDFPage, character: Character) {
         let paragraph = new Paragraph(page, this.mainBlock, this.fonts);
-        paragraph.append(i18next.t("Construct.other.purpose").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+        paragraph.append(i18next.t("Construct.other.purpose").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), tealColour2e);
         paragraph.append(character.jobAssignment ?? i18next.t("Common.text.none"), new FontSpecification(this.textFont, 9));
         paragraph.write();
 
         if (character.pronouns?.length) {
             paragraph = paragraph?.nextParagraph();
-            paragraph?.append(i18next.t("Construct.other.pronouns").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph?.append(i18next.t("Construct.other.pronouns").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), tealColour2e);
             paragraph?.append(character.pronouns, new FontSpecification(this.textFont, 9));
             paragraph?.write();
         }
 
-        if (character.speciesStep?.species != null) {
-            paragraph = paragraph?.nextParagraph();
-            paragraph?.append(i18next.t("Construct.other.species").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
-            paragraph?.append(character.localizedSpeciesName, new FontSpecification(this.textFont, 9));
-            paragraph?.write();
-        }
-
         paragraph = paragraph?.nextParagraph();
-        paragraph?.append(i18next.t("Construct.other.traits").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+        paragraph?.append(i18next.t("Construct.other.speciesAndTraits").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), tealColour2e);
         paragraph?.append(character.getAllTraits(), new FontSpecification(this.textFont, 9));
         paragraph?.write();
 
         if (character.focuses?.length) {
             paragraph = paragraph?.nextParagraph();
-            paragraph?.append(i18next.t("Construct.other.focuses").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph?.append(i18next.t("Construct.other.focuses").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9), tealColour2e);
             paragraph?.append(character.focuses.join(", "), new FontSpecification(this.textFont, 9));
             paragraph?.write();
         }
 
         if (character.values?.length) {
             paragraph = paragraph?.nextParagraph();
-            paragraph?.append(i18next.t("Construct.other.values").toLocaleUpperCase() + ":", new FontOptions(9, FontType.Bold), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph?.append(i18next.t("Construct.other.values").toLocaleUpperCase() + ":", new FontOptions(9, FontType.Bold), tealColour2e);
             paragraph?.write();
 
             character.values.forEach((v, i) => {
@@ -224,7 +217,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
                 paragraph?.append(v, new FontOptions(9));
                 paragraph?.write();
 
-                bullet2EWriter(page, paragraph, BasicGeneratedHalfPageCharacterSheet.tealColour);
+                bullet2EWriter(page, paragraph, tealColour2e);
             })
         }
 
@@ -238,7 +231,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
             column = column.bottomAfter(16);
             let paragraph = new Paragraph(page, column, this.fonts);
-            paragraph.append(character.speciesStep.ability.name + ": ", new FontOptions(9, FontType.Bold), BasicGeneratedHalfPageCharacterSheet.tealColour);
+            paragraph.append(character.speciesStep.ability.name + ": ", new FontOptions(9, FontType.Bold), tealColour2e);
             paragraph.append(character.speciesStep.ability.description, new FontOptions(9));
             paragraph.write();
         }

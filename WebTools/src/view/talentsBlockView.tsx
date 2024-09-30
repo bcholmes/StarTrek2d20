@@ -17,7 +17,11 @@ const TalentsBlockView: React.FC<IConstructPageProperties> = ({construct}) => {
     const renderDescription = (talentName: string, talent: TalentModel) => {
         let description = construct.version === 1 ? talent.localizedDescription : talent.localizedDescription2e;
         if (description.indexOf(CHALLENGE_DICE_NOTATION) >= 0) {
-            return replaceDiceWithArrowhead(description);
+            return (
+                <>
+                    <strong>{talent.localizedDisplayName + (talent.maxRank > 1 ? " [x" + construct.getRankForTalent(t.name) + "]" : "")}:</strong> {' '}
+                    {replaceDiceWithArrowhead(description)}
+                </>)
         } else {
             return (<ReactMarkdown className="markdown-sm">{'**' + talentName + ':** ' + description}</ReactMarkdown>)
         }

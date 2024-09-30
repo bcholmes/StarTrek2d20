@@ -142,6 +142,7 @@ export enum Spaceframe {
     NX_2E,
     Constitution_2E,
     Excelsior_2E,
+    Ambassador_2E,
     Galaxy_2E,
     Intrepid_2E,
     Sovereign_2E,

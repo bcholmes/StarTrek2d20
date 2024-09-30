@@ -161,10 +161,22 @@ export class RoleModel {
         return key === localized ? this.description : localized;
     }
 
+    get localizedDescription2e() {
+        const key = makeKey('Role.' + (this.isKlingon ? "klingon." : ""), Role[this.id], ".description2e");
+        const localized = i18next.t(key);
+        return key === localized ? this.localizedDescription : localized;
+    }
+
     get localizedAbility() {
         const key = makeKey('Role.' + (this.isKlingon ? "klingon." : ""), Role[this.id], ".ability");
         const localized = i18next.t(key);
         return key === localized ? this.ability : localized;
+    }
+
+    get localizedAbility2e() {
+        const key = makeKey('Role.' + (this.isKlingon ? "klingon." : ""), Role[this.id], ".ability2e");
+        const localized = i18next.t(key);
+        return key === localized ? this.localizedAbility : localized;
     }
 
     isKlingonRole() {

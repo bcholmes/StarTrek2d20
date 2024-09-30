@@ -296,7 +296,7 @@ class SpaceframeOutlineHelper {
             return ANTARES_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Akira || spaceframe.id === Spaceframe.Akira_UP || spaceframe.id === Spaceframe.Akira_2E) {
             return AKIRA_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Ambassador || spaceframe.id === Spaceframe.Ambassador_UP) {
+        } else if (spaceframe.id === Spaceframe.Ambassador || spaceframe.id === Spaceframe.Ambassador_UP|| spaceframe.id === Spaceframe.Ambassador_2E) {
             return AMBASSADOR_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Archer) {
             return ARCHER_CLASS_ELABORATE_OUTLINE;
@@ -314,7 +314,7 @@ class SpaceframeOutlineHelper {
             return CHEYENNE_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Constellation || spaceframe.id === Spaceframe.Constellation_UP || spaceframe.id === Spaceframe.Constellation_2E) {
             return CONSTELLATION_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Constitution || spaceframe.id === Spaceframe.Constitution_UP) {
+        } else if (spaceframe.id === Spaceframe.Constitution || spaceframe.id === Spaceframe.Constitution_UP || spaceframe.id === Spaceframe.Constitution_2E) {
             return this.isMovieEra(starship.serviceYear)
                 ? CONSTITUTION_MOVIE_ERA_ELABORATE_OUTLINE
                 : CONSTITUTION_TOS_ELABORATE_OUTLINE;

@@ -441,7 +441,7 @@ export class SpaceframeHelper {
             CharacterType.Starfleet,
             "Ambassador Class",
             2335,
-            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia),
+            [ new SourcePrerequisite(Source.CommandDivision), new NotSourcePrerequisite(Source.UtopiaPlanitia, Source.Core2ndEdition),
                 new ServiceYearPrerequisite(2335) ],
             [9, 9, 9, 9, 10, 9],
             [1, 1, 0, 0, 1, 0],
@@ -1504,12 +1504,12 @@ export class SpaceframeHelper {
                 [9, 9, 10, 10, 10, 11],
                 [3, 1, 4, 2, 2, 3],
             )),
-        [Spaceframe.Ambassador_UP]: SpaceframeModel.createStandardSpaceframe(
+        [Spaceframe.Ambassador_UP]: new SpaceframeModel(
             Spaceframe.Ambassador_UP,
             CharacterType.Starfleet,
             "Ambassador Class",
             2335,
-            [ Source.UtopiaPlanitia ],
+            [ new SourcePrerequisite(Source.UtopiaPlanitia), new NotSourcePrerequisite(Source.Core2ndEdition) ],
             [9, 9, 9, 9, 9, 9],
             [1, 1, 0, 0, 1, 0],
             5,
@@ -3026,10 +3026,31 @@ export class SpaceframeHelper {
             [
                 TalentSelection.selectTalent("Improved Warp Drive"),
                 TalentSelection.selectTalent("Secondary Reactors"),
-                TalentSelection.selectTalent("Excelsior Saucer Separation")
+                TalentSelection.selectTalent("Saucer Separation (2nd Edition)")
             ],
             [ "Federation Starship" ],
             99999),
+        [Spaceframe.Ambassador_2E]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.Ambassador_2E,
+            CharacterType.Starfleet,
+            "Ambassador Class",
+            2335,
+            [ Source.UtopiaPlanitia ],
+            [9, 9, 9, 9, 9, 9],
+            [1, 1, 0, 0, 1, 0],
+            5,
+            [
+                "Phaser Arrays",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 4)"
+            ],
+            [
+                TalentSelection.selectTalent("High-Resolution Sensors"),
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Saucer Separation (2nd Edition)"),
+            ],
+            [ "Federation Starship" ],
+            2369),
         [Spaceframe.Galaxy_2E]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.Galaxy_2E,
             CharacterType.Starfleet,

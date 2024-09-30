@@ -54,7 +54,7 @@ export class TalentWriter {
             if (paragraph) {
                 if (talent instanceof RoleModel) {
                     paragraph.append(talent.localizedName + ": ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
-                    paragraph.append(talent.localizedAbility, new FontOptions(fontSize));
+                    paragraph.append(this.version === 1 ? talent.localizedAbility : talent.localizedAbility2e, new FontOptions(fontSize));
 
                     paragraph = paragraph.nextParagraph();
                     if (paragraph) {

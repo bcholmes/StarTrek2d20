@@ -214,10 +214,10 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
             let column = new Column(x, location.y, 11.8, 72.2 * 0.8);
             this.writeLabel(page, i18next.t(makeKey("Construct.system.", System[s])), column, new FontSpecification(this.boldFont, statFontSize),
-                Generated2eStarshipSheet.tealColour);
+                tealColour2e);
 
             this.writeLabel(page, "" + starship.getSystemValue(s), this.valueBlock(column), new FontSpecification(this.boldFont, statFontSize),
-                Generated2eStarshipSheet.tealColour);
+                tealColour2e);
 
         });
 

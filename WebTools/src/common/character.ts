@@ -709,13 +709,18 @@ export class Character extends Construct implements IWeaponDiceProvider {
                     case Specialization.FirstContactSpecialist:
                     case Specialization.Conn:
                     case Specialization.HangarDeck:
+                    case Specialization.Jag:
+                    case Specialization.StationCommander:
+                    case Specialization.Admiral:
                         return Division.Command;
 
                     case Specialization.Engineer:
                     case Specialization.Security:
+                    case Specialization.IntelligenceOfficer:
                         return Division.Operations;
 
                     case Specialization.StarfleetScientist:
+                    case Specialization.ScienceTech:
                     case Specialization.Counselor:
                     case Specialization.Nurse:
                     case Specialization.MedicalDoctor:
@@ -736,7 +741,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
                     return null;
                 }
             } else {
-                return null; // figure out from specialization?
+                return null;
             }
         }
     }
