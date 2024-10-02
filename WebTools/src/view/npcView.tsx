@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
 import { Header } from "../components/header";
 import { useTranslation } from 'react-i18next';
@@ -59,8 +58,10 @@ const NpcView: React.FC<ICharacterPageProperties> = ({character}) => {
     function showExportDialog() {
         setLoadingExport(true);
         import(/* webpackChunkName: 'export' */ '../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
-            setLoadingExport(false);
-            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-npc", character);
+            import(/* webpackChunkName: 'export' */ '../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+                CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-npc", character);
+            });
         });
     }
 

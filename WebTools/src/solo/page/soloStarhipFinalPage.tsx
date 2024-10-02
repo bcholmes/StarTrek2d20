@@ -7,14 +7,12 @@ import { useTranslation } from "react-i18next";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import store from "../../state/store";
 import { setStarshipName, setStarshipRegistry, setStarshipTraits } from "../../state/starshipActions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import RegistryNumber from "../../components/registryNumberGenerator";
 import { CharacterType } from "../../common/characterType";
 import ReactMarkdown from "react-markdown";
-import { Button } from "../../components/button";
-import { CharacterSheetDialog } from "../../components/characterSheetDialog";
-import { CharacterSheetRegistry } from "../../helpers/sheets";
 import { PageIdentity } from "../../pages/pageIdentity";
+import { LoadingButton } from "../../common/loadingButton";
 
 interface ISoloStarshipFinalProperties {
     starship: Starship;
@@ -23,6 +21,8 @@ interface ISoloStarshipFinalProperties {
 const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship}) => {
 
     const { t } = useTranslation();
+    const [loadingExport, setLoadingExport] = useState(false);
+
     useEffect(() => {
         if (!starship?.registry) {
             store.dispatch(setStarshipRegistry(RegistryNumber.generate(starship.serviceYear, CharacterType.Starfleet, starship.spaceframeModel)))
@@ -31,10 +31,17 @@ const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship
 
 
     const showDialog = () => {
-        setTimeout(() => {
-            let s = store.getState().starship?.starship;
-            CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(s), "sta-solo-starship", s);
-        }, 200);
+        setLoadingExport(true);
+        import(/* webpackChunkName: 'export' */ '../../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
+            import(/* webpackChunkName: 'export' */ '../../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+
+                setTimeout(() => {
+                    let s = store.getState().starship?.starship;
+                    CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(s), "sta-solo-starship", s);
+                }, 200);
+            });
+        });
     }
 
     return (<div className="page container ms-0">
@@ -89,7 +96,7 @@ const SoloStarshipFinalPage: React.FC<ISoloStarshipFinalProperties> = ({starship
         </div>
 
         <div className="button-container mb-5">
-            <Button className="button-small me-2" onClick={() => showDialog() } >{t('Common.button.exportPdf')}</Button>
+            <LoadingButton loading={loadingExport} className="button-small me-2" onClick={() => showDialog() } >{t('Common.button.exportPdf')}</LoadingButton>
         </div>
 
     </div>);

@@ -15,6 +15,8 @@ import ValueInput from "../../components/valueInputWithRandomOption";
 import { useNavigate } from "react-router";
 import { Dialog } from "../../components/dialog";
 import { ValueRandomTable } from "../../solo/table/valueRandomTable";
+import store from "../../state/store";
+import { marshaller } from "../../helpers/marshaller";
 
 const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -31,7 +33,21 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
             } else {
                 Dialog.show("Please select an improvement type.");
             }
+        } else if (index === 1) {
+            setIndex(index + 1);
         }
+    }
+
+    const applyModification = () => {
+        onNextPage();
+    }
+
+    const viewCharacter = () => {
+        setTimeout(() => {
+            let c = store.getState().character.currentCharacter;
+            const value = marshaller.encodeMainCharacter(c);
+            window.open('/view?s=' + value, "_blank");
+        }, 200);
     }
 
     const randomValue = () => {
@@ -50,11 +66,16 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
             return (<div className="mt-4 text-end">
                     <Button onClick={() => onNextPage()}>{t('Common.button.next')}</Button>
                 </div>);
-        } else {
+        } else if (index === 1) {
             return (<div className="mt-4 d-flex justify-content-between">
                 <Button onClick={() => setIndex(index - 1)}>{t('Common.button.previous')}</Button>
-                <Button onClick={() => onNextPage()}>{t('Common.button.next')}</Button>
+                <Button onClick={() => applyModification()}>{t('Common.button.finish')}</Button>
             </div>);
+        } else {
+            return (<div className="mt-4">
+                <Button className="btn btn-primary btn-sm" onClick={() => viewCharacter()}>{t('Common.button.view')}</Button>
+            </div>);
+
         }
     }
 
@@ -62,7 +83,7 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
         if (modificationType === SupportingCharacterModificationType.AdditionalValue) {
             return (<div className="mt-4 row">
                 <div className="col-12 col-md-6">
-                    <Header level={2}>{t('Construct.other.value')}</Header>
+                    <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
                     <Markdown>{t('ModifySupportingCharacter.value.instruction')}</Markdown>
                     <ValueInput onRandomClicked={() => randomValue()} onValueChanged={(v) => setValue(value)} id="value" value={value} />
                 </div>
@@ -118,6 +139,10 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
                     <Carousel.Item>
 
                         {renderImprovementSection()}
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <Header level={2}>Modification Applied</Header>
+                        <Markdown>{t('ModifySupportingCharacter.finish.instruction')}</Markdown>
                     </Carousel.Item>
                 </Carousel>
 

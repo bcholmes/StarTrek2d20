@@ -34,7 +34,7 @@ class AttributeImprovement extends React.Component<IAttributeImprovementProperti
                 <div className="stat-entry-value">
                     {dec}
                     {value}
-                    {(deltaValue == null || deltaValue == 0) ? "" : (" (" + (deltaValue > 0 ? "+" : "") + deltaValue + ")")}
+                    {(deltaValue == null || deltaValue === 0) ? "" : (" (" + (deltaValue > 0 ? "+" : "") + deltaValue + ")")}
                     {inc}
                 </div>
             </div>

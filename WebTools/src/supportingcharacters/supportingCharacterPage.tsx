@@ -7,8 +7,6 @@ import SupportingCharacterAttributes from './supportingCharacterAttributes';
 import SupportingCharacterDisciplines from './supportingCharacterDisciplines';
 import {Rank, RanksHelper} from '../helpers/ranks';
 import {Button} from '../components/button';
-import {CharacterSheetDialog} from '../components/characterSheetDialog'
-import {CharacterSheetRegistry} from '../helpers/sheets';
 import AgeHelper from '../helpers/age';
 import { Source } from '../helpers/sources';
 import { marshaller } from '../helpers/marshaller';
@@ -29,12 +27,14 @@ import { CheckBox } from '../components/checkBox';
 import ReactMarkdown from 'react-markdown';
 import { ValueRandomTable } from '../solo/table/valueRandomTable';
 import { SpeciesAbilityView } from '../components/speciesAbilityView';
+import { LoadingButton } from '../common/loadingButton';
 
 
 const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [ showRank, setShowRank ] = useState(true);
+    const [loadingExport, setLoadingExport] = useState(false);
 
     const showViewPage = () => {
         setTimeout(() => {
@@ -53,10 +53,16 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
     }
 
     const showDialog = () => {
-        setTimeout(() => {
-            let c = store.getState().character.currentCharacter;
-            CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(c), "supporting-character", c);
-        }, 200)
+        setLoadingExport(true);
+        import(/* webpackChunkName: 'export' */ '../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
+            import(/* webpackChunkName: 'export' */ '../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+                setTimeout(() => {
+                    let c = store.getState().character.currentCharacter;
+                    CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(c), "supporting-character", c);
+                }, 200)
+            });
+        });
     }
 
     const selectSpecies = (selection: Species) => {
@@ -372,7 +378,7 @@ const SupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character
                 </div>
             </div>
             <div className="button-container mt-4">
-                <Button className="button-small me-2 mb-2" onClick={() => showDialog() } >{t('Common.button.exportPdf')}</Button>
+                <LoadingButton loading={loadingExport} className="button-small me-2 mb-2" onClick={() => showDialog() } >{t('Common.button.exportPdf')}</LoadingButton>
                 <Button className="button-small me-2 mb-2" onClick={() => showViewPage() }>{t('Common.button.view')}</Button>
             </div>
         </div>

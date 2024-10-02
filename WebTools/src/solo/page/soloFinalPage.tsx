@@ -7,17 +7,18 @@ import store from "../../state/store";
 import { setCharacterAssignment, setCharacterName, setCharacterPronouns, setCharacterRank } from "../../state/characterActions";
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import { Button } from "../../components/button";
-import { CharacterSheetDialog } from "../../components/characterSheetDialog";
-import { CharacterSheetRegistry } from "../../helpers/sheets";
 import SoloCharacterBreadcrumbs from "../component/soloCharacterBreadcrumbs";
 import { DropDownElement, DropDownSelect } from "../../components/dropDownInput";
 import { Rank, RanksHelper } from "../../helpers/ranks";
 import { useState } from "react";
 import { Role, RolesHelper } from "../../helpers/roles";
 import { marshaller } from "../../helpers/marshaller";
+import { LoadingButton } from "../../common/loadingButton";
 
 const SoloFinalPage: React.FC<ICharacterProperties> = ({character}) => {
     const { t } = useTranslation();
+    const [loadingExport, setLoadingExport] = useState(false);
+
     let rankValue: string|Rank = "";
     let rankName = "";
     if (character.rank) {
@@ -45,10 +46,17 @@ const SoloFinalPage: React.FC<ICharacterProperties> = ({character}) => {
     }
 
     const showDialog = () => {
-        setTimeout(() => {
-            let c = store.getState().character.currentCharacter;
-            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-solo-character", c);
-        }, 200);
+        setLoadingExport(true);
+        import(/* webpackChunkName: 'export' */ '../../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
+            import(/* webpackChunkName: 'export' */ '../../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+
+                setTimeout(() => {
+                    let c = store.getState().character.currentCharacter;
+                    CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-solo-character", c);
+                }, 200);
+            });
+        });
     }
 
     const rankOptions = () => {
@@ -157,7 +165,7 @@ const SoloFinalPage: React.FC<ICharacterProperties> = ({character}) => {
                 </div>)}
             </div>
             <div className="button-container my-5">
-                <Button className="btn btn-primary btn-sm me-3" onClick={() => showDialog() }>{t('Common.button.exportPdf')}</Button>
+                <LoadingButton loading={loadingExport} className="btn btn-primary btn-sm me-3" onClick={() => showDialog() }>{t('Common.button.exportPdf')}</LoadingButton>
                 <Button className="btn btn-primary btn-sm me-3" onClick={() => showViewPage() }>{t('Common.button.view')}</Button>
             </div>
 

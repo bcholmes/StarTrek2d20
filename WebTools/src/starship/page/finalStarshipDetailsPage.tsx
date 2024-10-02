@@ -1,18 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { CharacterType } from "../../common/characterType";
 import { Starship } from "../../common/starship";
 import { Button } from "../../components/button";
-import { CharacterSheetDialog } from "../../components/characterSheetDialog";
 import { Header } from "../../components/header";
 import RegistryNumber from "../../components/registryNumberGenerator";
 import { marshaller } from "../../helpers/marshaller";
-import { CharacterSheetRegistry } from "../../helpers/sheets";
 import { setStarshipName, setStarshipRegistry, setStarshipTraits } from "../../state/starshipActions";
 import store from "../../state/store";
 import ShipBuildingBreadcrumbs from "../view/shipBuildingBreadcrumbs";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
+import { LoadingButton } from "../../common/loadingButton";
 
 interface IFinalStarshipDetailsPageProperties {
     starship: Starship;
@@ -21,6 +20,7 @@ interface IFinalStarshipDetailsPageProperties {
 const FinalStarshipDetailsPage: React.FC<IFinalStarshipDetailsPageProperties> = ({starship}) => {
 
     const { t } = useTranslation();
+    const [loadingExport, setLoadingExport] = useState(false);
 
     const renderRegistry = () => {
         if (starship.type === CharacterType.Starfleet) {
@@ -47,7 +47,13 @@ const FinalStarshipDetailsPage: React.FC<IFinalStarshipDetailsPageProperties> = 
     }
 
     const showExportDialog = () => {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(starship), "starship", starship);
+        setLoadingExport(true);
+        import(/* webpackChunkName: 'export' */ '../../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
+            import(/* webpackChunkName: 'export' */ '../../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+                CharacterSheetDialog.show(CharacterSheetRegistry.getStarshipSheets(starship), "starship", starship);
+            });
+        });
     }
 
 
@@ -118,7 +124,7 @@ const FinalStarshipDetailsPage: React.FC<IFinalStarshipDetailsPageProperties> = 
 
             <div className="starship-panel mt-5">
                 <div className="button-container mb-3">
-                    <Button className="button-small me-2 mb-2" onClick={() => showExportDialog() } >{t('Common.button.exportPdf')}</Button>
+                    <LoadingButton loading={loadingExport} className="button-small me-2 mb-2" onClick={() => showExportDialog() } >{t('Common.button.exportPdf')}</LoadingButton>
                     <Button className="button-small me-2 mb-2" onClick={() => showViewPage() } >{t('Common.button.view')}</Button>
                 </div>
             </div>

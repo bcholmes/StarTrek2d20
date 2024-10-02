@@ -6,8 +6,6 @@ import {CheckBox} from '../components/checkBox';
 import {ANY_NAMES, SpeciesHelper} from '../helpers/species';
 import {RankModel, RanksHelper} from '../helpers/ranks';
 import {RolesHelper, RoleModel} from '../helpers/roles';
-import {CharacterSheetDialog} from '../components/characterSheetDialog'
-import {CharacterSheetRegistry} from '../helpers/sheets';
 import { AlliedMilitaryType } from '../helpers/alliedMilitary';
 import replaceDiceWithArrowhead from '../common/arrowhead';
 import CharacterCreationBreadcrumbs from '../components/characterCreationBreadcrumbs';
@@ -240,11 +238,13 @@ const FinishPage: React.FC<IFinishPageProperties> = ({character}) => {
     function showDialog() {
         setLoadingExport(true);
         import(/* webpackChunkName: 'export' */ '../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
-            setLoadingExport(false);
-            setTimeout(() => {
-                let c = store.getState().character.currentCharacter;
-                CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character", character);
-            }, 200);
+            import(/* webpackChunkName: 'export' */ '../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+                setTimeout(() => {
+                    let c = store.getState().character.currentCharacter;
+                    CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(c), "sta-character", character);
+                }, 200);
+            });
         });
     }
 

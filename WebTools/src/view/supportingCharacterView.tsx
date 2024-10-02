@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { CharacterSheetRegistry } from "../helpers/sheets";
+import React, { useEffect, useState } from "react";
 import { Button } from "../components/button";
-import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
 import { useTranslation } from 'react-i18next';
 import { getNameAndShortRankOf } from "../helpers/ranks";
@@ -13,6 +11,7 @@ import FocusBlockView from "./focusBlockView";
 import WeaponBlockView from "./weaponBlockView";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
 import SpeciesAbilityBlockView from "./speciesAbilityBlockView";
+import { LoadingButton } from "../common/loadingButton";
 
 const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -27,6 +26,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
     }, [character.rank, character.name]);
 
     const { t } = useTranslation();
+    const [loadingExport, setLoadingExport] = useState(false);
 
     function renderTopFields() {
         return (<>
@@ -55,7 +55,13 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
     }
 
     function showExportDialog() {
-        CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(character), "sta-character", character);
+        setLoadingExport(true);
+        import(/* webpackChunkName: 'export' */ '../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
+            import(/* webpackChunkName: 'export' */ '../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+                CharacterSheetDialog.show(CharacterSheetRegistry.getSupportingCharacterSheet(character), "sta-character", character);
+            });
+        });
     }
 
     function showVttExportDialog() {
@@ -91,7 +97,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
         </div>
 
         <div className="button-container mt-5 mb-3">
-            <Button className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</Button>
+            <LoadingButton loading={loadingExport} className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</LoadingButton>
             <Button className="button-small me-3" onClick={() => showVttExportDialog() }>{t('Common.button.exportVtt')}</Button>
         </div>
     </main>);

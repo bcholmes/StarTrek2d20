@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { CharacterSheetRegistry } from "../helpers/sheets";
 import { Button } from "../components/button";
-import { CharacterSheetDialog } from "../components/characterSheetDialog";
 import { Header } from "../components/header";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { CharacterType, CharacterTypeModel } from "../common/characterType";
@@ -141,8 +139,10 @@ const SoloCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
     function showExportDialog() {
         setLoadingExport(true);
         import(/* webpackChunkName: 'export' */ '../components/characterSheetDialog').then(({CharacterSheetDialog}) => {
-            setLoadingExport(false);
-            CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character", character);
+            import(/* webpackChunkName: 'export' */ '../helpers/sheets').then(({CharacterSheetRegistry}) => {
+                setLoadingExport(false);
+                CharacterSheetDialog.show(CharacterSheetRegistry.getCharacterSheets(character), "sta-character", character);
+            });
         });
     }
 

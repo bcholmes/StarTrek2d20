@@ -31,7 +31,7 @@ interface ISpeciesSelectionProperties extends ICharacterProperties {
 }
 
 const SpeciesSelection: React.FC<ISpeciesSelectionProperties> = ({character, onSelection}) => {
-    const initialSpecies: Species = character?.speciesStep?.species == Species.Custom
+    const initialSpecies: Species = character?.speciesStep?.species === Species.Custom
         ? null
         : character?.speciesStep?.species;
     const [allowAllSpecies, setAllowAllSpecies ] = useState(false);
