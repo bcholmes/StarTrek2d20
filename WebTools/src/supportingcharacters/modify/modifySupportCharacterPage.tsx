@@ -17,6 +17,8 @@ import { Dialog } from "../../components/dialog";
 import { ValueRandomTable } from "../../solo/table/valueRandomTable";
 import store from "../../state/store";
 import { marshaller } from "../../helpers/marshaller";
+import { modifySupportingCharacterAddImprovement } from "../../state/characterActions";
+import { SupportingImrovementStep } from "../../common/character";
 
 const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -39,13 +41,17 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
     }
 
     const applyModification = () => {
+        if (modificationType === SupportingCharacterModificationType.AdditionalValue) {
+            store.dispatch(modifySupportingCharacterAddImprovement(modificationType, value));
+        }
+
         onNextPage();
     }
 
     const viewCharacter = () => {
         setTimeout(() => {
             let c = store.getState().character.currentCharacter;
-            const value = marshaller.encodeMainCharacter(c);
+            const value = marshaller.encodeSupportingCharacter(c);
             window.open('/view?s=' + value, "_blank");
         }, 200);
     }
@@ -81,7 +87,7 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
 
     const renderImprovementSection = () => {
         if (modificationType === SupportingCharacterModificationType.AdditionalValue) {
-            return (<div className="mt-4 row">
+            return (<div className="row">
                 <div className="col-12 col-md-6">
                     <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
                     <Markdown>{t('ModifySupportingCharacter.value.instruction')}</Markdown>
@@ -141,8 +147,13 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
                         {renderImprovementSection()}
                     </Carousel.Item>
                     <Carousel.Item>
-                        <Header level={2}>Modification Applied</Header>
-                        <Markdown>{t('ModifySupportingCharacter.finish.instruction')}</Markdown>
+
+                        <div className="row">
+                            <div className="col-12 col-md-6">
+                                <Header level={2} className="mt-3">Modification Applied</Header>
+                                <Markdown>{t('ModifySupportingCharacter.finish.instruction')}</Markdown>
+                            </div>
+                        </div>
                     </Carousel.Item>
                 </Carousel>
 

@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, GovernmentDetails, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from '../common/character';
+import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, GovernmentDetails, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { MissionProfileStep, ServiceRecordStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -142,7 +142,27 @@ class Marshaller {
                 sheet["npc"] = block;
             }
         }
+
+        sheet["improvements"] = this.encodeImprovements(character);
+
         return sheet;
+    }
+
+    encodeImprovements(character: Character) {
+        if (character.improvements?.length) {
+            let json = character.improvements?.map(i => {
+                let result = { type: "supporting" };
+                if (i.value != null) {
+                    result["value"] = i.value;
+                } else if (i.focus != null) {
+                    result["focus"] = i.focus;
+                }
+                return result;
+            });
+            return json;
+        } else {
+            return undefined;
+        }
     }
 
     encodeMainCharacter(character: Character) {
@@ -368,6 +388,8 @@ class Marshaller {
 
             sheet["role"] = role;
         }
+
+        sheet["improvements"] = this.encodeImprovements(character);
 
         return sheet;
     }
@@ -1224,7 +1246,31 @@ class Marshaller {
             });
         }
 
+        if (json.improvements?.length) {
+            result.improvements = this.decodeImprovements(json.improvements);
+        }
+
         return result;
+    }
+
+    decodeImprovements(json: any) {
+        if (json) {
+            return Object.values(json).map(j => {
+                if (j["type"] === "supporting") {
+                    let improvement = new SupportingImrovementStep();
+                    if (j["value"] != null) {
+                        improvement.value = j["value"];
+                    } else if (j["focus"] != null) {
+                        improvement.focus = j["focus"];
+                    }
+                    return improvement;
+                } else {
+                    return undefined;
+                }
+            }).filter(i => i != null);
+        } else {
+            return undefined;
+        }
     }
 
     hydrateTalent(t) {

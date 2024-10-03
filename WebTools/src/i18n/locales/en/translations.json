@@ -215,6 +215,7 @@
     "Home.otherTools": "Other Tools",
 
     "ModifySupportingCharacter.instruction": "Whenever a supporting character is introduced to an adventure, and this is _not_ the first time they have been introduced (i.e., they have been introduced before), they receive an improvement. ",
+    "ModifySupportingCharacter.improvementType": "Improvement Type",
 
     "ModifySupportingCharacter.improvementType.instruction": "Choose an improvement type.",
 
@@ -225,6 +226,8 @@
     "ModifySupportingCharacter.attribute.instruction": "The supporting character increases a single attribute by 1. This option may only be chosen once.",
 
     "ModifySupportingCharacter.department.instruction": "The supporting character increases a single department by 1. This option may only be chosen once.",
+
+    "ModifySupportingCharacter.finish.instruction": "Your changes have been applied to this supporting character. To view or print the revised character, use the button, below.",
 
     "ModifySupportingCharacter.error.improvementType": "Please select an improvement type.",
 

@@ -646,6 +646,18 @@ export class Character extends Construct implements IWeaponDiceProvider {
         return total;
     }
 
+    get isStressTrackPresent() {
+        if (this.version === 1) {
+            return true;
+        } else if (this.stereotype === Stereotype.MainCharacter) {
+            return true;
+        } else if (this.stereotype === Stereotype.SupportingCharacter) {
+            return this.values?.length;
+        } else {
+            return false;
+        }
+    }
+
     get stress() {
         let stress = this.attributes[Attribute.Fitness].value;
         if (this.version === 1) {
@@ -1405,6 +1417,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
         this._focuses.forEach(f => {
             character._focuses.push(f);
         });
+        character.improvements = this.improvements?.map(i => i.copy());
         character.pronouns = this.pronouns;
         character.name = this.name;
         character.additionalTraits = this.additionalTraits;

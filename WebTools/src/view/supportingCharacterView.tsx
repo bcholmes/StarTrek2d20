@@ -12,6 +12,9 @@ import WeaponBlockView from "./weaponBlockView";
 import { VttSelectionDialog } from "../vtt/view/VttSelectionDialog";
 import SpeciesAbilityBlockView from "./speciesAbilityBlockView";
 import { LoadingButton } from "../common/loadingButton";
+import store from "../state/store";
+import { setCharacter } from "../state/characterActions";
+import { useNavigate } from "react-router";
 
 const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -27,6 +30,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
 
     const { t } = useTranslation();
     const [loadingExport, setLoadingExport] = useState(false);
+    const navigate = useNavigate();
 
     function renderTopFields() {
         return (<>
@@ -64,6 +68,11 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
         });
     }
 
+    const navigateToModification = () => {
+        store.dispatch(setCharacter(character));
+        navigate("/modify/supporting");
+    }
+
     function showVttExportDialog() {
         VttSelectionDialog.instance.show(character);
     }
@@ -79,6 +88,9 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
             <div className="col-xl-6">
                 <div className="row">
 
+                    {character.isStressTrackPresent
+                    ?
+                    (<>
                     <div className="col-xl-6 mt-4">
                         <Header level={2}>{t('Construct.other.stress')}</Header>
                         <StressOrShieldsView value={character.stress} />
@@ -88,6 +100,12 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
                         <Header level={2}>{t('Construct.other.focuses')}</Header>
                         <FocusBlockView character={character} />
                     </div>
+                    </>)
+                    : (<div className="col-12 mt-4">
+                        <Header level={2}>{t('Construct.other.focuses')}</Header>
+                        <FocusBlockView character={character} />
+                    </div>
+)}
 
                 </div>
 
@@ -96,9 +114,18 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
             </div>
         </div>
 
-        <div className="button-container mt-5 mb-3">
-            <LoadingButton loading={loadingExport} className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</LoadingButton>
-            <Button className="button-small me-3" onClick={() => showVttExportDialog() }>{t('Common.button.exportVtt')}</Button>
+        <div className="button-container d-flex justify-content-between">
+            <div className="mt-5 mb-3">
+                <LoadingButton loading={loadingExport} className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</LoadingButton>
+                <Button className="button-small me-3" onClick={() => showVttExportDialog() }>{t('Common.button.exportVtt')}</Button>
+            </div>
+
+            {character.version === 1
+                ? undefined
+                : (<div className="mt-5 mb-3">
+                    <Button className="button-small" onClick={() => navigateToModification() }>{t('Common.button.modify')}</Button>
+                </div>)}
+
         </div>
     </main>);
 }

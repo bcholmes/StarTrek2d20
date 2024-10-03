@@ -1,4 +1,4 @@
-import { CareerEventStep, CareerStep, Character, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingStep, UpbringingStep } from "../common/character";
+import { CareerEventStep, CareerStep, Character, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from "../common/character";
 import { CharacterType } from "../common/characterType";
 import { Stereotype } from "../common/construct";
 import AgeHelper from "../helpers/age";
@@ -7,9 +7,10 @@ import { SpeciesAbilityList } from "../helpers/speciesAbility";
 import { Species } from "../helpers/speciesEnum";
 import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_UNTAPPED_POTENTIAL } from "../helpers/talents";
 import { Track } from "../helpers/trackEnum";
+import { SupportingCharacterModificationType } from "../supportingcharacters/modify/supportingCharacterModificationType";
 import { ADD_CHARACTER_BORG_IMPLANT, ADD_CHARACTER_CAREER_EVENT, ADD_CHARACTER_SPECIES_ABILITY_FOCUS, ADD_CHARACTER_TALENT, ADD_CHARACTER_TALENT_FOCUS,
     ADD_CHARACTER_TALENT_VALUE, ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE, APPLY_NORMAL_MILESTONE_DISCIPLINE, APPLY_NORMAL_MILESTONE_FOCUS, MODIFY_CHARACTER_ATTRIBUTE,
-    MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, REMOVE_CHARACTER_BORG_IMPLANT,
+    MODIFY_CHARACTER_DISCIPLINE, MODIFY_CHARACTER_RANK, MODIFY_CHARACTER_REPUTATION, MODIFY_SUPPORTING_CHARACTER_ADD_IMPROVEMENT, REMOVE_CHARACTER_BORG_IMPLANT,
     SET_CHARACTER, SET_CHARACTER_ADDITIONAL_TRAITS, SET_CHARACTER_AGE, SET_CHARACTER_ASSIGNED_SHIP,
     SET_CHARACTER_CAREER_EVENT_TRAIT, SET_CHARACTER_CAREER_LENGTH, SET_CHARACTER_EARLY_OUTLOOK, SET_CHARACTER_EDUCATION,
     SET_CHARACTER_ENVIRONMENT, SET_CHARACTER_FINISHING_TOUCHES, SET_CHARACTER_FOCUS, SET_CHARACTER_HOUSE,
@@ -769,6 +770,24 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 isModified: true
             }
         }
+        case MODIFY_SUPPORTING_CHARACTER_ADD_IMPROVEMENT: {
+            let temp = state.currentCharacter.copy();
+            if (temp.improvements == null) {
+                temp.improvements = [];
+            }
+            if (action.payload.type === SupportingCharacterModificationType.AdditionalValue) {
+                let improvement = new SupportingImrovementStep();
+                improvement.value = action.payload.value;
+                temp.improvements.push(improvement);
+            }
+            return {
+                ...state,
+                currentCharacter: temp,
+                isModified: true
+            }
+        }
+
+
         default:
             return state;
     }

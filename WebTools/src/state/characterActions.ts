@@ -12,6 +12,7 @@ import { Species } from "../helpers/speciesEnum";
 import { ITalent } from "../helpers/italent";
 import { Track } from "../helpers/trackEnum";
 import { EarlyOutlookModel } from "../helpers/upbringings";
+import { SupportingCharacterModificationType } from "../supportingcharacters/modify/supportingCharacterModificationType";
 export const SET_CHARACTER = 'SET_CHARACTER';
 export const MODIFY_CHARACTER_REPUTATION = 'MODIFY_CHARACTER_REPUTATION';
 export const MODIFY_CHARACTER_RANK = 'MODIFY_CHARACTER_RANK';
@@ -50,6 +51,7 @@ export const SET_SUPPORTING_CHARACTER_DISCIPLINES = "SET_SUPPORTING_CHARACTER_DI
 export const SET_SUPPORTING_CHARACTER_ATTRIBUTES = "SET_SUPPORTING_CHARACTER_ATTRIBUTES";
 export const SET_SUPPORTING_CHARACTER_SUPERVISORY = "SET_SUPPORTING_CHARACTER_SUPERVISORY";
 export const ADD_CHARACTER_SPECIES_ABILITY_FOCUS = "ADD_CHARACTER_SPECIES_ABILITY_FOCUS";
+export const MODIFY_SUPPORTING_CHARACTER_ADD_IMPROVEMENT = "MODIFY_SUPPORTING_CHARACTER_ADD_IMPROVEMENT";
 
 export enum StepContext {
     Species,
@@ -352,6 +354,14 @@ export function modifyCharacterRank(rank: CharacterRank) {
     let payload = { rank: rank };
     return {
        type: MODIFY_CHARACTER_RANK,
+       payload: payload
+    }
+}
+
+export function modifySupportingCharacterAddImprovement(type: SupportingCharacterModificationType, value: string|Attribute|Skill) {
+    let payload = { type: type, value: value };
+    return {
+       type: MODIFY_SUPPORTING_CHARACTER_ADD_IMPROVEMENT,
        payload: payload
     }
 }
