@@ -714,7 +714,7 @@ export class FoundryVttExporter {
         if (talent.category == null || talent.category === "Esoteric" || talent.category === "General"
                 || talent.category === "Career" || talent.category === "Starship" || talent.category === "Starbase" || talent.category === "") {
             return "general";
-        } else if (SkillsHelper.toSkill(talent.category) !== Skill.None) {
+        } else if (SkillsHelper.getSkillByName(talent.category) !== Skill.None) {
             return "discipline";
         } else {
             return "species";

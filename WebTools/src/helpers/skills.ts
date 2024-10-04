@@ -27,7 +27,7 @@ export class Skills {
         return Skill[skill];
     }
 
-    toSkill(name: string) {
+    getSkillByName(name: string) {
         for (var i = 0; i < Skill.None; i++) {
             const skill = Skill[i];
             if (skill === name) {
@@ -35,14 +35,7 @@ export class Skills {
             }
         }
 
-        return Skill.None;
-    }
-    findSkill(name: string) {
-        if (!isNaN(Number(name)) && Number(name) >= 0 && Number(name) < Skill.None) {
-            return Skill[Number(name)];
-        } else {
-            return this.toSkill(name);
-        }
+        return undefined;
     }
 }
 

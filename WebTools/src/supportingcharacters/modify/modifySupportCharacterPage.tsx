@@ -18,14 +18,20 @@ import { ValueRandomTable } from "../../solo/table/valueRandomTable";
 import store from "../../state/store";
 import { marshaller } from "../../helpers/marshaller";
 import { modifySupportingCharacterAddImprovement } from "../../state/characterActions";
-import { SupportingImrovementStep } from "../../common/character";
+import { Attribute } from "../../helpers/attributes";
+import { SimpleAttributeSelector } from "../../components/simpleAttributeSelector";
+import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
+import D20IconButton from "../../solo/component/d20IconButton";
+import { FocusRandomTable } from "../../solo/table/focusRandomTable";
 
 const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
 
     const { t } = useTranslation();
     const [index, setIndex] = useState(0);
     const [modificationType, setModificationType] = useState<string|SupportingCharacterModificationType>("");
-    const [value, setValue] = useState("");
+    const [valueSelection, setValueSelection] = useState<string>("");
+    const [attriubteSelection, setAttributeSelection] = useState<Attribute>();
+    const [focusSelection, setFocusSelection] = useState<string>("");
     const navigate = useNavigate();
 
     const onNextPage = () => {
@@ -42,10 +48,27 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
 
     const applyModification = () => {
         if (modificationType === SupportingCharacterModificationType.AdditionalValue) {
-            store.dispatch(modifySupportingCharacterAddImprovement(modificationType, value));
+            if (!valueSelection?.length) {
+                Dialog.show("Please select a value");
+            } else {
+                store.dispatch(modifySupportingCharacterAddImprovement(modificationType, valueSelection));
+                onNextPage();
+            }
+        } else if (modificationType === SupportingCharacterModificationType.AdditionalFocus) {
+            if (!focusSelection?.length) {
+                Dialog.show("Please select a focus");
+            } else {
+                store.dispatch(modifySupportingCharacterAddImprovement(modificationType, focusSelection));
+                onNextPage();
+            }
+        } else if (modificationType === SupportingCharacterModificationType.AdditionalAttribute) {
+            if (attriubteSelection == null) {
+                Dialog.show("Please select an attribute");
+            } else {
+                store.dispatch(modifySupportingCharacterAddImprovement(modificationType, attriubteSelection));
+                onNextPage();
+            }
         }
-
-        onNextPage();
     }
 
     const viewCharacter = () => {
@@ -62,7 +85,18 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
             let value = ValueRandomTable(character?.speciesStep?.species);
             if (!character?.values?.includes(value)) {
                 done = true;
-                setValue(value);
+                setValueSelection(value);
+            }
+        }
+    }
+
+    const randomFocus = () => {
+        let done = false;
+        while (!done) {
+            let f = FocusRandomTable();
+            if (!character?.focuses?.includes(f)) {
+                done = true;
+                setFocusSelection(f);
             }
         }
     }
@@ -91,10 +125,34 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
                 <div className="col-12 col-md-6">
                     <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
                     <Markdown>{t('ModifySupportingCharacter.value.instruction')}</Markdown>
-                    <ValueInput onRandomClicked={() => randomValue()} onValueChanged={(v) => setValue(value)} id="value" value={value} />
+                    <ValueInput onRandomClicked={() => randomValue()}
+                        onValueChanged={(v) => setValueSelection(valueSelection)}
+                        id="value" value={valueSelection} />
                 </div>
             </div>);
-        } else {
+        } else if (modificationType === SupportingCharacterModificationType.AdditionalFocus) {
+            return (<div className="row">
+                <div className="col-12 col-md-6">
+                    <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
+                    <Markdown>{t('ModifySupportingCharacter.focus.instruction')}</Markdown>
+                    <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
+                        <InputFieldAndLabel labelName={t('Construct.other.focus')} value={focusSelection}
+                                id="focus" onChange={(value) => setFocusSelection(value)} />
+                        <div style={{ flexShrink: 0 }} className="mt-1">
+                            <D20IconButton onClick={() => randomFocus()}/>
+                        </div>
+                    </div>
+                </div>
+            </div>);
+        } else if (modificationType === SupportingCharacterModificationType.AdditionalAttribute) {
+            return (<div className="row">
+                <div className="col-12 col-md-6">
+                    <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
+                    <Markdown>{t('ModifySupportingCharacter.attribute.instruction')}</Markdown>
+                    <SimpleAttributeSelector onSelectAttribute={(a) => setAttributeSelection(a)} isChecked={(a) => attriubteSelection === a} />
+                </div>
+            </div>);
+        } else if (modificationType === SupportingCharacterModificationType.AdditionalDiscipline) {
             return undefined;
         }
     }

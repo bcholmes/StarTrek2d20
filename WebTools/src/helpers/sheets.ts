@@ -424,7 +424,7 @@ abstract class BasicShortCharacterSheet extends BasicSheet {
         if (character.additionalTraits) {
             traits.push(character.additionalTraits);
         }
-        this.fillField(form, 'Traits', CharacterSerializer.serializeTraits(traits));
+        this.fillField(form, 'Traits', character.getAllTraits());
         this.fillFocuses(form, character);
         this.fillAttributes(form, character);
         this.fillSkills(form, character);

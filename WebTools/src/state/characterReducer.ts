@@ -779,6 +779,14 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
                 let improvement = new SupportingImrovementStep();
                 improvement.value = action.payload.value;
                 temp.improvements.push(improvement);
+            } else if (action.payload.type === SupportingCharacterModificationType.AdditionalFocus) {
+                let improvement = new SupportingImrovementStep();
+                improvement.focus = action.payload.value;
+                temp.improvements.push(improvement);
+            } else if (action.payload.type === SupportingCharacterModificationType.AdditionalAttribute) {
+                let improvement = new SupportingImrovementStep();
+                improvement.attribute = action.payload.value;
+                temp.improvements.push(improvement);
             }
             return {
                 ...state,

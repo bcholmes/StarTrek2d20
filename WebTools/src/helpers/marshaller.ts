@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterAttribute, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, GovernmentDetails, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from '../common/character';
+import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, GovernmentDetails, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { MissionProfileStep, ServiceRecordStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -79,8 +79,8 @@ class Marshaller {
         sheet["typeDetails"] = this.encodeTypeDetails(character);
 
         if (character.stereotype === Stereotype.Npc || character.legacyMode) {
-            sheet["attributes"] = this.toAttributeObject(character.attributes);
-            sheet["disciplines"] = this.toSkillObject(character.skills);
+            sheet["attributes"] = this.toAttributeObject(character._attributes);
+            sheet["disciplines"] = this.getSkillByNameObject(character.skills);
         }
 
         if (character.supportingStep) {
@@ -156,6 +156,10 @@ class Marshaller {
                     result["value"] = i.value;
                 } else if (i.focus != null) {
                     result["focus"] = i.focus;
+                } else if (i.attribute != null) {
+                    result["attribute"] = Attribute[i.attribute];
+                } else if (i.discipline != null) {
+                    result["discipline"] = Skill[i.discipline];
                 }
                 return result;
             });
@@ -227,8 +231,8 @@ class Marshaller {
 
         if ((character.stereotype !== Stereotype.MainCharacter && character.stereotype !== Stereotype.SoloCharacter) || character.legacyMode) {
             sheet["focuses"] = [...character.focuses];
-            sheet["attributes"] = this.toAttributeObject(character.attributes);
-            sheet["disciplines"] = this.toSkillObject(character.skills);
+            sheet["attributes"] = this.toAttributeObject(character._attributes);
+            sheet["disciplines"] = this.getSkillByNameObject(character.skills);
         }
 
         if (character.careerStep != null) {
@@ -451,15 +455,15 @@ class Marshaller {
         return talent;
     }
 
-    toAttributeObject(attributes: CharacterAttribute[]) {
+    toAttributeObject(attributes: number[]) {
         let result = {};
-        attributes.forEach(a => {
-            result[Attribute[a.attribute]] = a.value;
+        AttributesHelper.getAllAttributes().forEach(a => {
+            result[Attribute[a]] = attributes[a];
         });
         return result;
     }
 
-    toSkillObject(skills: CharacterSkill[]) {
+    getSkillByNameObject(skills: CharacterSkill[]) {
         let result = {};
         skills.forEach(a => result[Skill[a.skill]] = a.expertise);
         return result;
@@ -930,7 +934,7 @@ class Marshaller {
                         step.attribute = AttributesHelper.getAttributeByName(e["attribute"]);
                     }
                     if (e["discipline"]) {
-                        step.discipline = SkillsHelper.toSkill(e["discipline"]);
+                        step.discipline = SkillsHelper.getSkillByName(e["discipline"]);
                     }
                     if (e["focus"]) {
                         step.focus = e["focus"];
@@ -1084,16 +1088,16 @@ class Marshaller {
                 result.educationStep.attributes = json.training.attributes.map(a => AttributesHelper.getAttributeByName(a));
             }
             if (json.training.disciplines) {
-                result.educationStep.disciplines = json.training.disciplines.map(d => SkillsHelper.toSkill(d));
+                result.educationStep.disciplines = json.training.disciplines.map(d => SkillsHelper.getSkillByName(d));
             }
             if (json.training.decrementDisciplines) {
-                result.educationStep.decrementDisciplines = json.training.decrementDisciplines.map(d => SkillsHelper.toSkill(d));
+                result.educationStep.decrementDisciplines = json.training.decrementDisciplines.map(d => SkillsHelper.getSkillByName(d));
             }
             if (json.training.decrementAttributes) {
                 result.educationStep.decrementAttributes = json.training.decrementAttributes.map(a => AttributesHelper.getAttributeByName(a));
             }
             if (json.training.primaryDiscipline != null) {
-                result.educationStep.primaryDiscipline = SkillsHelper.toSkill(json.training.primaryDiscipline);
+                result.educationStep.primaryDiscipline = SkillsHelper.getSkillByName(json.training.primaryDiscipline);
             }
             if (json.training.value != null) {
                 result.educationStep.value = json.training.value;
@@ -1150,7 +1154,7 @@ class Marshaller {
                     result.environmentStep.attribute = AttributesHelper.getAttributeByName(json.environment.attribute);
                 }
                 if (json.environment.discipline) {
-                    result.environmentStep.discipline = SkillsHelper.toSkill(json.environment.discipline);
+                    result.environmentStep.discipline = SkillsHelper.getSkillByName(json.environment.discipline);
                 }
                 if (json.environment.value) {
                     result.environmentStep.value = json.environment.value;
@@ -1170,7 +1174,7 @@ class Marshaller {
                 result.upbringingStep.focus = json.upbringing.focus;
             }
             if (json.upbringing.discipline != null) {
-                result.upbringingStep.discipline = SkillsHelper.toSkill(json.upbringing.discipline);
+                result.upbringingStep.discipline = SkillsHelper.getSkillByName(json.upbringing.discipline);
             }
             if (json.upbringing.talent != null) {
                 result.upbringingStep.talent = this.hydrateTalent(json.upbringing.talent);
@@ -1183,7 +1187,7 @@ class Marshaller {
                 result.finishingStep.attributes = json.finish.attributes.map(a => AttributesHelper.getAttributeByName(a));
             }
             if (json.finish.disciplines) {
-                result.finishingStep.disciplines = json.finish.disciplines.map(d => SkillsHelper.toSkill(d));
+                result.finishingStep.disciplines = json.finish.disciplines.map(d => SkillsHelper.getSkillByName(d));
             }
             if (json.finish.value) {
                 result.finishingStep.value = json.finish.value;
@@ -1224,7 +1228,7 @@ class Marshaller {
                 result.supportingStep.attributes = [...json.supporting.attributes.map(a => AttributesHelper.getAttributeByName(a))];
             }
             if (json.supporting.disciplines) {
-                result.supportingStep.disciplines = [...json.supporting.disciplines.map(d => SkillsHelper.findSkill(d))];
+                result.supportingStep.disciplines = [...json.supporting.disciplines.map(d => SkillsHelper.getSkillByName(d))];
             }
             if (json.supporting.value?.length) {
                 result.supportingStep.value = json.supporting.value;
@@ -1262,6 +1266,10 @@ class Marshaller {
                         improvement.value = j["value"];
                     } else if (j["focus"] != null) {
                         improvement.focus = j["focus"];
+                    } else if (j["attribute"] != null) {
+                        improvement.attribute = AttributesHelper.getAttributeByName(j["attribute"]);
+                    } else if (j["discipline"] != null) {
+                        improvement.discipline = SkillsHelper.getSkillByName(j["discipline"]);
                     }
                     return improvement;
                 } else {

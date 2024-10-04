@@ -71,7 +71,7 @@ export class GovernmentDetails {
     }
 }
 
-export class CharacterAttribute {
+class CharacterAttribute {
     attribute: Attribute;
     value: number;
 
@@ -396,7 +396,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     public _reputation = undefined;
     public reprimands = 0;
-    public _attributes: CharacterAttribute[] = [];
+    public _attributes: number[] = [];
     public _skills: number[] = [];
     public traits: string[];
     public additionalTraits: string;
@@ -430,12 +430,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     constructor() {
         super(Stereotype.MainCharacter);
-        this._attributes.push(new CharacterAttribute(Attribute.Control, this._attributeInitialValue));
-        this._attributes.push(new CharacterAttribute(Attribute.Daring, this._attributeInitialValue));
-        this._attributes.push(new CharacterAttribute(Attribute.Fitness, this._attributeInitialValue));
-        this._attributes.push(new CharacterAttribute(Attribute.Insight, this._attributeInitialValue));
-        this._attributes.push(new CharacterAttribute(Attribute.Presence, this._attributeInitialValue));
-        this._attributes.push(new CharacterAttribute(Attribute.Reason, this._attributeInitialValue));
+        this._attributes = [this._attributeInitialValue, this._attributeInitialValue, this._attributeInitialValue,
+            this._attributeInitialValue, this._attributeInitialValue, this._attributeInitialValue];
 
         for (var i = 0; i <= Skill.Medicine; i++) {
             this._skills.push(0);
@@ -548,7 +544,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
         }
     }
 
-    get attributes() {
+    get attributes(): CharacterAttribute[] {
         if (this.stereotype === Stereotype.SoloCharacter || (this.stereotype === Stereotype.MainCharacter && !this.legacyMode)) {
             let result = [];
             AttributesHelper.getAllAttributes().forEach(a => result.push(new CharacterAttribute(a, 7)));
@@ -581,14 +577,20 @@ export class Character extends Construct implements IWeaponDiceProvider {
             if (this.version > 1 && this.type !== CharacterType.Child && this.supportingStep?.supervisory) {
                 values = [10, 10, 9, 9, 8, 8];
             }
-            return AttributesHelper.getAllAttributes().map(a => {
+            let result = AttributesHelper.getAllAttributes().map(a => {
                 let index = this.supportingStep?.attributes?.indexOf(a);
                 let speciesBonus = this.speciesStep?.attributes?.filter(att => att === a).length;
                 let speciesminuses = this.speciesStep?.decrementAttributes?.filter(att => att === a).length;
-                return new CharacterAttribute(a, values[index] + speciesBonus - speciesminuses);
+                return values[index] + speciesBonus - speciesminuses;
             });
+            this.improvements?.forEach(i => {
+                if (i.attribute != null) {
+                    result[i.attribute] += 1;
+                }
+            });
+            return AttributesHelper.getAllAttributes().map(a => new CharacterAttribute(a, result[a]));
         } else {
-            return this._attributes;
+            return AttributesHelper.getAllAttributes().map(a => new CharacterAttribute(a, this._attributes[a]));
         }
     }
 
@@ -1209,6 +1211,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
             if (this.speciesStep?.abilityOptions?.focuses?.length) {
                 result.push(...this.speciesStep.abilityOptions.focuses);
             }
+            this.improvements?.filter(i => i.focus).forEach(i => result.push(i.focus));
+
             result.push(...this.supportingStep?.focuses?.filter(f => f.trim().length));
             return result;
         } else {
@@ -1360,10 +1364,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
         character.typeDetails = this.typeDetails;
         character._reputation = this._reputation;
         character.version = this.version;
-        this._attributes.forEach(a => {
-            character._attributes[a.attribute].attribute = a.attribute;
-            character._attributes[a.attribute].value = a.value;
-        });
+        character._attributes = [...this._attributes];
         character._skills = [...this._skills];
         this.traits.forEach(t => {
             character.traits.push(t);

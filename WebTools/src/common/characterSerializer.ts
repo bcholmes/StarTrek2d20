@@ -1,4 +1,4 @@
-﻿import {Character, CharacterAttribute, CharacterSkill} from './character';
+﻿import {Character, CharacterSkill} from './character';
 import { CharacterType } from '../common/characterType';
 import {SpeciesHelper} from '../helpers/species';
 import {EnvironmentsHelper, Environment} from '../helpers/environments';
@@ -56,14 +56,6 @@ export class CharacterSerializer {
         }
     }
 
-    private static serializeAttributes(attrs: CharacterAttribute[]) {
-        return `${attrs[0].value},${attrs[1].value},${attrs[2].value},${attrs[3].value},${attrs[4].value},${attrs[5].value}`;
-    }
-
-    private static serializeSkills(skills: CharacterSkill[]) {
-        return `${skills[Skill.Command].expertise},${skills[Skill.Conn].expertise},${skills[Skill.Engineering].expertise},${skills[Skill.Security].expertise},${skills[Skill.Science].expertise},${skills[Skill.Medicine].expertise}`;
-    }
-
     public static serializeSpecies(primary: Species, secondary: Species) {
         if (primary == null) {
             return "";
@@ -91,11 +83,4 @@ export class CharacterSerializer {
 
     }
 
-    public static serializeTraits(traits: string[]) {
-        var result = "";
-        for (var i = 0; i < traits.length; i++) {
-            result += `${traits[i]}${i < traits.length-1 ? ", " : ""}`;
-        }
-        return result;
-    }
 }

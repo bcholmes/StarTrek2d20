@@ -104,8 +104,7 @@ const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({character}
                     : (<div className="col-12 mt-4">
                         <Header level={2}>{t('Construct.other.focuses')}</Header>
                         <FocusBlockView character={character} />
-                    </div>
-)}
+                    </div>)}
 
                 </div>
 
