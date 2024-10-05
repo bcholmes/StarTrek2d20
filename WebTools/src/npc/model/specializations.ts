@@ -936,6 +936,30 @@ export class Specializations {
                     "Carrying charges, my friend. Carrying charges."
                 ], 0, [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human,
                         Species.Orion, Species.Nausicaan, Species.Pakled, Species.Tellarite, Species.Trill, Species.Vulcan ]),
+            new SpecializationModel(Specialization.Terrorist, NpcCharacterType.RogueRuffianMercenary, "Terrorist / Freedom Fighter",
+                [Attribute.Daring, Attribute.Insight, Attribute.Presence],
+                Skill.Security,
+                [
+                    "Explosives", "Ideology", "Concealment",
+                    "Scanning Technology", "Symbolic Gestures", "Politics"
+                ],
+                [
+                    "Understanding the Enemy", "History of Guerilla Actions", "Acceptable Sacrifice", "Hostage Situations",
+                    "Cell-based Organizational Structures", "Information Control", "Leadership", "Target Identification"
+                ],
+                [
+                    "How much innocent blood has been spilled for the cause of freedom in the history of your Federation?",
+                    "How many good and noble societies have bombed civilians in war? Wiped out whole cities.",
+                    "You frown on my immorality? I am willing to die for my freedom.",
+                    "You do business with a government that's crushing us. And then you say you aren't involved? You're very much involved.",
+                    "I am fighting the only war I can against an intractable enemy.",
+                    "It seems that one disaster after another keeps bringing us back together again.",
+                    "We all lie to ourselves first",
+                    "You think that just because they're killing us slowly, we weren't already at war?",
+                    "There is a time to fight and there is a time to be clever.",
+                    "When an old fighter like me dies... someone always steps forward to take their place."
+                ], 0, [ Species.Andorian, Species.Bajoran, Species.Betazoid, Species.Bolian, Species.Denobulan, Species.Human,
+                        Species.Orion, Species.Tellarite, Species.Trill, Species.Vulcan ]),
             new SpecializationModel(Specialization.Scientist, NpcCharacterType.Civilian, "Scientist",
                 [Attribute.Reason, Attribute.Insight, Attribute.Control],
                 Skill.Science,

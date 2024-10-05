@@ -347,6 +347,31 @@ export class SpaceframeHelper {
                 [7, 9, 9, 10, 8, 6],
                 [2, 4, 1, 3, 4, 2]
             )),
+        [Spaceframe.ArmedScout]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.ArmedScout,
+            CharacterType.Starfleet,
+            "Armed Scout",
+            2242,
+            [ Source.UtopiaPlanitia ],
+            [7, 6, 9, 8, 8, 6],
+            [0, 2, 0, 0, 1, 0],
+            3,
+            [
+                "Phaser Banks",
+                "Photon Torpedoes",
+                "Tractor Beam (Strength 2)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Reaction Control System"),
+                TalentSelection.selectTalent("Independent Phaser Supply"),
+                TalentSelection.selectTalent("Rugged Design"),
+            ],
+            [ "Federation Starship" ],
+            2290,
+            new SoloSpaceframeStats(
+                [7, 9, 9, 10, 8, 6],
+                [2, 4, 1, 3, 4, 2]
+            )),
         [Spaceframe.ScoutType]: SpaceframeModel.createStandardSpaceframe(
             Spaceframe.ScoutType,
             CharacterType.Starfleet,
@@ -415,6 +440,24 @@ export class SpaceframeHelper {
                 [9, 7, 9, 9, 10, 7],
                 [2, 4, 2, 2, 2, 3]
             )),
+        [Spaceframe.SidNala]: SpaceframeModel.createStandardSpaceframe(
+            Spaceframe.SidNala,
+            CharacterType.Starfleet,
+            "Sid-Nala Class",
+            2279,
+            [ Source.UtopiaPlanitia ],
+            [8, 8, 9, 9, 8, 7],
+            [0, 2, 0, 1, 0, 0],
+            4,
+            [
+                "Tractor Beam (Strength 3)"
+            ],
+            [
+                TalentSelection.selectTalent("Improved Impulse Drive"),
+                TalentSelection.selectTalent("Extensive Shuttlebays"),
+            ],
+            [ "Federation Starship" ],
+            99999),
         [Spaceframe.Centaur]: new SpaceframeModel(
             Spaceframe.Centaur,
             CharacterType.Starfleet,

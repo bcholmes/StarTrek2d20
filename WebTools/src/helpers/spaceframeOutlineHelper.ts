@@ -349,7 +349,7 @@ class SpaceframeOutlineHelper {
             return GALAXY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Galor) {
             return GALOR_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Hermes || spaceframe.id === Spaceframe.ScoutType) {
+        } else if (spaceframe.id === Spaceframe.Hermes || spaceframe.id === Spaceframe.ScoutType || spaceframe.id === Spaceframe.ArmedScout) {
             return this.isMovieEra(starship.serviceYear) ? HERMES_CLASS_ELABORATE_OUTLINE : HERMES_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Hiawatha) {
             return HIAWATHA_CLASS_ELABORATE_OUTLINE;
@@ -428,7 +428,7 @@ class SpaceframeOutlineHelper {
             return STEAMRUNNER_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Sutherland) {
             return SUTHERLAND_CLASS_ELABORATE_OUTLINE;
-        } else if (spaceframe.id === Spaceframe.Sydney) {
+        } else if (spaceframe.id === Spaceframe.Sydney || spaceframe.id === Spaceframe.SidNala) {
             return SYDNEY_CLASS_ELABORATE_OUTLINE;
         } else if (spaceframe.id === Spaceframe.Tliss) {
             return TLISS_CLASS_ELABORATE_OUTLINE;

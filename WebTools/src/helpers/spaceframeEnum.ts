@@ -87,6 +87,10 @@ export enum Spaceframe {
     Odyssey,
     Pathfinder,
 
+    // Utopia Planetia Variants
+    ArmedScout,
+    SidNala,
+
     D5,
     Raptor,
     VonTalk,
