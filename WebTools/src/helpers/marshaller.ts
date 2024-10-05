@@ -144,12 +144,16 @@ class Marshaller {
                 if (character.npcGenerationStep?.type != null) {
                     block["type"] = NpcType[character.npcGenerationStep.type];
                 }
+
+                if (character.npcGenerationStep?.attributes != null && character.npcGenerationStep?.attributes.length > 0) {
+                    block["attributes"] = this.toAttributeObject(character.npcGenerationStep?.attributes)
+                }
+
                 sheet["npc"] = block;
             }
         }
 
         sheet["improvements"] = this.encodeImprovements(character);
-
         return sheet;
     }
 
@@ -1129,10 +1133,10 @@ class Marshaller {
             }
         }
         if (json.attributes) {
-            result.attributes.forEach(a => {
-                let value = json.attributes[Attribute[a.attribute]];
+            AttributesHelper.getAllAttributes().forEach(a => {
+                let value = json.attributes[Attribute[a]];
                 if (value != null) {
-                    a.value = value;
+                    result._attributes[a] = value;
                 }
             });
         }

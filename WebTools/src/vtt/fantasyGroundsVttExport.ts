@@ -10,7 +10,7 @@ import { Rank, RanksHelper } from "../helpers/ranks";
 import { CharacterSerializer } from "../common/characterSerializer";
 import { TracksHelper } from "../helpers/tracks";
 import { CareerEventsHelper } from "../helpers/careerEvents";
-import { WeaponQuality, WeaponType } from "../helpers/weapons";
+import { InjuryType, WeaponQuality, WeaponType } from "../helpers/weapons";
 import { EarlyOutlook } from "../helpers/upbringings";
 import { Stereotype } from "../common/construct";
 import { NpcType } from "../npc/model/npcType";
@@ -31,8 +31,26 @@ export class FantasyGroupsVttExporter {
             "type": "element",
             "name": "npc",
             "elements": [
+                {
+                    "name": "attacks",
+                    "type": "element",
+                    "elements": [
+                        ...this.convertNpcWeapons(character)
+                    ]
+                },
                 this.convertAttributes(character),
                 this.convertDisciplines(character),
+                {
+                    "name": "focuses",
+                    "attributes": {
+                        "type": "string"
+                    },
+                    "type": "element",
+                    "elements": [{
+                        "type":"text",
+                        "text": character.focuses.join(", ")
+                    }]
+                },
                 {
                     "name": "hptotal",
                     "attributes": {
@@ -70,6 +88,7 @@ export class FantasyGroupsVttExporter {
                         }]
                     }]
                 },
+                this.convertNpcTalents(character),
                 {
                     "name": "token",
                     "attributes": {
@@ -97,6 +116,17 @@ export class FantasyGroupsVttExporter {
                     "elements": [{
                         "type":"text",
                         "text": this.convertNpcType(character)
+                    }]
+                },
+                {
+                    "name": "values",
+                    "attributes": {
+                        "type": "string"
+                    },
+                    "type": "element",
+                    "elements": [{
+                        "type":"text",
+                        "text": character.values.join(", ")
                     }]
                 },
             ]
@@ -470,6 +500,145 @@ export class FantasyGroupsVttExporter {
         return equipment.concat(weapons);
     }
 
+    convertNpcWeapons(character: Character, start: number = 0) {
+        let result = [];
+        character.determineWeapons().forEach((w, i) => {
+            let weapon = {
+                "name": this.createNumberedId(start + i + 1),
+                "type": "element",
+                "elements": [
+                    {
+                        "name": "area",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    {
+                        "name": "damagerating",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": w.dice
+                            }
+                        ]
+                    },
+                    {
+                        "name": "intense",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    {
+                        "name": "name",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": w.name
+                            }
+                        ]
+                    },
+                    w.injuryType === InjuryType.Stun
+                    ? {
+                            "name": "lethality",
+                            "attributes": {
+                                "type": "string"
+                            },
+                            "type": "element",
+                            "elements": [
+                                {
+                                    "type": "text",
+                                    "text": "nonlethal"
+                                }
+                            ]
+                        }
+                    : null,
+                    {
+                        "name": "piercing",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    },
+                    {
+                        "name": "tn",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": (
+                                    w.type === WeaponType.ENERGY
+                                    ? (character.attributes[Attribute.Control].value + character.skills[Skill.Security].expertise)
+                                    : (character.attributes[Attribute.Daring].value + character.skills[Skill.Security].expertise))
+                            }
+                        ]
+                    },
+                    w.type === WeaponType.ENERGY ?
+                    {
+                        "name": "type",
+                        "attributes": {
+                            "type": "string"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "ranged"
+                            }
+                        ]
+                    } : null,
+                    {
+                        "name": "vicious",
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": 0
+                            }
+                        ]
+                    }
+                ]
+            }
+            weapon.elements = weapon.elements.filter(e => e != null);
+            result.push(weapon);
+        });
+
+        return result;
+    }
+
     convertWeapons(character: Character, start: number = 0) {
         let result = [];
         character.determineWeapons().forEach((w, i) => {
@@ -650,7 +819,7 @@ export class FantasyGroupsVttExporter {
                         ]
                     } : null,
                     {
-                        "name": "viscious",
+                        "name": "vicious",
                         "attributes": {
                             "type": "number"
                         },
@@ -1573,6 +1742,53 @@ export class FantasyGroupsVttExporter {
             });
         });
 
+        return result;
+    }
+
+    convertNpcTalents(character: Character) {
+        let index = 1;
+        let result = {
+            "name": "specialrules",
+            "type": "element",
+            "elements": []
+        }
+
+        let talentNames = [];
+        character.talents.forEach(selectedTalent => {
+            if (talentNames.indexOf(selectedTalent.talent) < 0) {
+                talentNames.push(selectedTalent.talent);
+            }
+        });
+
+        talentNames.forEach(n => {
+            let talent = TalentsHelper.getTalent(n);
+            if (talent) {
+
+                result.elements.push({
+                    "name": this.createNumberedId(index++),
+                    "type": "element",
+                    "elements": [
+                        this.convertToFormattedText("desc", null,
+                            character.version === 1
+                                ? talent.localizedDescription.replace(CHALLENGE_DICE_NOTATION, "CD")
+                                : talent.localizedDescription2e.replace(CHALLENGE_DICE_NOTATION, "CD")),
+                        {
+                            "name": "name",
+                            "type": "element",
+                            "attributes": {
+                                "type": "string"
+                            },
+                            "elements": [
+                                {
+                                    "type": "text",
+                                    "text": talent.localizedDisplayName
+                                }
+                            ]
+                        },
+                    ]
+                });
+            }
+        });
         return result;
     }
 

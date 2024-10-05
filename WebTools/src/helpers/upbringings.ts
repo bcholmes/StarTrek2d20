@@ -470,17 +470,6 @@ class Upbringings {
         return list[roll];
     }
 
-    private applyUpbringing(character: Character, upbringing: EarlyOutlookModel, accepted: boolean) {
-
-        if (accepted) {
-            character.attributes[upbringing.attributeAcceptPlus2].value += 2;
-            character.attributes[upbringing.attributeAcceptPlus1].value += 1;
-        } else {
-            character.attributes[upbringing.attributeRebelPlus2].value += 2;
-            character.attributes[upbringing.attributeRebelPlus1].value += 1;
-        }
-    }
-
     getUpbringingByTypeName(typeName: string, type: CharacterType) {
         let mapping = {
             MilitaryOrExploration: EarlyOutlook[EarlyOutlook.WarriorCaste],

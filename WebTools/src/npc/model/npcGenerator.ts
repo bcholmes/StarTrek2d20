@@ -649,7 +649,7 @@ export class NpcGenerator {
                     a = temp;
                 }
             }
-            character.attributes[a].value = attributePoints[i];
+            character._attributes[a] = attributePoints[i];
             attributes.splice(attributes.indexOf(a), 1);
         }
 
@@ -686,7 +686,7 @@ export class NpcGenerator {
         }
 
         for (let i = 0; i < speciesAttributes.length; i++) {
-            character.attributes[speciesAttributes[i]].value += 1;
+            character._attributes[speciesAttributes[i]] += 1;
         }
     }
 

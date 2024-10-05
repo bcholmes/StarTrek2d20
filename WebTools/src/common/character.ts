@@ -73,8 +73,8 @@ export class GovernmentDetails {
 }
 
 class CharacterAttribute {
-    attribute: Attribute;
-    value: number;
+    readonly attribute: Attribute;
+    readonly value: number;
 
     constructor(attr: Attribute, val: number) {
         this.attribute = attr;
@@ -381,6 +381,7 @@ export class NpcGenerationStep {
     public enlisted: boolean = false;
     public values: string[] = [];
     public talents: SelectedTalent[] = [];
+    public attributes: number[];
 
     constructor(type?: NpcType) {
         this.type = type;
@@ -393,6 +394,7 @@ export class NpcGenerationStep {
         result.values = [...this.values];
         result.talents = this.talents.map(t => t.copy());
         result.enlisted = this.enlisted;
+        result.attributes = [...this.attributes];
         return result;
     }
 }
@@ -1342,27 +1344,6 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     get isSeniorCadet() {
         return this.type === CharacterType.Cadet && this.careerEvents.length > 0;
-    }
-
-    update() {
-        let maxAttribute = Character.ABSOLUTE_MAX_ATTRIBUTE;
-        let maxDiscipline = Character.maxDiscipline(this);
-
-        if (this.isYoung() || this.type === CharacterType.Cadet) {
-            maxAttribute = 11;
-        }
-
-        this.attributes.forEach(a => {
-            if (a.value > maxAttribute) {
-                a.value = maxAttribute;
-            }
-        });
-
-        SkillsHelper.getSkills().forEach(s => {
-            if (this._skills[s] > maxDiscipline) {
-                this._skills[s] = maxDiscipline;
-            }
-        });
     }
 
     public copy(): Character {
