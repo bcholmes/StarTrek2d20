@@ -36,6 +36,7 @@ import { SpeciesAbilityList } from './speciesAbility';
 import { allServiceRecords, ServiceRecord, ServiceRecordList } from '../starship/model/serviceRecord';
 import AllyHelper, { AlliedMilitary, AlliedMilitaryType } from './alliedMilitary';
 import Governments, { Government, Polity } from './governments';
+import { NpcType, NpcTypes } from '../npc/model/npcType';
 
 class Marshaller {
 
@@ -138,6 +139,10 @@ class Marshaller {
 
                 if (character.npcGenerationStep?.specialization != null) {
                     block["specialization"] = Specialization[character.npcGenerationStep.specialization];
+                }
+
+                if (character.npcGenerationStep?.type != null) {
+                    block["type"] = NpcType[character.npcGenerationStep.type];
                 }
                 sheet["npc"] = block;
             }
@@ -1217,6 +1222,9 @@ class Marshaller {
             }
             if (json.npc.specialization) {
                 allSpecializations().forEach(s => { if (Specialization[s] === json.npc.specialization) {result.npcGenerationStep.specialization = s;}})
+            }
+            if (json.npc.type) {
+                result.npcGenerationStep.type = NpcTypes.getNpcTypeByName(json.npc.type);
             }
         }
         if (json.supporting && result.stereotype === Stereotype.SupportingCharacter) {

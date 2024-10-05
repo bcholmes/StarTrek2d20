@@ -69,6 +69,13 @@ class VttSelectionModal extends React.Component<IVttSelectionModalProperties, IV
                     onChange={(yesNo) => this.selectFoundryCompendium(yesNo === "Y" ? true : false)} />
 
             </div>)
+        } else if (this.state.vttType === VttType.Roll20) {
+            return (<div className="mt-4">
+                <p>Roll20 doesn't have a standard way to import characters into STA games. This
+                    exporter was designed to work with a browser plugin called the {' '}
+                    <a href="https://justas-d.github.io/roll20-enhancement-suite/index.html"  target="_blank" rel="noreferrer">VTT Enhancement Suite</a>.
+                </p>
+            </div>);
         } else {
             return undefined;
         }

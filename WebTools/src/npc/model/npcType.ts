@@ -104,4 +104,9 @@ export class NpcTypes {
             return 4;
         }
     }
+
+    static getNpcTypeByName(name: string) {
+        let all = [NpcType[NpcType.Minor], NpcType[NpcType.Notable], NpcType[NpcType.Major]];
+        return all.includes(name) ? all.indexOf(name) as NpcType : undefined;
+    }
 }

@@ -488,7 +488,7 @@ export class NpcGenerator {
         }
 
         character.careerStep = new CareerStep(careers[Math.floor(Math.random() * careers.length)]);
-        character.npcGenerationStep = new NpcGenerationStep();
+        character.npcGenerationStep = new NpcGenerationStep(npcType);
         character.npcGenerationStep.specialization = specialization.id;
         character.npcGenerationStep.enlisted = (Math.random() < specialization.officerProbability) ? false : true;
 

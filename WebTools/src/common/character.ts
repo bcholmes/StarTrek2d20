@@ -24,6 +24,7 @@ import { EquipmentHelper, EquipmentModel, EquipmentType } from '../helpers/equip
 import { Era } from '../helpers/eras';
 import { SpeciesAbility, SpeciesAbilityList } from '../helpers/speciesAbility';
 import { IWeaponDiceProvider } from './iWeaponDiceProvider';
+import { NpcType } from '../npc/model/npcType';
 
 export enum Division {
     Command,
@@ -375,15 +376,23 @@ export class CareerEventStep {
 }
 
 export class NpcGenerationStep {
-    public specialization: Specialization;
-    public enlisted: boolean;
+    public type?: NpcType;
+    public specialization?: Specialization;
+    public enlisted: boolean = false;
     public values: string[] = [];
     public talents: SelectedTalent[] = [];
 
+    constructor(type?: NpcType) {
+        this.type = type;
+    }
+
     copy() {
         let result = new NpcGenerationStep();
+        result.type = this.type;
+        result.specialization = this.specialization;
         result.values = [...this.values];
         result.talents = this.talents.map(t => t.copy());
+        result.enlisted = this.enlisted;
         return result;
     }
 }

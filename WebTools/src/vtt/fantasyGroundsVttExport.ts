@@ -12,6 +12,8 @@ import { TracksHelper } from "../helpers/tracks";
 import { CareerEventsHelper } from "../helpers/careerEvents";
 import { WeaponQuality, WeaponType } from "../helpers/weapons";
 import { EarlyOutlook } from "../helpers/upbringings";
+import { Stereotype } from "../common/construct";
+import { NpcType } from "../npc/model/npcType";
 
 export class FantasyGroupsVttExporter {
 
@@ -24,7 +26,93 @@ export class FantasyGroupsVttExporter {
         return FantasyGroupsVttExporter._instance;
     }
 
+    private exportNpc(character: Character) {
+        let characterNode = {
+            "type": "element",
+            "name": "npc",
+            "elements": [
+                this.convertAttributes(character),
+                this.convertDisciplines(character),
+                {
+                    "name": "hptotal",
+                    "attributes": {
+                        "type": "number"
+                    },
+                    "type": "element",
+                    "elements": [{
+                        "type":"text",
+                        "text": character.stress
+                    }]
+                },
+                {
+                    "name": "name",
+                    "attributes": {
+                        "type": "string"
+                    },
+                    "type": "element",
+                    "elements": [{
+                        "type":"text",
+                        "text": character.name ?? ""
+                    }]
+                },
+                {
+                    "name": "resistance",
+                    "type": "element",
+                    "elements": [{
+                        "attributes": {
+                            "type": "number"
+                        },
+                        "type": "element",
+                        "name": "total",
+                        "elements": [{
+                            "type":"text",
+                            "text": character.resistance
+                        }]
+                    }]
+                },
+                {
+                    "name": "token",
+                    "attributes": {
+                        "type": "token"
+                    },
+                    "type": "element"
+                },
+                {
+                    "name": "traits",
+                    "type": "element",
+                    "attributes": {
+                        "type": "string"
+                    },
+                    "elements": [{
+                        "type":"text",
+                        "text": character.getAllTraits() ?? ""
+                    }]
+                },
+                {
+                    "name": "type",
+                    "type": "element",
+                    "attributes": {
+                        "type": "string"
+                    },
+                    "elements": [{
+                        "type":"text",
+                        "text": this.convertNpcType(character)
+                    }]
+                },
+            ]
+        }
+        return this.nodesToXml(characterNode);
+    }
+
     exportCharacter(character: Character) {
+        if (character.stereotype === Stereotype.Npc) {
+            return this.exportNpc(character);
+        } else {
+            return this.exportMainCharacter(character);
+        }
+    }
+
+    private exportMainCharacter(character: Character) {
 
         let characterNode = {
             "type": "element",
@@ -273,6 +361,10 @@ export class FantasyGroupsVttExporter {
             ]
         }
 
+        return this.nodesToXml(characterNode);
+    }
+
+    nodesToXml(characterNode: any) {
         characterNode.elements = characterNode.elements.filter(e => e != null);
 
         let result = {
@@ -333,6 +425,21 @@ export class FantasyGroupsVttExporter {
                     "type": "element",
                     "name": "recordname"
                 }]
+            }
+        }
+    }
+
+    convertNpcType(character: Character) {
+        if (character.npcGenerationStep?.type == null) {
+            return "";
+        } else {
+            switch (character.npcGenerationStep.type) {
+                case NpcType.Minor:
+                    return "Minor Character";
+                case NpcType.Notable:
+                    return "Notable Character";
+                case NpcType.Major:
+                    return "Major Character";
             }
         }
     }

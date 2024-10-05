@@ -142,6 +142,28 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                     <div className="sheet-bg" id="sheet-bg" style={{ display: this.props.showProfile ? '' : "none" }} onClick={() => this.props.close()}></div>
                     <div className={containerClass} id="sheet-container">
                         <div className="row">
+                            {c.name?.length
+                                ? (<>
+                                    <div className="col-md-6 mb-2">
+                                        <div className="sheet-panel d-flex">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.other.name')}</div>
+                                            <div className="sheet-data">
+                                                {c.name ?? ""}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 mb-2">
+                                        <div className="sheet-panel d-flex">
+                                            <div className="sheet-label-purple text-uppercase">{t('Construct.other.pronouns')}</div>
+                                            <div className="sheet-data">
+                                                {c.pronouns ?? ""}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </>)
+                            : undefined}
+
+
                             <div className="col-md-6 mb-2">
                                 <div className="sheet-panel d-flex">
                                     <div className="sheet-label-purple text-uppercase">{t('Construct.other.characterType')}</div>
