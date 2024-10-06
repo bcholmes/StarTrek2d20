@@ -67,7 +67,7 @@ class DisciplinePrerequisite implements IConstructPrerequisite<Character> {
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return c.skills[this.discipline].expertise >= this.value;
+        return c.departments[this.discipline] >= this.value;
     }
 
     describe(): string {
@@ -83,7 +83,7 @@ class UntrainedDisciplinePrerequisite implements IConstructPrerequisite<Characte
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return c.skills[this.discipline].expertise <= 1;
+        return c.departments[this.discipline] <= 1;
     }
     describe(): string {
         return "Requires " + Skill[this.discipline] + " <= 1";
@@ -102,8 +102,8 @@ class VariableDisciplinePrerequisite implements IConstructPrerequisite<Character
     }
 
     isPrerequisiteFulfilled(c: Character) {
-        return c.skills[this.discipline1].expertise >= this.value ||
-               c.skills[this.discipline2].expertise >= this.value;
+        return c.departments[this.discipline1] >= this.value ||
+               c.departments[this.discipline2] >= this.value;
     }
     describe(): string {
         return "Requires " + Skill[this.discipline1] + " " + this.value + "+ or "

@@ -121,7 +121,7 @@ class ChildDecrementDisciplineController implements IDisciplineController {
         return true;
     }
     getValue(discipline: Skill): number {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill): boolean {
         return this.character.educationStep?.decrementDisciplines?.indexOf(discipline) >= 0;
@@ -154,10 +154,10 @@ class ChildPrimaryDisciplineController implements IDisciplineController {
         return true;
     }
     getValue(discipline: Skill) {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill) {
-        return this.character.educationStep?.primaryDiscipline == null && (this.character.skills[discipline].expertise < (Character.maxDiscipline(this.character) - 1));
+        return this.character.educationStep?.primaryDiscipline == null && (this.character.departments[discipline] < (Character.maxDiscipline(this.character) - 1));
     }
     canDecrease(discipline: Skill) {
         return this.character.educationStep?.primaryDiscipline === discipline;
@@ -185,7 +185,7 @@ class ChildSecondaryDisciplineController implements IDisciplineController {
         return true;
     }
     getValue(discipline: Skill) {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill) {
         if (this.getValue(discipline) === Character.maxDiscipline(this.character)) {

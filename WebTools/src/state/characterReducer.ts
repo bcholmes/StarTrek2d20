@@ -666,11 +666,11 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             } else if (action.payload.context === StepContext.Education && temp.educationStep) {
                 if (action.payload.forceDecrement) {
                     if (positive) {
-                        let value = temp.skills[discipline].expertise;
+                        let value = temp.departments[discipline];
                         temp.educationStep.decrementDisciplines.splice(temp.educationStep.decrementDisciplines.indexOf(discipline), 1);
                         // if we're no longer decrementing a discipline that could only be incremented because of
                         // the previous decrement, then remove the increment
-                        if (temp.skills[discipline].expertise === value) {
+                        if (temp.departments[discipline] === value) {
                             if (temp.educationStep.disciplines.indexOf(discipline) >= 0) {
                                 temp.educationStep.disciplines.splice(temp.educationStep.disciplines.indexOf(discipline), 1);
                             } else if (temp.educationStep.primaryDiscipline === discipline) {

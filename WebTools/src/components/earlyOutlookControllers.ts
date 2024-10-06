@@ -22,10 +22,10 @@ export class EarlyOutlookDiscplineController implements IDisciplineController {
         return this.earlyOutlook.disciplines.length >= 1;
     }
     getValue(discipline: Skill) {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill) {
-        return this.character.upbringingStep?.discipline == null && (this.character.skills[discipline].expertise < Character.maxDiscipline(this.character));
+        return this.character.upbringingStep?.discipline == null && (this.character.departments[discipline] < Character.maxDiscipline(this.character));
     }
     canDecrease(discipline: Skill) {
         return this.character.upbringingStep?.discipline === discipline;

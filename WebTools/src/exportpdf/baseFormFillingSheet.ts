@@ -3,7 +3,7 @@ import { BasicGeneratedSheet } from "./generatedsheet";
 import { Construct } from "../common/construct";
 import { Character } from "../common/character";
 import { CharacterSerializer } from "../common/characterSerializer";
-import { Skill } from "../helpers/skills";
+import { Skill, SkillsHelper } from "../helpers/skills";
 import { CareerEventsHelper } from "../helpers/careerEvents";
 import { Attribute } from "../helpers/attributes";
 import { Column } from "./column";
@@ -111,27 +111,9 @@ export abstract class BaseFormFillingSheet extends BasicGeneratedSheet {
     }
 
     fillSkills(form: PDFForm, character: Character) {
-        character.skills.forEach( (a, i) => {
-            switch (a.skill) {
-            case Skill.Command:
-                this.fillField(form, 'Command', "" + a.expertise);
-                break;
-            case Skill.Security:
-                this.fillField(form, 'Security', "" + a.expertise);
-                break;
-            case Skill.Science:
-                this.fillField(form, 'Science', "" + a.expertise);
-                break;
-            case Skill.Conn:
-                this.fillField(form, 'Conn', "" + a.expertise);
-                break;
-            case Skill.Engineering:
-                this.fillField(form, 'Engineering', "" + a.expertise);
-                break;
-            case Skill.Medicine:
-                this.fillField(form, 'Medicine', "" + a.expertise);
-                break;
-            }
+        let departments = character.departments;
+        SkillsHelper.getSkills().forEach( (a, i) => {
+            this.fillField(form, Skill[a], "" + departments[a]);
         });
     }
 
@@ -166,13 +148,7 @@ export abstract class BaseFormFillingSheet extends BasicGeneratedSheet {
 
     findSecurityValue(construct: Construct) {
         let c = construct as Character;
-        var result = undefined;
-        c.skills.forEach( (s, i) => {
-            if (s.skill === Skill.Security) {
-                result = s.expertise;
-            }
-        });
-        return result;
+        return c.departments[Skill.Security];
     }
 
     fillEquipment(form: PDFForm, character: Character) {

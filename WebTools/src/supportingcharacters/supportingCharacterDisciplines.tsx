@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { Skill } from '../helpers/skills';
+import { Skill, SkillsHelper } from '../helpers/skills';
 import { useTranslation } from 'react-i18next';
 import { makeKey } from '../common/translationKey';
 import { ICharacterProperties, characterMapStateToProperties } from '../solo/page/soloCharacterProperties';
@@ -69,16 +69,16 @@ const SupportingCharacterDisciplines: React.FC<ICharacterProperties> = ({charact
         store.dispatch(setSupportingCharacterDisciplines(disciplines));
     }
 
-    const disciplines = character.skills.map((s, i) => {
+    const disciplines = SkillsHelper.getSkills().map((s, i) => {
         return (
             <tr key={i}>
-                <td className="selection-header">{t(makeKey('Construct.discipline.', Skill[s.skill]))}</td>
+                <td className="selection-header">{t(makeKey('Construct.discipline.', Skill[s]))}</td>
                 <td>
                     <Value
-                        index={s.skill}
-                        value={s.expertise}
-                        onSelect={(index) => selectValue(s.skill) }
-                        isSelected={selectedDiscipline === s.skill} />
+                        index={s}
+                        value={character.departments[s]}
+                        onSelect={(index) => selectValue(s) }
+                        isSelected={selectedDiscipline === s} />
                 </td>
             </tr>
         );

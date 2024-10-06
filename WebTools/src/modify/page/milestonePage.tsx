@@ -118,7 +118,7 @@ const MilestonePage: React.FC<IMilestonePageProperties> = ({character, milestone
     }
 
     function canIncreaseSkill(skill: Skill) {
-        let base = character.skills[skill].expertise;
+        let base = character.departments[skill];
         if (normalDisciplineDecrease == null) {
             return false;
         } else if (base >= 4) {
@@ -133,7 +133,7 @@ const MilestonePage: React.FC<IMilestonePageProperties> = ({character, milestone
     }
 
     function canDecreaseSkill(skill: Skill) {
-        let base = character.skills[skill].expertise;
+        let base = character.departments[skill];
         if (base <= 1) {
             return false;
         } else if (normalDisciplineIncrease === skill) {
@@ -163,11 +163,11 @@ const MilestonePage: React.FC<IMilestonePageProperties> = ({character, milestone
 
     function getSkillValue(skill: Skill) {
         if (skill === normalDisciplineDecrease) {
-            return character.skills[skill].expertise - 1;
+            return character.departments[skill] - 1;
         } else if (skill === normalDisciplineIncrease) {
-            return character.skills[skill].expertise + 1;
+            return character.departments[skill] + 1;
         } else {
-            return character.skills[skill].expertise;
+            return character.departments[skill];
         }
     }
 

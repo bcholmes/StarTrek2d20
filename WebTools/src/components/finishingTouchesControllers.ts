@@ -64,7 +64,7 @@ export class FinishingTouchesDisciplineController implements IDisciplineControll
         return true;
     }
     getValue(discipline: Skill): number {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill): boolean {
         return this.getValue(discipline) < Character.maxDiscipline(this.character) &&

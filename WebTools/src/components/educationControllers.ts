@@ -76,10 +76,10 @@ export class EducationPrimaryDisciplineController implements IDisciplineControll
         return true;
     }
     getValue(discipline: Skill) {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill) {
-        return this.character.educationStep?.primaryDiscipline == null && (this.character.skills[discipline].expertise < Character.maxDiscipline(this.character));
+        return this.character.educationStep?.primaryDiscipline == null && (this.character.departments[discipline] < Character.maxDiscipline(this.character));
     }
     canDecrease(discipline: Skill) {
         return this.character.educationStep?.primaryDiscipline === discipline;
@@ -113,7 +113,7 @@ export class EducationSecondaryDisciplineController implements IDisciplineContro
         return true;
     }
     getValue(discipline: Skill) {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill) {
         if (this.getValue(discipline) === Character.maxDiscipline(this.character)) {

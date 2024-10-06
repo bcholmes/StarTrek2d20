@@ -22,7 +22,7 @@ class SkillView extends React.Component<ISkillProperties, {}> {
                             <div className="skill-name text-white">{t(makeKey('Construct.discipline.', Skill[skill]))}</div>
                         </td>
                         <td className="text-white">(+{points}) &nbsp;</td>
-                        <td className="skill-expertise text-white">{character.skills[skill].expertise}</td>
+                        <td className="skill-expertise text-white">{character.departments[skill]}</td>
                     </tr>
                 </tbody>
             </table>

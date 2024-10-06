@@ -66,7 +66,7 @@ const AttributesAndDisciplinesPage: React.FC<ICharacterProperties> = ({character
     const attributeCount = Character.totalAttributeSum(character) - attributeTotal;
 
     let disciplineTotal = 0;
-    character.skills.forEach(a => disciplineTotal += a.expertise);
+    character.departments.forEach(a => disciplineTotal += a);
     disciplineTotal -= (character.finishingStep?.disciplines?.length ?? 0);
 
     const disciplineCount = Character.totalDisciplineSum(character) - disciplineTotal;

@@ -89,7 +89,7 @@ const CareerEventDetailsPage: React.FC<ICareerEventDetailsProperties> = ({charac
                         <Header level={2} className="mb-3">{t('Construct.other.discipline')}</Header>
                         {careerEvent.disciplines.length === 1
                         ? (<div>
-                                <AttributeView name={t(makeKey('Construct.discipline.', Skill[careerEvent.disciplines[0]])) } points={1} value={character.skills[careerEvent.disciplines[0]].expertise}/>
+                                <AttributeView name={t(makeKey('Construct.discipline.', Skill[careerEvent.disciplines[0]])) } points={1} value={character.departments[careerEvent.disciplines[0]]}/>
                             </div>)
                         : (<DisciplineListComponent controller={disciplineController} />)}
                     </div>

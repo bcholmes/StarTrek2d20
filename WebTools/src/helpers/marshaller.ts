@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64';
 import pako from 'pako';
-import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, GovernmentDetails, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from '../common/character';
+import { AlliedMilitaryDetails, CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, GovernmentDetails, NpcGenerationStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import { Stereotype } from '../common/construct';
 import { MissionProfileStep, ServiceRecordStep, ShipBuildType, ShipBuildTypeModel, ShipTalentDetailSelection, SimpleStats, Starship } from '../common/starship';
@@ -81,7 +81,7 @@ class Marshaller {
 
         if (character.stereotype === Stereotype.Npc || character.legacyMode) {
             sheet["attributes"] = this.toAttributeObject(character._attributes);
-            sheet["disciplines"] = this.getSkillByNameObject(character.skills);
+            sheet["disciplines"] = this.getSkillByNameObject(character.departments);
         }
 
         if (character.supportingStep) {
@@ -241,7 +241,7 @@ class Marshaller {
         if ((character.stereotype !== Stereotype.MainCharacter && character.stereotype !== Stereotype.SoloCharacter) || character.legacyMode) {
             sheet["focuses"] = [...character.focuses];
             sheet["attributes"] = this.toAttributeObject(character._attributes);
-            sheet["disciplines"] = this.getSkillByNameObject(character.skills);
+            sheet["disciplines"] = this.getSkillByNameObject(character.departments);
         }
 
         if (character.careerStep != null) {
@@ -472,9 +472,9 @@ class Marshaller {
         return result;
     }
 
-    getSkillByNameObject(skills: CharacterSkill[]) {
+    getSkillByNameObject(departments: number[]) {
         let result = {};
-        skills.forEach(a => result[Skill[a.skill]] = a.expertise);
+        SkillsHelper.getSkills().forEach(s => result[Skill[s]] = departments[s]);
         return result;
     }
 

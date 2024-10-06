@@ -1,4 +1,4 @@
-﻿import {Skill} from './skills';
+﻿import {Skill, SkillsHelper} from './skills';
 import {Source} from './sources';
 import {Character} from '../common/character';
 import { CharacterType } from '../common/characterType';
@@ -831,23 +831,18 @@ export class RolesHelper {
     }
 
     private determineHighestDiscipline(character: Character) {
-        var skills = [];
-        character.skills.forEach(s => {
-            skills.push(s);
+        let departments = character.departments;
+        let maxDepartment = [];
+        let maxDepartmentValue = 0;
+        SkillsHelper.getSkills().forEach(s => {
+            if (maxDepartment.length === 0 || maxDepartmentValue < departments[s]) {
+                maxDepartmentValue = departments[s];
+                maxDepartment = [s];
+            } else if (maxDepartmentValue === departments[s]) {
+                maxDepartment.push(s);
+            }
         });
 
-        var disciplines = skills.sort((a, b) => { return b.expertise - a.expertise });
-        var highest = [disciplines[0].skill];
-        var value = disciplines[0].expertise;
-
-        for (var i = 1; i < disciplines.length; i++) {
-            if (disciplines[i].expertise === value) {
-                highest.push(disciplines[i].skill);
-            } else {
-                break;
-            }
-        }
-
-        return highest;
+        return maxDepartment;
     }
 }

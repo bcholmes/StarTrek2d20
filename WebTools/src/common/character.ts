@@ -82,16 +82,6 @@ class CharacterAttribute {
     }
 }
 
-export class CharacterSkill {
-    readonly skill: Skill;
-    readonly expertise: number;
-
-    constructor(skill: Skill, expertise: number) {
-        this.skill = skill;
-        this.expertise = expertise;
-    }
-}
-
 export class CharacterRank {
     readonly name: string;
     readonly id?: Rank;
@@ -611,11 +601,6 @@ export class Character extends Construct implements IWeaponDiceProvider {
         return attributeTotal;
     }
 
-    get skills(): CharacterSkill[] {
-        let departments = this.departments;
-        return SkillsHelper.getSkills().map(s => new CharacterSkill(s, departments[s]));
-    }
-
     get departments(): number[] {
         if (this.stereotype === Stereotype.SoloCharacter || (this.stereotype === Stereotype.MainCharacter && !this.legacyMode)) {
             let result = [1, 1, 1, 1, 1, 1];
@@ -659,7 +644,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     get skillTotal() {
         let total = 0;
-        this.skills.forEach(s => total += s.expertise);
+        this.departments.forEach(s => total += s);
         return total;
     }
 
@@ -678,7 +663,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
     get stress() {
         let stress = this.attributes[Attribute.Fitness].value;
         if (this.version === 1) {
-            stress +=  + this.skills[Skill.Security].expertise;
+            stress +=  + this.departments[Skill.Security];
         } else if (this.speciesStep?.species === Species.Vulcan) {
             // species ability makes stress based on Control
             stress = this.attributes[Attribute.Control].value;
@@ -688,7 +673,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
             if (this.version === 1) {
                 stress += 3;
             } else {
-                stress += this.skills[Skill.Command].expertise;
+                stress += this.departments[Skill.Command];
             }
         }
 
@@ -897,7 +882,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     getDiceForWeapon(weapon: Weapon) {
         if (this.version === 1) {
-            return weapon.dice + this.skills[Skill.Security].expertise;
+            return weapon.dice + this.departments[Skill.Security];
         } else {
             return weapon.dice;
         }
@@ -1314,7 +1299,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
     hasMaxedSkill() {
         const max = 5;
-        return this.skills.some(s => s.expertise === max);
+        return this.departments.some(s => s === max);
     }
 
     addValue(value: string) {

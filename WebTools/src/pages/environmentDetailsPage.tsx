@@ -85,7 +85,7 @@ class SoloEnvironmentDisciplineController implements IDisciplineController {
         return this.isShown(discipline);
     }
     getValue(discipline: Skill): number {
-        return this.character.skills[discipline].expertise;
+        return this.character.departments[discipline];
     }
     canIncrease(discipline: Skill): boolean {
         return this.isEditable(discipline) && this.character.environmentStep?.discipline == null;
