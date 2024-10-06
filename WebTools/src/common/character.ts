@@ -1303,6 +1303,10 @@ export class Character extends Construct implements IWeaponDiceProvider {
                     [Specialization.SketchyTraderCaptain, Specialization.IndependentTraderCaptain].indexOf(this.npcGenerationStep?.specialization) >= 0));
     }
 
+    get isSona() {
+        return this.stereotype === Stereotype.Npc && (this.npcGenerationStep?.specialization === Specialization.SonaCommandOfficer);
+    }
+
     hasMaxedAttribute() {
         const max = Character.ABSOLUTE_MAX_ATTRIBUTE;
         return this.attributes.some(a => a.value === max);
