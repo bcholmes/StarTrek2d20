@@ -18,6 +18,8 @@ import { FontType } from "./fontLibrary";
 import { cardassianBrownColour2e, ferengiOrangeColour2e, klingonRedColour2e, labelColourProvider, romulanGreenColour2e, tealColour2e } from "./colourProvider2e";
 import { CharacterType } from "../common/characterType";
 import { politySymbolArrowHead, politySymbolArrowHeadCommand, politySymbolCardassianSymbolInner, politySymbolCardassianSymbolOutline, politySymbolFerengiSymbol, politySymbolKlingonSymbol, politySymbolKlingonSymbolCircle, politySymbolRomulanSymbolBackground, politySymbolRomulanSymbolBird } from "./politySymbols";
+import { ReadableTalentModel, TalentWriter } from "./talentWriter";
+import { bullet2EWriter } from "./bullet2eWriter";
 
 export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
@@ -258,24 +260,21 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         remainingColumn = remainingColumn.bottomAfter(16 + 13 + 4);
         let bottomOfShields = this.writeShieldsBoxes(page, pdf.getForm(), starship, remainingColumn);
 
-        remainingColumn = remainingColumn.bottomAfter(bottomOfShields.y - remainingColumn.start.y);
+        remainingColumn = remainingColumn.bottomAfter(bottomOfShields.y - remainingColumn.start.y).bottomAfter(16);
         this.writeSubTitle(page, i18next.t("Construct.other.talents"), remainingColumn);
 
         let talentsColumn = remainingColumn.bottomAfter(13 + 4);
 
-        let { bottomOfTalents, column} = this.writeTalents(page, starship, talentsColumn, colour);
+        let finalColumn = this.writeTalents(page, starship, talentsColumn, colour);
 
-        if (this.hasSpecialRules(starship)) {
-
-            let finalColumn = new Column(bottomOfTalents.x, bottomOfTalents.y + 16,
-                column.height + column.start.y - (bottomOfTalents.y + 16), column.width);
-            if (finalColumn.height <= 50 && column.nextColumn) {
-                finalColumn = column.nextColumn;
+        if (this.hasSpecialRules(starship) && finalColumn) {
+            if (finalColumn.height <= 50 && finalColumn.nextColumn) {
+                finalColumn = finalColumn.nextColumn;
+            } else {
+                finalColumn = finalColumn.bottomAfter(16);
             }
             if (finalColumn.height > 50) {
-                this.writeSubTitle(page, i18next.t("Construct.other.specialRules"), new Column(finalColumn.start.x, finalColumn.start.y,
-                    13, finalColumn.width));
-
+                this.writeSubTitle(page, i18next.t("Construct.other.specialRules"), finalColumn);
                 this.writeSpecialRules(page, starship, finalColumn.bottomAfter(13 + 4), colour);
             }
         }
@@ -379,7 +378,6 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
     }
 
     drawSheetDecorations(page: PDFPage, colour: SimpleColor) {
-        console.log("Sheet decorations: " + colour.asHex());
         page.moveTo(0, page.getHeight());
 
         page.drawSvgPath(Generated2eStarshipSheet.sideBubblesOpen, {
@@ -451,43 +449,35 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
     }
 
     writeTalents(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
+        let talents = [];
+
         let paragraph = new Paragraph(page, column, this.fonts);
-        let result = { column: column, bottomOfTalents: paragraph.bottom }
         for (let t of starship.getDistinctTalentNameList()) {
 
             if (paragraph) {
                 paragraph.indent(15);
                 const talent = TalentsHelper.getTalent(t);
                 if (!talent.specialRule) {
-                    let talentName = talent.localizedDisplayName;
+                    let readableTalent = new ReadableTalentModel(starship.type, talent);
+                    talents.push(readableTalent);
                     if (talent && talent.maxRank > 1) {
                         let rank = starship.getRankForTalent(t);
-                        talentName += " [x" + rank + "]";
-                    }
-                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), colour);
-                    paragraph.append(starship.version === 1 ? talent.localizedDescription : talent.localizedDescription2e, new FontOptions(9));
-                    paragraph.write();
-
-                    if (paragraph.lines.length) {
-                        let location = column.untranslateLocation(page, paragraph.lines[0].location);
-                        page.moveTo(paragraph.lines[0].column.start.x - 15, page.getHeight() - (location.y + 3));
-                        page.drawSvgPath(Generated2eStarshipSheet.bulletPath, {
-                            color: colour.asPdfRbg(),
-                            borderWidth: 0
-                        });
+                        readableTalent.rank = rank;
                     }
 
-                    let currentColumn = paragraph.endColumn;
-                    result = { column: currentColumn, bottomOfTalents: new XYLocation(currentColumn.start.x, paragraph.bottom.y) }
-
-                    paragraph = paragraph.nextParagraph();
+                    if (talent.name === TALENT_NAME_MISSION_POD && starship.missionPodModel) {
+                        readableTalent.missionPod = starship.missionPodModel;
+                    }
                 }
             }
         };
-        return result;
+
+        return new TalentWriter(page, this.fonts, starship.version, colour, true).writeTalents(talents, column, 9, 9, 15,
+            (p) => bullet2EWriter(page, p, colour));
     }
 
     writeSpecialRules(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
+        let talents = [];
         let paragraph = new Paragraph(page, column, this.fonts);
         for (let t of starship.getDistinctTalentNameList()) {
 
@@ -495,39 +485,21 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                 paragraph.indent(15);
                 const talent = TalentsHelper.getTalent(t);
                 if (talent.specialRule) {
-                    let talentName = talent.localizedDisplayName;
+                    let readableTalent = new ReadableTalentModel(starship.type, talent);
+                    talents.push(readableTalent);
                     if (talent && talent.maxRank > 1) {
                         let rank = starship.getRankForTalent(t);
-                        talentName += " [Rank: " + rank + "]";
-                    }
-                    paragraph.append(talentName.toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold), colour);
-                    paragraph.append(starship.version === 1 ? talent.localizedDescription : talent.localizedDescription2e, new FontOptions(9));
-                    paragraph.write();
-
-                    if (paragraph.lines.length) {
-                        let location = column.untranslateLocation(page, paragraph.lines[0].location);
-                        page.moveTo(paragraph.lines[0].column.start.x - 15, page.getHeight() - (location.y + 3));
-                        page.drawSvgPath(Generated2eStarshipSheet.bulletPath, {
-                            color: colour.asPdfRbg(),
-                            borderWidth: 0
-                        });
+                        readableTalent.rank = rank;
                     }
 
-                    if (talent.name === TALENT_NAME_MISSION_POD && starship.missionPodModel != null) {
-                        paragraph = paragraph.nextParagraph(0);
-                        if (paragraph) {
-                            paragraph.indent(30);
-                            paragraph.append(i18next.t("Construct.other.missionPod") + ":",
-                                new FontOptions(9, FontType.Bold));
-
-                            paragraph.append(starship.missionPodModel.localizedName, new FontOptions(9));
-                            paragraph.write();
-                        }
+                    if (talent.name === TALENT_NAME_MISSION_POD && starship.missionPodModel) {
+                        readableTalent.missionPod = starship.missionPodModel;
                     }
-
-                    paragraph = paragraph ? paragraph.nextParagraph() : null;
                 }
             }
         };
+
+        return new TalentWriter(page, this.fonts, starship.version, colour, true).writeTalents(talents, column, 9, 9, 15,
+            (p) => bullet2EWriter(page, p, colour));
     }
 }

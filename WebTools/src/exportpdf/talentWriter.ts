@@ -1,7 +1,7 @@
 import { PDFPage } from "@cantoo/pdf-lib";
 import { FontLibrary, FontType } from "./fontLibrary";
 import { SimpleColor } from "../common/colour";
-import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_UNTAPPED_POTENTIAL, TalentModel } from "../helpers/talents";
+import { TALENT_NAME_BORG_IMPLANTS, TALENT_NAME_MISSION_POD, TALENT_NAME_UNTAPPED_POTENTIAL, TalentModel } from "../helpers/talents";
 import { RoleModel } from "../helpers/roles";
 import { SpeciesAbility } from "../helpers/speciesAbility";
 import { Column } from "./column";
@@ -34,18 +34,21 @@ export class TalentWriter {
     fonts: FontLibrary;
     headingColour: SimpleColor;
     version: number;
+    capitalizeName: boolean;
 
-    constructor(page: PDFPage, fonts: FontLibrary, version: number = 1, headingColour: SimpleColor = SimpleColor.from("#000000")) {
+    constructor(page: PDFPage, fonts: FontLibrary, version: number = 1, headingColour: SimpleColor = SimpleColor.from("#000000"),
+            capitalizeName: boolean = false) {
         this.page = page;
         this.fonts = fonts;
         this.version = version;
         this.headingColour = headingColour;
+        this.capitalizeName = capitalizeName;
     }
 
     writeTalents(talents: (ReadableTalentModel|RoleModel|SpeciesAbility)[], column: Column,
             fontSize: number = 9, nameFontSize?: number,
-            indent?: number, bulletWriter: (paragraph?: Paragraph) => void = (p => {})) {
-        let paragraphs = [];
+            indent: number = 0, bulletWriter: (paragraph?: Paragraph) => void = (p => {})) {
+        let paragraphs: Paragraph[] = [];
         let paragraph = new Paragraph(this.page, column, this.fonts);
         paragraph.indent(indent);
         paragraphs.push(paragraph);
@@ -76,6 +79,9 @@ export class TalentWriter {
                 } else {
 
                     let talentName = talent.talent.localizedDisplayName;
+                    if (this.capitalizeName) {
+                        talentName = talentName.toLocaleUpperCase();
+                    }
                     if (talent && talent.talent.maxRank > 1) {
                         let rank = talent.rank;
                         talentName = i18next.t("Talent.text.rank", {talentName: talentName, rank: rank});
@@ -101,7 +107,7 @@ export class TalentWriter {
                             paragraph = paragraph?.nextParagraph(0);
                             if (paragraph) {
                                 paragraphs.push(paragraph);
-                                paragraph.indent(10);
+                                paragraph.indent(indent + 10);
                                 paragraph.append(implant.localizedName + ": ", new FontOptions(fontSize, FontType.Bold));
                                 paragraph.append(implant.description, new FontOptions(fontSize));
                             }
@@ -110,22 +116,42 @@ export class TalentWriter {
                         paragraph = paragraph?.nextParagraph(0);
                         if (paragraph) {
                             paragraphs.push(paragraph);
-                            paragraph.indent(10);
+                            paragraph.indent(indent + 10);
                             paragraph.append(i18next.t("Construct.other.attribute") + ": ", new FontOptions(fontSize, FontType.Bold));
                             paragraph.append(i18next.t(makeKey("Construct.attribute.", Attribute[talent.attribute])), new FontOptions(fontSize));
+                        }
+                    } else if (talent.talent.name === TALENT_NAME_MISSION_POD && talent.missionPod != null) {
+                        paragraph = paragraph?.nextParagraph(0);
+                        if (paragraph) {
+                            paragraphs.push(paragraph);
+                            paragraph.indent(indent + 10);
+                            paragraph.append(i18next.t("Construct.other.missionPod") + ": ", new FontOptions(fontSize, FontType.Bold));
+                            paragraph.append(talent.missionPod.localizedName, new FontOptions(fontSize));
                         }
                     }
 
                     paragraph = paragraph?.nextParagraph();
                     if (paragraph) {
+                        paragraph.indent(indent);
                         paragraphs.push(paragraph);
                     }
                 }
-
             }
         });
 
         paragraphs.forEach(p => p.write());
-    }
 
+        if (paragraphs.length) {
+            let last = paragraphs.filter(p => p.lines?.length).slice(-1)[0];
+            if (last) {
+                let bottom = last.bottom;
+console.log(paragraph.endColumn);
+                return paragraph.endColumn.bottomAfter(bottom.y - paragraph.endColumn.start.y);
+            } else {
+                return column;
+            }
+        } else {
+            return column;
+        }
+    }
 }

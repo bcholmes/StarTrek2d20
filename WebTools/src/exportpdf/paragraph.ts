@@ -224,6 +224,9 @@ export class Paragraph {
             if (line) {
                 result = new Paragraph(this.page, Paragraph.unindentedColumn(line.column, this.indentAmount), this.fontLibrary);
                 result.start = this.indentAmount ? new XYLocation(newLocation.x - this.indentAmount, newLocation.y) : newLocation;
+                if (this.indentAmount) {
+                    result.indent(this.indentAmount);
+                }
             } else {
                 result = null;
             }
