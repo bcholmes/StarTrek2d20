@@ -25,7 +25,6 @@ import D20IconButton from "../../solo/component/d20IconButton";
 import { FocusRandomTable } from "../../solo/table/focusRandomTable";
 import { Skill } from "../../helpers/skills";
 import { SimpleDepartmentSelector } from "../../components/simpleDepartmentSelector";
-import { ModificationType } from "../../modify/model/modificationType";
 
 const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
 
@@ -158,7 +157,7 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
                     <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
                     <Markdown>{t('ModifySupportingCharacter.value.instruction')}</Markdown>
                     <ValueInput onRandomClicked={() => randomValue()}
-                        onValueChanged={(v) => setValueSelection(valueSelection)}
+                        onValueChanged={(v) => setValueSelection(v)}
                         id="value" value={valueSelection} />
                 </div>
             </div>);

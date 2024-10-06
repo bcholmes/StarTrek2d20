@@ -13,7 +13,6 @@ import { Character } from "../common/character";
 import { Department, allDepartments } from "../helpers/departments";
 import { System, allSystems } from "../helpers/systems";
 import { Paragraph } from "./paragraph";
-import { XYLocation } from "../common/xyLocation";
 import { FontLibrary, FontType } from "./fontLibrary";
 import { FontOptions } from "./fontOptions";
 import { WeaponDescriber } from "./weaponDescriber";

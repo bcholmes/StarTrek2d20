@@ -12,6 +12,19 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.241005</b>
+                <ul>
+                    <li>
+                        Various bug fixes and internal structure improvements.
+                    </li>
+                    <li>
+                        Improvements to the handling of Supporting Characters. That lead to some structural changes to some
+                        sheets -- especially the half-page sheet.
+                    </li>
+                    <li>
+                        Tweaks to the Fantasy Grounds exporter. Someone mentioned wanting NPC exports handled as NPCs.
+                    </li>
+                </ul>
                 <b>v1.240929</b>
                 <ul>
                     <li>
@@ -230,12 +243,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <ul>
                     <li>
                         Minor internal changes and some small token-related changes.
-                    </li>
-                </ul>
-                <b>v1.240404</b>
-                <ul>
-                    <li>
-                        I had a recent contribution of Brazilian Portuguese translation for the app.
                     </li>
                 </ul>
 
