@@ -89,7 +89,7 @@
     "serve": "^14.2.0",
     "systemjs-builder": "^0.15.18",
     "ts-jest": "^29.1.2",
-    "ts-loader": "5.3.3",
+    "ts-loader": "9.5.1",
     "typescript": "4.9.3"
   },
   "scripts": {
