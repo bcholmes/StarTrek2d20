@@ -37,7 +37,7 @@ export class Column {
 
     bottomAfter(deltaY: number) {
         if (deltaY <= this.height) {
-            return new Column(this.start.x, this.start.y + deltaY, this.height - deltaY, this.width);
+            return new Column(this.start.x, this.start.y + deltaY, this.height - deltaY, this.width, this.nextColumn);
         } else {
             return null;
         }

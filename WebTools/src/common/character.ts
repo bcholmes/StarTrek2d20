@@ -653,6 +653,47 @@ export class Character extends Construct implements IWeaponDiceProvider {
         }
     }
 
+    get departments(): number[] {
+        if (this.stereotype === Stereotype.SoloCharacter || (this.stereotype === Stereotype.MainCharacter && !this.legacyMode)) {
+            let result = [1, 1, 1, 1, 1, 1];
+            if (this.environmentStep?.discipline != null) {
+                result[this.environmentStep.discipline] += 1;
+            }
+            if (this.upbringingStep?.discipline != null) {
+                result[this.upbringingStep.discipline] += 1;
+            }
+            if (this.educationStep?.primaryDiscipline != null) {
+                result[this.educationStep.primaryDiscipline] += 2;
+            }
+            this.educationStep?.decrementDisciplines?.forEach(d =>  result[d] -= 1);
+            this.educationStep?.disciplines?.forEach(d => result[d] += 1);
+            this.careerEvents.filter(e => e.discipline != null).forEach(e => result[e.discipline] += 1);
+
+            this.finishingStep?.disciplines?.forEach(d => result[d] += 1)
+
+            SkillsHelper.getSkills().forEach(s => result[s] = Math.min(Character.maxDiscipline(this), result[s]));
+
+            return result;
+        } else if (this.stereotype === Stereotype.SupportingCharacter && !this.legacyMode) {
+            let values = [...this.age.disciplines];
+            if (this.version > 1 && this.type !== CharacterType.Child && this.supportingStep?.supervisory) {
+                values = [4, 4, 3, 2, 2, 1];
+            }
+            let result = SkillsHelper.getSkills().map(s => {
+                let index = this.supportingStep?.disciplines?.indexOf(s);
+                return values[index];
+            });
+            this.improvements?.forEach(i => {
+                if (i.discipline != null) {
+                    result[i.discipline] += 1;
+                }
+            })
+            return result;
+        } else {
+            return [...this._skills];
+        }
+    }
+
     get skillTotal() {
         let total = 0;
         this.skills.forEach(s => total += s.expertise);

@@ -154,6 +154,9 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
     }
 
     writeSubTitle(page: PDFPage, text: string, block: Column) {
+        if (block.height > 13) {
+            block = block.topBefore(13);
+        }
         const font = new FontSpecification(this.headingFont, 9);
         const textBlock = TextBlock.create(text.toLocaleUpperCase(), font, 0);
 
@@ -210,6 +213,6 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
             bottom = paragraph?.bottom;
         });
 
-        return bottom ? new XYLocation(column.start.x, bottom.y) : null;
+        return bottom ? column.bottomAfter(bottom.y - column.start.y) : null;
     }
 }

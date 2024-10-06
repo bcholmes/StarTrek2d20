@@ -250,14 +250,12 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         this.writeSubTitle(page, i18next.t("Construct.other.attacks"), new Column(attacksArea.x, attacksArea.y,
             13, Generated2eStarshipSheet.column1.width));
 
-        let bottomOfAttacks = this.writeAttacks(page, starship, new Column(attacksArea.x, attacksArea.y + 13 + 4,
+        let remainingColumn = this.writeAttacks(page, starship, new Column(attacksArea.x, attacksArea.y + 13 + 4,
             Generated2eStarshipSheet.column1.start.y + Generated2eStarshipSheet.column1.height - (attacksArea.y + 13 + 4),
             Generated2eStarshipSheet.column1.width), colour);
 
-        this.writeSubTitle(page, i18next.t("Construct.other.shields"), new Column(bottomOfAttacks.x, bottomOfAttacks.y + 16,
-            13, Generated2eStarshipSheet.column1.width));
-        let bottomOfShields = this.writeShieldsBoxes(page, pdf.getForm(), starship, new Column(bottomOfAttacks.x, bottomOfAttacks.y + 16 + 13 + 4,
-            50, Generated2eStarshipSheet.column1.width));
+        this.writeSubTitle(page, i18next.t("Construct.other.shields"), remainingColumn.bottomAfter(16).topBefore(13));
+        let bottomOfShields = this.writeShieldsBoxes(page, pdf.getForm(), starship, remainingColumn.bottomAfter(16 + 13 + 4));
 
         this.writeSubTitle(page, i18next.t("Construct.other.talents"), new Column(bottomOfShields.x, bottomOfShields.y + 16,
             13, Generated2eStarshipSheet.column1.width));

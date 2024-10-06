@@ -42,9 +42,12 @@ export class TalentWriter {
         this.headingColour = headingColour;
     }
 
-    writeTalents(talents: (ReadableTalentModel|RoleModel|SpeciesAbility)[], column: Column, fontSize: number = 9, nameFontSize?: number) {
+    writeTalents(talents: (ReadableTalentModel|RoleModel|SpeciesAbility)[], column: Column,
+            fontSize: number = 9, nameFontSize?: number,
+            indent?: number, bulletWriter: (paragraph?: Paragraph) => void = (p => {})) {
         let paragraphs = [];
         let paragraph = new Paragraph(this.page, column, this.fonts);
+        paragraph.indent(indent);
         paragraphs.push(paragraph);
         if (nameFontSize == null) {
             nameFontSize = fontSize;
@@ -55,6 +58,7 @@ export class TalentWriter {
                 if (talent instanceof RoleModel) {
                     paragraph.append(talent.localizedName + ": ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
                     paragraph.append(this.version === 1 ? talent.localizedAbility : talent.localizedAbility2e, new FontOptions(fontSize));
+                    bulletWriter(paragraph);
 
                     paragraph = paragraph.nextParagraph();
                     if (paragraph) {
@@ -63,6 +67,7 @@ export class TalentWriter {
                 } else if (talent instanceof SpeciesAbility) {
                     paragraph.append(talent.name + " (" + i18next.t('Construct.other.speciesAbility') + "): ", new FontOptions(nameFontSize, FontType.Bold), this.headingColour);
                     paragraph.append(talent.description, new FontOptions(fontSize));
+                    bulletWriter(paragraph);
 
                     paragraph = paragraph.nextParagraph();
                     if (paragraph) {
@@ -85,6 +90,8 @@ export class TalentWriter {
                             if (paragraph) {
                                 paragraphs.push(paragraph);
                             }
+                        } else {
+                            bulletWriter(paragraph);
                         }
                         paragraph?.append(p, new FontOptions(fontSize));
                     });

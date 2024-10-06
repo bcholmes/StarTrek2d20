@@ -6,7 +6,7 @@ import i18next from "i18next";
 import { makeKey } from "../common/translationKey";
 import { Attribute } from "../helpers/attributes";
 import { Skill } from "../helpers/skills";
-import { Character, Division } from "../common/character";
+import { Character } from "../common/character";
 import { Paragraph } from "./paragraph";
 import { FontSpecification } from "./fontSpecification";
 import { Construct } from "../common/construct";
@@ -15,32 +15,16 @@ import { XYLocation } from "../common/xyLocation";
 import { FontOptions } from "./fontOptions";
 import { FontType } from "./fontLibrary";
 import { bullet2EWriter } from "./bullet2eWriter";
-import { divisionColour2e, tealColour2e } from "./colourProvider2e";
+import { labelColourProvider, tealColour2e } from "./colourProvider2e";
+import { labelWriter, VerticalAlignment } from "./labelWriter";
+import { TextAlign } from "./textAlign";
+import { assembleWritableItems } from "./generatedsheet";
+import { SpeciesAbility } from "../helpers/speciesAbility";
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
-    mainBlock: Column = new Column(59, 72, 338-72, 304-59);
-
-    attributeTitleBlock: Column = new Column(322, 72, 13, 550-322);
-    departmentTitleBlock: Column = new Column(322, 127, 13, 550-322);
-    attacksTitleBlock: Column = new Column(322, 182, 13, 550-322);
-
-    controlBlock: Column = new Column(322, 88, 11, 58);
-    daringBlock: Column = new Column(322, 103, 11, 58);
-    fitnessBlock: Column = new Column(400, 88, 11, 58);
-    insightBlock: Column = new Column(400, 103, 11, 58);
-    presenceBlock: Column = new Column(478, 88, 11, 58);
-    reasonBlock: Column = new Column(478, 103, 11, 58);
-
-    commandBlock: Column = new Column(322, 143, 11, 58);
-    connBlock: Column = new Column(322, 158, 11, 58);
-    engineeringBlock: Column = new Column(400, 143, 11, 58);
-    securityBlock: Column = new Column(400, 158, 11, 58);
-    medicineBlock: Column = new Column(478, 143, 11, 58);
-    scienceBlock: Column = new Column(478, 158, 11, 58);
-
-    remainingBlock: Column = new Column(322, 198, 338-198, 550-322);
-
+    secondBlock: Column = new Column(314, 72, 338-72, 552-314);
+    mainBlock: Column = new Column(59, 72, 338-72, 298-59, this.secondBlock);
 
     getName(): string {
         return i18next.t(makeKey('Sheet.', "BasicGeneratedHalfPageCharacterSheet"),
@@ -63,83 +47,107 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         let character = construct as Character;
 
         const page = pdf.getPage(0);
-        const labelFont = new FontSpecification(this.boldFont, this.determineLabelFontSize(character));
-
-        let bottom = this.writeCharacterDetails(page, character);
-        this.writeSpeciesAbility(page, character, bottom);
-
-        this.writeLabel(page, i18next.t("Construct.attribute.control"),
-            this.controlBlock, labelFont, tealColour2e);
-        this.writeLabel(page, i18next.t("Construct.attribute.daring"),
-            this.daringBlock, labelFont, tealColour2e);
-        this.writeLabel(page, i18next.t("Construct.attribute.fitness"),
-            this.fitnessBlock, labelFont, tealColour2e);
-        this.writeLabel(page, i18next.t("Construct.attribute.insight"),
-            this.insightBlock, labelFont, tealColour2e);
-        this.writeLabel(page, i18next.t("Construct.attribute.presence"),
-            this.presenceBlock, labelFont, tealColour2e);
-        this.writeLabel(page, i18next.t("Construct.attribute.reason"),
-            this.reasonBlock, labelFont, tealColour2e);
-
-        this.writeLabel(page, "" + character.attributes[Attribute.Control].value,
-            this.valueBlock(this.controlBlock), labelFont, tealColour2e);
-        this.writeLabel(page, "" + character.attributes[Attribute.Daring].value,
-            this.valueBlock(this.daringBlock), labelFont, tealColour2e);
-        this.writeLabel(page, "" + character.attributes[Attribute.Fitness].value,
-            this.valueBlock(this.fitnessBlock), labelFont, tealColour2e);
-        this.writeLabel(page, "" + character.attributes[Attribute.Insight].value,
-            this.valueBlock(this.insightBlock), labelFont, tealColour2e);
-        this.writeLabel(page, "" + character.attributes[Attribute.Presence].value,
-            this.valueBlock(this.presenceBlock), labelFont, tealColour2e);
-        this.writeLabel(page, "" + character.attributes[Attribute.Reason].value,
-            this.valueBlock(this.reasonBlock), labelFont, tealColour2e);
-
-        this.writeLabel(page, i18next.t("Construct.discipline.command"),
-            this.commandBlock, labelFont, divisionColour2e(construct.era, Division.Command));
-        this.writeLabel(page, i18next.t("Construct.discipline.conn"),
-            this.connBlock, labelFont, divisionColour2e(construct.era, Division.Command));
-        this.writeLabel(page, i18next.t("Construct.discipline.engineering"),
-            this.engineeringBlock, labelFont, divisionColour2e(construct.era, Division.Operations));
-        this.writeLabel(page, i18next.t("Construct.discipline.security"),
-            this.securityBlock, labelFont, divisionColour2e(construct.era, Division.Operations));
-        this.writeLabel(page, i18next.t("Construct.discipline.science"),
-            this.scienceBlock, labelFont, divisionColour2e(construct.era, Division.Science));
-        this.writeLabel(page, i18next.t("Construct.discipline.medicine"),
-            this.medicineBlock, labelFont, divisionColour2e(construct.era, Division.Science));
-
-        this.writeLabel(page, "" + character.skills[Skill.Command].expertise,
-            this.valueBlock(this.commandBlock), labelFont, divisionColour2e(construct.era, Division.Command));
-        this.writeLabel(page, "" + character.skills[Skill.Conn].expertise,
-            this.valueBlock(this.connBlock), labelFont, divisionColour2e(construct.era, Division.Command));
-        this.writeLabel(page, "" + character.skills[Skill.Engineering].expertise,
-            this.valueBlock(this.engineeringBlock), labelFont, divisionColour2e(construct.era, Division.Operations));
-        this.writeLabel(page, "" + character.skills[Skill.Security].expertise,
-            this.valueBlock(this.securityBlock), labelFont, divisionColour2e(construct.era, Division.Operations));
-        this.writeLabel(page, "" + character.skills[Skill.Science].expertise,
-            this.valueBlock(this.scienceBlock), labelFont, divisionColour2e(construct.era, Division.Science));
-        this.writeLabel(page, "" + character.skills[Skill.Medicine].expertise,
-            this.valueBlock(this.medicineBlock), labelFont, divisionColour2e(construct.era, Division.Science));
-
-        this.writeSubTitle(page, i18next.t("Construct.other.attributes"), this.attributeTitleBlock);
-        if (character.version > 1) {
-            this.writeSubTitle(page, i18next.t("Construct.other.departments"), this.departmentTitleBlock);
-        } else {
-            this.writeSubTitle(page, i18next.t("Construct.other.disciplines"), this.departmentTitleBlock);
-        }
-
         this.writeCharacterName(page, character);
 
-        this.writeSubTitle(page, i18next.t("Construct.other.attacks"), this.attacksTitleBlock);
-        let remainingSpace = this.writeAttacks(page, character, this.remainingBlock);
-        let remainingColumn = new Column(remainingSpace.x, remainingSpace.y + 16,
-            13, this.remainingBlock.width);
+        let bottom = this.writeCharacterDetails(page, character);
 
-        this.writeSubTitle(page, i18next.t("Construct.other.stress"), remainingColumn);
-        remainingColumn = this.remainingBlock.bottomAfter(30 + remainingSpace.y - this.remainingBlock.start.y);
-        if (remainingColumn) {
-            this.writeStressBoxes(page, pdf.getForm(), character, remainingColumn);
+        let remainingColumn = this.mainBlock.bottomAfter(bottom.y - this.mainBlock.start.y + 16);
+        remainingColumn = this.writeStatBoxes(page, remainingColumn, character);
+
+        if (remainingColumn.height <= 40) {
+            remainingColumn = remainingColumn.nextColumn;
         }
+
+        this.writeSubTitle(page, i18next.t("Construct.other.attacks"), remainingColumn.topBefore(13));
+        remainingColumn = remainingColumn.bottomAfter(16);
+
+        remainingColumn = this.writeAttacks(page, character, remainingColumn);
+
+        if (character.isStressTrackPresent) {
+            if (remainingColumn.height <= 40) {
+                remainingColumn = remainingColumn.nextColumn;
+            } else {
+                remainingColumn = remainingColumn.bottomAfter(16);
+            }
+
+            this.writeSubTitle(page, i18next.t("Construct.other.stress"), remainingColumn.topBefore(13));
+            remainingColumn = remainingColumn.bottomAfter(16);
+            if (remainingColumn) {
+                remainingColumn = this.writeStressBoxes(page, pdf.getForm(), character, remainingColumn);
+            }
+        }
+
+        if (remainingColumn.height <= 40) {
+            remainingColumn = remainingColumn.nextColumn;
+        } else {
+            remainingColumn = remainingColumn.bottomAfter(15);
+        }
+        this.writeSpeciesAbility(page, character, remainingColumn);
     }
+
+    writeStatBoxes(page: PDFPage, column: Column, character: Character) {
+
+        this.writeSubTitle(page, i18next.t("Construct.other.attributes"), column.topBefore(13));
+        column = column.bottomAfter(5 + 13);
+
+        let boxes = new XYLocation(column.start.x, column.start.y);
+        const statFrame = "M 2.835,0 C 1.269,0 0,1.269 0,2.835 V 9 c 0,1.565 1.269,2.835 2.835,2.835 h 66.567 c 1.565,0 2.835,-1.27 2.835,-2.835 V 2.835 C 72.237,1.269 70.967,0 69.402,0 Z";
+
+        const rowHeight = 16;
+        let labels = {};
+        [Attribute.Control, Attribute.Fitness, Attribute.Presence, Attribute.Daring, Attribute.Insight, Attribute.Reason].forEach((a, i) => {
+
+            let location = new XYLocation(boxes.x + i % 3 * 81, boxes.y + Math.floor(i / 3) * rowHeight);
+            let x = location.x;
+            const y = page.getHeight() - location.y;
+            page.moveTo(x, y);
+            page.drawSvgPath(statFrame, {
+                borderColor: SimpleColor.from("#979696").asPdfRbg(),
+                borderWidth: 0.5
+            });
+
+            let labelColumn = new Column(x + 2, location.y, 11.8, 72.2 * 0.8);
+            const key = i18next.t(makeKey("Construct.attribute.", Attribute[a]));
+            labels[key] = labelColumn;
+
+            this.writeLabel(page, "" + character.attributes[a].value, this.valueBlock(labelColumn), new FontSpecification(this.boldFont, 9),
+                tealColour2e);
+        });
+
+        column = column.bottomAfter(10 + 2 * rowHeight);
+        if (character.version > 1) {
+            this.writeSubTitle(page, i18next.t("Construct.other.departments"), column.topBefore(13));
+        } else {
+            this.writeSubTitle(page, i18next.t("Construct.other.disciplines"), column.topBefore(13));
+        }
+        column = column.bottomAfter(5 + 13);
+
+        boxes = new XYLocation(column.start.x, column.start.y);
+        [Skill.Command, Skill.Engineering, Skill.Medicine, Skill.Conn, Skill.Security, Skill.Science].forEach((s, i) => {
+
+            let location = new XYLocation(boxes.x + i % 3 * 81, boxes.y + Math.floor(i / 3) * rowHeight);
+            let x = location.x;
+            const y = page.getHeight() - location.y;
+            page.moveTo(x, y);
+            page.drawSvgPath(statFrame, {
+                borderColor: SimpleColor.from("#979696").asPdfRbg(),
+                borderWidth: 0.5
+            });
+
+            let labelColumn = new Column(x + 2, location.y, 11.8, 72.2 * 0.8);
+            const key = makeKey("Construct.discipline.", Skill[s]);
+            labels[key] = labelColumn;
+
+            this.writeLabel(page, "" + character.departments[s], this.valueBlock(labelColumn), new FontSpecification(this.boldFont, 9),
+                labelColourProvider(character.era, key));
+        });
+
+        labelWriter(page, labels, character.version, this.boldFont, 9, (label) => labelColourProvider(character.era, label),
+            TextAlign.Right, "", VerticalAlignment.Middle);
+
+        return column.bottomAfter(10 + 2 * rowHeight);
+    }
+
 
     writeStressBoxes(page: PDFPage, form: PDFForm, character: Character, column: Column) {
         let stressBox = "m 1,0 h 7.5 c 0.554,0 1,0.446 1,1 v 7.5 c 0,0.554 -0.446,1 -1,1 H 1 C 0.446,9.5 0,9.054 0,8.5 V 1 C 0,0.446 0.446,0 1,0 Z";
@@ -169,16 +177,10 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
                 x += 10;
             }
         }
-    }
 
-    determineLabelFontSize(character: Character) {
-        let text = this.determineAllStatLabels(character);
-
-        let minWidth = [this.controlBlock, this.daringBlock, this.fitnessBlock, this.insightBlock, this.presenceBlock, this.reasonBlock,
-            this.commandBlock, this.connBlock, this.engineeringBlock, this.securityBlock, this.scienceBlock, this.medicineBlock].map(b => b.width)
-            .sort()[0];
-
-        return this.determineFontSizeForWidth(text, minWidth);
+        const height = 10;
+        const result = column.bottomAfter(height);
+        return result == null ? column.nextColumn : result;
     }
 
     writeCharacterDetails(page: PDFPage, character: Character) {
@@ -212,7 +214,7 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
             paragraph?.write();
 
             character.values.forEach((v, i) => {
-                paragraph = paragraph?.nextParagraph();
+                paragraph = paragraph?.nextParagraph(0.2);
                 paragraph?.indent(15);
                 paragraph?.append(v, new FontOptions(9));
                 paragraph?.write();
@@ -224,10 +226,15 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         return paragraph?.bottom;
     }
 
-    writeSpeciesAbility(page: PDFPage, character: Character, offset: XYLocation) {
-        if (character.version > 1 && character.speciesStep?.ability) {
-            let column = this.mainBlock.bottomAfter(offset.y - this.mainBlock.start.y + 16);
-            this.writeSubTitle(page, i18next.t("Construct.other.speciesAbility"), column.topBefore(13));
+    writeSpeciesAbility(page: PDFPage, character: Character, column: Column) {
+        let items = assembleWritableItems(character);
+
+        if (character.version > 1 && items.length > 0) {
+            if (items.length === 1 && items[0] instanceof SpeciesAbility) {
+                this.writeSubTitle(page, i18next.t("Construct.other.speciesAbility"), column.topBefore(13));
+            } else {
+                this.writeSubTitle(page, i18next.t("Construct.other.specialRules"), column.topBefore(13));
+            }
 
             column = column.bottomAfter(16);
             let paragraph = new Paragraph(page, column, this.fonts);
@@ -247,6 +254,4 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
             this.writeName(page, name, tealColour2e);
         }
     }
-
-
 }
