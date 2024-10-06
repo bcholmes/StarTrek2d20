@@ -347,7 +347,7 @@ export class FoundryVttExporter {
             let name = Skill[s].toLowerCase();
             result.system.disciplines[name] = {
                 "label": "sta.actor.character.discipline." + name,
-                "value": ("" + character.skills[s].expertise),
+                "value": ("" + character.departments[s]),
                 "selected": false
             };
         });

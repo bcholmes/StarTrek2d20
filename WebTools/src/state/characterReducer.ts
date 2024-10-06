@@ -1,4 +1,4 @@
-import { CareerEventStep, CareerStep, Character, CharacterRank, CharacterSkill, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from "../common/character";
+import { CareerEventStep, CareerStep, Character, CharacterRank, EducationStep, EnvironmentStep, FinishingStep, SelectedTalent, SpeciesAbilityOptions, SpeciesStep, SupportingImrovementStep, SupportingStep, UpbringingStep } from "../common/character";
 import { CharacterType } from "../common/characterType";
 import { Stereotype } from "../common/construct";
 import AgeHelper from "../helpers/age";
@@ -749,8 +749,10 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
         }
         case APPLY_NORMAL_MILESTONE_DISCIPLINE: {
             let temp = state.currentCharacter.copy();
+            /*
             temp.skills[action.payload.decrease] = new CharacterSkill(action.payload.decrease, temp.skills[action.payload.decrease].expertise - 1);
             temp.skills[action.payload.increase] = new CharacterSkill(action.payload.decrease, temp.skills[action.payload.increase].expertise + 1);
+            */
             return {
                 ...state,
                 currentCharacter: temp,
@@ -786,6 +788,10 @@ const characterReducer = (state: CharacterState = { currentCharacter: undefined,
             } else if (action.payload.type === SupportingCharacterModificationType.AdditionalAttribute) {
                 let improvement = new SupportingImrovementStep();
                 improvement.attribute = action.payload.value;
+                temp.improvements.push(improvement);
+            } else if (action.payload.type === SupportingCharacterModificationType.AdditionalDepartment) {
+                let improvement = new SupportingImrovementStep();
+                improvement.discipline = action.payload.value;
                 temp.improvements.push(improvement);
             }
             return {

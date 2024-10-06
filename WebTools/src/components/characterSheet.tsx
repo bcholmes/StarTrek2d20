@@ -248,7 +248,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.command')}</div>
                                             <div className="sheet-data text-center">
-                                                {c.skills[Skill.Command].expertise}
+                                                {c.departments[Skill.Command]}
                                             </div>
                                         </div>
                                     </div>
@@ -257,7 +257,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.conn')}</div>
                                             <div className="sheet-data text-center">
-                                                {c.skills[Skill.Conn].expertise}
+                                                {c.departments[Skill.Conn]}
                                             </div>
                                         </div>
                                     </div>
@@ -266,7 +266,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.security')}</div>
                                             <div className="sheet-data text-center">
-                                                {c.skills[Skill.Security].expertise}
+                                                {c.departments[Skill.Security]}
                                             </div>
                                         </div>
                                     </div>
@@ -275,7 +275,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.engineering')}</div>
                                             <div className="sheet-data text-center">
-                                                {c.skills[Skill.Engineering].expertise}
+                                                {c.departments[Skill.Engineering]}
                                             </div>
                                         </div>
                                     </div>
@@ -284,7 +284,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.science')}</div>
                                             <div className="sheet-data text-center">
-                                                {c.skills[Skill.Science].expertise}
+                                                {c.departments[Skill.Science]}
                                             </div>
                                         </div>
                                     </div>
@@ -293,7 +293,7 @@ class CharacterSheet extends React.Component<ICharacterSheetProperties, {}> {
                                         <div className="sheet-panel d-flex mw-100">
                                             <div className="sheet-label-orange text-uppercase">{t('Construct.discipline.medicine')}</div>
                                             <div className="sheet-data text-center">
-                                                {c.skills[Skill.Medicine].expertise}
+                                                {c.departments[Skill.Medicine]}
                                             </div>
                                         </div>
                                     </div>

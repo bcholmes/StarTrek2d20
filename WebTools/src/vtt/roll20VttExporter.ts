@@ -703,7 +703,7 @@ export class Roll20VttExporter {
     convertDiscipline(character: Character, s: Skill, id: IdHelper) {
         return {
             "name": Skill[s].toLocaleLowerCase(),
-            "current": character.skills[s].expertise,
+            "current": character.departments[s],
             "max": "",
             "id": id.nextId()
         };
@@ -902,7 +902,7 @@ export class Roll20VttExporter {
 
     convertWeapon(character: Character, weapon: Weapon, id: IdHelper) {
         let damage = "";
-        for (let i = 0; i < weapon.dice + character.skills[Skill.Security].expertise; i++) {
+        for (let i = 0; i < weapon.dice + character.departments[Skill.Security]; i++) {
             damage += "{{cdice" + (i+1) + "=[[1d6]]}}";
         }
         const rowId = id.nextId();

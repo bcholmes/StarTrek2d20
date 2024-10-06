@@ -199,7 +199,7 @@ const MainCharacterView: React.FC<ICharacterViewProperties> = ({character, showB
                         <LoadingButton loading={loadingExport} className="button-small me-3" onClick={() => showExportDialog() }>{t('Common.button.exportPdf')}</LoadingButton>
                         <Button className="button-small me-3" onClick={() => showVttExportDialog() }>{t('Common.button.exportVtt')}</Button>
                     </div>
-                    <div className="mt-5 mb-3">
+                    <div className="mt-5 mb-3 d-none">
                         <Button className="button-small" onClick={() => navigateToModification() }>{t('Common.button.modify')}</Button>
                     </div>
                 </div>)

@@ -612,45 +612,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
     }
 
     get skills(): CharacterSkill[] {
-        if (this.stereotype === Stereotype.SoloCharacter || (this.stereotype === Stereotype.MainCharacter && !this.legacyMode)) {
-            let result = [];
-            SkillsHelper.getSkills().forEach(s => result.push(new CharacterSkill(s, 1)));
-            if (this.environmentStep?.discipline != null) {
-                result[this.environmentStep.discipline].expertise = result[this.environmentStep.discipline].expertise + 1;
-            }
-            if (this.upbringingStep?.discipline != null) {
-                result[this.upbringingStep.discipline].expertise = result[this.upbringingStep.discipline].expertise + 1;
-            }
-            if (this.educationStep?.primaryDiscipline != null) {
-                result[this.educationStep.primaryDiscipline].expertise = result[this.educationStep.primaryDiscipline].expertise + 2;
-            }
-            this.educationStep?.decrementDisciplines?.forEach(d =>  result[d].expertise = result[d].expertise - 1);
-            this.educationStep?.disciplines?.forEach(d => result[d].expertise = result[d].expertise + 1);
-            this.careerEvents.filter(e => e.discipline != null).forEach(e => result[e.discipline].expertise = result[e.discipline].expertise + 1);
-
-            this.finishingStep?.disciplines?.forEach(d => result[d].expertise = result[d].expertise + 1)
-
-            SkillsHelper.getSkills().forEach(s => result[s].expertise = Math.min(Character.maxDiscipline(this), result[s].expertise));
-
-            return result;
-        } else if (this.stereotype === Stereotype.SupportingCharacter && !this.legacyMode) {
-            let values = [...this.age.disciplines];
-            if (this.version > 1 && this.type !== CharacterType.Child && this.supportingStep?.supervisory) {
-                values = [4, 4, 3, 2, 2, 1];
-            }
-            let result = SkillsHelper.getSkills().map(s => {
-                let index = this.supportingStep?.disciplines?.indexOf(s);
-                return new CharacterSkill(s, values[index]);
-            });
-            this.improvements?.forEach(i => {
-                if (i.discipline != null) {
-                    result[i.discipline] = new CharacterSkill(i.discipline, result[i.discipline].expertise + 1);
-                }
-            })
-            return result;
-        } else {
-            return SkillsHelper.getSkills().map(s => new CharacterSkill(s, this._skills[s]));
-        }
+        let departments = this.departments;
+        return SkillsHelper.getSkills().map(s => new CharacterSkill(s, departments[s]));
     }
 
     get departments(): number[] {
@@ -1263,9 +1226,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
             if (this.speciesStep?.abilityOptions?.focuses?.length) {
                 result.push(...this.speciesStep.abilityOptions.focuses);
             }
-            this.improvements?.filter(i => i.focus).forEach(i => result.push(i.focus));
-
             result.push(...this.supportingStep?.focuses?.filter(f => f.trim().length));
+            this.improvements?.filter(i => i.focus).forEach(i => result.push(i.focus));
             return result;
         } else {
             return this._focuses;

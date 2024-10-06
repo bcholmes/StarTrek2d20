@@ -252,18 +252,16 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let remainingColumn = this.writeAttacks(page, starship, new Column(attacksArea.x, attacksArea.y + 13 + 4,
             Generated2eStarshipSheet.column1.start.y + Generated2eStarshipSheet.column1.height - (attacksArea.y + 13 + 4),
-            Generated2eStarshipSheet.column1.width), colour);
+            Generated2eStarshipSheet.column1.width, Generated2eStarshipSheet.column2), colour);
 
         this.writeSubTitle(page, i18next.t("Construct.other.shields"), remainingColumn.bottomAfter(16).topBefore(13));
-        let bottomOfShields = this.writeShieldsBoxes(page, pdf.getForm(), starship, remainingColumn.bottomAfter(16 + 13 + 4));
+        remainingColumn = remainingColumn.bottomAfter(16 + 13 + 4);
+        let bottomOfShields = this.writeShieldsBoxes(page, pdf.getForm(), starship, remainingColumn);
 
-        this.writeSubTitle(page, i18next.t("Construct.other.talents"), new Column(bottomOfShields.x, bottomOfShields.y + 16,
-            13, Generated2eStarshipSheet.column1.width));
+        remainingColumn = remainingColumn.bottomAfter(bottomOfShields.y - remainingColumn.start.y);
+        this.writeSubTitle(page, i18next.t("Construct.other.talents"), remainingColumn);
 
-
-        let talentsColumn = new Column(bottomOfShields.x, bottomOfShields.y + 16 + 13 + 4,
-            Generated2eStarshipSheet.column1.start.y + Generated2eStarshipSheet.column1.height - (bottomOfShields.y + 13 + 4),
-            Generated2eStarshipSheet.column1.width, Generated2eStarshipSheet.column2);
+        let talentsColumn = remainingColumn.bottomAfter(13 + 4);
 
         let { bottomOfTalents, column} = this.writeTalents(page, starship, talentsColumn, colour);
 
@@ -281,7 +279,6 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
                 this.writeSpecialRules(page, starship, finalColumn.bottomAfter(13 + 4), colour);
             }
         }
-
     }
 
     drawArrowHead(page: PDFPage, construct: Construct, colour: SimpleColor) {

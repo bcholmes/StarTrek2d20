@@ -23,26 +23,51 @@ import { SimpleAttributeSelector } from "../../components/simpleAttributeSelecto
 import { InputFieldAndLabel } from "../../common/inputFieldAndLabel";
 import D20IconButton from "../../solo/component/d20IconButton";
 import { FocusRandomTable } from "../../solo/table/focusRandomTable";
+import { Skill } from "../../helpers/skills";
+import { SimpleDepartmentSelector } from "../../components/simpleDepartmentSelector";
+import { ModificationType } from "../../modify/model/modificationType";
 
 const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({character}) => {
+
+    const ALLOWED_IMPROVEMENT_COUNT = [1, 1, 3, 4, 4];
 
     const { t } = useTranslation();
     const [index, setIndex] = useState(0);
     const [modificationType, setModificationType] = useState<string|SupportingCharacterModificationType>("");
     const [valueSelection, setValueSelection] = useState<string>("");
     const [attriubteSelection, setAttributeSelection] = useState<Attribute>();
+    const [departmentSelection, setDepartmentSelection] = useState<Skill>();
     const [focusSelection, setFocusSelection] = useState<string>("");
     const navigate = useNavigate();
 
     const onNextPage = () => {
         if (index === 0) {
-            if (modificationType !== "") {
-                setIndex(index + 1);
-            } else {
+            if (modificationType === "") {
                 Dialog.show("Please select an improvement type.");
+            } else {
+                console.log(existingImprovementCountByType());
+                if (existingImprovementCountByType() >= ALLOWED_IMPROVEMENT_COUNT[modificationType]) {
+                    Dialog.show("This character has taken the maximum number (" + ALLOWED_IMPROVEMENT_COUNT[modificationType]
+                        + ") of this type of improvement.");
+                } else {
+                    setIndex(index + 1);
+                }
             }
         } else if (index === 1) {
             setIndex(index + 1);
+        }
+    }
+
+    const existingImprovementCountByType = () => {
+        switch (modificationType) {
+        case SupportingCharacterModificationType.AdditionalAttribute:
+            return character.improvements?.filter(i => i.attribute != null)?.length ?? 0
+        case SupportingCharacterModificationType.AdditionalDepartment:
+            return character.improvements?.filter(i => i.discipline != null)?.length ?? 0
+        case SupportingCharacterModificationType.AdditionalFocus:
+            return character.improvements?.filter(i => i.focus != null)?.length ?? 0
+        case SupportingCharacterModificationType.AdditionalValue:
+            return character.improvements?.filter(i => i.value != null)?.length ?? 0
         }
     }
 
@@ -68,6 +93,13 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
                 store.dispatch(modifySupportingCharacterAddImprovement(modificationType, attriubteSelection));
                 onNextPage();
             }
+        } else if (modificationType === SupportingCharacterModificationType.AdditionalDepartment) {
+            if (departmentSelection == null) {
+                Dialog.show("Please select a department");
+            } else {
+                store.dispatch(modifySupportingCharacterAddImprovement(modificationType, departmentSelection));
+                onNextPage();
+            }
         }
     }
 
@@ -75,7 +107,7 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
         setTimeout(() => {
             let c = store.getState().character.currentCharacter;
             const value = marshaller.encodeSupportingCharacter(c);
-            window.open('/view?s=' + value, "_blank");
+            navigate('/view?s=' + value);
         }, 200);
     }
 
@@ -133,7 +165,7 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
         } else if (modificationType === SupportingCharacterModificationType.AdditionalFocus) {
             return (<div className="row">
                 <div className="col-12 col-md-6">
-                    <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
+                    <Header level={2} className="my-4">{t('Construct.other.focus')}</Header>
                     <Markdown>{t('ModifySupportingCharacter.focus.instruction')}</Markdown>
                     <div className="d-flex justify-content-between align-items-center flex-wrap mb-2">
                         <InputFieldAndLabel labelName={t('Construct.other.focus')} value={focusSelection}
@@ -147,13 +179,19 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
         } else if (modificationType === SupportingCharacterModificationType.AdditionalAttribute) {
             return (<div className="row">
                 <div className="col-12 col-md-6">
-                    <Header level={2} className="my-4">{t('Construct.other.value')}</Header>
+                    <Header level={2} className="my-4">{t('Construct.other.attribute')}</Header>
                     <Markdown>{t('ModifySupportingCharacter.attribute.instruction')}</Markdown>
                     <SimpleAttributeSelector onSelectAttribute={(a) => setAttributeSelection(a)} isChecked={(a) => attriubteSelection === a} />
                 </div>
             </div>);
-        } else if (modificationType === SupportingCharacterModificationType.AdditionalDiscipline) {
-            return undefined;
+        } else if (modificationType === SupportingCharacterModificationType.AdditionalDepartment) {
+            return (<div className="row">
+                <div className="col-12 col-md-6">
+                    <Header level={2} className="my-4">{t('Construct.other.department')}</Header>
+                    <Markdown>{t('ModifySupportingCharacter.attribute.instruction')}</Markdown>
+                    <SimpleDepartmentSelector onSelectDepartment={(a) => setDepartmentSelection(a)} isChecked={(a) => departmentSelection === a} />
+                </div>
+            </div>);
         }
     }
 
@@ -168,57 +206,69 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
         return [
             new DropDownElement("", ""),
             new DropDownElement(SupportingCharacterModificationType.AdditionalAttribute, "Additional attribute"),
-            new DropDownElement(SupportingCharacterModificationType.AdditionalDiscipline, "Additional department"),
+            new DropDownElement(SupportingCharacterModificationType.AdditionalDepartment, "Additional department"),
             new DropDownElement(SupportingCharacterModificationType.AdditionalFocus, "Additional focus"),
             new DropDownElement(SupportingCharacterModificationType.AdditionalValue, "Additional value"),
         ];
     }
 
-    return (<LcarsFrame activePage={PageIdentity.ModifySupportingCharacter}>
-        <div id="app">
-            <div className="page container ms-0">
-                <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
-                    <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modifySupportingCharacter')}</li>
-                    </ol>
-                </nav>
-                <Header>{t("Page.title.modifySupportingCharacter")}</Header>
-                <Carousel controls={false} interval={null} activeIndex={index} indicators={false}>
-                    <Carousel.Item>
-                        <Markdown className="mt-4">{t('ModifySupportingCharacter.instruction')}</Markdown>
+    if (character == null) {
+        setTimeout(() => {
+            navigate("/");
+        }, 200);
+        return (<LcarsFrame activePage={PageIdentity.ModifySupportingCharacter}>
+                <div id="app">
+                    <div className="page container ms-0">
+                    </div>
+                </div>
+            </LcarsFrame>);
+    } else {
+        return (<LcarsFrame activePage={PageIdentity.ModifySupportingCharacter}>
+            <div id="app">
+                <div className="page container ms-0">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                        <li className="breadcrumb-item"><a href="/index.html" onClick={(e) => goToHome(e)}>{t('Page.title.home')}</a></li>
+                            <li className="breadcrumb-item active" aria-current="page">{t('Page.title.modifySupportingCharacter')}</li>
+                        </ol>
+                    </nav>
+                    <Header>{t("Page.title.modifySupportingCharacter")}</Header>
+                    <Carousel controls={false} interval={null} activeIndex={index} indicators={false}>
+                        <Carousel.Item>
+                            <Markdown className="mt-4">{t('ModifySupportingCharacter.instruction')}</Markdown>
 
-                        <div className="row">
-                            <div className="col-12 col-md-6">
+                            <div className="row">
+                                <div className="col-12 col-md-6">
 
-                                <Header level={2}>{t('ModifySupportingCharacter.improvementType')}</Header>
-                                <Markdown className="mt-4">{t('ModifySupportingCharacter.improvementType.instruction')}</Markdown>
-                                <div className="mt-4">
-                                    <DropDownSelect items={dropDownItems()} onChange={(v) => setModificationType(v)} defaultValue={modificationType} />
+                                    <Header level={2}>{t('ModifySupportingCharacter.improvementType')}</Header>
+                                    <Markdown className="mt-4">{t('ModifySupportingCharacter.improvementType.instruction')}</Markdown>
+                                    <div className="mt-4">
+                                        <DropDownSelect items={dropDownItems()} onChange={(v) => setModificationType(v)} defaultValue={modificationType} />
+                                    </div>
+
                                 </div>
-
                             </div>
-                        </div>
-                    </Carousel.Item>
-                    <Carousel.Item>
+                        </Carousel.Item>
+                        <Carousel.Item>
 
-                        {renderImprovementSection()}
-                    </Carousel.Item>
-                    <Carousel.Item>
+                            {renderImprovementSection()}
+                        </Carousel.Item>
+                        <Carousel.Item>
 
-                        <div className="row">
-                            <div className="col-12 col-md-6">
-                                <Header level={2} className="mt-3">Modification Applied</Header>
-                                <Markdown>{t('ModifySupportingCharacter.finish.instruction')}</Markdown>
+                            <div className="row">
+                                <div className="col-12 col-md-6">
+                                    <Header level={2} className="mt-3">Modification Applied</Header>
+                                    <Markdown>{t('ModifySupportingCharacter.finish.instruction')}</Markdown>
+                                </div>
                             </div>
-                        </div>
-                    </Carousel.Item>
-                </Carousel>
+                        </Carousel.Item>
+                    </Carousel>
 
-                {renderButtonBar()}
+                    {renderButtonBar()}
+                </div>
             </div>
-        </div>
-    </LcarsFrame>);
+        </LcarsFrame>);
+    }
 }
 
 export default connect(characterMapStateToProperties)(ModifySupportingCharacterPage);
