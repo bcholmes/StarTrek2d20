@@ -1292,6 +1292,14 @@ export class Character extends Construct implements IWeaponDiceProvider {
         return this.stereotype === Stereotype.Npc && (this.npcGenerationStep?.specialization === Specialization.SonaCommandOfficer);
     }
 
+    get isTalarian() {
+        return this.stereotype === Stereotype.Npc && ([Specialization.TalarianOfficer, Specialization.TalarianWarrior].includes(this.npcGenerationStep?.specialization));
+    }
+
+    get isTzenkethi() {
+        return this.stereotype === Stereotype.Npc && ([Specialization.TzenkethiSoldier].includes(this.npcGenerationStep?.specialization));
+    }
+
     hasMaxedAttribute() {
         const max = Character.ABSOLUTE_MAX_ATTRIBUTE;
         return this.attributes.some(a => a.value === max);

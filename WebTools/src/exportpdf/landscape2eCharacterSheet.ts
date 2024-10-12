@@ -19,7 +19,7 @@ import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { CharacterType, CharacterTypeModel } from "../common/characterType";
 import { TracksHelper } from "../helpers/tracks";
 import { cardassianBrownColour2e, divisionColour2e, ferengiOrangeColour2e, greyColour2e, klingonRedColour2e, labelColourProvider, orionGreenColour2e, romulanGreenColour2e, tealColour2e } from "./colourProvider2e";
-import { politySymbolArrowHead, politySymbolArrowHeadCommand, politySymbolArrowHeadOperations, politySymbolArrowHeadScience, politySymbolCardassianSymbolInner, politySymbolCardassianSymbolOutline, politySymbolFederationLaurels, politySymbolFederationStarfield, politySymbolFerengiSymbol, politySymbolKlingonSymbol, politySymbolKlingonSymbolCircle, politySymbolOrionSymbol, politySymbolRomulanSymbolBackground, politySymbolRomulanSymbolBird, politySymbolSona } from "./politySymbols";
+import { politySymbolArrowHead, politySymbolArrowHeadCommand, politySymbolArrowHeadOperations, politySymbolArrowHeadScience, politySymbolCardassianSymbolInner, politySymbolCardassianSymbolOutline, politySymbolFederationLaurels, politySymbolFederationStarfield, politySymbolFerengiSymbol, politySymbolKlingonSymbol, politySymbolKlingonSymbolCircle, politySymbolOrionSymbol, politySymbolRomulanSymbolBackground, politySymbolRomulanSymbolBird, politySymbolSona, politySymbolTalarianExtra, politySymbolTalarianMain, politySymbolTzenkethiBack, politySymbolTzenkethiFront } from "./politySymbols";
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
@@ -236,6 +236,23 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
                 scale: 0.6
             });
 
+        } else if (character.isTalarian) {
+            page.moveTo(704, page.getHeight() - 66);
+
+            page.drawSvgPath(politySymbolTalarianMain, {
+                borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.7
+            });
+
+            page.drawSvgPath(politySymbolTalarianExtra, {
+                borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
+                color: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.7
+            });
+
         } else if (character.isOrion) {
             page.moveTo(690, page.getHeight() - 65);
 
@@ -250,6 +267,23 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
             page.moveTo(700, page.getHeight() - 69);
 
             page.drawSvgPath(politySymbolFerengiSymbol, {
+                borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+        } else if (character.isTzenkethi) {
+            page.moveTo(700, page.getHeight() - 65);
+
+            page.drawSvgPath(politySymbolTzenkethiBack, {
+                borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
+                color: Landscape2eCharacterSheet.greyColour.lighten(0.3).asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+            page.drawSvgPath(politySymbolTzenkethiFront, {
                 borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
                 color: colour.asPdfRbg(),
                 borderWidth: 0,
