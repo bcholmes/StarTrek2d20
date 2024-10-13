@@ -1300,6 +1300,10 @@ export class Character extends Construct implements IWeaponDiceProvider {
         return this.stereotype === Stereotype.Npc && ([Specialization.TzenkethiSoldier].includes(this.npcGenerationStep?.specialization));
     }
 
+    get isTholian() {
+        return this.stereotype === Stereotype.Npc && ([Specialization.TholianWarrior].includes(this.npcGenerationStep?.specialization));
+    }
+
     hasMaxedAttribute() {
         const max = Character.ABSOLUTE_MAX_ATTRIBUTE;
         return this.attributes.some(a => a.value === max);

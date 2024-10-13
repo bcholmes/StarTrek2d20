@@ -7,6 +7,7 @@ export const orionGreenColour2e: SimpleColor = SimpleColor.from("#84C98B");
 export const ferengiOrangeColour2e: SimpleColor = SimpleColor.from("#E76E24");
 export const cardassianBrownColour2e: SimpleColor = SimpleColor.from("#603826");
 export const klingonRedColour2e: SimpleColor = SimpleColor.from("#C9242B");
+export const tholianFlameColour2e: SimpleColor = SimpleColor.from("#cd600d");
 
 export const tealColour2e: SimpleColor = SimpleColor.from("#39AAA3");
 export const greyColour2e: SimpleColor = SimpleColor.from("#979696");

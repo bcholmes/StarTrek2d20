@@ -18,8 +18,8 @@ import { WeaponDescriber } from "./weaponDescriber";
 import { CHALLENGE_DICE_NOTATION } from "../common/challengeDiceNotation";
 import { CharacterType, CharacterTypeModel } from "../common/characterType";
 import { TracksHelper } from "../helpers/tracks";
-import { cardassianBrownColour2e, divisionColour2e, ferengiOrangeColour2e, greyColour2e, klingonRedColour2e, labelColourProvider, orionGreenColour2e, romulanGreenColour2e, tealColour2e } from "./colourProvider2e";
-import { politySymbolArrowHead, politySymbolArrowHeadCommand, politySymbolArrowHeadOperations, politySymbolArrowHeadScience, politySymbolCardassianSymbolInner, politySymbolCardassianSymbolOutline, politySymbolFederationLaurels, politySymbolFederationStarfield, politySymbolFerengiSymbol, politySymbolKlingonSymbol, politySymbolKlingonSymbolCircle, politySymbolOrionSymbol, politySymbolRomulanSymbolBackground, politySymbolRomulanSymbolBird, politySymbolSona, politySymbolTalarianExtra, politySymbolTalarianMain, politySymbolTzenkethiBack, politySymbolTzenkethiFront } from "./politySymbols";
+import { cardassianBrownColour2e, divisionColour2e, ferengiOrangeColour2e, greyColour2e, klingonRedColour2e, labelColourProvider, orionGreenColour2e, romulanGreenColour2e, tealColour2e, tholianFlameColour2e } from "./colourProvider2e";
+import { politySymbolArrowHead, politySymbolArrowHeadCommand, politySymbolArrowHeadOperations, politySymbolArrowHeadScience, politySymbolCardassianSymbolInner, politySymbolCardassianSymbolOutline, politySymbolFederationLaurels, politySymbolFederationStarfield, politySymbolFerengiSymbol, politySymbolKlingonSymbol, politySymbolKlingonSymbolCircle, politySymbolOrionSymbol, politySymbolRomulanSymbolBackground, politySymbolRomulanSymbolBird, politySymbolSona, politySymbolTalarianExtra, politySymbolTalarianMain, politySymbolTholianBackground, politySymbolTholianForeground, politySymbolTzenkethiBack, politySymbolTzenkethiFront } from "./politySymbols";
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
@@ -111,6 +111,8 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
             return cardassianBrownColour2e;
         } else if (character.isFerengi) {
             return ferengiOrangeColour2e;
+        } else if (character.isTholian) {
+            return tholianFlameColour2e;
         } else {
             return tealColour2e;
         }
@@ -286,6 +288,23 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
             page.drawSvgPath(politySymbolTzenkethiFront, {
                 borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
                 color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+        } else if (character.isTholian) {
+            page.moveTo(700, page.getHeight() - 69);
+
+            page.drawSvgPath(politySymbolTholianBackground, {
+                borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
+                color: colour.asPdfRbg(),
+                borderWidth: 0,
+                scale: 0.6
+            });
+
+            page.drawSvgPath(politySymbolTholianForeground, {
+                borderColor: Landscape2eCharacterSheet.greyColour.asPdfRbg(),
+                color: SimpleColor.from("#ffffff").asPdfRbg(),
                 borderWidth: 0,
                 scale: 0.6
             });
