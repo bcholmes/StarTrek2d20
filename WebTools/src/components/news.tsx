@@ -12,6 +12,12 @@ class News extends React.Component<INewsProperties, {}> {
     render() {
         return (
             <Modal size="lg" show={this.props.showModal} onClose={() => this.props.onClose()} header="What's New?">
+                <b>v1.241013</b>
+                <ul>
+                    <li>
+                        Additional minor improvements.
+                    </li>
+                </ul>
                 <b>v1.241005</b>
                 <ul>
                     <li>
@@ -222,28 +228,6 @@ class News extends React.Component<INewsProperties, {}> {
                 <b>v1.240414</b>
                 <ul>
                     <li>Some minor token revisions.</li>
-                </ul>
-                <b>v1.240413</b>
-                <ul>
-                    <li>
-                        I've added the ability to export characters for Roll20. Roll20 doesn't appear to have a
-                        built-in import/export utility (which I find weird), but Detaaz pointed me at the {' '}
-                        <a href="https://justas-d.github.io/roll20-enhancement-suite/index.html" target="_blank" rel="noreferrer">VTT Enhancement Suite</a>,
-                        which allows this ability. At the moment, only standard character sheets are supported.
-                        I should be able to provide ship and NPC sheets in a later update.
-                    </li>
-                </ul>
-                <b>v1.240408</b>
-                <ul>
-                    <li>
-                        Bug fix. (Thanks, StarRider!)
-                    </li>
-                </ul>
-                <b>v1.240407</b>
-                <ul>
-                    <li>
-                        Minor internal changes and some small token-related changes.
-                    </li>
                 </ul>
 
                 <div className="text-center">
