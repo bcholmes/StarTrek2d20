@@ -768,8 +768,9 @@ class BaseTextCharacterSheet extends BasicFullCharacterSheet {
         this.fonts.addFont(FontType.Symbol, symbolFont);
     }
 
-    writeRoleAndTalents(page: PDFPage, character: Character, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
-        new TalentWriter(page, this.fonts, character.version).writeTalents(
+    async writeRoleAndTalents(page: PDFPage, character: Character, titleStyle: FontSpecification, paragraphStyle: FontSpecification, symbolStyle: FontSpecification, currentColumn: Column) {
+        const writer = new TalentWriter(page, this.fonts, character.version);
+        await writer.writeTalents(
             assembleWritableItems(character),
             currentColumn);
     }
@@ -861,7 +862,7 @@ class TwoPageTngCharacterSheet extends BaseTextCharacterSheet {
         let column1 = new Column(369, 40, 774-40, 585-369);
         let currentColumn = column1;
 
-        this.writeRoleAndTalents(page2, character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
+        await this.writeRoleAndTalents(page2, character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 }
 
@@ -914,7 +915,7 @@ class TwoPageTngLandscapeCharacterSheet extends BaseTextCharacterSheet {
 
         let currentColumn = new Column(573, 45, 563-45, 757-573);
 
-        this.writeRoleAndTalents(page, construct as Character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
+        await this.writeRoleAndTalents(page, construct as Character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 
     populateForm(form: PDFForm, construct: Construct): void {
@@ -1069,7 +1070,7 @@ class TwoPageKlingonCharacterSheet extends BaseTextCharacterSheet {
         let column1 = new Column(318, 105, 702-105, 551-318);
         let currentColumn = column1;
 
-        this.writeRoleAndTalents(page2, character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
+        await this.writeRoleAndTalents(page2, character, titleStyle, paragraphStyle, symbolStyle, currentColumn);
     }
 }
 

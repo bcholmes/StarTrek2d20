@@ -165,7 +165,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         }
         paragraph.write();
 
-        if (starship.className?.length) {
+        if (starship.className?.length && starship.version === 1) {
             paragraph = paragraph.nextParagraph(1);
 
             paragraph.append(i18next.t("Construct.other.spaceFrame").toLocaleUpperCase() + ": ", new FontOptions(9, FontType.Bold),
@@ -265,7 +265,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let talentsColumn = remainingColumn.bottomAfter(13 + 4);
 
-        let finalColumn = this.writeTalents(page, starship, talentsColumn, colour);
+        let finalColumn = await this.writeTalents(page, starship, talentsColumn, colour);
 
         if (this.hasSpecialRules(starship) && finalColumn) {
             if (finalColumn.height <= 50 && finalColumn.nextColumn) {
@@ -275,7 +275,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             }
             if (finalColumn.height > 50) {
                 this.writeSubTitle(page, i18next.t("Construct.other.specialRules"), finalColumn);
-                this.writeSpecialRules(page, starship, finalColumn.bottomAfter(13 + 4), colour);
+                await this.writeSpecialRules(page, starship, finalColumn.bottomAfter(13 + 4), colour);
             }
         }
     }
@@ -448,7 +448,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         return column.untranslateLocation(page, new XYLocation(column.translatedStart(page).x, y -= 12));
     }
 
-    writeTalents(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
+    async writeTalents(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
         let talents = [];
 
         let paragraph = new Paragraph(page, column, this.fonts);
@@ -472,11 +472,12 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             }
         };
 
-        return new TalentWriter(page, this.fonts, starship.version, colour, true).writeTalents(talents, column, 9, 9, 15,
+        let writer = new TalentWriter(page, this.fonts, starship.version, colour, true);
+        return await writer.writeTalents(talents, column, 9, 9, 15,
             (p) => bullet2EWriter(page, p, colour));
     }
 
-    writeSpecialRules(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
+    async writeSpecialRules(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
         let talents = [];
         let paragraph = new Paragraph(page, column, this.fonts);
         for (let t of starship.getDistinctTalentNameList()) {
@@ -499,7 +500,8 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
             }
         };
 
-        return new TalentWriter(page, this.fonts, starship.version, colour, true).writeTalents(talents, column, 9, 9, 15,
+        let writer = new TalentWriter(page, this.fonts, starship.version, colour, true);
+        return await writer.writeTalents(talents, column, 9, 9, 15,
             (p) => bullet2EWriter(page, p, colour));
     }
 }

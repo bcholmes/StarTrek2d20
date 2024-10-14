@@ -139,7 +139,7 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
         const page = pdf.getPage(0);
 
         this.writeWeaponLabels(page);
-        this.writeRoleAndTalents(page, character);
+        await this.writeRoleAndTalents(page, character);
     }
 
     get determinationLabelBlock() {
@@ -200,8 +200,9 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
     }
 
 
-    writeRoleAndTalents(page: PDFPage, character: Character) {
-        new TalentWriter(page, this.fonts, character.version).writeTalents(
+    async writeRoleAndTalents(page: PDFPage, character: Character) {
+        const writer = new TalentWriter(page, this.fonts, character.version);
+        await writer.writeTalents(
             assembleWritableItems(character),
             LandscapeGeneratedCharacterSheet.talentsColumn);
     }

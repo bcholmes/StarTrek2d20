@@ -88,7 +88,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         this.drawSheetDecorations(page, colour);
 
         this.writeLabels(page, construct as Character);
-        this.writeRoleAndTalents(page, construct as Character);
+        await this.writeRoleAndTalents(page, construct as Character);
         this.writeTitle(page, colour);
 
         this.createDeterminationBoxes(page, pdf);
@@ -407,8 +407,9 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
     }
 
-    writeRoleAndTalents(page: PDFPage, character: Character) {
-        new TalentWriter(page, this.fonts, character.version).writeTalents(
+    async writeRoleAndTalents(page: PDFPage, character: Character) {
+        const writer = new TalentWriter(page, this.fonts, character.version);
+        await writer.writeTalents(
             assembleWritableItems(character),
             Landscape2eCharacterSheet.talentsColumn1, 8);
     }

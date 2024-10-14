@@ -21,6 +21,8 @@ export interface IStarshipConfiguration {
 
 const convertStarshipType = (type: RandomStarshipCharacterType) => {
     switch (type) {
+        case RandomStarshipCharacterType.Romulan:
+            return CharacterType.Romulan;
         case RandomStarshipCharacterType.Klingon:
             return CharacterType.KlingonWarrior;
         case RandomStarshipCharacterType.Starfleet:
@@ -34,6 +36,8 @@ const determinePrefix = (starship: Starship) => {
         return "USS ";
     } else if (starship.type === CharacterType.KlingonWarrior) {
         return "IKS ";
+    } else if (starship.type === CharacterType.Romulan) {
+        return "IRW ";
     } else {
         return "";
     }

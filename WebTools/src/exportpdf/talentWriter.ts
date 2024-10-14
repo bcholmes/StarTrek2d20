@@ -35,6 +35,8 @@ export class TalentWriter {
     headingColour: SimpleColor;
     version: number;
     capitalizeName: boolean;
+    nextPageHandler: () => Promise<Column>
+
 
     constructor(page: PDFPage, fonts: FontLibrary, version: number = 1, headingColour: SimpleColor = SimpleColor.from("#000000"),
             capitalizeName: boolean = false) {
@@ -45,7 +47,7 @@ export class TalentWriter {
         this.capitalizeName = capitalizeName;
     }
 
-    writeTalents(talents: (ReadableTalentModel|RoleModel|SpeciesAbility)[], column: Column,
+    async writeTalents(talents: (ReadableTalentModel|RoleModel|SpeciesAbility)[], column: Column,
             fontSize: number = 9, nameFontSize?: number,
             indent: number = 0, bulletWriter: (paragraph?: Paragraph) => void = (p => {})) {
         let paragraphs: Paragraph[] = [];
@@ -145,7 +147,6 @@ export class TalentWriter {
             let last = paragraphs.filter(p => p.lines?.length).slice(-1)[0];
             if (last) {
                 let bottom = last.bottom;
-console.log(paragraph.endColumn);
                 return paragraph.endColumn.bottomAfter(bottom.y - paragraph.endColumn.start.y);
             } else {
                 return column;

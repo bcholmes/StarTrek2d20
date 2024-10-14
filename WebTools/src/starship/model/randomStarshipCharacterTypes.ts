@@ -1,8 +1,11 @@
 import i18next from "i18next";
+import store from "../../state/store";
+import { Era } from "../../helpers/eras";
 
 export enum RandomStarshipCharacterType {
     Starfleet,
-    Klingon
+    Klingon,
+    Romulan
 }
 
 export class RandomStarshipCharacterTypeModel {
@@ -21,6 +24,8 @@ export class RandomStarshipCharacterTypeModel {
                 return i18next.t('CharacterType.name.starfleet');
             case RandomStarshipCharacterType.Klingon:
                 return i18next.t('AlliedMilitaryType.name.klingonDefenceForce');
+            case RandomStarshipCharacterType.Romulan:
+                return i18next.t('AlliedMilitaryType.name.romulanStarEmpire');
             default:
                 return this.name;
         }
@@ -41,12 +46,15 @@ export class RandomStarshipCharacterTypes {
     private _types = [
         new RandomStarshipCharacterTypeModel(RandomStarshipCharacterType.Starfleet, "Starfleet"),
         new RandomStarshipCharacterTypeModel(RandomStarshipCharacterType.Klingon, "Klingon Defense Force"),
+        new RandomStarshipCharacterTypeModel(RandomStarshipCharacterType.Romulan, "Romulan Star Empire"),
     ];
 
     get types() {
         return this._types.filter(t => {
             if (t.type === RandomStarshipCharacterType.Starfleet) {
                 return true;
+            } else if (t.type === RandomStarshipCharacterType.Romulan) {
+                return store.getState().context.era !== Era.Enterprise;
             } else {
                 return true;
             }
