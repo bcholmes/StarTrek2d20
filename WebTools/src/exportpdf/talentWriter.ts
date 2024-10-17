@@ -147,7 +147,7 @@ export class TalentWriter {
             let last = paragraphs.filter(p => p.lines?.length).slice(-1)[0];
             if (last) {
                 let bottom = last.bottom;
-                return paragraph.endColumn.bottomAfter(bottom.y - paragraph.endColumn.start.y);
+                return last.endColumn.bottomAfter(bottom.y - last.endColumn.start.y);
             } else {
                 return column;
             }
