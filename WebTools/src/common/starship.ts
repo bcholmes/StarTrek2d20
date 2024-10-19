@@ -318,6 +318,10 @@ export class Starship extends Construct implements IWeaponDiceProvider {
         }
     }
 
+    get smallCraftReadiness() {
+        return this.scale - 1;
+    }
+
     get numberOfRefits() {
         return refitCalculator(this) + (this.hasTalent("Experimental Vessel") ? 2 : 0);
     }

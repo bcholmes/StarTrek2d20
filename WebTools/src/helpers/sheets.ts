@@ -32,6 +32,7 @@ import { TalentWriter } from '../exportpdf/talentWriter';
 import { assembleWritableItems } from '../exportpdf/generatedsheet';
 import { WeaponDescriber } from '../exportpdf/weaponDescriber';
 import { Landscape2eCharacterSheet } from '../exportpdf/landscape2eCharacterSheet';
+import { Standard2eStarshipSheet } from '../exportpdf/standard2eStarshipSheet';
 
 
 abstract class BasicSheet implements ICharacterSheet {
@@ -1184,10 +1185,12 @@ class CharacterSheets {
             return [ new CaptainsLogStarshipSheet() ];
         } else if (starship.type === CharacterType.KlingonWarrior) {
             return [ new StandardKlingonStarshipSheet(), new StandardTngStarshipSheet(), new Generated2eStarshipSheet(), new StandardTosStarshipSheet() ];
+        } else if (starship.version > 1) {
+            return [ new Standard2eStarshipSheet(), new Generated2eStarshipSheet(), new StandardTngStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
         } else if (starship.era === Era.NextGeneration) {
-            return [ new StandardTngStarshipSheet(), new Generated2eStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
+            return [ new StandardTngStarshipSheet(), new Generated2eStarshipSheet(), new Standard2eStarshipSheet(), new StandardTosStarshipSheet(), new StandardKlingonStarshipSheet() ];
         } else {
-            return [ new StandardTosStarshipSheet(), new Generated2eStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];
+            return [ new StandardTosStarshipSheet(), new Generated2eStarshipSheet(), new Standard2eStarshipSheet(), new StandardTngStarshipSheet(), new StandardKlingonStarshipSheet() ];
         }
     }
 }

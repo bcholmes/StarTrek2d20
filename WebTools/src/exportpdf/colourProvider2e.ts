@@ -11,6 +11,7 @@ export const tholianFlameColour2e: SimpleColor = SimpleColor.from("#cd600d");
 
 export const tealColour2e: SimpleColor = SimpleColor.from("#39AAA3");
 export const greyColour2e: SimpleColor = SimpleColor.from("#979696");
+export const darkGreyColour2e: SimpleColor = SimpleColor.from("#656668");
 
 export const goldColour2e: SimpleColor = SimpleColor.from("#D49F00");
 export const redColour2e: SimpleColor = SimpleColor.from("#C51A1B");

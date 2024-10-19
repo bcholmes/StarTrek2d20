@@ -561,6 +561,7 @@ Construct.other.assignment,Assignment,,Position,Asignación,Mission,Назнач
 Construct.other.attacks,Attacks,,,Ataques,Attaques,Оружие,Ataques
 Construct.other.attribute,Attribute,,Attribut,Atributo,Attribut,Качество,Atributo
 Construct.other.attributes,Attributes,,Attribute,Atributos,Attributs,Качества,Atributos
+Construct.other.breaches,Breaches,,,,,,
 Construct.other.career,Career,,Karriere,Carrera,Carrière,Карьера,Carreira
 Construct.other.careerEvent1,Career Event 1,,Karriereereignis 1,Evento durante la Carrera 1,Evénement de Carrière 1,Первое событие карьеры,Evento de Carreira 1
 Construct.other.careerEvent1.short,Event 1,,,Evento 1,Evènement 1,Событие 1,Evento 1
@@ -612,8 +613,11 @@ Construct.other.reprimands,Reprimands,,Verwarnungen,Reprimendas,Réprimandes,В�
 Construct.other.reputation,Reputation,,Ansehen,Reputación,Réputation,Репутация,Reputação
 Construct.other.scale,Scale,,Schiffsgröße,Escala,Echelle,,Escala
 Construct.other.serviceDate,Service Date,,Indienststellung,Fecha de Entrada en Servicio,Date de mise en service,Период службы,Data de Serviço
+Construct.other.serviceRecord,Service Record,,,,,,
 Construct.other.shields,Shields,,Schilde,Escudos,Boucliers,Щиты,Escudos
 Construct.other.ship,Ship,,,Nave,Vaisseau,Звездолет,Nave
+Construct.other.shuttlebay,Shuttlebay,,,,,,
+Construct.other.smallCraftReadiness,Small Craft Readiness,,,,,,
 Construct.other.sources,Sources,,Quellen,Fuentes,Sources,Источники,Fontes
 Construct.other.spaceFrame,Space Frame,,Schiffsklasse,Plantilla,Modèle de Vaisseau,,Estrutura Espacial
 Construct.other.specialRules,Special Rules,,Spezialregeln,Reglas Especiales,Règles spéciales,Особые Правила,Regras Especiais
@@ -633,6 +637,7 @@ Construct.other.training,Training,,Ausbildung,Formación,Formation,Тренир�
 Construct.other.trait,Trait,,Merkmal,Rasgo,Trait,Черта,Traço
 Construct.other.traits,Traits,,Merkmale,Rasgos,Traits,Черты,Traços
 Construct.other.additionalTraits,Additional Traits,,Zusätzliche Merkmale,Rasgos Adicionales,Traits additionnels,Дополнительные черты,Traços Adicionais
+Construct.other.unnamedCharacter,Unnamed Character,,,,,,
 Construct.other.upbringing,Upbringing,,Erziehung,Educación,Education,Воспитание,Educação
 Construct.other.value,Value,,Überzeugung,Valor,Valeur,Ценность,Valor
 Construct.other.values,Values,,Überzeugungen,Valores,Valeurs,Ценности,Valores
@@ -1963,6 +1968,7 @@ Sheet.landscape2eCharacterSheet,New Landscape 2nd Ed.-style Character Sheet (US-
 Sheet.standardTngCharacterSheet,Standard TNG Character Sheet (US-Letter),,,,Feuille de personnage TNG standard (format lettre US),Стандартный бланк персонажа TNG (US-Letter),Ficha de personagem padrão de TNG (US-Letter)
 Sheet.standard2eCharacterSheet,Standard 2nd Ed. Character Sheet (US-Letter),,,,,,
 Sheet.text.title,Starfleet Personnel Record,,,Registro de personal de la Flota Estelar,Registre personnel de Starfleet,Бланк персонажа,Registro de pessoal da Frota Estelar
+Sheet.text.title.starship,Starship Registry Entry,,,,,,
 Sheet.text.title.alt,Personnel File,,,,,,
 SheetTag.a4,A4,,,A4,A4,,A4
 SheetTag.halfPage,Half-Page,,,Media Página,Demi-page,Пол страницы,Meia página

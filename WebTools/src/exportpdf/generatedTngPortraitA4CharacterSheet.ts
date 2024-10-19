@@ -147,7 +147,7 @@ export class GeneratedTngPortraitA4CharacterSheet extends BaseTNGGeneratedCharac
         const originalText = i18next.t("Sheet.text.title").toLocaleUpperCase();
         let text = originalText;
         const fontSize = this.determineIdealFontWidth([ text ],
-            GeneratedTngPortraitA4CharacterSheet.headingColumn.width, 25, 18);
+            GeneratedTngPortraitA4CharacterSheet.headingColumn.width, 25, 18, this.headingFont);
         const block = GeneratedTngPortraitA4CharacterSheet.headingColumn;
         let width = this.headingFont.widthOfTextAtSize(text, fontSize);
         while (width > block.width) {
@@ -176,7 +176,7 @@ export class GeneratedTngPortraitA4CharacterSheet extends BaseTNGGeneratedCharac
         let fontSize = this.determineIdealFontWidth(
             [i18next.t("Weapon.common.name").toLocaleUpperCase(),
             i18next.t("Weapon.common.qualities").toLocaleUpperCase()],
-            41.5, 12.5, 8);
+            41.5, 12.5, 8, this.headingFont);
 
         let offset = 697.6 - 643.6;
         for (let i = 0; i < 3; i++) {

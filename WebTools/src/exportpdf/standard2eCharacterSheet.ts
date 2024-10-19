@@ -266,7 +266,7 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
         const originalText = i18next.t("Sheet.text.title.alt").toLocaleUpperCase();
         let text = originalText;
         const fontSize = this.determineIdealFontWidth([ text ],
-            Standard2eCharacterSheet.headingColumn.width, 11, 8);
+            Standard2eCharacterSheet.headingColumn.width, 11, 8, this.headingFont);
         const block = Standard2eCharacterSheet.headingColumn;
         let width = this.headingFont.widthOfTextAtSize(text, fontSize);
         while (width > block.width) {

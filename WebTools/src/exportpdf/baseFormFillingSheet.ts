@@ -24,20 +24,6 @@ export abstract class BaseFormFillingSheet extends BasicGeneratedSheet {
     }
 
 
-    determineIdealFontWidth(text: string[], maxWidth: number, idealFontSize: number, minimumFontSize: number) {
-        let fontSize = idealFontSize;
-        text.forEach(t => {
-            let width = this.headingFont.widthOfTextAtSize(t, fontSize);
-            while (width > maxWidth) {
-                fontSize -= 0.25;
-                width = this.headingFont.widthOfTextAtSize(t, fontSize);
-                if (fontSize <= minimumFontSize) {
-                    break;
-                }
-            }
-        });
-        return fontSize;
-    }
 
     fillReputation(form: PDFForm, character: Character) {
         this.fillField(form, 'Reputation', "" + character.reputation);

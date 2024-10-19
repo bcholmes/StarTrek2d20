@@ -154,7 +154,7 @@ export abstract class BaseTNGGeneratedCharacterSheet extends BaseFormFillingShee
             Object.keys(this.detailLabels).map(key => this.detailLabels[key].width));
         let fontSize = this.determineIdealFontWidth(
             Object.keys(this.detailLabels).map(key => i18next.t(key).toLocaleUpperCase()),
-            minWidth, 16.5, 9);
+            minWidth, 16.5, 9, this.headingFont);
 
         labelWriter(page, this.detailLabels, construct.version, this.headingFont, 16.5, colour, TextAlign.Left, ": ");
 

@@ -150,7 +150,7 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
         const originalText = i18next.t("Sheet.text.title").toLocaleUpperCase();
         let text = originalText;
         const fontSize = this.determineIdealFontWidth([ text ],
-            LandscapeGeneratedCharacterSheet.headingColumn.width, 20.4, 15);
+            LandscapeGeneratedCharacterSheet.headingColumn.width, 20.4, 15, this.headingFont);
         const block = LandscapeGeneratedCharacterSheet.headingColumn;
         let width = this.headingFont.widthOfTextAtSize(text, fontSize);
         while (width > block.width) {
@@ -185,7 +185,7 @@ export class LandscapeGeneratedCharacterSheet extends BaseTNGGeneratedCharacterS
         let fontSize = this.determineIdealFontWidth(
             [i18next.t("Weapon.common.name").toLocaleUpperCase(),
             i18next.t("Weapon.common.qualities").toLocaleUpperCase()],
-            38.1, 12.5, 8);
+            38.1, 12.5, 8, this.headingFont);
 
         let offset = 460.3 - 414.6;
         for (let i = 0; i < 4; i++) {

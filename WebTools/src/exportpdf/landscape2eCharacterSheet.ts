@@ -449,7 +449,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         const originalText = i18next.t("Sheet.text.title.alt").toLocaleUpperCase();
         let text = originalText;
         const fontSize = this.determineIdealFontWidth([ text ],
-            Landscape2eCharacterSheet.headingColumn.width, 10, 7.5);
+            Landscape2eCharacterSheet.headingColumn.width, 10, 7.5, this.headingFont);
         const block = Landscape2eCharacterSheet.headingColumn;
         let width = this.headingFont.widthOfTextAtSize(text, fontSize);
         while (width > block.width) {

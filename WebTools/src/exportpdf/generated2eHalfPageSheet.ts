@@ -262,6 +262,9 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
                 name = rank + " " + name;
             }
             this.writeName(page, name, tealColour2e);
+        } else {
+            this.writeName(page, i18next.t("Construct.other.unnamedCharacter"), tealColour2e);
+
         }
     }
 }

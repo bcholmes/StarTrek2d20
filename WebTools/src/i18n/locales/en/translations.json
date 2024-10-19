@@ -474,6 +474,7 @@
     "Construct.other.attacks": "Attacks",
     "Construct.other.attribute": "Attribute",
     "Construct.other.attributes": "Attributes",
+    "Construct.other.breaches": "Breaches",
     "Construct.other.career": "Career",
     "Construct.other.careerEvent1": "Career Event 1",
 
@@ -529,8 +530,11 @@
     "Construct.other.reputation": "Reputation",
     "Construct.other.scale": "Scale",
     "Construct.other.serviceDate": "Service Date",
+    "Construct.other.serviceRecord": "Service Record",
     "Construct.other.shields": "Shields",
     "Construct.other.ship": "Ship",
+    "Construct.other.shuttlebay": "Shuttlebay",
+    "Construct.other.smallCraftReadiness": "Small Craft Readiness",
     "Construct.other.sources": "Sources",
     "Construct.other.spaceFrame": "Space Frame",
     "Construct.other.specialRules": "Special Rules",
@@ -550,6 +554,7 @@
     "Construct.other.trait": "Trait",
     "Construct.other.traits": "Traits",
     "Construct.other.additionalTraits": "Additional Traits",
+    "Construct.other.unnamedCharacter": "Unnamed Character",
     "Construct.other.upbringing": "Upbringing",
     "Construct.other.value": "Value",
     "Construct.other.values": "Values",
@@ -1696,6 +1701,7 @@
 
     "Sheet.text.title": "Starfleet Personnel Record",
 
+    "Sheet.text.title.starship": "Starship Registry Entry",
     "Sheet.text.title.alt": "Personnel File",
 
     "SheetTag.a4": "A4",

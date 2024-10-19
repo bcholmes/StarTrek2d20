@@ -8,6 +8,7 @@ import { TextBlock } from "./textBlock";
 import { FontLibrary, FontType } from "./fontLibrary";
 import { textTokenizer } from "./textTokenizer";
 import { FontOptions } from "./fontOptions";
+import { TextAlign } from "./textAlign";
 
 // A line represents one line of text inside a paragrap and/or column of text. The line can
 // contain different text blocks (including some blocks that have different fonts or font weights),
@@ -90,8 +91,8 @@ export class Line {
         }
     }
 
-    writeTextBlocks(color: SimpleColor) {
-        let x = this.bottom().x;
+    writeTextBlocks(color: SimpleColor, offset: number = 0) {
+        let x = this.bottom().x + offset;
         this.blocks.forEach(textBlock => {
             textBlock.writeToPage(x, this.bottom().y, this.page, color);
             x += textBlock.width;
@@ -112,6 +113,7 @@ export class Paragraph {
     page: PDFPage;
     indentAmount: number;
     fontLibrary: FontLibrary;
+    textAlignment: TextAlign = TextAlign.Left;
 
     // in PDF coordinate system
     private start?: XYLocation;
@@ -201,7 +203,11 @@ export class Paragraph {
 
     write(colour: SimpleColor = SimpleColor.from("#000000")) {
         this.lines.forEach(t => {
-            t.writeTextBlocks(colour);
+            let offset = 0;
+            if (this.textAlignment === TextAlign.Centre) {
+                offset = t.availableWidth() / 2;
+            }
+            t.writeTextBlocks(colour, offset);
         });
     }
 
