@@ -79,8 +79,6 @@ export class Line {
         if (this.column.contains(this.bottom(), this.page)) {
             return this;
         } else {
-            console.log("does not contain", this.column, this.bottom());
-
             const result = this.column.advanceToNextColumn(this.page);
             if (result) {
                 let location = result.column.translatedStart(result.page);

@@ -48,16 +48,7 @@ export class Column {
         return this.nextColumnHelper != null;
     }
 
-    get nextColumn() {
-        if (this.nextColumnHelper != null && this.nextColumnHelper instanceof Column) {
-            return this.nextColumnHelper as Column;
-        } else {
-            return undefined;
-        }
-    }
-
     advanceToNextColumn(currentPage: PDFPage): IPageAndColumn|undefined {
-        console.log("advanceToNextColumn", this);
         if (this.nextColumnHelper == null) {
             return undefined;
         } else if (this.nextColumnHelper instanceof Column) {

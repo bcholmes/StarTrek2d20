@@ -44,7 +44,6 @@ const ModifySupportingCharacterPage : React.FC<ICharacterPageProperties> = ({cha
             if (modificationType === "") {
                 Dialog.show("Please select an improvement type.");
             } else {
-                console.log(existingImprovementCountByType());
                 if (existingImprovementCountByType() >= ALLOWED_IMPROVEMENT_COUNT[modificationType]) {
                     Dialog.show("This character has taken the maximum number (" + ALLOWED_IMPROVEMENT_COUNT[modificationType]
                         + ") of this type of improvement.");

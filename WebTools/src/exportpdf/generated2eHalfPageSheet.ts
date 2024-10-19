@@ -55,7 +55,8 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         remainingColumn = this.writeStatBoxes(page, remainingColumn, character);
 
         if (remainingColumn.height <= 40) {
-            remainingColumn = remainingColumn.nextColumn;
+            const newLocation = remainingColumn.advanceToNextColumn(page);
+            remainingColumn = newLocation?.column;
         }
 
         this.writeSubTitle(page, i18next.t("Construct.other.attacks"), remainingColumn.topBefore(13));
@@ -65,8 +66,9 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
         if (character.isStressTrackPresent) {
             if (remainingColumn.height <= 40) {
-                remainingColumn = remainingColumn.nextColumn;
-            } else {
+                const newLocation = remainingColumn.advanceToNextColumn(page);
+                remainingColumn = newLocation?.column;
+                } else {
                 remainingColumn = remainingColumn.bottomAfter(16);
             }
 
@@ -78,7 +80,8 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         }
 
         if (remainingColumn.height <= 40) {
-            remainingColumn = remainingColumn.nextColumn;
+            const newLocation = remainingColumn.advanceToNextColumn(page);
+            remainingColumn = newLocation?.column;
         } else {
             remainingColumn = remainingColumn.bottomAfter(15);
         }
@@ -180,7 +183,14 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
         const height = 10;
         const result = column.bottomAfter(height);
-        return result == null ? column.nextColumn : result;
+
+        if (result == null) {
+            const newLocation = column.advanceToNextColumn(page);
+            return newLocation?.column;
+        } else {
+            return result;
+        }
+
     }
 
     writeCharacterDetails(page: PDFPage, character: Character) {
