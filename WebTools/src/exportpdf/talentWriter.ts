@@ -35,7 +35,6 @@ export class TalentWriter {
     headingColour: SimpleColor;
     version: number;
     capitalizeName: boolean;
-    nextPageHandler: () => Promise<Column>
 
 
     constructor(page: PDFPage, fonts: FontLibrary, version: number = 1, headingColour: SimpleColor = SimpleColor.from("#000000"),

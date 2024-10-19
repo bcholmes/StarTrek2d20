@@ -31,9 +31,6 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
     static readonly starshipStatFrame = "M 2.835,0 C 1.269,0 0,1.269 0,2.835 V 9 c 0,1.565 1.269,2.835 2.835,2.835 h 66.567 c 1.565,0 2.835,-1.27 2.835,-2.835 V 2.835 C 72.237,1.269 70.967,0 69.402,0 Z"
 
-    static readonly column2 = new Column(538.5 - (284.7-56.7), 225, 715-225, 284.7-56.7);
-    static readonly column1 = new Column(56.7, 225, 715-225, 284.7-56.7, this.column2);
-
     getName(): string {
         return i18next.t(makeKey('Sheet.', "Generated2eStarshipSheet"),
             { "defaultValue": "New 2nd Ed.-style Starship Sheet (US Letter)"});
@@ -125,6 +122,23 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         }
     }
 
+    firstColumn(additionalPage: PDFPage, pdf: PDFDocument) {
+        const column4 = new Column(538.5 - (284.7-56.7), 78.5, 715-78.5, 284.7-56.7);
+        const column3 = new Column(56.7, 78.5, 715-78.5, 284.7-56.7, column4);
+
+        const column2 = new Column(538.5 - (284.7-56.7), 225, 715-225, 284.7-56.7,
+            () => {
+                const page = pdf.addPage(additionalPage);
+                return {
+                    page: page,
+                    column: column3
+                }
+            });
+        const column1 = new Column(56.7, 225, 715-225, 284.7-56.7, column2);
+
+        return column1;
+    }
+
     async populate(pdf: PDFDocument, construct: Construct) {
         await super.populate(pdf, construct);
 
@@ -136,11 +150,14 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         this.writeStarshipName(page, starship, colour);
 
+        const [ secondPage ] = await pdf.copyPages(pdf, [0]);
+        const column = this.firstColumn(secondPage, pdf);
+
         const { SheetOutlineOptions, SpaceframeOutline } = await import(/* webpackChunkName: 'spaceframeOutline' */ "../helpers/spaceframeOutlineHelper");
         SpaceframeOutline.draw(pdf, new SheetOutlineOptions(new XYLocation(56.7, 80), colour.asPdfRbg(), 1.2, 1.2), starship);
         this.drawArrowHead(page, construct, colour);
 
-        let paragraph = new Paragraph(page, Generated2eStarshipSheet.column1, this.fonts);
+        let paragraph = new Paragraph(page, column, this.fonts);
         paragraph.append(i18next.t("Construct.other.launchYear").toLocaleUpperCase() + ": ", new FontSpecification(this.boldFont, 9),
             colour);
         paragraph.append("" + (starship.spaceframeModel?.serviceYear ?? (starship.serviceYear ?? "")), new FontSpecification(this.textFont, 9));
@@ -199,7 +216,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         let statFontSize = this.determineFontSizeForWidth(this.determineAllStatLabels(starship), 72.2 * 0.8 - 2);
 
         this.writeSubTitle(page, i18next.t("Construct.other.systems"), new Column(bottom.x, bottom.y + 16,
-            13, Generated2eStarshipSheet.column1.width));
+            13, column.width));
 
         let systemsBoxes = new XYLocation(bottom.x, bottom.y + 16 + 13 + 4);
         // these sheets use an unusual order
@@ -224,7 +241,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         });
 
         this.writeSubTitle(page, i18next.t("Construct.other.departments"), new Column(systemsBoxes.x, systemsBoxes.y + 15.4 * 2 + 16,
-            13, Generated2eStarshipSheet.column1.width));
+            13, column.width));
         let departmentBoxes = new XYLocation(systemsBoxes.x, systemsBoxes.y + 15.4 * 2 + 16 + 13 + 4);
 
         // these sheets use an unusual order
@@ -250,11 +267,11 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let attacksArea = new XYLocation(departmentBoxes.x, departmentBoxes.y + 15.4 * 2 + 16);
         this.writeSubTitle(page, i18next.t("Construct.other.attacks"), new Column(attacksArea.x, attacksArea.y,
-            13, Generated2eStarshipSheet.column1.width));
+            13, column.width));
 
-        let remainingColumn = this.writeAttacks(page, starship, new Column(attacksArea.x, attacksArea.y + 13 + 4,
-            Generated2eStarshipSheet.column1.start.y + Generated2eStarshipSheet.column1.height - (attacksArea.y + 13 + 4),
-            Generated2eStarshipSheet.column1.width, Generated2eStarshipSheet.column2), colour);
+        let remainingColumn = this.writeAttacks(page, starship,
+            column.bottomAfter(
+                (attacksArea.y + 13 + 4) - column.start.y), colour);
 
         this.writeSubTitle(page, i18next.t("Construct.other.shields"), remainingColumn.bottomAfter(16).topBefore(13));
         remainingColumn = remainingColumn.bottomAfter(16 + 13 + 4);
@@ -268,8 +285,10 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
         let finalColumn = await this.writeTalents(page, starship, talentsColumn, colour);
 
         if (this.hasSpecialRules(starship) && finalColumn) {
-            if (finalColumn.height <= 50 && finalColumn.nextColumn) {
-                finalColumn = finalColumn.nextColumn;
+            if (finalColumn.height <= 50 && finalColumn.isNextColumnAvailable) {
+                let newColumn = finalColumn.advanceToNextColumn(page);
+                page = newColumn.page;
+                finalColumn = newColumn.column;
             } else {
                 finalColumn = finalColumn.bottomAfter(16);
             }
@@ -474,7 +493,7 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let writer = new TalentWriter(page, this.fonts, starship.version, colour, true);
         return await writer.writeTalents(talents, column, 9, 9, 15,
-            (p) => bullet2EWriter(page, p, colour));
+            (p) => bullet2EWriter(p.page, p, colour));
     }
 
     async writeSpecialRules(page: PDFPage, starship: Starship, column: Column, colour: SimpleColor) {
@@ -502,6 +521,6 @@ export class Generated2eStarshipSheet extends BaseNonForm2eSheet {
 
         let writer = new TalentWriter(page, this.fonts, starship.version, colour, true);
         return await writer.writeTalents(talents, column, 9, 9, 15,
-            (p) => bullet2EWriter(page, p, colour));
+            (p) => bullet2EWriter(p.page, p, colour));
     }
 }

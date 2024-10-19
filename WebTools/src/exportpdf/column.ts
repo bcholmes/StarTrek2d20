@@ -1,17 +1,26 @@
 import { PDFPage } from "@cantoo/pdf-lib";
 import { XYLocation } from "../common/xyLocation";
+import { IPageAndColumn } from "./pageAndColumn";
 
 export class Column {
     start: XYLocation;
     height: number;
     width: number;
-    nextColumn?: Column;
+    nextColumnHelper?: Column|(() => IPageAndColumn);
 
-    constructor(x: number, y: number, height: number, width: number, nextColumn?: Column) {
+    constructor(x: number, y: number, height: number, width: number, nextColumn?: (Column|(() => IPageAndColumn))) {
         this.start = new XYLocation(x, y);
         this.height = height;
         this.width = width;
-        this.nextColumn = nextColumn;
+        this.nextColumnHelper = nextColumn;
+    }
+
+    indent(indentAmount: number) {
+        return new Column(this.start.x + indentAmount, this.start.y, this.height, this.width - indentAmount);
+    }
+
+    unindent(indentAmount: number) {
+        return new Column(this.start.x - indentAmount, this.start.y, this.height, this.width + indentAmount);
     }
 
     contains(point: XYLocation, page: PDFPage) {
@@ -35,9 +44,37 @@ export class Column {
         return new XYLocation(this.start.x + this.width, this.start.y + this.height);
     }
 
+    get isNextColumnAvailable() {
+        return this.nextColumnHelper != null;
+    }
+
+    get nextColumn() {
+        if (this.nextColumnHelper != null && this.nextColumnHelper instanceof Column) {
+            return this.nextColumnHelper as Column;
+        } else {
+            return undefined;
+        }
+    }
+
+    advanceToNextColumn(currentPage: PDFPage): IPageAndColumn|undefined {
+        console.log("advanceToNextColumn", this);
+        if (this.nextColumnHelper == null) {
+            return undefined;
+        } else if (this.nextColumnHelper instanceof Column) {
+            return {
+                page: currentPage,
+                column: this.nextColumnHelper as Column
+            }
+        } else if (typeof this.nextColumnHelper === 'function') {
+            return this.nextColumnHelper();
+        } else {
+            return undefined;
+        }
+    }
+
     bottomAfter(deltaY: number) {
         if (deltaY <= this.height) {
-            return new Column(this.start.x, this.start.y + deltaY, this.height - deltaY, this.width, this.nextColumn);
+            return new Column(this.start.x, this.start.y + deltaY, this.height - deltaY, this.width, this.nextColumnHelper);
         } else {
             return null;
         }

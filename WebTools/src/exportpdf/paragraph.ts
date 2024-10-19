@@ -14,14 +14,18 @@ import { FontOptions } from "./fontOptions";
 // and we need to adjust the overall baseline of the line so that it can accommodate all such
 // blocks.
 export class Line {
+    readonly indentAmount: number;
     blocks: TextBlock[];
     column: Column;
+    page: PDFPage;
     location: XYLocation; // represents the upper-left-hand corner of the line
 
-    constructor(location: XYLocation, column: Column, blocks?: TextBlock[]) {
-        this.location = location;
+    constructor(location: XYLocation, page: PDFPage, column: Column, indentAmount: number = 0, blocks?: TextBlock[]) {
+        this.location = indentAmount > 0 ? new XYLocation(location.x + indentAmount, location.y) : location;
         this.blocks = blocks || [];
         this.column = column;
+        this.page = page;
+        this.indentAmount = indentAmount;
     }
 
     height() {
@@ -35,7 +39,7 @@ export class Line {
     availableWidth() {
         let w = 0.0;
         this.blocks.forEach(b => w += b.width);
-        return this.column.width - w;
+        return this.column.width - this.indentAmount - w;
     }
     isEmpty() {
         return this.blocks.length === 0;
@@ -66,24 +70,32 @@ export class Line {
         Array.prototype.push.apply(this.blocks, blocks);
     }
 
-    nextLine(page: PDFPage) {
-        return new Line(new XYLocation(this.bottom().x, this.bottom().y), this.column).moveToNextColumnIfNecessary(page);
+    nextLine() {
+        return new Line(new XYLocation(this.bottom().x - this.indentAmount, this.bottom().y), this.page, this.column, this.indentAmount)
+            .moveToNextColumnIfNecessary();
     }
 
-    public moveToNextColumnIfNecessary(page: PDFPage) {
-        if (this.column.contains(this.bottom(), page)) {
+    public moveToNextColumnIfNecessary() {
+        if (this.column.contains(this.bottom(), this.page)) {
             return this;
-        } else if (this.column.nextColumn == null) {
-            return null;
         } else {
-            return new Line(this.column.nextColumn.translatedStart(page), this.column.nextColumn, this.blocks);
+            console.log("does not contain", this.column, this.bottom());
+
+            const result = this.column.advanceToNextColumn(this.page);
+            if (result) {
+                let location = result.column.translatedStart(result.page);
+                return new Line(location,
+                    result.page, result.column, this.indentAmount, this.blocks);
+            } else {
+                return undefined;
+            }
         }
     }
 
-    writeTextBlocks(page: PDFPage, color: SimpleColor) {
+    writeTextBlocks(color: SimpleColor) {
         let x = this.bottom().x;
         this.blocks.forEach(textBlock => {
-            textBlock.writeToPage(x, this.bottom().y, page, color);
+            textBlock.writeToPage(x, this.bottom().y, this.page, color);
             x += textBlock.width;
         });
     }
@@ -119,7 +131,7 @@ export class Paragraph {
     get startColumn(): Column {
         if (this.lines?.length) {
             let firstLine = this.lines[0];
-            return Paragraph.unindentedColumn(firstLine.column, this.indentAmount);
+            return firstLine.column;
         } else {
             return this.column;
         }
@@ -128,9 +140,18 @@ export class Paragraph {
     get endColumn(): Column {
         if (this.lines?.length) {
             let lastLine = this.lines[this.lines.length - 1];
-            return Paragraph.unindentedColumn(lastLine.column, this.indentAmount);
+            return lastLine.column;
         } else {
             return this.column;
+        }
+    }
+
+    get endPage(): PDFPage {
+        if (this.lines?.length) {
+            let lastLine = this.lines[this.lines.length - 1];
+            return lastLine.page;
+        } else {
+            return this.page;
         }
     }
 
@@ -138,16 +159,10 @@ export class Paragraph {
         if (this.lines.length === 0) {
             let column = this.column;
             let start = this.start;
-            if (this.indentAmount) {
-                column = Paragraph.indentedColumn(column, this.indentAmount);
-                if (start != null) {
-                    start = new XYLocation(start.x + this.indentAmount, start.y);
-                }
-            }
             if (start == null) {
                 start = column.translatedStart(this.page);
             }
-            return new Line(start, column);
+            return new Line(start, this.page, column, this.indentAmount);
         } else {
             return this.lines[this.lines.length - 1];
         }
@@ -169,19 +184,6 @@ export class Paragraph {
         }
     }
 
-    private static indentedColumn(column: Column, indentAmount: number) {
-        return new Column(column.start.x + indentAmount, column.start.y, column.height, column.width - indentAmount,
-            column.nextColumn ? Paragraph.indentedColumn(column.nextColumn, indentAmount) : undefined)
-    }
-
-    private static unindentedColumn(column: Column, indentAmount: number): Column {
-        if (indentAmount) {
-            return new Column(column.start.x - indentAmount, column.start.y, column.height, column.width + indentAmount,
-                column.nextColumn ? Paragraph.unindentedColumn(column.nextColumn, indentAmount) : undefined)
-        } else {
-            return column;
-        }
-    }
     indent(amount: number) {
         this.indentAmount = amount;
     }
@@ -201,29 +203,29 @@ export class Paragraph {
 
     write(colour: SimpleColor = SimpleColor.from("#000000")) {
         this.lines.forEach(t => {
-            t.writeTextBlocks(this.page, colour);
+            t.writeTextBlocks(colour);
         });
     }
 
     nextParagraph(blankLine: number = 0.5) {
-        let result = new Paragraph(this.page, this.endColumn, this.fontLibrary);
+        let result = new Paragraph(this.endPage, this.endColumn, this.fontLibrary);
         if (this.lines.length > 0) {
             let line = this.lines[this.lines.length-1];
             let newLocation = line.location;
-            newLocation = new XYLocation(line.bottom().x, line.bottom().y - (blankLine * line.height()));
+            newLocation = new XYLocation(line.bottom().x - line.indentAmount, line.bottom().y - (blankLine * line.height()));
 
             if (newLocation && line.column) {
                 let currentColumn = line.column;
-                let newLine = new Line(newLocation, currentColumn);
-                line = newLine.moveToNextColumnIfNecessary(this.page);
+                let newLine = new Line(newLocation, this.endPage, currentColumn, this.indentAmount);
+                line = newLine.moveToNextColumnIfNecessary();
                 if (line) {
-                    newLocation = new XYLocation(line.bottom().x, line.bottom().y);
+                    newLocation = new XYLocation(line.bottom().x  - line.indentAmount, line.bottom().y);
                 }
             }
 
             if (line) {
-                result = new Paragraph(this.page, Paragraph.unindentedColumn(line.column, this.indentAmount), this.fontLibrary);
-                result.start = this.indentAmount ? new XYLocation(newLocation.x - this.indentAmount, newLocation.y) : newLocation;
+                result = new Paragraph(line.page, line.column, this.fontLibrary);
+                result.start = newLocation;
                 if (this.indentAmount) {
                     result.indent(this.indentAmount);
                 }
@@ -285,13 +287,13 @@ export class Paragraph {
                 if (block.width < line.availableWidth()) {
                     line.append(block);
                 } else {
-                    line = line.nextLine(this.page);
+                    line = line.nextLine();
                     if (line != null) {
                         result.push(line);
                         line.append(block);
 
                         // maybe the latest changes required a column change
-                        let newLine = line.moveToNextColumnIfNecessary(page);
+                        let newLine = line.moveToNextColumnIfNecessary();
                         if (newLine == null) {
                             // skip it
                         } else if (newLine !== line) {
@@ -319,7 +321,7 @@ export class Paragraph {
                         if (block.width < line.availableWidth()) {
                             line.append(block);
                         } else {
-                            line = line.nextLine(this.page);
+                            line = line.nextLine();
                             if (line != null) {
                                 result.push(line);
 
@@ -331,7 +333,7 @@ export class Paragraph {
                         }
 
                         // maybe the latest changes required a column change
-                        let newLine = line.moveToNextColumnIfNecessary(page);
+                        let newLine = line.moveToNextColumnIfNecessary();
                         if (newLine != null && newLine !== line) {
                             result[result.length-1] = newLine;
                         }

@@ -12,7 +12,7 @@ describe('testing line functions', () => {
 
         const pdf = await PDFDocument.create()
         const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
-        let line = new Line(new XYLocation(0, 0), new Column(0, 0, 500, 100));
+        let line = new Line(new XYLocation(0, 0), pdf.getPage(0), new Column(0, 0, 500, 100));
         line.add(TextBlock.create("Text", new FontSpecification(helvetica, 9), false));
 
         line.append(TextBlock.create(" Block", new FontSpecification(helvetica, 9), false));
@@ -24,7 +24,7 @@ describe('testing line functions', () => {
 
         const pdf = await PDFDocument.create()
         const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
-        let line = new Line(new XYLocation(0, 0), new Column(0, 0, 500, 100));
+        let line = new Line(new XYLocation(0, 0), pdf.getPage(0), new Column(0, 0, 500, 100));
         line.add(TextBlock.create("Text", new FontSpecification(helvetica, 9), false));
 
         line.append(TextBlock.create(" Block", new FontSpecification(helvetica, 9), false, SimpleColor.from("#ff0000")));
@@ -36,7 +36,7 @@ describe('testing line functions', () => {
 
         const pdf = await PDFDocument.create()
         const helvetica = await pdf.embedFont(StandardFonts.Helvetica);
-        let line = new Line(new XYLocation(0, 0), new Column(0, 0, 500, 100));
+        let line = new Line(new XYLocation(0, 0), pdf.getPage(0), new Column(0, 0, 500, 100));
         line.add(TextBlock.create("Text", new FontSpecification(helvetica, 9), false));
 
         line.append(TextBlock.create(" Block", new FontSpecification(helvetica, 10), false));
