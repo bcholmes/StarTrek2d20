@@ -90,7 +90,7 @@ export class Standard2eStarshipSheet extends BasicGeneratedSheet {
         this.writeTitle(page);
         this.writeShields(pdf, page, starship);
 
-        this.populateForm(pdf.getForm(), starship);
+        this.populateForm(page, pdf.getForm(), starship);
     }
 
     fillField(form: PDFForm, name: string, value: string|number) {
@@ -104,7 +104,7 @@ export class Standard2eStarshipSheet extends BasicGeneratedSheet {
         }
     }
 
-    populateForm(form: PDFForm, starship: Starship) {
+    populateForm(page: PDFPage, form: PDFForm, starship: Starship) {
 
         form.getFields().forEach(f => {
             if (f instanceof PDFTextField) {
@@ -142,6 +142,65 @@ export class Standard2eStarshipSheet extends BasicGeneratedSheet {
         this.fillField(form, 'Security', starship.departments[Department.Security]);
         this.fillField(form, 'Medicine', starship.departments[Department.Medicine]);
         this.fillField(form, 'Science', starship.departments[Department.Science]);
+
+        const width = 8.5;
+        const height = 5.7;
+        [
+            new XYLocation(42.1, 284.2),
+            new XYLocation(51.7, 284.2),
+            new XYLocation(61.2, 284.2),
+            new XYLocation(70.8, 284.2),
+            new XYLocation(80.3, 284.2),
+            new XYLocation(89.9, 284.2),
+
+            new XYLocation(118.5, 284.2),
+            new XYLocation(128, 284.2),
+            new XYLocation(137.6, 284.2),
+            new XYLocation(147.1, 284.2),
+            new XYLocation(156.7, 284.2),
+            new XYLocation(166.2, 284.2),
+
+            new XYLocation(194.8, 284.2),
+            new XYLocation(204.4, 284.2),
+            new XYLocation(213.9, 284.2),
+            new XYLocation(223.5, 284.2),
+            new XYLocation(233, 284.2),
+            new XYLocation(242.6, 284.2),
+
+            new XYLocation(42.1, 316.9),
+            new XYLocation(51.7, 316.9),
+            new XYLocation(61.2, 316.9),
+            new XYLocation(70.8, 316.9),
+            new XYLocation(80.3, 316.9),
+            new XYLocation(89.9, 316.9),
+
+            new XYLocation(118.5, 316.9),
+            new XYLocation(128, 316.9),
+            new XYLocation(137.6, 316.9),
+            new XYLocation(147.1, 316.9),
+            new XYLocation(156.7, 316.9),
+            new XYLocation(166.2, 316.9),
+
+            new XYLocation(194.8, 316.9),
+            new XYLocation(204.4, 316.9),
+            new XYLocation(213.9, 316.9),
+            new XYLocation(223.5, 316.9),
+            new XYLocation(233, 316.9),
+            new XYLocation(242.6, 316.9),
+
+        ].forEach((c, i) => {
+            let checkbox = form.createCheckBox("Breach " + (i+1));
+            checkbox.addToPage(page, {
+                x: c.x + 1,
+                y: page.getHeight() - c.y - (height - 0.5),
+                width: width - 2,
+                height: height - 1,
+                textColor: SimpleColor.from("#000000").asPdfRbg(),
+                borderWidth: 0
+            });
+        });
+
+
     }
 
     writeLabels(page: PDFPage, construct: Starship) {
@@ -385,7 +444,7 @@ export class Standard2eStarshipSheet extends BasicGeneratedSheet {
                     borderWidth: 1
                 });
             } else {
-                let checkbox = form.createCheckBox("Stress " + (i+1));
+                let checkbox = form.createCheckBox("Shield " + (i+1));
                 checkbox.addToPage(page, {
                     x: pill.x + (width - 9.5) / 2,
                     y: page.getHeight() - pill.y - (height - 3),

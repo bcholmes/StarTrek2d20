@@ -319,7 +319,11 @@ export class Starship extends Construct implements IWeaponDiceProvider {
     }
 
     get smallCraftReadiness() {
-        return this.scale - 1;
+        let result = this.scale - 1;
+        if (this.hasTalent("Extensive Shuttlebays")) {
+            result += (this.scale - 1);
+        }
+        return result;
     }
 
     get numberOfRefits() {
