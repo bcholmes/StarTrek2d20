@@ -27,6 +27,13 @@ describe('SpeciesAbilityList', () => {
         const ability = SpeciesAbilityList.instance.getBySpecies(Species.Human);
         expect(ability.isTalentSelectionSupported).toBeFalsy();
     });
+
+    test('Edosian has species talent names for 2e', () => {
+        const ability = SpeciesAbilityList.instance.getBySpecies(Species.Edosian);
+        expect(ability.isTalentSelectionSupported).toBeTruthy();
+        expect(ability.talentNames).toContain("Multi-Tasking (Edosian)");
+        expect(ability.talentNames).toContain("The Long View");
+    });
 });
 
 describe('SpeciesAbility', () => {
