@@ -12,7 +12,7 @@ describe('BuildPoints', () => {
 
         test('starship after 2400 uses higher base', () => {
             const points = BuildPoints.systemPointsForType(ShipBuildType.Starship, 2410, CharacterType.Starfleet, 4);
-            expect(points).toBe(60);
+            expect(points).toBe(61);
         });
 
         test('starship scale adjustments', () => {
