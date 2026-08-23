@@ -10,6 +10,7 @@ export enum ExtraType {
   InuitTattoo,
 
   ZaraniteMask,
+  Freckles,
   Visor,
   OrionPiece1,
   OrionPiece2,
@@ -62,6 +63,7 @@ export const getExtraCategory = (extraType: ExtraType) => {
       return ExtraCategory.Headwear;
 
     case ExtraType.Visor:
+    case ExtraType.Freckles:
     case ExtraType.ZaraniteMask:
     case ExtraType.OrionPiece1:
     case ExtraType.OrionPiece2:
