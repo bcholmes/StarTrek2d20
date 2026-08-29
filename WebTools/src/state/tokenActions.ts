@@ -1,3 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import { cyrb53 } from '../common/cyrb53';
 import type { Rank } from '../helpers/ranks';
 import type { Species } from '../helpers/speciesEnum';
@@ -40,201 +41,178 @@ export const CREATE_NEW_TOKEN = 'CREATE_NEW_TOKEN';
 export const SET_TOKEN_ROUNDED = 'SET_TOKEN_ROUNDED';
 export const SET_TOKEN_BORDERED = 'SET_TOKEN_BORDERED';
 
-export function createNewToken(
-  token?: TokenModel,
-  marshalledCharacter?: string,
-  characterName?: string,
-  rounded: boolean = false,
-  bordered: boolean = false,
-) {
-  const hash = marshalledCharacter?.length
-    ? cyrb53(marshalledCharacter)
-    : undefined;
-  const payload = {
-    token: token,
-    marshalledCharacter: marshalledCharacter,
-    characterName: characterName,
-    hash: hash,
-    rounded: rounded,
-    bordered: bordered,
-  };
-  return {
-    type: CREATE_NEW_TOKEN,
-    payload: payload,
-  };
-}
+export const createNewToken = createAction(
+  CREATE_NEW_TOKEN,
+  (
+    token?: TokenModel,
+    marshalledCharacter?: string,
+    characterName?: string,
+    rounded: boolean = false,
+    bordered: boolean = false,
+  ) => {
+    const hash = marshalledCharacter?.length
+      ? cyrb53(marshalledCharacter)
+      : undefined;
+    return {
+      payload: {
+        token: token,
+        marshalledCharacter: marshalledCharacter,
+        characterName: characterName,
+        hash: hash,
+        rounded: rounded,
+        bordered: bordered,
+      },
+    };
+  },
+);
 
-export function setTokenSpecies(species: Species) {
-  const payload = { species: species };
-  return {
-    type: SET_TOKEN_SPECIES,
-    payload: payload,
-  };
-}
+export const setTokenSpecies = createAction(
+  SET_TOKEN_SPECIES,
+  (species: Species) => ({
+    payload: { species: species },
+  }),
+);
 
-export function setTokenSecondarySpecies(species: Species) {
-  const payload = { species: species };
-  return {
-    type: SET_TOKEN_SECONDARY_SPECIES,
-    payload: payload,
-  };
-}
+export const setTokenSecondarySpecies = createAction(
+  SET_TOKEN_SECONDARY_SPECIES,
+  (species: Species) => ({
+    payload: { species: species },
+  }),
+);
 
-export function setUniformEra(era: UniformEra) {
-  const payload = { era: era };
-  return {
-    type: SET_TOKEN_UNIFORM_ERA,
-    payload: payload,
-  };
-}
+export const setUniformEra = createAction(
+  SET_TOKEN_UNIFORM_ERA,
+  (era: UniformEra) => ({
+    payload: { era: era },
+  }),
+);
 
-export function setTokenDivisionColor(color: string) {
-  const payload = { color: color };
-  return {
-    type: SET_TOKEN_DIVISION_COLOR,
-    payload: payload,
-  };
-}
+export const setTokenDivisionColor = createAction(
+  SET_TOKEN_DIVISION_COLOR,
+  (color: string) => ({
+    payload: { color: color },
+  }),
+);
 
-export function setTokenRank(rank: Rank) {
-  const payload = { rank: rank };
-  return {
-    type: SET_TOKEN_RANK,
-    payload: payload,
-  };
-}
+export const setTokenRank = createAction(SET_TOKEN_RANK, (rank: Rank) => ({
+  payload: { rank: rank },
+}));
 
-export function setTokenSkinColor(color: string) {
-  const payload = { color: color };
-  return {
-    type: SET_TOKEN_SKIN_COLOR,
-    payload: payload,
-  };
-}
+export const setTokenSkinColor = createAction(
+  SET_TOKEN_SKIN_COLOR,
+  (color: string) => ({
+    payload: { color: color },
+  }),
+);
 
-export function setTokenEyeColor(color: string) {
-  const payload = { color: color };
-  return {
-    type: SET_TOKEN_EYE_COLOR,
-    payload: payload,
-  };
-}
+export const setTokenEyeColor = createAction(
+  SET_TOKEN_EYE_COLOR,
+  (color: string) => ({
+    payload: { color: color },
+  }),
+);
 
-export function setTokenHairColor(color: string) {
-  const payload = { color: color };
-  return {
-    type: SET_TOKEN_HAIR_COLOR,
-    payload: payload,
-  };
-}
+export const setTokenHairColor = createAction(
+  SET_TOKEN_HAIR_COLOR,
+  (color: string) => ({
+    payload: { color: color },
+  }),
+);
 
-export function setTokenLipstickColor(color: string) {
-  const payload = { color: color };
-  return {
-    type: SET_TOKEN_LIPSTICK_COLOR,
-    payload: payload,
-  };
-}
+export const setTokenLipstickColor = createAction(
+  SET_TOKEN_LIPSTICK_COLOR,
+  (color: string) => ({
+    payload: { color: color },
+  }),
+);
 
-export function setTokenHairType(hairType: HairType) {
-  const payload = { hairType: hairType };
-  return {
-    type: SET_TOKEN_HAIR_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenHairType = createAction(
+  SET_TOKEN_HAIR_TYPE,
+  (hairType: HairType) => ({
+    payload: { hairType: hairType },
+  }),
+);
 
-export function setTokenHeadType(headType: HeadType) {
-  const payload = { headType: headType };
-  return {
-    type: SET_TOKEN_HEAD_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenHeadType = createAction(
+  SET_TOKEN_HEAD_TYPE,
+  (headType: HeadType) => ({
+    payload: { headType: headType },
+  }),
+);
 
-export function setTokenMouthType(mouthType: MouthType) {
-  const payload = { mouthType: mouthType };
-  return {
-    type: SET_TOKEN_MOUTH_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenMouthType = createAction(
+  SET_TOKEN_MOUTH_TYPE,
+  (mouthType: MouthType) => ({
+    payload: { mouthType: mouthType },
+  }),
+);
 
-export function setTokenEyeType(eyeType: EyeType) {
-  const payload = { eyeType: eyeType };
-  return {
-    type: SET_TOKEN_EYE_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenEyeType = createAction(
+  SET_TOKEN_EYE_TYPE,
+  (eyeType: EyeType) => ({
+    payload: { eyeType: eyeType },
+  }),
+);
 
-export function setTokenNoseType(noseType: NoseType) {
-  const payload = { noseType: noseType };
-  return {
-    type: SET_TOKEN_NOSE_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenNoseType = createAction(
+  SET_TOKEN_NOSE_TYPE,
+  (noseType: NoseType) => ({
+    payload: { noseType: noseType },
+  }),
+);
 
-export function setTokenBodyType(type: BodyType) {
-  const payload = { type: type };
-  return {
-    type: SET_TOKEN_BODY_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenBodyType = createAction(
+  SET_TOKEN_BODY_TYPE,
+  (type: BodyType) => ({
+    payload: { type: type },
+  }),
+);
 
-export function setTokenUniformVariantType(type: UniformVariantType) {
-  const payload = { type: type };
-  return {
-    type: SET_TOKEN_UNIFORM_VARIANT_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenUniformVariantType = createAction(
+  SET_TOKEN_UNIFORM_VARIANT_TYPE,
+  (type: UniformVariantType) => ({
+    payload: { type: type },
+  }),
+);
 
-export function setTokenFacialHairTypes(types: FacialHairType[]) {
-  const payload = { types: types };
-  return {
-    type: SET_TOKEN_FACIAL_HAIR_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenFacialHairTypes = createAction(
+  SET_TOKEN_FACIAL_HAIR_TYPE,
+  (types: FacialHairType[]) => ({
+    payload: { types: types },
+  }),
+);
 
-export function setTokenExtrasTypes(types: ExtraType[]) {
-  const payload = { types: types };
-  return {
-    type: SET_TOKEN_EXTRAS_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenExtrasTypes = createAction(
+  SET_TOKEN_EXTRAS_TYPE,
+  (types: ExtraType[]) => ({
+    payload: { types: types },
+  }),
+);
 
-export function setTokenNasoLabialFoldType(type: NasoLabialFoldType) {
-  const payload = { type: type };
-  return {
-    type: SET_TOKEN_NASO_LABIAL_FOLD_TYPE,
-    payload: payload,
-  };
-}
+export const setTokenNasoLabialFoldType = createAction(
+  SET_TOKEN_NASO_LABIAL_FOLD_TYPE,
+  (type: NasoLabialFoldType) => ({
+    payload: { type: type },
+  }),
+);
 
-export function setTokenSpeciesOption(option: SpeciesOption) {
-  const payload = { option: option };
-  return {
-    type: SET_TOKEN_SPECIES_OPTION,
-    payload: payload,
-  };
-}
+export const setTokenSpeciesOption = createAction(
+  SET_TOKEN_SPECIES_OPTION,
+  (option: SpeciesOption) => ({
+    payload: { option: option },
+  }),
+);
 
-export function setTokenRounded(rounded: boolean) {
-  const payload = { rounded: rounded };
-  return {
-    type: SET_TOKEN_ROUNDED,
-    payload: payload,
-  };
-}
-export function setTokenBordered(bordered: boolean) {
-  const payload = { bordered: bordered };
-  return {
-    type: SET_TOKEN_BORDERED,
-    payload: payload,
-  };
-}
+export const setTokenRounded = createAction(
+  SET_TOKEN_ROUNDED,
+  (rounded: boolean) => ({
+    payload: { rounded: rounded },
+  }),
+);
+
+export const setTokenBordered = createAction(
+  SET_TOKEN_BORDERED,
+  (bordered: boolean) => ({
+    payload: { bordered: bordered },
+  }),
+);

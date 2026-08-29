@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import type { Station } from '../common/station';
 import {
   CustomStationSpaceframeStep,
@@ -6,19 +7,19 @@ import {
 } from '../common/station';
 import { StationFrame } from '../helpers/stationFrame';
 import {
-  ADD_STATION_WEAPON,
-  CREATE_STATION,
-  DELETE_STATION_WEAPON,
-  MODIFY_STATION_CUSTOM_FRAME_DEPARTMENT,
-  MODIFY_STATION_CUSTOM_FRAME_SYSTEM,
-  SET_STATION_ADDITIONAL_TALENTS,
-  SET_STATION_CUSTOM_SCALE,
-  SET_STATION_FRAME,
-  SET_STATION_FRAME_APPEARANCE,
-  SET_STATION_MISSION_PROFILE,
-  SET_STATION_MISSION_PROFILE_TALENT,
-  SET_STATION_NAME,
-  SET_STATION_TRAITS,
+  addStationWeapon,
+  changeStationCustomFrameDepartment,
+  changeStationCustomFrameSystem,
+  createStation,
+  deleteStationWeapon,
+  setStationAdditionalTalents,
+  setStationCustomScale,
+  setStationFrame,
+  setStationFrameAppearance,
+  setStationMissionProfile,
+  setStationMissionProfileTalent,
+  setStationName,
+  setStationTraits,
 } from './stationActions';
 
 interface StationState {
@@ -26,7 +27,7 @@ interface StationState {
 }
 
 const withStation = (
-  state: StationState,
+  state: any,
   action: any,
   mutate: (s: Station, action: any) => void,
 ): StationState => {
@@ -40,21 +41,21 @@ const withStation = (
   };
 };
 
-export const stationReducer = (
-  state: StationState = { station: undefined },
-  action,
-) => {
-  switch (action.type) {
-    case CREATE_STATION: {
+export const stationSlice = createSlice({
+  name: 'station',
+  initialState: { station: undefined } as StationState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(createStation, (state, action) => {
       const s = action.payload.station;
       console.log('Create a station');
       return {
         ...state,
         station: s.copy(),
       };
-    }
-    case SET_STATION_MISSION_PROFILE:
-      return withStation(state, action, (s, action) => {
+    });
+    builder.addCase(setStationMissionProfile, (state, action) =>
+      withStation(state, action, (s, action) => {
         const original = s.missionProfileStep;
         s.missionProfileStep = new StationMissionProfileStep(
           action.payload.missionProfile,
@@ -62,9 +63,10 @@ export const stationReducer = (
         if (original?.type === s.missionProfileStep?.type) {
           s.missionProfileStep.talent = original?.talent?.copy();
         }
-      });
-    case SET_STATION_MISSION_PROFILE_TALENT:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(setStationMissionProfileTalent, (state, action) =>
+      withStation(state, action, (s, action) => {
         if (s.missionProfileStep) {
           s.missionProfileStep.talent = action.payload.talent;
         }
@@ -78,13 +80,15 @@ export const stationReducer = (
             i++;
           }
         }
-      });
-    case SET_STATION_NAME:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(setStationName, (state, action) =>
+      withStation(state, action, (s, action) => {
         s.name = action.payload.name;
-      });
-    case SET_STATION_CUSTOM_SCALE:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(setStationCustomScale, (state, action) =>
+      withStation(state, action, (s, action) => {
         if (
           s.stationFrameStep == null ||
           !(s.stationFrameStep instanceof CustomStationSpaceframeStep)
@@ -130,9 +134,10 @@ export const stationReducer = (
         ) {
           s.additionalTalents.splice(0, 1);
         }
-      });
-    case MODIFY_STATION_CUSTOM_FRAME_SYSTEM:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(changeStationCustomFrameSystem, (state, action) =>
+      withStation(state, action, (s, action) => {
         if (
           s.stationFrameStep == null ||
           !(s.stationFrameStep instanceof CustomStationSpaceframeStep)
@@ -144,9 +149,10 @@ export const stationReducer = (
         if (s.stationFrameStep.systems[system] > s.maxSystemValue) {
           s.stationFrameStep.systems[system] = s.maxSystemValue;
         }
-      });
-    case MODIFY_STATION_CUSTOM_FRAME_DEPARTMENT:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(changeStationCustomFrameDepartment, (state, action) =>
+      withStation(state, action, (s, action) => {
         if (
           s.stationFrameStep == null ||
           !(s.stationFrameStep instanceof CustomStationSpaceframeStep)
@@ -158,38 +164,41 @@ export const stationReducer = (
         if (s.stationFrameStep.departments[department] > s.maxDepartmentValue) {
           s.stationFrameStep.departments[department] = s.maxDepartmentValue;
         }
-      });
-    case ADD_STATION_WEAPON:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(addStationWeapon, (state, action) =>
+      withStation(state, action, (s, action) => {
         s.weapons.push(action.payload.weapon);
-      });
-    case DELETE_STATION_WEAPON:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(deleteStationWeapon, (state, action) =>
+      withStation(state, action, (s, action) => {
         if (s.weapons.indexOf(action.payload.weapon) >= 0) {
           s.weapons.splice(s.weapons.indexOf(action.payload.weapon), 1);
         }
-      });
-
-    case SET_STATION_ADDITIONAL_TALENTS:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(setStationAdditionalTalents, (state, action) =>
+      withStation(state, action, (s, action) => {
         s.additionalTalents =
           action.payload.talents?.map((t) => t.copy()) ?? [];
-      });
-
-    case SET_STATION_TRAITS:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(setStationTraits, (state, action) =>
+      withStation(state, action, (s, action) => {
         s.traits = action.payload.traits;
-      });
-
-    case SET_STATION_FRAME_APPEARANCE:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(setStationFrameAppearance, (state, action) =>
+      withStation(state, action, (s, action) => {
         if (s?.stationFrameStep?.type === StationFrame.Custom) {
           (s.stationFrameStep as CustomStationSpaceframeStep).appearance =
             action.payload.appearance;
         }
-      });
-    case SET_STATION_FRAME:
-      return withStation(state, action, (s, action) => {
+      }),
+    );
+    builder.addCase(setStationFrame, (state, action) =>
+      withStation(state, action, (s, action) => {
         if (action.payload.frame === StationFrame.Custom) {
           const scale = s.scale;
           s.stationFrameStep = CustomStationSpaceframeStep.create(scale);
@@ -224,9 +233,9 @@ export const stationReducer = (
         ) {
           s.additionalTalents.splice(0, 1);
         }
-      });
+      }),
+    );
+  },
+});
 
-    default:
-      return state;
-  }
-};
+export const stationReducer = stationSlice.reducer;

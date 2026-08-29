@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import {
   Table,
   TableCollection,
@@ -6,12 +7,12 @@ import {
 } from '../table/model/table';
 import { TableMarshaller } from '../table/model/tableMarshaller';
 import {
-  ADD_TABLE_COLLECTION,
-  DELETE_TABLE_COLLECTION,
-  IMPORT_TABLE_COLLECTION,
-  REPLACE_TABLE_COLLECTION,
-  SET_TABLE_COLLECTION_SELECTION,
-  SET_TABLE_FOR_EDITING,
+  addTableCollection,
+  deleteTableCollection,
+  importTableCollection,
+  replaceTableCollection,
+  setTableCollectionSelection,
+  setTableForEditing,
 } from './tableActions';
 
 const tableCollection = new TableCollection(
@@ -324,14 +325,16 @@ const persistTables = (tables: TableCollection[]) => {
   window.localStorage.setItem('settings.tableData', JSON.stringify(data));
 };
 
-let initialData: {
+interface TableState {
   selection: TableCollection;
   collections: TableCollection[];
   editing?: TableCollection;
-} = null;
+}
 
-const getInitialData = () => {
-  const base = {
+let initialData: TableState = null;
+
+const getInitialData = (): TableState => {
+  const base: TableState = {
     selection: null,
     collections: [tableCollection, tableCollection2],
   };
@@ -359,25 +362,34 @@ const getInitialData = () => {
   return initialData;
 };
 
-export const tableReducer = (state = getInitialData(), action) => {
-  switch (action.type) {
-    case IMPORT_TABLE_COLLECTION:
-    case ADD_TABLE_COLLECTION: {
-      const collections = [...state.collections];
-      const collection = action.payload.collection;
-      collections.push(collection);
-      persistTables(collections);
-      return {
-        ...state,
-        collections: collections,
-      };
-    }
-    case SET_TABLE_COLLECTION_SELECTION: {
+const appendCollection = (
+  state: TableState,
+  action: { payload: { collection: TableCollection } },
+): TableState => {
+  const collections = [...state.collections];
+  const collection = action.payload.collection;
+  collections.push(collection);
+  persistTables(collections);
+  return {
+    ...state,
+    collections: collections,
+  };
+};
+
+export const tableSlice = createSlice({
+  name: 'table',
+  initialState: getInitialData,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(importTableCollection, appendCollection)
+      .addCase(addTableCollection, appendCollection);
+    builder.addCase(setTableCollectionSelection, (state, action) => {
       const temp = { ...state };
       temp.selection = action.payload.selection;
       return temp;
-    }
-    case DELETE_TABLE_COLLECTION: {
+    });
+    builder.addCase(deleteTableCollection, (state, action) => {
       const temp = { ...state };
       const tableCollection = action.payload.collection;
       temp.collections = temp.collections.filter(
@@ -385,13 +397,13 @@ export const tableReducer = (state = getInitialData(), action) => {
       );
       persistTables(temp.collections);
       return temp;
-    }
-    case SET_TABLE_FOR_EDITING: {
+    });
+    builder.addCase(setTableForEditing, (state, action) => {
       const temp = { ...state };
       temp.editing = action.payload.collection;
       return temp;
-    }
-    case REPLACE_TABLE_COLLECTION: {
+    });
+    builder.addCase(replaceTableCollection, (state, action) => {
       const temp = { ...state };
       const tableCollection = action.payload.collection;
       temp.collections = temp.collections.filter(
@@ -399,8 +411,8 @@ export const tableReducer = (state = getInitialData(), action) => {
       );
       temp.collections.push(tableCollection);
       return temp;
-    }
-    default:
-      return state;
-  }
-};
+    });
+  },
+});
+
+export const tableReducer = tableSlice.reducer;

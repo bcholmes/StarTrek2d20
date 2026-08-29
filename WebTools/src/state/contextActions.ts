@@ -1,3 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import type { Era } from '../helpers/erasEnum';
 import type { Source } from '../helpers/sources';
 
@@ -15,50 +16,32 @@ export const SET_ALLOW_ESOTERIC_TALENTS = 'SET_ALLOW_ESOTERIC_TALENTS';
  * "what decisions has the GM made about optional items"
  */
 
-export function addSource(source: Source) {
-  const payload = source;
-  return {
-    type: ADD_SOURCE,
-    payload: payload,
-  };
-}
+export const addSource = createAction(ADD_SOURCE, (source: Source) => ({
+  payload: source,
+}));
 
-export function removeSource(source: Source) {
-  const payload = source;
-  return {
-    type: REMOVE_SOURCE,
-    payload: payload,
-  };
-}
+export const removeSource = createAction(REMOVE_SOURCE, (source: Source) => ({
+  payload: source,
+}));
 
-export function setSources(sources: Source[]) {
-  const payload = sources;
-  return {
-    type: SET_SOURCES,
-    payload: payload,
-  };
-}
+export const setSources = createAction(SET_SOURCES, (sources: Source[]) => ({
+  payload: sources,
+}));
 
-export function setEra(era: Era) {
-  const payload = era;
-  return {
-    type: SET_ERA,
-    payload: payload,
-  };
-}
+export const setEra = createAction(SET_ERA, (era: Era) => ({
+  payload: era,
+}));
 
-export function setAllowCrossSpeciesTalents(value: boolean) {
-  const payload = value;
-  return {
-    type: SET_ALLOW_CROSS_SPECIES_TALENTS,
-    payload: payload,
-  };
-}
+export const setAllowCrossSpeciesTalents = createAction(
+  SET_ALLOW_CROSS_SPECIES_TALENTS,
+  (value: boolean) => ({
+    payload: value,
+  }),
+);
 
-export function setAllowEsotericTalents(value: boolean) {
-  const payload = value;
-  return {
-    type: SET_ALLOW_ESOTERIC_TALENTS,
-    payload: payload,
-  };
-}
+export const setAllowEsotericTalents = createAction(
+  SET_ALLOW_ESOTERIC_TALENTS,
+  (value: boolean) => ({
+    payload: value,
+  }),
+);

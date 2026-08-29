@@ -1,3 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import type { SelectedTalent } from '../common/selectedTalent';
 import type { Station } from '../common/station';
 import type { Department } from '../helpers/department';
@@ -26,109 +27,93 @@ export const SET_STATION_ADDITIONAL_TALENTS = 'SET_STATION_ADDITIONAL_TALENTS';
 export const SET_STATION_FRAME = 'SET_STATION_FRAME';
 export const SET_STATION_FRAME_APPEARANCE = 'SET_STATION_FRAME_APPEARANCE';
 
-export function createStation(station: Station) {
-  const payload = { station: station };
-  return {
-    type: CREATE_STATION,
-    payload: payload,
-  };
-}
+export const createStation = createAction(
+  CREATE_STATION,
+  (station: Station) => ({
+    payload: { station: station },
+  }),
+);
 
-export function setStationMissionProfile(missionProfile: MissionProfile) {
-  const payload = { missionProfile: missionProfile };
-  return {
-    type: SET_STATION_MISSION_PROFILE,
-    payload: payload,
-  };
-}
+export const setStationMissionProfile = createAction(
+  SET_STATION_MISSION_PROFILE,
+  (missionProfile: MissionProfile) => ({
+    payload: { missionProfile: missionProfile },
+  }),
+);
 
-export function setStationMissionProfileTalent(talent: SelectedTalent) {
-  const payload = { talent: talent };
-  return {
-    type: SET_STATION_MISSION_PROFILE_TALENT,
-    payload: payload,
-  };
-}
+export const setStationMissionProfileTalent = createAction(
+  SET_STATION_MISSION_PROFILE_TALENT,
+  (talent: SelectedTalent) => ({
+    payload: { talent: talent },
+  }),
+);
 
-export function setStationName(name: string) {
-  const payload = { name: name };
-  return {
-    type: SET_STATION_NAME,
-    payload: payload,
-  };
-}
+export const setStationName = createAction(
+  SET_STATION_NAME,
+  (name: string) => ({
+    payload: { name: name },
+  }),
+);
 
-export function setStationCustomScale(scale: number) {
-  const payload = { scale: scale };
-  return {
-    type: SET_STATION_CUSTOM_SCALE,
-    payload: payload,
-  };
-}
+export const setStationCustomScale = createAction(
+  SET_STATION_CUSTOM_SCALE,
+  (scale: number) => ({
+    payload: { scale: scale },
+  }),
+);
 
-export function setStationTraits(traits: string[]) {
-  const payload = { traits: traits };
-  return {
-    type: SET_STATION_TRAITS,
-    payload: payload,
-  };
-}
+export const setStationTraits = createAction(
+  SET_STATION_TRAITS,
+  (traits: string[]) => ({
+    payload: { traits: traits },
+  }),
+);
 
-export function changeStationCustomFrameSystem(delta: number, system: System) {
-  const payload = { delta: delta, system: system };
-  return {
-    type: MODIFY_STATION_CUSTOM_FRAME_SYSTEM,
-    payload: payload,
-  };
-}
+export const changeStationCustomFrameSystem = createAction(
+  MODIFY_STATION_CUSTOM_FRAME_SYSTEM,
+  (delta: number, system: System) => ({
+    payload: { delta: delta, system: system },
+  }),
+);
 
-export function changeStationCustomFrameDepartment(
-  delta: number,
-  department: Department,
-) {
-  const payload = { delta: delta, department: department };
-  return {
-    type: MODIFY_STATION_CUSTOM_FRAME_DEPARTMENT,
-    payload: payload,
-  };
-}
+export const changeStationCustomFrameDepartment = createAction(
+  MODIFY_STATION_CUSTOM_FRAME_DEPARTMENT,
+  (delta: number, department: Department) => ({
+    payload: { delta: delta, department: department },
+  }),
+);
 
-export function addStationWeapon(weapon: Weapon) {
-  const payload = { weapon: weapon };
-  return {
-    type: ADD_STATION_WEAPON,
-    payload: payload,
-  };
-}
+export const addStationWeapon = createAction(
+  ADD_STATION_WEAPON,
+  (weapon: Weapon) => ({
+    payload: { weapon: weapon },
+  }),
+);
 
-export function deleteStationWeapon(weapon: Weapon) {
-  const payload = { weapon: weapon };
-  return {
-    type: DELETE_STATION_WEAPON,
-    payload: payload,
-  };
-}
+export const deleteStationWeapon = createAction(
+  DELETE_STATION_WEAPON,
+  (weapon: Weapon) => ({
+    payload: { weapon: weapon },
+  }),
+);
 
-export function setStationAdditionalTalents(talents: SelectedTalent[]) {
-  const payload = { talents: talents };
-  return {
-    type: SET_STATION_ADDITIONAL_TALENTS,
-    payload: payload,
-  };
-}
+export const setStationAdditionalTalents = createAction(
+  SET_STATION_ADDITIONAL_TALENTS,
+  (talents: SelectedTalent[]) => ({
+    payload: { talents: talents },
+  }),
+);
 
-export function setStationFrame(frame: StationFrame) {
-  const payload = { frame: frame };
-  return {
-    type: SET_STATION_FRAME,
-    payload: payload,
-  };
-}
+export const setStationFrame = createAction(
+  SET_STATION_FRAME,
+  (frame: StationFrame) => ({
+    payload: { frame: frame },
+  }),
+);
 
-export function setStationFrameAppearance(appearance: StationFrameAppearance) {
-  const payload = { appearance: appearance };
-  return {
-    type: SET_STATION_FRAME_APPEARANCE,
-    payload: payload,
-  };
-}
+export const setStationFrameAppearance = createAction(
+  SET_STATION_FRAME_APPEARANCE,
+  (appearance: StationFrameAppearance) => ({
+    payload: { appearance: appearance },
+  }),
+);
