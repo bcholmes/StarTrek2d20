@@ -173,7 +173,7 @@ export class UniformPackCollection {
           completion();
         } else if (era === UniformEra.TheMotionPicture) {
           const { TmpUniformPack } = await import(
-            /* webpackChunkName: 'discovery' */ './tmpUniformPack'
+            /* webpackChunkName: 'motionPicture' */ './tmpUniformPack'
           );
           this.uniformPacks[era] = new TmpUniformPack();
           completion();

@@ -347,6 +347,7 @@ export class ProstheticCatalog {
             case HairType.PinnedUpHairWithPart:
             case HairType.CentrePart:
             case HairType.UpsweptWithProduct:
+            case HairType.PulledBackStraightWithLowBun:
               return AndorianAntenna.frontCovered.replace(
                 SpeciesRestrictions.DEFAULT_SKIN_COLOR_REGEX,
                 token.skinColor,
