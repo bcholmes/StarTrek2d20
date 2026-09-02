@@ -478,21 +478,17 @@ describe('starshipReducer', () => {
     expect(result.workflow?.currentStepIndex).toBe(0);
   });
 
-  test('NEXT_STARSHIP_WORKFLOW_STEP with no workflow wipes the slice', () => {
-    // Historical buggy behavior locked by this characterization test:
-    // a bare `return;` produces `undefined` instead of the prior state.
-    const result = starshipReducer(
-      { starship: makeStarship(), workflow: undefined },
-      nextStarshipWorkflowStep(),
-    );
-    expect(result).toBeUndefined();
+  test('NEXT_STARSHIP_WORKFLOW_STEP with no workflow returns the prior state', () => {
+    // Historical bug: a bare `return;` produced `undefined`, wiping the slice.
+    // Fixed during migration: the slice is preserved when there is no workflow.
+    const state = { starship: makeStarship(), workflow: undefined };
+    const result = starshipReducer(state, nextStarshipWorkflowStep());
+    expect(result).toEqual(state);
   });
 
-  test('REWIND_TO_STARSHIP_WORKFLOW_STEP with no workflow wipes the slice', () => {
-    const result = starshipReducer(
-      { starship: makeStarship(), workflow: undefined },
-      rewindToStarshipWorkflowStep(0),
-    );
-    expect(result).toBeUndefined();
+  test('REWIND_TO_STARSHIP_WORKFLOW_STEP with no workflow returns the prior state', () => {
+    const state = { starship: makeStarship(), workflow: undefined };
+    const result = starshipReducer(state, rewindToStarshipWorkflowStep(0));
+    expect(result).toEqual(state);
   });
 });

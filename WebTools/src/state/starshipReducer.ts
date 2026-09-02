@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { Stereotype } from '../common/construct';
 import type { SelectedTalent } from '../common/selectedTalent';
 import {
@@ -12,36 +13,36 @@ import { StarshipAdvancementChoice } from '../common/starshipAdvancementChoice';
 import type { System } from '../helpers/systems';
 import { ShipBuildWorkflow } from '../starship/model/shipBuildWorkflow';
 import {
-  ADD_STARSHIP_REFIT,
-  ADD_STARSHIP_WEAPON,
-  CHANGE_STARSHIP_SCALE,
-  CHANGE_STARSHIP_SIMPLE_CLASS_NAME,
-  CHANGE_STARSHIP_SIMPLE_DEPARTMENT,
-  CHANGE_STARSHIP_SIMPLE_SYSTEM,
-  CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME,
-  CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT,
-  CHANGE_STARSHIP_SPACEFRAME_SCALE,
-  CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR,
-  CHANGE_STARSHIP_SPACEFRAME_SYSTEM,
-  CREATE_NEW_STARSHIP,
-  CREATE_STARSHIP,
-  DELETE_STARSHIP_REFIT,
-  DELETE_STARSHIP_WEAPON,
-  MODIFY_STARSHIP_ADD_ADVANCEMENT,
-  NEXT_STARSHIP_WORKFLOW_STEP,
-  REWIND_TO_STARSHIP_WORKFLOW_STEP,
-  SET_ADDITIONAL_TALENTS,
-  SET_STARSHIP_MISSION_POD,
-  SET_STARSHIP_MISSION_PROFILE,
-  SET_STARSHIP_MISSION_PROFILE_TALENT,
-  SET_STARSHIP_NAME,
-  SET_STARSHIP_REGISTRY,
-  SET_STARSHIP_SERVICE_RECORD,
-  SET_STARSHIP_SERVICE_YEAR,
-  SET_STARSHIP_SPACEFRAME,
-  SET_STARSHIP_SPACEFRAME_APPEARANCE,
-  SET_STARSHIP_SPACEFRAME_TALENTS,
-  SET_STARSHIP_TRAITS,
+  addStarshipRefit,
+  addStarshipWeapon,
+  changeStarshipScale,
+  changeStarshipSimpleClassName,
+  changeStarshipSimpleDepartment,
+  changeStarshipSimpleSystem,
+  changeStarshipSpaceframeClassName,
+  changeStarshipSpaceframeDepartment,
+  changeStarshipSpaceframeScale,
+  changeStarshipSpaceframeServiceYear,
+  changeStarshipSpaceframeSystem,
+  createNewStarship,
+  createStarship,
+  deleteStarshipRefit,
+  deleteStarshipWeapon,
+  modifyStarshipAddAdvancement,
+  nextStarshipWorkflowStep,
+  rewindToStarshipWorkflowStep,
+  setAdditionalTalents,
+  setStarshipMissionPod,
+  setStarshipMissionProfile,
+  setStarshipMissionProfileTalent,
+  setStarshipName,
+  setStarshipRegistry,
+  setStarshipServiceRecord,
+  setStarshipServiceYear,
+  setStarshipSpaceframe,
+  setStarshipSpaceframeAppearance,
+  setStarshipSpaceframeTalents,
+  setStarshipTraits,
 } from './starshipActions';
 
 interface StarshipState {
@@ -50,8 +51,14 @@ interface StarshipState {
   hash?: number;
 }
 
+const initialState = {
+  starship: undefined,
+  workflow: undefined,
+  hash: undefined,
+};
+
 const withStarship = (
-  state: StarshipState,
+  state: any,
   action: any,
   mutate: (s: Starship, action: any) => void,
 ): StarshipState => {
@@ -63,16 +70,12 @@ const withStarship = (
   };
 };
 
-export const starshipReducer = (
-  state: StarshipState = {
-    starship: undefined,
-    workflow: undefined,
-    hash: undefined,
-  },
-  action,
-) => {
-  switch (action.type) {
-    case CREATE_STARSHIP: {
+export const starshipSlice = createSlice({
+  name: 'starship',
+  initialState: initialState as StarshipState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(createStarship, (state, action) => {
       const s = action.payload.starship;
       const hash = action.payload.hash;
       return {
@@ -80,9 +83,9 @@ export const starshipReducer = (
         starship: s.copy(),
         hash: hash,
       };
-    }
+    });
 
-    case MODIFY_STARSHIP_ADD_ADVANCEMENT: {
+    builder.addCase(modifyStarshipAddAdvancement, (state, action) => {
       const temp = state.starship.copy();
       const improvement = new StarshipAdvancementStep();
       improvement.choice = action.payload.type;
@@ -105,9 +108,9 @@ export const starshipReducer = (
         ...state,
         starship: temp,
       };
-    }
+    });
 
-    case CREATE_NEW_STARSHIP: {
+    builder.addCase(createNewStarship, (state, action) => {
       const s = Starship.createStandardStarship(
         action.payload.era,
         action.payload.type,
@@ -131,8 +134,8 @@ export const starshipReducer = (
         workflow: action.payload.workflow,
         hash: undefined,
       };
-    }
-    case CHANGE_STARSHIP_SCALE:
+    });
+    builder.addCase(changeStarshipScale, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s.simpleStats == null) {
           s.simpleStats = new SimpleStats();
@@ -140,7 +143,8 @@ export const starshipReducer = (
         s.simpleStats.scale += action.payload.delta;
         s.pruneExcessTalents();
       });
-    case CHANGE_STARSHIP_SPACEFRAME_SCALE:
+    });
+    builder.addCase(changeStarshipSpaceframeScale, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s?.spaceframeModel?.isCustom) {
           const original = s.spaceframeStep;
@@ -153,7 +157,8 @@ export const starshipReducer = (
         }
         s.pruneExcessTalents();
       });
-    case CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR:
+    });
+    builder.addCase(changeStarshipSpaceframeServiceYear, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s?.spaceframeModel?.isCustom) {
           const original = s.spaceframeStep;
@@ -165,11 +170,13 @@ export const starshipReducer = (
           }
         }
       });
-    case SET_STARSHIP_SERVICE_YEAR:
+    });
+    builder.addCase(setStarshipServiceYear, (state, action) => {
       return withStarship(state, action, (s, action) => {
         s.serviceYear = action.payload.serviceYear;
       });
-    case CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME:
+    });
+    builder.addCase(changeStarshipSpaceframeClassName, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s?.spaceframeModel?.isCustom) {
           const original = s.spaceframeStep;
@@ -181,18 +188,21 @@ export const starshipReducer = (
           }
         }
       });
-    case CHANGE_STARSHIP_SIMPLE_CLASS_NAME:
+    });
+    builder.addCase(changeStarshipSimpleClassName, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s.simpleStats == null) {
           s.simpleStats = new SimpleStats();
         }
         s.simpleStats.className = action.payload.className;
       });
-    case SET_STARSHIP_NAME:
+    });
+    builder.addCase(setStarshipName, (state, action) => {
       return withStarship(state, action, (s, action) => {
         s.name = action.payload.name;
       });
-    case SET_STARSHIP_SERVICE_RECORD:
+    });
+    builder.addCase(setStarshipServiceRecord, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (action.payload.serviceRecord == null) {
           s.serviceRecordStep = null;
@@ -223,7 +233,8 @@ export const starshipReducer = (
           }
         }
       });
-    case SET_STARSHIP_SPACEFRAME:
+    });
+    builder.addCase(setStarshipSpaceframe, (state, action) => {
       return withStarship(state, action, (s, action) => {
         const original = s.spaceframeModel;
         s.spaceframeStep = new SpaceframeStep(action.payload.spaceframe);
@@ -232,13 +243,15 @@ export const starshipReducer = (
         }
         s.spaceframeStep.variant = action.payload.variant;
       });
-    case SET_STARSHIP_SPACEFRAME_TALENTS:
+    });
+    builder.addCase(setStarshipSpaceframeTalents, (state, action) => {
       return withStarship(state, action, (s, action) => {
         const newStep = s.spaceframeStep.copy();
         newStep.talents = action.payload.talents;
         s.spaceframeStep = newStep;
       });
-    case SET_STARSHIP_MISSION_PROFILE:
+    });
+    builder.addCase(setStarshipMissionProfile, (state, action) => {
       return withStarship(state, action, (s, action) => {
         const original = s.missionProfileStep;
         s.missionProfileStep = new MissionProfileStep(
@@ -252,13 +265,15 @@ export const starshipReducer = (
           s.missionProfileStep.system = action.payload.system;
         }
       });
-    case SET_STARSHIP_MISSION_PROFILE_TALENT:
+    });
+    builder.addCase(setStarshipMissionProfileTalent, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s.missionProfileStep) {
           s.missionProfileStep.talent = action.payload.talent;
         }
       });
-    case SET_STARSHIP_MISSION_POD:
+    });
+    builder.addCase(setStarshipMissionPod, (state, action) => {
       return withStarship(state, action, (s, action) => {
         s.missionPodModel = action.payload.missionPod;
         if (s.missionPodModel == null) {
@@ -280,7 +295,8 @@ export const starshipReducer = (
           s.pruneExcessTalents();
         }
       });
-    case ADD_STARSHIP_REFIT:
+    });
+    builder.addCase(addStarshipRefit, (state, action) => {
       return withStarship(state, action, (s, action) => {
         const refits = [...s.refits, action.payload.refit];
         while (refits.length > s.numberOfRefits) {
@@ -288,7 +304,8 @@ export const starshipReducer = (
         }
         s.refits = refits;
       });
-    case DELETE_STARSHIP_REFIT:
+    });
+    builder.addCase(deleteStarshipRefit, (state, action) => {
       return withStarship(state, action, (s, action) => {
         const refits = [...s.refits];
         const index = refits.indexOf(action.payload.refit);
@@ -297,24 +314,29 @@ export const starshipReducer = (
         }
         s.refits = refits;
       });
-    case SET_STARSHIP_REGISTRY:
+    });
+    builder.addCase(setStarshipRegistry, (state, action) => {
       return withStarship(state, action, (s, action) => {
         s.registry = action.payload.registry;
       });
-    case SET_STARSHIP_TRAITS:
+    });
+    builder.addCase(setStarshipTraits, (state, action) => {
       return withStarship(state, action, (s, action) => {
         s.traits = action.payload.traits;
       });
-    case SET_ADDITIONAL_TALENTS:
+    });
+    builder.addCase(setAdditionalTalents, (state, action) => {
       return withStarship(state, action, (s, action) => {
         s.additionalTalents =
           action.payload.talents?.map((t) => t.copy()) ?? [];
       });
-    case ADD_STARSHIP_WEAPON:
+    });
+    builder.addCase(addStarshipWeapon, (state, action) => {
       return withStarship(state, action, (s, action) => {
         s.additionalWeapons.push(action.payload.weapon);
       });
-    case DELETE_STARSHIP_WEAPON:
+    });
+    builder.addCase(deleteStarshipWeapon, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s.additionalWeapons.indexOf(action.payload.weapon) >= 0) {
           s.additionalWeapons.splice(
@@ -323,14 +345,16 @@ export const starshipReducer = (
           );
         }
       });
-    case CHANGE_STARSHIP_SIMPLE_SYSTEM:
+    });
+    builder.addCase(changeStarshipSimpleSystem, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s.simpleStats == null) {
           s.simpleStats = new SimpleStats();
         }
         s.simpleStats.systems[action.payload.system] += action.payload.delta;
       });
-    case CHANGE_STARSHIP_SPACEFRAME_SYSTEM:
+    });
+    builder.addCase(changeStarshipSpaceframeSystem, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s?.spaceframeModel?.isCustom) {
           const original = s.spaceframeStep;
@@ -342,7 +366,8 @@ export const starshipReducer = (
           }
         }
       });
-    case CHANGE_STARSHIP_SIMPLE_DEPARTMENT:
+    });
+    builder.addCase(changeStarshipSimpleDepartment, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s.simpleStats == null) {
           s.simpleStats = new SimpleStats();
@@ -350,7 +375,8 @@ export const starshipReducer = (
         s.simpleStats.departments[action.payload.department] +=
           action.payload.delta;
       });
-    case CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT:
+    });
+    builder.addCase(changeStarshipSpaceframeDepartment, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s?.spaceframeModel?.isCustom) {
           const original = s.spaceframeStep;
@@ -363,7 +389,8 @@ export const starshipReducer = (
           }
         }
       });
-    case SET_STARSHIP_SPACEFRAME_APPEARANCE:
+    });
+    builder.addCase(setStarshipSpaceframeAppearance, (state, action) => {
       return withStarship(state, action, (s, action) => {
         if (s.simpleStats != null) {
           s.simpleStats.appearance = action.payload.appearance;
@@ -371,7 +398,8 @@ export const starshipReducer = (
           s.spaceframeStep.appearance = action.payload.appearance;
         }
       });
-    case NEXT_STARSHIP_WORKFLOW_STEP: {
+    });
+    builder.addCase(nextStarshipWorkflowStep, (state) => {
       if (state.workflow) {
         const w = new ShipBuildWorkflow(state.workflow.steps);
         w.currentStepIndex = state.workflow.currentStepIndex + 1;
@@ -380,10 +408,10 @@ export const starshipReducer = (
           workflow: w,
         };
       } else {
-        return;
+        return state;
       }
-    }
-    case REWIND_TO_STARSHIP_WORKFLOW_STEP: {
+    });
+    builder.addCase(rewindToStarshipWorkflowStep, (state, action) => {
       if (state.workflow) {
         const w = new ShipBuildWorkflow(state.workflow.steps);
         w.currentStepIndex = action.payload.index;
@@ -392,10 +420,10 @@ export const starshipReducer = (
           workflow: w,
         };
       } else {
-        return;
+        return state;
       }
-    }
-    default:
-      return state;
-  }
-};
+    });
+  },
+});
+
+export const starshipReducer = starshipSlice.reducer;
