@@ -1,13 +1,21 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { Era } from '../helpers/erasEnum';
 import { Source, SourcesHelper } from '../helpers/sources';
 import {
-  ADD_SOURCE,
-  REMOVE_SOURCE,
-  SET_ALLOW_CROSS_SPECIES_TALENTS,
-  SET_ALLOW_ESOTERIC_TALENTS,
-  SET_ERA,
-  SET_SOURCES,
+  addSource,
+  removeSource,
+  setAllowCrossSpeciesTalents,
+  setAllowEsotericTalents,
+  setEra,
+  setSources,
 } from './contextActions';
+
+interface ContextState {
+  sources: Source[];
+  era: Era;
+  allowCrossSpeciesTalents: boolean;
+  allowEsotericTalents: boolean;
+}
 
 const persistContext = (sources: Source[]) => {
   const contextData = {
@@ -19,10 +27,10 @@ const persistContext = (sources: Source[]) => {
   );
 };
 
-let initialData = null;
+let initialData: ContextState = null;
 
-const getInitialData = () => {
-  const base = {
+const getInitialData = (): ContextState => {
+  const base: ContextState = {
     sources: [Source.Core],
     era: Era.NextGeneration,
     allowCrossSpeciesTalents: false,
@@ -59,9 +67,12 @@ const getInitialData = () => {
   return initialData;
 };
 
-export const contextReducer = (state = getInitialData(), action) => {
-  switch (action.type) {
-    case SET_SOURCES: {
+export const contextSlice = createSlice({
+  name: 'context',
+  initialState: getInitialData,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(setSources, (state, action) => {
       const newSources = action.payload;
       if (
         newSources.indexOf(Source.Core2ndEdition) >= 0 &&
@@ -79,8 +90,8 @@ export const contextReducer = (state = getInitialData(), action) => {
         ...state,
         sources: newSources,
       };
-    }
-    case ADD_SOURCE: {
+    });
+    builder.addCase(addSource, (state, action) => {
       if (state.sources.indexOf(action.payload) >= 0) {
         return state;
       } else {
@@ -109,8 +120,8 @@ export const contextReducer = (state = getInitialData(), action) => {
           sources: existing,
         };
       }
-    }
-    case REMOVE_SOURCE:
+    });
+    builder.addCase(removeSource, (state, action) => {
       if (state.sources.indexOf(action.payload) >= 0) {
         if (
           action.payload === Source.Core &&
@@ -134,22 +145,26 @@ export const contextReducer = (state = getInitialData(), action) => {
       } else {
         return state;
       }
-    case SET_ERA:
+    });
+    builder.addCase(setEra, (state, action) => {
       return {
         ...state,
         era: action.payload,
       };
-    case SET_ALLOW_CROSS_SPECIES_TALENTS:
+    });
+    builder.addCase(setAllowCrossSpeciesTalents, (state, action) => {
       return {
         ...state,
         allowCrossSpeciesTalents: action.payload,
       };
-    case SET_ALLOW_ESOTERIC_TALENTS:
+    });
+    builder.addCase(setAllowEsotericTalents, (state, action) => {
       return {
         ...state,
         allowEsotericTalents: action.payload,
       };
-    default:
-      return state;
-  }
-};
+    });
+  },
+});
+
+export const contextReducer = contextSlice.reducer;

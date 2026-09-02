@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import { Rank } from '../helpers/ranks';
 import { Species } from '../helpers/speciesEnum';
 import { BodyType } from '../token/model/bodyTypeEnum';
@@ -15,29 +16,30 @@ import { UniformEra } from '../token/model/uniformEra';
 import { UniformVariantRestrictions } from '../token/model/uniformVariantRestrictions';
 import { UniformVariantType } from '../token/model/uniformVariantTypeEnum';
 import {
-  CREATE_NEW_TOKEN,
-  SET_TOKEN_BODY_TYPE,
-  SET_TOKEN_BORDERED,
-  SET_TOKEN_DIVISION_COLOR,
-  SET_TOKEN_EXTRAS_TYPE,
-  SET_TOKEN_EYE_COLOR,
-  SET_TOKEN_EYE_TYPE,
-  SET_TOKEN_FACIAL_HAIR_TYPE,
-  SET_TOKEN_HAIR_COLOR,
-  SET_TOKEN_HAIR_TYPE,
-  SET_TOKEN_HEAD_TYPE,
-  SET_TOKEN_LIPSTICK_COLOR,
-  SET_TOKEN_MOUTH_TYPE,
-  SET_TOKEN_NASO_LABIAL_FOLD_TYPE,
-  SET_TOKEN_NOSE_TYPE,
-  SET_TOKEN_RANK,
-  SET_TOKEN_ROUNDED,
+  createNewToken,
+  setTokenBordered,
+  setTokenBodyType,
+  setTokenDivisionColor,
+  setTokenExtrasTypes,
+  setTokenEyeColor,
+  setTokenEyeType,
+  setTokenFacialHairTypes,
+  setTokenHairColor,
+  setTokenHairType,
+  setTokenHeadType,
+  setTokenLipstickColor,
+  setTokenMouthType,
+  setTokenNasoLabialFoldType,
+  setTokenNoseType,
+  setTokenRank,
+  setTokenRounded,
+  setTokenSecondarySpecies,
+  setTokenSkinColor,
+  setTokenSpecies,
+  setTokenSpeciesOption,
+  setTokenUniformVariantType,
+  setUniformEra,
   SET_TOKEN_SECONDARY_SPECIES,
-  SET_TOKEN_SKIN_COLOR,
-  SET_TOKEN_SPECIES,
-  SET_TOKEN_SPECIES_OPTION,
-  SET_TOKEN_UNIFORM_ERA,
-  SET_TOKEN_UNIFORM_VARIANT_TYPE,
 } from './tokenActions';
 
 const initialState = {
@@ -71,155 +73,156 @@ interface TokenState {
   bordered?: boolean;
 }
 
-export const token = (state: TokenState = { token: initialState }, action) => {
-  switch (action.type) {
-    case SET_TOKEN_SECONDARY_SPECIES:
-    case SET_TOKEN_SPECIES: {
-      const token = state.token;
-      let newSpecies = action.payload.species;
-      let skinColor = token.skinColor;
-      const palette = SpeciesRestrictions.getSkinColors(newSpecies);
-      if (palette.indexOf(skinColor) < 0) {
-        skinColor = palette[Math.floor(palette.length / 2)];
-      }
-      let hairColour = token.hairColor;
-      const hairColours = SpeciesRestrictions.getHairColors(newSpecies);
-      if (hairColours.indexOf(hairColour) < 0) {
-        hairColour = hairColours[0];
-      }
+const handleSpeciesChange = (
+  state: TokenState,
+  action: { type: string; payload: any },
+): TokenState => {
+  const token = state.token as Token;
+  let newSpecies = action.payload.species;
+  let skinColor = token.skinColor;
+  const palette = SpeciesRestrictions.getSkinColors(newSpecies);
+  if (palette.indexOf(skinColor) < 0) {
+    skinColor = palette[Math.floor(palette.length / 2)];
+  }
+  let hairColour = token.hairColor;
+  const hairColours = SpeciesRestrictions.getHairColors(newSpecies);
+  if (hairColours.indexOf(hairColour) < 0) {
+    hairColour = hairColours[0];
+  }
 
-      let hairType = token.hairType;
-      const hairTypes = SpeciesRestrictions.getHairTypes(newSpecies);
-      if (hairTypes.indexOf(hairType) < 0) {
-        hairType = SpeciesRestrictions.getDefaultHairType(newSpecies);
-      }
+  let hairType = token.hairType;
+  const hairTypes = SpeciesRestrictions.getHairTypes(newSpecies);
+  if (hairTypes.indexOf(hairType) < 0) {
+    hairType = SpeciesRestrictions.getDefaultHairType(newSpecies);
+  }
 
-      let noseType = token.noseType;
-      const noseTypes = SpeciesRestrictions.getNoseTypes(newSpecies);
-      if (noseTypes.indexOf(noseType) < 0) {
-        noseType = noseTypes[0];
-      }
+  let noseType = token.noseType;
+  const noseTypes = SpeciesRestrictions.getNoseTypes(newSpecies);
+  if (noseTypes.indexOf(noseType) < 0) {
+    noseType = noseTypes[0];
+  }
 
-      let headType = token.headType;
-      const headTypes = SpeciesRestrictions.getHeadTypes(newSpecies);
-      if (headTypes.indexOf(headType) < 0) {
-        headType = headTypes[0];
-      }
+  let headType = token.headType;
+  const headTypes = SpeciesRestrictions.getHeadTypes(newSpecies);
+  if (headTypes.indexOf(headType) < 0) {
+    headType = headTypes[0];
+  }
 
-      let mouthType = token.mouthType;
-      const mouthTypes = SpeciesRestrictions.getMouthTypes(newSpecies);
-      if (mouthTypes.indexOf(mouthType) < 0) {
-        mouthType = mouthTypes[0];
-      }
+  let mouthType = token.mouthType;
+  const mouthTypes = SpeciesRestrictions.getMouthTypes(newSpecies);
+  if (mouthTypes.indexOf(mouthType) < 0) {
+    mouthType = mouthTypes[0];
+  }
 
-      let facialHairType = token.facialHairType;
-      if (!SpeciesRestrictions.isFacialHairSupportedFor(newSpecies)) {
-        facialHairType = [];
-      }
+  let facialHairType = token.facialHairType;
+  if (!SpeciesRestrictions.isFacialHairSupportedFor(newSpecies)) {
+    facialHairType = [];
+  }
 
-      let eyeColor = token.eyeColor;
-      const speciesEyeColours = SpeciesRestrictions.getEyeColors(
-        action.payload.species,
-      );
-      if (speciesEyeColours.indexOf(eyeColor) < 0) {
-        eyeColor = speciesEyeColours[Math.floor(speciesEyeColours.length / 2)];
-      }
-      let option = token.speciesOption;
-      const options = SpeciesRestrictions.getSpeciesOptions(newSpecies);
-      if (options.indexOf(option) < 0) {
-        option = SpeciesOption.Option1;
-      }
-      const extras = token.extras.filter((e) =>
-        action.type === SET_TOKEN_SECONDARY_SPECIES
-          ? SpeciesRestrictions.isExtraAvailableFor(
-              e,
-              Species.LiberatedBorg,
-              newSpecies,
-              token.uniformEra,
-            )
-          : SpeciesRestrictions.isExtraAvailableFor(
-              e,
-              newSpecies,
-              token.secondarySpecies,
-              token.uniformEra,
-            ),
-      );
+  let eyeColor = token.eyeColor;
+  const speciesEyeColours = SpeciesRestrictions.getEyeColors(
+    action.payload.species,
+  );
+  if (speciesEyeColours.indexOf(eyeColor) < 0) {
+    eyeColor = speciesEyeColours[Math.floor(speciesEyeColours.length / 2)];
+  }
+  let option = token.speciesOption;
+  const options = SpeciesRestrictions.getSpeciesOptions(newSpecies);
+  if (options.indexOf(option) < 0) {
+    option = SpeciesOption.Option1;
+  }
+  const extras = token.extras.filter((e) =>
+    action.type === SET_TOKEN_SECONDARY_SPECIES
+      ? SpeciesRestrictions.isExtraAvailableFor(
+          e,
+          Species.LiberatedBorg,
+          newSpecies,
+          token.uniformEra,
+        )
+      : SpeciesRestrictions.isExtraAvailableFor(
+          e,
+          newSpecies,
+          token.secondarySpecies,
+          token.uniformEra,
+        ),
+  );
 
-      let uniformEra = token.uniformEra;
-      let colour = token.divisionColor;
-      let rank = token.rankIndicator;
-      const uniforms = SpeciesRestrictions.getUniformTypes(newSpecies);
-      if (uniforms.indexOf(uniformEra) < 0) {
-        uniformEra = uniforms[0];
+  let uniformEra = token.uniformEra;
+  let colour = token.divisionColor;
+  let rank = token.rankIndicator;
+  const uniforms = SpeciesRestrictions.getUniformTypes(newSpecies);
+  if (uniforms.indexOf(uniformEra) < 0) {
+    uniformEra = uniforms[0];
 
-        const newColourOptions = DivisionColors.getColors(
-          action.payload.era,
-          rank,
-        );
-        const index = DivisionColors.indexOf(token.uniformEra, colour);
-        if (index >= 0 && index < newColourOptions.length) {
-          colour = newColourOptions[index].color;
-        } else {
-          colour = newColourOptions[0].color;
-        }
-        if (
-          !UniformVariantRestrictions.isRankSupported(rank, action.payload.era)
-        ) {
-          rank = Rank.None;
-        }
-      }
-
-      let variant = token.variant;
-      const variants = UniformVariantRestrictions.getAvailableVariants(
-        uniformEra,
-        token.bodyType,
-        newSpecies,
-        token.divisionColor,
-        token.rankIndicator,
-      );
-      if (variants.indexOf(variant) < 0) {
-        variant = UniformVariantType.Base;
-      }
-
-      let secondarySpecies = token.secondarySpecies;
-      if (action.type === SET_TOKEN_SECONDARY_SPECIES) {
-        secondarySpecies = newSpecies;
-        if (secondarySpecies == null) {
-          secondarySpecies = Species.Human;
-        }
-        newSpecies = token.species;
-      } else if (
-        newSpecies === Species.LiberatedBorg &&
-        secondarySpecies == null
-      ) {
-        secondarySpecies = Species.Human;
-      }
-
-      return {
-        ...state,
-        token: {
-          ...token,
-          eyeColor: eyeColor,
-          hairType: hairType,
-          hairColor: hairColour,
-          headType: headType,
-          noseType: noseType,
-          mouthType: mouthType,
-          skinColor: skinColor,
-          facialHairType: facialHairType,
-          species: newSpecies,
-          secondarySpecies: secondarySpecies,
-          speciesOption: option,
-          extras: extras,
-          uniformEra: uniformEra,
-          rankIndicator: rank,
-          divisionColor: colour,
-          variant: variant,
-        },
-      };
+    const newColourOptions = DivisionColors.getColors(action.payload.era, rank);
+    const index = DivisionColors.indexOf(token.uniformEra, colour);
+    if (index >= 0 && index < newColourOptions.length) {
+      colour = newColourOptions[index].color;
+    } else {
+      colour = newColourOptions[0].color;
     }
-    case SET_TOKEN_UNIFORM_ERA: {
-      const token = state.token;
+    if (!UniformVariantRestrictions.isRankSupported(rank, action.payload.era)) {
+      rank = Rank.None;
+    }
+  }
+
+  let variant = token.variant;
+  const variants = UniformVariantRestrictions.getAvailableVariants(
+    uniformEra,
+    token.bodyType,
+    newSpecies,
+    token.divisionColor,
+    token.rankIndicator,
+  );
+  if (variants.indexOf(variant) < 0) {
+    variant = UniformVariantType.Base;
+  }
+
+  let secondarySpecies = token.secondarySpecies;
+  if (action.type === SET_TOKEN_SECONDARY_SPECIES) {
+    secondarySpecies = newSpecies;
+    if (secondarySpecies == null) {
+      secondarySpecies = Species.Human;
+    }
+    newSpecies = token.species;
+  } else if (newSpecies === Species.LiberatedBorg && secondarySpecies == null) {
+    secondarySpecies = Species.Human;
+  }
+
+  return {
+    ...state,
+    token: {
+      ...token,
+      eyeColor: eyeColor,
+      hairType: hairType,
+      hairColor: hairColour,
+      headType: headType,
+      noseType: noseType,
+      mouthType: mouthType,
+      skinColor: skinColor,
+      facialHairType: facialHairType,
+      species: newSpecies,
+      secondarySpecies: secondarySpecies,
+      speciesOption: option,
+      extras: extras,
+      uniformEra: uniformEra,
+      rankIndicator: rank,
+      divisionColor: colour,
+      variant: variant,
+    },
+  };
+};
+
+export const tokenSlice = createSlice({
+  name: 'token',
+  initialState: { token: initialState } as TokenState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(setTokenSpecies, handleSpeciesChange)
+      .addCase(setTokenSecondarySpecies, handleSpeciesChange);
+    builder.addCase(setUniformEra, (state, action) => {
+      const token = state.token as Token;
       let colour = token.divisionColor;
       const newColourOptions = DivisionColors.getColors(
         action.payload.era,
@@ -279,9 +282,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           extras: extras,
         },
       };
-    }
-    case SET_TOKEN_DIVISION_COLOR: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenDivisionColor, (state, action) => {
+      const token = state.token as Token;
       let variant = token.variant;
       const variants = UniformVariantRestrictions.getAvailableVariants(
         token.uniformEra,
@@ -302,9 +305,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           variant: variant,
         },
       };
-    }
-    case SET_TOKEN_RANK: {
-      const token = { ...state.token };
+    });
+    builder.addCase(setTokenRank, (state, action) => {
+      const token = { ...(state.token as Token) };
       const variant = token.variant;
       const variants = UniformVariantRestrictions.getAvailableVariants(
         token.uniformEra,
@@ -332,9 +335,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
         ...state,
         token: token,
       };
-    }
-    case SET_TOKEN_HAIR_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenHairType, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -342,9 +345,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           hairType: action.payload.hairType,
         },
       };
-    }
-    case SET_TOKEN_HEAD_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenHeadType, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -352,9 +355,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           headType: action.payload.headType,
         },
       };
-    }
-    case SET_TOKEN_NOSE_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenNoseType, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -362,9 +365,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           noseType: action.payload.noseType,
         },
       };
-    }
-    case SET_TOKEN_NASO_LABIAL_FOLD_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenNasoLabialFoldType, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -372,9 +375,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           nasoLabialFold: action.payload.type,
         },
       };
-    }
-    case SET_TOKEN_BODY_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenBodyType, (state, action) => {
+      const token = state.token as Token;
       let variant = token.variant;
       const variants = UniformVariantRestrictions.getAvailableVariants(
         token.uniformEra,
@@ -394,9 +397,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           variant: variant,
         },
       };
-    }
-    case SET_TOKEN_UNIFORM_VARIANT_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenUniformVariantType, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -404,9 +407,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           variant: action.payload.type,
         },
       };
-    }
-    case SET_TOKEN_EYE_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenEyeType, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -414,9 +417,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           eyeType: action.payload.eyeType,
         },
       };
-    }
-    case SET_TOKEN_MOUTH_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenMouthType, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -424,9 +427,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           mouthType: action.payload.mouthType,
         },
       };
-    }
-    case SET_TOKEN_FACIAL_HAIR_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenFacialHairTypes, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -434,9 +437,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           facialHairType: action.payload.types,
         },
       };
-    }
-    case SET_TOKEN_EXTRAS_TYPE: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenExtrasTypes, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -444,9 +447,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           extras: action.payload.types,
         },
       };
-    }
-    case SET_TOKEN_EYE_COLOR: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenEyeColor, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -454,9 +457,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           eyeColor: action.payload.color,
         },
       };
-    }
-    case SET_TOKEN_HAIR_COLOR: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenHairColor, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -464,9 +467,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           hairColor: action.payload.color,
         },
       };
-    }
-    case SET_TOKEN_LIPSTICK_COLOR: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenLipstickColor, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -474,9 +477,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           lipstickColor: action.payload.color,
         },
       };
-    }
-    case SET_TOKEN_SKIN_COLOR: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenSkinColor, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -484,9 +487,9 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           skinColor: action.payload.color,
         },
       };
-    }
-    case SET_TOKEN_SPECIES_OPTION: {
-      const token = state.token;
+    });
+    builder.addCase(setTokenSpeciesOption, (state, action) => {
+      const token = state.token as Token;
       return {
         ...state,
         token: {
@@ -494,8 +497,8 @@ export const token = (state: TokenState = { token: initialState }, action) => {
           speciesOption: action.payload.option,
         },
       };
-    }
-    case CREATE_NEW_TOKEN: {
+    });
+    builder.addCase(createNewToken, (state, action) => {
       const newToken = action.payload.token;
       const token: Token = { ...initialState };
       if (newToken) {
@@ -529,20 +532,20 @@ export const token = (state: TokenState = { token: initialState }, action) => {
         characterName: action.payload.characterName,
         replacementHash: action.payload.hash,
       };
-    }
-    case SET_TOKEN_ROUNDED: {
+    });
+    builder.addCase(setTokenRounded, (state, action) => {
       return {
         ...state,
         rounded: action.payload.rounded,
       };
-    }
-    case SET_TOKEN_BORDERED: {
+    });
+    builder.addCase(setTokenBordered, (state, action) => {
       return {
         ...state,
         bordered: action.payload.bordered,
       };
-    }
-    default:
-      return state;
-  }
-};
+    });
+  },
+});
+
+export const token = tokenSlice.reducer;

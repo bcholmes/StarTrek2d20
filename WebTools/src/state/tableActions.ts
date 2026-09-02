@@ -1,3 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import type { TableCollection } from '../table/model/table';
 
 export const IMPORT_TABLE_COLLECTION = 'IMPORT_TABLE_COLLECTION';
@@ -7,56 +8,47 @@ export const SET_TABLE_FOR_EDITING = 'SET_TABLE_FOR_EDITING';
 export const REPLACE_TABLE_COLLECTION = 'REPLACE_TABLE_COLLECTION';
 export const DELETE_TABLE_COLLECTION = 'DELETE_TABLE_COLLECTION';
 
-export function setTableCollectionSelection(selection: TableCollection) {
-  const payload = { selection: selection };
-  return {
-    type: SET_TABLE_COLLECTION_SELECTION,
-    payload: payload,
-  };
-}
+export const setTableCollectionSelection = createAction(
+  SET_TABLE_COLLECTION_SELECTION,
+  (selection: TableCollection) => ({
+    payload: { selection: selection },
+  }),
+);
 
-export function importTableCollection(collection: TableCollection) {
-  const payload = { collection: collection };
-  return {
-    type: IMPORT_TABLE_COLLECTION,
-    payload: payload,
-  };
-}
+export const importTableCollection = createAction(
+  IMPORT_TABLE_COLLECTION,
+  (collection: TableCollection) => ({
+    payload: { collection: collection },
+  }),
+);
 
-export function setTableForEditing(collection: TableCollection) {
-  const payload = { collection: collection };
-  return {
-    type: SET_TABLE_FOR_EDITING,
-    payload: payload,
-  };
-}
+export const setTableForEditing = createAction(
+  SET_TABLE_FOR_EDITING,
+  (collection: TableCollection) => ({
+    payload: { collection: collection },
+  }),
+);
 
-export function addTableCollection(collection: TableCollection) {
-  const payload = { collection: collection };
-  return {
-    type: ADD_TABLE_COLLECTION,
-    payload: payload,
-  };
-}
+export const addTableCollection = createAction(
+  ADD_TABLE_COLLECTION,
+  (collection: TableCollection) => ({
+    payload: { collection: collection },
+  }),
+);
 
-export function deleteTableCollection(collection: TableCollection) {
-  const payload = { collection: collection };
-  return {
-    type: DELETE_TABLE_COLLECTION,
-    payload: payload,
-  };
-}
+export const deleteTableCollection = createAction(
+  DELETE_TABLE_COLLECTION,
+  (collection: TableCollection) => ({
+    payload: { collection: collection },
+  }),
+);
 
-export function replaceTableCollection(
-  uuid: string,
-  collection: TableCollection,
-) {
-  const payload = {
-    uuid: uuid,
-    collection: collection,
-  };
-  return {
-    type: REPLACE_TABLE_COLLECTION,
-    payload: payload,
-  };
-}
+export const replaceTableCollection = createAction(
+  REPLACE_TABLE_COLLECTION,
+  (uuid: string, collection: TableCollection) => ({
+    payload: {
+      uuid: uuid,
+      collection: collection,
+    },
+  }),
+);
