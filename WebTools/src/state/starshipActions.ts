@@ -1,3 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import type { CharacterType } from '../common/characterType';
 import type { SelectedTalent } from '../common/selectedTalent';
 import { ShipBuildType } from '../common/shipBuildType';
@@ -59,292 +60,206 @@ export const MODIFY_STARSHIP_ADD_ADVANCEMENT =
 export const SET_STARSHIP_SPACEFRAME_APPEARANCE =
   'SET_STARSHIP_SPACEFRAME_APPEARANCE';
 
-export function createStarship(starship: Starship, hash?: number) {
-  const payload = { starship: starship, hash: hash };
-  return {
-    type: CREATE_STARSHIP,
-    payload: payload,
-  };
-}
+export const createStarship = createAction(
+  CREATE_STARSHIP,
+  (starship: Starship, hash?: number) => ({
+    payload: { starship: starship, hash: hash },
+  }),
+);
 
-export function createNewStarship(
-  type: CharacterType,
-  era: Era,
-  serviceYear?: number,
-  simple: SimpleStats = undefined,
-  workflow?: ShipBuildWorkflow,
-  buildType: ShipBuildType = ShipBuildType.Starship,
-  version: number = 1,
-) {
-  const payload = {
-    type: type,
-    era: era,
-    serviceYear: serviceYear,
-    simple: simple,
-    workflow: workflow,
-    buildType: buildType,
-    version: version,
-  };
-  return {
-    type: CREATE_NEW_STARSHIP,
-    payload: payload,
-  };
-}
+export const createNewStarship = createAction(
+  CREATE_NEW_STARSHIP,
+  (
+    type: CharacterType,
+    era: Era,
+    serviceYear?: number,
+    simple: SimpleStats = undefined,
+    workflow?: ShipBuildWorkflow,
+    buildType: ShipBuildType = ShipBuildType.Starship,
+    version: number = 1,
+  ) => ({
+    payload: {
+      type: type,
+      era: era,
+      serviceYear: serviceYear,
+      simple: simple,
+      workflow: workflow,
+      buildType: buildType,
+      version: version,
+    },
+  }),
+);
 
-export function changeStarshipScale(delta: number) {
-  const payload = { delta: delta };
-  return {
-    type: CHANGE_STARSHIP_SCALE,
-    payload: payload,
-  };
-}
+export const changeStarshipScale = createAction(
+  CHANGE_STARSHIP_SCALE,
+  (delta: number) => ({ payload: { delta: delta } }),
+);
 
-export function changeStarshipSpaceframeScale(delta: number) {
-  const payload = { delta: delta };
-  return {
-    type: CHANGE_STARSHIP_SPACEFRAME_SCALE,
-    payload: payload,
-  };
-}
+export const changeStarshipSpaceframeScale = createAction(
+  CHANGE_STARSHIP_SPACEFRAME_SCALE,
+  (delta: number) => ({ payload: { delta: delta } }),
+);
 
-export function changeStarshipSpaceframeServiceYear(year: number) {
-  const payload = { serviceYear: year };
-  return {
-    type: CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR,
-    payload: payload,
-  };
-}
+export const changeStarshipSpaceframeServiceYear = createAction(
+  CHANGE_STARSHIP_SPACEFRAME_SERVICE_YEAR,
+  (serviceYear: number) => ({ payload: { serviceYear: serviceYear } }),
+);
 
-export function setStarshipServiceYear(year: number) {
-  const payload = { serviceYear: year };
-  return {
-    type: SET_STARSHIP_SERVICE_YEAR,
-    payload: payload,
-  };
-}
+export const setStarshipServiceYear = createAction(
+  SET_STARSHIP_SERVICE_YEAR,
+  (serviceYear: number) => ({ payload: { serviceYear: serviceYear } }),
+);
 
-export function changeStarshipSimpleClassName(className: string) {
-  const payload = { className: className };
-  return {
-    type: CHANGE_STARSHIP_SIMPLE_CLASS_NAME,
-    payload: payload,
-  };
-}
+export const changeStarshipSimpleClassName = createAction(
+  CHANGE_STARSHIP_SIMPLE_CLASS_NAME,
+  (className: string) => ({ payload: { className: className } }),
+);
 
-export function changeStarshipSpaceframeClassName(className: string) {
-  const payload = { className: className };
-  return {
-    type: CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME,
-    payload: payload,
-  };
-}
+export const changeStarshipSpaceframeClassName = createAction(
+  CHANGE_STARSHIP_SPACEFRAME_CLASS_NAME,
+  (className: string) => ({ payload: { className: className } }),
+);
 
-export function setStarshipName(name: string) {
-  const payload = { name: name };
-  return {
-    type: SET_STARSHIP_NAME,
-    payload: payload,
-  };
-}
+export const setStarshipName = createAction(SET_STARSHIP_NAME, (name) => ({
+  payload: { name },
+}));
 
-export function setStarshipSpaceframe(
-  spaceframe: SpaceframeModel,
-  variant?: SpaceframeVariant,
-) {
-  const payload = { spaceframe: spaceframe, variant: variant };
-  return {
-    type: SET_STARSHIP_SPACEFRAME,
-    payload: payload,
-  };
-}
+export const setStarshipSpaceframe = createAction(
+  SET_STARSHIP_SPACEFRAME,
+  (spaceframe: SpaceframeModel, variant?: SpaceframeVariant) => ({
+    payload: { spaceframe, variant },
+  }),
+);
 
-export function setStarshipSpaceframeTalents(talents: SelectedTalent[]) {
-  const payload = { talents: talents };
-  return {
-    type: SET_STARSHIP_SPACEFRAME_TALENTS,
-    payload: payload,
-  };
-}
+export const setStarshipSpaceframeTalents = createAction(
+  SET_STARSHIP_SPACEFRAME_TALENTS,
+  (talents: SelectedTalent[]) => ({ payload: { talents } }),
+);
 
-export function setStarshipServiceRecord(
-  serviceRecord: ServiceRecordModel,
-  talent: TalentModel,
-  selection?: string | System,
-  removedTalent?: string,
-  replacedTalent?: SelectedTalent,
-) {
-  const payload = {
-    serviceRecord: serviceRecord,
-    talent: talent,
-    selection: selection,
-    removedTalent: removedTalent,
-    replacedTalent: replacedTalent,
-  };
-  return {
-    type: SET_STARSHIP_SERVICE_RECORD,
-    payload: payload,
-  };
-}
+export const setStarshipServiceRecord = createAction(
+  SET_STARSHIP_SERVICE_RECORD,
+  (
+    serviceRecord: ServiceRecordModel,
+    talent: TalentModel,
+    selection?: string | System,
+    removedTalent?: string,
+    replacedTalent?: SelectedTalent,
+  ) => ({
+    payload: {
+      serviceRecord,
+      talent,
+      selection,
+      removedTalent,
+      replacedTalent,
+    },
+  }),
+);
 
-export function setStarshipMissionProfile(
-  missionProfile: MissionProfileModel,
-  system?: System,
-) {
-  const payload = { missionProfile: missionProfile, system: system };
-  return {
-    type: SET_STARSHIP_MISSION_PROFILE,
-    payload: payload,
-  };
-}
+export const setStarshipMissionProfile = createAction(
+  SET_STARSHIP_MISSION_PROFILE,
+  (missionProfile: MissionProfileModel, system?: System) => ({
+    payload: { missionProfile, system },
+  }),
+);
 
-export function setStarshipMissionProfileTalent(talent: SelectedTalent) {
-  const payload = { talent: talent };
-  return {
-    type: SET_STARSHIP_MISSION_PROFILE_TALENT,
-    payload: payload,
-  };
-}
+export const setStarshipMissionProfileTalent = createAction(
+  SET_STARSHIP_MISSION_PROFILE_TALENT,
+  (talent: SelectedTalent) => ({ payload: { talent } }),
+);
 
-export function setStarshipMissionPod(
-  missionPod: MissionPodModel,
-  replacements?: (SelectedTalent | undefined)[],
-) {
-  const payload = { missionPod: missionPod, replacements: replacements ?? [] };
-  return {
-    type: SET_STARSHIP_MISSION_POD,
-    payload: payload,
-  };
-}
+export const setStarshipMissionPod = createAction(
+  SET_STARSHIP_MISSION_POD,
+  (
+    missionPod: MissionPodModel,
+    replacements?: (SelectedTalent | undefined)[],
+  ) => ({ payload: { missionPod, replacements: replacements ?? [] } }),
+);
 
-export function addStarshipRefit(refit: System) {
-  const payload = { refit: refit };
-  return {
-    type: ADD_STARSHIP_REFIT,
-    payload: payload,
-  };
-}
+export const addStarshipRefit = createAction(
+  ADD_STARSHIP_REFIT,
+  (refit: System) => ({ payload: { refit } }),
+);
 
-export function deleteStarshipRefit(refit: System) {
-  const payload = { refit: refit };
-  return {
-    type: DELETE_STARSHIP_REFIT,
-    payload: payload,
-  };
-}
+export const deleteStarshipRefit = createAction(
+  DELETE_STARSHIP_REFIT,
+  (refit: System) => ({ payload: { refit } }),
+);
 
-export function setStarshipRegistry(registry: string) {
-  const payload = { registry: registry };
-  return {
-    type: SET_STARSHIP_REGISTRY,
-    payload: payload,
-  };
-}
+export const setStarshipRegistry = createAction(
+  SET_STARSHIP_REGISTRY,
+  (registry: string) => ({ payload: { registry } }),
+);
 
-export function setStarshipTraits(traits: string) {
-  const payload = { traits: traits };
-  return {
-    type: SET_STARSHIP_TRAITS,
-    payload: payload,
-  };
-}
+export const setStarshipTraits = createAction(
+  SET_STARSHIP_TRAITS,
+  (traits: string) => ({ payload: { traits } }),
+);
 
-export function setStarshipSpaceframeAppearance(
-  appearance?: SpaceframeAppearance,
-) {
-  const payload = { appearance: appearance };
-  return {
-    type: SET_STARSHIP_SPACEFRAME_APPEARANCE,
-    payload: payload,
-  };
-}
+export const setStarshipSpaceframeAppearance = createAction(
+  SET_STARSHIP_SPACEFRAME_APPEARANCE,
+  (appearance?: SpaceframeAppearance) => ({ payload: { appearance } }),
+);
 
-export function setAdditionalTalents(talents: SelectedTalent[]) {
-  const payload = { talents: talents };
-  return {
-    type: SET_ADDITIONAL_TALENTS,
-    payload: payload,
-  };
-}
+export const setAdditionalTalents = createAction(
+  SET_ADDITIONAL_TALENTS,
+  (talents: SelectedTalent[]) => ({ payload: { talents } }),
+);
 
-export function changeStarshipSimpleSystem(delta: number, system: System) {
-  const payload = { delta: delta, system: system };
-  return {
-    type: CHANGE_STARSHIP_SIMPLE_SYSTEM,
-    payload: payload,
-  };
-}
+export const changeStarshipSimpleSystem = createAction(
+  CHANGE_STARSHIP_SIMPLE_SYSTEM,
+  (delta: number, system: System) => ({ payload: { delta, system } }),
+);
 
-export function changeStarshipSpaceframeSystem(delta: number, system: System) {
-  const payload = { delta: delta, system: system };
-  return {
-    type: CHANGE_STARSHIP_SPACEFRAME_SYSTEM,
-    payload: payload,
-  };
-}
+export const changeStarshipSpaceframeSystem = createAction(
+  CHANGE_STARSHIP_SPACEFRAME_SYSTEM,
+  (delta: number, system: System) => ({ payload: { delta, system } }),
+);
 
-export function changeStarshipSimpleDepartment(
-  delta: number,
-  department: Department,
-) {
-  const payload = { delta: delta, department: department };
-  return {
-    type: CHANGE_STARSHIP_SIMPLE_DEPARTMENT,
-    payload: payload,
-  };
-}
+export const changeStarshipSimpleDepartment = createAction(
+  CHANGE_STARSHIP_SIMPLE_DEPARTMENT,
+  (delta: number, department: Department) => ({
+    payload: { delta, department },
+  }),
+);
 
-export function changeStarshipSpaceframeDepartment(
-  delta: number,
-  department: Department,
-) {
-  const payload = { delta: delta, department: department };
-  return {
-    type: CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT,
-    payload: payload,
-  };
-}
+export const changeStarshipSpaceframeDepartment = createAction(
+  CHANGE_STARSHIP_SPACEFRAME_DEPARTMENT,
+  (delta: number, department: Department) => ({
+    payload: { delta, department },
+  }),
+);
 
-export function nextStarshipWorkflowStep() {
-  return {
-    type: NEXT_STARSHIP_WORKFLOW_STEP,
-    payload: {},
-  };
-}
+export const nextStarshipWorkflowStep = createAction(
+  NEXT_STARSHIP_WORKFLOW_STEP,
+  () => ({ payload: {} }),
+);
 
-export function rewindToStarshipWorkflowStep(step: number) {
-  return {
-    type: REWIND_TO_STARSHIP_WORKFLOW_STEP,
-    payload: { index: step },
-  };
-}
+export const rewindToStarshipWorkflowStep = createAction(
+  REWIND_TO_STARSHIP_WORKFLOW_STEP,
+  (step: number) => ({ payload: { index: step } }),
+);
 
-export function addStarshipWeapon(weapon: Weapon) {
-  const payload = { weapon: weapon };
-  return {
-    type: ADD_STARSHIP_WEAPON,
-    payload: payload,
-  };
-}
+export const addStarshipWeapon = createAction(
+  ADD_STARSHIP_WEAPON,
+  (weapon: Weapon) => ({ payload: { weapon } }),
+);
 
-export function deleteStarshipWeapon(weapon: Weapon) {
-  const payload = { weapon: weapon };
-  return {
-    type: DELETE_STARSHIP_WEAPON,
-    payload: payload,
-  };
-}
+export const deleteStarshipWeapon = createAction(
+  DELETE_STARSHIP_WEAPON,
+  (weapon: Weapon) => ({ payload: { weapon } }),
+);
 
-export function modifyStarshipAddAdvancement(
-  type: StarshipAdvancementChoice,
-  value: System | Department | SelectedTalent,
-  removeValue?: System | Department | SelectedTalent,
-) {
-  const payload = { type: type, value: value };
-  if (removeValue != null) {
-    payload['remove'] = removeValue;
-  }
-  return {
-    type: MODIFY_STARSHIP_ADD_ADVANCEMENT,
-    payload: payload,
-  };
-}
+export const modifyStarshipAddAdvancement = createAction(
+  MODIFY_STARSHIP_ADD_ADVANCEMENT,
+  (
+    type: StarshipAdvancementChoice,
+    value: System | Department | SelectedTalent,
+    removeValue?: System | Department | SelectedTalent,
+  ) => {
+    const payload: any = { type, value };
+    if (removeValue != null) {
+      payload['remove'] = removeValue;
+    }
+    return { payload };
+  },
+);
