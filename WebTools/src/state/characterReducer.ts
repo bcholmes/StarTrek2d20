@@ -1,3 +1,4 @@
+import { createSlice } from '@reduxjs/toolkit';
 import {
   CareerEventStep,
   CareerStep,
@@ -37,67 +38,72 @@ import {
 import { Track } from '../helpers/trackEnum';
 import { CharacterAdvancementChoice } from '../modify/model/characterAdvancementChoice';
 import {
-  ADD_CHARACTER_BORG_IMPLANT,
-  ADD_CHARACTER_BORG_IMPLANT_SPECIES_OPTION,
-  ADD_CHARACTER_CAREER_EVENT,
-  ADD_CHARACTER_LOG_ENTRY,
-  ADD_CHARACTER_SPECIES_ABILITY_FOCUS,
-  ADD_CHARACTER_TALENT,
-  ADD_CHARACTER_TALENT_FOCUS,
-  ADD_CHARACTER_TALENT_VALUE,
-  ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE,
-  ADD_NPC_CHARACTER_EQUIPMENT,
-  ADD_NPC_CHARACTER_VALUE,
-  ADD_NPC_CHARACTER_WEAPON,
-  MODIFY_CHARACTER_ADD_ADVANCEMENT,
-  MODIFY_CHARACTER_ATTRIBUTE,
-  MODIFY_CHARACTER_DISCIPLINE,
-  MODIFY_CHARACTER_RANK,
-  MODIFY_CHARACTER_REPUTATION,
-  REMOVE_CHARACTER_BORG_IMPLANT,
-  REMOVE_CHARACTER_BORG_IMPLANT_SPECIES_OPTION,
-  REMOVE_NPC_CHARACTER_EQUIPMENT,
-  REMOVE_NPC_CHARACTER_WEAPON,
-  SET_CHARACTER,
-  SET_CHARACTER_ADDITIONAL_TRAITS,
-  SET_CHARACTER_AGE,
-  SET_CHARACTER_ASSIGNED_SHIP,
-  SET_CHARACTER_CAREER_EVENT_TRAIT,
-  SET_CHARACTER_CAREER_LENGTH,
-  SET_CHARACTER_EARLY_OUTLOOK,
-  SET_CHARACTER_EDUCATION,
-  SET_CHARACTER_ENVIRONMENT,
-  SET_CHARACTER_FINISHING_TOUCHES,
-  SET_CHARACTER_FOCUS,
-  SET_CHARACTER_HOUSE,
-  SET_CHARACTER_LINEAGE,
-  SET_CHARACTER_NAME,
-  SET_CHARACTER_PASTIME,
-  SET_CHARACTER_PRONOUNS,
-  SET_CHARACTER_RANK,
-  SET_CHARACTER_ROLE,
-  SET_CHARACTER_SPECIES,
-  SET_CHARACTER_SPECIES_ABILITY_CHOICE,
-  SET_CHARACTER_TYPE,
-  SET_CHARACTER_VALUE,
-  SET_NPC_CHARACTER_ATTRIBUTES,
-  SET_NPC_CHARACTER_DEPARTMENTS,
-  SET_NPC_CHARACTER_TALENTS,
-  SET_SUPPORTING_CHARACTER_ATTRIBUTES,
-  SET_SUPPORTING_CHARACTER_DISCIPLINES,
-  SET_SUPPORTING_CHARACTER_SUPERVISORY,
+  addCharacterBorgImplant,
+  addCharacterBorgImplantSpeciesOption,
+  addCharacterCareerEvent,
+  addCharacterLogEntry,
+  addCharacterTalent,
+  addCharacterTalentFocus,
+  addCharacterTalentValue,
+  addCharacterUntappedPotentialAttribute,
+  addNpcCharacterEquipment,
+  addNpcCharacterValue,
+  addNpcCharacterWeapon,
+  modifyCharacterAddAdvancement,
+  modifyCharacterAttribute,
+  modifyCharacterDiscipline,
+  modifyCharacterRank,
+  modifyCharacterReputation,
+  removeCharacterBorgImplant,
+  removeCharacterBorgImplantSpeciesOption,
+  removeNpcCharacterEquipment,
+  removeNpcCharacterWeapon,
+  setCharacter,
+  setCharacterAdditionalTraits,
+  setCharacterAge,
+  setCharacterAssignedShip,
+  setCharacterAssignment,
+  setCharacterCareerEventTrait,
+  setCharacterCareerLength,
+  setCharacterEarlyOutlook,
+  setCharacterEducation,
+  setCharacterEnvironment,
+  setCharacterFinishingTouches,
+  setCharacterFocus,
+  setCharacterHouse,
+  setCharacterLineage,
+  setCharacterName,
+  setCharacterPastime,
+  setCharacterPronouns,
+  setCharacterRank,
+  setCharacterSpecies,
+  setCharacterSpeciesAbilityChoice,
+  setCharacterSpeciesAbilityFocus,
+  setCharacterType,
+  setCharacterValue,
+  setNpcCharacterAttributes,
+  setNpcCharacterDepartments,
+  setNpcCharacterTalents,
+  setSupportingCharacterAttributes,
+  setSupportingCharacterDepartments,
+  setSupportingCharacterSupervisory,
   StepContext,
-  UPDATE_CHARACTER_GENERAL_EDIT_FOCUS,
-  UPDATE_CHARACTER_GENERAL_EDIT_SPECIES_ABILITY,
-  UPDATE_CHARACTER_GENERAL_EDIT_TALENT,
-  UPDATE_CHARACTER_GENERAL_EDIT_VALUE,
+  updateCharacterGeneralEditFocusChange,
+  updateCharacterGeneralEditSpeciesAbility,
+  updateCharacterGeneralEditTalentChange,
+  updateCharacterGeneralEditValueChange,
 } from './characterActions';
 
 interface CharacterState {
   currentCharacter?: Character;
   isModified: boolean;
-  replacementHash?: string;
+  replacementHash?: number;
 }
+
+const initialState: CharacterState = {
+  currentCharacter: undefined,
+  isModified: false,
+};
 
 const trackDefaults = (track: Track, step: EducationStep) => {
   switch (track) {
@@ -124,7 +130,7 @@ const trackDefaults = (track: Track, step: EducationStep) => {
 };
 
 const withCharacter = (
-  state: CharacterState,
+  state: any,
   action: any,
   mutate: (temp: Character, action: any) => void,
 ): CharacterState => {
@@ -137,12 +143,12 @@ const withCharacter = (
   };
 };
 
-export const characterReducer = (
-  state: CharacterState = { currentCharacter: undefined, isModified: false },
-  action,
-) => {
-  switch (action.type) {
-    case SET_CHARACTER: {
+export const characterSlice = createSlice({
+  name: 'character',
+  initialState: initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(setCharacter, (state, action) => {
       const temp = action.payload.character.copy();
       return {
         ...state,
@@ -150,8 +156,8 @@ export const characterReducer = (
         isModified: false,
         replacementHash: action.payload.replacementHash,
       };
-    }
-    case SET_CHARACTER_SPECIES:
+    });
+    builder.addCase(setCharacterSpecies, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const originalStep = temp.speciesStep;
         temp.speciesStep = new SpeciesStep(action.payload.species);
@@ -205,18 +211,21 @@ export const characterReducer = (
           temp.speciesStep.customSpeciesName = action.payload.customSpeciesName;
         }
       });
-    case SET_CHARACTER_AGE:
+    });
+    builder.addCase(setCharacterAge, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.age = action.payload.age;
         if (temp.educationStep == null) {
           temp.educationStep = new EducationStep();
         }
       });
-    case SET_CHARACTER_CAREER_LENGTH:
+    });
+    builder.addCase(setCharacterCareerLength, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.careerStep = new CareerStep(action.payload.careerLength);
       });
-    case SET_CHARACTER_EDUCATION:
+    });
+    builder.addCase(setCharacterEducation, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const originalStep = temp.educationStep;
         temp.educationStep = new EducationStep(
@@ -239,7 +248,8 @@ export const characterReducer = (
           }
         }
       });
-    case SET_CHARACTER_FINISHING_TOUCHES:
+    });
+    builder.addCase(setCharacterFinishingTouches, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const originalStep = temp.finishingStep;
         temp.finishingStep = new FinishingStep();
@@ -257,7 +267,8 @@ export const characterReducer = (
           }
         }
       });
-    case SET_CHARACTER_ENVIRONMENT:
+    });
+    builder.addCase(setCharacterEnvironment, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const originalStep = temp.environmentStep;
         temp.environmentStep = new EnvironmentStep(
@@ -276,7 +287,8 @@ export const characterReducer = (
           }
         }
       });
-    case SET_CHARACTER_EARLY_OUTLOOK:
+    });
+    builder.addCase(setCharacterEarlyOutlook, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const originalStep = temp.upbringingStep;
         temp.upbringingStep = new UpbringingStep(
@@ -293,7 +305,8 @@ export const characterReducer = (
           temp.upbringingStep.talent = originalStep.talent?.copy();
         }
       });
-    case MODIFY_CHARACTER_ATTRIBUTE:
+    });
+    builder.addCase(modifyCharacterAttribute, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const attribute = action.payload.attribute;
         const positive = action.payload.positive;
@@ -385,7 +398,8 @@ export const characterReducer = (
           }
         }
       });
-    case SET_SUPPORTING_CHARACTER_SUPERVISORY:
+    });
+    builder.addCase(setSupportingCharacterSupervisory, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.supportingStep == null) {
           temp.supportingStep = new SupportingStep();
@@ -404,28 +418,32 @@ export const characterReducer = (
           temp.supportingStep.focuses.splice(3);
         }
       });
-    case SET_SUPPORTING_CHARACTER_DISCIPLINES:
+    });
+    builder.addCase(setSupportingCharacterDepartments, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.supportingStep == null) {
           temp.supportingStep = new SupportingStep();
         }
         temp.supportingStep.disciplines = [...action.payload.disciplines];
       });
-    case SET_NPC_CHARACTER_DEPARTMENTS:
+    });
+    builder.addCase(setNpcCharacterDepartments, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.npcGenerationStep == null) {
           temp.npcGenerationStep = new NpcGenerationStep();
         }
         temp.npcGenerationStep.departments = [...action.payload.departments];
       });
-    case SET_NPC_CHARACTER_ATTRIBUTES:
+    });
+    builder.addCase(setNpcCharacterAttributes, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.npcGenerationStep == null) {
           temp.npcGenerationStep = new NpcGenerationStep();
         }
         temp.npcGenerationStep.attributes = [...action.payload.attributes];
       });
-    case SET_NPC_CHARACTER_TALENTS:
+    });
+    builder.addCase(setNpcCharacterTalents, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.npcGenerationStep == null) {
           temp.npcGenerationStep = new NpcGenerationStep();
@@ -434,14 +452,16 @@ export const characterReducer = (
           ...action.payload.talents.map((t) => t.copy()),
         ];
       });
-    case ADD_CHARACTER_LOG_ENTRY:
+    });
+    builder.addCase(addCharacterLogEntry, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.improvements == null) {
           temp.improvements = [];
         }
         temp.improvements.push(action.payload.logEntry);
       });
-    case ADD_NPC_CHARACTER_EQUIPMENT:
+    });
+    builder.addCase(addNpcCharacterEquipment, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.npcGenerationStep == null) {
           temp.npcGenerationStep = new NpcGenerationStep();
@@ -449,7 +469,8 @@ export const characterReducer = (
 
         temp.npcGenerationStep.equipment.push(action.payload.equipment);
       });
-    case ADD_NPC_CHARACTER_WEAPON:
+    });
+    builder.addCase(addNpcCharacterWeapon, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.npcGenerationStep == null) {
           temp.npcGenerationStep = new NpcGenerationStep();
@@ -457,7 +478,8 @@ export const characterReducer = (
 
         temp.npcGenerationStep.weapons.push(action.payload.weapon);
       });
-    case REMOVE_NPC_CHARACTER_EQUIPMENT:
+    });
+    builder.addCase(removeNpcCharacterEquipment, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const equipment = action.payload.equipment;
         if (temp.npcGenerationStep?.equipment != null) {
@@ -478,7 +500,8 @@ export const characterReducer = (
             });
         }
       });
-    case REMOVE_NPC_CHARACTER_WEAPON:
+    });
+    builder.addCase(removeNpcCharacterWeapon, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const weapon = action.payload.weapon;
         if (temp.npcGenerationStep?.weapons != null) {
@@ -486,14 +509,16 @@ export const characterReducer = (
             temp.npcGenerationStep.weapons.filter((e) => e !== weapon);
         }
       });
-    case SET_SUPPORTING_CHARACTER_ATTRIBUTES:
+    });
+    builder.addCase(setSupportingCharacterAttributes, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.supportingStep == null) {
           temp.supportingStep = new SupportingStep();
         }
         temp.supportingStep.attributes = [...action.payload.attributes];
       });
-    case ADD_CHARACTER_CAREER_EVENT:
+    });
+    builder.addCase(addCharacterCareerEvent, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const event = new CareerEventStep(action.payload.eventId);
         if (action.payload.attribute != null) {
@@ -523,7 +548,8 @@ export const characterReducer = (
           }
         }
       });
-    case SET_CHARACTER_TYPE:
+    });
+    builder.addCase(setCharacterType, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const originalType = temp.type;
         temp.type = action.payload.type;
@@ -548,14 +574,16 @@ export const characterReducer = (
           temp.supportingStep.supervisory = false;
         }
       });
-    case ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE:
+    });
+    builder.addCase(addCharacterUntappedPotentialAttribute, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const talent = temp.getTalentByName(TALENT_NAME_UNTAPPED_POTENTIAL);
         if (talent) {
           talent.attribute = action.payload.attribute;
         }
       });
-    case ADD_CHARACTER_BORG_IMPLANT:
+    });
+    builder.addCase(addCharacterBorgImplant, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const talent = temp.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
         if (talent) {
@@ -565,7 +593,8 @@ export const characterReducer = (
           }
         }
       });
-    case ADD_CHARACTER_BORG_IMPLANT_SPECIES_OPTION:
+    });
+    builder.addCase(addCharacterBorgImplantSpeciesOption, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (
           temp.speciesStep != null &&
@@ -578,7 +607,8 @@ export const characterReducer = (
           temp.speciesStep?.abilityOptions?.implants.splice(0, 1);
         }
       });
-    case REMOVE_CHARACTER_BORG_IMPLANT:
+    });
+    builder.addCase(removeCharacterBorgImplant, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const talent = temp.getTalentByName(TALENT_NAME_BORG_IMPLANTS);
         if (talent) {
@@ -588,21 +618,26 @@ export const characterReducer = (
           }
         }
       });
-    case REMOVE_CHARACTER_BORG_IMPLANT_SPECIES_OPTION:
-      return withCharacter(state, action, (temp, action) => {
-        if (
-          temp.speciesStep != null &&
-          temp.speciesStep?.abilityOptions != null
-        ) {
-          const index = temp.speciesStep?.abilityOptions?.implants?.indexOf(
-            action.payload.type,
-          );
-          if (index >= 0) {
-            temp.speciesStep?.abilityOptions?.implants?.splice(index, 1);
+    });
+    builder.addCase(
+      removeCharacterBorgImplantSpeciesOption,
+      (state, action) => {
+        return withCharacter(state, action, (temp, action) => {
+          if (
+            temp.speciesStep != null &&
+            temp.speciesStep?.abilityOptions != null
+          ) {
+            const index = temp.speciesStep?.abilityOptions?.implants?.indexOf(
+              action.payload.type,
+            );
+            if (index >= 0) {
+              temp.speciesStep?.abilityOptions?.implants?.splice(index, 1);
+            }
           }
-        }
-      });
-    case ADD_CHARACTER_SPECIES_ABILITY_FOCUS:
+        });
+      },
+    );
+    builder.addCase(setCharacterSpeciesAbilityFocus, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (
           temp.speciesStep != null &&
@@ -621,7 +656,8 @@ export const characterReducer = (
           temp.speciesStep.abilityOptions.focuses[index] = focus;
         }
       });
-    case SET_CHARACTER_SPECIES_ABILITY_CHOICE:
+    });
+    builder.addCase(setCharacterSpeciesAbilityChoice, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (
           temp.speciesStep != null &&
@@ -633,7 +669,8 @@ export const characterReducer = (
           temp.speciesStep.abilityOptions.choice = action.payload.choice;
         }
       });
-    case ADD_CHARACTER_TALENT_FOCUS:
+    });
+    builder.addCase(addCharacterTalentFocus, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const talent = temp.getTalentByName(action.payload.talent);
         if (talent) {
@@ -644,14 +681,16 @@ export const characterReducer = (
           talent.focuses[index] = action.payload.focus;
         }
       });
-    case ADD_CHARACTER_TALENT_VALUE:
+    });
+    builder.addCase(addCharacterTalentValue, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const talent = temp.getTalentByName(action.payload.talent);
         if (talent) {
           talent.value = action.payload.value;
         }
       });
-    case ADD_CHARACTER_TALENT:
+    });
+    builder.addCase(addCharacterTalent, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const t = action.payload.talent;
         let talent = undefined;
@@ -682,38 +721,46 @@ export const characterReducer = (
           temp.finishingStep.talent = talent;
         }
       });
-    case SET_CHARACTER_NAME:
+    });
+    builder.addCase(setCharacterName, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.name = action.payload.name;
       });
-    case SET_CHARACTER_PASTIME:
+    });
+    builder.addCase(setCharacterPastime, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.pastime = [action.payload.pastime];
       });
-    case SET_CHARACTER_LINEAGE:
+    });
+    builder.addCase(setCharacterLineage, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.lineage = action.payload.lineage;
       });
-    case SET_CHARACTER_HOUSE:
+    });
+    builder.addCase(setCharacterHouse, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.house = action.payload.house;
       });
-    case SET_CHARACTER_ASSIGNED_SHIP:
+    });
+    builder.addCase(setCharacterAssignedShip, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.assignedShip = action.payload.assignedShip;
       });
-    case SET_CHARACTER_ADDITIONAL_TRAITS:
+    });
+    builder.addCase(setCharacterAdditionalTraits, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.additionalTraits = action.payload.traits;
       });
-    case SET_CHARACTER_RANK:
+    });
+    builder.addCase(setCharacterRank, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.rankValue = new CharacterRank(
           action.payload.name,
           action.payload.rank ?? undefined,
         );
       });
-    case SET_CHARACTER_ROLE:
+    });
+    builder.addCase(setCharacterAssignment, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (action.payload.role != null) {
           if (typeof action.payload.role === 'string') {
@@ -736,11 +783,13 @@ export const characterReducer = (
           temp.jobAssignment = undefined;
         }
       });
-    case SET_CHARACTER_PRONOUNS:
+    });
+    builder.addCase(setCharacterPronouns, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.pronouns = action.payload.pronouns;
       });
-    case SET_CHARACTER_VALUE:
+    });
+    builder.addCase(setCharacterValue, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.stereotype === Stereotype.SupportingCharacter) {
           if (temp.supportingStep == null) {
@@ -769,12 +818,17 @@ export const characterReducer = (
           temp.finishingStep.value = action.payload.value;
         }
       });
-    case UPDATE_CHARACTER_GENERAL_EDIT_SPECIES_ABILITY:
-      return withCharacter(state, action, (temp, action) => {
-        temp.speciesStep.ability = action.payload.ability;
-        temp.speciesStep.talent = undefined;
-      });
-    case UPDATE_CHARACTER_GENERAL_EDIT_VALUE:
+    });
+    builder.addCase(
+      updateCharacterGeneralEditSpeciesAbility,
+      (state, action) => {
+        return withCharacter(state, action, (temp, action) => {
+          temp.speciesStep.ability = action.payload.ability;
+          temp.speciesStep.talent = undefined;
+        });
+      },
+    );
+    builder.addCase(updateCharacterGeneralEditValueChange, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const oldValue = action.payload.oldValue as ValueAssembly;
 
@@ -818,7 +872,8 @@ export const characterReducer = (
           }
         }
       });
-    case UPDATE_CHARACTER_GENERAL_EDIT_FOCUS:
+    });
+    builder.addCase(updateCharacterGeneralEditFocusChange, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const oldValue = action.payload.oldValue as FocusAssembly;
 
@@ -857,7 +912,8 @@ export const characterReducer = (
           }
         }
       });
-    case UPDATE_CHARACTER_GENERAL_EDIT_TALENT:
+    });
+    builder.addCase(updateCharacterGeneralEditTalentChange, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const oldValue = action.payload.oldValue as TalentAssembly;
 
@@ -893,7 +949,8 @@ export const characterReducer = (
           }
         }
       });
-    case ADD_NPC_CHARACTER_VALUE:
+    });
+    builder.addCase(addNpcCharacterValue, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.stereotype === Stereotype.Npc) {
           if (temp.npcGenerationStep == null) {
@@ -906,7 +963,8 @@ export const characterReducer = (
           temp.npcGenerationStep.values[index] = action.payload.value;
         }
       });
-    case SET_CHARACTER_FOCUS:
+    });
+    builder.addCase(setCharacterFocus, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.stereotype === Stereotype.SupportingCharacter) {
           if (temp.supportingStep == null) {
@@ -950,7 +1008,8 @@ export const characterReducer = (
           temp.careerEvents[1].focus = action.payload.focus;
         }
       });
-    case SET_CHARACTER_CAREER_EVENT_TRAIT:
+    });
+    builder.addCase(setCharacterCareerEventTrait, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (
           action.payload.context === StepContext.CareerEvent1 &&
@@ -964,7 +1023,8 @@ export const characterReducer = (
           temp.careerEvents[1].trait = action.payload.trait;
         }
       });
-    case MODIFY_CHARACTER_DISCIPLINE:
+    });
+    builder.addCase(modifyCharacterDiscipline, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         const discipline = action.payload.discipline;
         const positive = action.payload.positive;
@@ -1086,7 +1146,8 @@ export const characterReducer = (
           }
         }
       });
-    case MODIFY_CHARACTER_RANK:
+    });
+    builder.addCase(modifyCharacterRank, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.improvements == null) {
           temp.improvements = [];
@@ -1095,14 +1156,16 @@ export const characterReducer = (
           new Promotion(action.payload.rank, action.payload.type),
         );
       });
-    case MODIFY_CHARACTER_REPUTATION:
+    });
+    builder.addCase(modifyCharacterReputation, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.improvements == null) {
           temp.improvements = [];
         }
         temp.improvements.push(new ReputationChangeStep(action.payload.delta));
       });
-    case MODIFY_CHARACTER_ADD_ADVANCEMENT:
+    });
+    builder.addCase(modifyCharacterAddAdvancement, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         if (temp.improvements == null) {
           temp.improvements = [];
@@ -1127,8 +1190,8 @@ export const characterReducer = (
         improvement.log = action.payload.logEntry?.id;
         improvement.logCallback = action.payload.logEntryCallback?.id;
       });
+    });
+  },
+});
 
-    default:
-      return state;
-  }
-};
+export const characterReducer = characterSlice.reducer;
