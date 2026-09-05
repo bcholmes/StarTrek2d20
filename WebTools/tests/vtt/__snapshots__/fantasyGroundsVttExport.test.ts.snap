@@ -1,0 +1,633 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FantasyGrounds XML export golden output exports a fully-populated 2e main character 1`] = `
+"<?xml version="1.0" encoding="utf-8"?>
+<root version="4.3" dataversion="20230221" release="2|CoreRPG:6">
+  <character>
+    <attributes>
+      <control>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">7</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">7</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </control>
+      <daring>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">11</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">11</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </daring>
+      <fitness>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">9</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">9</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </fitness>
+      <insight>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">8</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">8</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </insight>
+      <presence>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">9</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">9</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </presence>
+      <reason>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">8</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">8</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </reason>
+    </attributes>
+    <determination type="number">0</determination>
+    <career type="string">CareerType.solo.experienced.name</career>
+    <careerevent>
+      <id-0001>
+        <attributes>
+          <id-0001>
+            <name type="string">daring</name>
+          </id-0001>
+        </attributes>
+        <desc type="formattedtext">
+          <p>The ship the character was serving on was lost, destroyed during a mission, and the character was one of the few who survived.</p>
+          <p/>
+          <p>- What was the ship’s mission? Was it something routine that went horribly wrong, or was it something perilous? What destroyed the ship?</p>
+          <p>- How many survivors were there? How long did it take before they were recovered?</p>
+        </desc>
+        <disciplines>
+          <id-0001>
+            <name type="string">security</name>
+          </id-0001>
+        </disciplines>
+        <focus type="number">1</focus>
+        <link type="windowreference">
+          <class>careerevent</class>
+          <recordname>....careerevent.id-0001</recordname>
+        </link>
+        <locked type="number">0</locked>
+        <name type="string">Ship Destroyed</name>
+        <trait type="number">0</trait>
+        <value type="number">0</value>
+      </id-0001>
+      <id-0002>
+        <attributes>
+          <id-0001>
+            <name type="string">control</name>
+          </id-0001>
+        </attributes>
+        <desc type="formattedtext">
+          <p>The character was part of a delegation that helped negotiate a treaty, agreement, or alliance with a culture outside the Federation. What culture was the treaty with? What was it for?</p>
+        </desc>
+        <disciplines>
+          <id-0001>
+            <name type="string">command</name>
+          </id-0001>
+        </disciplines>
+        <focus type="number">1</focus>
+        <link type="windowreference">
+          <class>careerevent</class>
+          <recordname>....careerevent.id-0002</recordname>
+        </link>
+        <locked type="number">0</locked>
+        <name type="string">Negotiate a Treaty</name>
+        <trait type="number">0</trait>
+        <value type="number">0</value>
+      </id-0002>
+    </careerevent>
+    <careerlink type="windowreference">
+      <class>career</class>
+      <recordname>reference.career.id-0002@Star Trek Adventures Core Rulebook</recordname>
+    </careerlink>
+    <disciplines>
+      <command>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">3</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">3</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </command>
+      <conn>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">1</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">1</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </conn>
+      <security>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">2</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">2</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </security>
+      <engineering>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">4</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">4</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </engineering>
+      <science>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">2</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">2</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </science>
+      <medicine>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">2</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">2</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </medicine>
+    </disciplines>
+    <environment type="string">Environment.common.starshipOrStarbase.name</environment>
+    <environmentlink type="windowreference">
+      <class/>
+      <recordname/>
+    </environmentlink>
+    <focuslist>
+      <id-0001>
+        <name type="string">Compassion</name>
+      </id-0001>
+      <id-0002>
+        <name type="string">Engineering</name>
+      </id-0002>
+      <id-0003>
+        <name type="string">Astrophysics</name>
+      </id-0003>
+      <id-0004>
+        <name type="string">Starship Design</name>
+      </id-0004>
+      <id-0005>
+        <name type="string">Survival</name>
+      </id-0005>
+      <id-0006>
+        <name type="string">Diplomacy</name>
+      </id-0006>
+    </focuslist>
+    <hp>
+      <misc type="number">0</misc>
+      <total type="number">9</total>
+      <wounds type="number">0</wounds>
+    </hp>
+    <inventorylist>
+      <id-0001>
+        <area type="number">0</area>
+        <category type="string">Equipment</category>
+        <cost type="string"></cost>
+        <count type="number">1</count>
+        <intense type="number">0</intense>
+        <locked type="number">0</locked>
+        <name type="string">[object Object]</name>
+        <notes type="formattedtext">
+          <h>Uniform</h>
+        </notes>
+        <piercing type="number">0</piercing>
+        <viscious type="number">0</viscious>
+      </id-0001>
+      <id-0002>
+        <area type="number">0</area>
+        <category type="string">Equipment</category>
+        <cost type="string"></cost>
+        <count type="number">1</count>
+        <intense type="number">0</intense>
+        <locked type="number">0</locked>
+        <name type="string">[object Object]</name>
+        <notes type="formattedtext">
+          <h>Communicator</h>
+        </notes>
+        <piercing type="number">0</piercing>
+        <viscious type="number">0</viscious>
+      </id-0002>
+      <id-0003>
+        <area type="number">0</area>
+        <category type="string">Equipment</category>
+        <cost type="string"></cost>
+        <count type="number">1</count>
+        <intense type="number">0</intense>
+        <locked type="number">0</locked>
+        <name type="string">[object Object]</name>
+        <notes type="formattedtext">
+          <h>Tricorder</h>
+        </notes>
+        <piercing type="number">0</piercing>
+        <viscious type="number">0</viscious>
+      </id-0003>
+      <id-0004>
+        <area type="number">0</area>
+        <category type="string">Equipment</category>
+        <cost type="string"></cost>
+        <count type="number">1</count>
+        <intense type="number">0</intense>
+        <locked type="number">0</locked>
+        <name type="string">[object Object]</name>
+        <notes type="formattedtext">
+          <h>Engineering Kit</h>
+        </notes>
+        <piercing type="number">0</piercing>
+        <viscious type="number">0</viscious>
+      </id-0004>
+      <id-0005>
+        <area type="number">0</area>
+        <category type="string">Weapon</category>
+        <cost type="string">Standard Issue</cost>
+        <count type="number">1</count>
+        <damagerating type="number">2</damagerating>
+        <dmgeffect/>
+        <intense type="number">0</intense>
+        <locked type="number">0</locked>
+        <name type="string">Weapon.personal.strike.name</name>
+        <notes type="formattedtext">
+          <h>Weapon.personal.strike.name</h>
+        </notes>
+        <piercing type="number">0</piercing>
+        <size type="string">1h</size>
+        <vicious type="number">0</vicious>
+        <weapquality/>
+      </id-0005>
+      <id-0006>
+        <area type="number">0</area>
+        <category type="string">Weapon</category>
+        <cost type="string">Standard Issue</cost>
+        <count type="number">1</count>
+        <damagerating type="number">4</damagerating>
+        <dmgeffect/>
+        <intense type="number">0</intense>
+        <locked type="number">0</locked>
+        <name type="string">Weapon.personal.phaser2.name</name>
+        <notes type="formattedtext">
+          <h>Weapon.personal.phaser2.name</h>
+        </notes>
+        <piercing type="number">0</piercing>
+        <qualities type="string">Charge</qualities>
+        <size type="string">1h</size>
+        <type type="string">ranged</type>
+        <vicious type="number">0</vicious>
+        <weapquality>
+          <id-0001>
+            <name type="string">Charge</name>
+            <rank type="number">1</rank>
+          </id-0001>
+        </weapquality>
+      </id-0006>
+    </inventorylist>
+    <milestones>
+      <arc type="number">0</arc>
+      <spotlight type="number">0</spotlight>
+      <standard type="number">0</standard>
+    </milestones>
+    <name type="string">Rhea Voss</name>
+    <notes>
+      <id-0001>
+        <name type="string">Traits: Steadfast</name>
+        <text type="formattedtext">
+          <p/>
+        </text>
+      </id-0001>
+      <id-0002>
+        <name type="string">Pronouns: she/her</name>
+        <text type="formattedtext">
+          <p/>
+        </text>
+      </id-0002>
+      <id-0003>
+        <name type="string">Value: Curiosity</name>
+        <text type="formattedtext">
+          <p/>
+        </text>
+      </id-0003>
+      <id-0004>
+        <name type="string">Value: Courage</name>
+        <text type="formattedtext">
+          <p/>
+        </text>
+      </id-0004>
+      <id-0005>
+        <name type="string">Value: Harmony</name>
+        <text type="formattedtext">
+          <p/>
+        </text>
+      </id-0005>
+      <id-0006>
+        <name type="string">Value: Initiative</name>
+        <text type="formattedtext">
+          <p/>
+        </text>
+      </id-0006>
+    </notes>
+    <primary_specieslink type="windowreference">
+      <class/>
+      <recordname/>
+    </primary_specieslink>
+    <rank type="string">5</rank>
+    <reputation type="number">5</reputation>
+    <resistance>
+      <misc type="number">0</misc>
+      <total type="number">0</total>
+    </resistance>
+    <role type="string">Chief Engineer / Operations Manager</role>
+    <secondary_specieslink type="windowreference">
+      <class/>
+      <recordname/>
+    </secondary_specieslink>
+    <species type="string">Human</species>
+    <supportchars/>
+    <talent>
+      <id-0001>
+        <desc type="formattedtext">
+          <p/>
+        </desc>
+        <locked type="number">0</locked>
+        <multiple type="number">0</multiple>
+        <name type="string">Bold</name>
+        <requirement type="string">None</requirement>
+      </id-0001>
+      <id-0002>
+        <desc type="formattedtext">
+          <p/>
+        </desc>
+        <locked type="number">0</locked>
+        <multiple type="number">0</multiple>
+        <name type="string">Cautious</name>
+        <requirement type="string">None</requirement>
+      </id-0002>
+      <id-0003>
+        <desc type="formattedtext">
+          <p>The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1CD. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.</p>
+        </desc>
+        <locked type="number">0</locked>
+        <multiple type="number">0</multiple>
+        <name type="string">Untapped Potential</name>
+        <requirement type="string">Only available to Young characters</requirement>
+      </id-0003>
+      <id-0004>
+        <desc type="formattedtext">
+          <p>Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.</p>
+        </desc>
+        <locked type="number">0</locked>
+        <multiple type="number">0</multiple>
+        <name type="string">Advisor</name>
+        <requirement type="string">Requires Command 2+, Main Character only</requirement>
+      </id-0004>
+      <id-0005>
+        <desc type="formattedtext">
+          <p>The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.</p>
+        </desc>
+        <locked type="number">0</locked>
+        <multiple type="number">0</multiple>
+        <name type="string">Supervisor</name>
+        <requirement type="string">None</requirement>
+      </id-0005>
+    </talent>
+    <token type="token"/>
+    <training type="string">Sciences Track</training>
+    <traininglink type="windowreference">
+      <class/>
+      <recordname/>
+    </traininglink>
+    <upbringing type="string">Business or Trade</upbringing>
+    <upbringinglink type="windowreference">
+      <class>upbringing</class>
+      <recordname>reference.upbringing.id-0002@Star Trek Adventures Core Rulebook</recordname>
+    </upbringinglink>
+  </character>
+</root>"
+`;
+
+exports[`FantasyGrounds XML export golden output exports a fully-populated NPC 1`] = `
+"<?xml version="1.0" encoding="utf-8"?>
+<root version="4.3" dataversion="20230221" release="2|CoreRPG:6">
+  <npc>
+    <attacks>
+      <id-0001>
+        <area type="number">0</area>
+        <damagerating type="number">2</damagerating>
+        <intense type="number">0</intense>
+        <name type="string">Weapon.personal.strike.name</name>
+        <lethality type="string">nonlethal</lethality>
+        <piercing type="number">0</piercing>
+        <tn type="number">10</tn>
+        <vicious type="number">0</vicious>
+      </id-0001>
+      <id-0002>
+        <area type="number">0</area>
+        <damagerating type="number">4</damagerating>
+        <intense type="number">0</intense>
+        <name type="string">Weapon.personal.phaser2.name</name>
+        <piercing type="number">0</piercing>
+        <tn type="number">9</tn>
+        <type type="string">ranged</type>
+        <vicious type="number">0</vicious>
+      </id-0002>
+      <id-0003>
+        <area type="number">0</area>
+        <damagerating type="number">4</damagerating>
+        <intense type="number">0</intense>
+        <name type="string">Weapon.personal.phaser2.name</name>
+        <piercing type="number">0</piercing>
+        <tn type="number">9</tn>
+        <type type="string">ranged</type>
+        <vicious type="number">0</vicious>
+      </id-0003>
+    </attacks>
+    <attributes>
+      <control>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">7</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">7</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </control>
+      <daring>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">8</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">8</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </daring>
+      <fitness>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">7</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">7</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </fitness>
+      <insight>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">9</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">9</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </insight>
+      <presence>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">8</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">8</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </presence>
+      <reason>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">9</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">9</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </reason>
+    </attributes>
+    <description type="formattedtext">
+      <p>A Vulcan liaison aboard a starbase.</p>
+    </description>
+    <disciplines>
+      <command>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">3</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">3</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </command>
+      <conn>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">2</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">2</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </conn>
+      <security>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">2</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">2</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </security>
+      <engineering>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">1</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">1</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </engineering>
+      <science>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">1</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">1</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </science>
+      <medicine>
+        <careerevent type="number">0</careerevent>
+        <edit type="number">1</edit>
+        <environment type="number">0</environment>
+        <misc type="number">0</misc>
+        <species type="number">0</species>
+        <total type="number">1</total>
+        <training type="number">0</training>
+        <upbringing type="number">0</upbringing>
+      </medicine>
+    </disciplines>
+    <focuses type="string">Meditation, Vulcan Nerve Pinch, Science</focuses>
+    <hptotal type="number">7</hptotal>
+    <name type="string">Sub-Commander Torel</name>
+    <resistance>
+      <total type="number">0</total>
+    </resistance>
+    <specialrules>
+      <id-0001>
+        <desc type="formattedtext">
+          <p/>
+        </desc>
+        <name type="string">Bold</name>
+      </id-0001>
+      <id-0002>
+        <desc type="formattedtext">
+          <p>The character is wise and experienced, and draws upon inner reserves of willpower and determination in a more measured and considered way. Whenever the character spends a point of Determination, roll 1CD. If an Effect is rolled, immediately regain that spent point of Determination. The character has a rank of at least Lieutenant Commander.</p>
+        </desc>
+        <name type="string">Veteran</name>
+      </id-0002>
+    </specialrules>
+    <token type="token"/>
+    <traits type="string">Vulcan</traits>
+    <type type="string">Notable Character</type>
+    <values type="string">Logic, Peace</values>
+  </npc>
+</root>"
+`;
