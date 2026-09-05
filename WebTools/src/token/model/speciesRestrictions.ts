@@ -505,13 +505,12 @@ export class SpeciesRestrictions {
     } else if (extra === ExtraType.ZaraniteMask) {
       return species === Species.Zaranite;
     } else if (extra === ExtraType.Freckles) {
-      return [Species.Human,
+      return [
+        Species.Human,
         Species.Haliian,
         Species.Ardanan,
-        Species.Andorian
-      ].includes(
-        species,
-      );
+        Species.Andorian,
+      ].includes(species);
     } else if (extra === ExtraType.SecurityHelmet) {
       return (
         uniformEra === UniformEra.MonsterMaroon &&

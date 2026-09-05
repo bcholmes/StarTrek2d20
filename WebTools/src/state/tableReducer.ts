@@ -354,7 +354,7 @@ const getInitialData = (): TableState => {
         TableMarshaller.instance.unmarshall(t),
       );
       if (collections?.length) {
-        initialData = {...initialData, collections: [...collections]};
+        initialData = { ...initialData, collections: [...collections] };
       }
     }
   }

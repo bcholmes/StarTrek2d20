@@ -279,6 +279,14 @@
     "MissionPodSelectionPage.text": "Niektóre klasy okrętów mają możliwość specjalnej konfiguracji modułów w zależności od charakteru misji. Dodatkowe talenty związane z modułem nie mogą być wymieniane podczas rozwoju, ale cały moduł (i jego właściwości) mogą być wymienione tak, jakby były pojedynczym talentem.",
     "MissionPodSelectionPage.errorNoSelection": "Wybierz proszę moduł misji zanim przejdziesz dalej.",
 
+    "MissionPodReplacement.title": "Wymień powtarzający się talent modułu misji",
+    "MissionPodReplacement.instruction": "Moduł misji zapewnia talent, który już został przypisany do klasy okrętu lub profilu misji wcześniej. Powoduje to potrzebę wybrania innego talentu dla okrętu, zgodnie ze spełnianymi warunkami.",
+    "MissionPodReplacement.forTalent": "Wymiana za {{talent}}:",
+    "MissionPodReplacement.errorMissing": "Proszę wybierz inny talent, który uzupełni talenty okrętu.",
+
+    "SwapMissionPodPage.instruction": "Wymień obecny moduł misji okrętu na nowy. Nowy moduł zastępuje poprzedni, a jeśli spowoduje to zduplikowanie niektórych talentów, będziesz mieć możliwość ich wymiany i uzupełnienia.",
+    "SwapMissionPodPage.errorNoSelection": "Wybierz proszę moduł misji zanim przejdziesz dalej.",
+
     "MissionProfileSelectionPage.text": "Profil misji może się różnić u kilku okrętów tej samej klasy. Określa wcześniej przygotowane wyposażenie, a także specjalistyczny personel, który zostanie przydzielony do jego obsługi. Każda klasa okrętów ma co najmniej jeden możliwy profil misji.",
     "MissionProfileSelectionPage.errorNoSelection": "Wybierz przeznaczenie okrętu zanim przejdziesz dalej.",
 
@@ -628,6 +636,7 @@
     "Common.button.previous": "Poprzednie",
     "Common.button.save": "Zapisz",
     "Common.button.share": "Udostępnij",
+    "Common.button.swapMissionPod": "Wymień moduł misji",
     "Common.button.view": "Podgląd",
 
     "Common.edition.1": "Pierwsza Edycja",
@@ -838,6 +847,7 @@
     "Page.title.missionProfileSelection": "Wybór profilu misji",
     "Page.title.missionProfileTalentSelection": "Talent z profilu misji",
     "Page.title.missionProfileDetails": "Szczegóły profilu misji",
+    "Page.title.swapMissionPod": "Wymień moduł misji",
     "Page.title.otherTools": "Inna narzędzia",
     "Page.title.randomCreature": "Losowa konfiguracja stworzenia",
     "Page.title.randomStarship": "Losowa konfiguracja okrętu",
@@ -921,71 +931,105 @@
     "CareerEvent.common.5.focusSuggestion": "Postać otrzymuje biegłość, która oddaje jej doświadczenia z przeżytej sytuacji kryzysowej. Przykłady to np.: Inspiracja, Zimna Krew, Za moim przewodem.",
 
     "CareerEvent.common.6.name": "Napotkanie prawdziwie obcej istoty",
+    "CareerEvent.common.6.description": "Postać napotkała formę życia, która jest bardzo odmienna od humanoidalnych form życia. Być może jest to istota o prawie boskich mocach albo wędrująca przez kosmos samodzielnie, ale czymkolwiek by nie była – nie jest to życie, jakie znaliśmy do tej pory.\n\nJaki był charakter istoty? Czego Twoja postać nauczyła się z tego doświadczenia?\nCo się stało z istotą później? Czy dochodziło do kolejnych spotkań?",
     "CareerEvent.common.6.focusSuggestion": "Postać otrzymuje biegłość, która oddaje jej doświadczenia ze spotkania z istotą. Przykłady to m.in.: Empatia, Filozofia, Ksenobiologia.",
 
     "CareerEvent.common.7.name": "Poważna rana",
+    "CareerEvent.common.7.description": "Postać została poważnie ranna i musiała przechodzić długą rekonwalescencję.\n\nW jakich okolicznościach Twoja postać została ranna? Kto za to odpowiadał?\nJak wyglądał proces wracania do zdrowia? Czy postać potrzebowała protezy organów/kończyn lub cybernetycznych wzmocnień, aby wrócić do pełni sił?",
     "CareerEvent.common.7.focusSuggestion": "Postać otrzymuje biegłość, która związana jest z okolicznościami zranienia bohatera, czymś co pomogło w jej powrocie do zdrowia lub czym się zajęła po okresie rekonwalescencji. Przykłady: Atletyka, Sztuka, Filozofia.",
     "CareerEvent.common.7.traitDescription": "Postać może otrzymać cechę opisującą długotrwałe efekty otrzymanej rany lub związane z jej niepełnym powrotem do zdrowia. Przykłady: Implant protetyczny lub określona forma niepełnosprawności.",
 
     "CareerEvent.common.8.name": "Konflikt z wrogą kulturą",
+    "CareerEvent.common.8.description": "Postać brała udział w starciu z wrogą siłą i raczej nie zapomni tego doświadczenia.\n\nKto był przeciwnikiem? Dlaczego doszło do starcia? Walka toczyła się w kosmosie czy na planecie, a może w obu środowiskach?\n\nCo postać musiała zrobić, aby przetrwać? Bitwa zakończyła się zwycięstwem czy porażką?",
     "CareerEvent.common.8.focusSuggestion": "Postać otrzymuje biegłość związaną z umiejętnościami, które udoskonaliła w czasie starcia. Przykłady: Fazery ręczne, Walka wręcz, Pokładowe systemy taktyczne.",
 
     "CareerEvent.common.9.name": "Posiadanie mentora",
+    "CareerEvent.common.9.description": "Poważany oficer zwrócił uwagę na rozwój kariery Twojej postaci. Przez pewien czas Twoja postać służyła jako pilot i adiutant, korzystając z doświadczeń i lekcji tego oficera. Kim był ten oficer? Czy pozostał znajomym lub przyjacielem Twojej postaci nawet po zakończeniu wspólnej służby?",
     "CareerEvent.common.9.focusSuggestion": "Postać otrzymuje biegłość związaną z naukami mentora. Przykłady: Zimna krew, Etykieta albo dowolna inna biegłość, która odzwierciedla specjalność tego oficera.",
 
     "CareerEvent.common.10.name": "Wypadek transportera",
+    "CareerEvent.common.10.description": "Postać doświadczyła nietypowego incydentu z udziałem transportera.\n\nCo się wydarzyło podczas incydentu? Czy były jakieś długotrwałe konsekwencje?\nJak obecnie się czuje Twoja postać, gdy korzysta z transporterów?",
     "CareerEvent.common.10.focusSuggestion": "Postać otrzymuje biegłość, która odzwierciedla coś, czego nauczyła się z powodu wypadku lub w wyniku jego następstw. Przykłady: Transportery i replikatory, Małe statki, Mechanika kwantowa.",
 
     "CareerEvent.common.11.name": "Zaradzenie zarazie",
+    "CareerEvent.common.11.description": "Okręt Twojej postaci został wysłany, aby nieść pomoc ofiarom globalnej pandemii.\n\nNa czym polegała ta groźna choroba? Którą planetę doświadczyła klęska?\nCzy postać miała bezpośredni kontakt z zarażonymi? Jak wyglądało jej zaangażowanie w czasie tego kryzysu?",
     "CareerEvent.common.11.focusSuggestion": "Postać otrzymuje biegłość, która odzwierciedla jej doświadczenia z kryzysu medycznego. Przykłady: Choroby zakaźne, Medycyna ratunkowa, Triaż polowy.",
 
     "CareerEvent.common.12.name": "Zdradzenie ideałów dla przełożonego",
+    "CareerEvent.common.12.description": "Postać znalazła się w sytuacji, w której musiała dokonać trudnego wyboru pomiędzy zaufanym przełożonym a jej własnymi ideałami, i wybrała posłuchać się przełożonego.\n\nKim był ten przełożony? O co prosił postać? Jak Twoja postać czuje się z tym teraz?\nCzy były jakieś długotrwałe konsekwencje tych zdarzeń? Czy znajduje się to w aktach postaci? Czy Twoja postać postąpiła słusznie?",
     "CareerEvent.common.12.focusSuggestion": "Postać otrzymuje biegłość, związaną ze zdarzeniem lub jego następstwami. Przykłady: Inspiracja, Perswazja, Śledztwo.",
 
     "CareerEvent.common.13.name": "Sprzeciw wobec zwierzchnika",
+    "CareerEvent.common.13.description": "Postać znalazła się w sytuacji, w której musiała dokonać trudnego wyboru pomiędzy zaufanym przełożonym a jej własnymi ideałami, i wybrała podążenie za ideałami.\n\nKim był ten przełożony? O co prosił postać? Jak Twoja postać czuje się z tym teraz?\nCzy były jakieś długotrwałe konsekwencje tych zdarzeń? Czy znajduje się to w aktach postaci? Czy Twoja postać postąpiła słusznie?",
     "CareerEvent.common.13.focusSuggestion": "Postać otrzymuje biegłość związaną ze zdarzeniem lub jego następstwami. Przykłady: Historia, Jednolity Kodeks Sprawiedliwości, Protokoły Gwiezdnej Floty.",
 
     "CareerEvent.common.14.name": "Nowa taktyka bitewna",
+    "CareerEvent.common.14.description": "Twoja postać zastosowała nową strategię lub taktykę, gdy znajdowała się w sytuacji bojowej.\n\nZ kim toczyła się walka?\nTo była walka kosmiczna czy na powierzchni planety? Na czym polegał zastosowany fortel lub innowacja?",
     "CareerEvent.common.14.focusSuggestion": "Postać otrzymuje biegłość związaną z jej skutecznym działaniem w boju. Przykłady: Taktyka, Ocena ryzyka, Za moim przewodem.",
 
     "CareerEvent.common.15.name": "Nauczenie się unikatowego języka",
+    "CareerEvent.common.15.description": "Postać napotkała formę życia stosującą nietypową formę komunikacji i nauczyła się z nią porozumiewać.\n\nKim byli obcy, których spotkała postać? Spotkanie było napięte czy spokojne?\nJakiej metody komunikacji używają obcy? W jaki sposób Twoja postać to odkryła?",
     "CareerEvent.common.15.focusSuggestion": "Postać otrzymuje biegłość, która odzwierciedla czego się nauczyła w czasie zdarzenia. Przykłady: Kulturoznawstwo, Lingwistyka, Negocjacje.",
 
     "CareerEvent.common.16.name": "Odkrycie artefaktu",
+    "CareerEvent.common.16.description": "Podczas misji zwiadowczej postać odkryła fragment techniki lub urządzenia należącego do cywlizacji, która wymarła dawno temu.\n\nJakie było przeznaczenie tego urządzenia? Czy dalej działa?\nCo wiadomo o twórcach tego urządzenia?",
     "CareerEvent.common.16.focusSuggestion": "Postać otrzymuje biegłość, związaną ze zdarzeniem lub jego następstwami. Przykłady: Komputery, Inżynieria wsteczna, Starożytna technologia.",
 
     "CareerEvent.common.17.name": "Specjalne wyróżnienie",
+    "CareerEvent.common.17.description": "Podczas sytuacji kryzysowej postać uratowała życia swoich towarzyszy, pomagając ich ewakuować z zagrożenia. Zyskała dzięki temu specjalne wyróżnienie.\n\nNa czym polegała sytuacja kryzysowa? Czy to była misja wysokiego ryzyka?\nJakie były długofalowe konsekwencje tych zdarzeń? Czy trafiło to do akt postaci?",
     "CareerEvent.common.17.focusSuggestion": "Postać otrzymuje biegłość, związaną ze zdarzeniem lub jego następstwami. Przykłady: Atletyka, Medycyna ratunkowa, Sztuka przetrwania.",
 
     "CareerEvent.common.18.name": "Zaradzenie kryzysowi inżynieryjnemu",
+    "CareerEvent.common.18.description": "Udział postaci był kluczowy w zapobiegnięciu kryzysu spowodowanego przez techniczną usterkę, dzięki czemu ocalono życia wielu osób.\n\nJakie urządzenie miało usterkę i dlaczego było to groźne?\nW jaki sposób Twoja postać naprawiła problem?",
     "CareerEvent.common.18.focusSuggestion": "Postać otrzymuje biegłość związaną z techniką wykorzystaną podczas incydentu. Przykłady: Elektro-plazmowe systemy zasilania, Napędy warp, Reaktory fuzyjne.",
 
     "CareerEvent.common.19.name": "Przełom lub wynalazek",
+    "CareerEvent.common.19.description": "Postać dokonała ważnego odkrycia technicznego, znalazła nowy sposób na wykorzystanie pewnej technologii lub stworzyła nowe urządzenie, które będzie przydatne w przyszłości.\n\nJakiego rodzaju odkrycia, przełomu lub wynalazku dokonała?\nW jaki sposób będzie to przydatne?",
     "CareerEvent.common.19.focusSuggestion": "Postać otrzymuje biegłość odzwierciedlającą jej osiągnięcia lub zdolności. Przykłady: Improwizacja, Inwencja, Technika eksperymentalna.",
 
     "CareerEvent.common.20.name": "Pierwszy kontakt",
+    "CareerEvent.common.20.description": "Postać była zaangażowana w jedną z najważniejszych misji Gwiezdnej Floty: pierwszy kontakt z inną cywilizacją. Z jaką cywilizacją dokonano pierwszego kontaktu i czy misja zakończyła się pozytywnie?",
     "CareerEvent.common.20.focusSuggestion": "Postać otrzymuje biegłość oddającą charakter misji. Przykłady: Dyplomacja, Infiltracja, Kulturoznawstwo.",
 
+    "CareerEvent.unofficial.21.name": "Rozszerzony trening taktyczny",
+    "CareerEvent.unofficial.21.description": "Postać wzięła udział w specjalnym szkoleniu z zaawansowanych technik wywiadowczych i taktycznych.\n\nGdzie odbywało się to szkolenie? Kto zarekomendował Twoją postać do tego kursu?\nCzy postać ukończyła szkolenie? Jak sobie radziła w poszczególnych domenach treningu?",
+    "CareerEvent.unofficial.21.focusDescription": "Postać otrzymuje biegłość związaną ze specjalnym szkoleniem, które otrzymała. Przykłady obejmują: Taktyki partyzanckie, Obrona strategiczna, Manewry bojowe.",
+
     "CareerEvent.unofficial.22.name": "Testowanie prototypu",
+    "CareerEvent.unofficial.22.description": "Postać brała udział w testach nowego prototypu, terapii lub eksperymentalnego pojazdu.\n\nJakie urządzenie, technika lub pojazd były testowane i na czym polegała ich unikalność?\nCzy projekt został utajniony? Czy prototyp wdrożono w życie, a może odrzucono jako nieskuteczny lub nieefektywny?",
     "CareerEvent.unofficial.22.focusDescription": "Postać otrzymuje biegłość związaną z nauką i techniką prototypowanego urządzenia. Przykłady: Sensory, Cybernetyka, Nanotechnologia.",
 
     "CareerEvent.unofficial.23.name": "Misja kolonizacyjna",
+    "CareerEvent.unofficial.23.description": "Postać pomagała w kolonizacji nowej planety i prawdopodobnie spędziła znaczną część czasu na jej powierzchni.\n\nKtóra planeta była kolonizowana i przez kogo? Czy były jakieś spory terytorialne z tym związane?\nJakie były najważniejsze wyzwania, z jakimi mierzyli się koloniści? W jaki sposób Twoja postać mogła im pomóc?",
     "CareerEvent.unofficial.23.focusDescription": "Postać otrzymuje biegłość związaną z umiejętnościami, które nabyła w czasie misji kolonizacyjnej. Przykłady: Górnictwo, Silniki impulsowe, Pojazdy naziemne.",
 
     "CareerEvent.unofficial.24.name": "Program wymiany oficerów",
+    "CareerEvent.unofficial.24.description": "Postać brała udział w programie wymiany oficerów, międzygatunkowej wymianie medycznej lub programie galaktycznej wymiany kulturowej.\n\nJaki był charakter programu? Gdzie postać została wysłana?\nCzy program rozszerzył horyzonty postaci albo spowodował jakieś napięcia? Jakie lekcje wyciągnęła z niego Twoja postać?",
     "CareerEvent.unofficial.24.focusDescription": "Postać otrzymuje biegłość związaną z jej doświadczeniami i naukami, które zyskała dzięki udziałowi w programie. Przykłady: Obserwacja, Protokoły międzygatunkowe, Socjologia.",
 
     "CareerEvent.unofficial.25.name": "Szczęśliwa passa",
+    "CareerEvent.unofficial.25.description": "Ostatnie zdarzenia to nieprawdopodobnie szczęśliwa passa dla Twojej postaci, co zostało zauważone także przez innych.\n\nCzy to było naprawdę szczęście, a może są jakieś zewnętrzne powody, które tylko sprawiają takie wrażenie?\nNa czym polegała szczęśliwa passa Twojej postaci? Czy wpłynęła na to, w jaki sposób inni postrzegają Twoją postać?",
     "CareerEvent.unofficial.25.focusDescription": "Postać otrzymuje biegłość, która odzwierciedla w jaki sposób ryzykowała lub oceniała swoje szanse. Przykłady: Hazard, Manewry unikowe, Matematyka.",
 
     "CareerEvent.unofficial.26.name": "Nauczka z poważnego błędu",
+    "CareerEvent.unofficial.26.description": "Postać popełniła poważny błąd w trakcie swojej kariery i nie zostanie to zapomniane. Aby uniknąć podobnych pomyłek w przyszłości, postać podjęła specjalne środki ostrożności.\n\nNa czym polegał błąd i jak poważny był? Czy były jakieś długotrwałe konsekwencje?\nCzy błąd wpłynął negatywnie na rozwój kariery Twojej postaci? Kto dalej żywi urazę z tego powodu do Twojej postaci?",
     "CareerEvent.unofficial.26.focusDescription": "Postać otrzymuje biegłość, któa powinna odzwierciedlać sposób w jaki unika podobnych błędów w przyszłości lub dodatkowy wysiłek związany z zapobieganiem ryzykownym aktywnościom. Przykłady: Analiza, Sterowanie, Systemy komunikacji.",
 
+    "CareerEvent.unofficial.27.name": "Misja obserwacji kulturowej",
+    "CareerEvent.unofficial.27.description": "Postać była przydzielona do ukrytego posterunku obserwacji kulturowej. To rutynowa obserwacja kultur przedwarpowych zanim dojdzie do ujawnienia i pierwszego kontaktu.\n\nJaką kulturę przedwarpową obserwowano?\nCzy były jakieś wpadki podczas tej misji?",
+    "CareerEvent.unofficial.27.focusDescription": "Postać otrzymuje biegłość związaną z obserwowaną cywilizacją lub umiejętności, które mogła podszlifować w trakcie misji. Przykłady obejmują: Antropologię, Etnomuzykologię i Tajne operacje.",
+
     "CareerEvent.unofficial.28.name": "Zmagania z nałogiem",
+    "CareerEvent.unofficial.28.description": "Postać zmagała się z nałogiem. Mogło chodzić o holouzależnienie, leki, alkohol lub inne substancje.\n\nJaki był charakter tego uzależnienia? W jaki sposób wpływał na funkcjonowanie postaci?\nJak rozpoczęło się wracanie Twojej postaci do zdrowia? Czy polegała na pomocy innych?\n",
+    "CareerEvent.unofficial.28.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą mechanizmy radzenia sobie z uzależnieniem lub dodatkową wiedzę dotyczącą uzależnienia. Przykłady to m.in.: Holodeki, Dyscyplina umysłowa, Napoje alkoholowe.",
 
     "CareerEvent.unofficial.29.name": "Rywalizacja",
+    "CareerEvent.unofficial.29.description": "Postać miała znaczącego rywala.\n\nKto był tym rywalem i jaki był charakter ich wyzwania?\nRywalizacja była na przyjazna czy bezwzględna? Czy inni wiedzieli o rywalizacji? ",
+    "CareerEvent.unofficial.29.focusDescription": "Postać otrzymuje biegłość związaną z naturą rywalizacji. Przykłady to: Debatowanie, Szermierka, Przechwalanie się.",
 
     "CareerEvent.unofficial.30.name": "Projekty prywatne",
+    "CareerEvent.unofficial.30.description": "Postać poświęcała znaczącą ilość energii i czasu na zainteresowania pozasłużbowe, być może brała udział w zawodach lub innych aktywnościach grupowych.\n\nJaki był charakter projektów prywatnych postaci?\nJak dobra była Twoja postać w tej aktywności? Czy dokonała pewnych osiągnięć w tej dziedzinie?",
+    "CareerEvent.unofficial.30.focusDescription": "Postać otrzymuje biegłość związaną z aktywnościami, w których uczestniczyła. Przykłady to np.: Muzyka, Taniec, Boks, Gotowanie, Śpiew.",
 
     "CareerEvent.unofficial.31.name": "Służba na stacji kosmicznej",
 
@@ -1093,7 +1137,52 @@
 
     "CareerEvent.common.99.name": "Rekrutacja do Wywiadu Gwiezdnej Floty",
 
-    "CharacterAdvancementType.adjustment": "Dopasowanie",
+    "CareerType.core.young.name": "Nowicjusz",
+    "CareerType.core.young.description": "Potencjał definiuje Cię bardziej niż doświadczenie. Twój wrodzony talent oraz wyobrażenia o tym, jak wygląda wszechświat, nie zostały jeszcze skonfrontowane z rzeczywistością.",
+    "CareerType.core.young.valueInstruction": "Postać otrzymuje wartość, która w jakiś sposób powinna odzwierciedlać jej brak doświadczenia i naiwność.",
+
+    "CareerType.core.experienced.name": "Doświadczony",
+    "CareerType.core.experienced.description": "Masz wieloletnie doświadczenie w wybranej dziedzinie, a Twoja kariera dobrze się rozwija.",
+    "CareerType.core.experienced.valueInstruction": "Postać otrzymuje wartość, którą można dowolnie wybrać.",
+
+    "CareerType.core.veteran.name": "Weteran",
+    "CareerType.core.veteran.description": "Masz za sobą dziesięciolecia doświadczenia w wybranej profesji i prawdopodobnie widziałeś znaczną część kwadrantów Alfa i Beta, a może nawet większy fragment Galaktyki. Twój osąd i opinie są wysoko cenione przez otoczenie, nawet przez osoby o wyższej randze lub statusie.",
+    "CareerType.core.veteran.valueInstruction": "Postać otrzymuje wartość, która musi odzwierciedlać lata jej doświadczenia oraz przekonania ukształtowane w trakcie długiej kariery.",
+
+    "CareerType.civilian.young.name": "Nowicjusz",
+    "CareerType.civilian.young.description": "Potencjał definiuje Cię bardziej niż doświadczenie. Twój wrodzony talent oraz wyobrażenia o tym, jak wygląda wszechświat, nie zostały jeszcze skonfrontowane z rzeczywistością.",
+    "CareerType.civilian.young.valueInstruction": "Postać otrzymuje wartość, która w jakiś sposób powinna odzwierciedlać jej brak doświadczenia i naiwność.",
+
+    "CareerType.civilian.experienced.name": "Doświadczony",
+    "CareerType.civilian.experienced.description": "Masz wieloletnie doświadczenie w wybranej dziedzinie, a Twoja kariera dobrze się rozwija.",
+    "CareerType.civilian.experienced.valueInstruction": "Postać otrzymuje wartość, którą można dowolnie wybrać.",
+
+    "CareerType.civilian.veteran.name": "Weteran",
+    "CareerType.civilian.veteran.description": "Masz za sobą dziesięciolecia doświadczenia w wybranej profesji i prawdopodobnie widziałeś znaczną część kwadrantów Alfa i Beta, a może nawet większy fragment Galaktyki. Twój osąd i opinie są wysoko cenione przez otoczenie, nawet przez osoby o wyższej randze lub statusie.",
+    "CareerType.civilian.veteran.valueInstruction": "Postać otrzymuje wartość, która musi odzwierciedlać lata jej doświadczenia oraz przekonania ukształtowane w trakcie długiej kariery.",
+
+    "CareerType.klingon.young.name": "Nowicjusz",
+    "CareerType.klingon.young.description": "Potencjał definiuje Cię bardziej niż doświadczenie. Twój wrodzony talent oraz wyobrażenia o tym, jak wygląda wszechświat, nie zostały jeszcze skonfrontowane z rzeczywistością.",
+    "CareerType.klingon.young.valueInstruction": "Postać otrzymuje wartość, która w jakiś sposób powinna odzwierciedlać jej brak doświadczenia i naiwność.",
+
+    "CareerType.klingon.experienced.name": "Doświadczony",
+    "CareerType.klingon.experienced.description": "Masz wieloletnie doświadczenie w wybranej dziedzinie, a Twoja kariera dobrze się rozwija.",
+    "CareerType.klingon.experienced.valueInstruction": "Postać otrzymuje wartość, którą można dowolnie wybrać.",
+
+    "CareerType.klingon.veteran.name": "Weteran",
+    "CareerType.klingon.veteran.description": "Masz za sobą dziesięciolecia doświadczenia w wybranej profesji i prawdopodobnie widziałeś znaczną część kwadrantów Alfa i Beta, a może nawet większy fragment Galaktyki. Twój osąd i opinie są wysoko cenione przez otoczenie, nawet przez osoby o wyższej randze lub statusie.",
+    "CareerType.klingon.veteran.valueInstruction": "Postać otrzymuje wartość, która musi odzwierciedlać lata jej doświadczenia oraz przekonania ukształtowane w trakcie długiej kariery.",
+
+    "CareerType.solo.young.name": "Nowicjusz",
+    "CareerType.solo.young.description": "Potencjał definiuje Cię bardziej niż doświadczenie. Twój wrodzony talent oraz wyobrażenia o tym, jak wygląda wszechświat, nie zostały jeszcze skonfrontowane z rzeczywistością.",
+
+    "CareerType.solo.experienced.name": "Doświadczony",
+    "CareerType.solo.experienced.description": "Masz wieloletnie doświadczenie w wybranej dziedzinie, a Twoja kariera dobrze się rozwija.",
+
+    "CareerType.solo.veteran.name": "Weteran",
+    "CareerType.solo.veteran.description": "Masz za sobą dziesięciolecia doświadczenia w wybranej profesji i prawdopodobnie widziałeś znaczną część kwadrantów Alfa i Beta, a może nawet większy fragment Galaktyki. Twój osąd i opinie są wysoko cenione przez otoczenie, nawet przez osoby o wyższej randze lub statusie.",
+
+    "CharacterAdvancementType.adjustment": "Dostosowanie",
     "CharacterAdvancementType.milestone": "Kamień milowy",
     "CharacterAdvancementType.characterArc": "Przemiana bohatera",
 
@@ -1113,7 +1202,45 @@
 
     "EarlyOutlook.MilitaryOrExploration": "Gwiezdna Flota",
 
-    "Environment.common.anotherSpeciesWorld.name": "Świat innej cywilizacji",
+    "EarlyOutlook.MilitaryOrExploration.description": "Rodzina może mieć silną tradycję służby we flocie, z co najmniej jednym jej przedstawicielem pełniącym taką służbę dla swojego narodu w każdym pokoleniu. Być może rodzice postaci byli wojskowymi i poznali się w trakcie służby. Tak czy inaczej, na kształtowanie się bohatera miało wpływ życie w wojsku. W Federacji zwykle oznacza to Gwiezdną Flotę, ale może się to również odnosić do grup, takich jak: Bajorańska Milicja, Andoriańska Gwardia Imperialna, Klingońskie Siły Obronne, Romulańska Imperialna Flota Wojenna lub dowolne z wielu innych sił wojskowych.",
+
+    "EarlyOutlook.BusinessOrTrade": "Biznesowe lub handlowe",
+
+    "EarlyOutlook.BusinessOrTrade.description": "Rodzina postaci może mieć powiązania na niezliczonych światach, nadzorując i kierując jakimś wielkim przedsiębiorstwem. Mogli być handlarzami lub zajmować się transportem międzyplanetarnym. Tak czy inaczej, bohater dorastał wśród ludzi z różnych środowisk, w tym spoza swojej cywilizacji, co znacząco ukształtowało jego spojrzenie na życie.",
+
+    "EarlyOutlook.agricultureOrRural": "Rolnicze lub wiejskie",
+
+    "EarlyOutlook.agricultureOrRural.description": "Postać dorastała raczej w otoczeniu natury niż innych istot rozumnych – w wiejskich społecznościach, na rubieżach cywilizacji lub w innm miejscu oddalonym od zgiełku miast. Mogła być mocno zaangażowana w rolnictwo, uprawiając prawdziwą żywność w celu uzupełnienia syntetycznych lub replikowanych posiłków.",
+
+    "EarlyOutlook.ScienceAndTechnology": "Naukowe i technologiczne",
+
+    "EarlyOutlook.ScienceAndTechnology.description": "Dom bohatera wypełniał gwar naukowych dyskusji, a najnowocześniejsze rozwiązania były tam dobrze znane. Być może postać została wychowana przez naukowców lub inżynierów bądź miała mentorów i nauczycieli, którzy zachęcali ją do rozwijania talentu technicznego.",
+
+    "EarlyOutlook.ArtisticAndCreative": "Artystyczne i kreatywne",
+
+    "EarlyOutlook.ArtisticAndCreative.description": "Życie postaci było wypełnione sztuką i różnymi formami kreatywności. Niezależnie od tego, jakie zajęcia preferuje obecnie, jest ona otwarta na wielkie dzieła wielu kultur i potrafi wyrazić siebie.",
+
+    "EarlyOutlook.DiplomacyAndPolitics": "Dyplomatyczne i polityczne",
+
+    "EarlyOutlook.DiplomacyAndPolitics.description": "Postać od najmłodszych lat miała styczność z zawiłościami myśli politycznej i niuansami dyplomacji, najpewniej dlatego, że członek rodziny był zaangażowany w te dziedziny.",
+
+    "Environment.common.homeworld.name": "Świat macierzysty",
+    "Environment.common.homeworld.description": "Postać pochodzi ze świata, który dał początek jej cywilizacji. Przez całe życie była otoczona kulturową i duchową spuścizną swojego gatunku. Macierzyste planety są często utopijne i idylliczne, bo postrzega się je jako idealne ucieleśnienie kultury, która się na nich narodziła. Zwykle jest to możliwe dzięki temu, że czerpią one z bogactwa i dobrobytu całego gwiezdnego państwa. Tam żywe są najbardziej szacowne tradycje, a planety te stanowią serce systemu prawnego i politycznego danej cywilizacji.",
+
+    "Environment.common.busyColony.name": "Tętniąca życiem kolonia",
+    "Environment.common.busyColony.description": "Postać pochodzi z jednej z najstarszych lub najlepiej prosperujących kolonii swojej kultury. Może to być inny świat w systemie macierzystym – jak Luna lub Mars w przypadku ludzi – albo jeden z pierwszych światów skolonizowanych po osiągnięciu przez daną kulturę zdolności do lotów międzygwiezdnych. Kolonie te zwykle tworzą własną tożsamość i filozofie, często rozwijając się przy ograniczonym wsparciu ze strony macierzystego świata. Towarzyszy temu duma, wynikająca z poczucia wyjątkowości, przecierania nowych szlaków dla swojego gatunku i oswojenia obcego świata.",
+
+    "Environment.common.isolatedColony.name": "Odizolowana kolonia",
+    "Environment.common.isolatedColony.description": "Postać pochodzi z kolonii odizolowanej od szerszego galaktycznego społeczeństwa. Dla mieszkańców niektórych planet, takich jak społeczność wolkańskiego klasztoru na P'Jem, ogromne odległości pomiędzy układami gwiezdnymi stanowią okazję do izolacji, na przykład w celu spokojnej kontemplacji. Inne kolonie zostały założone, ponieważ oferują wyjątkowe możliwości badawcze. Ich kultury koncentrują się na nauce i introspekcji.",
+
+    "Environment.common.frontierColony.name": "Kolonia na rubieżach",
+    "Environment.common.frontierColony.description": "Postać pochodzi z kolonii położonej na obrzeżach znanego kosmosu, na skraju niezbadanej przestrzeni lub granicy z inną cywilizacją. Przygraniczni koloniści są zwykle wytrzymali, zdeterminowani, a nawet uparci, i dobrze przygotowani na niebezpieczeństwa, jakie można napotkać w ich domu.",
+
+    "Environment.common.starshipOrStarbase.name": "Statek kosmiczny albo baza gwiezdna",
+    "Environment.common.starshipOrStarbase.description": "Postać dorastała w kosmosie, podróżując na pokładzie statku kosmicznego lub mieszkając na stacji bądź w bazie gwiezdnej. Chociaż jest mało prawdopodobne, że dzieciństwo spędziła na pokładzie okrętu wojennego lub jednostki Gwiezdnej Floty – tylko na nielicznych z nich podróżują rodziny – wiele frachtowców, transportowców i innych statków cywilnych ma tradycję załóg rodzinnych lub pokoleniowych, a wielu oficerów z rodzinami wybiera stanowiska w bazach gwiezdnych, a nie na okrętach. Osoby wychowane w kosmosie już od dzieciństwa uczą się realiów życia na pokładzie, a w okresie młodzieńczym wiele z nich przygotowywanych jest do pełnienia funkcji przywódczych lub uczy się latać promem.",
+
+    "Environment.common.anotherSpeciesWorld.name": "Świat innego gatunku",
+    "Environment.common.anotherSpeciesWorld.description": "Postać dorastała wśród przedstawicieli innego gatunku. Mogła żyć w małej enklawie swoich pobratymców albo zostać osierocona w wyniku jakiejś katastrofy i wychowana przez obcych. Niezależnie od sytuacji, bohater będzie mieć unikatowe spojrzenie na swój gatunek i na tych, wśród których się wychowywał.",
 
     "Environment.common.andoria23rd.name": "Andoria",
 
@@ -1137,7 +1264,15 @@
 
     "Environment.klingon.homeworld.name": "Qo'noS",
 
-    "Environment.klingon.anotherSpeciesWorld.name": "Świat innej cywilizacji",
+    "Environment.klingon.busyColony.name": "Tętniąca życiem kolonia",
+
+    "Environment.klingon.isolatedColony.name": "Odizolowana kolonia",
+
+    "Environment.klingon.frontierColony.name": "Kolonia na rubieżach",
+
+    "Environment.klingon.starshipOrStarbase.name": "Statek kosmiczny albo baza gwiezdna",
+
+    "Environment.klingon.anotherSpeciesWorld.name": "Świat innego gatunku",
 
     "Environment.alternate.utopianParadise.name": "Utopijny raj",
 
@@ -1193,8 +1328,10 @@
 
     "Equipment.uniform": "Mundur",
     "Equipment.clothing": "Ubranie",
-    "Equipment.environmentSuit": "Skafander środowiskowy",
-    "Equipment.personalForceField": "Osobiste tarcze ochronne",
+    "Equipment.armouredVest": "Kamizelka ochronna",
+    "Equipment.bodyArmour": "Pełny pancerz",
+    "Equipment.environmentSuit": "Skafander",
+    "Equipment.personalForceField": "Osobiste pole siłowe",
     "Equipment.communicator": "Komunikator",
     "Equipment.tricorder": "Trikorder",
     "Equipment.medKit": "Apteczka",
@@ -1210,6 +1347,13 @@
 
     "ExtraType.none": "Brak",
     "ExtraType.bajoranEarring": "Bajorański kolczyk",
+    "ExtraType.simpleEarring": "Kolczyk na sztyfty",
+    "ExtraType.hoopEarring": "Kolczyk w kształcie obręczy",
+    "ExtraType.smallBindi": "Bindi",
+    "ExtraType.risanSymbol": "Risański symbol",
+    "ExtraType.inuitTattoo": "Tatuaż inuicki",
+    "ExtraType.zaraniteMask": "Zaranicka maska do oddychania",
+    "ExtraType.ferengiHeadFlap": "Osłona głowy Ferengi",
 
     "Focus.advancedHolograms": "Zaawansowane hologramy",
     "Focus.ambushTactics": "Taktyki zasadzek",
@@ -1280,11 +1424,13 @@
     "Focus.gambling": "Hazard",
     "Focus.genetics": "Genetyka",
     "Focus.geology": "Geologia",
+    "Focus.glancingImpact": "Lot ślizgowy",
     "Focus.groundVehicles": "Pojazdy naziemne",
     "Focus.guidanceSystems": "Systemy namierzania",
     "Focus.handPhasers": "Fazery ręczne",
     "Focus.handToHandCombat": "Walka wręcz",
     "Focus.hazardousEnvironments": "Niebezpieczne środowiska",
+    "Focus.heavyCover": "Ukrywanie się",
     "Focus.helmOperation": "Sterowanie",
     "Focus.history": "Historia",
     "Focus.holoprogramming": "Holoprogramowanie",
@@ -1298,6 +1444,7 @@
     "Focus.klingonWeapons": "Klingońska broń",
     "Focus.law": "Prawo",
     "Focus.lawEnforcement": "Służby porządkowe",
+    "Focus.leadByExample": "Za moim przewodem",
     "Focus.leadInvestigator": "Główny śledczy",
     "Focus.linguistics": "Lingwistyka",
     "Focus.manufacturing": "Produkcja przemysłowa",
@@ -1383,6 +1530,16 @@
     "GovernmentType.name.vulcan": "wolkański",
     "GovernmentType.name.other": "inny",
 
+    "HairType.bald": "Łysy",
+    "HairType.bowlCutHair": "Fryzura na garnek",
+    "HairType.centrePart": "Środek",
+    "HairType.chinLengthBob": "Krótki bob",
+    "HairType.mature": "Dojrzałe",
+    "HairType.stylishHair": "Krótkie i stylowe",
+    "HairType.sidePart": "Boczny przedział",
+    "HairType.shortAfro": "Krótkie kręcone",
+    "HairType.veryShortAfro": "Bardzo krótkie kręcone",
+
     "ModificationType.name.demotion": "Degradacja",
     "ModificationType.name.promotion": "Awans",
     "ModificationType.name.logEntry": "Wpis do dziennika",
@@ -1395,6 +1552,77 @@
     "MilestoneType.name.normalMilestone": "Standardowy kamień milowy",
     "MilestoneType.name.spotlightMilestone": "Wzmocniony kamień milowy",
     "MilestoneType.name.arcMilestone": "Łuk fabularny",
+
+    "MissionProfile.default.strategicAndDiplomatic": "Operacje strategiczne i dyplomatyczne",
+
+    "MissionProfile.default.strategicAndDiplomatic.description": "Statki o takim przeznaczeniu są często oddawane pod dowództwo oficerów flagowych i wykorzystywane jako serce eskadr, grup bojowych, a nawet całych flot. Okręty te, a także prestiż i pozycja, które im towarzyszą, również są używane do dużych przedsięwzięć dyplomatycznych, służąc jako mobilne ambasady i reprezentując to, co najlepsze w Federacji.",
+
+    "MissionProfile.default.pathfinderAndReconaissance": "Mapowanie i misje rozpoznawcze",
+
+    "MissionProfile.default.pathfinderAndReconaissance.description": "Misje dalekiego zasięgu często wykorzystują najbardziej zaawansowaną kartografię gwiezdną i urządzenia astrometryczne, co pozwala na efektywniejsze mapowanie i nawigację w nieznanych regionach przestrzeni kosmicznej – zwłaszcza tam, gdzie zniekształcenia przestrzenne utrudniają nawigację. Okręty te są przeznaczone do szeroko zakrojonych zadań eksploracyjnhych, operacji wojskowych polegających na zbieraniu danych wywiadowczych oraz ryzykownych operacji poszukiwania bezpiecznej trasy przez nieznaną przestrzeń.",
+
+    "MissionProfile.default.technicalTestBed": "Testy nowych technologii",
+    "MissionProfile.default.tactical": "Operacje taktyczne",
+
+    "MissionProfile.default.tactical.description": "Chociaż Gwiezdna Flota nie jest formacją wojskową, obrona Federacji należy do jej obowiązków. W związku z tym wielokrotnie musiała przygotowywać się do wojny i wiele jej okrętów wyposażono zarówno do działań w czasie pokoju, jak i do celów militarnych. Liczba takich jednostek różni się w zależności od aktualnej polityki.",
+
+    "MissionProfile.default.scientificAndSurvey": "Operacje naukowe i badawcze",
+
+    "MissionProfile.default.scientificAndSurvey.description": "Misja Gwiezdnej Floty polega na eksploracji i odkrywaniu nieznanego. Oznacza to, że wykorzystuje ona wiele statków do misji czysto naukowych, badania nowych zjawisk lub wspierania trwających projektów. Chociaż oczekuje się, że większość okrętów kosmicznych Federacji będzie miała przynajmniej pewną zdolność do prowadzenia badań naukowych, niektóre jednostki są wyposażone specjalnie do tego typu zadań.",
+
+    "MissionProfile.default.crisisAndEmergencyResponse": "Operacje kryzysowe i ratownicze",
+
+    "MissionProfile.default.crisisAndEmergencyResponse.description": "Statki te są przystosowane do szybkiego reagowania na sytuacje kryzysowe, niezależnie od ich rodzaju. Zwykle posiadają rozległe i dobrze przygotowane hangary, dzięki czemu mogą rozmieszczać duże ilości personelu lub ładunków na obszarach dotkniętych klęskami żywiołowymi albo ewakuować z nich liczne populacje. Mogą również służyć jako okręty szpitalne i transportowce wojsk podczas konfliktów.",
+
+    "MissionProfile.default.multiroleExplorer": "Wielozadaniowy okręt eksploracyjny",
+
+    "MissionProfile.default.multiroleExplorer.description": "WIele z najbardziej znanych i szanowanych jednostek Gwiezdnej Floty było raczej statkami pozbawionymi konkretnej specjalizacji, czyli okrętami o uniwersalnym przeznaczeniu. Ta wszechstronność pozwoliła takim postaciom jak Jonathan Archer, Christopher Pike, James Kirk i Jean-Luc Picard odkrywać nowe światy, poszukiwać nowego życia i nowych cywilizacji oraz odważnie podążać tam, gdzie nikt wcześniej nie dotarł.",
+
+    "MissionProfile.default.projectEscalante": "Projekt Escalante",
+    "MissionProfile.default.battlecruiser": "Krążownik liniowy",
+
+    "MissionProfile.default.battlecruiser.description": "Wnioski wyciągnięte z wojny ziemsko-romulańskiej z połowy XXII wieku pozostawiły na długo ślad w umysłach mieszkańców Federacji. W związku z tym niektóre statki wyposażono jako okręty wojenne na wypadek wybuchu kolejnego konfliktu z Imperium Klingońskim lub Romulańskim. Podobny nacisk na rozwój ciężkich okrętów bojowych pojawił się podczas kryzysu Borg i Wojny z Dominium w latach sześćdziesiątych i siedemdziesiątych XXIV wieku. Statki te są rzadkością w Gwiezdnej Flocie, a tak skonfigurowane jednostki nieczęsto oddalają się od ważnych baz gwiezdnych lub światów, których strzegą.",
+
+    "MissionProfile.default.reserveFleet": "Flota rezerwowa",
+    "MissionProfile.default.civilianMerchantMarine": "Cywilna misja handlowa",
+    "MissionProfile.default.colonySupport": "Wsparcie kolonii",
+    "MissionProfile.default.entertainmentPleasureShip": "Rozrywka i rekreacja",
+    "MissionProfile.default.espionageIntelligence": "Szpiegostwo/wywiad",
+
+    "MissionProfile.default.espionageIntelligence.description": "Statki wyposażone do szpiegostwa są rzadkością w aktywnej służbie Gwiezdnej Floty, ale bywają wykorzystywane przez kultury członkowskie Federacji, a także przez inne państwa, takie jak Gwiezdne Imperium Romulan i Unia Kardasjańska, których agencje wywiadowcze często dysponują specjalnie przygotowanymi okrętami (niezależnie od tego, czy są one prawnie dozwolone). W wielu kulturach służby wywiadowcze mają prawo przejmować istniejące jednostki na swoje potrzeby. Takie okręty są często wyposażone w bardzo czułe urządzenia monitorujące, ulepszone sensory oraz systemy pozwalające im się ukryć (choć w przypadku Gwiezdnej Floty nie są to jeszcze urządzenia maskujące). Operują one najczęściej w pobliżu granic państwowych, a czasem nawet poza nimi. Służba na nich jest często niebezpieczna i niewdzięczna.",
+
+    "MissionProfile.default.flagship": "Okręt flagowy",
+
+    "MissionProfile.default.flagship.description": "Okręty flagowe są wyspecjalizowaną formą jednostek dowodzenia, z dedykowanym mostkiem flagowym lub strategicznym centrum operacyjnym. Statki te mogą działać jako mobilne centrum floty, a ich systemy i personel są przygotowane do koordynacji większych operacji. Czasami taki okręt zapewnia również ciągłość dowodzenia w przypadku w sytuacjach kryzysowych.",
+
+    "MissionProfile.default.logisticalQuartermaster": "Operacje zaopatrzeniowe",
+    "MissionProfile.default.patrol": "Statek patrolowy",
+
+    "MissionProfile.default.patrol.description": "Statki patrolowe są przeznaczone do wykonywania misji porządkowych oraz utrzymywania pokoju w regionach przestrzeni kosmicznej, w których otwarta wrogość jest nie tylko możliwa, ale i prawdopodobna. Okręty te zwykle operują wzdłuż granic z innymi państwami i działają jako jednostki osłonowe podczas akcji floty. W czasach pokoju mogą być przydzielane do misji badawczych lub prowadzić operacje przeciwko piratom, przemytnikom i podobnym zagrożeniom.",
+
+    "MissionProfile.default.warship": "Okręt wojenny",
+
+    "MissionProfile.klingon.crisisAndEmergencyResponse": "Reagowanie kryzysowe",
+    "MissionProfile.klingon.multiroleExplorer": "Wielozadaniowy okręt wojenny",
+    "MissionProfile.klingon.pathfinderAndReconaissance": "Wywiad i rozpoznanie",
+    "MissionProfile.klingon.scientificAndSurvey": "Operacje naukowe i zwiadowcze",
+    "MissionProfile.klingon.strategicAndDiplomatic": "Operacje strategiczne i dyplomatyczne",
+    "MissionProfile.klingon.houseGuard": "Gwardia rodowa",
+    "MissionProfile.klingon.warship": "Okręt wojenny",
+
+    "MissionProfile.default.administrationAndBureaucracyStation": "Administracja i biurokracja",
+    "MissionProfile.default.borderEnforcementStation": "Wzmocnienie granicy",
+    "MissionProfile.default.communicationHubStation": "Węzeł komunikacyjny",
+    "MissionProfile.default.defenseStation": "Obrona",
+    "MissionProfile.default.diplomaticRelationsStation": "Placówka dyplomatyczna",
+    "MissionProfile.default.drydockShipRepairStation": "Suchy dok",
+    "MissionProfile.default.educationTrainingStation": "Trening i szkolenia",
+    "MissionProfile.default.intelligenceSpecialOperationsStation": "Wywiad i operacje specjalne",
+    "MissionProfile.default.logisticalAndTacticalSupportStation": "Logistyka i wsparcie",
+    "MissionProfile.default.politicalOperationsStation": "Operacje polityczne",
+    "MissionProfile.default.researchStation": "Stacja naukowe",
+
+    "NpcCharacterType.minorPolity": "Pomniejsza organizacja",
 
     "NpcType.major.name": "Kluczowy BN",
 
@@ -1434,6 +1662,24 @@
     "Rank.other.name": "inne",
 
     "Rank.none.name": "brak",
+
+    "Rank.masterChiefPettyOfficer.name": "starszy bosman",
+    "Rank.masterChiefPettyOfficer.abbrev": "szef",
+
+    "Rank.seniorChiefPettyOfficer.name": "bosman",
+    "Rank.seniorChiefPettyOfficer.abbrev": "szef",
+
+    "Rank.chiefPettyOfficer.name": "mat",
+    "Rank.chiefPettyOfficer.abbrev": "szef",
+
+    "Rank.pettyOfficer1stClass.name": "podoficer 1. klasy",
+    "Rank.pettyOfficer1stClass.abbrev": "podof.",
+
+    "Rank.pettyOfficer2ndClass.name": "podoficer 2. klasy",
+    "Rank.pettyOfficer2ndClass.abbrev": "podof.",
+
+    "Rank.pettyOfficer3rdClass.name": "podoficer 3. klasy",
+    "Rank.pettyOfficer3rdClass.abbrev": "podof.",
 
     "Rank.crewman1stClass.name": "załogant 1. klasy",
     "Rank.crewman1stClass.abbrev": "zał.",
@@ -1544,6 +1790,7 @@
     "Source.type.campaignBook": "Dodatki kampanijne",
     "Source.type.expansion": "Rozszerzenia",
     "Source.type.expansion2e": "Rozszerzenia (2. edycja)",
+    "Source.type.eraBook": "Opis ery",
     "Source.type.misc": "Inne",
     "Source.type.unofficial": "Nieoficjalne (fanowskie) źródła",
 
@@ -1560,6 +1807,7 @@
     "Source.book.ds9": "DS9",
     "Source.book.voyager": "Voyager",
     "Source.book.explorationGuide": "Przewodnik odkrywcy",
+    "Source.book.theseAreTheVoyages": "These are the Voy",
     "Source.book.tribblePlayerCharacter": "Karta tribla",
     "Source.book.klingonCore": "Klingoński podręcznik główny",
     "Source.book.shackletonExpanse": "Przestrzeń Shackletona",
@@ -1652,6 +1900,34 @@
     "SpaceframeAppearance.romulanScienceVessel": "Romulański okręt naukowy",
     "SpaceframeAppearance.romulanShuttle": "Romulański prom",
     "SpaceframeAppearance.scimitarType": "Typ Scimitar",
+
+    "SpaceframeVariant.excelsior": "oryginalna klasa",
+    "SpaceframeVariant.enterpriseBVariant": "wariant Enterprise-B",
+    "SpaceframeVariant.originalSeries": "wariant TOS",
+    "SpaceframeVariant.originalSeriesMovies": "wariant filmowy TOS",
+    "SpaceframeVariant.strangeNewWorldsVariant": "wariant SNW",
+
+    "SpaceRegion.alphaQuadrant": "Kwadrant Alfa",
+    "SpaceRegion.betaQuadrant": "Kwadrant Beta",
+    "SpaceRegion.gammaQuadrant": "Kwadrant Gamma",
+    "SpaceRegion.deltaQuadrant": "Kwadrant Delta",
+    "SpaceRegion.shackletonExpanse": "Przestrzeń Shackletona",
+
+    "SpecialWeapon.batLeth": "Bat'Leth",
+    "SpecialWeapon.mekLeth": "Mek'Leth",
+
+    "Specialization.admiral": "Admirał",
+    "Specialization.admin": "Kancelista",
+    "Specialization.bodyguard": "Ochroniarz",
+    "Specialization.bruteForHire": "Zbir do wynajęcia",
+    "Specialization.bureaucrat": "Biurokrata",
+    "Specialization.child": "Dziecko",
+    "Specialization.civilianDoctor": "Lekarz",
+    "Specialization.colonist": "Kolonista",
+    "Specialization.conn": "Sternik",
+    "Specialization.counselor": "Doradca",
+    "Specialization.engineer": "Inżynier",
+    "Specialization.federationAmbassador": "Ambasador Federacji",
 
     "Talent.abundantPersonnel": "Liczny personel",
 
