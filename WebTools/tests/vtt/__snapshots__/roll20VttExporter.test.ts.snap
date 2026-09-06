@@ -1,0 +1,1368 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Roll20 JSON export golden output exports a fully-populated 2e character 1`] = `
+"{
+    "schema_version": 3,
+    "type": "character",
+    "character": {
+        "oldId": "-Nzzzzzzzzzzzzzzzzzz",
+        "name": "Rhea Voss (she/her)",
+        "avatar": "",
+        "bio": "",
+        "gmnotes": "",
+        "defaulttoken": "",
+        "tags": "[]",
+        "controlledby": "",
+        "inplayerjournals": "",
+        "attribs": [
+            {
+                "name": "sheet_color",
+                "current": "black",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz0"
+            },
+            {
+                "name": "attributeName",
+                "current": false,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz1"
+            },
+            {
+                "name": "disciplineName",
+                "current": false,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz2"
+            },
+            {
+                "name": "systemName",
+                "current": "COMMAND",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz3"
+            },
+            {
+                "name": "departmentName",
+                "current": false,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz4"
+            },
+            {
+                "name": "ask_whisper",
+                "current": "Whisper to GM?",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz5"
+            },
+            {
+                "name": "ask_public_roll",
+                "current": "Public Roll",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz6"
+            },
+            {
+                "name": "ask_whisper_roll",
+                "current": "Whisper Roll",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz7"
+            },
+            {
+                "name": "diceRoll",
+                "current": "{{dice1=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}{{dice2=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz8"
+            },
+            {
+                "name": "crew_diceRoll",
+                "current": "{{dice1=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}{{dice2=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz9"
+            },
+            {
+                "name": "ship_diceRoll",
+                "current": "{{dice1=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}{{dice2=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0a"
+            },
+            {
+                "name": "focus",
+                "current": "1",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0b"
+            },
+            {
+                "name": "complication",
+                "current": "20",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0c"
+            },
+            {
+                "name": "version",
+                "current": 1.6,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0d"
+            },
+            {
+                "name": "settings_toggle",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0e"
+            },
+            {
+                "name": "privilege",
+                "current": 4,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0f"
+            },
+            {
+                "name": "responsibility",
+                "current": 17,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0g"
+            },
+            {
+                "name": "species",
+                "current": "Human",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0h"
+            },
+            {
+                "name": "rank",
+                "current": "Lieutenant Commander",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0i"
+            },
+            {
+                "name": "upbringing",
+                "current": "Business or Trade (A)",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0j"
+            },
+            {
+                "name": "environment",
+                "current": "Environment.common.starshipOrStarbase.name",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0k"
+            },
+            {
+                "name": "assignment",
+                "current": "Chief Engineer / Operations Manager, USS Venture",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0l"
+            },
+            {
+                "name": "rankSelect",
+                "current": "Lieutenant Commander",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0m"
+            },
+            {
+                "name": "command",
+                "current": 3,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0n"
+            },
+            {
+                "name": "conn",
+                "current": 1,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0o"
+            },
+            {
+                "name": "security",
+                "current": 2,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0p"
+            },
+            {
+                "name": "engineering",
+                "current": 4,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0q"
+            },
+            {
+                "name": "science",
+                "current": 2,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0r"
+            },
+            {
+                "name": "medicine",
+                "current": 2,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0s"
+            },
+            {
+                "name": "control",
+                "current": 7,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0t"
+            },
+            {
+                "name": "daring",
+                "current": 11,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0u"
+            },
+            {
+                "name": "fitness",
+                "current": 9,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0v"
+            },
+            {
+                "name": "insight",
+                "current": 8,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0w"
+            },
+            {
+                "name": "presence",
+                "current": 9,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0x"
+            },
+            {
+                "name": "reason",
+                "current": 8,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0y"
+            },
+            {
+                "name": "stress",
+                "current": "",
+                "max": 9,
+                "id": "-Nzzzzzzzzzzzzzzzz0z"
+            },
+            {
+                "name": "reputation",
+                "current": 5,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz00"
+            },
+            {
+                "name": "resistance",
+                "current": 0,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz01"
+            },
+            {
+                "name": "values",
+                "current": "Curiosity\\nCourage\\nHarmony\\nInitiative",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz02"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz03_focus_name",
+                "current": "Compassion",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz04"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz03_focus_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz05"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz03_focus_show_description",
+                "current": "off",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz06"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz07_focus_name",
+                "current": "Engineering",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz08"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz07_focus_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz09"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz07_focus_show_description",
+                "current": "off",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1a"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1b_focus_name",
+                "current": "Astrophysics",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1c"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1b_focus_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1d"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1b_focus_show_description",
+                "current": "off",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1e"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1f_focus_name",
+                "current": "Starship Design",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1g"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1f_focus_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1h"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1f_focus_show_description",
+                "current": "off",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1i"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1j_focus_name",
+                "current": "Survival",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1k"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1j_focus_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1l"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1j_focus_show_description",
+                "current": "off",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1m"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1n_focus_name",
+                "current": "Diplomacy",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1o"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1n_focus_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1p"
+            },
+            {
+                "name": "repeating_focuses_-Nzzzzzzzzzzzzzzzz1n_focus_show_description",
+                "current": "off",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1q"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1r_equipment_name",
+                "current": "Uniform",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1s"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1r_equipment_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1t"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1u_equipment_name",
+                "current": "Communicator",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1v"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1u_equipment_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1w"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1u_equipment_description",
+                "current": "A communicator is a communications device used by many species for person-to-person, inter-ship communications.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1x"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1y_equipment_name",
+                "current": "Tricorder",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1z"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1y_equipment_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz10"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz1y_equipment_description",
+                "current": "A tricorder is an advanced multi-function hand held computing and scanning device used to gather, analyze, and record data, with many specialized abilities which made it an asset to crews aboard starships and space stations as well as on away missions.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz11"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz12_equipment_name",
+                "current": "Engineering Kit",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz13"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz12_equipment_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz14"
+            },
+            {
+                "name": "repeating_equipmentks_-Nzzzzzzzzzzzzzzzz12_equipment_description",
+                "current": "An engineering kit is a collection of tools used in engineering.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz15"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz16_talent_name",
+                "current": "Bold",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz17"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz16_talent_description",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz18"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz16_talent_requirements",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz19"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz16_talent_category",
+                "current": "General",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2a"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz16_talent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2b"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2c_talent_name",
+                "current": "Cautious",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2d"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2c_talent_description",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2e"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2c_talent_requirements",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2f"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2c_talent_category",
+                "current": "General",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2g"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2c_talent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2h"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2i_talent_name",
+                "current": "Untapped Potential",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2j"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2i_talent_description",
+                "current": "The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1[D]. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2k"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2i_talent_requirements",
+                "current": "Only available to Young characters",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2l"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2i_talent_category",
+                "current": "Career",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2m"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2i_talent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2n"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2o_talent_name",
+                "current": "Advisor",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2p"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2o_talent_description",
+                "current": "Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2q"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2o_talent_requirements",
+                "current": "Requires Command 2+, Main Character only",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2r"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2o_talent_category",
+                "current": "Command",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2s"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2o_talent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2t"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2u_talent_name",
+                "current": "Supervisor",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2v"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2u_talent_description",
+                "current": "The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2w"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2u_talent_requirements",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2x"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2u_talent_category",
+                "current": "Command",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2y"
+            },
+            {
+                "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2u_talent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2z"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz20_trait_name",
+                "current": "Steadfast",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz21"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz20_trait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz22"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz20_trait_description",
+                "current": "Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz23"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz24_trait_name",
+                "current": "Human",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz25"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz24_trait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz26"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz27_trait_name",
+                "current": "Dark Secrets",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz28"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz27_trait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz29"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz3a_trait_name",
+                "current": "Professional",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3b"
+            },
+            {
+                "name": "repeating_traits_-Nzzzzzzzzzzzzzzzz3a_trait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3c"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3d_weapon_name",
+                "current": "Weapon.personal.strike.name",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3e"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3d_weapon_quality",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3f"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3d_weapon_effects",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3g"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3d_weapon_damage",
+                "current": 2,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3h"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3d_damageRoll",
+                "current": "{{cdice1=[[1d6]]}}{{cdice2=[[1d6]]}}{{cdice3=[[1d6]]}}{{cdice4=[[1d6]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3i"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3d_weapon_type",
+                "current": "Melee",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3j"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3k_weapon_name",
+                "current": "Weapon.personal.phaser2.name",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3l"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3k_weapon_quality",
+                "current": "Charge",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3m"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3k_weapon_effects",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3n"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3k_weapon_damage",
+                "current": 4,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3o"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3k_damageRoll",
+                "current": "{{cdice1=[[1d6]]}}{{cdice2=[[1d6]]}}{{cdice3=[[1d6]]}}{{cdice4=[[1d6]]}}{{cdice5=[[1d6]]}}{{cdice6=[[1d6]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3p"
+            },
+            {
+                "name": "repeating_weapons_-Nzzzzzzzzzzzzzzzz3k_weapon_type",
+                "current": "Ranged",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz3q"
+            }
+        ],
+        "abilities": []
+    }
+}"
+`;
+
+exports[`Roll20 JSON export golden output exports a fully-populated 2e starship 1`] = `
+"{
+    "schema_version": 3,
+    "type": "character",
+    "character": {
+        "oldId": "-Nzzzzzzzzzzzzzzzzzz",
+        "name": "USS Venture",
+        "avatar": "",
+        "bio": "",
+        "gmnotes": "",
+        "defaulttoken": "",
+        "tags": "[]",
+        "controlledby": "",
+        "inplayerjournals": "",
+        "attribs": [
+            {
+                "name": "sheet_color",
+                "current": "black",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz0"
+            },
+            {
+                "name": "attributeName",
+                "current": false,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz1"
+            },
+            {
+                "name": "disciplineName",
+                "current": false,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz2"
+            },
+            {
+                "name": "systemName",
+                "current": "COMMAND",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz3"
+            },
+            {
+                "name": "departmentName",
+                "current": false,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz4"
+            },
+            {
+                "name": "ask_whisper",
+                "current": "Whisper to GM?",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz5"
+            },
+            {
+                "name": "ask_public_roll",
+                "current": "Public Roll",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz6"
+            },
+            {
+                "name": "ask_whisper_roll",
+                "current": "Whisper Roll",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz7"
+            },
+            {
+                "name": "diceRoll",
+                "current": "{{dice1=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}{{dice2=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz8"
+            },
+            {
+                "name": "crew_diceRoll",
+                "current": "{{dice1=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}{{dice2=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzzz9"
+            },
+            {
+                "name": "ship_diceRoll",
+                "current": "{{dice1=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}{{dice2=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0a"
+            },
+            {
+                "name": "focus",
+                "current": "1",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0b"
+            },
+            {
+                "name": "complication",
+                "current": "20",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0c"
+            },
+            {
+                "name": "version",
+                "current": 1.6,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0d"
+            },
+            {
+                "name": "settings_toggle",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0e"
+            },
+            {
+                "name": "sheet_type",
+                "current": "starship",
+                "max": "",
+                "id": "-Nz_YFXyrBCoNytnAbXI"
+            },
+            {
+                "name": "ship-environment",
+                "current": "Galaxy Class",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0f"
+            },
+            {
+                "name": "ship_ship-mission-profile",
+                "current": "Battlecruiser",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0g"
+            },
+            {
+                "name": "ship-designation",
+                "current": "NCC-70637",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0h"
+            },
+            {
+                "name": "ship-rank",
+                "current": "2372",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0i"
+            },
+            {
+                "name": "ship-refit",
+                "current": "+1 Construct.system.engines, +1 Construct.system.weapons",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0j"
+            },
+            {
+                "name": "shields",
+                "current": "",
+                "max": 19,
+                "id": "-Nzzzzzzzzzzzzzzzz0k"
+            },
+            {
+                "name": "ship_resistance",
+                "current": "7",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0l"
+            },
+            {
+                "name": "ship_scale",
+                "current": "6",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0m"
+            },
+            {
+                "name": "crew",
+                "current": "0",
+                "max": 12,
+                "id": "-Nzzzzzzzzzzzzzzzz0n"
+            },
+            {
+                "name": "power",
+                "current": "0",
+                "max": 16,
+                "id": "-Nzzzzzzzzzzzzzzzz0o"
+            },
+            {
+                "name": "ship_command",
+                "current": 3,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0p"
+            },
+            {
+                "name": "ship_conn",
+                "current": 2,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0q"
+            },
+            {
+                "name": "ship_security",
+                "current": 3,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0r"
+            },
+            {
+                "name": "ship_engineering",
+                "current": 2,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0s"
+            },
+            {
+                "name": "ship_science",
+                "current": 3,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0t"
+            },
+            {
+                "name": "ship_medicine",
+                "current": 2,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0u"
+            },
+            {
+                "name": "ship_communcation",
+                "current": 9,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0v"
+            },
+            {
+                "name": "ship_computers",
+                "current": 10,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0w"
+            },
+            {
+                "name": "ship_engines",
+                "current": 11,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0x"
+            },
+            {
+                "name": "ship_sensors",
+                "current": 8,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0y"
+            },
+            {
+                "name": "ship_structure",
+                "current": 10,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz0z"
+            },
+            {
+                "name": "ship_weapons",
+                "current": 12,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz00"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz01_stalent_name",
+                "current": "Abundant Personnel",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz02"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz01_stalent_description",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz03"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz01_stalent_requirements",
+                "current": "None",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz04"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz01_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz05"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz01_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz06"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz07_stalent_name",
+                "current": "Saucer Separation and Reconnect",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz08"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz07_stalent_description",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz09"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz07_stalent_requirements",
+                "current": "None",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1a"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz07_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1b"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz07_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1c"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1d_stalent_name",
+                "current": "Modular Laboratories",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1e"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1d_stalent_description",
+                "current": "The ship has considerable numbers of empty, multi-purpose compartments that can be converted to laboratories as and when required. At the start of an adventure, the crew may decide how the modular laboratories are configured; this configuration counts as an Advantage which applies to work performed within the laboratories.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1f"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1d_stalent_requirements",
+                "current": "Requires Science 2+",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1g"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1d_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1h"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1d_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1i"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1j_stalent_name",
+                "current": "Redundant Systems",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1k"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1j_stalent_description",
+                "current": "The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1l"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1j_stalent_requirements",
+                "current": "None",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1m"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1j_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1n"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1j_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1o"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1p_stalent_name",
+                "current": "Ablative Armor",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1q"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1p_stalent_description",
+                "current": "The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1r"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1p_stalent_requirements",
+                "current": "2371 or later",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1s"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1p_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1t"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1p_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1u"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1v_stalent_name",
+                "current": "Secondary Reactors [x1]",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1w"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1v_stalent_description",
+                "current": "The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy. Increase the ship’s normal Power capacity by 5.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1x"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1v_stalent_requirements",
+                "current": "None",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1y"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1v_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz1z"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz1v_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz10"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz11_stalent_name",
+                "current": "Redundant Systems",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz12"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz11_stalent_description",
+                "current": "The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz13"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz11_stalent_requirements",
+                "current": "None",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz14"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz11_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz15"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz11_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz16"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz17_stalent_name",
+                "current": "Dedicated Personnel",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz18"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz17_stalent_description",
+                "current": "The ship gains two additional Crew Support, which may only be used to establish Supporting Characters.",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz19"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz17_stalent_requirements",
+                "current": "None",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2a"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz17_stalent_category",
+                "current": "Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2b"
+            },
+            {
+                "name": "repeating_stalents_-Nzzzzzzzzzzzzzzzz17_stalent_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2c"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2d_strait_name",
+                "current": "Federation Starship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2e"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2d_strait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2f"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2g_strait_name",
+                "current": "Galaxy Class",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2h"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2g_strait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2i"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2j_strait_name",
+                "current": "Flagship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2k"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2j_strait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2l"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2m_strait_name",
+                "current": "Hero Ship",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2n"
+            },
+            {
+                "name": "repeating_straits_-Nzzzzzzzzzzzzzzzz2m_strait_settings",
+                "current": "0",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2o"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2p_weapon_name",
+                "current": "Phaser Arrays",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2q"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2p_weapon_quality",
+                "current": "Weapon.quality.versatile.name",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2r"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2p_weapon_effect",
+                "current": "AreaOrSpread",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2s"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2p_weapon_damage",
+                "current": 0,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2t"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2p_damageRoll",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2u"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2p_weapon_type",
+                "current": "Energy",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2v"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2w_weapon_name",
+                "current": "Photon Torpedoes",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2x"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2w_weapon_quality",
+                "current": "HighYield",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2y"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2w_weapon_effect",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz2z"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2w_weapon_damage",
+                "current": 3,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz20"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2w_damageRoll",
+                "current": "{{cdice1=[[1d6]]}}{{cdice2=[[1d6]]}}{{cdice3=[[1d6]]}}{{cdice4=[[1d6]]}}{{cdice5=[[1d6]]}}{{cdice6=[[1d6]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz21"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz2w_weapon_type",
+                "current": "Torpedo",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz22"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz23_weapon_name",
+                "current": "Tractor Beam",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz24"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz23_weapon_quality",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz25"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz23_weapon_effect",
+                "current": "",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz26"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz23_weapon_damage",
+                "current": 0,
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz27"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz23_damageRoll",
+                "current": "{{cdice1=[[1d6]]}}{{cdice2=[[1d6]]}}{{cdice3=[[1d6]]}}{{cdice4=[[1d6]]}}{{cdice5=[[1d6]]}}",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz28"
+            },
+            {
+                "name": "repeating_ship_-Nzzzzzzzzzzzzzzzz23_weapon_type",
+                "current": "Energy",
+                "max": "",
+                "id": "-Nzzzzzzzzzzzzzzzz29"
+            }
+        ],
+        "abilities": []
+    }
+}"
+`;
+
+exports[`Roll20 JSON export golden output exports a fully-populated 2e starship as a handout 1`] = `
+"{
+    "schema_version": 3,
+    "type": "handout",
+    "handout": {
+        "archived": false,
+        "avatar": "",
+        "controlledby": "",
+        "inplayerjournals": "",
+        "name": "USS Venture, NCC-70637",
+        "tags": "[]",
+        "gmnotes": "",
+        "notes": "<p><strong>Traits:</strong> Federation Starship, Galaxy Class, Flagship, Hero Ship</p>\\n<h2>Construct.other.systems</h2>\\n<table>\\n<thead>\\n<tr>\\n<th>Construct.system.comms</th>\\n<th>Construct.system.computer</th>\\n<th>Construct.system.engines</th>\\n<th>Construct.system.sensors</th>\\n<th>Construct.system.structure</th>\\n<th>Construct.system.weapons</th>\\n</tr>\\n</thead>\\n<tbody><tr>\\n<td>9</td>\\n<td>10</td>\\n<td>11</td>\\n<td>8</td>\\n<td>10</td>\\n<td>12</td>\\n</tr>\\n</tbody>\\n</table>\\n<h2>Construct.other.departments</h2>\\n<table>\\n<thead>\\n<tr>\\n<th>Construct.department.command</th>\\n<th>Construct.department.conn</th>\\n<th>Construct.department.security</th>\\n<th>Construct.department.engineering</th>\\n<th>Construct.department.science</th>\\n<th>Construct.department.medicine</th>\\n</tr>\\n</thead>\\n<tbody><tr>\\n<td>3</td>\\n<td>2</td>\\n<td>3</td>\\n<td>2</td>\\n<td>3</td>\\n<td>2</td>\\n</tr>\\n</tbody>\\n</table>\\n<p><strong>Construct.other.power:</strong> 16<br /><strong>Construct.other.scale:</strong> 6<br /><strong>Construct.other.shields:</strong> 19<br /><strong>Construct.other.crewSupport:</strong> 12</p><p><strong>Construct.other.attacks</strong></p>\\n<ul>\\n<li><p>Phaser Arrays (Energy Weapon, Range Medium, 0<img src=\\"https://s3.amazonaws.com/files.d20.io/images/239862759/6uRVM0G3z6g119ymlL1VLg/med.png?1628984150\\" height=\\"18\\" width=\\"13\\"> Weapon.quality.versatile.name, AreaOrSpread)</p></li><li><p>Photon Torpedoes (Torpedo, Range Long, 3<img src=\\"https://s3.amazonaws.com/files.d20.io/images/239862759/6uRVM0G3z6g119ymlL1VLg/med.png?1628984150\\" height=\\"18\\" width=\\"13\\"> HighYield)</p></li><li><p>Tractor Beam (Strength 5 )</p></li></ul>\\n<p><strong>Construct.other.talents</strong></p>\\n<ul>\\n<li><p><b>Modular Laboratories:</b> The ship has considerable numbers of empty, multi-purpose compartments that can be converted to laboratories as and when required. At the start of an adventure, the crew may decide how the modular laboratories are configured; this configuration counts as an Advantage which applies to work performed within the laboratories.</p></li>\\n<li><p><b>Redundant Systems:</b> The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.</p></li>\\n<li><p><b>Ablative Armor:</b> The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.</p></li>\\n<li><p><b>Secondary Reactors [x1]:</b> The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy. Increase the ship’s normal Power capacity by 5.</p></li>\\n<li><p><b>Dedicated Personnel:</b> The ship gains two additional Crew Support, which may only be used to establish Supporting Characters.</p></li>\\n</ul>\\n<p><strong>Construct.other.specialRules</strong></p>\\n<ul>\\n<li><p><b>Abundant Personnel:</b> </p></li>\\n<li><p><b>Saucer Separation and Reconnect:</b> </p></li>\\n</ul>\\n"
+    }
+}"
+`;

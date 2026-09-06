@@ -1,4 +1,11 @@
-import { test, expect, describe } from '@jest/globals';
+import {
+  test,
+  expect,
+  describe,
+  beforeEach,
+  afterEach,
+  jest,
+} from '@jest/globals';
 import '../../src/helpers/species';
 import { Character } from '../../src/common/character';
 import { CharacterType } from '../../src/common/characterType';
@@ -6,6 +13,11 @@ import { Era } from '../../src/helpers/erasEnum';
 import { Role, RolesHelper } from '../../src/helpers/roles';
 import { FoundryVttExporter } from '../../src/vtt/foundryVttExporter';
 import { FoundryPluginType } from '../../src/vtt/foundryPluginType';
+import {
+  makePopulatedMainCharacter,
+  makePopulatedStarship,
+  makePopulatedStation,
+} from './vttFixtures';
 
 jest.mock('i18next', () => {
   const mockI18n: any = (key: string) => key;
@@ -92,5 +104,47 @@ describe('FoundryVTT character export (#257)', () => {
     expect(result.system.characterrole).toBe(expectedRole);
     expect(result.system.assignment).not.toContain('Chief');
     expect(result.system.characterrole).not.toContain('Enterprise');
+  });
+});
+
+describe('FoundryVTT export golden output', () => {
+  beforeEach(() => {
+    jest.spyOn(Date, 'now').mockReturnValue(1700000000000);
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('exports a fully-populated 2e character', () => {
+    const result = FoundryVttExporter.instance.exportCharacter(
+      makePopulatedMainCharacter(2),
+      FoundryPluginType.Standard,
+    );
+    expect(JSON.stringify(result, null, 4)).toMatchSnapshot();
+  });
+
+  test('exports a fully-populated 1e character', () => {
+    const result = FoundryVttExporter.instance.exportCharacter(
+      makePopulatedMainCharacter(1),
+      FoundryPluginType.Standard,
+    );
+    expect(JSON.stringify(result, null, 4)).toMatchSnapshot();
+  });
+
+  test('exports a fully-populated 2e starship', () => {
+    const result = FoundryVttExporter.instance.exportStarship(
+      makePopulatedStarship(),
+      FoundryPluginType.Standard,
+    );
+    expect(JSON.stringify(result, null, 4)).toMatchSnapshot();
+  });
+
+  test('exports a fully-populated station', () => {
+    const result = FoundryVttExporter.instance.exportStation(
+      makePopulatedStation(),
+      FoundryPluginType.Standard,
+    );
+    expect(JSON.stringify(result, null, 4)).toMatchSnapshot();
   });
 });

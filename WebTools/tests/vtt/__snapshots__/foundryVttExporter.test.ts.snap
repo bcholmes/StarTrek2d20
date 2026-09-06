@@ -1,0 +1,2423 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoundryVTT export golden output exports a fully-populated 1e character 1`] = `
+"{
+    "name": "Rhea Voss",
+    "type": "character",
+    "img": "icons/svg/mystery-man.svg",
+    "system": {
+        "notes": "<p>An engineer who documented the founding days of the new frontier.</p><p><a href=\\"https://sta.bcholmes.org/view?s=eJx9VE1v2zAM_SuBzgaGbjvllibdVmBdi6brpciBlZlYqC15lGQsKPLf92g7btCPAT7YFPn4-PjkZxMTC4e0b9nMTUPOLysSsoiawozhdSLZ1swJIRZC5Bf_Td_Z4yO54BH21GjmbcU0uw8xItSxRD2cnxUmt4_i_A6PmT8bVyL1PEfnOcZruRMqGQVkLbeJcZgkc2G2weaIzAstZFYAZJUuWtfWiLw5SlSzT9phpHMe6tIcDoVpKSanoQez8KmS0IY67PaoWfzJ1AbvbDSbwlgSoF10gEHnh4Hq2QuVdZbOdVQr25TEPeakfVb0Hrk12ywuaZck5NKQ-DRDXBj4h2LA__qCv0JxaMjuX2MtQ9OQxzAgKeSfTob86RgsPHldj-J9wcCxZes4alorriHZI_NHBgaSYqJ-vBfelz66XaUAt0wRS9scBtJ-XBne7ZPOBFRvWffbc-YeZxETJK32UWUser_EyrWzFQPWq7AjidXHy5v0VMTN6fh9i6MAhbni0llFQBJWkQd5stCO3_PAkjI8CnUP40jD6DcStnAfDIptAol95yT4ZizuLXqc41r07ZEiv9r7N5fUwv935cQRZghR_QAiSnZuFmWuVXSKqhOXazRD-Pd6PbsHkSzasAWtkL3aI1b8qepvpoSaJ57LyvH22FT3yzb4EnJf6ul1O17TeEUefUX7uwawHTeT0cerTmVH2G8vA65DFZzV8N2g6jTMpO46A71zMYjqO8EAvAnjr-FDu87GnfacdZDPINaE0m2d7QnfDWA3E9hJB-E2p-Pf5-QDIJvDP2rGqUA\\">Original sheet.</a></p>",
+        "assignment": "USS Venture",
+        "attributes": {
+            "control": {
+                "label": "sta.actor.character.attribute.control",
+                "value": "7",
+                "selected": false
+            },
+            "daring": {
+                "label": "sta.actor.character.attribute.daring",
+                "value": "10",
+                "selected": false
+            },
+            "fitness": {
+                "label": "sta.actor.character.attribute.fitness",
+                "value": "8",
+                "selected": false
+            },
+            "insight": {
+                "label": "sta.actor.character.attribute.insight",
+                "value": "8",
+                "selected": false
+            },
+            "presence": {
+                "label": "sta.actor.character.attribute.presence",
+                "value": "9",
+                "selected": false
+            },
+            "reason": {
+                "label": "sta.actor.character.attribute.reason",
+                "value": "8",
+                "selected": false
+            }
+        },
+        "careerevents": "Ship Destroyed, Negotiate a Treaty",
+        "characterrole": "Chief Engineer / Operations Manager",
+        "careerpath": "CharacterType.name.starfleet / Sciences Track",
+        "determination": {
+            "value": 1,
+            "max": 3
+        },
+        "disciplines": {
+            "command": {
+                "label": "sta.actor.character.discipline.command",
+                "value": "3",
+                "selected": false
+            },
+            "conn": {
+                "label": "sta.actor.character.discipline.conn",
+                "value": "1",
+                "selected": false
+            },
+            "security": {
+                "label": "sta.actor.character.discipline.security",
+                "value": "2",
+                "selected": false
+            },
+            "engineering": {
+                "label": "sta.actor.character.discipline.engineering",
+                "value": "5",
+                "selected": false
+            },
+            "science": {
+                "label": "sta.actor.character.discipline.science",
+                "value": "1",
+                "selected": false
+            },
+            "medicine": {
+                "label": "sta.actor.character.discipline.medicine",
+                "value": "2",
+                "selected": false
+            }
+        },
+        "experience": "",
+        "milestones": "",
+        "pastimes": "Anthropology, Aquaponics",
+        "pronouns": "she/her",
+        "rank": "Lieutenant Commander",
+        "reputation": 10,
+        "stress": {
+            "value": 10,
+            "max": 10
+        },
+        "traits": "",
+        "environment": "Environment.common.starshipOrStarbase.name",
+        "species": "Human",
+        "upbringing": "Business or Trade (A)"
+    },
+    "items": [
+        {
+            "name": "Curiosity",
+            "type": "value",
+            "img": "systems/sta/assets/compendia/icons/values-core/value-core.svg",
+            "system": {
+                "description": "",
+                "used": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Courage",
+            "type": "value",
+            "img": "systems/sta/assets/compendia/icons/values-core/value-core.svg",
+            "system": {
+                "description": "",
+                "used": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Engineering",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Astrophysics",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Starship Design",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Survival",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Diplomacy",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Steadfast",
+            "type": "trait",
+            "img": "systems/sta/assets/icons/VoyagerCombadgeIcon.png",
+            "system": {
+                "description": "",
+                "quantity": 1
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "a6BIWTTe2ysAI7Jm": 3
+            },
+            "flags": {},
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "13.336",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "a6BIWTTe2ysAI7Jm",
+                "exportSource": null
+            }
+        },
+        {
+            "name": "Uniform",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/placeholder.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Communicator",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/communicator.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Tricorder",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/tricorder.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Engineering Kit",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/engineering_kit.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Bold",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
+            "system": {
+                "description": "<p></p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Cautious",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
+            "system": {
+                "description": "<p></p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Supervisor",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-command.svg",
+            "system": {
+                "description": "<p>The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.</p>",
+                "talenttype": {
+                    "typeenum": "discipline",
+                    "description": "Command",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Weapon.personal.strike.name",
+            "type": "characterweapon",
+            "img": "systems/sta/assets/compendia/icons/weapons-core/unarmed-strike.webp",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 1,
+                "severity": 1,
+                "range": "Melee",
+                "hands": 1,
+                "qualities": {
+                    "area": false,
+                    "intense": false,
+                    "knockdown": true,
+                    "accurate": false,
+                    "charge": false,
+                    "cumbersome": false,
+                    "deadly": false,
+                    "debilitating": false,
+                    "grenade": false,
+                    "inaccurate": false,
+                    "nonlethal": true,
+                    "hiddenx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "opportunity": 0,
+                    "escalation": 0,
+                    "stun": true
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Weapon.personal.phaser2.name",
+            "type": "characterweapon",
+            "img": "systems/sta/assets/compendia/icons/weapons-core/phaser-type-2.webp",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 3,
+                "severity": 3,
+                "range": "Ranged",
+                "hands": 1,
+                "qualities": {
+                    "area": false,
+                    "intense": false,
+                    "knockdown": false,
+                    "accurate": false,
+                    "charge": true,
+                    "cumbersome": false,
+                    "deadly": true,
+                    "debilitating": false,
+                    "grenade": false,
+                    "inaccurate": false,
+                    "nonlethal": false,
+                    "hiddenx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "opportunity": 0,
+                    "escalation": 0,
+                    "stun": true
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        }
+    ],
+    "effects": [],
+    "flags": {
+        "exportSource": {
+            "world": "sta-bcholmes-org",
+            "system": "sta",
+            "coreVersion": "10.291",
+            "systemVersion": "2.4.2"
+        }
+    },
+    "_stats": {
+        "systemId": "sta",
+        "systemVersion": "2.4.2",
+        "coreVersion": "10.291",
+        "createdTime": 1700000000000,
+        "modifiedTime": 1700000000000,
+        "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+    }
+}"
+`;
+
+exports[`FoundryVTT export golden output exports a fully-populated 2e character 1`] = `
+"{
+    "name": "Rhea Voss",
+    "type": "character",
+    "img": "icons/svg/mystery-man.svg",
+    "system": {
+        "notes": "<p>An engineer who documented the founding days of the new frontier.</p><p><a href=\\"https://sta.bcholmes.org/view?s=eJx9VMFu2zAM_ZVA5wDDup16S5NuK7AuRdP1UuTAyExM1JY0SjIaFPn3kYrjpG02IAeHIh_fe6T0amJCRp-2Ac2laYHctAYGK1EzNn14kYDXDWKSEDJI5Be-pO_o5E8i7yTsoNXM-xph9OhjlFCHHPXw8mJsclgxuY38zOWroUpSr3IkhzHO-YGhQikAazEklMPEGcdm7W2OknmthYgKIFkVRUuhkciHowQNuqQdejpXvqnMbjc2Fliy9EQyNqnW0pcgdeisNBSy0GSt-AHcerc9B_bbJQgBq9GdT3JC0BToADGRJjyZiUs1--Abv1GEyZ8MwTuy0SwPFK47KRVRT3sXPh9VLjJ3JDTUiJSYVjlp1xmc071Am5lS4clAaZ_4PJI4o-Dvxnv8r0f8mRT7Fuz2PdbUty048UlIMrjnE8k_CYWFA6eTV7wvIjgGtIRR0wJTC7xV37JgSFJMUOQded-4SJtaAe4RouyDtIEVNcJ-HnR7ClJhiaVS-IinZXWWarAKdP3myLd9Vv22TE7X7KRyEpPYX2-jWj4uaxtrCqMZCoXSuCc8-_cODd4r4vLUqgO5YtbY3GJFVhGWx-2Z-sywwXPbM4UsYmUSB0l7m-7Yr7GIlckLErqO2Lu2Ly435aBjzvq1gojvduQbJb1J_78cA0dZHB91d4TIWpyNtXZ6o_s4vQP0RyfeovcDOTXjxpFckkTdWT8mVUfRc7FDLdNIbnRNdPYbh9VCJOu1WyxGj1KbWXGCmOOz7oyJNX6qyzPFvsHBrWlNuD6Q041E610lQ7_R03no36x4C076srpArcB22A5Xs3_3oOpARJVhyAWuPVkNP-y1DEoHTYss6IOsAUbAW9-_k_-8YKN-swpnFXIhxFpf0ZpsIfywB7sbwE46MIacDk_xyR8BWe7-AiToBoI\\">Original sheet.</a></p>",
+        "assignment": "USS Venture",
+        "attributes": {
+            "control": {
+                "label": "sta.actor.character.attribute.control",
+                "value": "7",
+                "selected": false
+            },
+            "daring": {
+                "label": "sta.actor.character.attribute.daring",
+                "value": "11",
+                "selected": false
+            },
+            "fitness": {
+                "label": "sta.actor.character.attribute.fitness",
+                "value": "9",
+                "selected": false
+            },
+            "insight": {
+                "label": "sta.actor.character.attribute.insight",
+                "value": "8",
+                "selected": false
+            },
+            "presence": {
+                "label": "sta.actor.character.attribute.presence",
+                "value": "9",
+                "selected": false
+            },
+            "reason": {
+                "label": "sta.actor.character.attribute.reason",
+                "value": "8",
+                "selected": false
+            }
+        },
+        "careerevents": "Ship Destroyed, Negotiate a Treaty",
+        "characterrole": "Chief Engineer / Operations Manager",
+        "careerpath": "CharacterType.name.starfleet / Sciences Track",
+        "determination": {
+            "value": 1,
+            "max": 3
+        },
+        "disciplines": {
+            "command": {
+                "label": "sta.actor.character.discipline.command",
+                "value": "3",
+                "selected": false
+            },
+            "conn": {
+                "label": "sta.actor.character.discipline.conn",
+                "value": "1",
+                "selected": false
+            },
+            "security": {
+                "label": "sta.actor.character.discipline.security",
+                "value": "2",
+                "selected": false
+            },
+            "engineering": {
+                "label": "sta.actor.character.discipline.engineering",
+                "value": "4",
+                "selected": false
+            },
+            "science": {
+                "label": "sta.actor.character.discipline.science",
+                "value": "2",
+                "selected": false
+            },
+            "medicine": {
+                "label": "sta.actor.character.discipline.medicine",
+                "value": "2",
+                "selected": false
+            }
+        },
+        "experience": "CareerType.solo.experienced.name",
+        "milestones": "",
+        "pastimes": "Anthropology, Aquaponics",
+        "pronouns": "she/her",
+        "rank": "Lieutenant Commander",
+        "reputation": 5,
+        "stress": {
+            "value": 9,
+            "max": 9
+        },
+        "traits": "",
+        "environment": "Environment.common.starshipOrStarbase.name",
+        "species": "Human",
+        "upbringing": "Business or Trade (A)"
+    },
+    "items": [
+        {
+            "name": "Curiosity",
+            "type": "value",
+            "img": "systems/sta/assets/compendia/icons/values-core/value-core.svg",
+            "system": {
+                "description": "",
+                "used": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Courage",
+            "type": "value",
+            "img": "systems/sta/assets/compendia/icons/values-core/value-core.svg",
+            "system": {
+                "description": "",
+                "used": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Harmony",
+            "type": "value",
+            "img": "systems/sta/assets/compendia/icons/values-core/value-core.svg",
+            "system": {
+                "description": "",
+                "used": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Initiative",
+            "type": "value",
+            "img": "systems/sta/assets/compendia/icons/values-core/value-core.svg",
+            "system": {
+                "description": "",
+                "used": false
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Compassion",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Engineering",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Astrophysics",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Starship Design",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Survival",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Diplomacy",
+            "type": "focus",
+            "img": "systems/sta/assets/compendia/icons/focuses-core/focus-core.svg",
+            "system": {
+                "description": ""
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Steadfast",
+            "type": "trait",
+            "img": "systems/sta/assets/icons/VoyagerCombadgeIcon.png",
+            "system": {
+                "description": "",
+                "quantity": 1
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "a6BIWTTe2ysAI7Jm": 3
+            },
+            "flags": {},
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "13.336",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "a6BIWTTe2ysAI7Jm",
+                "exportSource": null
+            }
+        },
+        {
+            "name": "Uniform",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/placeholder.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Communicator",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/communicator.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Tricorder",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/tricorder.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Engineering Kit",
+            "type": "item",
+            "img": "systems/sta/assets/compendia/icons/items-core/engineering_kit.webp",
+            "system": {
+                "description": "",
+                "quantity": 1,
+                "opportunity": 0,
+                "escalation": 0
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Bold",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
+            "system": {
+                "description": "<p></p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Cautious",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
+            "system": {
+                "description": "<p></p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Untapped Potential",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-career-young.svg",
+            "system": {
+                "description": "<p>The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1CD. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Advisor",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-command.svg",
+            "system": {
+                "description": "<p>Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.</p>",
+                "talenttype": {
+                    "typeenum": "discipline",
+                    "description": "Command",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Supervisor",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-command.svg",
+            "system": {
+                "description": "<p>The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.</p>",
+                "talenttype": {
+                    "typeenum": "discipline",
+                    "description": "Command",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "SpeciesAbility.human (Species Ability)",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-human.svg",
+            "system": {
+                "description": "<p>SpeciesAbility.human.description</p>",
+                "talenttype": {
+                    "typeenum": "Species",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Weapon.personal.strike.name",
+            "type": "characterweapon2e",
+            "img": "systems/sta/assets/compendia/icons/weapons-core/unarmed-strike.webp",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 2,
+                "severity": 2,
+                "range": "Melee",
+                "hands": 1,
+                "qualities": {
+                    "area": false,
+                    "intense": false,
+                    "knockdown": false,
+                    "accurate": false,
+                    "charge": false,
+                    "cumbersome": false,
+                    "deadly": false,
+                    "debilitating": false,
+                    "grenade": false,
+                    "inaccurate": false,
+                    "nonlethal": false,
+                    "hiddenx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "opportunity": 0,
+                    "escalation": 0,
+                    "stun": true
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Weapon.personal.phaser2.name",
+            "type": "characterweapon2e",
+            "img": "systems/sta/assets/compendia/icons/weapons-core/phaser-type-2.webp",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 4,
+                "severity": 4,
+                "range": "Ranged",
+                "hands": 1,
+                "qualities": {
+                    "area": false,
+                    "intense": false,
+                    "knockdown": false,
+                    "accurate": false,
+                    "charge": true,
+                    "cumbersome": false,
+                    "deadly": true,
+                    "debilitating": false,
+                    "grenade": false,
+                    "inaccurate": false,
+                    "nonlethal": false,
+                    "hiddenx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "opportunity": 0,
+                    "escalation": 0,
+                    "stun": true
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        }
+    ],
+    "effects": [],
+    "flags": {
+        "exportSource": {
+            "world": "sta-bcholmes-org",
+            "system": "sta",
+            "coreVersion": "10.291",
+            "systemVersion": "2.4.2"
+        }
+    },
+    "_stats": {
+        "systemId": "sta",
+        "systemVersion": "2.4.2",
+        "coreVersion": "10.291",
+        "createdTime": 1700000000000,
+        "modifiedTime": 1700000000000,
+        "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+    }
+}"
+`;
+
+exports[`FoundryVTT export golden output exports a fully-populated 2e starship 1`] = `
+"{
+    "name": "USS Venture",
+    "type": "starship",
+    "img": "systems/sta/assets/icons/ship_icon.png",
+    "system": {
+        "notes": "",
+        "crew": {
+            "value": 12,
+            "max": 12
+        },
+        "departments": {
+            "command": {
+                "label": "sta.actor.starship.department.command",
+                "value": "3",
+                "selected": false
+            },
+            "conn": {
+                "label": "sta.actor.starship.department.conn",
+                "value": "2",
+                "selected": false
+            },
+            "security": {
+                "label": "sta.actor.starship.department.security",
+                "value": "3",
+                "selected": false
+            },
+            "engineering": {
+                "label": "sta.actor.starship.department.engineering",
+                "value": "2",
+                "selected": false
+            },
+            "science": {
+                "label": "sta.actor.starship.department.science",
+                "value": "3",
+                "selected": false
+            },
+            "medicine": {
+                "label": "sta.actor.starship.department.medicine",
+                "value": "2",
+                "selected": false
+            }
+        },
+        "designation": "NCC-70637",
+        "missionprofile": "Battlecruiser",
+        "power": {
+            "value": 16,
+            "max": 16
+        },
+        "refit": "+1 Construct.system.engines, +1 Construct.system.weapons",
+        "resistance": 7,
+        "scale": 6,
+        "shields": {
+            "value": 19,
+            "max": 19
+        },
+        "servicedate": 2372,
+        "spaceframe": "Galaxy Class",
+        "systems": {
+            "communications": {
+                "label": "sta.actor.starship.system.communications",
+                "value": "9",
+                "selected": false
+            },
+            "computers": {
+                "label": "sta.actor.starship.system.computers",
+                "value": "10",
+                "selected": false
+            },
+            "engines": {
+                "label": "sta.actor.starship.system.engines",
+                "value": "11",
+                "selected": false
+            },
+            "sensors": {
+                "label": "sta.actor.starship.system.sensors",
+                "value": "8",
+                "selected": false
+            },
+            "structure": {
+                "label": "sta.actor.starship.system.structure",
+                "value": "10",
+                "selected": false
+            },
+            "weapons": {
+                "label": "sta.actor.starship.system.weapons",
+                "value": "12",
+                "selected": false
+            }
+        },
+        "traits": "Federation Starship, Galaxy Class, Flagship, Hero Ship"
+    },
+    "items": [
+        {
+            "name": "Abundant Personnel",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p></p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Saucer Separation and Reconnect",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p></p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Modular Laboratories",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The ship has considerable numbers of empty, multi-purpose compartments that can be converted to laboratories as and when required. At the start of an adventure, the crew may decide how the modular laboratories are configured; this configuration counts as an Advantage which applies to work performed within the laboratories.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Redundant Systems",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Ablative Armor",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Secondary Reactors [x1]",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy. Increase the ship’s normal Power capacity by 5.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Redundant Systems",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Dedicated Personnel",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The ship gains two additional Crew Support, which may only be used to establish Supporting Characters.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Phaser Arrays",
+            "type": "starshipweapon",
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-phaser-array.svg",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 0,
+                "range": "medium",
+                "qualities": {
+                    "area": false,
+                    "spread": false,
+                    "dampening": false,
+                    "calibration": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "persistentx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "hiddenx": 0,
+                    "versatilex": 2
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Phaser Arrays",
+            "type": "starshipweapon2e",
+            "sort": 1000,
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-phaser-array.svg",
+            "system": {
+                "damage": 0,
+                "range": "medium",
+                "includescale": "energy",
+                "description": "",
+                "opportunity": 0,
+                "escalation": 0,
+                "qualities": {
+                    "energy": true,
+                    "torpedo": false,
+                    "area": false,
+                    "calibration": false,
+                    "cumbersome": false,
+                    "dampening": false,
+                    "depleting": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "intense": false,
+                    "jamming": false,
+                    "persistent": false,
+                    "piercing": false,
+                    "slowing": false,
+                    "spread": false,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "flags": {},
+            "_stats": {
+                "coreVersion": "13.346",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1775998532666,
+                "modifiedTime": 1775998603845,
+                "lastModifiedBy": "aodUFbctO5o4nV3h"
+            }
+        },
+        {
+            "name": "Photon Torpedoes",
+            "type": "starshipweapon",
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-photon-torpedo.svg",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 3,
+                "range": "long",
+                "qualities": {
+                    "area": false,
+                    "spread": false,
+                    "dampening": false,
+                    "calibration": false,
+                    "devastating": false,
+                    "highyield": true,
+                    "persistentx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Photon Torpedoes",
+            "type": "starshipweapon2e",
+            "sort": 1000,
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-photon-torpedo.svg",
+            "system": {
+                "damage": 3,
+                "range": "long",
+                "includescale": "torpedo",
+                "description": "",
+                "opportunity": 0,
+                "escalation": 0,
+                "qualities": {
+                    "energy": false,
+                    "torpedo": true,
+                    "area": false,
+                    "calibration": false,
+                    "cumbersome": false,
+                    "dampening": false,
+                    "depleting": false,
+                    "devastating": false,
+                    "highyield": true,
+                    "intense": false,
+                    "jamming": false,
+                    "persistent": false,
+                    "piercing": false,
+                    "slowing": false,
+                    "spread": false,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "flags": {},
+            "_stats": {
+                "coreVersion": "13.346",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1775998532666,
+                "modifiedTime": 1775998603845,
+                "lastModifiedBy": "aodUFbctO5o4nV3h"
+            }
+        }
+    ],
+    "effects": [],
+    "flags": {
+        "exportSource": {
+            "world": "sta-bcholmes-org",
+            "system": "sta",
+            "coreVersion": "10.291",
+            "systemVersion": "2.4.2"
+        }
+    },
+    "_stats": {
+        "systemId": "sta",
+        "systemVersion": "2.4.2",
+        "coreVersion": "10.291",
+        "createdTime": 1700000000000,
+        "modifiedTime": 1700000000000,
+        "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+    }
+}"
+`;
+
+exports[`FoundryVTT export golden output exports a fully-populated station 1`] = `
+"{
+    "name": "Starbase 24",
+    "type": "starship",
+    "img": "systems/sta/assets/icons/VoyagerCombadgeIcon.png",
+    "system": {
+        "notes": "",
+        "crew": {
+            "value": 12,
+            "max": 12
+        },
+        "departments": {
+            "command": {
+                "label": "sta.actor.starship.department.command",
+                "value": "5",
+                "selected": false
+            },
+            "conn": {
+                "label": "sta.actor.starship.department.conn",
+                "value": "2",
+                "selected": false
+            },
+            "security": {
+                "label": "sta.actor.starship.department.security",
+                "value": "3",
+                "selected": false
+            },
+            "engineering": {
+                "label": "sta.actor.starship.department.engineering",
+                "value": "5",
+                "selected": false
+            },
+            "science": {
+                "label": "sta.actor.starship.department.science",
+                "value": "5",
+                "selected": false
+            },
+            "medicine": {
+                "label": "sta.actor.starship.department.medicine",
+                "value": "5",
+                "selected": false
+            }
+        },
+        "designation": "Starbase 24",
+        "missionprofile": "",
+        "power": {
+            "value": 20,
+            "max": 20
+        },
+        "refit": "",
+        "resistance": 9,
+        "scale": 12,
+        "shields": {
+            "value": 33,
+            "max": 33
+        },
+        "servicedate": "",
+        "spaceframe": "",
+        "systems": {
+            "communications": {
+                "label": "sta.actor.starship.system.communications",
+                "value": "12",
+                "selected": false
+            },
+            "computers": {
+                "label": "sta.actor.starship.system.computers",
+                "value": "11",
+                "selected": false
+            },
+            "engines": {
+                "label": "sta.actor.starship.system.engines",
+                "value": "10",
+                "selected": false
+            },
+            "sensors": {
+                "label": "sta.actor.starship.system.sensors",
+                "value": "13",
+                "selected": false
+            },
+            "structure": {
+                "label": "sta.actor.starship.system.structure",
+                "value": "12",
+                "selected": false
+            },
+            "weapons": {
+                "label": "sta.actor.starship.system.weapons",
+                "value": "10",
+                "selected": false
+            }
+        },
+        "traits": "Starfleet Station, Border Post, High Capacity"
+    },
+    "items": [
+        {
+            "name": "Enhanced Defense Grid [x1]",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
+            "system": {
+                "description": "<p>The station’s Shields are increased by an amount equal to half the station’s Scale.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Rugged Design",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The ship is designed with the frontier in mind, with a durable construction and easy access to critical systems that allow repairs to be made easily. Reduce the Difficulty of all Tasks to repair the ship by 1, to a minimum of 1.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Secondary Reactors [x2]",
+            "type": "talent",
+            "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
+            "system": {
+                "description": "<p>The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy. Increase the ship’s normal Power capacity by 5.</p>",
+                "talenttype": {
+                    "typeenum": "general",
+                    "description": "",
+                    "minimum": 0
+                }
+            },
+            "effects": [],
+            "flags": {},
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            },
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            }
+        },
+        {
+            "name": "Phaser Cannons",
+            "type": "starshipweapon",
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-phaser-cannon.svg",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 2,
+                "range": "close",
+                "qualities": {
+                    "area": false,
+                    "spread": false,
+                    "dampening": false,
+                    "calibration": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "persistentx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "hiddenx": 0,
+                    "versatilex": 2
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Phaser Cannons",
+            "type": "starshipweapon2e",
+            "sort": 1000,
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-phaser-cannon.svg",
+            "system": {
+                "damage": 2,
+                "range": "close",
+                "includescale": "energy",
+                "description": "",
+                "opportunity": 0,
+                "escalation": 0,
+                "qualities": {
+                    "energy": true,
+                    "torpedo": false,
+                    "area": false,
+                    "calibration": false,
+                    "cumbersome": false,
+                    "dampening": false,
+                    "depleting": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "intense": false,
+                    "jamming": false,
+                    "persistent": false,
+                    "piercing": false,
+                    "slowing": false,
+                    "spread": false,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "flags": {},
+            "_stats": {
+                "coreVersion": "13.346",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1775998532666,
+                "modifiedTime": 1775998603845,
+                "lastModifiedBy": "aodUFbctO5o4nV3h"
+            }
+        },
+        {
+            "name": "Phaser Arrays",
+            "type": "starshipweapon",
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-phaser-array.svg",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 0,
+                "range": "medium",
+                "qualities": {
+                    "area": false,
+                    "spread": false,
+                    "dampening": false,
+                    "calibration": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "persistentx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "hiddenx": 0,
+                    "versatilex": 2
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Phaser Arrays",
+            "type": "starshipweapon2e",
+            "sort": 1000,
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-phaser-array.svg",
+            "system": {
+                "damage": 0,
+                "range": "medium",
+                "includescale": "energy",
+                "description": "",
+                "opportunity": 0,
+                "escalation": 0,
+                "qualities": {
+                    "energy": true,
+                    "torpedo": false,
+                    "area": false,
+                    "calibration": false,
+                    "cumbersome": false,
+                    "dampening": false,
+                    "depleting": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "intense": false,
+                    "jamming": false,
+                    "persistent": false,
+                    "piercing": false,
+                    "slowing": false,
+                    "spread": false,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "flags": {},
+            "_stats": {
+                "coreVersion": "13.346",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1775998532666,
+                "modifiedTime": 1775998603845,
+                "lastModifiedBy": "aodUFbctO5o4nV3h"
+            }
+        },
+        {
+            "name": "Photon Torpedoes",
+            "type": "starshipweapon",
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-photon-torpedo.svg",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 3,
+                "range": "long",
+                "qualities": {
+                    "area": false,
+                    "spread": false,
+                    "dampening": false,
+                    "calibration": false,
+                    "devastating": false,
+                    "highyield": true,
+                    "persistentx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Photon Torpedoes",
+            "type": "starshipweapon2e",
+            "sort": 1000,
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-photon-torpedo.svg",
+            "system": {
+                "damage": 3,
+                "range": "long",
+                "includescale": "torpedo",
+                "description": "",
+                "opportunity": 0,
+                "escalation": 0,
+                "qualities": {
+                    "energy": false,
+                    "torpedo": true,
+                    "area": false,
+                    "calibration": false,
+                    "cumbersome": false,
+                    "dampening": false,
+                    "depleting": false,
+                    "devastating": false,
+                    "highyield": true,
+                    "intense": false,
+                    "jamming": false,
+                    "persistent": false,
+                    "piercing": false,
+                    "slowing": false,
+                    "spread": false,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "flags": {},
+            "_stats": {
+                "coreVersion": "13.346",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1775998532666,
+                "modifiedTime": 1775998603845,
+                "lastModifiedBy": "aodUFbctO5o4nV3h"
+            }
+        },
+        {
+            "name": "Tractor Beam",
+            "type": "starshipweapon",
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-tractor-beam.svg",
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "system": {
+                "description": "",
+                "damage": 0,
+                "range": null,
+                "qualities": {
+                    "area": false,
+                    "spread": false,
+                    "dampening": false,
+                    "calibration": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "persistentx": 0,
+                    "piercingx": 0,
+                    "viciousx": 0,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                },
+                "opportunity": null,
+                "escalation": null
+            },
+            "ownership": {
+                "default": 0,
+                "xuN9JpdcyRd60ZEJ": 3
+            },
+            "_stats": {
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "coreVersion": "10.291",
+                "createdTime": 1700000000000,
+                "modifiedTime": 1700000000000,
+                "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+            }
+        },
+        {
+            "name": "Tractor Beam",
+            "type": "starshipweapon2e",
+            "sort": 1000,
+            "img": "systems/sta/assets/compendia/icons/starshipweapons-core/weapon-tractor-beam.svg",
+            "system": {
+                "damage": 0,
+                "range": null,
+                "includescale": "energy",
+                "description": "",
+                "opportunity": 0,
+                "escalation": 0,
+                "qualities": {
+                    "energy": false,
+                    "torpedo": false,
+                    "area": false,
+                    "calibration": false,
+                    "cumbersome": false,
+                    "dampening": false,
+                    "depleting": false,
+                    "devastating": false,
+                    "highyield": false,
+                    "intense": false,
+                    "jamming": false,
+                    "persistent": false,
+                    "piercing": false,
+                    "slowing": false,
+                    "spread": false,
+                    "hiddenx": 0,
+                    "versatilex": 0
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "flags": {},
+            "_stats": {
+                "coreVersion": "13.346",
+                "systemId": "sta",
+                "systemVersion": "2.4.2",
+                "createdTime": 1775998532666,
+                "modifiedTime": 1775998603845,
+                "lastModifiedBy": "aodUFbctO5o4nV3h"
+            }
+        }
+    ],
+    "effects": [],
+    "flags": {
+        "exportSource": {
+            "world": "sta-bcholmes-org",
+            "system": "sta",
+            "coreVersion": "10.291",
+            "systemVersion": "2.4.2"
+        }
+    },
+    "_stats": {
+        "systemId": "sta",
+        "systemVersion": "2.4.2",
+        "coreVersion": "10.291",
+        "createdTime": 1700000000000,
+        "modifiedTime": 1700000000000,
+        "lastModifiedBy": "xuN9JpdcyRd60ZEJ"
+    }
+}"
+`;
