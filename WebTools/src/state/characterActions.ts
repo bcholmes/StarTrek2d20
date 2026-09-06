@@ -1,3 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import type { Character, CharacterRank } from '../common/character';
 import type { CharacterType } from '../common/characterType';
 import type { Age } from '../helpers/age';
@@ -108,542 +109,364 @@ export enum StepContext {
   FinishingTouches,
 }
 
-export function setCharacter(character: Character, replacementHash?: number) {
-  const payload = { character: character, replacementHash: replacementHash };
-  return {
-    type: SET_CHARACTER,
-    payload: payload,
-  };
-}
+export const setCharacter = createAction(
+  SET_CHARACTER,
+  (character: Character, replacementHash?: number) => ({
+    payload: { character, replacementHash },
+  }),
+);
 
-export function addCharacterBorgImplant(type: BorgImplantType) {
-  const payload = { type: type };
-  return {
-    type: ADD_CHARACTER_BORG_IMPLANT,
-    payload: payload,
-  };
-}
+export const addCharacterBorgImplant = createAction(
+  ADD_CHARACTER_BORG_IMPLANT,
+  (type: BorgImplantType) => ({ payload: { type } }),
+);
 
-export function addCharacterBorgImplantSpeciesOption(type: BorgImplantType) {
-  const payload = { type: type };
-  return {
-    type: ADD_CHARACTER_BORG_IMPLANT_SPECIES_OPTION,
-    payload: payload,
-  };
-}
+export const addCharacterBorgImplantSpeciesOption = createAction(
+  ADD_CHARACTER_BORG_IMPLANT_SPECIES_OPTION,
+  (type: BorgImplantType) => ({ payload: { type } }),
+);
 
-export function addCharacterUntappedPotentialAttribute(attribute: Attribute) {
-  const payload = { attribute: attribute };
-  return {
-    type: ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE,
-    payload: payload,
-  };
-}
+export const addCharacterUntappedPotentialAttribute = createAction(
+  ADD_CHARACTER_UNTAPPED_POTENTIAL_ATTRIBUTE,
+  (attribute: Attribute) => ({ payload: { attribute } }),
+);
 
-export function removeCharacterBorgImplant(type: BorgImplantType) {
-  const payload = { type: type };
-  return {
-    type: REMOVE_CHARACTER_BORG_IMPLANT,
-    payload: payload,
-  };
-}
+export const removeCharacterBorgImplant = createAction(
+  REMOVE_CHARACTER_BORG_IMPLANT,
+  (type: BorgImplantType) => ({ payload: { type } }),
+);
 
-export function removeCharacterBorgImplantSpeciesOption(type: BorgImplantType) {
-  const payload = { type: type };
-  return {
-    type: REMOVE_CHARACTER_BORG_IMPLANT_SPECIES_OPTION,
-    payload: payload,
-  };
-}
+export const removeCharacterBorgImplantSpeciesOption = createAction(
+  REMOVE_CHARACTER_BORG_IMPLANT_SPECIES_OPTION,
+  (type: BorgImplantType) => ({ payload: { type } }),
+);
 
-export function setCharacterSpecies(
-  species: Species,
-  attributes: Attribute[] = [],
-  mixedSpecies?: Species,
-  originalSpecies?: Species,
-  customSpeciesName?: string,
-  decrementAttributes: Attribute[] = [],
-) {
-  const payload = {
-    species: species,
-    attributes: attributes,
-    mixedSpecies: mixedSpecies,
-    originalSpecies: originalSpecies,
-    customSpeciesName: customSpeciesName,
-    decrementAttributes: decrementAttributes,
-  };
-  const ability = SpeciesAbilityList.instance.getBySpecies(species);
-  if (ability && (ability.source == null || hasSource(ability.source))) {
-    payload['ability'] = ability;
-  }
-  return {
-    type: SET_CHARACTER_SPECIES,
-    payload: payload,
-  };
-}
+export const setCharacterSpecies = createAction(
+  SET_CHARACTER_SPECIES,
+  (
+    species: Species,
+    attributes: Attribute[] = [],
+    mixedSpecies?: Species,
+    originalSpecies?: Species,
+    customSpeciesName?: string,
+    decrementAttributes: Attribute[] = [],
+  ) => {
+    const payload: any = {
+      species,
+      attributes,
+      mixedSpecies,
+      originalSpecies,
+      customSpeciesName,
+      decrementAttributes,
+    };
+    const ability = SpeciesAbilityList.instance.getBySpecies(species);
+    if (ability && (ability.source == null || hasSource(ability.source))) {
+      payload['ability'] = ability;
+    }
+    return { payload };
+  },
+);
 
-export function setSupportingCharacterSupervisory(supervisory: boolean) {
-  const payload = { supervisory: supervisory };
-  return {
-    type: SET_SUPPORTING_CHARACTER_SUPERVISORY,
-    payload: payload,
-  };
-}
+export const setSupportingCharacterSupervisory = createAction(
+  SET_SUPPORTING_CHARACTER_SUPERVISORY,
+  (supervisory: boolean) => ({ payload: { supervisory } }),
+);
 
-export function setSupportingCharacterDepartments(disciplines: Department[]) {
-  const payload = { disciplines: disciplines };
-  return {
-    type: SET_SUPPORTING_CHARACTER_DISCIPLINES,
-    payload: payload,
-  };
-}
+export const setSupportingCharacterDepartments = createAction(
+  SET_SUPPORTING_CHARACTER_DISCIPLINES,
+  (disciplines: Department[]) => ({ payload: { disciplines } }),
+);
 
-export function setNpcCharacterDepartments(departments: number[]) {
-  const payload = { departments: departments };
-  return {
-    type: SET_NPC_CHARACTER_DEPARTMENTS,
-    payload: payload,
-  };
-}
+export const setNpcCharacterDepartments = createAction(
+  SET_NPC_CHARACTER_DEPARTMENTS,
+  (departments: number[]) => ({ payload: { departments } }),
+);
 
-export function setNpcCharacterAttributes(attributes: number[]) {
-  const payload = { attributes: attributes };
-  return {
-    type: SET_NPC_CHARACTER_ATTRIBUTES,
-    payload: payload,
-  };
-}
+export const setNpcCharacterAttributes = createAction(
+  SET_NPC_CHARACTER_ATTRIBUTES,
+  (attributes: number[]) => ({ payload: { attributes } }),
+);
 
-export function setNpcCharacterTalents(talents: SelectedTalent[]) {
-  const payload = { talents: talents };
-  return {
-    type: SET_NPC_CHARACTER_TALENTS,
-    payload: payload,
-  };
-}
+export const setNpcCharacterTalents = createAction(
+  SET_NPC_CHARACTER_TALENTS,
+  (talents: SelectedTalent[]) => ({ payload: { talents } }),
+);
 
-export function addNpcCharacterEquipment(
-  equipment: EquipmentType | EquipmentModel,
-) {
-  const payload = { equipment: equipment };
-  return {
-    type: ADD_NPC_CHARACTER_EQUIPMENT,
-    payload: payload,
-  };
-}
+export const addNpcCharacterEquipment = createAction(
+  ADD_NPC_CHARACTER_EQUIPMENT,
+  (equipment: EquipmentType | EquipmentModel) => ({ payload: { equipment } }),
+);
 
-export function addNpcCharacterWeapon(weapon: PersonalWeaponType) {
-  const payload = { weapon: weapon };
-  return {
-    type: ADD_NPC_CHARACTER_WEAPON,
-    payload: payload,
-  };
-}
+export const addNpcCharacterWeapon = createAction(
+  ADD_NPC_CHARACTER_WEAPON,
+  (weapon: PersonalWeaponType) => ({ payload: { weapon } }),
+);
 
-export function removeNpcCharacterEquipment(
-  equipment: EquipmentType | EquipmentModel,
-) {
-  const payload = { equipment: equipment };
-  return {
-    type: REMOVE_NPC_CHARACTER_EQUIPMENT,
-    payload: payload,
-  };
-}
+export const removeNpcCharacterEquipment = createAction(
+  REMOVE_NPC_CHARACTER_EQUIPMENT,
+  (equipment: EquipmentType | EquipmentModel) => ({ payload: { equipment } }),
+);
 
-export function removeNpcCharacterWeapon(weapon: PersonalWeaponType) {
-  const payload = { weapon: weapon };
-  return {
-    type: REMOVE_NPC_CHARACTER_WEAPON,
-    payload: payload,
-  };
-}
+export const removeNpcCharacterWeapon = createAction(
+  REMOVE_NPC_CHARACTER_WEAPON,
+  (weapon: PersonalWeaponType) => ({ payload: { weapon } }),
+);
 
-export function setSupportingCharacterAttributes(attributes: Attribute[]) {
-  const payload = { attributes: attributes };
-  return {
-    type: SET_SUPPORTING_CHARACTER_ATTRIBUTES,
-    payload: payload,
-  };
-}
+export const setSupportingCharacterAttributes = createAction(
+  SET_SUPPORTING_CHARACTER_ATTRIBUTES,
+  (attributes: Attribute[]) => ({ payload: { attributes } }),
+);
 
-export function setCharacterEnvironment(
-  environment: Environment,
-  otherSpecies?: Species,
-) {
-  const payload = { environment: environment, otherSpecies: otherSpecies };
-  return {
-    type: SET_CHARACTER_ENVIRONMENT,
-    payload: payload,
-  };
-}
+export const setCharacterEnvironment = createAction(
+  SET_CHARACTER_ENVIRONMENT,
+  (environment: Environment, otherSpecies?: Species) => ({
+    payload: { environment, otherSpecies },
+  }),
+);
 
-export function setCharacterEducation(track: Track, enlisted: boolean = false) {
-  const payload = { track: track, enlisted: enlisted };
-  return {
-    type: SET_CHARACTER_EDUCATION,
-    payload: payload,
-  };
-}
+export const setCharacterEducation = createAction(
+  SET_CHARACTER_EDUCATION,
+  (track: Track, enlisted: boolean = false) => ({
+    payload: { track, enlisted },
+  }),
+);
 
-export function setCharacterFinishingTouches() {
-  return {
-    type: SET_CHARACTER_FINISHING_TOUCHES,
-  };
-}
+export const setCharacterFinishingTouches = createAction(
+  SET_CHARACTER_FINISHING_TOUCHES,
+  () => ({ payload: {} }),
+);
 
-export function addCharacterCareerEvent(
-  eventId: number,
-  context: StepContext,
-  attribute?: Attribute,
-  discipline?: Department,
-) {
-  const payload = {
-    eventId: eventId,
-    attribute: attribute,
-    discipline: discipline,
-    context: context,
-  };
-  return {
-    type: ADD_CHARACTER_CAREER_EVENT,
-    payload: payload,
-  };
-}
+export const addCharacterCareerEvent = createAction(
+  ADD_CHARACTER_CAREER_EVENT,
+  (
+    eventId: number,
+    context: StepContext,
+    attribute?: Attribute,
+    discipline?: Department,
+  ) => ({
+    payload: { eventId, attribute, discipline, context },
+  }),
+);
 
-export function setCharacterEarlyOutlook(
-  earlyOutlook: EarlyOutlookModel,
-  accepted: boolean = true,
-) {
-  const payload = { earlyOutlook: earlyOutlook, accepted: accepted };
-  return {
-    type: SET_CHARACTER_EARLY_OUTLOOK,
-    payload: payload,
-  };
-}
+export const setCharacterEarlyOutlook = createAction(
+  SET_CHARACTER_EARLY_OUTLOOK,
+  (earlyOutlook: EarlyOutlookModel, accepted: boolean = true) => ({
+    payload: { earlyOutlook, accepted },
+  }),
+);
 
-export function setCharacterFocus(
-  focus: string,
-  context: StepContext,
-  index: number = 0,
-) {
-  const payload = { focus: focus, context: context, index: index };
-  return {
-    type: SET_CHARACTER_FOCUS,
-    payload: payload,
-  };
-}
+export const setCharacterFocus = createAction(
+  SET_CHARACTER_FOCUS,
+  (focus: string, context: StepContext, index: number = 0) => ({
+    payload: { focus, context, index },
+  }),
+);
 
-export function addCharacterTalentFocus(
-  focus: string,
-  talent: string,
-  index: number = 0,
-) {
-  const payload = { focus: focus, talent: talent, index: index };
-  return {
-    type: ADD_CHARACTER_TALENT_FOCUS,
-    payload: payload,
-  };
-}
+export const addCharacterTalentFocus = createAction(
+  ADD_CHARACTER_TALENT_FOCUS,
+  (focus: string, talent: string, index: number = 0) => ({
+    payload: { focus, talent, index },
+  }),
+);
 
-export function setCharacterSpeciesAbilityFocus(
-  focus: string,
-  index: number = 0,
-) {
-  const payload = { focus: focus, index: index };
-  return {
-    type: ADD_CHARACTER_SPECIES_ABILITY_FOCUS,
-    payload: payload,
-  };
-}
+export const setCharacterSpeciesAbilityFocus = createAction(
+  ADD_CHARACTER_SPECIES_ABILITY_FOCUS,
+  (focus: string, index: number = 0) => ({ payload: { focus, index } }),
+);
 
-export function setCharacterSpeciesAbilityChoice(
-  choice?: SpeciesAbilityChoice,
-) {
-  const payload = { choice: choice };
-  return {
-    type: SET_CHARACTER_SPECIES_ABILITY_CHOICE,
-    payload: payload,
-  };
-}
+export const setCharacterSpeciesAbilityChoice = createAction(
+  SET_CHARACTER_SPECIES_ABILITY_CHOICE,
+  (choice?: SpeciesAbilityChoice) => ({ payload: { choice } }),
+);
 
-export function addCharacterLogEntry(logEntry: LogEntry) {
-  const payload = { logEntry: logEntry };
-  return {
-    type: ADD_CHARACTER_LOG_ENTRY,
-    payload: payload,
-  };
-}
+export const addCharacterLogEntry = createAction(
+  ADD_CHARACTER_LOG_ENTRY,
+  (logEntry: LogEntry) => ({ payload: { logEntry } }),
+);
 
-export function addCharacterTalentValue(
-  value: string,
-  talent: string | ITalent,
-) {
-  const talentName =
-    typeof talent === 'string' ? (talent as string) : (talent as ITalent).name;
-  const payload = { value: value, talent: talentName };
-  return {
-    type: ADD_CHARACTER_TALENT_VALUE,
-    payload: payload,
-  };
-}
+export const addCharacterTalentValue = createAction(
+  ADD_CHARACTER_TALENT_VALUE,
+  (value: string, talent: string | ITalent) => {
+    const talentName =
+      typeof talent === 'string'
+        ? (talent as string)
+        : (talent as ITalent).name;
+    return { payload: { value, talent: talentName } };
+  },
+);
 
-export function addCharacterTalent(
-  talent: ITalent | SelectedTalent,
-  context: StepContext,
-) {
-  const payload = { talent: talent, context: context };
-  return {
-    type: ADD_CHARACTER_TALENT,
-    payload: payload,
-  };
-}
+export const addCharacterTalent = createAction(
+  ADD_CHARACTER_TALENT,
+  (talent: ITalent | SelectedTalent, context: StepContext) => ({
+    payload: { talent, context },
+  }),
+);
 
-export function setCharacterValue(value: string, context: StepContext) {
-  const payload = { value: value, context: context };
-  return {
-    type: SET_CHARACTER_VALUE,
-    payload: payload,
-  };
-}
+export const setCharacterValue = createAction(
+  SET_CHARACTER_VALUE,
+  (value: string, context: StepContext) => ({ payload: { value, context } }),
+);
 
-export function updateCharacterGeneralEditValueChange(
-  oldValue: ValueAssembly,
-  newValue: string,
-) {
-  const payload = { oldValue: oldValue, newValue: newValue };
-  return {
-    type: UPDATE_CHARACTER_GENERAL_EDIT_VALUE,
-    payload: payload,
-  };
-}
+export const updateCharacterGeneralEditValueChange = createAction(
+  UPDATE_CHARACTER_GENERAL_EDIT_VALUE,
+  (oldValue: ValueAssembly, newValue: string) => ({
+    payload: { oldValue, newValue },
+  }),
+);
 
-export function updateCharacterGeneralEditFocusChange(
-  oldValue: FocusAssembly,
-  newValue: string,
-) {
-  const payload = { oldValue: oldValue, newValue: newValue };
-  return {
-    type: UPDATE_CHARACTER_GENERAL_EDIT_FOCUS,
-    payload: payload,
-  };
-}
+export const updateCharacterGeneralEditFocusChange = createAction(
+  UPDATE_CHARACTER_GENERAL_EDIT_FOCUS,
+  (oldValue: FocusAssembly, newValue: string) => ({
+    payload: { oldValue, newValue },
+  }),
+);
 
-export function updateCharacterGeneralEditTalentChange(
-  oldValue: TalentAssembly,
-  newValue: SelectedTalent,
-) {
-  const payload = { oldValue: oldValue, newValue: newValue };
-  return {
-    type: UPDATE_CHARACTER_GENERAL_EDIT_TALENT,
-    payload: payload,
-  };
-}
+export const updateCharacterGeneralEditTalentChange = createAction(
+  UPDATE_CHARACTER_GENERAL_EDIT_TALENT,
+  (oldValue: TalentAssembly, newValue: SelectedTalent) => ({
+    payload: { oldValue, newValue },
+  }),
+);
 
-export function updateCharacterGeneralEditSpeciesAbility(species: Species) {
-  const payload = {};
-  const ability = SpeciesAbilityList.instance.getBySpecies(species);
-  if (ability && (ability.source == null || hasSource(ability.source))) {
-    payload['ability'] = ability;
-  }
+export const updateCharacterGeneralEditSpeciesAbility = createAction(
+  UPDATE_CHARACTER_GENERAL_EDIT_SPECIES_ABILITY,
+  (species: Species) => {
+    const payload: any = {};
+    const ability = SpeciesAbilityList.instance.getBySpecies(species);
+    if (ability && (ability.source == null || hasSource(ability.source))) {
+      payload['ability'] = ability;
+    }
+    return { payload };
+  },
+);
 
-  return {
-    type: UPDATE_CHARACTER_GENERAL_EDIT_SPECIES_ABILITY,
-    payload: payload,
-  };
-}
+export const addNpcCharacterValue = createAction(
+  ADD_NPC_CHARACTER_VALUE,
+  (value: string, index: number) => ({ payload: { value, index } }),
+);
 
-export function addNpcCharacterValue(value: string, index: number) {
-  const payload = { value: value, index: index };
-  return {
-    type: ADD_NPC_CHARACTER_VALUE,
-    payload: payload,
-  };
-}
+export const setCharacterName = createAction(SET_CHARACTER_NAME, (name) => ({
+  payload: { name },
+}));
 
-export function setCharacterName(name: string) {
-  const payload = { name: name };
-  return {
-    type: SET_CHARACTER_NAME,
-    payload: payload,
-  };
-}
+export const setCharacterPastime = createAction(
+  SET_CHARACTER_PASTIME,
+  (pastime: string) => ({ payload: { pastime } }),
+);
 
-export function setCharacterPastime(pastime: string) {
-  const payload = { pastime: pastime };
-  return {
-    type: SET_CHARACTER_PASTIME,
-    payload: payload,
-  };
-}
+export const setCharacterAge = createAction(SET_CHARACTER_AGE, (age: Age) => ({
+  payload: { age },
+}));
 
-export function setCharacterAge(age: Age) {
-  const payload = { age: age };
-  return {
-    type: SET_CHARACTER_AGE,
-    payload: payload,
-  };
-}
+export const setCharacterLineage = createAction(
+  SET_CHARACTER_LINEAGE,
+  (lineage: string) => ({ payload: { lineage } }),
+);
 
-export function setCharacterLineage(lineage: string) {
-  const payload = { lineage: lineage };
-  return {
-    type: SET_CHARACTER_LINEAGE,
-    payload: payload,
-  };
-}
+export const setCharacterHouse = createAction(
+  SET_CHARACTER_HOUSE,
+  (house: string) => ({ payload: { house } }),
+);
 
-export function setCharacterHouse(house: string) {
-  const payload = { house: house };
-  return {
-    type: SET_CHARACTER_HOUSE,
-    payload: payload,
-  };
-}
+export const setCharacterCareerEventTrait = createAction(
+  SET_CHARACTER_CAREER_EVENT_TRAIT,
+  (trait: string, context: StepContext) => ({ payload: { trait, context } }),
+);
 
-export function setCharacterCareerEventTrait(
-  trait: string,
-  context: StepContext,
-) {
-  const payload = { trait: trait, context: context };
-  return {
-    type: SET_CHARACTER_CAREER_EVENT_TRAIT,
-    payload: payload,
-  };
-}
+export const setCharacterAdditionalTraits = createAction(
+  SET_CHARACTER_ADDITIONAL_TRAITS,
+  (traits: string) => ({ payload: { traits } }),
+);
 
-export function setCharacterAdditionalTraits(traits: string) {
-  const payload = { traits: traits };
-  return {
-    type: SET_CHARACTER_ADDITIONAL_TRAITS,
-    payload: payload,
-  };
-}
+export const setCharacterRank = createAction(
+  SET_CHARACTER_RANK,
+  (name: string, rank?: Rank) => ({ payload: { name, rank } }),
+);
 
-export function setCharacterRank(name: string, rank?: Rank) {
-  const payload = { name: name, rank: rank };
-  return {
-    type: SET_CHARACTER_RANK,
-    payload: payload,
-  };
-}
+export const setCharacterAssignment = createAction(
+  SET_CHARACTER_ROLE,
+  (role?: string | Role, secondaryRole?: Role) => ({
+    payload: { role, secondaryRole },
+  }),
+);
 
-export function setCharacterAssignment(
-  role?: string | Role,
-  secondaryRole?: Role,
-) {
-  const payload = { role: role, secondaryRole: secondaryRole };
-  return {
-    type: SET_CHARACTER_ROLE,
-    payload: payload,
-  };
-}
+export const setCharacterAssignedShip = createAction(
+  SET_CHARACTER_ASSIGNED_SHIP,
+  (assignedShip: string) => ({ payload: { assignedShip } }),
+);
 
-export function setCharacterAssignedShip(assignedShip: string) {
-  const payload = { assignedShip: assignedShip };
-  return {
-    type: SET_CHARACTER_ASSIGNED_SHIP,
-    payload: payload,
-  };
-}
+export const setCharacterPronouns = createAction(
+  SET_CHARACTER_PRONOUNS,
+  (pronouns: string) => ({ payload: { pronouns } }),
+);
 
-export function setCharacterPronouns(pronouns: string) {
-  const payload = { pronouns: pronouns };
-  return {
-    type: SET_CHARACTER_PRONOUNS,
-    payload: payload,
-  };
-}
+export const setCharacterType = createAction(
+  SET_CHARACTER_TYPE,
+  (type: CharacterType) => ({ payload: { type } }),
+);
 
-export function setCharacterType(type: CharacterType) {
-  const payload = { type: type };
-  return {
-    type: SET_CHARACTER_TYPE,
-    payload: payload,
-  };
-}
+export const setCharacterCareerLength = createAction(
+  SET_CHARACTER_CAREER_LENGTH,
+  (careerLength: Career) => ({ payload: { careerLength } }),
+);
 
-export function setCharacterCareerLength(careerLength: Career) {
-  const payload = { careerLength: careerLength };
-  return {
-    type: SET_CHARACTER_CAREER_LENGTH,
-    payload: payload,
-  };
-}
+export const modifyCharacterAttribute = createAction(
+  MODIFY_CHARACTER_ATTRIBUTE,
+  (
+    attribute: Attribute,
+    context: StepContext,
+    positive: boolean = true,
+    forceDecrement: boolean = false,
+  ) => ({ payload: { attribute, context, positive, forceDecrement } }),
+);
 
-export function modifyCharacterAttribute(
-  attribute: Attribute,
-  context: StepContext,
-  positive: boolean = true,
-  forceDecrement: boolean = false,
-) {
-  const payload = {
-    attribute: attribute,
-    context: context,
-    positive: positive,
-    forceDecrement: forceDecrement,
-  };
-  return {
-    type: MODIFY_CHARACTER_ATTRIBUTE,
-    payload: payload,
-  };
-}
+export const modifyCharacterDiscipline = createAction(
+  MODIFY_CHARACTER_DISCIPLINE,
+  (
+    discipline: Department,
+    context: StepContext,
+    positive: boolean = true,
+    primaryDisciplines: Department[] = [],
+    forceDecrement: boolean = false,
+  ) => ({
+    payload: {
+      discipline,
+      context,
+      positive,
+      primaryDisciplines,
+      forceDecrement,
+    },
+  }),
+);
 
-export function modifyCharacterDiscipline(
-  discipline: Department,
-  context: StepContext,
-  positive: boolean = true,
-  primaryDisciplines: Department[] = [],
-  forceDecrement: boolean = false,
-) {
-  const payload = {
-    discipline: discipline,
-    context: context,
-    positive: positive,
-    primaryDisciplines: primaryDisciplines,
-    forceDecrement: forceDecrement,
-  };
-  return {
-    type: MODIFY_CHARACTER_DISCIPLINE,
-    payload: payload,
-  };
-}
+export const modifyCharacterReputation = createAction(
+  MODIFY_CHARACTER_REPUTATION,
+  (delta: number) => ({ payload: { delta } }),
+);
 
-export function modifyCharacterReputation(delta: number) {
-  const payload = { delta: delta };
-  return {
-    type: MODIFY_CHARACTER_REPUTATION,
-    payload: payload,
-  };
-}
+export const modifyCharacterRank = createAction(
+  MODIFY_CHARACTER_RANK,
+  (
+    rank: CharacterRank,
+    type: ModificationType.Promotion | ModificationType.Demotion,
+  ) => ({
+    payload: { rank, type },
+  }),
+);
 
-export function modifyCharacterRank(
-  rank: CharacterRank,
-  type: ModificationType.Promotion | ModificationType.Demotion,
-) {
-  const payload = { rank: rank, type: type };
-  return {
-    type: MODIFY_CHARACTER_RANK,
-    payload: payload,
-  };
-}
-
-export function modifyCharacterAddAdvancement(
-  type: CharacterAdvancementChoice,
-  value: string | Attribute | Department | SelectedTalent,
-  removeValue?: string | Attribute | Department | SelectedTalent,
-  logEntry?: LogEntry,
-  logEntryCallback?: LogEntry,
-) {
-  const payload = {
-    type: type,
-    value: value,
-    logEntry: logEntry,
-    logEntryCallback: logEntryCallback,
-  };
-  if (removeValue != null) {
-    payload['remove'] = removeValue;
-  }
-  return {
-    type: MODIFY_CHARACTER_ADD_ADVANCEMENT,
-    payload: payload,
-  };
-}
+export const modifyCharacterAddAdvancement = createAction(
+  MODIFY_CHARACTER_ADD_ADVANCEMENT,
+  (
+    type: CharacterAdvancementChoice,
+    value: string | Attribute | Department | SelectedTalent,
+    removeValue?: string | Attribute | Department | SelectedTalent,
+    logEntry?: LogEntry,
+    logEntryCallback?: LogEntry,
+  ) => {
+    const payload: any = { type, value, logEntry, logEntryCallback };
+    if (removeValue != null) {
+      payload['remove'] = removeValue;
+    }
+    return { payload };
+  },
+);
