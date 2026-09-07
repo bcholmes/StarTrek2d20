@@ -91,6 +91,7 @@
     "ViewPage.errorMessage": "Things have gone terribly, terribly wrong. We might be in the mirror universe.",
     "ViewPage.unnamedStarship": "Unnamed Starship",
     "ViewPage.unnamedStation": "Unnamed Station",
+    "ViewPage.urlChanged": "The URL for this item has now changed. You might want to update any bookmarks.",
 
     "CareerEvents.instruction": "Your career is a tapestry of events and experiences, but amongst this, a few will have been pivotal moments in your life. Define which moments of your life are important in retrospect, and what seemed definitive to an ensign in their early 20s may be inconsequential to that same officer decades later.",
     "CareerEvents.standard": "Standard",

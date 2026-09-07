@@ -260,7 +260,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
     const value = marshaller.encodeMainCharacter(character);
     navigate('/view?s=' + value, { replace: true });
 
-    Dialog.show('Things have changed!');
+    Dialog.show(t('ViewPage.urlChanged'));
   }
 
   return (

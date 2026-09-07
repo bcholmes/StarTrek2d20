@@ -91,6 +91,7 @@
     "ViewPage.errorMessage": "Coś poszło naprawdę, naprawdę źle. Obawiam się, że jesteśmy w lustrzanym wszechświecie.",
     "ViewPage.unnamedStarship": "Nienazwany okręt",
     "ViewPage.unnamedStation": "Nienazwana stacja kosmiczna",
+    "ViewPage.urlChanged": "Zmienił się adres URL kierujący do tej karty postaci. Zaktualizuj notatki, jeśli go używasz.",
 
     "CareerEvents.instruction": "Twoja kariera utkana jest z wielu zdarzeń i doświadczeń, ale wśród nich tylko kilka jest naprawdę kluczowych. Określ które z nich są najważniejsze, biorąc pod uwagę to, że rzeczy istotne dla młodego chorążego mogą wydawać się bez znaczenia dla tego samego oficera starszego o dekady.",
     "CareerEvents.standard": "Standardowe",
@@ -1032,8 +1033,12 @@
     "CareerEvent.unofficial.30.focusDescription": "Postać otrzymuje biegłość związaną z aktywnościami, w których uczestniczyła. Przykłady to np.: Muzyka, Taniec, Boks, Gotowanie, Śpiew.",
 
     "CareerEvent.unofficial.31.name": "Służba na stacji kosmicznej",
+    "CareerEvent.unofficial.31.description": "Postać służyła na bazie gwiezdnej lub stacji kosmicznej.\n\nNa czym polegała praca Twojej postaci? Czy jakieś społeczne lub polityczne czynniki wpływały na stację w tym czasie?\nCo robiła Twoja postać na stacji? Kto jeszcze z nią pracował?",
+    "CareerEvent.unofficial.31.focusDescription": "Postać otrzymuje biegłość związaną z umiejętnościami, których nabyła na stacji. Przykłady to m.in.: Logistyka, Naprawy i utrzymanie lub Protokoły zabezpieczeń.",
 
     "CareerEvent.unofficial.32.name": "Służba na planecie",
+    "CareerEvent.unofficial.32.description": "Postać odbyła służbę na planecie. Jej charakter mógł obejmować działania obronne, pomoc humanitarną lub wsparcie inżynieryjne.\n\nNa której planecie pracowała Twoja postać? Jaki był charakter tej pracy?\nCo jest unikalnego w tej planecie? Czy były jakieś interakcje Twojej postaci z lokalną populacją planety?",
+    "CareerEvent.unofficial.32.focusDescription": "Postać otrzymuje biegłość związaną z wiedzą o planecie, na której służyła lub umiejętnościami nabytymi podczas misji. Przykłady to m.in.: Meteorologia, Loty atmosferyczne czy Geologia.",
 
     "CareerEvent.unofficial.33.name": "Pozostawiona z tyłu",
 
@@ -1243,6 +1248,7 @@
     "Environment.common.anotherSpeciesWorld.description": "Postać dorastała wśród przedstawicieli innego gatunku. Mogła żyć w małej enklawie swoich pobratymców albo zostać osierocona w wyniku jakiejś katastrofy i wychowana przez obcych. Niezależnie od sytuacji, bohater będzie mieć unikatowe spojrzenie na swój gatunek i na tych, wśród których się wychowywał.",
 
     "Environment.common.andoria23rd.name": "Andoria",
+    "Environment.common.andoria23rd.description": "**Andoria** to zimny, ale możliwy do zamieszkania księżyc gazowego giganta **Andor** – ósmej planety w systemie gwiezdnym Procyon. To ojczysty świat **Andorian**, a także odrębnego podgatunku **Aenarów**. To zimne, niełatwe środowisko, w którym temperatura rzadko sięga powyżej zera, a typowa pogoda w czasie lata w regionach polarnych to -28°. Powszechnie używa się nazwy Andor i Andoria wymiennie. Andoria jest jednym ze światów założycielskich Zjednoczonej Federacji Planet.\n\nStołeczne miasto **Laikan** mieści starą i prestiżową akademię wojskową, w której szkolą się oddziały obronne Andorii – **Andoriańska Gwardia Imperialna**, a także personel Gwiezdnej Floty. Specjalnością akademii są zaawansowane treningi bitewne i taktyczne. Większość andoriańskich miast, w tym Laikan, znajduje się pod powierzchnią ziemi, pod lotem, a ogrzewane są za pomocą geotermii. Andoriańscy żołnierze i oficerowie Gwiezdnej Floty utrzymują tradycję upuszczania próbki krwi od poległych towarzyszy pod specjalnym pomnikiem, **Ścianą Bohaterów**.",
 
     "Environment.common.betazed23rd.name": "Betazed",
 
@@ -1265,6 +1271,7 @@
     "Environment.klingon.homeworld.name": "Qo'noS",
 
     "Environment.klingon.busyColony.name": "Tętniąca życiem kolonia",
+    "Environment.klingon.busyColony.description": "Pochodzisz z jednej z najstarszych lub najlepiej rozwiniętych kolonii Imperium. Często mają one niezależne tradycje i zwyczaje, a także postrzeganie swojej cywilizacji. Kiedyś wspierane z niewielką pomocą metropolii, rozwinęły się na obcych światach ciężką pracą dumnych osadników. Jesteś potomkiem tych dzielnych pionierów.",
 
     "Environment.klingon.isolatedColony.name": "Odizolowana kolonia",
 
@@ -1539,6 +1546,17 @@
     "HairType.sidePart": "Boczny przedział",
     "HairType.shortAfro": "Krótkie kręcone",
     "HairType.veryShortAfro": "Bardzo krótkie kręcone",
+    "HairType.balding": "Łysiejące",
+    "HairType.receding": "Rzedniejące",
+    "HairType.deLeve": "Fryzura na \"de Leve\"",
+    "HairType.mediumLengthFemaleSidePart": "Boczny przedział średniej długości",
+    "HairType.mediumMaleCenterPart": "Środkowy przedział średniej długości",
+    "HairType.mediumLengthFemaleStraight": "Średniej długości proste",
+    "HairType.shavedSides": "Wygolone boki",
+    "HairType.feminineDreadStyle": "Żeńskie dredy",
+    "HairType.shoulderLengthMostlyStraight": "Raczej proste do ramion",
+    "HairType.shoulderLengthBob": "Bob do ramion",
+    "HairType.highForeheadEfrosianStyle": "Efrozjańska grzywa",
 
     "ModificationType.name.demotion": "Degradacja",
     "ModificationType.name.promotion": "Awans",
@@ -1552,6 +1570,12 @@
     "MilestoneType.name.normalMilestone": "Standardowy kamień milowy",
     "MilestoneType.name.spotlightMilestone": "Wzmocniony kamień milowy",
     "MilestoneType.name.arcMilestone": "Łuk fabularny",
+
+    "MissionPod.sensors": "Sensory",
+    "MissionPod.weapons": "Uzbrojenie",
+    "MissionPod.fieldHospital": "Szpital polowy",
+    "MissionPod.fleetCarrier": "Lotniskowiec",
+    "MissionPod.fleetCommandSupport": "Wsparcie dowodzenia",
 
     "MissionProfile.default.strategicAndDiplomatic": "Operacje strategiczne i dyplomatyczne",
 
@@ -1623,6 +1647,11 @@
     "MissionProfile.default.researchStation": "Stacja naukowe",
 
     "NpcCharacterType.minorPolity": "Pomniejsza organizacja",
+    "NpcCharacterType.rogueRuffianMercenary": "Najemnicy, zbiry i niezależni",
+
+    "NpcType.minor.name": "Pomniejszy BN",
+
+    "NpcType.notable.name": "Znaczący BN",
 
     "NpcType.major.name": "Kluczowy BN",
 
@@ -1774,6 +1803,35 @@
     "ServiceRecord.agingRelic": "Relikt",
 
     "ServiceRecord.agingRelic.description": "Okręt jest w służbie od dziesięcioleci i był domem dla wielu załóg. Tylko najdłużej służący personel może pamiętać, kiedy statek był nowy.",
+
+    "Sheet.basicGeneratedHalfPageCharacterSheet": "Nowa półstronicowa karta postaci 2ed",
+    "Sheet.generatedTngPortraitCharacterSheet": "TNG pionowa karta postaci (US-Letter)",
+    "Sheet.generatedTngPortraitA4CharacterSheet": "TNG pionowa karta postaci (A4)",
+    "Sheet.halfPageSupportingCharacterSheet": "Półstronicowa karta bohatera wspierającego",
+    "Sheet.landscapeGeneratedCharacterSheet": "TNG pozioma karta postaci (US-Letter)",
+    "Sheet.landscape2eCharacterSheet": "TNG pozioma karta postaci (A4)",
+    "Sheet.standardTngCharacterSheet": "TNG standardowa karta postaci (US-Letter)",
+    "Sheet.standard2eCharacterSheet": "Standardowa karta postaci 2ed (US-Letter)",
+
+    "Sheet.text.title.starship": "Rejestracja okrętu",
+    "Sheet.text.title.alt": "Teczka osobowa",
+
+    "Sheet.text.log.title": "Dziennik osobisty",
+    "Sheet.text.log.entryNumber": "Wpis nr",
+    "Sheet.text.log.adventureTitle": "Tytuł przygody i opis misji",
+    "Sheet.text.log.valuesOrDirectivesUsed": "Wykorzystane wartości lub dyrektywy",
+    "Sheet.text.log.notes": "Notatki",
+
+    "SheetTag.a4": "A4",
+    "SheetTag.halfPage": "Pół strony",
+    "SheetTag.landscape": "Poziomo",
+    "SheetTag.languageSupport": "Wsparcie języka",
+    "SheetTag.lcars": "LCARS",
+    "SheetTag.portrait": "Pionowo",
+    "SheetTag.style2e": "Styl 2ed",
+    "SheetTag.talentText": "Opis talentu",
+    "SheetTag.twoPage": "Dwustronna",
+    "SheetTag.usLetter": "US Letter",
 
     "ShipBuildType.pod.name": "Kapsuła",
 
@@ -1928,6 +1986,136 @@
     "Specialization.counselor": "Doradca",
     "Specialization.engineer": "Inżynier",
     "Specialization.federationAmbassador": "Ambasador Federacji",
+    "Specialization.ferengiDaiMon": "DaiMon Ferengi",
+    "Specialization.ferengiMerchant": "Kupiec Ferengi",
+    "Specialization.firstContactSpecialist": "Specjalista ds. Pierwszego kontaktu",
+    "Specialization.hangarDeck": "Pokład hangarowy",
+    "Specialization.independentTraderCaptain": "Niezależny kapitan handlowy",
+    "Specialization.informationBroker": "Broker informacji",
+    "Specialization.intelligenceOfficer": "Oficer wywiadu",
+    "Specialization.jag": "Biuro prawne JAG",
+    "Specialization.klingonWarrior": "Klingoński wojownik",
+    "Specialization.klingonShipCaptain": "Klingoński kapitan okrętu",
+    "Specialization.klingonWeaponsOfficer": "Klingoński zbrojmistrz",
+    "Specialization.klingonMedic": "Klingoński medyk",
+    "Specialization.medicalDoctor": "Lekarz",
+    "Specialization.nurse": "Pielęgniarka",
+    "Specialization.orionPirate": "Orioński pirat",
+    "Specialization.scienceTech": "Technik naukowy",
+    "Specialization.scientist": "Naukowiec",
+    "Specialization.security": "Oficer ochrony",
+    "Specialization.smuggler": "Przemytnik",
+    "Specialization.starfleetScientist": "Naukowiec",
+
+    "Species.aenar.name": "Aenar",
+    "Species.aenar.trait": "Aenar",
+
+    "Species.andorian.exampleValue": "Dumny syn Andorii / Dumna córka Andorii",
+
+    "Species.android.name": "Android",
+    "Species.android.traitDescription": "Zob. str. 10 _Species Sourcebook_",
+
+    "Species.aquan.name": "Akwan",
+    "Species.aquan.aboutNames": "Akwańskie imiona składają się zazwyczaj z jednego słowa zawierającego kilka sylab.",
+    "Species.aquan.exampleValue": "Oddychający powietrzem rzadko przychodzą w pokojowych zamiarach.",
+    "Species.aquan.traitDescription": "Akwanie oddychają pod wodą i są doskonałymi pływakami, żyjącymi w podmorskich światach. Mają możliwość przemiany w oddychających powietrzem, jeśli użyją specjalnej formuły przemiany odtworzonej przez załogę USS Enterprise.",
+
+    "Species.arbazan.name": "Arbazanin",
+
+    "Species.ardanan.name": "Ardananin",
+
+    "Species.arcadian.name": "Arkadianin",
+    "Species.arcadian.exampleValue": "Warto umrzeć za pokój",
+
+    "Species.ariolo.name": "Ariolo",
+
+    "Species.aurelian.name": "Aurelianin",
+    "Species.aurelian.traitDescription2e": "Zobacz str. 12 _Species Sourcebook_",
+
+    "Species.bajoran.name": "Bajoranin",
+    "Species.bajoran.exampleValue": "Wiara w Proroków",
+
+    "Species.barzan.name": "Barzan",
+    "Species.barzan.traitDescription2e": "Zobacz str. 14 _Species Sourcebook_",
+
+    "Species.baul.name": "Ba'ul",
+    "Species.baul.exampleValue": "Nigdy więcej nie będziemy karmą dla Kelpian",
+
+    "Species.benzite.name": "Benzyta",
+    "Species.benzite.traitDescription2e": "Zobacz str. 16 _Species Sourcebook_",
+    "Species.benzite.aboutNames": "Przykłady obejmują:",
+
+    "Species.betazoid.name": "Betazoid",
+    "Species.betazoid.exampleValue": "Współczucie poprzez zrozumienie",
+
+    "Species.betelgeusian.name": "Betelgeuzjanin",
+    "Species.betelgeusian.traitDescription": "Zobacz str. 18 _Species Sourcebook_",
+
+    "Species.blueOrion.name": "Orionita, Błękitny",
+    "Species.blueOrion.traitDescription": "Zobacz str. 88 _Species Sourcebook_",
+
+    "Species.bolian.name": "Bolianin",
+    "Species.bolian.traitDescription2e": "Zobacz str. 20 _Species Sourcebook_",
+
+    "Species.borg.name": "Borg",
+
+    "Species.breen.name": "Breen",
+    "Species.breen.traitDescription": "Zobacz str. 22 _Species Sourcebook_",
+
+    "Species.brikar.name": "Brikar",
+    "Species.brikar.traitDescription": "Zobacz str. 24 _Species Sourcebook_",
+
+    "Species.bynar.name": "Binar",
+    "Species.bynar.exampleValue": "Zawsze są tylko dwie opcje",
+    "Species.bynar.traitDescription": "Zobacz str. 26 _Species Sourcebook_",
+
+    "Species.caitian.name": "Kaitianin",
+    "Species.caitian.traitDescription2e": "Zobacz str. 28 _Species Sourcebook_",
+
+    "Species.cardassian.name": "Kardasjanin",
+
+    "Species.cetacean.traitDescription2e": "Zobacz str. 30 _Species Sourcebook_",
+
+    "Species.chameloid.name": "Kameloid",
+    "Species.chameloid.traitDescription": "Zobacz str. 32 _Species Sourcebook_",
+    "Species.chameloid.aboutNames": "Wiadomo bardzo niewiele o kulturze i społeczeństwie Kameloidów, ale zakłada się, że Kameloidzi przybierają jeden pseudonim, którego używają w sytuacjach, gdy nie naśladują nikogo innego.",
+
+    "Species.changeling.name": "Zmienny",
+    "Species.changeling.traitDescription2e": "Zobacz str. 34 _Species Sourcebook_",
+
+    "Species.chelon.name": "Rigeliański Chelon",
+    "Species.chelon.traitDescription2e": "Zobacz str. 96 _Species Sourcebook_",
+
+    "Species.coridanite.name": "Koridianita",
+    "Species.coridanite.exampleValue": "W końcu możemy mówić o naszych potrzebach",
+
+    "Species.deltan.name": "Deltanin",
+    "Species.deltan.traitDescription2e": "Zobacz str. 38 _Species Sourcebook_",
+
+    "Species.denobulan.name": "Denobulanin",
+
+    "Species.doopler.name": "Doopler",
+
+    "Species.edosian.name": "Edozjanin",
+    "Species.edosian.traitDescription2e": "Zobacz str. 40 _Species Sourcebook_",
+
+    "Species.efrosian.name": "Efrozjanin",
+    "Species.efrosian.traitDescription2e": "Zobacz str. 42 _Species Sourcebook_",
+
+    "Species.elAurian.name": "El-Aurian",
+    "Species.elAurian.exampleValue": "Mówiłem, że potrafię słuchać",
+
+    "Species.elAurian_2E.name": "El-Aurian",
+    "Species.elAurian_2E.traitDescription": "Zobacz str. 44 _Species Sourcebook_",
+
+    "Species.exocomp_2E.name": "Exokomp",
+    "Species.exocomp_2E.traitDescription": "Zobacz str. 46 _Species Sourcebook_",
+
+    "Species.ferengi.name": "Ferengi",
+
+    "Species.gorn.name": "Gorn",
+
+    "Species.grazerite.traitDescription2e": "Zobacz str. 48 _Species Sourcebook_",
 
     "Talent.abundantPersonnel": "Liczny personel",
 
@@ -1948,6 +2136,13 @@
     "Talent.dedicatedFocusX.description2e": "Kiedy wybierasz ten talent, wskaż jedną ze swoich biegłości. Podczas testów, do których ma ona zastosowanie, uzyskujesz krytyczny sukces na każdej kości, na której wypadła dwukrotność odpowiedniej sekcji albo mniej.",
 
     "Talent.extensiveAutomation": "Rozległa automatyzacja",
+
+    "Talent.patienceBeforeAggression.description": "Zobacz str. 103 _Species Sourcebook_",
+
+    "Talent.patientCounsel.description": "Zobacz str. 119 _Species Sourcebook_",
+
+    "Talent.peacefulExistence.description2e": "Zobacz str. 101 _Species Sourcebook_",
+
     "Talent.polarizedHullPlatingSpecialRule": "Spolaryzowane poszycie kadłuba",
 
     "Talent.polarizedHullPlatingSpecialRule.description": "Okręty tej klasy nie posiadają tarcz deflektorowych typowych dla wielu innych statków, a zamiast tego polegają na polaryzacji poszycia w celu ochrony przed obrażeniami. Tor Tarcz okrętu reprezentuje zatem stan spolaryzowanego kadłuba i równy jest Poszyciu, bez dodatkowych modyfikatorów. Spolaryzowanie kadłuba nie wpływa na możliwości transportera w taki sposób, w jaki czyni to podniesienie tarcz.",
@@ -1955,5 +2150,110 @@
     "Talent.secondaryReactors": "Dodatkowe reaktory",
 
     "Talent.secondaryReactors.description2e": "Statek posiada dodatkowe reaktory impulsowe i fuzyjne, które pozwalają mu generować znacznie większe ilości energii. Raz na scenę, kiedy postać wykonuje akcję Przekierowania mocy, może wydać 2 punkty Impetu (Natychmiastowe), aby odzyskać możliwość korzystania z Rezerw Mocy.",
-    "Talent.secondaryReactors.soloDescription": "Statek posiada dodatkowe reaktory impulsowe i fuzyjne, które pozwalają mu generować znacznie większe ilości energii."
+    "Talent.secondaryReactors.soloDescription": "Statek posiada dodatkowe reaktory impulsowe i fuzyjne, które pozwalają mu generować znacznie większe ilości energii.",
+
+    "TalentCategory.general": "Ogólne",
+    "TalentCategory.career": "Kariera",
+    "TalentCategory.enhancement": "Ulepszenia",
+    "TalentCategory.starship": "Okrętowe",
+    "TalentCategory.starbase": "Bazy gwiezdne",
+    "TalentCategory.esoteric": "Ezoteryczne",
+    "TalentCategory.species": "Kulturowe",
+    "TalentCategory.department": "Sekcyjne",
+
+    "Track.civilian.freightAndTransport": "Przewóz towarów",
+    "Track.civilian.lawEnforcement": "Organy ścigania",
+    "Track.civilian.physician": "Lekarz",
+    "Track.civilian.politicianOrBureaucrat": "Polityk lub biurokrata",
+
+    "Track.civilian.politicianOrBureaucrat.2e": "Urzędnik",
+
+    "Track.civilian.scientificOrTechnicalExpert": "Ekspert naukowy lub techniczny",
+
+    "Track.civilian.scientificOrTechnicalExpert.2e": "Naukowiec",
+
+    "Track.civilian.traderOrMerchant": "Kupiec lub handlarz",
+
+    "Track.civilian.traderOrMerchant.2e": "Handlarz",
+
+    "Track.civilian.freeTrader": "Wolny kupiec",
+
+    "Track.starfleet.command": "Ścieżka Dowodzenia",
+    "Track.starfleet.operations": "Ścieżka Operacyjna",
+    "Track.starfleet.sciences": "Ścieżka Naukowa",
+    "Track.starfleet.intelligenceTraining": "Wywiad",
+
+    "UniformEra.bynar": "Binar",
+    "UniformEra.cardassian": "Kardasjańskie wojsko",
+    "UniformEra.civilian": "Cywil",
+    "UniformEra.discovery23": "Discovery (XXIII wiek)",
+    "UniformEra.discovery32": "Discovery (XXXII wiek)",
+    "UniformEra.dominionWar": "Wojna z Dominium",
+    "UniformEra.ferengi": "Ferengi",
+    "UniformEra.enterprise": "Enterprise",
+    "UniformEra.jemHadar": "Jem'Hadar",
+    "UniformEra.klingon": "Klingoński pancerz",
+    "UniformEra.lowerDecks": "Lower Decks",
+    "UniformEra.monsterMaroon": "Gniew Khana",
+    "UniformEra.nextGeneration": "TNG",
+    "UniformEra.originalSeries": "TOS",
+    "UniformEra.originalSeriesKlingon": "Klingoni (TOS)",
+    "UniformEra.picardRomulanEvacuation": "Picard/Protogwiazda (Ewakuacja Romulan)",
+    "UniformEra.picard25": "Picard (XXV wiek)",
+    "UniformEra.prodigy": "Protogwiazda",
+    "UniformEra.romulan": "Romulański",
+    "UniformEra.suliban": "Suliban",
+    "UniformEra.starfleetAcademy": "Akademia Gwiezdnej Floty",
+    "UniformEra.starTrekOnline": "Star Trek Online",
+    "UniformEra.strangeNewWorlds": "SNW",
+    "UniformEra.theMotionPicture": "Star Trek film kinowy",
+    "UniformEra.voyagerDS9": "Voyager/Deep Space Nine",
+
+    "Upbringing.starfleet.militaryOrExploration.name": "Gwiezdna Flota",
+
+    "Weapon.common.dice": "Kości",
+    "Weapon.common.melee": "W zwarciu",
+    "Weapon.common.name": "Nazwa/Typ",
+    "Weapon.common.qualities": "Właściwości",
+    "Weapon.common.ranged": "Dystansowa",
+    "Weapon.common.severity": "Stopień rany",
+    "Weapon.common.size": "Rozmiar {{hands}}-ręczna",
+
+    "Weapon.personal.dagger.name": "Sztylet",
+
+    "Weapon.personal.energyWhip.name": "Bicz energetyczny",
+
+    "Weapon.personal.phasePistol.name": "Pistolet fazowy",
+
+    "Weapon.personal.phaser1.name": "Fazer Typ-1",
+
+    "Weapon.personal.phaser2.name": "Fazer Typ-2",
+
+    "Weapon.personal.phaserRifle.name": "Karabin fazerowy",
+
+    "Weapon.personal.pulseGrenade.name": "Granat pulsacyjny",
+
+    "Weapon.personal.blade.name": "Ostrze",
+
+    "Weapon.personal.heavyBlade.name": "Ciężkie ostrze",
+
+    "Weapon.personal.strike.name": "Walka bez broni",
+
+    "Weapon.personal.batleth.name": "Bat'leth",
+
+    "Weapon.personal.dktahg.name": "Sztylet d'k tahg",
+
+    "Weapon.personal.ushaantor.name": "Ushaan-tor",
+
+    "Weapon.personal.disruptor.name": "Pistolet dezruptorowy",
+
+    "Weapon.personal.disruptorRifle.name": "Karabin dezruptorowy",
+
+    "Weapon.personal.mekleth.name": "Mek'leth",
+
+    "Weapon.personal.particleRifle.name": "Karabin cząsteczkowy",
+
+    "Weapon.personal.keratinDart.name": "Strzałka keratynowa",
+
+    "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Dezruptorowo-plazmowy shotgun Son'a"
 }
