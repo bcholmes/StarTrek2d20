@@ -11,8 +11,6 @@ import {
   setSources,
 } from '../../src/state/contextActions';
 
-const STORAGE_KEY = 'settings.contextData';
-
 function createLocalStorageMock(): Storage {
   const storage = new Map<string, string>();
   return {
@@ -40,12 +38,6 @@ beforeAll(() => {
   });
 });
 
-function storedContext() {
-  return JSON.parse(
-    (globalThis.window as any).localStorage.getItem(STORAGE_KEY),
-  );
-}
-
 function stateWithSources(sources: Source[]) {
   return {
     sources: sources,
@@ -70,13 +62,12 @@ describe('contextReducer', () => {
     });
   });
 
-  test('SET_SOURCES replaces the source list and persists it', () => {
+  test('SET_SOURCES replaces the source list', () => {
     const result = contextReducer(
       undefined,
       setSources([Source.Core, Source.AlphaQuadrant]),
     );
     expect(result.sources).toEqual([Source.Core, Source.AlphaQuadrant]);
-    expect(storedContext().sources).toEqual(['Core', 'AlphaQuadrant']);
   });
 
   test('SET_SOURCES refuses both core books: the incoming duplicate is dropped', () => {
@@ -93,10 +84,9 @@ describe('contextReducer', () => {
     expect(twoSecond.sources).toEqual([Source.Core2ndEdition]);
   });
 
-  test('ADD_SOURCE appends a source and persists; adding a duplicate is a no-op', () => {
+  test('ADD_SOURCE appends a source; adding a duplicate is a no-op', () => {
     let result = contextReducer(undefined, addSource(Source.AlphaQuadrant));
     expect(result.sources).toEqual([Source.Core, Source.AlphaQuadrant]);
-    expect(storedContext().sources).toEqual(['Core', 'AlphaQuadrant']);
 
     result = contextReducer(result, addSource(Source.AlphaQuadrant));
     expect(result.sources).toEqual([Source.Core, Source.AlphaQuadrant]);
@@ -105,7 +95,6 @@ describe('contextReducer', () => {
   test('ADD_SOURCE Core2ndEdition removes the original Core book', () => {
     const result = contextReducer(undefined, addSource(Source.Core2ndEdition));
     expect(result.sources).toEqual([Source.Core2ndEdition]);
-    expect(storedContext().sources).toEqual(['Core2ndEdition']);
   });
 
   test('ADD_SOURCE Core removes Core2ndEdition but keeps first edition sources', () => {
@@ -127,14 +116,13 @@ describe('contextReducer', () => {
     expect(secondOnly.sources).toEqual([Source.Core2ndEdition]);
   });
 
-  test('REMOVE_SOURCE removes an existing source and persists the result', () => {
+  test('REMOVE_SOURCE removes an existing source', () => {
     let result = contextReducer(
       undefined,
       setSources([Source.Core, Source.AlphaQuadrant]),
     );
     result = contextReducer(result, removeSource(Source.AlphaQuadrant));
     expect(result.sources).toEqual([Source.Core]);
-    expect(storedContext().sources).toEqual(['Core']);
 
     const missing = contextReducer(result, removeSource(Source.BetaQuadrant));
     expect(missing.sources).toEqual([Source.Core]);

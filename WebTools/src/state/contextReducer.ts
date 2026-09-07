@@ -17,16 +17,6 @@ interface ContextState {
   allowEsotericTalents: boolean;
 }
 
-const persistContext = (sources: Source[]) => {
-  const contextData = {
-    sources: sources?.length ? sources.map((s) => Source[s]) : [],
-  };
-  window.localStorage.setItem(
-    'settings.contextData',
-    JSON.stringify(contextData),
-  );
-};
-
 let initialData: ContextState = null;
 
 const getInitialData = (): ContextState => {
@@ -85,7 +75,6 @@ export const contextSlice = createSlice({
       ) {
         newSources.splice(newSources.indexOf(Source.Core), 1);
       }
-      persistContext(newSources);
       return {
         ...state,
         sources: newSources,
@@ -114,7 +103,6 @@ export const contextSlice = createSlice({
           });
         }
         existing.push(newSource);
-        persistContext(existing);
         return {
           ...state,
           sources: existing,
@@ -136,7 +124,6 @@ export const contextSlice = createSlice({
         } else {
           const sources = [...state.sources];
           sources.splice(state.sources.indexOf(action.payload), 1);
-          persistContext(sources);
           return {
             ...state,
             sources: sources,

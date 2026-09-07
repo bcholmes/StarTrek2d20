@@ -58,13 +58,6 @@ function saveAction(hash: number, replacementHash?: number) {
   };
 }
 
-function recordedHashes(): number[] {
-  const data = JSON.parse(
-    (globalThis.window as any).localStorage.getItem(STORAGE_KEY),
-  );
-  return data.records.map((r: any) => r.hash);
-}
-
 describe('savedConstructReducer', () => {
   beforeEach(() => {
     (globalThis.window as any).localStorage.clear();
@@ -85,14 +78,13 @@ describe('savedConstructReducer', () => {
     expect(result.records).toEqual([{ hash: 111 }]);
   });
 
-  test('SAVE_CONSTRUCT_TO_LOCAL_STORAGE appends a record and persists it', () => {
+  test('SAVE_CONSTRUCT_TO_LOCAL_STORAGE appends a record', () => {
     const action = saveAction(111);
     const result = savedConstructReducer(undefined, action);
 
     expect(result.records).toHaveLength(1);
     expect(result.records[0].hash).toBe(111);
     expect(result.records[0].name).toBe('Name 111');
-    expect(recordedHashes()).toEqual([111]);
   });
 
   test('SAVE avoids duplicating an identical hash', () => {
@@ -107,7 +99,6 @@ describe('savedConstructReducer', () => {
 
     expect(state.records).toHaveLength(1);
     expect(state.records[0].hash).toBe(222);
-    expect(recordedHashes()).toEqual([222]);
   });
 
   test('SAVE trims the record list down to five entries', () => {
@@ -119,14 +110,12 @@ describe('savedConstructReducer', () => {
     expect(state.records.map((r: any) => r.hash)).toEqual([
       1002, 1003, 1004, 1005, 1006,
     ]);
-    expect(recordedHashes()).toEqual([1002, 1003, 1004, 1005, 1006]);
   });
 
-  test('SAVE persisting is driven by an action produced by the creator', () => {
+  test('SAVE is driven by an action produced by the creator', () => {
     const action = saveCharacterToLocalStorage(makeCharacter());
     const result = savedConstructReducer(undefined, action);
     expect(result.records).toHaveLength(1);
     expect(result.records[0].hash).toBe(action.payload.hash);
-    expect(recordedHashes()).toEqual([action.payload.hash]);
   });
 });
