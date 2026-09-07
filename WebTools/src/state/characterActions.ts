@@ -97,6 +97,7 @@ export const UPDATE_CHARACTER_GENERAL_EDIT_FOCUS =
   'UPDATE_CHARACTER_GENERAL_EDIT_FOCUS';
 export const UPDATE_CHARACTER_GENERAL_EDIT_TALENT =
   'UPDATE_CHARACTER_GENERAL_EDIT_TALENT';
+export const REMOVE_CHARACTER_TOKEN = 'REMOVE_CHARACTER_TOKEN';
 
 export enum StepContext {
   Species,
@@ -442,6 +443,11 @@ export const modifyCharacterDiscipline = createAction(
 export const modifyCharacterReputation = createAction(
   MODIFY_CHARACTER_REPUTATION,
   (delta: number) => ({ payload: { delta } }),
+);
+
+export const removeCharacterToken = createAction(
+  REMOVE_CHARACTER_TOKEN,
+  () => ({ payload: {} }),
 );
 
 export const modifyCharacterRank = createAction(

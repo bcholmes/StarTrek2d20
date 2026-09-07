@@ -6,6 +6,7 @@ import { setCharacter } from '../state/characterActions';
 import { lazy, Suspense } from 'react';
 import { LoadingSpinnerView } from '../common/loadingSpinnerView';
 import { TokenModel } from '../token/model/tokenModel';
+import { IconButton } from '../components/iconButton';
 
 const TokenView = lazy(() =>
   import(/* webpackChunkName: 'token' */ '../token/view/tokenView').then(
@@ -16,11 +17,13 @@ const TokenView = lazy(() =>
 interface CharacterTokenImageProperties {
   character: Character;
   marshalledCharacter?: string;
+  onDeleteToken?: () => void;
 }
 
 export const CharacterTokenImage: React.FC<CharacterTokenImageProperties> = ({
   character,
   marshalledCharacter,
+  onDeleteToken = () => {},
 }) => {
   const navigate = useNavigate();
 
@@ -39,13 +42,16 @@ export const CharacterTokenImage: React.FC<CharacterTokenImageProperties> = ({
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <div className="d-flex justify-content-center align-items-end">
       {character.token ? (
         <Suspense fallback={<LoadingSpinnerView />}>
           <TokenView
             tokenConfig={character.token}
             onClick={() => createToken(character.token)}
           />
+          {onDeleteToken != null ? (
+            <IconButton icon="trash" variant="danger" onClick={onDeleteToken} />
+          ) : undefined}
         </Suspense>
       ) : (
         <div

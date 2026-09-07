@@ -23,6 +23,9 @@ import { cyrb53 } from '../common/cyrb53';
 import Markdown from 'react-markdown';
 import { EquipmentBlockView } from './equipmentBlockView';
 import { CharacterTokenImage } from './characterTokenImage';
+import { saveCharacterToLocalStorage } from '../state/savedConstructActions';
+import { marshaller } from '../helpers/marshaller';
+import { Dialog } from '../components/dialog';
 
 export interface ICharacterViewProperties {
   character: Character;
@@ -250,6 +253,16 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
     }
   }
 
+  function deleteToken() {
+    const hash = cyrb53(originalEncodedSheet());
+    character.token = undefined;
+    store.dispatch(saveCharacterToLocalStorage(character, hash));
+    const value = marshaller.encodeMainCharacter(character);
+    navigate('/view?s=' + value, { replace: true });
+
+    Dialog.show('Things have changed!');
+  }
+
   return (
     <main>
       {renderTopFields()}
@@ -262,6 +275,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
             <CharacterTokenImage
               character={character}
               marshalledCharacter={originalEncodedSheet()}
+              onDeleteToken={deleteToken}
             />
           </div>
 
