@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import { persistenceListenerMiddleware } from './persistenceMiddleware';
 import { characterReducer } from './characterReducer';
 import { star } from './starReducer';
 import { starshipReducer } from './starshipReducer';
@@ -23,8 +24,13 @@ const reducer = combineReducers({
   safety: safetyReducer,
   savedConstructReducer: savedConstructReducer,
 });
+
+export type RootState = ReturnType<typeof reducer>;
+
 export const store = configureStore({
   reducer: reducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }),
+    getDefaultMiddleware({ serializableCheck: false }).prepend(
+      persistenceListenerMiddleware.middleware,
+    ),
 });
