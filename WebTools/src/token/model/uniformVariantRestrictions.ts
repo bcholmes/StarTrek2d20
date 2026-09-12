@@ -51,7 +51,9 @@ export class UniformVariantRestrictions {
         result.push(UniformVariantType.Variant2);
       }
     } else if (uniformEra === UniformEra.Prodigy) {
-      result.push(UniformVariantType.Variant1);
+      if (!isCadetRank(rank)) {
+        result.push(UniformVariantType.Variant1);
+      }
     } else if (uniformEra === UniformEra.StrangeNewWorlds) {
       if (DivisionColors.getDivision(uniformEra, divisionColor) === 'Medical') {
         result.push(UniformVariantType.Variant2);
@@ -192,6 +194,23 @@ export class UniformVariantRestrictions {
             Rank.Admiral,
             Rank.ViceAdmiral,
             Rank.RearAdmiral,
+          ].indexOf(rankIndicator) >= 0
+        );
+
+      case UniformEra.Prodigy:
+        return (
+          [
+            Rank.None,
+            Rank.Ensign,
+            Rank.LieutenantJG,
+            Rank.Lieutenant,
+            Rank.LtCommander,
+            Rank.Commander,
+            Rank.Captain,
+            Rank.CadetFirstClass,
+            Rank.CadetSecondClass,
+            Rank.CadetThirdClass,
+            Rank.CadetFourthClass,
           ].indexOf(rankIndicator) >= 0
         );
 
