@@ -849,6 +849,10 @@ class Marshaller {
       version: character.version,
     };
 
+    if (character.description?.length) {
+      sheet['description'] = character.description;
+    }
+
     if (character.upbringingStep) {
       const upbringing = {
         id: EarlyOutlook[character.upbringingStep.upbringing?.id],

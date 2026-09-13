@@ -33,6 +33,7 @@ function createFinalDetailsView(character: Character, overrides?: any) {
     onHouseChanged: jest.fn(),
     onAdditionalTraitsChanged: jest.fn(),
     onRandomName: jest.fn(),
+    onDescriptionChanged: jest.fn(),
     ...overrides,
   };
   const instance = new FinalDetailsView(props as any);

@@ -9,6 +9,7 @@ import { FinalDetailsView } from './finalDetailsView';
 import {
   addCharacterTalent,
   setCharacterAdditionalTraits,
+  setCharacterDescription,
   setCharacterHouse,
   setCharacterLineage,
   setCharacterName,
@@ -50,6 +51,7 @@ import { hasSource } from '../../state/contextFunctions';
 import { BorgImplantSelectionView } from '../../components/borgImplantSelectionView';
 import { FocusSelectionView } from '../../components/focusSelectionView';
 import { ValueInputWithRandom } from '../../components/valueInputWithRandomOption';
+import { RichTextEditor } from '../../components/richTextEditor';
 
 interface IGeneralEditViewProperties extends ICharacterProperties {
   onNextStep: () => void;
@@ -154,6 +156,11 @@ export const GeneralEditView: React.FC<IGeneralEditViewProperties> = ({
     store.dispatch(setCharacterPastime(value));
   };
 
+  const onDescriptionChanged = (value: string) => {
+    console.log('onDescriptionChanged');
+    store.dispatch(setCharacterDescription(value));
+  };
+
   const onLineageChanged = (value: string) => {
     store.dispatch(setCharacterLineage(value));
   };
@@ -177,21 +184,34 @@ export const GeneralEditView: React.FC<IGeneralEditViewProperties> = ({
       character?.speciesStep?.species,
     );
     return (
-      <FinalDetailsView
-        character={character}
-        t={t}
-        showRandomName={NameGenerator.instance.isSupported(species)}
-        showPastime={character.version > 1}
-        showLineageAndHouse={character.isKlingonImperialCitizen}
-        showAdditionalTraits={true}
-        onNameChanged={(value) => onNameChanged(value)}
-        onPronounsChanged={(value) => onPronounsChanged(value)}
-        onPasttimeChanged={(value) => onPasttimeChanged(value)}
-        onLineageChanged={(value) => onLineageChanged(value)}
-        onHouseChanged={(value) => onHouseChanged(value)}
-        onAdditionalTraitsChanged={(value) => onAdditionalTraitsChanged(value)}
-        onRandomName={() => randomName(species)}
-      />
+      <>
+        <FinalDetailsView
+          character={character}
+          t={t}
+          showRandomName={NameGenerator.instance.isSupported(species)}
+          showPastime={character.version > 1}
+          showLineageAndHouse={character.isKlingonImperialCitizen}
+          showAdditionalTraits={true}
+          onNameChanged={(value) => onNameChanged(value)}
+          onPronounsChanged={(value) => onPronounsChanged(value)}
+          onPasttimeChanged={(value) => onPasttimeChanged(value)}
+          onLineageChanged={(value) => onLineageChanged(value)}
+          onHouseChanged={(value) => onHouseChanged(value)}
+          onAdditionalTraitsChanged={(value) =>
+            onAdditionalTraitsChanged(value)
+          }
+          onRandomName={() => randomName(species)}
+        />
+        <div className="col-12 mt-4">
+          <Header level={2} className="mb-3">
+            {t('Construct.other.description')}
+          </Header>
+          <RichTextEditor
+            onChange={onDescriptionChanged}
+            initialText={character.description}
+          />
+        </div>
+      </>
     );
   };
 

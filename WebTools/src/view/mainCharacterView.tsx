@@ -104,6 +104,10 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
             : 'Unnamed Character'}
         </Header>
 
+        {character.description?.length ? (
+          <Markdown>{character.description}</Markdown>
+        ) : undefined}
+
         {renderKlingonFields()}
 
         <div className="row" style={{ alignItems: 'baseline' }}>

@@ -98,6 +98,7 @@ export const UPDATE_CHARACTER_GENERAL_EDIT_FOCUS =
 export const UPDATE_CHARACTER_GENERAL_EDIT_TALENT =
   'UPDATE_CHARACTER_GENERAL_EDIT_TALENT';
 export const REMOVE_CHARACTER_TOKEN = 'REMOVE_CHARACTER_TOKEN';
+export const SET_CHARACTER_DESCRIPTION = 'SET_CHARACTER_DESCRIPTION';
 
 export enum StepContext {
   Species,
@@ -349,6 +350,13 @@ export const addNpcCharacterValue = createAction(
 export const setCharacterName = createAction(SET_CHARACTER_NAME, (name) => ({
   payload: { name },
 }));
+
+export const setCharacterDescription = createAction(
+  SET_CHARACTER_DESCRIPTION,
+  (description) => ({
+    payload: { description },
+  }),
+);
 
 export const setCharacterPastime = createAction(
   SET_CHARACTER_PASTIME,

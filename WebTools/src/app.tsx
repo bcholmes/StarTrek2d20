@@ -13,6 +13,7 @@ import { PageHistoryProvider } from './components/pageHistoryContext';
 import { rewindToStarshipWorkflowStep } from './state/starshipActions';
 import { store } from './state/store';
 
+import '@mdxeditor/editor/style.css';
 import './scss/main.scss';
 
 interface IAppState {

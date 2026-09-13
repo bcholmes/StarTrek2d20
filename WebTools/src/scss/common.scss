@@ -339,6 +339,11 @@ input {
     padding: 6px;
 }
 
+.mdxeditor-contenteditable-wrapper {
+    border: 2px solid #DE84B7;
+    border-radius: 4px;
+}
+
 input[type=search] {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;

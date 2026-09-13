@@ -65,6 +65,7 @@ import {
   setCharacterAssignment,
   setCharacterCareerEventTrait,
   setCharacterCareerLength,
+  setCharacterDescription,
   setCharacterEarlyOutlook,
   setCharacterEducation,
   setCharacterEnvironment,
@@ -725,6 +726,11 @@ export const characterSlice = createSlice({
     builder.addCase(setCharacterName, (state, action) => {
       return withCharacter(state, action, (temp, action) => {
         temp.name = action.payload.name;
+      });
+    });
+    builder.addCase(setCharacterDescription, (state, action) => {
+      return withCharacter(state, action, (temp, action) => {
+        temp.description = action.payload.description;
       });
     });
     builder.addCase(setCharacterPastime, (state, action) => {
