@@ -158,17 +158,25 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
           </div>
         </div>
 
-       <div className="row" style={{ alignItems: 'baseline' }}>
+        <div className="row" style={{ alignItems: 'baseline' }}>
           <div className="col-md-2 view-field-label pb-2">
             {t('Construct.other.careerEvent1.short')}:
           </div>
           <div className="col-md-4 text-white">
             <div className="view-border-bottom pb-2">
-              {CareerEventsHelper.getCareerEvent(character.careerEvents[0]?.id, character.type, character.version).localizedName}
+              {
+                CareerEventsHelper.getCareerEvent(
+                  character.careerEvents[0]?.id,
+                  character.type,
+                  character.version,
+                ).localizedName
+              }
               <div>
-                {character.careerEvents[0]?.notes?.length
-                  ? <STAMarkdown className='markdown-sm'>{character.careerEvents[0].notes}</STAMarkdown>
-                  : undefined}
+                {character.careerEvents[0]?.notes?.length ? (
+                  <STAMarkdown className="markdown-sm">
+                    {character.careerEvents[0].notes}
+                  </STAMarkdown>
+                ) : undefined}
               </div>
             </div>
           </div>
@@ -178,11 +186,19 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
           </div>
           <div className="col-md-4 text-white">
             <div className="view-border-bottom pb-2">
-              {CareerEventsHelper.getCareerEvent(character.careerEvents[1]?.id, character.type, character.version).localizedName}
+              {
+                CareerEventsHelper.getCareerEvent(
+                  character.careerEvents[1]?.id,
+                  character.type,
+                  character.version,
+                ).localizedName
+              }
               <div>
-                {character.careerEvents[1]?.notes?.length
-                  ? <STAMarkdown className='markdown-sm'>{character.careerEvents[1].notes}</STAMarkdown>
-                  : undefined}
+                {character.careerEvents[1]?.notes?.length ? (
+                  <STAMarkdown className="markdown-sm">
+                    {character.careerEvents[1].notes}
+                  </STAMarkdown>
+                ) : undefined}
               </div>
             </div>
           </div>

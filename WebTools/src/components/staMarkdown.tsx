@@ -7,7 +7,10 @@ interface ISTAMarkdown {
   className?: string;
 }
 
-export const STAMarkdown: React.FC<ISTAMarkdown> = ({ children, className }) => {
+export const STAMarkdown: React.FC<ISTAMarkdown> = ({
+  children,
+  className,
+}) => {
   return (
     <Markdown
       rehypePlugins={[rehypeRaw]}

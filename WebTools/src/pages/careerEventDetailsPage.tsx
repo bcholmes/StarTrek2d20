@@ -61,7 +61,9 @@ const CareerEventDetailsPageBase: React.FC<ICareerEventDetailsProperties> = ({
     character.version,
   );
 
-  const [ showAdvanced, setShowAdvanced ] = useState<boolean>(careerEventStep?.notes?.length ? true : false);
+  const [showAdvanced, setShowAdvanced] = useState<boolean>(
+    careerEventStep?.notes?.length ? true : false,
+  );
 
   const navigateToNextStep = () => {
     if (careerEventStep.attribute == null) {
@@ -189,31 +191,31 @@ const CareerEventDetailsPageBase: React.FC<ICareerEventDetailsProperties> = ({
         ) : undefined}
       </div>
 
-      <div className='row'>
-          {showAdvanced
-            ?
-
-              (<div className="col-12 mt-4">
-              <Header level={2} className="mb-3">
-                {t('Construct.other.description')}
-              </Header>
-              <STAMarkdown>{t('CareerEventDetails.notesInstructions')}</STAMarkdown>
-              <RichTextEditor
-                onChange={onNotesChanged}
-                initialText={careerEventStep.notes}
-              />
-              </div>)
-            :
-              (<div className="col-12 mt-4 text-end">
-              <Button
-                variant="link"
-                className="text-secondary px-0"
-                onClick={() => setShowAdvanced(!showAdvanced)}
-              >
-                {t('Common.button.advanced')}
-              </Button>
-            </div>)
-          }
+      <div className="row">
+        {showAdvanced ? (
+          <div className="col-12 mt-4">
+            <Header level={2} className="mb-3">
+              {t('Construct.other.description')}
+            </Header>
+            <STAMarkdown>
+              {t('CareerEventDetails.notesInstructions')}
+            </STAMarkdown>
+            <RichTextEditor
+              onChange={onNotesChanged}
+              initialText={careerEventStep.notes}
+            />
+          </div>
+        ) : (
+          <div className="col-12 mt-4 text-end">
+            <Button
+              variant="link"
+              className="text-secondary px-0"
+              onClick={() => setShowAdvanced(!showAdvanced)}
+            >
+              {t('Common.button.advanced')}
+            </Button>
+          </div>
+        )}
       </div>
 
       <div className="mt-4 d-flex justify-content-end">
