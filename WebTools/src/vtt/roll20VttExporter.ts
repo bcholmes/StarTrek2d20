@@ -2,7 +2,8 @@ import i18next from 'i18next';
 import type { Character } from '../common/character';
 import { CharacterSerializer } from '../common/characterSerializer';
 import type { Starship } from '../common/starship';
-import { Attribute, AttributesHelper } from '../helpers/attributes';
+import type { Attribute } from '../helpers/attributes';
+import { AttributesHelper } from '../helpers/attributes';
 import type { Implant } from '../helpers/borgImplant';
 import { BorgImplants } from '../helpers/borgImplant';
 import type { EquipmentModel } from '../helpers/equipment';
@@ -17,6 +18,12 @@ import { System, allSystems } from '../helpers/systems';
 import { makeKey } from '../common/translationKey';
 import type { SelectedTalent } from '../common/selectedTalent';
 import { TalentCategory } from '../helpers/talentCategory';
+import {
+  attributeName,
+  departmentName,
+  resolveTalentDescription,
+  splitToParagraphs,
+} from './vttShared';
 
 interface IRoll20Attribute {
   name: string;
@@ -302,10 +309,9 @@ export class Roll20VttExporter {
 
     const description = starship.spaceframeModel?.localizedDescription;
     if (description) {
-      description
-        .split('\n')
-        .filter((p) => p.length > 0)
-        .forEach((p) => (result += '<p>' + p + '</p>\n'));
+      splitToParagraphs(description).forEach(
+        (p) => (result += '<p>' + p + '</p>\n'),
+      );
     }
 
     if (starship.getAllTraits()?.length) {
@@ -826,7 +832,7 @@ export class Roll20VttExporter {
 
   convertDiscipline(character: Character, d: Department, id: IdHelper) {
     return {
-      name: Department[d].toLocaleLowerCase(),
+      name: departmentName(d),
       current: character.departments[d],
       max: '',
       id: id.nextId(),
@@ -835,7 +841,7 @@ export class Roll20VttExporter {
 
   convertStarshipDepartment(starship: Starship, d: Department, id: IdHelper) {
     return {
-      name: 'ship_' + Department[d].toLocaleLowerCase(),
+      name: 'ship_' + departmentName(d),
       current: starship.departments[d],
       max: '',
       id: id.nextId(),
@@ -859,7 +865,7 @@ export class Roll20VttExporter {
 
   convertAttribute(character: Character, a: Attribute, id: IdHelper) {
     return {
-      name: Attribute[a].toLocaleLowerCase(),
+      name: attributeName(a),
       current: character.attributes[a],
       max: '',
       id: id.nextId(),
@@ -980,11 +986,7 @@ export class Roll20VttExporter {
       },
       {
         name: 'repeating_stalents_' + rowId + '_stalent_description',
-        current: selectedTalent.isCustom
-          ? selectedTalent.customTalentDescription
-          : starship.version === 1
-            ? talent.localizedDescription
-            : talent.localizedDescription2e,
+        current: resolveTalentDescription(selectedTalent, starship.version),
         max: '',
         id: id.nextId(),
       },
@@ -1030,11 +1032,7 @@ export class Roll20VttExporter {
       },
       {
         name: 'repeating_talents_' + rowId + '_talent_description',
-        current: selectedTalent.isCustom
-          ? selectedTalent.customTalentDescription
-          : character.version === 1
-            ? talent.localizedDescription
-            : talent.localizedDescription2e,
+        current: resolveTalentDescription(selectedTalent, character.version),
         max: '',
         id: id.nextId(),
       },
