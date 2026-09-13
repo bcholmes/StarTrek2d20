@@ -2,7 +2,6 @@ import type { Character } from '../common/character';
 import convert from 'xml-js';
 import { Attribute, AttributesHelper } from '../helpers/attributes';
 import { DepartmentsHelper, Department } from '../helpers/department';
-import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
 import { CareersHelper } from '../helpers/careers';
 import { CharacterType } from '../common/characterType';
 import { Rank, RanksHelper } from '../helpers/ranks';
@@ -15,6 +14,12 @@ import { EarlyOutlook } from '../helpers/upbringings';
 import { Stereotype } from '../common/construct';
 import { NpcType } from '../npc/model/npcType';
 import { textTokenizer } from '../exportpdf/textTokenizer';
+import {
+  attributeName,
+  departmentName,
+  resolveTalentDescription,
+  splitToParagraphs,
+} from './vttShared';
 
 interface XmlElement {
   type?: string;
@@ -487,21 +492,18 @@ export class FantasyGroupsVttExporter {
 
   convertCharacterDescription(character: Character) {
     if (character.description?.length) {
-      const paragraphs = character.description
-        .split('\n')
-        .filter((s) => s?.length)
-        .map((s) => {
-          return {
-            name: 'p',
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: s,
-              },
-            ],
-          };
-        });
+      const paragraphs = splitToParagraphs(character.description).map((s) => {
+        return {
+          name: 'p',
+          type: 'element',
+          elements: [
+            {
+              type: 'text',
+              text: s,
+            },
+          ],
+        };
+      });
       return {
         name: 'description',
         type: 'element',
@@ -1033,7 +1035,7 @@ export class FantasyGroupsVttExporter {
     };
 
     DepartmentsHelper.instance.getDepartments().forEach((d) => {
-      const name = Department[d].toLowerCase();
+      const name = departmentName(d);
       const discipline = {
         name: name,
         type: 'element',
@@ -1319,7 +1321,7 @@ export class FantasyGroupsVttExporter {
     };
 
     AttributesHelper.getAllAttributes().forEach((a) => {
-      const name = Attribute[a].toLowerCase();
+      const name = attributeName(a);
       const attribute = {
         name: name,
         type: 'element',
@@ -1689,7 +1691,7 @@ export class FantasyGroupsVttExporter {
                             type: 'text',
                             text:
                               event.attributes.length === 1
-                                ? Attribute[event.attributes[0]].toLowerCase()
+                                ? attributeName(event.attributes[0])
                                 : 'any',
                           },
                         ],
@@ -1722,7 +1724,7 @@ export class FantasyGroupsVttExporter {
                             type: 'text',
                             text:
                               event.disciplines.length === 1
-                                ? Department[event.disciplines[0]].toLowerCase()
+                                ? departmentName(event.disciplines[0])
                                 : 'any',
                           },
                         ],
@@ -2065,17 +2067,7 @@ export class FantasyGroupsVttExporter {
             this.convertToFormattedText(
               'desc',
               null,
-              selectedTalent.isCustom
-                ? selectedTalent.customTalentDescription
-                : character.version === 1
-                  ? talent.localizedDescription.replace(
-                      CHALLENGE_DICE_NOTATION,
-                      'CD',
-                    )
-                  : talent.localizedDescription2e.replace(
-                      CHALLENGE_DICE_NOTATION,
-                      'CD',
-                    ),
+              resolveTalentDescription(selectedTalent, character.version, true),
             ),
             {
               name: 'name',
@@ -2115,17 +2107,7 @@ export class FantasyGroupsVttExporter {
             this.convertToFormattedText(
               'desc',
               null,
-              s.isCustom
-                ? s.customTalentDescription
-                : character.version === 1
-                  ? talent.localizedDescription.replace(
-                      CHALLENGE_DICE_NOTATION,
-                      'CD',
-                    )
-                  : talent.localizedDescription2e.replace(
-                      CHALLENGE_DICE_NOTATION,
-                      'CD',
-                    ),
+              resolveTalentDescription(s, character.version, true),
             ),
             {
               name: 'locked',

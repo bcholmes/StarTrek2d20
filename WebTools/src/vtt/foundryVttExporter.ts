@@ -1,11 +1,10 @@
 import type { Character } from '../common/character';
 import { CharacterSerializer } from '../common/characterSerializer';
 import type { Starship } from '../common/starship';
-import { Attribute, AttributesHelper } from '../helpers/attributes';
+import { AttributesHelper } from '../helpers/attributes';
 import type { RoleModel } from '../helpers/roles';
 import { Role, RolesHelper } from '../helpers/roles';
 import { DepartmentsHelper, Department } from '../helpers/department';
-import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
 import { TalentModel } from '../helpers/talentModel';
 import { TALENT_NAME_UNTAPPED_POTENTIAL } from '../helpers/talents';
 import type { Weapon } from '../helpers/weapons';
@@ -34,6 +33,12 @@ import { FoundryPluginType } from './foundryPluginType';
 import { marshaller } from '../helpers/marshaller';
 import type { SelectedTalent } from '../common/selectedTalent';
 import type { Station } from '../common/station';
+import {
+  departmentName,
+  attributeName,
+  resolveTalentDescription,
+  splitToParagraphs,
+} from './vttShared';
 import { TalentCategory } from '../helpers/talentCategory';
 import { ShipBuildType } from '../common/shipBuildType';
 import { isKlingonWarriorType } from '../helpers/klingonWarrior';
@@ -110,7 +115,7 @@ export class FoundryVttExporter {
     };
 
     DepartmentsHelper.instance.getDepartments().forEach((d) => {
-      const name = Department[d].toLowerCase();
+      const name = departmentName(d);
       result.system.departments[name] = {
         label: 'sta.actor.starship.department.' + name,
         value: '' + starship.departments[d],
@@ -315,7 +320,7 @@ export class FoundryVttExporter {
     };
 
     DepartmentsHelper.instance.getDepartments().forEach((d) => {
-      const name = Department[d].toLowerCase();
+      const name = departmentName(d);
       result.system.departments[name] = {
         label: 'sta.actor.starship.department.' + name,
         value: '' + station.departments[d],
@@ -639,7 +644,7 @@ export class FoundryVttExporter {
     };
 
     DepartmentsHelper.instance.getDepartments().forEach((d) => {
-      const name = Department[d].toLowerCase();
+      const name = departmentName(d);
       result.system.disciplines[name] = {
         label: 'sta.actor.character.discipline.' + name,
         value: '' + character.departments[d],
@@ -648,7 +653,7 @@ export class FoundryVttExporter {
     });
 
     AttributesHelper.getAllAttributes().forEach((a) => {
-      const name = Attribute[a].toLowerCase();
+      const name = attributeName(a);
       result.system.attributes[name] = {
         label: 'sta.actor.character.attribute.' + name,
         value: '' + character.attributes[a],
@@ -972,9 +977,7 @@ export class FoundryVttExporter {
   convertCharacterDescription(character: Character) {
     let result = '';
     if (character.description?.length) {
-      const paragraphs = character.description
-        .split('\n')
-        .filter((s) => s?.length);
+      const paragraphs = splitToParagraphs(character.description);
       paragraphs.forEach((p) => {
         result += '<p>';
         result += p;
@@ -1249,19 +1252,8 @@ export class FoundryVttExporter {
     let description = '';
     if (talent instanceof SpeciesAbility) {
       description = (talent as SpeciesAbility).description;
-    } else if (talent.isCustom) {
-      description = talent.customTalentDescription;
     } else {
-      description =
-        construct.version === 1
-          ? talent.talentModel.localizedDescription.replace(
-              CHALLENGE_DICE_NOTATION,
-              'CD',
-            )
-          : talent.talentModel.localizedDescription2e.replace(
-              CHALLENGE_DICE_NOTATION,
-              'CD',
-            );
+      description = resolveTalentDescription(talent, construct.version, true);
     }
 
     const prerequisites =
