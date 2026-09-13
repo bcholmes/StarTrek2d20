@@ -26,6 +26,39 @@ interface XmlElement {
   name?: string;
   attributes?: { [key: string]: string | number };
   elements?: XmlElement[];
+  text?: string | number;
+}
+
+function xmlNumberNode(name: string, text: string | number): XmlElement {
+  return {
+    name,
+    attributes: {
+      type: 'number',
+    },
+    type: 'element',
+    elements: [
+      {
+        type: 'text',
+        text,
+      },
+    ],
+  };
+}
+
+function xmlStringNode(name: string, text: string | number): XmlElement {
+  return {
+    name,
+    attributes: {
+      type: 'string',
+    },
+    type: 'element',
+    elements: [
+      {
+        type: 'text',
+        text,
+      },
+    ],
+  };
 }
 
 export class FantasyGroupsVttExporter {
@@ -51,63 +84,13 @@ export class FantasyGroupsVttExporter {
         this.convertAttributes(character),
         this.convertCharacterDescription(character),
         this.convertDisciplines(character),
-        {
-          name: 'focuses',
-          attributes: {
-            type: 'string',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.focuses.join(', '),
-            },
-          ],
-        },
-        {
-          name: 'hptotal',
-          attributes: {
-            type: 'number',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.stress,
-            },
-          ],
-        },
-        {
-          name: 'name',
-          attributes: {
-            type: 'string',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.name ?? '',
-            },
-          ],
-        },
+        xmlStringNode('focuses', character.focuses.join(', ')),
+        xmlNumberNode('hptotal', character.stress),
+        xmlStringNode('name', character.name ?? ''),
         {
           name: 'resistance',
           type: 'element',
-          elements: [
-            {
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              name: 'total',
-              elements: [
-                {
-                  type: 'text',
-                  text: character.resistance,
-                },
-              ],
-            },
-          ],
+          elements: [xmlNumberNode('total', character.resistance)],
         },
         this.convertNpcTalents(character),
         {
@@ -117,45 +100,9 @@ export class FantasyGroupsVttExporter {
           },
           type: 'element',
         },
-        {
-          name: 'traits',
-          type: 'element',
-          attributes: {
-            type: 'string',
-          },
-          elements: [
-            {
-              type: 'text',
-              text: character.getAllTraits() ?? '',
-            },
-          ],
-        },
-        {
-          name: 'type',
-          type: 'element',
-          attributes: {
-            type: 'string',
-          },
-          elements: [
-            {
-              type: 'text',
-              text: this.convertNpcType(character),
-            },
-          ],
-        },
-        {
-          name: 'values',
-          attributes: {
-            type: 'string',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.values.join(', '),
-            },
-          ],
-        },
+        xmlStringNode('traits', character.getAllTraits() ?? ''),
+        xmlStringNode('type', this.convertNpcType(character)),
+        xmlStringNode('values', character.values.join(', ')),
       ],
     };
     return this.nodesToXml(characterNode);
@@ -175,19 +122,7 @@ export class FantasyGroupsVttExporter {
       name: 'character',
       elements: [
         this.convertAttributes(character),
-        {
-          name: 'determination',
-          attributes: {
-            type: 'number',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: 0,
-            },
-          ],
-        },
+        xmlNumberNode('determination', 0),
         this.convertCareer(character),
         this.convertCareerEvents(character),
         this.convertCareerLink(character),
@@ -219,45 +154,9 @@ export class FantasyGroupsVttExporter {
           name: 'hp',
           type: 'element',
           elements: [
-            {
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              name: 'misc',
-              elements: [
-                {
-                  type: 'text',
-                  text: 0,
-                },
-              ],
-            },
-            {
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              name: 'total',
-              elements: [
-                {
-                  type: 'text',
-                  text: character.stress,
-                },
-              ],
-            },
-            {
-              name: 'wounds',
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              elements: [
-                {
-                  type: 'text',
-                  text: 0,
-                },
-              ],
-            },
+            xmlNumberNode('misc', 0),
+            xmlNumberNode('total', character.stress),
+            xmlNumberNode('wounds', 0),
           ],
         },
         {
@@ -269,60 +168,12 @@ export class FantasyGroupsVttExporter {
           name: 'milestones',
           type: 'element',
           elements: [
-            {
-              name: 'arc',
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              elements: [
-                {
-                  type: 'text',
-                  text: 0,
-                },
-              ],
-            },
-            {
-              name: 'spotlight',
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              elements: [
-                {
-                  type: 'text',
-                  text: 0,
-                },
-              ],
-            },
-            {
-              name: 'standard',
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              elements: [
-                {
-                  type: 'text',
-                  text: 0,
-                },
-              ],
-            },
+            xmlNumberNode('arc', 0),
+            xmlNumberNode('spotlight', 0),
+            xmlNumberNode('standard', 0),
           ],
         },
-        {
-          name: 'name',
-          attributes: {
-            type: 'string',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.name ?? '',
-            },
-          ],
-        },
+        xmlStringNode('name', character.name ?? ''),
         this.convertNotes(character),
         {
           name: 'primary_specieslink',
@@ -342,64 +193,16 @@ export class FantasyGroupsVttExporter {
           ],
         },
         this.convertRank(character),
-        {
-          name: 'reputation',
-          attributes: {
-            type: 'number',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.reputation,
-            },
-          ],
-        },
+        xmlNumberNode('reputation', character.reputation),
         {
           name: 'resistance',
           type: 'element',
           elements: [
-            {
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              name: 'misc',
-              elements: [
-                {
-                  type: 'text',
-                  text: 0,
-                },
-              ],
-            },
-            {
-              attributes: {
-                type: 'number',
-              },
-              type: 'element',
-              name: 'total',
-              elements: [
-                {
-                  type: 'text',
-                  text: character.resistance,
-                },
-              ],
-            },
+            xmlNumberNode('misc', 0),
+            xmlNumberNode('total', character.resistance),
           ],
         },
-        {
-          name: 'role',
-          attributes: {
-            type: 'string',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.assignmentWithoutShip,
-            },
-          ],
-        },
+        xmlStringNode('role', character.assignmentWithoutShip),
         {
           name: 'secondary_specieslink',
           type: 'element',
@@ -417,19 +220,7 @@ export class FantasyGroupsVttExporter {
             },
           ],
         },
-        {
-          name: 'species',
-          attributes: {
-            type: 'string',
-          },
-          type: 'element',
-          elements: [
-            {
-              type: 'text',
-              text: character.speciesName,
-            },
-          ],
-        },
+        xmlStringNode('species', character.speciesName),
         {
           name: 'supportchars',
           type: 'element',
@@ -604,21 +395,7 @@ export class FantasyGroupsVttExporter {
         return {
           type: 'element',
           name: this.createNumberedId(i + 1),
-          elements: [
-            {
-              name: 'name',
-              type: 'element',
-              attributes: {
-                type: 'string',
-              },
-              elements: [
-                {
-                  type: 'text',
-                  text: f,
-                },
-              ],
-            },
-          ],
+          elements: [xmlStringNode('name', f)],
         };
       }) ?? []
     );
@@ -631,351 +408,92 @@ export class FantasyGroupsVttExporter {
   }
 
   convertNpcWeapons(character: Character, start: number = 0) {
-    const result = [];
-    character.determineWeapons().forEach((w, i) => {
-      const weapon = {
-        name: this.createNumberedId(start + i + 1),
-        type: 'element',
-        elements: [
-          {
-            name: 'area',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'damagerating',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: w.dice,
-              },
-            ],
-          },
-          {
-            name: 'intense',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'name',
-            attributes: {
-              type: 'string',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: w.name,
-              },
-            ],
-          },
-          w.injuryType === InjuryType.Stun
-            ? {
-                name: 'lethality',
-                attributes: {
-                  type: 'string',
-                },
-                type: 'element',
-                elements: [
-                  {
-                    type: 'text',
-                    text: 'nonlethal',
-                  },
-                ],
-              }
-            : null,
-          {
-            name: 'piercing',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'tn',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text:
-                  w.type === WeaponType.ENERGY
-                    ? character.attributes[Attribute.Control] +
-                      character.departments[Department.Security]
-                    : character.attributes[Attribute.Daring] +
-                      character.departments[Department.Security],
-              },
-            ],
-          },
-          w.type === WeaponType.ENERGY
-            ? {
-                name: 'type',
-                attributes: {
-                  type: 'string',
-                },
-                type: 'element',
-                elements: [
-                  {
-                    type: 'text',
-                    text: 'ranged',
-                  },
-                ],
-              }
-            : null,
-          {
-            name: 'vicious',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-        ],
-      };
-      weapon.elements = weapon.elements.filter((e) => e != null);
-      result.push(weapon);
-    });
-
-    return result;
+    return this.buildWeapons(character, start, false);
   }
 
   convertWeapons(character: Character, start: number = 0) {
+    return this.buildWeapons(character, start, true);
+  }
+
+  private buildWeapons(character: Character, start: number, armory: boolean) {
     const result = [];
     character.determineWeapons().forEach((w, i) => {
-      const weapon = {
+      const elements = [xmlNumberNode('area', 0)];
+
+      if (armory) {
+        elements.push(xmlStringNode('category', 'Weapon'));
+        elements.push(xmlStringNode('cost', 'Standard Issue'));
+        elements.push(xmlNumberNode('count', 1));
+        if (w.effects?.length) {
+          elements.push(
+            xmlStringNode(
+              'damageeffects',
+              w.effects.map((q) => q.description).join(', '),
+            ),
+          );
+        }
+      }
+
+      elements.push(xmlNumberNode('damagerating', w.dice));
+
+      if (armory) {
+        elements.push(this.convertWeaponAttributes('dmgeffect', w.effects));
+        elements.push(xmlNumberNode('intense', 0));
+        elements.push(xmlNumberNode('locked', 0));
+        elements.push(xmlStringNode('name', w.name));
+        elements.push(this.convertToFormattedText('notes', w.name, null));
+      } else {
+        elements.push(xmlNumberNode('intense', 0));
+        elements.push(xmlStringNode('name', w.name));
+        if (w.injuryType === InjuryType.Stun) {
+          elements.push(xmlStringNode('lethality', 'nonlethal'));
+        }
+      }
+
+      elements.push(xmlNumberNode('piercing', 0));
+
+      if (!armory) {
+        elements.push(
+          xmlNumberNode(
+            'tn',
+            w.type === WeaponType.ENERGY
+              ? character.attributes[Attribute.Control] +
+                  character.departments[Department.Security]
+              : character.attributes[Attribute.Daring] +
+                  character.departments[Department.Security],
+          ),
+        );
+      }
+
+      if (armory) {
+        if (w.qualities?.length) {
+          elements.push(
+            xmlStringNode(
+              'qualities',
+              w.qualities.map((q) => q.description).join(', '),
+            ),
+          );
+        }
+        if (w.hands) {
+          elements.push(xmlStringNode('size', w.hands + 'h'));
+        }
+      }
+
+      if (w.type === WeaponType.ENERGY) {
+        elements.push(xmlStringNode('type', 'ranged'));
+      }
+
+      elements.push(xmlNumberNode('vicious', 0));
+
+      if (armory) {
+        elements.push(this.convertWeaponAttributes('weapquality', w.qualities));
+      }
+
+      result.push({
         name: this.createNumberedId(start + i + 1),
         type: 'element',
-        elements: [
-          {
-            name: 'area',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'category',
-            attributes: {
-              type: 'string',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 'Weapon',
-              },
-            ],
-          },
-          {
-            name: 'cost',
-            attributes: {
-              type: 'string',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 'Standard Issue',
-              },
-            ],
-          },
-          {
-            name: 'count',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 1,
-              },
-            ],
-          },
-          w.effects?.length
-            ? {
-                name: 'damageeffects',
-                attributes: {
-                  type: 'string',
-                },
-                type: 'element',
-                elements: [
-                  {
-                    type: 'text',
-                    text: w.effects.map((q) => q.description).join(', '),
-                  },
-                ],
-              }
-            : null,
-          {
-            name: 'damagerating',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: w.dice,
-              },
-            ],
-          },
-          this.convertWeaponAttributes('dmgeffect', w.effects),
-          {
-            name: 'intense',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'locked',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'name',
-            attributes: {
-              type: 'string',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: w.name,
-              },
-            ],
-          },
-          this.convertToFormattedText('notes', w.name, null),
-          {
-            name: 'piercing',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          w.qualities?.length
-            ? {
-                name: 'qualities',
-                attributes: {
-                  type: 'string',
-                },
-                type: 'element',
-                elements: [
-                  {
-                    type: 'text',
-                    text: w.qualities.map((q) => q.description).join(', '),
-                  },
-                ],
-              }
-            : null,
-          w.hands
-            ? {
-                name: 'size',
-                attributes: {
-                  type: 'string',
-                },
-                type: 'element',
-                elements: [
-                  {
-                    type: 'text',
-                    text: w.hands + 'h',
-                  },
-                ],
-              }
-            : null,
-          w.type === WeaponType.ENERGY
-            ? {
-                name: 'type',
-                attributes: {
-                  type: 'string',
-                },
-                type: 'element',
-                elements: [
-                  {
-                    type: 'text',
-                    text: 'ranged',
-                  },
-                ],
-              }
-            : null,
-          {
-            name: 'vicious',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          this.convertWeaponAttributes('weapquality', w.qualities),
-        ],
-      };
-      weapon.elements = weapon.elements.filter((e) => e != null);
-      result.push(weapon);
+        elements,
+      });
     });
 
     return result;
@@ -994,32 +512,8 @@ export class FantasyGroupsVttExporter {
         name: this.createNumberedId(index++),
         type: 'element',
         elements: [
-          {
-            name: 'name',
-            type: 'element',
-            attributes: {
-              type: 'string',
-            },
-            elements: [
-              {
-                type: 'text',
-                text: q.qualityName,
-              },
-            ],
-          },
-          {
-            name: 'rank',
-            type: 'element',
-            attributes: {
-              type: 'number',
-            },
-            elements: [
-              {
-                type: 'text',
-                text: q.rank ?? 1,
-              },
-            ],
-          },
+          xmlStringNode('name', q.qualityName),
+          xmlNumberNode('rank', q.rank ?? 1),
         ],
       });
     });
@@ -1040,110 +534,14 @@ export class FantasyGroupsVttExporter {
         name: name,
         type: 'element',
         elements: [
-          {
-            name: 'careerevent',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'edit',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: character.departments[d],
-              },
-            ],
-          },
-          {
-            name: 'environment',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'misc',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'species',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'total',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: character.departments[d],
-              },
-            ],
-          },
-          {
-            name: 'training',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'upbringing',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
+          xmlNumberNode('careerevent', 0),
+          xmlNumberNode('edit', character.departments[d]),
+          xmlNumberNode('environment', 0),
+          xmlNumberNode('misc', 0),
+          xmlNumberNode('species', 0),
+          xmlNumberNode('total', character.departments[d]),
+          xmlNumberNode('training', 0),
+          xmlNumberNode('upbringing', 0),
         ],
       };
       result.elements.push(discipline);
@@ -1162,19 +560,7 @@ export class FantasyGroupsVttExporter {
         : null;
     //<career type="string">Experienced Officer</career>
     if (career) {
-      return {
-        name: 'career',
-        type: 'element',
-        attributes: {
-          type: 'string',
-        },
-        elements: [
-          {
-            type: 'text',
-            text: career.localizedName,
-          },
-        ],
-      };
+      return xmlStringNode('career', career.localizedName);
     } else {
       return null;
     }
@@ -1183,19 +569,7 @@ export class FantasyGroupsVttExporter {
   convertUpbringing(character: Character) {
     const upbringing = character.upbringingStep?.upbringing;
     if (upbringing) {
-      return {
-        name: 'upbringing',
-        type: 'element',
-        attributes: {
-          type: 'string',
-        },
-        elements: [
-          {
-            type: 'text',
-            text: upbringing.name,
-          },
-        ],
-      };
+      return xmlStringNode('upbringing', upbringing.name);
     } else {
       return null;
     }
@@ -1210,19 +584,7 @@ export class FantasyGroupsVttExporter {
         )
       : null;
     if (training) {
-      return {
-        name: 'training',
-        type: 'element',
-        attributes: {
-          type: 'string',
-        },
-        elements: [
-          {
-            type: 'text',
-            text: training.name,
-          },
-        ],
-      };
+      return xmlStringNode('training', training.name);
     } else {
       return null;
     }
@@ -1237,19 +599,7 @@ export class FantasyGroupsVttExporter {
         )
       : null;
     if (environment) {
-      return {
-        name: 'environment',
-        type: 'element',
-        attributes: {
-          type: 'string',
-        },
-        elements: [
-          {
-            type: 'text',
-            text: environment,
-          },
-        ],
-      };
+      return xmlStringNode('environment', environment);
     } else {
       return null;
     }
@@ -1294,19 +644,7 @@ export class FantasyGroupsVttExporter {
         }
 
         if (rankNumber != null) {
-          return {
-            name: 'rank',
-            type: 'element',
-            attributes: {
-              type: 'string',
-            },
-            elements: [
-              {
-                type: 'text',
-                text: rankNumber,
-              },
-            ],
-          };
+          return xmlStringNode('rank', rankNumber);
         }
       }
     }
@@ -1326,110 +664,14 @@ export class FantasyGroupsVttExporter {
         name: name,
         type: 'element',
         elements: [
-          {
-            name: 'careerevent',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'edit',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: character.attributes[a],
-              },
-            ],
-          },
-          {
-            name: 'environment',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'misc',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'species',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'total',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: character.attributes[a],
-              },
-            ],
-          },
-          {
-            name: 'training',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'upbringing',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
+          xmlNumberNode('careerevent', 0),
+          xmlNumberNode('edit', character.attributes[a]),
+          xmlNumberNode('environment', 0),
+          xmlNumberNode('misc', 0),
+          xmlNumberNode('species', 0),
+          xmlNumberNode('total', character.attributes[a]),
+          xmlNumberNode('training', 0),
+          xmlNumberNode('upbringing', 0),
         ],
       };
       result.elements.push(attribute);
@@ -1509,146 +751,51 @@ export class FantasyGroupsVttExporter {
     };
 
     if (character.traits) {
-      result.elements.push({
-        name: this.createNumberedId(index++),
-        type: 'element',
-        elements: [
-          {
-            name: 'name',
-            type: 'element',
-            attributes: {
-              type: 'string',
-            },
-            elements: [
-              {
-                type: 'text',
-                text: 'Traits: ' + character.traits,
-              },
-            ],
-          },
-          {
-            name: 'text',
-            type: 'element',
-            attributes: {
-              type: 'formattedtext',
-            },
-            elements: [
-              {
-                name: 'p',
-                type: 'element',
-              },
-            ],
-          },
-        ],
-      });
+      result.elements.push(
+        this.convertNote(index++, 'Traits: ' + character.traits),
+      );
     }
 
     if (character.pronouns) {
-      result.elements.push({
-        name: this.createNumberedId(index++),
-        type: 'element',
-        elements: [
-          {
-            name: 'name',
-            type: 'element',
-            attributes: {
-              type: 'string',
-            },
-            elements: [
-              {
-                type: 'text',
-                text: 'Pronouns: ' + character.pronouns,
-              },
-            ],
-          },
-          {
-            name: 'text',
-            type: 'element',
-            attributes: {
-              type: 'formattedtext',
-            },
-            elements: [
-              {
-                name: 'p',
-                type: 'element',
-              },
-            ],
-          },
-        ],
-      });
+      result.elements.push(
+        this.convertNote(index++, 'Pronouns: ' + character.pronouns),
+      );
     }
 
     character.values?.forEach((v) => {
-      result.elements.push({
-        name: this.createNumberedId(index++),
-        type: 'element',
-        elements: [
-          {
-            name: 'name',
-            type: 'element',
-            attributes: {
-              type: 'string',
-            },
-            elements: [
-              {
-                type: 'text',
-                text: 'Value: ' + v,
-              },
-            ],
-          },
-          {
-            name: 'text',
-            type: 'element',
-            attributes: {
-              type: 'formattedtext',
-            },
-            elements: [
-              {
-                name: 'p',
-                type: 'element',
-              },
-            ],
-          },
-        ],
-      });
+      result.elements.push(this.convertNote(index++, 'Value: ' + v));
     });
 
     if (character.rank != null && this.convertRank(character) == null) {
-      result.elements.push({
-        name: this.createNumberedId(index++),
-        type: 'element',
-        elements: [
-          {
-            name: 'name',
-            type: 'element',
-            attributes: {
-              type: 'string',
-            },
-            elements: [
-              {
-                type: 'text',
-                text: 'Rank: ' + character.rank,
-              },
-            ],
-          },
-          {
-            name: 'text',
-            type: 'element',
-            attributes: {
-              type: 'formattedtext',
-            },
-            elements: [
-              {
-                name: 'p',
-                type: 'element',
-              },
-            ],
-          },
-        ],
-      });
+      result.elements.push(
+        this.convertNote(index++, 'Rank: ' + character.rank),
+      );
     }
 
     return result;
+  }
+
+  convertNote(index: number, text: string) {
+    return {
+      name: this.createNumberedId(index),
+      type: 'element',
+      elements: [
+        xmlStringNode('name', text),
+        {
+          name: 'text',
+          type: 'element',
+          attributes: {
+            type: 'formattedtext',
+          },
+          elements: [
+            {
+              name: 'p',
+              type: 'element',
+            },
+          ],
+        },
+      ],
+    };
   }
 
   convertCareerEvents(character: Character) {
@@ -1680,22 +827,12 @@ export class FantasyGroupsVttExporter {
                     name: this.createNumberedId(1),
                     type: 'element',
                     elements: [
-                      {
-                        name: 'name',
-                        type: 'element',
-                        attributes: {
-                          type: 'string',
-                        },
-                        elements: [
-                          {
-                            type: 'text',
-                            text:
-                              event.attributes.length === 1
-                                ? attributeName(event.attributes[0])
-                                : 'any',
-                          },
-                        ],
-                      },
+                      xmlStringNode(
+                        'name',
+                        event.attributes.length === 1
+                          ? attributeName(event.attributes[0])
+                          : 'any',
+                      ),
                     ],
                   },
                 ],
@@ -1713,39 +850,17 @@ export class FantasyGroupsVttExporter {
                     name: this.createNumberedId(1),
                     type: 'element',
                     elements: [
-                      {
-                        name: 'name',
-                        type: 'element',
-                        attributes: {
-                          type: 'string',
-                        },
-                        elements: [
-                          {
-                            type: 'text',
-                            text:
-                              event.disciplines.length === 1
-                                ? departmentName(event.disciplines[0])
-                                : 'any',
-                          },
-                        ],
-                      },
+                      xmlStringNode(
+                        'name',
+                        event.disciplines.length === 1
+                          ? departmentName(event.disciplines[0])
+                          : 'any',
+                      ),
                     ],
                   },
                 ],
               },
-              {
-                name: 'focus',
-                type: 'element',
-                attributes: {
-                  type: 'number',
-                },
-                elements: [
-                  {
-                    type: 'text',
-                    text: '1',
-                  },
-                ],
-              },
+              xmlNumberNode('focus', '1'),
               {
                 name: 'link',
                 type: 'element',
@@ -1775,58 +890,13 @@ export class FantasyGroupsVttExporter {
                   },
                 ],
               },
-              {
-                name: 'locked',
-                type: 'element',
-                attributes: {
-                  type: 'number',
-                },
-                elements: [
-                  {
-                    type: 'text',
-                    text: '0',
-                  },
-                ],
-              },
-              {
-                name: 'name',
-                type: 'element',
-                attributes: {
-                  type: 'string',
-                },
-                elements: [
-                  {
-                    type: 'text',
-                    text: event.localizedName,
-                  },
-                ],
-              },
-              {
-                name: 'trait',
-                type: 'element',
-                attributes: {
-                  type: 'number',
-                },
-                elements: [
-                  {
-                    type: 'text',
-                    text: event.localizedTraitDescription ? '1' : '0',
-                  },
-                ],
-              },
-              {
-                name: 'value',
-                type: 'element',
-                attributes: {
-                  type: 'number',
-                },
-                elements: [
-                  {
-                    type: 'text',
-                    text: '0',
-                  },
-                ],
-              },
+              xmlNumberNode('locked', '0'),
+              xmlStringNode('name', event.localizedName),
+              xmlNumberNode(
+                'trait',
+                event.localizedTraitDescription ? '1' : '0',
+              ),
+              xmlNumberNode('value', '0'),
             ],
           });
         }
@@ -1846,124 +916,16 @@ export class FantasyGroupsVttExporter {
         name: this.createNumberedId(start + i + 1),
         type: 'element',
         elements: [
-          {
-            name: 'area',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'category',
-            attributes: {
-              type: 'string',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 'Equipment',
-              },
-            ],
-          },
-          {
-            name: 'cost',
-            attributes: {
-              type: 'string',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: '',
-              },
-            ],
-          },
-          {
-            name: 'count',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 1,
-              },
-            ],
-          },
-          {
-            name: 'intense',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'locked',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'name',
-            attributes: {
-              type: 'string',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: e,
-              },
-            ],
-          },
+          xmlNumberNode('area', 0),
+          xmlStringNode('category', 'Equipment'),
+          xmlStringNode('cost', ''),
+          xmlNumberNode('count', 1),
+          xmlNumberNode('intense', 0),
+          xmlNumberNode('locked', 0),
+          xmlStringNode('name', e as unknown as string),
           this.convertToFormattedText('notes', e.name, null),
-          {
-            name: 'piercing',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
-          {
-            name: 'viscious',
-            attributes: {
-              type: 'number',
-            },
-            type: 'element',
-            elements: [
-              {
-                type: 'text',
-                text: 0,
-              },
-            ],
-          },
+          xmlNumberNode('piercing', 0),
+          xmlNumberNode('viscious', 0),
         ],
       });
     });
@@ -2082,19 +1044,7 @@ export class FantasyGroupsVttExporter {
               null,
               resolveTalentDescription(selectedTalent, character.version, true),
             ),
-            {
-              name: 'name',
-              type: 'element',
-              attributes: {
-                type: 'string',
-              },
-              elements: [
-                {
-                  type: 'text',
-                  text: name,
-                },
-              ],
-            },
+            xmlStringNode('name', name),
           ],
         });
       }
@@ -2122,61 +1072,13 @@ export class FantasyGroupsVttExporter {
               null,
               resolveTalentDescription(s, character.version, true),
             ),
-            {
-              name: 'locked',
-              type: 'element',
-              attributes: {
-                type: 'number',
-              },
-              elements: [
-                {
-                  type: 'text',
-                  text: '0',
-                },
-              ],
-            },
-            {
-              name: 'multiple',
-              type: 'element',
-              attributes: {
-                type: 'number',
-              },
-              elements: [
-                {
-                  type: 'text',
-                  text:
-                    talent.maxRank > 1
-                      ? character.getRankForTalent(talent.name)
-                      : 0,
-                },
-              ],
-            },
-            {
-              name: 'name',
-              type: 'element',
-              attributes: {
-                type: 'string',
-              },
-              elements: [
-                {
-                  type: 'text',
-                  text: s.displayName,
-                },
-              ],
-            },
-            {
-              name: 'requirement',
-              type: 'element',
-              attributes: {
-                type: 'string',
-              },
-              elements: [
-                {
-                  type: 'text',
-                  text: talent.requirement ?? 'None',
-                },
-              ],
-            },
+            xmlNumberNode('locked', '0'),
+            xmlNumberNode(
+              'multiple',
+              talent.maxRank > 1 ? character.getRankForTalent(talent.name) : 0,
+            ),
+            xmlStringNode('name', s.displayName),
+            xmlStringNode('requirement', talent.requirement ?? 'None'),
           ],
         });
       }
