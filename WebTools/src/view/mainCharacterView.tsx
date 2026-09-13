@@ -26,6 +26,7 @@ import { CharacterTokenImage } from './characterTokenImage';
 import { saveCharacterToLocalStorage } from '../state/savedConstructActions';
 import { marshaller } from '../helpers/marshaller';
 import { Dialog } from '../components/dialog';
+import { STAMarkdown } from '../components/staMarkdown';
 
 export interface ICharacterViewProperties {
   character: Character;
@@ -105,7 +106,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
         </Header>
 
         {character.description?.length ? (
-          <Markdown>{character.description}</Markdown>
+          <STAMarkdown>{character.description}</STAMarkdown>
         ) : undefined}
 
         {renderKlingonFields()}

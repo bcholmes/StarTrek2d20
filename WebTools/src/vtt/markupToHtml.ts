@@ -26,6 +26,8 @@ export const markupToHtml = (description: string) => {
                 result += '<i>';
                 style = 'i';
               }
+            } else if (p === '<u>' || p === '</u>') {
+              result += p;
             } else {
               result += p;
             }

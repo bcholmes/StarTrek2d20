@@ -15,8 +15,8 @@ import Button from 'react-bootstrap/Button';
 import { EditableHeader } from '../mapping/view/editableHeader';
 import { useNavigate } from 'react-router';
 import { marshaller } from '../helpers/marshaller';
-import Markdown from 'react-markdown';
 import { EquipmentBlockView } from './equipmentBlockView';
+import { STAMarkdown } from '../components/staMarkdown';
 
 export const NpcView: React.FC<ICharacterPageProperties> = ({ character }) => {
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ export const NpcView: React.FC<ICharacterPageProperties> = ({ character }) => {
         />
 
         {character.description?.length ? (
-          <Markdown>{character.description}</Markdown>
+          <STAMarkdown>{character.description}</STAMarkdown>
         ) : undefined}
 
         <div className="row mt-4" style={{ alignItems: 'baseline' }}>

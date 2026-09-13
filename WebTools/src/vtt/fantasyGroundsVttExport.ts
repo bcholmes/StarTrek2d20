@@ -2029,6 +2029,19 @@ export class FantasyGroupsVttExporter {
             parent.elements.push(element);
             parents.push(element);
           }
+        } else if (t === '<u>' || t === '</u>') {
+          if (parents.length && parents[parents.length - 1].name === 'u') {
+            parents.pop();
+          } else {
+            const parent = parents[parents.length - 1];
+            const element = {
+              type: 'element',
+              name: 'u',
+              elements: [],
+            };
+            parent.elements.push(element);
+            parents.push(element);
+          }
         } else {
           const parent = parents[parents.length - 1];
           parent.elements.push({

@@ -198,10 +198,10 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
     const colour = this.deriveSheetColour(construct as Character);
 
-    new LandscapeSheetDecorations().drawSheetDecorations(page, colour);
-    this.writeTitle(page, colour);
-    new LandscapeSheetDecorations().drawSheetDecorations(secondPage, colour);
-    this.writeTitle(secondPage, colour);
+    [page, secondPage, thirdPage, fourthPage].forEach((p) => {
+      new LandscapeSheetDecorations().drawSheetDecorations(p, colour);
+      this.writeTitle(p, colour);
+    });
 
     this.writeLabels(page, construct as Character);
     const { firstColumn, logColumns, page2 } = await this.fixedTextColumns(

@@ -453,9 +453,20 @@ export class CareerEventStep {
   discipline?: Department;
   focus?: string;
   trait?: string;
+  notes?: string;
 
   constructor(id: number) {
     this.id = id;
+  }
+
+  copy() {
+    const result = new CareerEventStep(this.id);
+    result.attribute = this.attribute;
+    result.discipline = this.discipline;
+    result.focus = this.focus;
+    result.trait = this.trait;
+    result.notes = this.notes;
+    return result;
   }
 }
 
@@ -2134,14 +2145,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
       character.traits.push(t);
     });
     character.age = this.age;
-    this.careerEvents.forEach((e) => {
-      const event = new CareerEventStep(e.id);
-      event.attribute = e.attribute;
-      event.discipline = e.discipline;
-      event.focus = e.focus;
-      event.trait = e.trait;
-      character.careerEvents.push(event);
-    });
+    character.careerEvents = this.careerEvents?.map((e) => e.copy()) ?? [];
     character.jobAssignment = this.jobAssignment;
     character.assignedShip = this.assignedShip;
     character.rankValue = this.rankValue;

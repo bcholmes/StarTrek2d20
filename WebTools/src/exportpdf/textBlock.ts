@@ -11,12 +11,14 @@ export class TextBlock {
   width: number;
   colour?: SimpleColor;
   descender: number;
+  underlined: boolean = false;
 
   static create(
     text: string,
     fontSpec: FontSpecification,
     descender: boolean | number = false,
     colour?: SimpleColor,
+    underlined: boolean = false,
   ) {
     let weight = 0.5;
     if (typeof descender === 'boolean') {
@@ -39,6 +41,7 @@ export class TextBlock {
     textBlock.fontSize = fontSpec.size;
     textBlock.colour = colour;
     textBlock.descender = weight;
+    textBlock.underlined = underlined;
     return textBlock;
   }
 
@@ -64,5 +67,14 @@ export class TextBlock {
       color: this.colour == null ? color.asPdfRbg() : this.colour.asPdfRbg(),
       rotate: rotate,
     });
+
+    if (this.underlined) {
+      page.drawLine({
+        start: { x: x, y: y - 1 },
+        end: { x: x + this.width, y: y - 1 },
+        thickness: 0.5,
+        color: this.colour == null ? color.asPdfRbg() : this.colour.asPdfRbg(),
+      });
+    }
   }
 }

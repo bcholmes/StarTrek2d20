@@ -65,13 +65,15 @@ export class Line {
         block.font === lastBlock.font &&
         block.fontSize === lastBlock.fontSize &&
         block.colour?.asHex() === lastBlock.colour?.asHex() &&
-        block.descender === lastBlock.descender
+        block.descender === lastBlock.descender &&
+        block.underlined === lastBlock.underlined
       ) {
         const newBlock = TextBlock.create(
           lastBlock.text + block.text,
           new FontSpecification(block.font, block.fontSize),
           block.descender,
           block.colour,
+          block.underlined,
         );
         this.blocks[this.blocks.length - 1] = newBlock;
       } else {
@@ -343,9 +345,16 @@ export class Paragraph {
 
     let tokens = textTokenizer(text);
     let skipSpace = false;
+    let underline = false;
     for (let t = 0; t < tokens.length; t++) {
       const token = tokens[t];
-      if (token === '_' || token === '**' || token === '*') {
+      if (
+        token === '_' ||
+        token === '**' ||
+        token === '*' ||
+        token === '<u>' ||
+        token === '</u>'
+      ) {
         skipSpace = true;
         if (options != null) {
           if (fontType !== options.fontType) {
@@ -363,6 +372,8 @@ export class Paragraph {
               fontType = FontType.Italic;
               fontSpec = new FontSpecification(font, options.size);
             }
+          } else if (token === '<u>' || token === '</u>') {
+            underline = token === '<u>';
           }
         }
       } else if (token === CHALLENGE_DICE_NOTATION) {
@@ -407,7 +418,13 @@ export class Paragraph {
             } else {
               skipSpace = false;
             }
-            const block = TextBlock.create(word, fontSpec, false, colour);
+            const block = TextBlock.create(
+              word,
+              fontSpec,
+              false,
+              colour,
+              underline,
+            );
 
             if (block.width < line.availableWidth()) {
               line.append(block);
@@ -417,7 +434,13 @@ export class Paragraph {
                 result.push(line);
 
                 line.append(
-                  TextBlock.create(word.trim(), fontSpec, false, colour),
+                  TextBlock.create(
+                    word.trim(),
+                    fontSpec,
+                    false,
+                    colour,
+                    underline,
+                  ),
                 );
               } else {
                 tokens = [];
