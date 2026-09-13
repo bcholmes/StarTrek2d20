@@ -74,4 +74,17 @@ describe('Roll20 export known divergences', () => {
     expect(attribNames).toEqual(expect.arrayContaining(['ship_communcation']));
     expect(attribNames).not.toContain('ship_communications');
   });
+
+  test('exports "None" for talents with no requirement', () => {
+    const result: any = Roll20VttExporter.instance.exportCharacter(
+      makePopulatedMainCharacter(2),
+    );
+    const requirements = result.character.attribs
+      .filter((a: { name: string }) => a.name.endsWith('_requirements'))
+      .map((a: { current: string }) => a.current);
+    expect(requirements.filter((r: string) => r === 'None')).toHaveLength(3);
+    expect(requirements.some((r: string) => r.length > 0 && r !== 'None')).toBe(
+      true,
+    );
+  });
 });
