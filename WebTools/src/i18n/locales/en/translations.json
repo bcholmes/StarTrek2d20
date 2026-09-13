@@ -264,6 +264,8 @@
 
     "FinishPage.job.example": "e.g. Junior Engineer",
 
+    "FinishPage.descriptionInstruction": "Use this field to describe your character in more detail: \n\n- What's their personality? \n- What does the character look like?\n- What are their goals and aspirations?\n- What's their relationship to their colleagues?",
+
     "GeneralEditView.instruction": "The general edit function is intended for changes to characters based on the availability of new sourcebooks (for example, given the new _Species Sourcebook_, a player might build the character differently), or, with the GM's permission, tweaking some of the choices made during initial character creation. We treat these changes not as incremental changes, but instead as retroactive changes.",
 
     "GeneralEditView.speciesAbility.available": "This character was created before a species ability was defined for this species. Would you like to add the species ability now?",

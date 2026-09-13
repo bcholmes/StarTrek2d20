@@ -18,6 +18,10 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       onClose={() => onClose()}
       header="What's New?"
     >
+      <b>v1.260913</b>
+      <ul>
+        <li>Additional work on description fields for characters.</li>
+      </ul>
       <b>v1.260912</b>
       <ul>
         <li>
@@ -233,32 +237,6 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       <b>v1.260315</b>
       <ul>
         <li>Additional enhancements to station creation.</li>
-      </ul>
-      <b>v1.260312</b>
-      <ul>
-        <li>Bug fixes.</li>
-      </ul>
-      <b>v1.260311</b>
-      <ul>
-        <li>A few improvements/fixes to station creation.</li>
-        <li>
-          I neglected to mention that I also threw in 2nd Edition support for
-          the
-          <cite>Alpha</cite> and <cite>Beta Quadrant</cite> 2nd Edition updates.
-        </li>
-      </ul>
-      <b>v1.260309</b>
-      <ul>
-        <li>Station creation!</li>
-        <li>More bug fixes.</li>
-      </ul>
-      <b>v1.260217</b>
-      <ul>
-        <li>
-          Some initial work supporting the{' '}
-          <cite>23rd Centry Campaign Guide</cite>.
-        </li>
-        <li>Some bug fixes.</li>
       </ul>
 
       <div className="text-center">

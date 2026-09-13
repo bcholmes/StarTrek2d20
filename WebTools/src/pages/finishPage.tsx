@@ -22,6 +22,7 @@ import {
   setCharacterAdditionalTraits,
   setCharacterAssignedShip,
   setCharacterAssignment,
+  setCharacterDescription,
   setCharacterHouse,
   setCharacterLineage,
   setCharacterName,
@@ -34,6 +35,8 @@ import { PageIdentity } from './pageIdentity';
 import ReactMarkdown from 'react-markdown';
 import { LoadingButton } from '../common/loadingButton';
 import { saveCharacterToLocalStorage } from '../state/savedConstructActions';
+import { STAMarkdown } from '../components/staMarkdown';
+import { RichTextEditor } from '../components/richTextEditor';
 
 interface IFinishPageProperties {
   character: Character;
@@ -49,6 +52,10 @@ const FinishPageBase: React.FC<IFinishPageProperties> = ({ character }) => {
 
   const roleList = RolesHelper.instance.getRoles(character);
   const rankList = RanksHelper.instance().getSortedRanks(character, false);
+
+  const [showAdvanced, setShowAdvanced] = useState<boolean>(
+    character.description?.length ? true : false,
+  );
 
   useEffect(() => {
     if (character.role == null && !character.jobAssignment) {
@@ -69,6 +76,10 @@ const FinishPageBase: React.FC<IFinishPageProperties> = ({ character }) => {
       }
     }
   }, [currentRole, character, roleList, rankList]);
+
+  const onDescriptionChanged = (value: string) => {
+    store.dispatch(setCharacterDescription(value));
+  };
 
   const showViewPage = () => {
     setTimeout(() => {
@@ -521,6 +532,34 @@ const FinishPageBase: React.FC<IFinishPageProperties> = ({ character }) => {
         </div>
         {renderAssignment(roleList)}
         <AllCharacterValues />
+
+        <div className="row mb-4">
+          {showAdvanced ? (
+            <div className="col-12 mt-4">
+              <Header level={2} className="mb-3">
+                {t('Construct.other.description')}
+              </Header>
+              <STAMarkdown>
+                {t('FinishPage.descriptionInstruction')}
+              </STAMarkdown>
+              <RichTextEditor
+                onChange={onDescriptionChanged}
+                initialText={character.description}
+              />
+            </div>
+          ) : (
+            <div className="col-12 mt-4 text-end">
+              <Button
+                variant="link"
+                className="text-secondary px-0"
+                onClick={() => setShowAdvanced(!showAdvanced)}
+              >
+                {t('Common.button.advanced')}
+              </Button>
+            </div>
+          )}
+        </div>
+
         <div className="button-container mb-5">
           <LoadingButton
             loading={loadingExport}

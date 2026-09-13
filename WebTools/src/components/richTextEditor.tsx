@@ -32,7 +32,7 @@ export const RichTextEditor: React.FC<IRichTextEditorProperties> = ({
           ),
         }),
       ]}
-      onBlur={(e) => onChange(text)}
+      onBlur={(e) => onChange(text.replace(/&#x20;/g, ' '))}
       onChange={(markdown) => setText(markdown)}
     />
   );

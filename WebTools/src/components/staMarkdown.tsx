@@ -14,7 +14,18 @@ export const STAMarkdown: React.FC<ISTAMarkdown> = ({
   return (
     <Markdown
       rehypePlugins={[rehypeRaw]}
-      allowedElements={['p', 'strong', 'u', 'em', 'i', 'b']}
+      allowedElements={[
+        'p',
+        'strong',
+        'u',
+        'em',
+        'i',
+        'b',
+        'ul',
+        'ol',
+        'li',
+        'br',
+      ]}
       className={className}
     >
       {children}
