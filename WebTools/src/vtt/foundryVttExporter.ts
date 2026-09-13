@@ -22,7 +22,7 @@ import { allSystems, System } from '../helpers/systems';
 import { Spaceframe } from '../helpers/spaceframeEnum';
 import { Species } from '../helpers/speciesEnum';
 import { EquipmentModel } from '../helpers/equipment';
-import type { Construct } from '../common/construct';
+
 import { CareerEventsHelper } from '../helpers/careerEvents';
 import { CareersHelper } from '../helpers/careers';
 import { CharacterTypeModel } from '../common/characterType';
@@ -40,6 +40,7 @@ import {
   splitToParagraphs,
 } from './vttShared';
 import { TalentCategory } from '../helpers/talentCategory';
+import type { TalentCategorization } from '../helpers/talentCategory';
 import { ShipBuildType } from '../common/shipBuildType';
 import { isKlingonWarriorType } from '../helpers/klingonWarrior';
 
@@ -48,6 +49,38 @@ const DEFAULT_EQUIPMENT_ICON =
   'systems/sta/assets/icons/voyagercombadgeicon.svg';
 
 const SYSTEM_VERSION = '2.4.2';
+
+const DEFAULT_OWNERSHIP = {
+  default: 0,
+  xuN9JpdcyRd60ZEJ: 3,
+};
+
+interface VesselExportInfo {
+  name?: string;
+  crewSupport: number;
+  departments: number[];
+  systems: number[];
+  power: number | undefined;
+  resistance: number;
+  scale: number;
+  shields: number | undefined;
+  rankedTalents: SelectedTalent[];
+  determineWeapons(): Weapon[];
+  version: number;
+}
+
+interface VesselExportTemplate {
+  defaultName: string;
+  exportType: string;
+  img: string;
+  designation: string;
+  missionprofile: string;
+  refit: string;
+  servicedate: string | number;
+  spaceframe: string;
+  traits: string[] | string;
+  skipCapture: boolean;
+}
 
 export class FoundryVttExporter {
   private static singleton: FoundryVttExporter;
@@ -60,244 +93,62 @@ export class FoundryVttExporter {
   }
 
   exportStarship(starship: Starship, type: FoundryPluginType) {
-    const now = Date.now();
-
-    const result = {
-      name: starship.name || 'Unnamed Starship',
-      type:
-        type === FoundryPluginType.Standard && starship.isSmallCraft
-          ? 'smallcraft'
-          : 'starship',
-      img: this.determineStarshipIcon(starship),
-      system: {
-        notes: '',
-        crew: {
-          value: starship.crewSupport,
-          max: starship.crewSupport,
-        },
-        departments: {},
+    return this.exportVessel(
+      starship,
+      {
+        defaultName: 'Unnamed Starship',
+        exportType:
+          type === FoundryPluginType.Standard && starship.isSmallCraft
+            ? 'smallcraft'
+            : 'starship',
+        img: this.determineStarshipIcon(starship),
         designation: starship.registry ?? '',
         missionprofile: starship.missionProfileStep?.type?.localizedName ?? '',
-        power: {
-          value: starship.power,
-          max: starship.power,
-        },
         refit: starship.refitsAsString(),
-        resistance: starship.resistance,
-        scale: starship.scale,
-        shields: {
-          value: starship.shields,
-          max: starship.shields,
-        },
         servicedate: starship.serviceYear ?? '',
         spaceframe: starship.className ?? '',
-        systems: {},
         traits: starship.getAllTraits(),
+        skipCapture: true,
       },
-      items: [],
-      effects: [],
-      flags: {
-        exportSource: {
-          world: 'sta-bcholmes-org',
-          system: 'sta',
-          coreVersion: '10.291',
-          systemVersion: SYSTEM_VERSION,
-        },
-      },
-      _stats: {
-        systemId: 'sta',
-        systemVersion: SYSTEM_VERSION,
-        coreVersion: '10.291',
-        createdTime: now,
-        modifiedTime: now,
-        lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-      },
-    };
-
-    DepartmentsHelper.instance.getDepartments().forEach((d) => {
-      const name = departmentName(d);
-      result.system.departments[name] = {
-        label: 'sta.actor.starship.department.' + name,
-        value: '' + starship.departments[d],
-        selected: false,
-      };
-    });
-
-    allSystems().forEach((s) => {
-      let name = System[s].toLowerCase();
-      if (s === System.Comms) {
-        name = 'communications';
-      } else if (s === System.Computer) {
-        name = 'computers';
-      }
-      result.system.systems[name] = {
-        label: 'sta.actor.starship.system.' + name,
-        value: '' + starship.systems[s],
-        selected: false,
-      };
-    });
-
-    Object.values(starship.rankedTalents).forEach((t) => {
-      result.items.push({
-        name: t.displayNameWithMultiple,
-        type: 'talent',
-        img: this.determineTalentIcon(t.talentModel),
-        system: {
-          description: this.convertDescription(t, starship),
-          talenttype: {
-            typeenum: 'general',
-            description: '',
-            minimum: 0,
-          },
-        },
-        effects: [],
-        flags: {},
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
-        folder: null,
-        sort: 0,
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-      });
-    });
-
-    starship.determineWeapons().forEach((w) => {
-      if (w.type !== WeaponType.CAPTURE) {
-        result.items.push({
-          name: w.name,
-          type: 'starshipweapon',
-          img: this.determineStarshipWeaponIcon(w),
-          effects: [],
-          folder: null,
-          sort: 0,
-          system: {
-            description: '',
-            damage: w.dice,
-            range: w.range != null ? WeaponRange[w.range].toLowerCase() : null,
-            qualities: {
-              area: w.isQualityPresent(Quality.Area),
-              spread: false,
-              dampening: w.isQualityPresent(Quality.Dampening),
-              calibration: w.isQualityPresent(Quality.Calibration),
-              devastating: w.isQualityPresent(Quality.Devastating),
-              highyield: w.isQualityPresent(Quality.HighYield),
-              persistentx: w.isQualityPresent(Quality.PersistentX)
-                ? starship.scale
-                : 0,
-              piercingx: w.getRankForQuality(Quality.Piercing),
-              viciousx: w.getRankForQuality(Quality.Vicious),
-              hiddenx: w.getRankForQuality(Quality.Hidden),
-              versatilex: w.getRankForQuality(Quality.Versatile),
-            },
-            opportunity: null,
-            escalation: null,
-          },
-          ownership: {
-            default: 0,
-            xuN9JpdcyRd60ZEJ: 3,
-          },
-          _stats: {
-            systemId: 'sta',
-            systemVersion: SYSTEM_VERSION,
-            coreVersion: '10.291',
-            createdTime: now,
-            modifiedTime: now,
-            lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-          },
-        });
-        if (type === FoundryPluginType.Standard && starship.version > 1) {
-          result.items.push({
-            name: w.name,
-            type: 'starshipweapon2e',
-            sort: 1000,
-            img: this.determineStarshipWeaponIcon(w),
-            system: {
-              damage: w.dice,
-              range:
-                w.range != null ? WeaponRange[w.range].toLowerCase() : null,
-              includescale:
-                w.type === WeaponType.TORPEDO ? 'torpedo' : 'energy',
-              description: '',
-              opportunity: 0,
-              escalation: 0,
-              qualities: {
-                energy: w.type === WeaponType.ENERGY,
-                torpedo: w.type === WeaponType.TORPEDO,
-                area: w.isQualityPresent(Quality.Area),
-                calibration: w.isQualityPresent(Quality.Calibration),
-                cumbersome: w.isQualityPresent(Quality.Cumbersome),
-                dampening: w.isQualityPresent(Quality.Dampening),
-                depleting: w.isQualityPresent(Quality.Depleting),
-                devastating: w.isQualityPresent(Quality.Devastating),
-                highyield: w.isQualityPresent(Quality.HighYield),
-                intense: w.isQualityPresent(Quality.Intense),
-                jamming: w.isQualityPresent(Quality.Jamming),
-                persistent: w.isQualityPresent(Quality.PersistentX),
-                piercing: w.isQualityPresent(Quality.Piercing),
-                slowing: w.isQualityPresent(Quality.Slowing),
-                spread: w.isQualityPresent(Quality.Spread),
-                hiddenx: 0,
-                versatilex: 0,
-              },
-            },
-            effects: [],
-            folder: null,
-            flags: {},
-            _stats: {
-              coreVersion: '13.346',
-              systemId: 'sta',
-              systemVersion: SYSTEM_VERSION,
-              createdTime: 1775998532666,
-              modifiedTime: 1775998603845,
-              lastModifiedBy: 'aodUFbctO5o4nV3h',
-            },
-          });
-        }
-      }
-    });
-
-    return result;
+      type,
+    );
   }
 
-  exportStation(station: Station, type: FoundryPluginType) {
+  private exportVessel(
+    vessel: VesselExportInfo,
+    template: VesselExportTemplate,
+    type: FoundryPluginType,
+  ) {
     const now = Date.now();
 
     const result = {
-      name: station.name || 'Unnamed Station',
-      type: 'starship',
-      img: 'systems/sta/assets/icons/VoyagerCombadgeIcon.png',
+      name: vessel.name || template.defaultName,
+      type: template.exportType,
+      img: template.img,
       system: {
         notes: '',
         crew: {
-          value: station.crewSupport,
-          max: station.crewSupport,
+          value: vessel.crewSupport,
+          max: vessel.crewSupport,
         },
         departments: {},
-        designation: station.name || 'Unnamed Station',
-        missionprofile: station.missionProfileStep?.model?.localizedName ?? '',
+        designation: template.designation,
+        missionprofile: template.missionprofile,
         power: {
-          value: station.power,
-          max: station.power,
+          value: vessel.power,
+          max: vessel.power,
         },
-        refit: '',
-        resistance: station.resistance,
-        scale: station.scale,
+        refit: template.refit,
+        resistance: vessel.resistance,
+        scale: vessel.scale,
         shields: {
-          value: station.shields,
-          max: station.shields,
+          value: vessel.shields,
+          max: vessel.shields,
         },
-        servicedate: '',
-        spaceframe: '',
+        servicedate: template.servicedate,
+        spaceframe: template.spaceframe,
         systems: {},
-        traits: station.allTraitsAsString ?? '',
+        traits: template.traits,
       },
       items: [],
       effects: [],
@@ -309,21 +160,14 @@ export class FoundryVttExporter {
           systemVersion: SYSTEM_VERSION,
         },
       },
-      _stats: {
-        systemId: 'sta',
-        systemVersion: SYSTEM_VERSION,
-        coreVersion: '10.291',
-        createdTime: now,
-        modifiedTime: now,
-        lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-      },
+      _stats: this.buildStats(now),
     };
 
     DepartmentsHelper.instance.getDepartments().forEach((d) => {
       const name = departmentName(d);
       result.system.departments[name] = {
         label: 'sta.actor.starship.department.' + name,
-        value: '' + station.departments[d],
+        value: '' + vessel.departments[d],
         selected: false,
       };
     });
@@ -337,44 +181,33 @@ export class FoundryVttExporter {
       }
       result.system.systems[name] = {
         label: 'sta.actor.starship.system.' + name,
-        value: '' + station.systems[s],
+        value: '' + vessel.systems[s],
         selected: false,
       };
     });
 
-    Object.values(station.rankedTalents).forEach((t) => {
-      result.items.push({
-        name: t.displayNameWithMultiple,
-        type: 'talent',
-        img: this.determineTalentIcon(t.talentModel),
-        system: {
-          description: this.convertDescription(t, station),
-          talenttype: {
-            typeenum: 'general',
-            description: '',
-            minimum: 0,
+    vessel.rankedTalents.forEach((t) => {
+      result.items.push(
+        this.buildTalentItem(
+          t.displayNameWithMultiple,
+          this.determineTalentIcon(t.talentModel),
+          {
+            description: this.convertDescription(t, vessel.version),
+            talenttype: {
+              typeenum: 'general',
+              description: '',
+              minimum: 0,
+            },
           },
-        },
-        effects: [],
-        flags: {},
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
-        folder: null,
-        sort: 0,
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-      });
+          now,
+        ),
+      );
     });
 
-    station.determineWeapons().forEach((w) => {
+    vessel.determineWeapons().forEach((w) => {
+      if (template.skipCapture && w.type === WeaponType.CAPTURE) {
+        return;
+      }
       result.items.push({
         name: w.name,
         type: 'starshipweapon',
@@ -394,7 +227,7 @@ export class FoundryVttExporter {
             devastating: w.isQualityPresent(Quality.Devastating),
             highyield: w.isQualityPresent(Quality.HighYield),
             persistentx: w.isQualityPresent(Quality.PersistentX)
-              ? station.scale
+              ? vessel.scale
               : 0,
             piercingx: w.getRankForQuality(Quality.Piercing),
             viciousx: w.getRankForQuality(Quality.Vicious),
@@ -404,20 +237,10 @@ export class FoundryVttExporter {
           opportunity: null,
           escalation: null,
         },
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
+        ownership: DEFAULT_OWNERSHIP,
+        _stats: this.buildStats(now),
       });
-      if (type === FoundryPluginType.Standard && station.version > 1) {
+      if (type === FoundryPluginType.Standard && vessel.version > 1) {
         result.items.push({
           name: w.name,
           type: 'starshipweapon2e',
@@ -466,6 +289,86 @@ export class FoundryVttExporter {
     });
 
     return result;
+  }
+
+  private buildStats(now: number) {
+    return {
+      systemId: 'sta',
+      systemVersion: SYSTEM_VERSION,
+      coreVersion: '10.291',
+      createdTime: now,
+      modifiedTime: now,
+      lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
+    };
+  }
+
+  private buildFoundryItem(
+    name: string,
+    type: string,
+    img: string,
+    system: object,
+    now: number,
+    ownership: Record<string, number> = DEFAULT_OWNERSHIP,
+    stats: object = this.buildStats(now),
+  ) {
+    return {
+      name,
+      type,
+      img,
+      system,
+      effects: [],
+      folder: null,
+      sort: 0,
+      ownership,
+      flags: {},
+      _stats: stats,
+    };
+  }
+
+  private buildTalentItem(
+    name: string,
+    img: string,
+    system: {
+      description: string | TalentCategorization;
+      talenttype: {
+        typeenum: string;
+        description: string | TalentCategorization;
+        minimum: number;
+      };
+    },
+    now: number,
+  ) {
+    return {
+      name,
+      type: 'talent',
+      img,
+      system,
+      effects: [],
+      flags: {},
+      _stats: this.buildStats(now),
+      folder: null,
+      sort: 0,
+      ownership: DEFAULT_OWNERSHIP,
+    };
+  }
+
+  exportStation(station: Station, type: FoundryPluginType) {
+    return this.exportVessel(
+      station,
+      {
+        defaultName: 'Unnamed Station',
+        exportType: 'starship',
+        img: 'systems/sta/assets/icons/VoyagerCombadgeIcon.png',
+        designation: station.name || 'Unnamed Station',
+        missionprofile: station.missionProfileStep?.model?.localizedName ?? '',
+        refit: '',
+        servicedate: '',
+        spaceframe: '',
+        traits: station.allTraitsAsString ?? '',
+        skipCapture: false,
+      },
+      type,
+    );
   }
 
   determineStarshipIcon(starship: Starship) {
@@ -684,126 +587,86 @@ export class FoundryVttExporter {
     }
 
     character.values?.forEach((v) => {
-      result.items.push({
-        name: v,
-        type: 'value',
-        img: this.determineValueIcon(v),
-        system: {
-          description: '',
-          used: false,
-        },
-        effects: [],
-        folder: null,
-        sort: 0,
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-        flags: {},
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
-      });
+      result.items.push(
+        this.buildFoundryItem(
+          v,
+          'value',
+          this.determineValueIcon(v),
+          {
+            description: '',
+            used: false,
+          },
+          now,
+        ),
+      );
     });
 
     character.focuses?.forEach((f) => {
-      result.items.push({
-        name: f,
-        type: 'focus',
-        img: this.determineFocusIcon(f),
-        system: {
-          description: '',
-        },
-        effects: [],
-        folder: null,
-        sort: 0,
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-        flags: {},
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
-      });
+      result.items.push(
+        this.buildFoundryItem(
+          f,
+          'focus',
+          this.determineFocusIcon(f),
+          {
+            description: '',
+          },
+          now,
+        ),
+      );
     });
 
     if (type === FoundryPluginType.Standard) {
       character.traits?.forEach((t) => {
-        result.items.push({
-          name: t,
-          type: 'trait',
-          img: 'systems/sta/assets/icons/VoyagerCombadgeIcon.png',
-          system: {
-            description: '',
-            quantity: 1,
-          },
-          effects: [],
-          folder: null,
-          sort: 0,
-          ownership: {
-            default: 0,
-            a6BIWTTe2ysAI7Jm: 3,
-          },
-          flags: {},
-          _stats: {
-            compendiumSource: null,
-            duplicateSource: null,
-            coreVersion: '13.336',
-            systemId: 'sta',
-            systemVersion: SYSTEM_VERSION,
-            createdTime: now,
-            modifiedTime: now,
-            lastModifiedBy: 'a6BIWTTe2ysAI7Jm',
-            exportSource: null,
-          },
-        });
+        result.items.push(
+          this.buildFoundryItem(
+            t,
+            'trait',
+            'systems/sta/assets/icons/VoyagerCombadgeIcon.png',
+            {
+              description: '',
+              quantity: 1,
+            },
+            now,
+            {
+              default: 0,
+              a6BIWTTe2ysAI7Jm: 3,
+            },
+            {
+              compendiumSource: null,
+              duplicateSource: null,
+              coreVersion: '13.336',
+              systemId: 'sta',
+              systemVersion: SYSTEM_VERSION,
+              createdTime: now,
+              modifiedTime: now,
+              lastModifiedBy: 'a6BIWTTe2ysAI7Jm',
+              exportSource: null,
+            },
+          ),
+        );
       });
     }
 
     character.equipmentAndImplants?.forEach((e) => {
-      const item = {
-        name: e.name,
-        type: e instanceof EquipmentModel && e.isArmour ? 'armor' : 'item',
-        img: this.determineItemIcon(e.name),
-        system: {
-          description: '',
-          quantity: 1,
-          opportunity: 0,
-          escalation: 0,
-        },
-        effects: [],
-        folder: null,
-        sort: 0,
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-        flags: {},
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
+      const isArmour = e instanceof EquipmentModel && e.isArmour;
+      const system: Record<string, unknown> = {
+        description: '',
+        quantity: 1,
+        opportunity: 0,
+        escalation: 0,
       };
-
-      if (item.type === 'armor') {
-        item.system['protection'] = 1;
+      if (isArmour) {
+        system['protection'] = 1;
       }
-      result.items.push(item);
+      result.items.push(
+        this.buildFoundryItem(
+          e.name,
+          isArmour ? 'armor' : 'item',
+          this.determineItemIcon(e.name),
+          system,
+          now,
+        ),
+      );
     });
 
     if (character.role != null) {
@@ -812,35 +675,21 @@ export class FoundryVttExporter {
         character.type,
       );
       if (role) {
-        result.items.push({
-          name: role.name,
-          type: 'talent',
-          img: this.determineRoleIcon(role),
-          system: {
-            description: '<p>' + role.description + '</p>',
-            talenttype: {
-              typeenum: 'general',
-              description: '',
-              minimum: 0,
+        result.items.push(
+          this.buildTalentItem(
+            role.name,
+            this.determineRoleIcon(role),
+            {
+              description: '<p>' + role.description + '</p>',
+              talenttype: {
+                typeenum: 'general',
+                description: '',
+                minimum: 0,
+              },
             },
-          },
-          effects: [],
-          flags: {},
-          _stats: {
-            systemId: 'sta',
-            systemVersion: SYSTEM_VERSION,
-            coreVersion: '10.291',
-            createdTime: now,
-            modifiedTime: now,
-            lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-          },
-          folder: null,
-          sort: 0,
-          ownership: {
-            default: 0,
-            xuN9JpdcyRd60ZEJ: 3,
-          },
-        });
+            now,
+          ),
+        );
       }
     }
 
@@ -848,69 +697,41 @@ export class FoundryVttExporter {
     talents.forEach((s) => {
       const talent = s.talentModel;
       if (talent) {
-        result.items.push({
-          name: s.displayNameWithMultiple,
-          type: 'talent',
-          img: this.determineTalentIcon(talent),
-          system: {
-            description: this.convertDescription(s, character),
-            talenttype: {
-              typeenum: this.determineTalentType(talent),
-              description: this.determineTalentRequirement(talent),
-              minimum: 0,
+        result.items.push(
+          this.buildTalentItem(
+            s.displayNameWithMultiple,
+            this.determineTalentIcon(talent),
+            {
+              description: this.convertDescription(s, character.version),
+              talenttype: {
+                typeenum: this.determineTalentType(talent),
+                description: this.determineTalentRequirement(talent),
+                minimum: 0,
+              },
             },
-          },
-          effects: [],
-          flags: {},
-          _stats: {
-            systemId: 'sta',
-            systemVersion: SYSTEM_VERSION,
-            coreVersion: '10.291',
-            createdTime: now,
-            modifiedTime: now,
-            lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-          },
-          folder: null,
-          sort: 0,
-          ownership: {
-            default: 0,
-            xuN9JpdcyRd60ZEJ: 3,
-          },
-        });
+            now,
+          ),
+        );
       }
     });
 
     if (character.speciesStep?.ability) {
       const ability = character.speciesStep?.ability;
-      result.items.push({
-        name: ability.name + ' (Species Ability)',
-        type: 'talent',
-        img: this.determineTalentIcon(ability),
-        system: {
-          description: this.convertDescription(ability, character),
-          talenttype: {
-            typeenum: 'Species',
-            description: '',
-            minimum: 0,
+      result.items.push(
+        this.buildTalentItem(
+          ability.name + ' (Species Ability)',
+          this.determineTalentIcon(ability),
+          {
+            description: this.convertDescription(ability, character.version),
+            talenttype: {
+              typeenum: 'Species',
+              description: '',
+              minimum: 0,
+            },
           },
-        },
-        effects: [],
-        flags: {},
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
-        folder: null,
-        sort: 0,
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-      });
+          now,
+        ),
+      );
     }
 
     character.determineWeapons().forEach((w) => {
@@ -956,18 +777,8 @@ export class FoundryVttExporter {
           opportunity: null,
           escalation: null,
         },
-        ownership: {
-          default: 0,
-          xuN9JpdcyRd60ZEJ: 3,
-        },
-        _stats: {
-          systemId: 'sta',
-          systemVersion: SYSTEM_VERSION,
-          coreVersion: '10.291',
-          createdTime: now,
-          modifiedTime: now,
-          lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-        },
+        ownership: DEFAULT_OWNERSHIP,
+        _stats: this.buildStats(now),
       });
     });
 
@@ -1245,15 +1056,12 @@ export class FoundryVttExporter {
     }
   }
 
-  convertDescription(
-    talent: SelectedTalent | SpeciesAbility,
-    construct: Construct,
-  ) {
+  convertDescription(talent: SelectedTalent | SpeciesAbility, version: number) {
     let description = '';
     if (talent instanceof SpeciesAbility) {
       description = (talent as SpeciesAbility).description;
     } else {
-      description = resolveTalentDescription(talent, construct.version, true);
+      description = resolveTalentDescription(talent, version, true);
     }
 
     const prerequisites =
