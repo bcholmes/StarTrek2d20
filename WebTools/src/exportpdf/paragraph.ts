@@ -345,7 +345,7 @@ export class Paragraph {
     let skipSpace = false;
     for (let t = 0; t < tokens.length; t++) {
       const token = tokens[t];
-      if (token === '_' || token === '**') {
+      if (token === '_' || token === '**' || token === '*') {
         skipSpace = true;
         if (options != null) {
           if (fontType !== options.fontType) {
@@ -357,7 +357,7 @@ export class Paragraph {
               fontType = FontType.Bold;
               fontSpec = new FontSpecification(font, options.size);
             }
-          } else if (token === '_') {
+          } else if (token === '_' || token === '*') {
             const font = this.fontLibrary.fontByType(FontType.Italic);
             if (font != null) {
               fontType = FontType.Italic;

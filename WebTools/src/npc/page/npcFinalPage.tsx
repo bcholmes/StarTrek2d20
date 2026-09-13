@@ -16,6 +16,7 @@ import {
   addNpcCharacterWeapon,
   removeNpcCharacterEquipment,
   removeNpcCharacterWeapon,
+  setCharacterDescription,
   setCharacterName,
   setCharacterPronouns,
 } from '../../state/characterActions';
@@ -31,6 +32,7 @@ import type { PersonalWeaponType } from '../../helpers/weapons';
 import { NpcAddWeaponView } from '../view/npcAddWeaponView';
 import { D20IconButton } from '../../solo/component/d20IconButton';
 import { NameGenerator } from '../nameGenerator';
+import { RichTextEditor } from '../../components/richTextEditor';
 
 const NpcFinalPageBase: React.FC<ICharacterProperties> = ({ character }) => {
   const { t } = useTranslation();
@@ -57,6 +59,10 @@ const NpcFinalPageBase: React.FC<ICharacterProperties> = ({ character }) => {
         equipment.type === EquipmentType.Other ? equipment : equipment.type,
       ),
     );
+  };
+
+  const onDescriptionChanged = (value: string) => {
+    store.dispatch(setCharacterDescription(value));
   };
 
   const removeWeapon = (weapon: PersonalWeaponType) => {
@@ -255,6 +261,16 @@ const NpcFinalPageBase: React.FC<ICharacterProperties> = ({ character }) => {
                 </div>
 
                 {renderWeapons()}
+              </div>
+
+              <div className="col-12 mt-4">
+                <Header level={2} className="mb-3">
+                  {t('Construct.other.description')}
+                </Header>
+                <RichTextEditor
+                  onChange={onDescriptionChanged}
+                  initialText={character.description}
+                />
               </div>
             </div>
 

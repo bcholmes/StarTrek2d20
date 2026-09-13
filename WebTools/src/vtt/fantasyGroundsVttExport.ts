@@ -2016,7 +2016,7 @@ export class FantasyGroupsVttExporter {
             parent.elements.push(element);
             parents.push(element);
           }
-        } else if (t === '_') {
+        } else if (t === '_' || t === '*') {
           if (parents.length && parents[parents.length - 1].name === 'i') {
             parents.pop();
           } else {

@@ -18,7 +18,7 @@ export const markupToHtml = (description: string) => {
                 result += '<b>';
                 style = 'b';
               }
-            } else if (p === '_') {
+            } else if (p === '_' || p === '*') {
               if (style === 'i') {
                 result += '</i>';
                 style = '';

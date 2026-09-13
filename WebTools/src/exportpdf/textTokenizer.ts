@@ -15,10 +15,13 @@ export const textTokenizer = (text: string) => {
     indices.push(indexOfToken(text, CHALLENGE_DICE_NOTATION, start));
     indices.push(indexOfToken(text, '_', start));
     indices.push(indexOfToken(text, '**', start));
+    indices.push(indexOfToken(text, '*', start));
+    indices.push(indexOfToken(text, '<u>', start));
+    indices.push(indexOfToken(text, '</u>', start));
 
     indices.sort((a, b) => {
       if (a.index === b.index) {
-        return 0;
+        return b.length - a.length;
       } else if (a.index >= 0 && b.index < 0) {
         return -1;
       } else if (a.index < 0 && b.index >= 0) {

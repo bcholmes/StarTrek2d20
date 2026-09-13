@@ -157,7 +157,6 @@ export const GeneralEditView: React.FC<IGeneralEditViewProperties> = ({
   };
 
   const onDescriptionChanged = (value: string) => {
-    console.log('onDescriptionChanged');
     store.dispatch(setCharacterDescription(value));
   };
 

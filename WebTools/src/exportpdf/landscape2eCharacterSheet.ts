@@ -129,19 +129,37 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   }
 
   async fixedTextColumns(additionalPages: PDFPage[], pdf: PDFDocument) {
-    const logPage2Column2 = new Column(
-      396.1,
-      72.6,
-      479.3,
-      226.5 + 158.1 - 55.6,
-    );
-    const logPage2Column1 = new Column(
-      55.6,
-      72.6,
-      479.3,
-      226.5 + 158.1 - 55.6,
-      logPage2Column2,
-    );
+    const basicColumn1 = new Column(55.6, 72.6, 479.3, 226.5 + 158.1 - 55.6);
+    const basicColumn2 = new Column(396.1, 72.6, 479.3, 226.5 + 158.1 - 55.6);
+
+    const logColumns = [];
+    for (let i = additionalPages.length - 1; i >= 0; i--) {
+      const page =
+        i === additionalPages.length - 1 ? undefined : additionalPages[i + 1];
+      const first = logColumns[0];
+
+      const logPage2Column2 = new Column(
+        basicColumn2.start.x,
+        basicColumn2.start.y,
+        basicColumn2.height,
+        basicColumn2.width,
+        page != null && first != null
+          ? () => {
+              const p = pdf.addPage(page);
+              return new PageArea(first, p);
+            }
+          : undefined,
+      );
+      const logPage2Column1 = new Column(
+        basicColumn1.start.x,
+        basicColumn1.start.y,
+        basicColumn1.height,
+        basicColumn1.width,
+        logPage2Column2,
+      );
+
+      logColumns.unshift(logPage2Column1, logPage2Column2);
+    }
 
     const page2Column4 = new Column(565.8, 72.6, 479.3, 158.1);
     const page2Column3 = new Column(396.1, 72.6, 479.3, 158.1, page2Column4);
@@ -156,7 +174,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     const talentsColumn1 = new Column(51.5, 361, 200, 162, talentsColumn2);
 
     return {
-      logColumns: [logPage2Column1, logPage2Column2],
+      logColumns: logColumns,
       firstColumn: talentsColumn1,
       page2: additionalPages[0],
     };
@@ -173,6 +191,8 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     const blankPdf = await PDFDocument.load(pdfBytes);
 
     const [secondPage] = await pdf.copyPages(blankPdf, [0]);
+    const [thirdPage] = await pdf.copyPages(blankPdf, [0]);
+    const [fourthPage] = await pdf.copyPages(blankPdf, [0]);
 
     const page = pdf.getPage(0);
 
@@ -185,7 +205,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
     this.writeLabels(page, construct as Character);
     const { firstColumn, logColumns, page2 } = await this.fixedTextColumns(
-      [secondPage],
+      [secondPage, thirdPage, fourthPage],
       pdf,
     );
     let nextArea = await this.writeRoleAndTalents(
@@ -223,6 +243,12 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
       ) {
         const newLayoutColumn = logColumns[1];
         nextArea = new PageArea(newLayoutColumn, nextArea.page);
+      } else if (
+        nextArea != null &&
+        Landscape2eCharacterSheet.page2Column4X === nextArea.column.start.x
+      ) {
+        const newLayoutColumn = logColumns[2];
+        nextArea = new PageArea(newLayoutColumn, thirdPage);
       } else if (
         nextArea != null &&
         ![
