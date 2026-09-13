@@ -1503,8 +1503,11 @@ CareerEvent.unofficial.33.description,"The character (or their team) was left be
 - What were the threats the character had to face? How did the character survive on their own?",,,,,," A personagem (ou sua equipe) foi deixada para trás para se virar sozinha.
 
 - Por que a personagem foi deixada para trás? Eles voltaram para buscar a personagem?
-- Quais foram as ameaças que a personagem teve de enfrentar? Como a personagem sobreviveu por conta própria?",
-CareerEvent.unofficial.33.focusDescription,"The character gains a focus, reflecting skills or knowledge they learned during or after the ordeal. Examples include: Botany, Toxicology, or Physics.",,,,,,"A personagem recebe um Foco, refletindo as habilidades ou o conhecimento que aprendeu durante ou após a provação. Exemplos incluem: Botânica, Toxicologia ou Física.",
+- Quais foram as ameaças que a personagem teve de enfrentar? Como a personagem sobreviveu por conta própria?","Postać została sama lub z jej drużyną pozostawiona w sytuacji niebezpieczeństwa.
+
+Dlaczego postać była pozostawiona sama? Czy wrócili po nią?
+Jakie były zagrożenia dla Twojej postaci? Jak przetrwała to niebezpieczeństwo?"
+CareerEvent.unofficial.33.focusDescription,"The character gains a focus, reflecting skills or knowledge they learned during or after the ordeal. Examples include: Botany, Toxicology, or Physics.",,,,,,"A personagem recebe um Foco, refletindo as habilidades ou o conhecimento que aprendeu durante ou após a provação. Exemplos incluem: Botânica, Toxicologia ou Física.","Postać otrzymuje biegłość związaną z umiejętnościami lub wiedzą nabytą podczas tego spotkania. Przykłady to m.in. Botanika, Toksykologia lub Fizyka."
 CareerEvent.unofficial.34.name,Family Crisis,,,Crisis Familiar,,,Crise Familiar,Kryzys rodzinny
 CareerEvent.unofficial.34.description,"A family crisis required the character to intervene.
 
@@ -1512,8 +1515,11 @@ CareerEvent.unofficial.34.description,"A family crisis required the character to
 - How did the character get along with members of his family during the crisis? Are there repercussions from the crisis that still linger?",,,,,,"Uma crise familiar exigiu que a personagem interviesse.
 
 - Qual membro da família estava em crise? Qual era a natureza da aflição?
-- Como a personagem se relacionou com os membros de sua família durante a crise? Há repercussões da crise que ainda perduram?",
-CareerEvent.unofficial.34.focusDescription,"The character gains a focus, reflecting how they dealt with the crisis. Examples include: Caregiving, Dispute Resolution, or Genetics.",,,,,,"A personagem recebe um Foco, refletindo como ela lidou com a crise. Exemplos incluem: Cuidado, Resolução de Disputas ou Genética.",
+- Como a personagem se relacionou com os membros de sua família durante a crise? Há repercussões da crise que ainda perduram?","Sytuacja kryzysowa w rodzinie wymagała interwencji Postaci.
+
+Którego członka rodziny dotyczyła sytuacja? Jaki był charakter kryzysu?
+Jak Twoja postać dogadywała się z innymi członkami rodziny w czasie zdarzenia? Czy są jakieś długotrwałe konsekwencje tej sytuacji?"
+CareerEvent.unofficial.34.focusDescription,"The character gains a focus, reflecting how they dealt with the crisis. Examples include: Caregiving, Dispute Resolution, or Genetics.",,,,,,"A personagem recebe um Foco, refletindo como ela lidou com a crise. Exemplos incluem: Cuidado, Resolução de Disputas ou Genética.","Postać otrzymuje biegłość uzyskaną w czasie rozwiązywania kryzysu. Przykłady to m.in.: Opieka, Rozstrzyganie sporów, Genetyka."
 CareerEvent.unofficial.35.name,Satisfactory Performance,,,Desempeño satisfactorio,,,Desempenho Satisfatório,Pozytywna ocena pracy
 CareerEvent.unofficial.35.description,"The character worked hard to get a satisfactory performance review.
 
@@ -1521,8 +1527,11 @@ CareerEvent.unofficial.35.description,"The character worked hard to get a satisf
 - Who evaluated the character? What praise or criticisms did the character receive?",,,,,,"A personagem trabalhou duro para obter uma avaliação de desempenho satisfatória.
 
 - A personagem apenas se saiu bem ou brilhou? Em que área ele se destacou?
-- Quem avaliou a personagem? Que elogios ou críticas o personagem recebeu?",
-CareerEvent.unofficial.35.focusDescription,"The character gains a focus, reflecting the skills they used to obtain a satisfactory performance review. Examples include: Ethics, Bureaucracy, or Team Dynamics.",,,,,,"A personagem recebe um Foco, refletindo as habilidades usadas para obter uma avaliação de desempenho satisfatória. Exemplos incluem: Ética, Burocracia ou Dinâmicas de Equipe.",
+- Quem avaliou a personagem? Que elogios ou críticas o personagem recebeu?","Postać ciężko zapracowała i zostało to docenione.
+
+Czy Twoja postać uczciła jakoś ten sukces czy przeszła nad nim do porządku dziennego? W jakim obszarze kompetencji odnotowała sukces?
+Kto dokonał oceny postaci? Jakie krytyki lub pochwały otrzymała Twoja postać?"
+CareerEvent.unofficial.35.focusDescription,"The character gains a focus, reflecting the skills they used to obtain a satisfactory performance review. Examples include: Ethics, Bureaucracy, or Team Dynamics.",,,,,,"A personagem recebe um Foco, refletindo as habilidades usadas para obter uma avaliação de desempenho satisfatória. Exemplos incluem: Ética, Burocracia ou Dinâmicas de Equipe.","Postać otrzymuje biegłość związaną z aktywnością, która została doceniona. Przykłady to m.in.: Etyka, Biurokracja czy Dynamika zespołu."
 CareerEvent.unofficial.36.name,Confinement,,,Confinamiento,,,Confinamento,Uwięzienie
 CareerEvent.unofficial.36.description,"The character was confined in a prison, asylum, or trap.
 
@@ -1530,8 +1539,11 @@ CareerEvent.unofficial.36.description,"The character was confined in a prison, a
 - How did the character fare under confinement? Did they escape or were they released?",,,,,,"A personagem foi confinada em uma prisão, asilo ou armadilha.
 
 - Quem capturou a personagem, como, onde e por quê? Foi apenas um encarceramento ou um confinamento ilegal?
-- Como a personagem se saiu no confinamento? Ele escapou ou foi liberto?",
-CareerEvent.unofficial.36.focusDescription,"The character gains a focus, reflecting skills they developed while incarcerated or in the process of escape. Examples include: Escape Techniques, Resilience, or Deception.",,,,,,"A personagem recebe um Foco, refletindo as habilidades que desenvolveu enquanto estava presa ou no processo de fuga. Exemplos incluem: Técnicas de Evasão, Resiliência ou Dissimulação.",
+- Como a personagem se saiu no confinamento? Ele escapou ou foi liberto?","Postać spędziła pewien czas zamknięta w więzieniu, przytułku lub pułapce.
+
+Kto złapał Twoją postać, dlaczego, gdzie i w jakich okolicznościach? Jaki był charakter uwięzienia, czy było to związane z procesem sądowym?
+Jak Twoja postać radziła sobie w izolacji? Uciekła czy została wypuszczona na wolność?"
+CareerEvent.unofficial.36.focusDescription,"The character gains a focus, reflecting skills they developed while incarcerated or in the process of escape. Examples include: Escape Techniques, Resilience, or Deception.",,,,,,"A personagem recebe um Foco, refletindo as habilidades que desenvolveu enquanto estava presa ou no processo de fuga. Exemplos incluem: Técnicas de Evasão, Resiliência ou Dissimulação.","Postać otrzymuje biegłość, którą rozwinęła w związku z uwięzieniem lub uwolnieniem się. Przykłady to m.in.: Techniki ucieczki, Odporność czy Oszustwo."
 CareerEvent.unofficial.37.name,Terraforming Mission,,,Misión de Terraformación,,,Missão de Terraformação,Misja terraformacyjna
 CareerEvent.unofficial.37.description,"The character was part of a terraforming mission, transforming an uninhabitable planet to one that can sustain life.
 
@@ -1539,8 +1551,11 @@ CareerEvent.unofficial.37.description,"The character was part of a terraforming 
 - Who was on the team? What did the character contribute?",,,,,,"A personagem fazia parte de uma missão de terraformação, transformando um planeta inabitável em um que pode sustentar a vida.
 
 - Que planeta estava sendo terraformado? Onde ele estava?
-- Quem estava na equipe? Qual foi a contribuição da personagem?",
-CareerEvent.unofficial.37.focusDescription,"The character gains a focus, reflecting their terraforming specialty. Examples include: Ecology, Oceanography, or Exo-Tectonics.",,,,,,"A personagem recebe um Foco que reflete sua especialidade em terraformação. Exemplos incluem: Ecologia, Oceanografia ou Exo-Tectônica.",
+- Quem estava na equipe? Qual foi a contribuição da personagem?","Postać brała udział w misji terraformacyjnej, przekształcając środowisko planety, aby było możliwe do kolonizacji i podtrzymywania życia.
+
+Która planeta była poddana terraformacji? Gdzie się znajduje?
+Kto jeszcze był w zespole? Jaki był wkład Twojej postaci w misję?"
+CareerEvent.unofficial.37.focusDescription,"The character gains a focus, reflecting their terraforming specialty. Examples include: Ecology, Oceanography, or Exo-Tectonics.",,,,,,"A personagem recebe um Foco que reflete sua especialidade em terraformação. Exemplos incluem: Ecologia, Oceanografia ou Exo-Tectônica.","Postać otrzymuje biegłość związaną z misją terraformacyjną. Przykłady to m.in.: Ekologia, Oceanografia lub Egzotektonika."
 CareerEvent.unofficial.38.name,Leave of Absence,,,Licenciado temporalmente,,,Licença,Urlop
 CareerEvent.unofficial.38.description,"The character had to ask time off from their regular duty to deal with a personal issue or pursue a special project.
 
@@ -1548,8 +1563,11 @@ CareerEvent.unofficial.38.description,"The character had to ask time off from th
 - What did they do while on leave? Why did the character return to their regular duty?",,,,,,"A personagem precisou pedir licença de suas funções regulares para lidar com um problema pessoal ou realizar um projeto especial.
 
 - O que levou a personagem a sair de licença? Por quanto tempo a personagem pediu licença?
-- O que ele fez durante a licença? Por que a personagem retornou ao seu trabalho regular?",
-CareerEvent.unofficial.38.focusDescription,"The character gains a focus, which should reflect what they did on their leave. Examples include: Religion, Politics, or Industry.",,,,,,"A personagem recebe um Foco, que deve refletir o que ela fez em sua licença. Exemplos incluem: Religião, Política ou Indústria.",
+- O que ele fez durante a licença? Por que a personagem retornou ao seu trabalho regular?","Postać musiała poprosić o czasowe zwolnienie ze służby z powodu osobistych spraw lub projektu, który chciała zrealizować.
+
+Dlaczego postać poprosiła o wolne? Jak długo trwała przerwa w służbie?
+Czym zajmowała się postać w czasie wolnym? Dlaczego wróciła do regularnej służby?"
+CareerEvent.unofficial.38.focusDescription,"The character gains a focus, which should reflect what they did on their leave. Examples include: Religion, Politics, or Industry.",,,,,,"A personagem recebe um Foco, que deve refletir o que ela fez em sua licença. Exemplos incluem: Religião, Política ou Indústria.","Postać otrzymuje biegłość związaną z powodem zwolnienia. Przykłady to m.in.: Religia, Polityka lub Przemysł."
 CareerEvent.unofficial.39.name,Media Exposure,,,Exposición en los Medios,,,Exposição na Mídia,Występy medialne
 CareerEvent.unofficial.39.description,"The character was featured in the media, either voluntarily or involuntarily.
 
@@ -1557,8 +1575,11 @@ CareerEvent.unofficial.39.description,"The character was featured in the media, 
 - How has the media exposure affected how colleagues view the character?",,,,,,"A personagem foi destacada na mídia, voluntária ou involuntariamente.
 
 - Por que a mídia se concentrou na personagem? O personagem ganhou fama ou infâmia com a exposição na mídia?
-- Como a exposição na mídia afetou as opiniões dos colegas sobre a personagem?",
-CareerEvent.unofficial.39.focusDescription,"The character gains a focus, which should reflect skills and systems they used during their time in the spotlight. Examples include: Writing, Public Relations, or Communication Systems.",,,,,,"A personagem recebe um Foco, que deve refletir as habilidades e os sistemas que ela usou durante o tempo em que esteve sob os holofotes. Exemplos incluem: Redação, Relações Públicas ou Sistemas de Comunicação.",
+- Como a exposição na mídia afetou as opiniões dos colegas sobre a personagem?","Postać pojawiła się w przekazie medialnym, niezależnie od tego czy było to zaplanowane czy nie.
+
+Dlaczego media skupiły się na Twojej postaci? Czy zyskała pozytywną lub negatywną reputację w związku z tym zdarzeniem?
+W jaki sposób pojawienie się w mediach wpłynęło na postrzeganie Twojej postaci przez jej współpracowników?"
+CareerEvent.unofficial.39.focusDescription,"The character gains a focus, which should reflect skills and systems they used during their time in the spotlight. Examples include: Writing, Public Relations, or Communication Systems.",,,,,,"A personagem recebe um Foco, que deve refletir as habilidades e os sistemas que ela usou durante o tempo em que esteve sob os holofotes. Exemplos incluem: Redação, Relações Públicas ou Sistemas de Comunicação.","Postać otrzymuje biegłość związaną z umiejętnościami, których nabyła podczas zdarzenia. Przykłady to m.in.: Pisanie, PR czy Systemy komunikacyjne."
 CareerEvent.unofficial.40.name,Clandestine Operation,,,Operación clandestina,,,Operação Clandestina,Sekretna misja
 CareerEvent.unofficial.40.description,"The character was recruited for a top secret mission.
 
@@ -1566,8 +1587,11 @@ CareerEvent.unofficial.40.description,"The character was recruited for a top sec
 - What went right or wrong on the mission? What happened after the mission?",,,,,,"A personagem foi recrutada para uma missão ultrassecreta.
 
 - Qual era a missão secreta? Quem ajudou na missão?
-- O que deu certo ou errado na missão? O que aconteceu depois da missão?",
-CareerEvent.unofficial.40.focusDescription,"The character gains a focus, reflecting a skill they developed on the covert mission. Examples include: Cryptography, Explosives, or Espionage.",,,,,,"A personagem recebe um Foco, refletindo uma habilidade que desenvolveu na missão secreta. Os exemplos incluem: Criptografia, Explosivos ou Espionagem.",
+- O que deu certo ou errado na missão? O que aconteceu depois da missão?","Postać została zwerbowana do udziału w tajnej misji.
+
+Co to była za misja? Kto jeszcze brał w niej udział?
+Czy misja się powiodła? Czy były jakieś problemy w trakcie? Jakie były następstwa tej misji?"
+CareerEvent.unofficial.40.focusDescription,"The character gains a focus, reflecting a skill they developed on the covert mission. Examples include: Cryptography, Explosives, or Espionage.",,,,,,"A personagem recebe um Foco, refletindo uma habilidade que desenvolveu na missão secreta. Os exemplos incluem: Criptografia, Explosivos ou Espionagem.","Postać otrzymuje biegłość odzwierciedlającą umiejętności, których nabyła podczas udziału w misji. Przykłady to m.in.: Kryptografia, Pirotechnika czy Szpiegostwo."
 CareerEvent.unofficial.41.name,Fleet Yard Posting,,,Destacamento en Astilleros,,,Destacamento no Estaleiro da Frota,Służba w doku kosmicznym
 CareerEvent.unofficial.41.description,"The character was assigned to a shipyard, such as the Utopia Planitia Fleet Yards, the 40 Eridani A Starfleet Construction Yards, or the San Francisco Fleet Yards.
 
@@ -1575,8 +1599,11 @@ CareerEvent.unofficial.41.description,"The character was assigned to a shipyard,
 - Which ships did they help build or repair?",,,,,," A personagem foi designada para um estaleiro, como o estaleiro da Frota Utopia Planitia, o estaleiro de construção da Frota Estelar 40 Eridani A ou o estaleiro da Frota de São Francisco.
 
 - A personagem estava envolvido com a construção de navios ou tinha outras tarefas?
-- Quais naves ele ajudou a construir ou consertar?",
-CareerEvent.unofficial.41.focusDescription,"The character gains a focus, reflecting a skill they honed while serving at the shipyard. Examples include: Starship Design, Starship Propulsion, or Starship Recognition.",,,,,,"A personagem recebe um Foco, refletindo uma habilidade que aperfeiçoou enquanto servia no estaleiro. Exemplos incluem: Design de Nave Estelar, Propulsão de Nave Estelar ou Reconhecimento de Nave Estelar.",
+- Quais naves ele ajudou a construir ou consertar?","Postać była przydzielona do służby w kosmicznym doku, takim jak np. Stocznie na Utopia Planitia, 40 Eridani A lub San Francisco.
+
+Na czym polegało zaangażowanie postaci w konstukcję okrętów czy może miała jakieś inne zadania?
+Które okręty pomagała budować lub remontować?"
+CareerEvent.unofficial.41.focusDescription,"The character gains a focus, reflecting a skill they honed while serving at the shipyard. Examples include: Starship Design, Starship Propulsion, or Starship Recognition.",,,,,,"A personagem recebe um Foco, refletindo uma habilidade que aperfeiçoou enquanto servia no estaleiro. Exemplos incluem: Design de Nave Estelar, Propulsão de Nave Estelar ou Reconhecimento de Nave Estelar.","Postać otrzymuje biegłość odzwierciedlającą umiejętności, które rozwinęła podczas pracy w stoczni. Przykłady to m.in.: Projektowanie okrętów, Napędy okrętowe lub Rozpoznawanie okrętów."
 CareerEvent.unofficial.42.name,Missing Memories,,,Recuerdos perdidos,,,Memórias Perdidas,Brakujące wspomnienia
 CareerEvent.unofficial.42.description,"The character isn't sure why there are gaps in their memory.
 
@@ -1584,8 +1611,11 @@ CareerEvent.unofficial.42.description,"The character isn't sure why there are ga
 - Did the character ever find out what caused the memory loss? Were they ever able to recover the memories?",,,,,,"A personagem não sabe ao certo por que há lacunas em sua memória.
 
 - Quanto tempo a personagem está perdendo? O que aconteceu antes e depois das lacunas em sua memória?
-- A personagem chegou a descobrir o que causou a perda de memória? Ela conseguiu recuperar as memórias?",
-CareerEvent.unofficial.42.focusDescription,"The character gains a focus, reflecting their attempt to recover their missing memories. Examples include: Research, Psychotherapy, or Neuroscience.",,,,,,"A personagem recebe um Foco que reflete sua tentativa de recuperar as memórias perdidas. Exemplos incluem: Pesquisa, Psicoterapia ou Neurociência.",
+- A personagem chegou a descobrir o que causou a perda de memória? Ela conseguiu recuperar as memórias?","Z nieznanego powodu Twoja postać ma luki w swoich wspomnieniach o przeszłości.
+
+Jak długi okres czasu został zapomniany? Jakie są ostatnie wspomnienia przed tą przerwą i jakie są kolejne tuż po?
+Czy postać dowiedziała się dlaczego straciła pamięć lub miała jakieś wskazówki w tym temacie? Czy jest jakaś nadzieja na to, że wspomnienia wrócą?"
+CareerEvent.unofficial.42.focusDescription,"The character gains a focus, reflecting their attempt to recover their missing memories. Examples include: Research, Psychotherapy, or Neuroscience.",,,,,,"A personagem recebe um Foco que reflete sua tentativa de recuperar as memórias perdidas. Exemplos incluem: Pesquisa, Psicoterapia ou Neurociência.","Postać otrzymuje biegłość odzwierciedlającą jej próby przywrócenia brakujących wspomnień. Przykłady obejmują: Badania, Psychoterapię lub Neuronauki."
 CareerEvent.unofficial.43.name,Teaching Opportunity,,,Oportunidad para Enseñar,,,Oportunidade de Lecionar,Praca jako nauczyciel
 CareerEvent.unofficial.43.description,"The character received an opportunity to teach or coach publicly or privately, at a school, a conference, or elsewhere.
 
@@ -2124,33 +2154,33 @@ HairType.stylishHair,Stylish Short,,,Corte Moderno,,,Curto Estiloso,Krótkie i s
 HairType.sidePart,Side Part,,,Hacia un Lado,,,Parte Lateral,Boczny przedział
 HairType.shortAfro,Short Curly,,,Rizado Corto,,,Cacheado Curto,Krótkie kręcone
 HairType.veryShortAfro,Very Short Curly,,,Rizado muy corto,,,Cacheado Bem Curto,Bardzo krótkie kręcone
-HairType.pulledBackPonyTail,Pulled Back Pony Tail,,,Coleta,,,Rabo de Cavalo Puxado Para Trás,
+HairType.pulledBackPonyTail,Pulled Back Pony Tail,,,Coleta,,,Rabo de Cavalo Puxado Para Trás,Gładko zaczesany kucyk
 HairType.balding,Balding,,,Calvicie,,,Careca,Łysiejące
 HairType.receding,Receding,,,Con Entradas,,,Com Entradas,Rzedniejące
 HairType.deLeve,"The ""de Leve""-Style Shave",,,Afeitado leve,,,"Barba estilo ""de Leve""","Fryzura na ""de Leve"""
 HairType.mediumLengthFemaleSidePart,Medium Length Side Part,,,Media Melena Hacia un Lado,,,Parte Lateral de Comprimento Médio,Boczny przedział średniej długości
 HairType.mediumMaleCenterPart,Medium Length Center Part,,,Media Melena con Raya al Medio,,,Parte Central de Comprimento Médio,Środkowy przedział średniej długości
 HairType.mediumLengthFemaleStraight,Medium Length Straight,,,Media Melena Recta,,,Comprimento Médio Direto,Średniej długości proste
-HairType.chinLengthCombBack,Chin Length Straight Comb Back,,,Media Melena Recta Hacia Atrás,,,Penteado Reto Para Trás Na Altura da Nuca,
+HairType.chinLengthCombBack,Chin Length Straight Comb Back,,,Media Melena Recta Hacia Atrás,,,Penteado Reto Para Trás Na Altura da Nuca,Zaczesane do tyłu proste włosy do długości brody
 HairType.shavedSides,Shaved Sides,,,Laterales Rapados,,,Laterais Raspadas,Wygolone boki
-HairType.shortTeasedOverEyeStyle,"Short, Teased, Over-Eye",,,"Corto, Cardado, Encima de los Ojos",,,"Curto, Repicado, Acima dos Olhos",
+HairType.shortTeasedOverEyeStyle,"Short, Teased, Over-Eye",,,"Corto, Cardado, Encima de los Ojos",,,"Curto, Repicado, Acima dos Olhos","Krótkie, rozczesane ponad okiem"
 HairType.feminineDreadStyle,Feminine Dread Style,,,Estilo Dread Femenino,,,Estilo Dread Feminino,Żeńskie dredy
 HairType.shoulderLengthMostlyStraight,Shoulder Length Mostly Straight,,,Recto por Encima de los Hombros,,,"Na Maior Parte Reta, Na Altura dos Ombros",Raczej proste do ramion
 HairType.shoulderLengthBob,Shoulder Length Bob,,,A la Altura de los Hombros,,,Na Altura Dos ombros,Bob do ramion
-HairType.tousledSidePart,Tousled Side Part,,,Parte Lateral Despeinada,,,Parte Lateral Desgrenhada,
-HairType.cornRows,Corn Rows,,,Trenzas Africanas,,,Trançado,
+HairType.tousledSidePart,Tousled Side Part,,,Parte Lateral Despeinada,,,Parte Lateral Desgrenhada,Rozczochrana z przedziałem na bok
+HairType.cornRows,Corn Rows,,,Trenzas Africanas,,,Trançado,Warkoczyki przy skórze
 HairType.highForeheadEfrosianStyle,Efrosian-style Mane,,,Melena Efrosiana,,,Crina Estilo Efrosiano,Efrozjańska grzywa
-HairType.pinnedUpHairWithPart,Pinned Up Hair with Part,,,Recogido con Pinzas,,,Cabelo Preso e Repartido,
-HeadType.averageAngular,"Average, Angular",,"Gewöhnlich, kantig","Normal, Angular",,,"Média, Angular",
-HeadType.squareJawed,Square Jawed,,Quadratischer Kiefer,Mandíbula Cuadrada,,,Mandíbula Quadrada,
-HeadType.roundedNarrow,"Rounded, Narrow",,"Abgerundet, schmal","Redondeada, Estrecha",,,"Arredondado, Estreito",
-HeadType.roundedAverage,"Rounded, Average",,"Abgerundet, gewöhnlich","Redondeada, Normal",,,"Arredondado, Médio",
-HeadType.softerNarrow,"Softer, Narrow Jaw",,"Weicherer, schmaler Kiefer","Suave, Mandíbula Estrecha",,,Mandíbula Mais Suave e Estreita,
-HeadType.pointedDelicate,"Pointed, Delicate Jaw",,"Spitzer, zarter Kiefer","Puntiaguda, Mandíbula Delicada",,,Mandíbula Pontiaguda e Delicada,
-HeadType.rectangular,Rectangular with Pointed Jaw,,Rechteckig mit spitzem Kiefer,Rectangular con Mandíbula Puntiaguda,,,Retangular com Mandíbula Pontiaguda,
-HeadType.elfin,"Elfin, Petite Jaw",,"Elfisch, kleiner Kiefer","Duendecillo, Mandíbula Pequeña",,,"Rosto Élfico, Mandíbula Pequena",
-HeadType.pillShaped,"Pill-Shaped, Heavy",,"Pillenförmig, Gewichtig","En Forma de Píldora, Pesada",,,"Em Forma de Pílula, Pesado",
-HeadType.roundedHeavy,"Rounded, Heavy",,"Abgerundet, Gewichtig","Redondeada, Pesada",,,"Arredondado, Pesado",
+HairType.pinnedUpHairWithPart,Pinned Up Hair with Part,,,Recogido con Pinzas,,,Cabelo Preso e Repartido,Podpięte włosy z przedziałkiem
+HeadType.averageAngular,"Average, Angular",,"Gewöhnlich, kantig","Normal, Angular",,,"Média, Angular",Przeciętna i kanciasta
+HeadType.squareJawed,Square Jawed,,Quadratischer Kiefer,Mandíbula Cuadrada,,,Mandíbula Quadrada,Kwadratowa szczęka
+HeadType.roundedNarrow,"Rounded, Narrow",,"Abgerundet, schmal","Redondeada, Estrecha",,,"Arredondado, Estreito",Zaokrąglona i wąska
+HeadType.roundedAverage,"Rounded, Average",,"Abgerundet, gewöhnlich","Redondeada, Normal",,,"Arredondado, Médio",Zaokrąglona i przeciętna
+HeadType.softerNarrow,"Softer, Narrow Jaw",,"Weicherer, schmaler Kiefer","Suave, Mandíbula Estrecha",,,Mandíbula Mais Suave e Estreita,Łagodne rysy i wąska szczęka
+HeadType.pointedDelicate,"Pointed, Delicate Jaw",,"Spitzer, zarter Kiefer","Puntiaguda, Mandíbula Delicada",,,Mandíbula Pontiaguda e Delicada,Spiczasta i delikatna szczęka
+HeadType.rectangular,Rectangular with Pointed Jaw,,Rechteckig mit spitzem Kiefer,Rectangular con Mandíbula Puntiaguda,,,Retangular com Mandíbula Pontiaguda,Prostokątna z zaostrzoną szczęką
+HeadType.elfin,"Elfin, Petite Jaw",,"Elfisch, kleiner Kiefer","Duendecillo, Mandíbula Pequeña",,,"Rosto Élfico, Mandíbula Pequena","Drobna, filigranowa szczęka"
+HeadType.pillShaped,"Pill-Shaped, Heavy",,"Pillenförmig, Gewichtig","En Forma de Píldora, Pesada",,,"Em Forma de Pílula, Pesado","Ciężka, w kształcie pigułki"
+HeadType.roundedHeavy,"Rounded, Heavy",,"Abgerundet, Gewichtig","Redondeada, Pesada",,,"Arredondado, Pesado",Zaokrąglona i ciężka
 ModificationType.name.demotion,Demotion,,,,,,,Degradacja
 ModificationType.name.promotion,Promotion,,Beförderung,Promoción,Promotion,Повышение,Promoção,Awans
 ModificationType.name.logEntry,Log Entry,,,,,,,Wpis do dziennika

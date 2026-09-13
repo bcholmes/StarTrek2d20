@@ -1041,24 +1041,44 @@
     "CareerEvent.unofficial.32.focusDescription": "Postać otrzymuje biegłość związaną z wiedzą o planecie, na której służyła lub umiejętnościami nabytymi podczas misji. Przykłady to m.in.: Meteorologia, Loty atmosferyczne czy Geologia.",
 
     "CareerEvent.unofficial.33.name": "Pozostawiona z tyłu",
+    "CareerEvent.unofficial.33.description": "Postać została sama lub z jej drużyną pozostawiona w sytuacji niebezpieczeństwa.\n\nDlaczego postać była pozostawiona sama? Czy wrócili po nią?\nJakie były zagrożenia dla Twojej postaci? Jak przetrwała to niebezpieczeństwo?",
+    "CareerEvent.unofficial.33.focusDescription": "Postać otrzymuje biegłość związaną z umiejętnościami lub wiedzą nabytą podczas tego spotkania. Przykłady to m.in. Botanika, Toksykologia lub Fizyka.",
 
     "CareerEvent.unofficial.34.name": "Kryzys rodzinny",
+    "CareerEvent.unofficial.34.description": "Sytuacja kryzysowa w rodzinie wymagała interwencji Postaci.\n\nKtórego członka rodziny dotyczyła sytuacja? Jaki był charakter kryzysu?\nJak Twoja postać dogadywała się z innymi członkami rodziny w czasie zdarzenia? Czy są jakieś długotrwałe konsekwencje tej sytuacji?",
+    "CareerEvent.unofficial.34.focusDescription": "Postać otrzymuje biegłość uzyskaną w czasie rozwiązywania kryzysu. Przykłady to m.in.: Opieka, Rozstrzyganie sporów, Genetyka.",
 
     "CareerEvent.unofficial.35.name": "Pozytywna ocena pracy",
+    "CareerEvent.unofficial.35.description": "Postać ciężko zapracowała i zostało to docenione.\n\nCzy Twoja postać uczciła jakoś ten sukces czy przeszła nad nim do porządku dziennego? W jakim obszarze kompetencji odnotowała sukces?\nKto dokonał oceny postaci? Jakie krytyki lub pochwały otrzymała Twoja postać?",
+    "CareerEvent.unofficial.35.focusDescription": "Postać otrzymuje biegłość związaną z aktywnością, która została doceniona. Przykłady to m.in.: Etyka, Biurokracja czy Dynamika zespołu.",
 
     "CareerEvent.unofficial.36.name": "Uwięzienie",
+    "CareerEvent.unofficial.36.description": "Postać spędziła pewien czas zamknięta w więzieniu, przytułku lub pułapce.\n\nKto złapał Twoją postać, dlaczego, gdzie i w jakich okolicznościach? Jaki był charakter uwięzienia, czy było to związane z procesem sądowym?\nJak Twoja postać radziła sobie w izolacji? Uciekła czy została wypuszczona na wolność?",
+    "CareerEvent.unofficial.36.focusDescription": "Postać otrzymuje biegłość, którą rozwinęła w związku z uwięzieniem lub uwolnieniem się. Przykłady to m.in.: Techniki ucieczki, Odporność czy Oszustwo.",
 
     "CareerEvent.unofficial.37.name": "Misja terraformacyjna",
+    "CareerEvent.unofficial.37.description": "Postać brała udział w misji terraformacyjnej, przekształcając środowisko planety, aby było możliwe do kolonizacji i podtrzymywania życia.\n\nKtóra planeta była poddana terraformacji? Gdzie się znajduje?\nKto jeszcze był w zespole? Jaki był wkład Twojej postaci w misję?",
+    "CareerEvent.unofficial.37.focusDescription": "Postać otrzymuje biegłość związaną z misją terraformacyjną. Przykłady to m.in.: Ekologia, Oceanografia lub Egzotektonika.",
 
     "CareerEvent.unofficial.38.name": "Urlop",
+    "CareerEvent.unofficial.38.description": "Postać musiała poprosić o czasowe zwolnienie ze służby z powodu osobistych spraw lub projektu, który chciała zrealizować.\n\nDlaczego postać poprosiła o wolne? Jak długo trwała przerwa w służbie?\nCzym zajmowała się postać w czasie wolnym? Dlaczego wróciła do regularnej służby?",
+    "CareerEvent.unofficial.38.focusDescription": "Postać otrzymuje biegłość związaną z powodem zwolnienia. Przykłady to m.in.: Religia, Polityka lub Przemysł.",
 
     "CareerEvent.unofficial.39.name": "Występy medialne",
+    "CareerEvent.unofficial.39.description": "Postać pojawiła się w przekazie medialnym, niezależnie od tego czy było to zaplanowane czy nie.\n\nDlaczego media skupiły się na Twojej postaci? Czy zyskała pozytywną lub negatywną reputację w związku z tym zdarzeniem?\nW jaki sposób pojawienie się w mediach wpłynęło na postrzeganie Twojej postaci przez jej współpracowników?",
+    "CareerEvent.unofficial.39.focusDescription": "Postać otrzymuje biegłość związaną z umiejętnościami, których nabyła podczas zdarzenia. Przykłady to m.in.: Pisanie, PR czy Systemy komunikacyjne.",
 
     "CareerEvent.unofficial.40.name": "Sekretna misja",
+    "CareerEvent.unofficial.40.description": "Postać została zwerbowana do udziału w tajnej misji.\n\nCo to była za misja? Kto jeszcze brał w niej udział?\nCzy misja się powiodła? Czy były jakieś problemy w trakcie? Jakie były następstwa tej misji?",
+    "CareerEvent.unofficial.40.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą umiejętności, których nabyła podczas udziału w misji. Przykłady to m.in.: Kryptografia, Pirotechnika czy Szpiegostwo.",
 
     "CareerEvent.unofficial.41.name": "Służba w doku kosmicznym",
+    "CareerEvent.unofficial.41.description": "Postać była przydzielona do służby w kosmicznym doku, takim jak np. Stocznie na Utopia Planitia, 40 Eridani A lub San Francisco.\n\nNa czym polegało zaangażowanie postaci w konstukcję okrętów czy może miała jakieś inne zadania?\nKtóre okręty pomagała budować lub remontować?",
+    "CareerEvent.unofficial.41.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą umiejętności, które rozwinęła podczas pracy w stoczni. Przykłady to m.in.: Projektowanie okrętów, Napędy okrętowe lub Rozpoznawanie okrętów.",
 
     "CareerEvent.unofficial.42.name": "Brakujące wspomnienia",
+    "CareerEvent.unofficial.42.description": "Z nieznanego powodu Twoja postać ma luki w swoich wspomnieniach o przeszłości.\n\nJak długi okres czasu został zapomniany? Jakie są ostatnie wspomnienia przed tą przerwą i jakie są kolejne tuż po?\nCzy postać dowiedziała się dlaczego straciła pamięć lub miała jakieś wskazówki w tym temacie? Czy jest jakaś nadzieja na to, że wspomnienia wrócą?",
+    "CareerEvent.unofficial.42.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą jej próby przywrócenia brakujących wspomnień. Przykłady obejmują: Badania, Psychoterapię lub Neuronauki.",
 
     "CareerEvent.unofficial.43.name": "Praca jako nauczyciel",
 
@@ -1546,17 +1566,34 @@
     "HairType.sidePart": "Boczny przedział",
     "HairType.shortAfro": "Krótkie kręcone",
     "HairType.veryShortAfro": "Bardzo krótkie kręcone",
+    "HairType.pulledBackPonyTail": "Gładko zaczesany kucyk",
     "HairType.balding": "Łysiejące",
     "HairType.receding": "Rzedniejące",
     "HairType.deLeve": "Fryzura na \"de Leve\"",
     "HairType.mediumLengthFemaleSidePart": "Boczny przedział średniej długości",
     "HairType.mediumMaleCenterPart": "Środkowy przedział średniej długości",
     "HairType.mediumLengthFemaleStraight": "Średniej długości proste",
+    "HairType.chinLengthCombBack": "Zaczesane do tyłu proste włosy do długości brody",
     "HairType.shavedSides": "Wygolone boki",
+    "HairType.shortTeasedOverEyeStyle": "Krótkie, rozczesane ponad okiem",
     "HairType.feminineDreadStyle": "Żeńskie dredy",
     "HairType.shoulderLengthMostlyStraight": "Raczej proste do ramion",
     "HairType.shoulderLengthBob": "Bob do ramion",
+    "HairType.tousledSidePart": "Rozczochrana z przedziałem na bok",
+    "HairType.cornRows": "Warkoczyki przy skórze",
     "HairType.highForeheadEfrosianStyle": "Efrozjańska grzywa",
+    "HairType.pinnedUpHairWithPart": "Podpięte włosy z przedziałkiem",
+
+    "HeadType.averageAngular": "Przeciętna i kanciasta",
+    "HeadType.squareJawed": "Kwadratowa szczęka",
+    "HeadType.roundedNarrow": "Zaokrąglona i wąska",
+    "HeadType.roundedAverage": "Zaokrąglona i przeciętna",
+    "HeadType.softerNarrow": "Łagodne rysy i wąska szczęka",
+    "HeadType.pointedDelicate": "Spiczasta i delikatna szczęka",
+    "HeadType.rectangular": "Prostokątna z zaostrzoną szczęką",
+    "HeadType.elfin": "Drobna, filigranowa szczęka",
+    "HeadType.pillShaped": "Ciężka, w kształcie pigułki",
+    "HeadType.roundedHeavy": "Zaokrąglona i ciężka",
 
     "ModificationType.name.demotion": "Degradacja",
     "ModificationType.name.promotion": "Awans",
