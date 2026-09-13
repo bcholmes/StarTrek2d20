@@ -104,10 +104,8 @@ export class Roll20VttExporter {
     return Roll20VttExporter.singleton;
   }
 
-  exportStarship(starship: Starship) {
-    const id = new IdHelper();
-    const name = starship.name || 'Unnamed Starship';
-    const result: IRoll20Json = {
+  private buildRoll20Character(id: IdHelper, name: string): IRoll20Json {
+    return {
       schema_version: 3,
       type: 'character',
       character: {
@@ -120,110 +118,120 @@ export class Roll20VttExporter {
         tags: '[]',
         controlledby: '',
         inplayerjournals: '',
-        attribs: [
-          {
-            name: 'sheet_color',
-            current: 'black',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'attributeName',
-            current: false,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'disciplineName',
-            current: false,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'systemName',
-            current: 'COMMAND',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'departmentName',
-            current: false,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ask_whisper',
-            current: 'Whisper to GM?',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ask_public_roll',
-            current: 'Public Roll',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ask_whisper_roll',
-            current: 'Whisper Roll',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'diceRoll',
-            current:
-              '{{dice1=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}{{dice2=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'crew_diceRoll',
-            current:
-              '{{dice1=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}{{dice2=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ship_diceRoll',
-            current:
-              '{{dice1=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}{{dice2=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'focus',
-            current: '1',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'complication',
-            current: '20',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'version',
-            current: 1.6,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'settings_toggle',
-            current: '0',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'sheet_type',
-            current: 'starship',
-            max: '',
-            id: '-Nz_YFXyrBCoNytnAbXI',
-          },
-        ],
+        attribs: this.buildCommonCharacterAttribs(id),
         abilities: [],
       },
     };
+  }
+
+  private buildCommonCharacterAttribs(id: IdHelper): IRoll20Attribute[] {
+    return [
+      {
+        name: 'sheet_color',
+        current: 'black',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'attributeName',
+        current: false,
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'disciplineName',
+        current: false,
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'systemName',
+        current: 'COMMAND',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'departmentName',
+        current: false,
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'ask_whisper',
+        current: 'Whisper to GM?',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'ask_public_roll',
+        current: 'Public Roll',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'ask_whisper_roll',
+        current: 'Whisper Roll',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'diceRoll',
+        current:
+          '{{dice1=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}{{dice2=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'crew_diceRoll',
+        current:
+          '{{dice1=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}{{dice2=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'ship_diceRoll',
+        current:
+          '{{dice1=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}{{dice2=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'focus',
+        current: '1',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'complication',
+        current: '20',
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'version',
+        current: 1.6,
+        max: '',
+        id: id.nextId(),
+      },
+      {
+        name: 'settings_toggle',
+        current: '0',
+        max: '',
+        id: id.nextId(),
+      },
+    ];
+  }
+
+  exportStarship(starship: Starship) {
+    const id = new IdHelper();
+    const name = starship.name || 'Unnamed Starship';
+    const result: IRoll20Json = this.buildRoll20Character(id, name);
+    result.character.attribs.push({
+      name: 'sheet_type',
+      current: 'starship',
+      max: '',
+      id: '-Nz_YFXyrBCoNytnAbXI',
+    });
 
     result.character.attribs.push(this.convertSpaceframe(starship, id));
     result.character.attribs.push(this.convertMissionProfile(starship, id));
@@ -467,129 +475,21 @@ export class Roll20VttExporter {
     if (character.pronouns) {
       name += ' (' + character.pronouns + ')';
     }
-    const result: IRoll20Json = {
-      schema_version: 3,
-      type: 'character',
-      character: {
-        oldId: id.currentId,
-        name: name,
-        avatar: '',
-        bio: '',
-        gmnotes: '',
-        defaulttoken: '',
-        tags: '[]',
-        controlledby: '',
-        inplayerjournals: '',
-        attribs: [
-          {
-            name: 'sheet_color',
-            current: 'black',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'attributeName',
-            current: false,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'disciplineName',
-            current: false,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'systemName',
-            current: 'COMMAND',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'departmentName',
-            current: false,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ask_whisper',
-            current: 'Whisper to GM?',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ask_public_roll',
-            current: 'Public Roll',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ask_whisper_roll',
-            current: 'Whisper Roll',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'diceRoll',
-            current:
-              '{{dice1=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}{{dice2=[[d20<@{target}cf>@{complication}cs<@{focus}]]}}',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'crew_diceRoll',
-            current:
-              '{{dice1=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}{{dice2=[[d20<@{crew_target}cf>@{ship_complication}cs<@{crew_discipline}]]}}',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'ship_diceRoll',
-            current:
-              '{{dice1=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}{{dice2=[[d20<@{ship_target}cf>@{ship_complication}cs<@{department}]]}}',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'focus',
-            current: '1',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'complication',
-            current: '20',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'version',
-            current: 1.6,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'settings_toggle',
-            current: '0',
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'privilege',
-            current: 4,
-            max: '',
-            id: id.nextId(),
-          },
-          {
-            name: 'responsibility',
-            current: 17,
-            max: '',
-            id: id.nextId(),
-          },
-        ],
-        abilities: [],
+    const result: IRoll20Json = this.buildRoll20Character(id, name);
+    result.character.attribs.push(
+      {
+        name: 'privilege',
+        current: 4,
+        max: '',
+        id: id.nextId(),
       },
-    };
+      {
+        name: 'responsibility',
+        current: 17,
+        max: '',
+        id: id.nextId(),
+      },
+    );
 
     result.character.attribs.push(this.convertSpecies(character, id));
     result.character.attribs.push(this.convertRank(character, id));
@@ -965,11 +865,7 @@ export class Roll20VttExporter {
     selectedTalent: SelectedTalent,
     id: IdHelper,
   ) {
-    const rowId = id.nextId();
-
     const talent = selectedTalent.talentModel;
-    const category = this.determineCategoryType(talent);
-
     let name = selectedTalent.displayNameWithMultiple;
 
     const qualifier = starship.getQualifierForTalent(talent.name);
@@ -977,38 +873,15 @@ export class Roll20VttExporter {
       name += ': ' + qualifier;
     }
 
-    return [
-      {
-        name: 'repeating_stalents_' + rowId + '_stalent_name',
-        current: name,
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_stalents_' + rowId + '_stalent_description',
-        current: resolveTalentDescription(selectedTalent, starship.version),
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_stalents_' + rowId + '_stalent_requirements',
-        current: talent.requirement?.length ? talent.requirement : 'None',
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_stalents_' + rowId + '_stalent_category',
-        current: category,
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_stalents_' + rowId + '_stalent_settings',
-        current: '0',
-        max: '',
-        id: id.nextId(),
-      },
-    ];
+    return this.convertTalentRow(
+      selectedTalent,
+      starship.version,
+      'repeating_stalents_',
+      'stalent_',
+      name,
+      talent.requirement?.length ? talent.requirement : 'None',
+      id,
+    );
   }
 
   convertTalent(
@@ -1016,40 +889,57 @@ export class Roll20VttExporter {
     selectedTalent: SelectedTalent,
     id: IdHelper,
   ) {
-    const rowId = id.nextId();
+    const talent = selectedTalent.talentModel;
+    return this.convertTalentRow(
+      selectedTalent,
+      character.version,
+      'repeating_talents_',
+      'talent_',
+      selectedTalent.displayNameWithMultiple,
+      talent.requirement ?? '',
+      id,
+    );
+  }
 
+  private convertTalentRow(
+    selectedTalent: SelectedTalent,
+    version: number,
+    rowPrefix: string,
+    fieldPrefix: string,
+    name: string,
+    requirement: string,
+    id: IdHelper,
+  ) {
+    const rowId = id.nextId();
     const talent = selectedTalent.talentModel;
     const category = this.determineCategoryType(talent);
-
-    const name = selectedTalent.displayNameWithMultiple;
-
     return [
       {
-        name: 'repeating_talents_' + rowId + '_talent_name',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'name',
         current: name,
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_talents_' + rowId + '_talent_description',
-        current: resolveTalentDescription(selectedTalent, character.version),
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'description',
+        current: resolveTalentDescription(selectedTalent, version),
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_talents_' + rowId + '_talent_requirements',
-        current: talent.requirement ?? '',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'requirements',
+        current: requirement,
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_talents_' + rowId + '_talent_category',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'category',
         current: category,
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_talents_' + rowId + '_talent_settings',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'settings',
         current: '0',
         max: '',
         id: id.nextId(),
@@ -1058,77 +948,52 @@ export class Roll20VttExporter {
   }
 
   convertWeapon(character: Character, weapon: Weapon, id: IdHelper) {
-    let damage = '';
-    for (
-      let i = 0;
-      i < weapon.dice + character.departments[Department.Security];
-      i++
-    ) {
-      damage += '{{cdice' + (i + 1) + '=[[1d6]]}}';
-    }
-    const rowId = id.nextId();
-    return [
-      {
-        name: 'repeating_weapons_' + rowId + '_weapon_name',
-        current: weapon.name,
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_weapons_' + rowId + '_weapon_quality',
-        current:
-          weapon.qualities?.map((q) => q.localizedDescription)?.join(', ') ??
-          '',
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_weapons_' + rowId + '_weapon_effects',
-        current:
-          weapon.effects?.map((q) => q.localizedDescription)?.join(', ') ?? '',
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_weapons_' + rowId + '_weapon_damage',
-        current: weapon.dice,
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_weapons_' + rowId + '_damageRoll',
-        current: damage,
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_weapons_' + rowId + '_weapon_type',
-        current: weapon.type === WeaponType.MELEE ? 'Melee' : 'Ranged',
-        max: '',
-        id: id.nextId(),
-      },
-    ];
+    return this.convertWeaponRow(
+      weapon,
+      'repeating_weapons_',
+      'weapon_',
+      'weapon_effects',
+      weapon.dice + character.departments[Department.Security],
+      weapon.type === WeaponType.MELEE ? 'Melee' : 'Ranged',
+      id,
+    );
   }
 
   convertStarshipWeapon(starship: Starship, weapon: Weapon, id: IdHelper) {
+    return this.convertWeaponRow(
+      weapon,
+      'repeating_ship_',
+      'weapon_',
+      'weapon_effect',
+      weapon.dice + starship.getDiceForWeaponForRoll20(weapon),
+      weapon.type === WeaponType.TORPEDO ? 'Torpedo' : 'Energy',
+      id,
+    );
+  }
+
+  private convertWeaponRow(
+    weapon: Weapon,
+    rowPrefix: string,
+    fieldPrefix: string,
+    effectsField: string,
+    damageRolls: number,
+    type: string,
+    id: IdHelper,
+  ) {
     let damage = '';
-    for (
-      let i = 0;
-      i < weapon.dice + starship.getDiceForWeaponForRoll20(weapon);
-      i++
-    ) {
+    for (let i = 0; i < damageRolls; i++) {
       damage += '{{cdice' + (i + 1) + '=[[1d6]]}}';
     }
     const rowId = id.nextId();
     return [
       {
-        name: 'repeating_ship_' + rowId + '_weapon_name',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'name',
         current: weapon.name,
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_ship_' + rowId + '_weapon_quality',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'quality',
         current:
           weapon.qualities?.map((q) => q.localizedDescription)?.join(', ') ??
           '',
@@ -1136,27 +1001,27 @@ export class Roll20VttExporter {
         id: id.nextId(),
       },
       {
-        name: 'repeating_ship_' + rowId + '_weapon_effect',
+        name: rowPrefix + rowId + '_' + effectsField,
         current:
           weapon.effects?.map((q) => q.localizedDescription)?.join(', ') ?? '',
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_ship_' + rowId + '_weapon_damage',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'damage',
         current: weapon.dice,
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_ship_' + rowId + '_damageRoll',
+        name: rowPrefix + rowId + '_damageRoll',
         current: damage,
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_ship_' + rowId + '_weapon_type',
-        current: weapon.type === WeaponType.TORPEDO ? 'Torpedo' : 'Energy',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'type',
+        current: type,
         max: '',
         id: id.nextId(),
       },
@@ -1169,16 +1034,36 @@ export class Roll20VttExporter {
     id: IdHelper,
     description?: string,
   ) {
+    return this.convertTraitRow(
+      trait,
+      'repeating_traits_',
+      'trait_',
+      id,
+      description,
+    );
+  }
+
+  convertStarshipTrait(starship: Starship, trait: string, id: IdHelper) {
+    return this.convertTraitRow(trait, 'repeating_straits_', 'strait_', id);
+  }
+
+  private convertTraitRow(
+    trait: string,
+    rowPrefix: string,
+    fieldPrefix: string,
+    id: IdHelper,
+    description?: string,
+  ) {
     const rowId = id.nextId();
     const result = [
       {
-        name: 'repeating_traits_' + rowId + '_trait_name',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'name',
         current: trait,
         max: '',
         id: id.nextId(),
       },
       {
-        name: 'repeating_traits_' + rowId + '_trait_settings',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'settings',
         current: '0',
         max: '',
         id: id.nextId(),
@@ -1186,31 +1071,12 @@ export class Roll20VttExporter {
     ];
     if (description) {
       result.push({
-        name: 'repeating_traits_' + rowId + '_trait_description',
+        name: rowPrefix + rowId + '_' + fieldPrefix + 'description',
         current: description ?? '',
         max: '',
         id: id.nextId(),
       });
     }
-    return result;
-  }
-
-  convertStarshipTrait(starship: Starship, trait: string, id: IdHelper) {
-    const rowId = id.nextId();
-    const result = [
-      {
-        name: 'repeating_straits_' + rowId + '_strait_name',
-        current: trait,
-        max: '',
-        id: id.nextId(),
-      },
-      {
-        name: 'repeating_straits_' + rowId + '_strait_settings',
-        current: '0',
-        max: '',
-        id: id.nextId(),
-      },
-    ];
     return result;
   }
 }
