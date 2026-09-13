@@ -751,7 +751,7 @@ export class Roll20VttExporter {
   convertSystem(starship: Starship, s: System, id: IdHelper) {
     let name = System[s];
     if (s === System.Comms) {
-      name = 'communcation';
+      name = 'communications';
     } else if (s === System.Computer) {
       name = 'computers';
     }

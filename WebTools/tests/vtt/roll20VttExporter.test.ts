@@ -66,12 +66,14 @@ describe('Roll20 JSON export golden output', () => {
 });
 
 describe('Roll20 export known divergences', () => {
-  test('uses the misspelled "communcation" attrib key', () => {
+  test('uses the correctly-spelled "communications" attrib key', () => {
     const result: any = Roll20VttExporter.instance.exportStarship(
       makePopulatedStarship(),
     );
     const attribNames = result.character.attribs.map((a) => a.name);
-    expect(attribNames).toEqual(expect.arrayContaining(['ship_communcation']));
-    expect(attribNames).not.toContain('ship_communications');
+    expect(attribNames).toEqual(
+      expect.arrayContaining(['ship_communications']),
+    );
+    expect(attribNames).not.toContain('ship_communcation');
   });
 });
