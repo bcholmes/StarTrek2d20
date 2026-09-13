@@ -123,11 +123,11 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
           </div>
 
           <div className="col-md-2 view-field-label pb-2">
-            {t('Construct.other.rank')}:
+            {t('Construct.other.pronouns')}:
           </div>
           <div className="col-md-4 text-white">
             <div className="view-border-bottom pb-2">
-              {character.rank?.localizedName}
+              {character.pronouns ? character.pronouns : undefined}
             </div>
           </div>
         </div>
@@ -171,13 +171,11 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
                   character.version,
                 ).localizedName
               }
-              <div>
-                {character.careerEvents[0]?.notes?.length ? (
-                  <STAMarkdown className="markdown-sm">
-                    {character.careerEvents[0].notes}
-                  </STAMarkdown>
-                ) : undefined}
-              </div>
+              {character.careerEvents[0]?.notes?.length ? (
+                <STAMarkdown className="markdown-sm">
+                  {character.careerEvents[0].notes}
+                </STAMarkdown>
+              ) : undefined}
             </div>
           </div>
 
@@ -193,26 +191,27 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
                   character.version,
                 ).localizedName
               }
-              <div>
-                {character.careerEvents[1]?.notes?.length ? (
-                  <STAMarkdown className="markdown-sm">
-                    {character.careerEvents[1].notes}
-                  </STAMarkdown>
-                ) : undefined}
+              {character.careerEvents[1]?.notes?.length ? (
+                <STAMarkdown className="markdown-sm">
+                  {character.careerEvents[1].notes}
+                </STAMarkdown>
+              ) : undefined}
+            </div>
+          </div>
+        </div>
+
+        {character.rank ? (
+          <div className="row" style={{ alignItems: 'baseline' }}>
+            <div className="col-md-2 view-field-label pb-2">
+              {t('Construct.other.rank')}:
+            </div>
+            <div className="col-md-4 text-white">
+              <div className="view-border-bottom pb-2">
+                {character.rank?.localizedName}
               </div>
             </div>
           </div>
-        </div>
-        <div className="row" style={{ alignItems: 'baseline' }}>
-          <div className="col-md-2 view-field-label pb-2">
-            {t('Construct.other.pronouns')}:
-          </div>
-          <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2">
-              {character.pronouns ? character.pronouns : undefined}
-            </div>
-          </div>
-        </div>
+        ) : undefined}
 
         <div className="row" style={{ alignItems: 'baseline' }}>
           <div className="col-md-2 view-field-label pb-2">

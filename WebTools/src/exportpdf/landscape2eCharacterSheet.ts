@@ -8,7 +8,7 @@ import { PDFDocument, PDFTextField } from '@cantoo/pdf-lib';
 import type { Construct } from '../common/construct';
 import { Stereotype } from '../common/construct';
 import { TalentWriter } from './talentWriter';
-import { Character, Division } from '../common/character';
+import { CareerEventStep, Character, Division } from '../common/character';
 import { assembleWritableItems } from './generatedsheet';
 import { FontLibrary, FontType } from './fontLibrary';
 import { labelWriter, simpleLabelWriter } from './labelWriter';
@@ -62,6 +62,8 @@ import { FontSpecification } from './fontSpecification';
 import { PageArea } from './pageArea';
 import { TextBlock } from './textBlock';
 import { TokenHelper } from './tokenHelper';
+import { LogEntry } from '../common/logEntry';
+import { CareerEventsHelper } from '../helpers/careerEvents';
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   static readonly page2Column1X = 55.6;
@@ -227,7 +229,12 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
     this.drawArrowHead(page, construct as Character, colour);
 
-    if ((construct as Character).logEntries?.length && nextArea != null) {
+    const character = construct as Character;
+    if (
+      (character.logEntries?.length ||
+        character.careerEvents?.filter((e) => e.notes?.length)?.length) &&
+      nextArea != null
+    ) {
       let y = undefined;
       if (
         nextArea != null &&
@@ -312,7 +319,15 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     );
     nextArea = nextArea.bottomAfter(23);
 
-    const logEntries = character.logEntries;
+    const logEntries: (LogEntry | CareerEventStep)[] = [
+      ...character.logEntries,
+    ].reverse();
+    if (character.careerEvents[1]?.notes) {
+      logEntries.push(character.careerEvents[1]);
+    }
+    if (character.careerEvents[0]?.notes) {
+      logEntries.push(character.careerEvents[0]);
+    }
 
     let paragraph = new Paragraph(nextArea.page, nextArea.column, this.fonts);
     const paragraphs: Paragraph[] = [];
@@ -336,11 +351,27 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         }
       }
       let text = '';
-      if (l.adventureTitle?.trim()?.length) {
-        text += '**' + l.adventureTitle + '**';
-      }
-      if (l.missionDescription?.trim()?.length) {
-        text += '\n' + l.missionDescription;
+      if (l instanceof LogEntry) {
+        if (l.adventureTitle?.trim()?.length) {
+          text += '**' + l.adventureTitle + '**';
+        }
+        if (l.missionDescription?.trim()?.length) {
+          text += '\n' + l.missionDescription;
+        }
+      } else if (l instanceof CareerEventStep) {
+        const event = CareerEventsHelper.getCareerEvent(
+          l.id,
+          character.type,
+          character.version,
+        );
+        if (event.localizedName?.trim()?.length) {
+          text +=
+            '**' +
+            event.localizedName +
+            '** (' +
+            i18next.t('Page.title.careerEvent') +
+            ')';
+        }
       }
       if (l.notes?.trim().length) {
         text += '\n**' + i18next.t('Common.text.notes') + ':** ' + l.notes;
