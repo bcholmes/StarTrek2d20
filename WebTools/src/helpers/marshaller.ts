@@ -928,6 +928,9 @@ class Marshaller {
         if (c.trait != null) {
           e['trait'] = c.trait;
         }
+        if (c.notes?.length) {
+          e['notes'] = c.notes;
+        }
         return e;
       });
     }
@@ -2039,6 +2042,9 @@ class Marshaller {
           }
           if (e['trait']) {
             step.trait = e['trait'];
+          }
+          if (e['notes']) {
+            step.notes = e['notes'];
           }
 
           return step;

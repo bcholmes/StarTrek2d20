@@ -19,7 +19,6 @@ import { Stereotype } from '../common/construct';
 import { Starship } from '../common/starship';
 import { Character } from '../common/character';
 import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
-import ReactMarkdown from 'react-markdown';
 import type { Creature } from '../creature/model/creature';
 import { makeKey } from '../common/translationKey';
 import { Attribute } from '../helpers/attributes';
@@ -30,6 +29,7 @@ import { PropulsionSystemModel } from '../helpers/propulsionSystem';
 import { Weapon } from '../helpers/weapons';
 import { Station } from '../common/station';
 import type { TalentModel } from '../helpers/talentModel';
+import { STAMarkdown } from '../components/staMarkdown';
 
 interface IConstructPageProperties {
   construct: Character | Starship | Creature | Station;
@@ -78,9 +78,9 @@ export const TalentsBlockView: React.FC<IConstructPageProperties> = ({
     } else {
       return (
         <>
-          <ReactMarkdown className="markdown-sm">
+          <STAMarkdown className="markdown-sm">
             {'**' + talentName + ':** ' + description}
-          </ReactMarkdown>
+          </STAMarkdown>
           {renderExtraDetails(talent)}
         </>
       );

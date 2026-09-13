@@ -101,6 +101,7 @@
     "CareerEventDetails.errorAttribute": "Please select an attribute.",
     "CareerEventDetails.errorDiscipline": "Please select a discipline.",
     "CareerEventDetails.errorFocus": "Please select a focus.",
+    "CareerEventDetails.notesInstructions": "Describe the event in a bit more detail. What took place? What role did the character play? How has that event influenced the character's thoughts/actions today?",
 
     "ChildSelectionPage.instruction": "Naturally, a child has not attended Starfleet Academy (or any of its counterparts), or any institute of higher education. Indeed, they’re still in their earlier stages of education.\n\nSelect an age for your character.",
 
@@ -617,6 +618,7 @@
     "UpbringingDetailPage.error.focus": "You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.",
 
     "Common.button.random": "Random",
+    "Common.button.advanced": "Advanced",
     "Common.button.select": "Select",
     "Common.button.selectAll": "Select All",
     "Common.button.selectNone": "Select None",

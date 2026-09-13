@@ -99,6 +99,7 @@ export const UPDATE_CHARACTER_GENERAL_EDIT_TALENT =
   'UPDATE_CHARACTER_GENERAL_EDIT_TALENT';
 export const REMOVE_CHARACTER_TOKEN = 'REMOVE_CHARACTER_TOKEN';
 export const SET_CHARACTER_DESCRIPTION = 'SET_CHARACTER_DESCRIPTION';
+export const SET_CHARACTER_CAREER_EVENT_NOTES = 'SET_CHARACTER_CAREER_EVENT_NOTES';
 
 export enum StepContext {
   Species,
@@ -380,6 +381,11 @@ export const setCharacterHouse = createAction(
 export const setCharacterCareerEventTrait = createAction(
   SET_CHARACTER_CAREER_EVENT_TRAIT,
   (trait: string, context: StepContext) => ({ payload: { trait, context } }),
+);
+
+export const setCharacterCareerEventNotes = createAction(
+  SET_CHARACTER_CAREER_EVENT_NOTES,
+  (notes: string, context: StepContext) => ({ payload: { notes, context } }),
 );
 
 export const setCharacterAdditionalTraits = createAction(

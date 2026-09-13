@@ -63,6 +63,7 @@ import {
   setCharacterAge,
   setCharacterAssignedShip,
   setCharacterAssignment,
+  setCharacterCareerEventNotes,
   setCharacterCareerEventTrait,
   setCharacterCareerLength,
   setCharacterDescription,
@@ -1027,6 +1028,21 @@ export const characterSlice = createSlice({
           temp.careerEvents[1]
         ) {
           temp.careerEvents[1].trait = action.payload.trait;
+        }
+      });
+    });
+    builder.addCase(setCharacterCareerEventNotes, (state, action) => {
+      return withCharacter(state, action, (temp, action) => {
+        if (
+          action.payload.context === StepContext.CareerEvent1 &&
+          temp.careerEvents[0]
+        ) {
+          temp.careerEvents[0].notes = action.payload.notes;
+        } else if (
+          action.payload.context === StepContext.CareerEvent2 &&
+          temp.careerEvents[1]
+        ) {
+          temp.careerEvents[1].notes = action.payload.notes;
         }
       });
     });

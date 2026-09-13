@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigation } from '../common/navigator';
 import { PageIdentity } from './pageIdentity';
 import { CareerEventsHelper } from '../helpers/careerEvents';
@@ -10,6 +10,7 @@ import { CharacterCreationBreadcrumbs } from '../components/characterCreationBre
 import { CharacterType } from '../common/characterType';
 import {
   StepContext,
+  setCharacterCareerEventNotes,
   setCharacterCareerEventTrait,
   setCharacterFinishingTouches,
   setCharacterFocus,
@@ -32,6 +33,8 @@ import {
 } from '../components/careerEventDetailsControllers';
 import { FocusSelectionView } from '../components/focusSelectionView';
 import { PageHistoryBasedPreviousButton } from '../components/pageHistoryBasedPreviousButton';
+import { RichTextEditor } from '../components/richTextEditor';
+import { STAMarkdown } from '../components/staMarkdown';
 
 interface ICareerEventDetailsProperties extends ICharacterProperties {
   context: StepContext;
@@ -43,6 +46,10 @@ const CareerEventDetailsPageBase: React.FC<ICareerEventDetailsProperties> = ({
 }) => {
   const { t } = useTranslation();
 
+  const onNotesChanged = (value: string) => {
+    store.dispatch(setCharacterCareerEventNotes(value, context));
+  };
+
   const careerEventStep =
     context === StepContext.CareerEvent1
       ? character.careerEvents[0]
@@ -53,6 +60,8 @@ const CareerEventDetailsPageBase: React.FC<ICareerEventDetailsProperties> = ({
     character.type,
     character.version,
   );
+
+  const [ showAdvanced, setShowAdvanced ] = useState<boolean>(careerEventStep?.notes?.length ? true : false);
 
   const navigateToNextStep = () => {
     if (careerEventStep.attribute == null) {
@@ -179,6 +188,34 @@ const CareerEventDetailsPageBase: React.FC<ICareerEventDetailsProperties> = ({
           </div>
         ) : undefined}
       </div>
+
+      <div className='row'>
+          {showAdvanced
+            ?
+
+              (<div className="col-12 mt-4">
+              <Header level={2} className="mb-3">
+                {t('Construct.other.description')}
+              </Header>
+              <STAMarkdown>{t('CareerEventDetails.notesInstructions')}</STAMarkdown>
+              <RichTextEditor
+                onChange={onNotesChanged}
+                initialText={careerEventStep.notes}
+              />
+              </div>)
+            :
+              (<div className="col-12 mt-4 text-end">
+              <Button
+                variant="link"
+                className="text-secondary px-0"
+                onClick={() => setShowAdvanced(!showAdvanced)}
+              >
+                {t('Common.button.advanced')}
+              </Button>
+            </div>)
+          }
+      </div>
+
       <div className="mt-4 d-flex justify-content-end">
         <PageHistoryBasedPreviousButton />
         <Button onClick={() => navigateToNextStep()}>

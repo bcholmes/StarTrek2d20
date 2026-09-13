@@ -357,19 +357,32 @@ export class Paragraph {
       ) {
         skipSpace = true;
         if (options != null) {
-          if (fontType !== options.fontType) {
-            fontType = options.fontType;
-            fontSpec = initialFont;
-          } else if (token === '**') {
-            const font = this.fontLibrary.fontByType(FontType.Bold);
-            if (font != null) {
+          if (token === '**') {
+            if (fontType === FontType.Italic) {
+              fontType = FontType.BoldItalic;
+            } else if (fontType === FontType.BoldItalic) {
+              fontType = FontType.Italic;
+            } else if (fontType === FontType.Bold) {
+              fontType = options.fontType;
+            } else {
               fontType = FontType.Bold;
+            }
+            const font = this.fontLibrary.fontByType(fontType);
+            if (font != null) {
               fontSpec = new FontSpecification(font, options.size);
             }
           } else if (token === '_' || token === '*') {
-            const font = this.fontLibrary.fontByType(FontType.Italic);
-            if (font != null) {
+            if (fontType === FontType.Bold) {
+              fontType = FontType.BoldItalic;
+            } else if (fontType === FontType.BoldItalic) {
+              fontType = FontType.Bold;
+            } else if (fontType === FontType.Italic) {
+              fontType = options.fontType;
+            } else {
               fontType = FontType.Italic;
+            }
+            const font = this.fontLibrary.fontByType(fontType);
+            if (font != null) {
               fontSpec = new FontSpecification(font, options.size);
             }
           } else if (token === '<u>' || token === '</u>') {

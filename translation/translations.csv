@@ -75,6 +75,7 @@ CareerEvents.unofficialNote,This list includes unofficial items from [Continuing
 CareerEventDetails.errorAttribute,Please select an attribute.,,Bitte wähle ein Attribut.,"Por favor, seleciona un Atributo.",Selectionez un Attribut SVP,Пожалуйста выберите качество,"Por favor, selecione um atributo.",Proszę wybierz Atrybut
 CareerEventDetails.errorDiscipline,Please select a discipline.,,Bitte wähle eine Disziplin.,"Por favor, seleciona una Disciplina.",Selectionez une Discipline SVP,Пожалуйста выберите знание,"Por favor, selecione uma disciplina.",Proszę wybierz Sekcję
 CareerEventDetails.errorFocus,Please select a focus.,,Bitte wähle einen Fokus.,"Por favor, seleciona una Especialidad.",Séléctionez une Spécialité SVP,Выберите специализацию,"Por favor, selecione um foco.",Proszę wybierz Biegłość
+CareerEventDetails.notesInstructions,Describe the event in a bit more detail. What took place? What role did the character play? How has that event influenced the character's thoughts/actions today?,,,,,,,
 ChildSelectionPage.instruction,"Naturally, a child has not attended Starfleet Academy (or any of its counterparts), or any institute of higher education. Indeed, they’re still in their earlier stages of education.
 
 Select an age for your character.",,"Ein Kind besuchte natürlich noch nicht die Sternenflottenakademie (bzw. ein vergleichbares Gegenstück) oder irgendein höheres Bildungsinstitut. Tatsächlich sind sie noch in den frühen Phasen der Ausbildung.
@@ -740,6 +741,7 @@ UpbringingDetailPage.error.discipline,You must select 1 Discipline to improve be
 UpbringingDetailPage.error.talent,You must select a talent before proceeding.,,Du musst ein Talent wählen um fortzufahren.,Debes seleccionar un Talento antes de continuar.,Vous devez choisir 1 Talent pour continuer.,Выберите талант для продолжения.,Você deve selecionar um talento antes de continuar.,Wybierz talent zanim przejdziesz dalej.
 UpbringingDetailPage.error.focus,You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.,,"Du musst einen Fokus eingeben. Wähle aus den Vorschlägen, falls du dir keinen ausdenken kannst.",Debes elegir una Especialidad. Elige entre las sugerencias o crea la tuya propia.,Vous devez entrer une Spécialité. Choisissez parmi les proposistion ou créez la votre.,Нужно написать Специализацию. Выберите из предложенных если ничего не приходит в голову.,Você precisa digitar um Focus. Escolha uma das sugestões se não conseguir criar a sua própria.,"Uzupełnij biegłość postaci. Jeśli nie masz pomysłów, to możesz wybrać jedną z sugerowanych."
 Common.button.random,Random,,Zufällig,Aleatorio,Aléatoire,Случайный выбор,Aleatório,Losowe
+Common.button.advanced,Advanced,,,,,,,
 Common.button.select,Select,,Auswählen,Seleccionar,Choisir,Выбрать,Selecione,Wybierz
 Common.button.selectAll,Select All,,Alles auswählen,Seleccionar todo,Sélectionner tout,Выбрать все,Selecione Todos,Wybierz wszystkie
 Common.button.selectNone,Select None,,Auswahl aufheben,Seleccionar Ninguno,Sélectionnez Aucun,Отменить все,Selecione Nenhum,Anuluj wybory

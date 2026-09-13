@@ -4,13 +4,15 @@ import rehypeRaw from 'rehype-raw';
 
 interface ISTAMarkdown {
   children: string;
+  className?: string;
 }
 
-export const STAMarkdown: React.FC<ISTAMarkdown> = ({ children }) => {
+export const STAMarkdown: React.FC<ISTAMarkdown> = ({ children, className }) => {
   return (
     <Markdown
       rehypePlugins={[rehypeRaw]}
       allowedElements={['p', 'strong', 'u', 'em', 'i', 'b']}
+      className={className}
     >
       {children}
     </Markdown>

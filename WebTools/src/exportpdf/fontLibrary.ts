@@ -5,6 +5,7 @@ export enum FontType {
   Bold,
   Italic,
   Symbol,
+  BoldItalic,
 }
 
 export class FontLibrary {

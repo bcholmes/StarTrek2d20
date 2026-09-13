@@ -121,6 +121,12 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     const italicFont = await pdf.embedFont(italicFontBytes);
     this.fonts.addFont(FontType.Italic, italicFont);
 
+    const boldItalicFontBytes = await fetch(
+      '/static/font/OpenSansCondensed-BoldItalic.ttf',
+    ).then((res) => res.arrayBuffer());
+    const boldItalicFont = await pdf.embedFont(boldItalicFontBytes);
+    this.fonts.addFont(FontType.BoldItalic, boldItalicFont);
+
     const symbolFontBytes = await fetch(
       '/static/font/Trek_Arrowheads.ttf',
     ).then((res) => res.arrayBuffer());
