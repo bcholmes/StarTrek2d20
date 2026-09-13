@@ -1,11 +1,10 @@
-import { test, expect, describe, beforeAll, beforeEach } from '@jest/globals';
+import { test, expect, describe, beforeAll } from '@jest/globals';
 import {
   Table,
   TableCollection,
   TableRow,
   ValueResult,
 } from '../../src/table/model/table';
-import { TableMarshaller } from '../../src/table/model/tableMarshaller';
 import { tableReducer } from '../../src/state/tableReducer';
 import {
   addTableCollection,
@@ -15,8 +14,6 @@ import {
   setTableCollectionSelection,
   setTableForEditing,
 } from '../../src/state/tableActions';
-
-const STORAGE_KEY = 'settings.tableData';
 
 function createLocalStorageMock(): Storage {
   const storage = new Map<string, string>();
@@ -54,18 +51,7 @@ function makeCollection(name: string, uuid: string): TableCollection {
   );
 }
 
-function storedCollections() {
-  const data = JSON.parse(
-    (globalThis.window as any).localStorage.getItem(STORAGE_KEY),
-  );
-  return data.collections;
-}
-
 describe('tableReducer', () => {
-  beforeEach(() => {
-    (globalThis.window as any).localStorage.clear();
-  });
-
   test('returns the two built-in deployments for an unknown action', () => {
     const result = tableReducer(undefined, { type: 'UNKNOWN' });
     expect(result.selection).toBeNull();
@@ -78,17 +64,13 @@ describe('tableReducer', () => {
     );
   });
 
-  test('ADD_TABLE_COLLECTION appends a collection and persists it', () => {
+  test('ADD_TABLE_COLLECTION appends a collection', () => {
     const added = makeCollection('New Collection', 'uuid-new');
     const result = tableReducer(
       { selection: null, collections: [] },
       addTableCollection(added),
     );
     expect(result.collections).toEqual([added]);
-    expect(storedCollections()).toHaveLength(1);
-    expect(
-      TableMarshaller.instance.unmarshall(storedCollections()[0]).uuid,
-    ).toBe('uuid-new');
   });
 
   test('IMPORT_TABLE_COLLECTION behaves like ADD_TABLE_COLLECTION', () => {
@@ -98,10 +80,6 @@ describe('tableReducer', () => {
       importTableCollection(imported),
     );
     expect(result.collections).toEqual([imported]);
-    expect(storedCollections()).toHaveLength(1);
-    expect(
-      TableMarshaller.instance.unmarshall(storedCollections()[0]).uuid,
-    ).toBe('uuid-import');
   });
 
   test('SET_TABLE_COLLECTION_SELECTION stores the selected collection', () => {
@@ -122,7 +100,7 @@ describe('tableReducer', () => {
     expect(updated.editing).toBe(editing);
   });
 
-  test('DELETE_TABLE_COLLECTION removes the matching uuid and persists', () => {
+  test('DELETE_TABLE_COLLECTION removes the matching uuid', () => {
     const first = makeCollection('First', 'uuid-1');
     const second = makeCollection('Second', 'uuid-2');
     const result = tableReducer(
@@ -130,10 +108,6 @@ describe('tableReducer', () => {
       deleteTableCollection(first),
     );
     expect(result.collections).toEqual([second]);
-    expect(storedCollections()).toHaveLength(1);
-    expect(
-      TableMarshaller.instance.unmarshall(storedCollections()[0]).uuid,
-    ).toBe('uuid-2');
   });
 
   test('REPLACE_TABLE_COLLECTION removes the old uuid and appends the new', () => {
@@ -145,18 +119,5 @@ describe('tableReducer', () => {
       replaceTableCollection(first.uuid, replacement),
     );
     expect(result.collections.map((c) => c.uuid)).toEqual(['uuid-2', 'uuid-3']);
-  });
-
-  test('persisted collections unmarshall back to the same collections', () => {
-    const added = makeCollection('Round Trip', 'uuid-roundtrip');
-    tableReducer(
-      { selection: null, collections: [] },
-      addTableCollection(added),
-    );
-    const reparsed = TableMarshaller.instance.unmarshall(
-      storedCollections()[0],
-    );
-    expect(reparsed.uuid).toBe('uuid-roundtrip');
-    expect(reparsed.mainTable.name).toBe('Round Trip');
   });
 });

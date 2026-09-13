@@ -2,13 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { AnyAction } from '@reduxjs/toolkit';
 import type { ILocalStorageConstructRecord } from '../common/iLocalStorageConstructRecord';
 
-const persistItems = (records: ILocalStorageConstructRecord[]) => {
-  const data = {
-    records: records ?? [],
-  };
-  window.localStorage.setItem('constructs.records', JSON.stringify(data));
-};
-
 interface SavedConstructState {
   records: ILocalStorageConstructRecord[];
 }
@@ -57,7 +50,6 @@ const handleSave = (state: SavedConstructState, action: AnyAction) => {
   if (records.length > 5) {
     records.splice(0, records.length - 5);
   }
-  persistItems(records);
   return {
     records: records,
   };

@@ -316,15 +316,6 @@ const tableCollection2 = new TableCollection(
   'ae0c7045-0894-4523-abdd-1c1e50fb9e86',
 );
 
-const persistTables = (tables: TableCollection[]) => {
-  const data = {
-    collections: tables?.length
-      ? tables.map((s) => TableMarshaller.instance.marshall(s))
-      : [],
-  };
-  window.localStorage.setItem('settings.tableData', JSON.stringify(data));
-};
-
 interface TableState {
   selection: TableCollection;
   collections: TableCollection[];
@@ -369,7 +360,6 @@ const appendCollection = (
   const collections = [...state.collections];
   const collection = action.payload.collection;
   collections.push(collection);
-  persistTables(collections);
   return {
     ...state,
     collections: collections,
@@ -395,7 +385,6 @@ export const tableSlice = createSlice({
       temp.collections = temp.collections.filter(
         (t) => t.uuid !== tableCollection.uuid,
       );
-      persistTables(temp.collections);
       return temp;
     });
     builder.addCase(setTableForEditing, (state, action) => {
