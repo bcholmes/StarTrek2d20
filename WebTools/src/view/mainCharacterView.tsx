@@ -28,6 +28,8 @@ import { marshaller } from '../helpers/marshaller';
 import { Dialog } from '../components/dialog';
 import { STAMarkdown } from '../components/staMarkdown';
 import { CareerEventsHelper } from '../helpers/careerEvents';
+import { CharacterType, CharacterTypeModel } from '../common/characterType';
+import { TracksHelper } from '../helpers/tracks';
 
 export interface ICharacterViewProperties {
   character: Character;
@@ -98,6 +100,29 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
   }
 
   function renderTopFields() {
+    let path =
+      CharacterTypeModel.getByType(character.type)?.localizedName ?? '';
+    if (
+      [
+        CharacterType.Other,
+        CharacterType.AlliedMilitary,
+        CharacterType.AmbassadorDiplomat,
+      ].includes(character.type) &&
+      character.typeDetails != null
+    ) {
+      path = character.typeDetails.name;
+    }
+    if (character.educationStep?.track != null) {
+      const track = TracksHelper.instance.getTrack(
+        character.educationStep?.track,
+        character.type,
+        character.version,
+      );
+      path +=
+        ' / ' +
+        (character.version === 1 ? track.localizedName : track.localizedName2e);
+    }
+
     return (
       <>
         <Header className="mb-4">
@@ -200,18 +225,29 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
           </div>
         </div>
 
-        {character.rank ? (
-          <div className="row" style={{ alignItems: 'baseline' }}>
-            <div className="col-md-2 view-field-label pb-2">
-              {t('Construct.other.rank')}:
-            </div>
-            <div className="col-md-4 text-white">
-              <div className="view-border-bottom pb-2">
-                {character.rank?.localizedName}
-              </div>
+        <div className="row" style={{ alignItems: 'baseline' }}>
+          <div className="col-md-2 view-field-label pb-2">
+            {t('Construct.other.careerPath')}:
+          </div>
+          <div className="col-md-4 text-white">
+            <div className="view-border-bottom pb-2">
+              {path}
             </div>
           </div>
-        ) : undefined}
+
+          {character.rank ? (
+            <>
+              <div className="col-md-2 view-field-label pb-2">
+                {t('Construct.other.rank')}:
+              </div>
+              <div className="col-md-4 text-white">
+                <div className="view-border-bottom pb-2">
+                  {character.rank?.localizedName}
+                </div>
+              </div>
+            </>
+          ) : undefined}
+        </div>
 
         <div className="row" style={{ alignItems: 'baseline' }}>
           <div className="col-md-2 view-field-label pb-2">
