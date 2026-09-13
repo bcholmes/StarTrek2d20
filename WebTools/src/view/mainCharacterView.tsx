@@ -230,9 +230,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
             {t('Construct.other.careerPath')}:
           </div>
           <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2">
-              {path}
-            </div>
+            <div className="view-border-bottom pb-2">{path}</div>
           </div>
 
           {character.rank ? (
