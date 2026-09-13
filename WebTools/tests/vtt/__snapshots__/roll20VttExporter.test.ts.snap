@@ -913,7 +913,7 @@ exports[`Roll20 JSON export golden output exports a fully-populated 2e starship 
                 "id": "-Nzzzzzzzzzzzzzzzz0u"
             },
             {
-                "name": "ship_communcation",
+                "name": "ship_communications",
                 "current": 9,
                 "max": "",
                 "id": "-Nzzzzzzzzzzzzzzzz0v"
