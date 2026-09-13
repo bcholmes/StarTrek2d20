@@ -20,7 +20,9 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
     >
       <b>v1.260912</b>
       <ul>
-        <li>Tokens: cadet uniforms for <cite>Prodigy</cite>.</li>
+        <li>
+          Tokens: cadet uniforms for <cite>Prodigy</cite>.
+        </li>
         <li>Very preliminary work on description fields for characters.</li>
         <li>More Polish translations.</li>
       </ul>
