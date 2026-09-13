@@ -61,14 +61,14 @@ function xmlStringNode(name: string, text: string | number): XmlElement {
   };
 }
 
-export class FantasyGroupsVttExporter {
-  private static singleton: FantasyGroupsVttExporter;
+export class FantasyGroundsVttExporter {
+  private static singleton: FantasyGroundsVttExporter;
 
   static get instance() {
-    if (FantasyGroupsVttExporter.singleton == null) {
-      FantasyGroupsVttExporter.singleton = new FantasyGroupsVttExporter();
+    if (FantasyGroundsVttExporter.singleton == null) {
+      FantasyGroundsVttExporter.singleton = new FantasyGroundsVttExporter();
     }
-    return FantasyGroupsVttExporter.singleton;
+    return FantasyGroundsVttExporter.singleton;
   }
 
   private exportNpc(character: Character) {
