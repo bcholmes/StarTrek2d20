@@ -437,7 +437,7 @@ exports[`Roll20 JSON export golden output exports a fully-populated 2e character
             },
             {
                 "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz16_talent_requirements",
-                "current": "",
+                "current": "None",
                 "max": "",
                 "id": "-Nzzzzzzzzzzzzzzzz19"
             },
@@ -467,7 +467,7 @@ exports[`Roll20 JSON export golden output exports a fully-populated 2e character
             },
             {
                 "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2c_talent_requirements",
-                "current": "",
+                "current": "None",
                 "max": "",
                 "id": "-Nzzzzzzzzzzzzzzzz2f"
             },
@@ -557,7 +557,7 @@ exports[`Roll20 JSON export golden output exports a fully-populated 2e character
             },
             {
                 "name": "repeating_talents_-Nzzzzzzzzzzzzzzzz2u_talent_requirements",
-                "current": "",
+                "current": "None",
                 "max": "",
                 "id": "-Nzzzzzzzzzzzzzzzz2x"
             },

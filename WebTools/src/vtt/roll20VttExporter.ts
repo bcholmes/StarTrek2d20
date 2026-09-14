@@ -896,7 +896,7 @@ export class Roll20VttExporter {
       'repeating_talents_',
       'talent_',
       selectedTalent.displayNameWithMultiple,
-      talent.requirement ?? '',
+      talent.requirement?.length ? talent.requirement : 'None',
       id,
     );
   }

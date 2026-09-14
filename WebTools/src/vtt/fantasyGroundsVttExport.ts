@@ -1078,7 +1078,10 @@ export class FantasyGroundsVttExporter {
               talent.maxRank > 1 ? character.getRankForTalent(talent.name) : 0,
             ),
             xmlStringNode('name', s.displayName),
-            xmlStringNode('requirement', talent.requirement ?? 'None'),
+            xmlStringNode(
+              'requirement',
+              talent.requirement?.length ? talent.requirement : 'None',
+            ),
           ],
         });
       }
