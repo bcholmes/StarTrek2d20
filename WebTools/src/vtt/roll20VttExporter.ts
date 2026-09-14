@@ -922,7 +922,7 @@ export class Roll20VttExporter {
       },
       {
         name: rowPrefix + rowId + '_' + fieldPrefix + 'description',
-        current: resolveTalentDescription(selectedTalent, version),
+        current: resolveTalentDescription(selectedTalent, version, true),
         max: '',
         id: id.nextId(),
       },

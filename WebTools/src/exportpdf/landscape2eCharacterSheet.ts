@@ -8,7 +8,16 @@ import { PDFDocument, PDFTextField } from '@cantoo/pdf-lib';
 import type { Construct } from '../common/construct';
 import { Stereotype } from '../common/construct';
 import { TalentWriter } from './talentWriter';
-import { CareerEventStep, Character, Division } from '../common/character';
+import {
+  CareerEventStep,
+  Character,
+  Division,
+  Promotion,
+} from '../common/character';
+import type {
+  CharacterAdvancementStep,
+  ReputationChangeStep,
+} from '../common/character';
 import { assembleWritableItems } from './generatedsheet';
 import { FontLibrary, FontType } from './fontLibrary';
 import { labelWriter, simpleLabelWriter } from './labelWriter';
@@ -64,6 +73,8 @@ import { TextBlock } from './textBlock';
 import { TokenHelper } from './tokenHelper';
 import { LogEntry } from '../common/logEntry';
 import { CareerEventsHelper } from '../helpers/careerEvents';
+import { ModificationType } from '../modify/model/modificationType';
+import { RanksHelper } from '../helpers/ranks';
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   static readonly page2Column1X = 55.6;
@@ -231,7 +242,9 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
     const character = construct as Character;
     if (
-      (character.logEntries?.length ||
+      (character.improvements?.filter(
+        (i) => i instanceof LogEntry || i instanceof Promotion,
+      )?.length ||
         character.careerEvents?.filter((e) => e.notes?.length)?.length) &&
       nextArea != null
     ) {
@@ -319,8 +332,16 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     );
     nextArea = nextArea.bottomAfter(23);
 
-    const logEntries: (LogEntry | CareerEventStep)[] = [
-      ...character.logEntries,
+    const logEntries: (
+      | LogEntry
+      | CareerEventStep
+      | Promotion
+      | ReputationChangeStep
+      | CharacterAdvancementStep
+    )[] = [
+      ...character.improvements?.filter(
+        (i) => i instanceof LogEntry || i instanceof Promotion,
+      ),
     ].reverse();
     if (character.careerEvents[1]?.notes) {
       logEntries.push(character.careerEvents[1]);
@@ -358,6 +379,9 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         if (l.missionDescription?.trim()?.length) {
           text += '\n' + l.missionDescription;
         }
+        if (l.notes?.trim().length) {
+          text += '\n**' + i18next.t('Common.text.notes') + ':** ' + l.notes;
+        }
       } else if (l instanceof CareerEventStep) {
         const event = CareerEventsHelper.getCareerEvent(
           l.id,
@@ -372,9 +396,21 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
             i18next.t('Page.title.careerEvent') +
             ')';
         }
-      }
-      if (l.notes?.trim().length) {
-        text += '\n**' + i18next.t('Common.text.notes') + ':** ' + l.notes;
+        if (l.notes?.trim().length) {
+          text += '\n**' + i18next.t('Common.text.notes') + ':** ' + l.notes;
+        }
+      } else if (l instanceof Promotion) {
+        let rankName = l.rank.localizedName;
+        if (l.rank?.id != null) {
+          rankName = RanksHelper.instance().getRank(l.rank.id).localizedName;
+        }
+        text +=
+          '**' +
+          (l.type === ModificationType.Promotion
+            ? i18next.t('ModificationType.name.promotion')
+            : i18next.t('ModificationType.name.demotion')) +
+          '**: ' +
+          rankName;
       }
 
       const descriptionParagraphs = text.split('\n');

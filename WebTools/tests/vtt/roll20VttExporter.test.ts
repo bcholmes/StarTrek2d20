@@ -87,4 +87,17 @@ describe('Roll20 export known divergences', () => {
       true,
     );
   });
+
+  test('normalizes the [D] challenge-dice notation to CD', () => {
+    const result: any = Roll20VttExporter.instance.exportCharacter(
+      makePopulatedMainCharacter(2),
+    );
+    const attribValues = result.character.attribs.map(
+      (a: { current: string }) => a.current,
+    );
+    expect(attribValues).toEqual(
+      expect.arrayContaining([expect.stringContaining('1CD')]),
+    );
+    expect(attribValues.join('\n')).not.toContain('1[D]');
+  });
 });
