@@ -100,16 +100,8 @@ export const GMCharacterView: React.FC<IGMCharacterViewProperties> = ({
   };
 
   const viewCharacter = () => {
-    if (
-      tracking?.character?.upbringingStep == null &&
-      tracking?.character?.environmentStep == null
-    ) {
-      const value = marshaller.encodeSupportingCharacter(tracking?.character);
-      window.open('/view?s=' + value, '_blank');
-    } else {
-      const value = marshaller.encodeMainCharacter(tracking?.character);
-      window.open('/view?s=' + value, '_blank');
-    }
+    const value = marshaller.encodeCharacter(tracking?.character);
+    window.open('/view?s=' + value, '_blank');
   };
 
   const removeCharacter = () => {
@@ -313,6 +305,12 @@ export const GMCharacterView: React.FC<IGMCharacterViewProperties> = ({
             <b>{t('Construct.other.focuses')}:</b>{' '}
             {character.focuses?.map((f, i) => (i > 0 ? ', ' : '') + f)}
           </div>
+          {character.values?.length ? (
+            <div className="text-white">
+              <b>{t('Construct.other.values')}:</b>{' '}
+              {character.values?.map((f, i) => (i > 0 ? ', ' : '') + f)}
+            </div>
+          ) : undefined}
           <div className="text-white">
             <b>{t('Construct.other.talents')}:</b>{' '}
             {character

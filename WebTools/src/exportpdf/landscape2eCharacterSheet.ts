@@ -338,11 +338,13 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
       | Promotion
       | ReputationChangeStep
       | CharacterAdvancementStep
-    )[] = [
-      ...character.improvements?.filter(
-        (i) => i instanceof LogEntry || i instanceof Promotion,
-      ),
-    ].reverse();
+    )[] = character.improvements?.length
+      ? [
+          ...character.improvements?.filter(
+            (i) => i instanceof LogEntry || i instanceof Promotion,
+          ),
+        ]?.reverse()
+      : [];
     if (character.careerEvents[1]?.notes) {
       logEntries.push(character.careerEvents[1]);
     }
