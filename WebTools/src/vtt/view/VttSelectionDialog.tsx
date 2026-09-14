@@ -10,7 +10,7 @@ import {
 import { ModalControl } from '../../components/modal';
 import { FoundryVttExporter } from '../foundryVttExporter';
 import { VttType, VttTypes } from '../vttType';
-import { FantasyGroupsVttExporter } from '../fantasyGroundsVttExport';
+import { FantasyGroundsVttExporter } from '../fantasyGroundsVttExport';
 import { Roll20VttExporter } from '../roll20VttExporter';
 import { FoundryPluginType } from '../foundryPluginType';
 import { Station } from '../../common/station';
@@ -173,7 +173,7 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
   };
 
   const exportCharacterToFantasyGrounds = (character: Character) => {
-    const xml = FantasyGroupsVttExporter.instance.exportCharacter(character);
+    const xml = FantasyGroundsVttExporter.instance.exportCharacter(character);
     const escaped = sanitizeName(character.name, 'sta-character');
     download(
       new TextEncoder().encode(xml),

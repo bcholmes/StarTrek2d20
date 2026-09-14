@@ -1,6 +1,6 @@
 import { test, expect, describe } from '@jest/globals';
 import '../../src/helpers/species';
-import { FantasyGroupsVttExporter } from '../../src/vtt/fantasyGroundsVttExport';
+import { FantasyGroundsVttExporter } from '../../src/vtt/fantasyGroundsVttExport';
 import { makePopulatedMainCharacter, makePopulatedNpc } from './vttFixtures';
 
 jest.mock('i18next', () => {
@@ -33,7 +33,7 @@ jest.mock('../../src/state/store', () => {
 
 describe('FantasyGrounds XML export golden output', () => {
   test('exports a fully-populated 2e main character', () => {
-    const result = FantasyGroupsVttExporter.instance.exportCharacter(
+    const result = FantasyGroundsVttExporter.instance.exportCharacter(
       makePopulatedMainCharacter(2),
     );
     expect(result).toMatchSnapshot();
@@ -41,7 +41,7 @@ describe('FantasyGrounds XML export golden output', () => {
 
   test('exports a fully-populated NPC', () => {
     const result =
-      FantasyGroupsVttExporter.instance.exportCharacter(makePopulatedNpc());
+      FantasyGroundsVttExporter.instance.exportCharacter(makePopulatedNpc());
     expect(result).toMatchSnapshot();
   });
 });
