@@ -36,6 +36,7 @@ import type { Station } from '../common/station';
 import {
   departmentName,
   attributeName,
+  normalizeChallengeDice,
   resolveTalentDescription,
   splitToParagraphs,
 } from './vttShared';
@@ -1059,7 +1060,9 @@ export class FoundryVttExporter {
   convertDescription(talent: SelectedTalent | SpeciesAbility, version: number) {
     let description = '';
     if (talent instanceof SpeciesAbility) {
-      description = (talent as SpeciesAbility).description;
+      description = normalizeChallengeDice(
+        (talent as SpeciesAbility).description,
+      );
     } else {
       description = resolveTalentDescription(talent, version, true);
     }
