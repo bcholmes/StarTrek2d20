@@ -21,8 +21,9 @@ import { TalentCategory } from '../helpers/talentCategory';
 import {
   attributeName,
   departmentName,
+  paragraphsToHtml,
   resolveTalentDescription,
-  splitToParagraphs,
+  talentRequirement,
 } from './vttShared';
 
 interface IRoll20Attribute {
@@ -317,9 +318,7 @@ export class Roll20VttExporter {
 
     const description = starship.spaceframeModel?.localizedDescription;
     if (description) {
-      splitToParagraphs(description).forEach(
-        (p) => (result += '<p>' + p + '</p>\n'),
-      );
+      result += paragraphsToHtml(description, '\n');
     }
 
     if (starship.getAllTraits()?.length) {
@@ -879,7 +878,7 @@ export class Roll20VttExporter {
       'repeating_stalents_',
       'stalent_',
       name,
-      talent.requirement?.length ? talent.requirement : 'None',
+      talentRequirement(talent),
       id,
     );
   }
@@ -896,7 +895,7 @@ export class Roll20VttExporter {
       'repeating_talents_',
       'talent_',
       selectedTalent.displayNameWithMultiple,
-      talent.requirement?.length ? talent.requirement : 'None',
+      talentRequirement(talent),
       id,
     );
   }

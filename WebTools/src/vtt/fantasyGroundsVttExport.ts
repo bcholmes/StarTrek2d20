@@ -19,6 +19,7 @@ import {
   departmentName,
   resolveTalentDescription,
   splitToParagraphs,
+  talentRequirement,
 } from './vttShared';
 
 interface XmlElement {
@@ -57,6 +58,23 @@ function xmlStringNode(name: string, text: string | number): XmlElement {
         type: 'text',
         text,
       },
+    ],
+  };
+}
+
+function xmlStatNode(name: string, value: number): XmlElement {
+  return {
+    name,
+    type: 'element',
+    elements: [
+      xmlNumberNode('careerevent', 0),
+      xmlNumberNode('edit', value),
+      xmlNumberNode('environment', 0),
+      xmlNumberNode('misc', 0),
+      xmlNumberNode('species', 0),
+      xmlNumberNode('total', value),
+      xmlNumberNode('training', 0),
+      xmlNumberNode('upbringing', 0),
     ],
   };
 }
@@ -529,22 +547,9 @@ export class FantasyGroundsVttExporter {
     };
 
     DepartmentsHelper.instance.getDepartments().forEach((d) => {
-      const name = departmentName(d);
-      const discipline = {
-        name: name,
-        type: 'element',
-        elements: [
-          xmlNumberNode('careerevent', 0),
-          xmlNumberNode('edit', character.departments[d]),
-          xmlNumberNode('environment', 0),
-          xmlNumberNode('misc', 0),
-          xmlNumberNode('species', 0),
-          xmlNumberNode('total', character.departments[d]),
-          xmlNumberNode('training', 0),
-          xmlNumberNode('upbringing', 0),
-        ],
-      };
-      result.elements.push(discipline);
+      result.elements.push(
+        xmlStatNode(departmentName(d), character.departments[d]),
+      );
     });
 
     return result;
@@ -659,22 +664,9 @@ export class FantasyGroundsVttExporter {
     };
 
     AttributesHelper.getAllAttributes().forEach((a) => {
-      const name = attributeName(a);
-      const attribute = {
-        name: name,
-        type: 'element',
-        elements: [
-          xmlNumberNode('careerevent', 0),
-          xmlNumberNode('edit', character.attributes[a]),
-          xmlNumberNode('environment', 0),
-          xmlNumberNode('misc', 0),
-          xmlNumberNode('species', 0),
-          xmlNumberNode('total', character.attributes[a]),
-          xmlNumberNode('training', 0),
-          xmlNumberNode('upbringing', 0),
-        ],
-      };
-      result.elements.push(attribute);
+      result.elements.push(
+        xmlStatNode(attributeName(a), character.attributes[a]),
+      );
     });
 
     return result;
@@ -1078,10 +1070,7 @@ export class FantasyGroundsVttExporter {
               talent.maxRank > 1 ? character.getRankForTalent(talent.name) : 0,
             ),
             xmlStringNode('name', s.displayName),
-            xmlStringNode(
-              'requirement',
-              talent.requirement?.length ? talent.requirement : 'None',
-            ),
+            xmlStringNode('requirement', talentRequirement(talent)),
           ],
         });
       }

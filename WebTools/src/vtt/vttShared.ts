@@ -1,4 +1,5 @@
 import type { SelectedTalent } from '../common/selectedTalent';
+import type { TalentModel } from '../helpers/talentModel';
 import { Attribute } from '../helpers/attributes';
 import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
 import { Department } from '../helpers/department';
@@ -32,4 +33,14 @@ export function attributeName(attribute: Attribute): string {
 
 export function splitToParagraphs(text: string): string[] {
   return text.split('\n').filter((s) => s?.length);
+}
+
+export function paragraphsToHtml(text: string, paragraphSuffix = ''): string {
+  return splitToParagraphs(text)
+    .map((paragraph) => '<p>' + paragraph + '</p>' + paragraphSuffix)
+    .join('');
+}
+
+export function talentRequirement(talent: TalentModel): string {
+  return talent.requirement?.length ? talent.requirement : 'None';
 }
