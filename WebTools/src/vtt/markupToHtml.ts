@@ -1,10 +1,10 @@
 import { textTokenizer } from '../exportpdf/textTokenizer';
+import { splitToParagraphs } from './vttShared';
 
 export const markupToHtml = (description: string) => {
   return description == null
     ? ''
-    : description
-        .split('\n')
+    : splitToParagraphs(description)
         .map((d) => {
           const parts = textTokenizer(d);
           let result = '<p>';
