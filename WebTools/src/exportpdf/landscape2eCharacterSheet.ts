@@ -209,38 +209,40 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     ).then((res) => res.arrayBuffer());
     const blankPdf = await PDFDocument.load(pdfBytes);
 
-    const [secondPage] = await pdf.copyPages(blankPdf, [0]);
-    const [thirdPage] = await pdf.copyPages(blankPdf, [0]);
-    const [fourthPage] = await pdf.copyPages(blankPdf, [0]);
+    const character = construct as Character;
+    const extraPages = [];
+    for (
+      let i = 0;
+      i < Math.ceil((character.improvements?.length ?? 0) / 4) + 2;
+      i++
+    ) {
+      // making an assumption here that we can write at least 4 improvements per page
+      const [p] = await pdf.copyPages(blankPdf, [0]);
+      extraPages.push(p);
+    }
 
     const page = pdf.getPage(0);
+    const colour = this.deriveSheetColour(character);
 
-    const colour = this.deriveSheetColour(construct as Character);
-
-    [page, secondPage, thirdPage, fourthPage].forEach((p) => {
+    [page].concat(...extraPages).forEach((p) => {
       new LandscapeSheetDecorations().drawSheetDecorations(p, colour);
       this.writeTitle(p, colour);
     });
 
-    this.writeLabels(page, construct as Character);
+    this.writeLabels(page, character);
     const { firstColumn, logColumns, page2 } = await this.fixedTextColumns(
-      [secondPage, thirdPage, fourthPage],
+      extraPages,
       pdf,
     );
-    let nextArea = await this.writeRoleAndTalents(
-      page,
-      construct as Character,
-      firstColumn,
-    );
+    let nextArea = await this.writeRoleAndTalents(page, character, firstColumn);
 
     if (construct.stereotype !== Stereotype.Npc) {
       this.createDeterminationBoxes(page, pdf);
     }
-    this.createStressBoxes(page, pdf, construct as Character);
+    this.createStressBoxes(page, pdf, character);
 
-    this.drawArrowHead(page, construct as Character, colour);
+    this.drawArrowHead(page, character, colour);
 
-    const character = construct as Character;
     if (
       (character.improvements?.filter(
         (i) => i instanceof LogEntry || i instanceof Promotion,
@@ -274,7 +276,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         Landscape2eCharacterSheet.page2Column4X === nextArea.column.start.x
       ) {
         const newLayoutColumn = logColumns[2];
-        nextArea = new PageArea(newLayoutColumn, thirdPage);
+        nextArea = new PageArea(newLayoutColumn, extraPages[1]);
       } else if (
         nextArea != null &&
         ![
@@ -368,7 +370,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
     logEntries.forEach((l, li) => {
       if (li > 0) {
-        paragraph = paragraph?.nextParagraph(2);
+        paragraph = paragraph?.nextParagraph(1.25);
         if (paragraph) {
           paragraphs.push(paragraph);
         }
@@ -379,7 +381,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
           text += '**' + l.adventureTitle + '**';
         }
         if (l.missionDescription?.trim()?.length) {
-          text += '\n' + l.missionDescription;
+          text += '\n' + l.missionDescription.trim();
         }
         if (l.notes?.trim().length) {
           text += '\n**' + i18next.t('Common.text.notes') + ':** ' + l.notes;
@@ -418,7 +420,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
       const descriptionParagraphs = text.split('\n');
       descriptionParagraphs.forEach((p, i) => {
         if (i > 0) {
-          paragraph = paragraph?.nextParagraph();
+          paragraph = paragraph?.nextParagraph(0.5);
           if (paragraph) {
             paragraphs.push(paragraph);
           }

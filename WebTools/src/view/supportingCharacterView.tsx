@@ -18,6 +18,7 @@ import { TalentsBlockView } from './talentsBlockView';
 import Button from 'react-bootstrap/Button';
 import { cyrb53 } from '../common/cyrb53';
 import { originalEncodedSheet } from './originalEncodedSheet';
+import { STAMarkdown } from '../components/staMarkdown';
 
 export const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({
   character,
@@ -48,6 +49,11 @@ export const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({
             ? getNameAndShortRankOf(character)
             : 'Unnamed Character'}
         </Header>
+
+        {character.description?.length ? (
+          <STAMarkdown>{character.description}</STAMarkdown>
+        ) : undefined}
+
         <div className="row mt-4" style={{ alignItems: 'baseline' }}>
           <div className="col-md-2 view-field-label pb-2">
             {t('Construct.other.pronouns')}:

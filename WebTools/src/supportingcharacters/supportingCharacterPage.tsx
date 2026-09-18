@@ -22,6 +22,7 @@ import {
   setCharacter,
   setCharacterAge,
   setCharacterAssignment,
+  setCharacterDescription,
   setCharacterFocus,
   setCharacterName,
   setCharacterPronouns,
@@ -41,6 +42,9 @@ import { SpeciesAbilityView } from '../components/speciesAbilityView';
 import { LoadingButton } from '../common/loadingButton';
 import { saveCharacterToLocalStorage } from '../state/savedConstructActions';
 import { ViewButton } from '../components/viewButton';
+import { STAMarkdown } from '../components/staMarkdown';
+import { RichTextEditor } from '../components/richTextEditor';
+import { Button } from 'react-bootstrap';
 
 const SupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
   character,
@@ -49,16 +53,9 @@ const SupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
   const [showRank, setShowRank] = useState(true);
   const [loadingExport, setLoadingExport] = useState(false);
 
-  /*
-    const showViewPage = () => {
-        setTimeout(() => {
-            let c = store.getState().character.currentCharacter;
-            const value = marshaller.encodeSupportingCharacter(c);
-            store.dispatch(saveCharacterToLocalStorage(c));
-            window.open('/view?s=' + value, "_blank");
-        }, 200);
-    }
-    */
+  const [showAdvanced, setShowAdvanced] = useState<boolean>(
+    character?.description?.length ? true : false,
+  );
 
   const getAges = () => {
     return AgeHelper.getAllChildAges().map(
@@ -123,6 +120,10 @@ const SupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
     return RanksHelper.instance()
       .getRanksByType(character.type, character.version)
       .map((r) => new DropDownElement(r.id, r.localizedName));
+  };
+
+  const onDescriptionChanged = (value: string) => {
+    store.dispatch(setCharacterDescription(value));
   };
 
   const selectRank = (rank: Rank) => {
@@ -519,6 +520,33 @@ const SupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
               }}
             />
           </div>
+        </div>
+
+        <div className="row mb-4">
+          {showAdvanced ? (
+            <div className="col-12 mt-4">
+              <Header level={2} className="mb-3">
+                {t('Construct.other.description')}
+              </Header>
+              <STAMarkdown>
+                {t('FinishPage.descriptionInstruction')}
+              </STAMarkdown>
+              <RichTextEditor
+                onChange={onDescriptionChanged}
+                initialText={character.description}
+              />
+            </div>
+          ) : (
+            <div className="col-12 mt-4 text-end">
+              <Button
+                variant="link"
+                className="text-secondary px-0"
+                onClick={() => setShowAdvanced(!showAdvanced)}
+              >
+                {t('Common.button.advanced')}
+              </Button>
+            </div>
+          )}
         </div>
       </div>
       <div className="button-container mt-4">

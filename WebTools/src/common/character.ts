@@ -1297,7 +1297,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
   }
 
   get nameAndFullRank() {
-    if (this.rank) {
+    if (this.rank?.localizedName) {
       return this.rank.localizedName + ' ' + this.name;
     } else {
       return this.name;
