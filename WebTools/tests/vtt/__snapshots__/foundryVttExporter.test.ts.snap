@@ -284,7 +284,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 1e character 
             "_stats": {
                 "compendiumSource": null,
                 "duplicateSource": null,
-                "coreVersion": "13.336",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1700000000000,
@@ -963,7 +963,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 2e character 
             "_stats": {
                 "compendiumSource": null,
                 "duplicateSource": null,
-                "coreVersion": "13.336",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1700000000000,
@@ -1772,7 +1772,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 2e starship 1
             "folder": null,
             "flags": {},
             "_stats": {
-                "coreVersion": "13.346",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1775998532666,
@@ -1856,7 +1856,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 2e starship 1
             "folder": null,
             "flags": {},
             "_stats": {
-                "coreVersion": "13.346",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1775998532666,
@@ -2141,7 +2141,7 @@ exports[`FoundryVTT export golden output exports a fully-populated station 1`] =
             "folder": null,
             "flags": {},
             "_stats": {
-                "coreVersion": "13.346",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1775998532666,
@@ -2225,7 +2225,7 @@ exports[`FoundryVTT export golden output exports a fully-populated station 1`] =
             "folder": null,
             "flags": {},
             "_stats": {
-                "coreVersion": "13.346",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1775998532666,
@@ -2309,7 +2309,7 @@ exports[`FoundryVTT export golden output exports a fully-populated station 1`] =
             "folder": null,
             "flags": {},
             "_stats": {
-                "coreVersion": "13.346",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1775998532666,
@@ -2393,7 +2393,7 @@ exports[`FoundryVTT export golden output exports a fully-populated station 1`] =
             "folder": null,
             "flags": {},
             "_stats": {
-                "coreVersion": "13.346",
+                "coreVersion": "10.291",
                 "systemId": "sta",
                 "systemVersion": "2.4.2",
                 "createdTime": 1775998532666,

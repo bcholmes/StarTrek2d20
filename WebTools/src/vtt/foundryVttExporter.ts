@@ -271,7 +271,7 @@ export class FoundryVttExporter {
           folder: null,
           flags: {},
           _stats: {
-            coreVersion: '13.346',
+            coreVersion: '10.291',
             systemId: 'sta',
             systemVersion: SYSTEM_VERSION,
             createdTime: 1775998532666,
@@ -625,7 +625,7 @@ export class FoundryVttExporter {
             {
               compendiumSource: null,
               duplicateSource: null,
-              coreVersion: '13.336',
+              coreVersion: '10.291',
               systemId: 'sta',
               systemVersion: SYSTEM_VERSION,
               createdTime: now,
