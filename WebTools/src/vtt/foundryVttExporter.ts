@@ -37,8 +37,8 @@ import {
   departmentName,
   attributeName,
   normalizeChallengeDice,
+  paragraphsToHtml,
   resolveTalentDescription,
-  splitToParagraphs,
 } from './vttShared';
 import { TalentCategory } from '../helpers/talentCategory';
 import type { TalentCategorization } from '../helpers/talentCategory';
@@ -153,14 +153,7 @@ export class FoundryVttExporter {
       },
       items: [],
       effects: [],
-      flags: {
-        exportSource: {
-          world: 'sta-bcholmes-org',
-          system: 'sta',
-          coreVersion: '10.291',
-          systemVersion: SYSTEM_VERSION,
-        },
-      },
+      flags: this.buildExportFlags(),
       _stats: this.buildStats(now),
     };
 
@@ -300,6 +293,17 @@ export class FoundryVttExporter {
       createdTime: now,
       modifiedTime: now,
       lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
+    };
+  }
+
+  private buildExportFlags() {
+    return {
+      exportSource: {
+        world: 'sta-bcholmes-org',
+        system: 'sta',
+        coreVersion: '10.291',
+        systemVersion: SYSTEM_VERSION,
+      },
     };
   }
 
@@ -529,22 +533,8 @@ export class FoundryVttExporter {
       },
       items: [],
       effects: [],
-      flags: {
-        exportSource: {
-          world: 'sta-bcholmes-org',
-          system: 'sta',
-          coreVersion: '10.291',
-          systemVersion: SYSTEM_VERSION,
-        },
-      },
-      _stats: {
-        systemId: 'sta',
-        systemVersion: SYSTEM_VERSION,
-        coreVersion: '10.291',
-        createdTime: now,
-        modifiedTime: now,
-        lastModifiedBy: 'xuN9JpdcyRd60ZEJ',
-      },
+      flags: this.buildExportFlags(),
+      _stats: this.buildStats(now),
     };
 
     DepartmentsHelper.instance.getDepartments().forEach((d) => {
@@ -789,12 +779,7 @@ export class FoundryVttExporter {
   convertCharacterDescription(character: Character) {
     let result = '';
     if (character.description?.length) {
-      const paragraphs = splitToParagraphs(character.description);
-      paragraphs.forEach((p) => {
-        result += '<p>';
-        result += p;
-        result += '</p>';
-      });
+      result += paragraphsToHtml(character.description);
     }
 
     result +=
