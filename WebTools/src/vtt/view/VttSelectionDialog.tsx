@@ -30,6 +30,8 @@ interface IVttSelectionState {
   foundryPluginType?: FoundryPluginType;
 }
 
+const VTT_OPTIONS_STORAGE_KEY = 'settings.vttOptions';
+
 export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
   construct,
 }) => {
@@ -39,7 +41,7 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
   );
 
   useEffect(() => {
-    const dataJson = window.localStorage.getItem('settings.vttOptions');
+    const dataJson = window.localStorage.getItem(VTT_OPTIONS_STORAGE_KEY);
     let data = {};
     try {
       data = dataJson ? JSON.parse(dataJson) : {};
@@ -216,9 +218,9 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
       vttType: VttType[state.vttType],
     };
     if (state.foundryPluginType != null) {
-      data['foundryPlugin'] = FoundryPluginType[state.foundryPluginType];
+      data['foundryPluginType'] = FoundryPluginType[state.foundryPluginType];
     }
-    window.localStorage.setItem('settings.vttOptions', JSON.stringify(data));
+    window.localStorage.setItem(VTT_OPTIONS_STORAGE_KEY, JSON.stringify(data));
   };
 
   const isExportDisabled = () => {

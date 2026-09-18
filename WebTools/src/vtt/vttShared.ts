@@ -3,6 +3,10 @@ import { Attribute } from '../helpers/attributes';
 import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
 import { Department } from '../helpers/department';
 
+export function normalizeChallengeDice(description: string): string {
+  return description?.split(CHALLENGE_DICE_NOTATION).join('CD') ?? '';
+}
+
 export function resolveTalentDescription(
   selectedTalent: SelectedTalent,
   version: number,
@@ -14,7 +18,7 @@ export function resolveTalentDescription(
       ? selectedTalent.talentModel.localizedDescription
       : selectedTalent.talentModel.localizedDescription2e;
   return applyChallengeDiceNormalization
-    ? description.replace(CHALLENGE_DICE_NOTATION, 'CD')
+    ? normalizeChallengeDice(description)
     : description;
 }
 
