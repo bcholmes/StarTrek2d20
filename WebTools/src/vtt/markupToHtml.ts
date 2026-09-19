@@ -11,17 +11,23 @@ export const markupToHtml = (description: string) => {
           let style = '';
           parts.forEach((p) => {
             if (p === '**') {
-              if (style === 'b') {
+              if (style === 'b' || style === 'bi') {
                 result += '</b>';
-                style = '';
+                style = style === 'bi' ? 'i' : '';
+              } else if (style === 'i') {
+                result += '<b>';
+                style = 'bi';
               } else {
                 result += '<b>';
                 style = 'b';
               }
             } else if (p === '_' || p === '*') {
-              if (style === 'i') {
+              if (style === 'i' || style === 'bi') {
                 result += '</i>';
-                style = '';
+                style = style === 'bi' ? 'b' : '';
+              } else if (style === 'b') {
+                result += '<i>';
+                style = 'bi';
               } else {
                 result += '<i>';
                 style = 'i';

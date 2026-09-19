@@ -13,8 +13,23 @@ describe('markupToHtml', () => {
     expect(markupToHtml('a **bold** word')).toBe('<p>a <b>bold</b> word</p>');
   });
 
+  test('renders underline markup', () => {
+    expect(markupToHtml('a <u>underline</u> word')).toBe(
+      '<p>a <u>underline</u> word</p>',
+    );
+  });
+
   test('renders italics markup', () => {
     expect(markupToHtml('a _italic_ word')).toBe('<p>a <i>italic</i> word</p>');
+  });
+
+  test('renders both bold and italics markup', () => {
+    expect(markupToHtml('a ***italic*** word')).toBe(
+      '<p>a <b><i>italic</b></i> word</p>',
+    );
+    expect(markupToHtml('a ***italic* bold** word')).toBe(
+      '<p>a <b><i>italic</i> bold</b> word</p>',
+    );
   });
 
   test('returns an empty string for a null description', () => {

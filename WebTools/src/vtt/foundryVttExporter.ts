@@ -37,7 +37,6 @@ import {
   departmentName,
   attributeName,
   normalizeChallengeDice,
-  paragraphsToHtml,
   resolveTalentDescription,
 } from './vttShared';
 import { TalentCategory } from '../helpers/talentCategory';
@@ -779,7 +778,7 @@ export class FoundryVttExporter {
   convertCharacterDescription(character: Character) {
     let result = '';
     if (character.description?.length) {
-      result += paragraphsToHtml(character.description);
+      result += markupToHtml(character.description);
     }
 
     result +=
