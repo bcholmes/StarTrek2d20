@@ -46,6 +46,7 @@ import { SpeciesAbilityList } from '../../helpers/speciesAbility';
 import { SelectedTalent } from '../../common/selectedTalent';
 import { SpecialWeapon } from '../../common/specialWeapon';
 import { TalentCategory } from '../../helpers/talentCategory';
+import { borgSpeciesDesignations } from './borgSpeciesDesignations';
 
 const recreationSkills: { [type: number]: string[] } = {
   [NpcCharacterType.Starfleet]: [
@@ -306,6 +307,22 @@ const typeSpecificValues: { [type: number]: (string | Value)[] } = {
       'mercenary',
     ),
     'Let me ask you something. If the rule you followed brought you to this, of what use was the rule?',
+  ],
+  [NpcCharacterType.Borg]: [
+    'We are Borg',
+    'Resistance is futile',
+    'Existence as you know it is over',
+    'We will add your biological and technological distinctiveness to our own',
+    'Your defiance is irrelevant',
+    'It is the epitome of perfection',
+    'The task at hand must be completed',
+    'We will contain your knowledge',
+    'Knowledge is irrelevant unless shared',
+    'The Collective is all. Individuality is an illusion.',
+    'You will become one with the Borg',
+    'We will unify all life',
+    'Your actions and decisions are irrelevant',
+    'Our purpose is to expand and evolve through collective assimilation',
   ],
 };
 
@@ -677,7 +694,33 @@ export class NpcGenerator {
         CharacterType.Starfleet,
       );
       character.speciesStep.originalSpecies = originalSpecies;
+    } else if (species.id === Species.Borg) {
+      while (character.speciesStep?.originalSpecies == null) {
+        const roll = D20.roll();
+        if (roll <= 10) {
+          const originalSpecies =
+            SpeciesHelper.generateFromDeltaQuadrantTable();
+          if (originalSpecies !== Species.LiberatedBorg) {
+            character.speciesStep.originalSpecies = originalSpecies;
+          }
+        } else if (roll <= 15) {
+          const originalSpecies = SpeciesHelper.generateSpecies();
+          if (
+            originalSpecies !== Species.LiberatedBorg &&
+            originalSpecies !== Species.Borg
+          ) {
+            character.speciesStep.originalSpecies = originalSpecies;
+          }
+        } else {
+          const number = Math.ceil(Math.random() * 10000);
+          if (borgSpeciesDesignations[number] == null) {
+            character.speciesStep.originalSpecies = Species.Custom;
+            character.speciesStep.customSpeciesName = 'Species ' + number;
+          }
+        }
+      }
     }
+
     if (character.version > 1) {
       character.speciesStep.ability = SpeciesAbilityList.instance.getBySpecies(
         species.id,
@@ -719,12 +762,19 @@ export class NpcGenerator {
       gender = 'Female';
     }
 
-    const { name, pronouns, nameOrigin } = NameGenerator.instance.createName(
-      nameSpecies,
-      gender,
-    );
-    character.name = name;
-    character.pronouns = pronouns;
+    let origin = undefined;
+    if (character.speciesStep?.species === Species.Borg) {
+      character.name = NameGenerator.instance.createBorgName();
+      character.pronouns = 'They/Them';
+    } else {
+      const { name, pronouns, nameOrigin } = NameGenerator.instance.createName(
+        nameSpecies,
+        gender,
+      );
+      character.name = name;
+      character.pronouns = pronouns;
+      origin = nameOrigin;
+    }
 
     character.npcGenerationStep = new NpcGenerationStep(npcType);
     character.npcGenerationStep.specialization = specialization.id;
@@ -797,7 +847,7 @@ export class NpcGenerator {
       }
     }
 
-    if (!character.isCivilian()) {
+    if (!character.isCivilian() && characterType !== NpcCharacterType.Borg) {
       NpcGenerator.assignRank(character, specialization);
     }
     NpcGenerator.assignFocuses(npcType, character, specialization);
@@ -810,13 +860,22 @@ export class NpcGenerator {
     if (aspectsFromValues.length === 0) {
       aspects.push(personality[Math.floor(Math.random() * personality.length)]);
     }
-    NpcGenerator.assignTalents(npcType, character, species, specialization);
+    if (characterType === NpcCharacterType.Borg) {
+      NpcGenerator.assignBorgTalents(
+        npcType,
+        character,
+        species,
+        specialization,
+      );
+    } else {
+      NpcGenerator.assignTalents(npcType, character, species, specialization);
+    }
 
     if (npcType !== NpcType.Minor && includeDescription) {
       character.description = await NpcGenerator.generateCharacterDescription(
         character,
         specialization,
-        nameOrigin,
+        origin,
         aspects,
       );
     }
@@ -1041,6 +1100,39 @@ export class NpcGenerator {
         break;
       default:
     }
+  }
+
+  static assignBorgTalents(
+    npcType: NpcType,
+    character: Character,
+    species: SpeciesModel,
+    specialization: SpecializationModel,
+  ) {
+    const talents = [
+      'Adaptive Shielding (Special Rule)',
+      'Assimilation (Special Rule)',
+      'Exoplating (Special Rule)',
+      'Immune to Fear',
+      'Immune to Pain',
+      'Machine',
+      'Night Vision',
+      'Threat Protocols (Special Rule)',
+    ];
+
+    if (specialization.id === Specialization.BorgMedicalDrone) {
+      talents.push('Reclamation (Special Rule)');
+    } else if (specialization.id === Specialization.BorgAdjunctDrone) {
+      talents.push('Interlink Node (Special Rule)');
+    }
+
+    talents.forEach((name) => {
+      const talent = TalentsHelper.getTalent(name);
+      if (talent != null) {
+        character.npcGenerationStep.talents.push(
+          new SelectedTalent(talent.name),
+        );
+      }
+    });
   }
 
   static assignTalents(

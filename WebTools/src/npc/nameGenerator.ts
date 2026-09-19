@@ -118,6 +118,12 @@ export class NameGenerator {
     }
   }
 
+  createBorgName() {
+    const collective = Math.ceil(Math.random() * 30) + 3;
+    const number = Math.ceil(Math.random() * collective);
+    return '' + number + ' of ' + collective;
+  }
+
   createName(
     species: ISpecies,
     gender: 'Male' | 'Female' | 'Unisex' = undefined,

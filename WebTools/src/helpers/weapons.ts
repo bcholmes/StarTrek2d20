@@ -1721,6 +1721,10 @@ export enum PersonalWeaponType {
   EnergyWhip,
   Dagger,
   KeratinDart,
+  PolaronDisruptorPistol,
+  PolaronDisruptorRifle,
+  NeuralTruncheon,
+  CryogenicGrenade,
 }
 
 export class PersonalWeapons {

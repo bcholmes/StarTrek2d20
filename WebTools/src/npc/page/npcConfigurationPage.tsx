@@ -155,6 +155,8 @@ const NpcConfigurationPageBase: React.FC<INpcConfigurationPageProperties> = ({
       return [SpeciesHelper.getSpeciesByType(Species.Cardassian)];
     } else if (selectedType?.type === NpcCharacterType.Ferengi) {
       return [SpeciesHelper.getSpeciesByType(Species.Ferengi)];
+    } else if (selectedType?.type === NpcCharacterType.Borg) {
+      return [SpeciesHelper.getSpeciesByType(Species.Borg)];
     } else if (selectedType?.type === NpcCharacterType.RomulanEmpire) {
       return [
         SpeciesHelper.getSpeciesByType(Species.Romulan),

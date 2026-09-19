@@ -60,6 +60,11 @@ export enum Specialization {
   Smuggler,
   SketchyTraderCaptain,
   Terrorist,
+
+  BorgTacticalDrone,
+  BorgTechnicalDrone,
+  BorgMedicalDrone,
+  BorgAdjunctDrone,
 }
 
 export const allSpecializations = () => {

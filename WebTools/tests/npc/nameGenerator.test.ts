@@ -34,6 +34,13 @@ describe('testing name generation', () => {
     }
   });
 
+  test('should create Borg name', () => {
+    const name = NameGenerator.instance.createBorgName().split(' ');
+    expect(Number(name[0])).toBeGreaterThan(0);
+    expect(Number(name[2])).toBeGreaterThan(0);
+    expect(Number(name[0])).toBeLessThanOrEqual(Number(name[2]));
+  });
+
   test('should create male name', () => {
     for (let i = 100; i >= 0; i--) {
       const { name, pronouns } = NameGenerator.instance.createName(

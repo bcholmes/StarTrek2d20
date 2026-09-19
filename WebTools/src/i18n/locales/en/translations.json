@@ -3544,6 +3544,10 @@
 
     "Talent.adaptiveShieldModulator.description": "When the Modulate Shields action is taken, the ship’s Resistance is increased by a further +1 by that action. Further, the ship may have its shields raised when operating in silent running.",
 
+    "Talent.adaptiveShieldingSpecialRule": "Adaptive Shielding",
+
+    "Talent.adaptiveShieldingSpecialRule.description2e": "See pg. 37 of the _Allies and Adversaries_ book.",
+
     "Talent.additionalPropulsionSystemTalent": "Additional Propulsion System",
 
     "Talent.additionalPropulsionSystemTalent.description": "The ship has been fitted with an additional propulsion system alongside its impulse and warp engines. The ship is equipped with that system.",
@@ -3667,6 +3671,10 @@
     "Talent.askingTheRightQuestions": "Asking the Right Questions",
 
     "Talent.askingTheRightQuestions.description": "When you attempt a task that relates to information you’ve received from Obtain Information questions in the current scene, you may re-roll 1d20.",
+
+    "Talent.assimilationSpecialRule": "Assimilation",
+
+    "Talent.assimilationSpecialRule.description": "See pg. 37 of the _Allies and Adversaries_ book.",
 
     "Talent.attach": "Attach",
 
@@ -4238,6 +4246,10 @@
 
     "Talent.everyManHasHisPrice.description2e": "When you attempt a task during social conflict where your opponent can be bribed, bought, or is otherwise enticed by monetary gain, the first bonus die you purchase is free.",
 
+    "Talent.exoplatingSpecialRule": "Exoplating",
+
+    "Talent.exoplatingSpecialRule.description": "See pg. 37 of the _Allies and Adversaries_ book.",
+
     "Talent.expandedEmergencyMedicalFacilities": "Expanded Emergency Medical Facilities",
 
     "Talent.expandedEmergencyMedicalFacilities.description": "Whenever a character attempts a task to identify specific illnesses or injuries, or to determine the severity of a patient’s condition, they may diagnose a number of patients equal to the ship’s Medical rating. If the character also has the Triage talent, they may diagnose two additional patients by spending 1 Momentum (Repeatable).\n\nDuring an extended task to process and treat many sick or injured patients, a character aboard the ship increases their Impact by 1.",
@@ -4672,6 +4684,10 @@
     "Talent.intensiveTrainingSpecialRule": "Intensive Training",
 
     "Talent.intensiveTrainingSpecialRule.description": "Members of this group are given considerable training in a wide range of fields. They have a minimum of 1 in all departments: when creating an NPC with this ability, increase any department with a rating of 0 to 1.",
+
+    "Talent.interlinkNodeSpecialRule": "Interlink Node",
+
+    "Talent.interlinkNodeSpecialRule.description": "See pg. 39 of the _Allies and Adversaries_ book.",
 
     "Talent.interrogation": "Interrogation",
 
@@ -5313,6 +5329,10 @@
 
     "Talent.readyForBattle.description": "During the first round of ship combat, the gamemaster must spend 1 additional Threat to allow an enemy ship to take the first turn.",
 
+    "Talent.reclamationSpecialRule": "Reclamation",
+
+    "Talent.reclamationSpecialRule.description": "See pg. 39 of the _Allies and Adversaries_ book.",
+
     "Talent.redundantSystems": "Redundant Systems",
 
     "Talent.redundantSystems.description": "The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.",
@@ -5729,6 +5749,10 @@
     "Talent.threatGesture": "Threat Gesture",
 
     "Talent.threatGesture.description2e": "The creature can suddenly rear up on its hind legs and tower over its prey, bellow an intimidating roar, suddenly display brightly colored spines, or even spray noxious juices in defense of itself. Once per encounter, the creature may make an opposed task of **Presence + Command** or **Security**. Characters that tie or fail that task are knocked prone as they backpedal, are startled, or otherwise pause due to a flight-or-fight response.",
+
+    "Talent.threatProtocolsSpecialRule": "Threat Protocols",
+
+    "Talent.threatProtocolsSpecialRule.description": "See pg. 37 of the _Allies and Adversaries_ book.",
 
     "Talent.threeDimensionalThinking": "Three-Dimensional Thinking",
 

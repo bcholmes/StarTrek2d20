@@ -1,6 +1,6 @@
 import i18next from 'i18next';
 import { Source } from '../../helpers/sources';
-import { hasAnySource } from '../../state/contextFunctions';
+import { hasAnySource, hasSource } from '../../state/contextFunctions';
 import { store } from '../../state/store';
 import { Era } from '../../helpers/erasEnum';
 
@@ -13,6 +13,7 @@ export enum NpcCharacterType {
   MinorPolity,
   Civilian,
   RogueRuffianMercenary,
+  Borg,
 }
 
 export class NpcCharacterTypeModel {
@@ -42,6 +43,8 @@ export class NpcCharacterTypeModel {
         return i18next.t('NpcCharacterType.minorPolity');
       case NpcCharacterType.RogueRuffianMercenary:
         return i18next.t('NpcCharacterType.rogueRuffianMercenary');
+      case NpcCharacterType.Borg:
+        return i18next.t('Species.borg.name');
       default:
         return this.name;
     }
@@ -76,6 +79,7 @@ export class NpcCharacterTypes {
       NpcCharacterType.RogueRuffianMercenary,
       'Rogues, Ruffians, and Mercenaries',
     ),
+    new NpcCharacterTypeModel(NpcCharacterType.Borg, 'Borg'),
   ];
 
   private isNextGenerationOrLater() {
@@ -111,6 +115,11 @@ export class NpcCharacterTypes {
             Source.AlphaQuadrant,
             Source.CaptainsLog,
           ]) && this.isNextGenerationOrLater()
+        );
+      } else if (t.type === NpcCharacterType.Borg) {
+        return (
+          hasSource(Source.AlliesAndAdversaries) &&
+          this.isNextGenerationOrLater()
         );
       } else if (t.type === NpcCharacterType.MinorPolity) {
         return (

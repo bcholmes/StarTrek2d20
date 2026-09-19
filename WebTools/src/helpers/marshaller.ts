@@ -1075,7 +1075,8 @@ class Marshaller {
 
     if (
       character.speciesStep.customSpeciesName &&
-      character.speciesStep.species === Species.Custom
+      (character.speciesStep.species === Species.Custom ||
+        character.speciesStep.originalSpecies === Species.Custom)
     ) {
       json['customName'] = character.speciesStep.customSpeciesName;
     }
@@ -2139,7 +2140,12 @@ class Marshaller {
               result.speciesStep.mixedSpecies = speciesCode;
             }
           }
-          if (speciesBlock.original != null) {
+          if (speciesBlock.original === Species[Species.Custom]) {
+            result.speciesStep.originalSpecies = Species.Custom;
+            if (speciesBlock.customName) {
+              result.speciesStep.customSpeciesName = speciesBlock.customName;
+            }
+          } else if (speciesBlock.original != null) {
             const speciesCode = SpeciesHelper.getSpeciesTypeByName(
               speciesBlock.original,
             );

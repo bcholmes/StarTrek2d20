@@ -4118,16 +4118,6 @@ export class Talents {
       'Arcadian',
     ),
     new TalentModel(
-      'Rapid Data Assimilation',
-      'The Arcadian’s genetic makeup allows them to absorb massive amounts of data and apply it quickly. When the Arcadian succeeds at a task as part of a timed challenge or timed task, the Momentum cost to reduce the number of Intervals taken is reduced by 1. Further, if the task is failed, the Arcadian may reduce the number of Intervals taken by 1 by adding 1 to Threat.',
-      [
-        new SourcePrerequisite(Source.FederationKlingonWar),
-        new SpeciesPrerequisite(Species.Arcadian, false),
-      ],
-      1,
-      'Arcadian',
-    ),
-    new TalentModel(
       'Powerful Frame',
       'Ariolo possess a dense musculature and powerful limbs that allow them to run for extended periods of time and allow them to lift heavy objects with ease. They receive one free d20 when attempting to perform a task involving physical labor.',
       [
@@ -8856,7 +8846,71 @@ export class Talents {
       new TalentCategorization(TalentCategory.SpecialRule),
       true,
     ),
-
+    new TalentModel(
+      'Adaptive Shielding (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Borg, false),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Assimilation (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Borg, false),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Exoplating (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Borg, false),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Threat Protocols (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Borg, false),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Reclamation (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Borg, false),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
     new TalentModel(
       'Ambush Hunter',
       '',

@@ -307,10 +307,14 @@ export class SpeciesStep {
         result += ' / ' + mixedSpecies.name;
       }
       if (this.originalSpecies != null) {
-        const orginalSpecies = SpeciesHelper.getSpeciesByType(
-          this.originalSpecies,
-        );
-        result += ' (originally ' + orginalSpecies.name + ')';
+        if (this.originalSpecies === Species.Custom) {
+          result += '(originally) ' + this.customSpeciesName + ')';
+        } else {
+          const orginalSpecies = SpeciesHelper.getSpeciesByType(
+            this.originalSpecies,
+          );
+          result += ' (originally ' + orginalSpecies.name + ')';
+        }
       }
       return result;
     }
@@ -1560,6 +1564,9 @@ export class Character extends Construct implements IWeaponDiceProvider {
     if (this.hasTalent('Chelon Shell')) {
       result += 1;
     }
+    if (this.hasTalent('Exoplating (Special Rule)')) {
+      result += 2;
+    }
     if (this.hasTalent('Morphogenic Matrix')) {
       result += 4;
     }
@@ -1606,7 +1613,12 @@ export class Character extends Construct implements IWeaponDiceProvider {
           secondarySpecies: mixedSpecies.localizedName,
         });
       }
-      if (this.speciesStep.originalSpecies != null) {
+      if (this.speciesStep.originalSpecies === Species.Custom) {
+        return i18next.t('Species.formerSpecies.text', {
+          primarySpecies: species.localizedName,
+          otherSpecies: this.speciesStep.customSpeciesName,
+        });
+      } else if (this.speciesStep.originalSpecies != null) {
         const originalSpecies = SpeciesHelper.getSpeciesByType(
           this.speciesStep.originalSpecies,
         );
