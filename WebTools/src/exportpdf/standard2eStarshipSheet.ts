@@ -2,9 +2,9 @@ import i18next from 'i18next';
 import { assembleStarshipTalents, BasicGeneratedSheet } from './generatedsheet';
 import { makeKey } from '../common/translationKey';
 import { SheetTag } from './icharactersheet';
-import type { PDFDocument, PDFFont, PDFForm, PDFPage } from '@cantoo/pdf-lib';
+import type { PDFDocument, PDFForm, PDFPage } from '@cantoo/pdf-lib';
 import { PDFTextField } from '@cantoo/pdf-lib';
-import { FontLibrary, FontType } from './fontLibrary';
+import { FontType } from './fontLibrary';
 import { Starship } from '../common/starship';
 import { Column } from './column';
 import { labelWriter, VerticalAlignment } from './labelWriter';
@@ -29,6 +29,7 @@ import { TextBlock } from './textBlock';
 import type { CharacterType } from '../common/characterType';
 import type { IWeaponDiceProvider } from '../common/iWeaponDiceProvider';
 import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
+import { fontLoader2e } from './fontLoader';
 
 export class Standard2eStarshipSheet extends BasicGeneratedSheet {
   static readonly talentsColumn2 = new Column(344.6, 516.4, 232.3, 227.8);
@@ -68,36 +69,10 @@ export class Standard2eStarshipSheet extends BasicGeneratedSheet {
     ];
   }
 
-  fonts: FontLibrary = new FontLibrary();
-  headingFont: PDFFont;
-
   async initializeFonts(pdf: PDFDocument) {
     await super.initializeFonts(pdf);
-
-    const fontBytes = await fetch('/static/font/Michroma-Regular.ttf').then(
-      (res) => res.arrayBuffer(),
-    );
-    this.headingFont = await pdf.embedFont(fontBytes);
-
-    this.fonts.addFont(FontType.Standard, this.formFont);
-
-    const boldFontBytes = await fetch(
-      '/static/font/OpenSansCondensed-Bold.ttf',
-    ).then((res) => res.arrayBuffer());
-    const boldFont = await pdf.embedFont(boldFontBytes);
-    this.fonts.addFont(FontType.Bold, boldFont);
-
-    const italicFontBytes = await fetch(
-      '/static/font/OpenSansCondensed-LightItalic.ttf',
-    ).then((res) => res.arrayBuffer());
-    const italicFont = await pdf.embedFont(italicFontBytes);
-    this.fonts.addFont(FontType.Italic, italicFont);
-
-    const symbolFontBytes = await fetch(
-      '/static/font/Trek_Arrowheads.ttf',
-    ).then((res) => res.arrayBuffer());
-    const symbolFont = await pdf.embedFont(symbolFontBytes);
-    this.fonts.addFont(FontType.Symbol, symbolFont);
+    await fontLoader2e(pdf, this.fonts, this.formFont);
+    this.headingFont = this.fonts.fontByType(FontType.Heading);
   }
 
   async populate(pdf: PDFDocument, construct: Construct) {

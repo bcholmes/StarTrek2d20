@@ -19,7 +19,7 @@ import type {
   ReputationChangeStep,
 } from '../common/character';
 import { assembleWritableItems } from './generatedsheet';
-import { FontLibrary, FontType } from './fontLibrary';
+import { FontType } from './fontLibrary';
 import { labelWriter, simpleLabelWriter } from './labelWriter';
 import { TextAlign } from './textAlign';
 import { CheckMarkMaker } from './checkMarkMaker';
@@ -75,6 +75,7 @@ import { LogEntry } from '../common/logEntry';
 import { CareerEventsHelper } from '../helpers/careerEvents';
 import { ModificationType } from '../modify/model/modificationType';
 import { RanksHelper } from '../helpers/ranks';
+import { fontLoader2e } from './fontLoader';
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   static readonly page2Column1X = 55.6;
@@ -85,8 +86,6 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   static readonly greyColour: SimpleColor = SimpleColor.from('#979696');
 
   static readonly headingColumn = new Column(73.8, 45, 8.8, 200);
-
-  fonts: FontLibrary = new FontLibrary();
 
   getName(): string {
     return i18next.t('Sheet.landscape2eCharacterSheet');
@@ -114,37 +113,8 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
   async initializeFonts(pdf: PDFDocument) {
     await super.initializeFonts(pdf);
-
-    const fontBytes = await fetch('/static/font/Michroma-Regular.ttf').then(
-      (res) => res.arrayBuffer(),
-    );
-    this.headingFont = await pdf.embedFont(fontBytes);
-
-    this.fonts.addFont(FontType.Standard, this.formFont);
-
-    const boldFontBytes = await fetch(
-      '/static/font/OpenSansCondensed-Bold.ttf',
-    ).then((res) => res.arrayBuffer());
-    const boldFont = await pdf.embedFont(boldFontBytes);
-    this.fonts.addFont(FontType.Bold, boldFont);
-
-    const italicFontBytes = await fetch(
-      '/static/font/OpenSansCondensed-LightItalic.ttf',
-    ).then((res) => res.arrayBuffer());
-    const italicFont = await pdf.embedFont(italicFontBytes);
-    this.fonts.addFont(FontType.Italic, italicFont);
-
-    const boldItalicFontBytes = await fetch(
-      '/static/font/OpenSansCondensed-BoldItalic.ttf',
-    ).then((res) => res.arrayBuffer());
-    const boldItalicFont = await pdf.embedFont(boldItalicFontBytes);
-    this.fonts.addFont(FontType.BoldItalic, boldItalicFont);
-
-    const symbolFontBytes = await fetch(
-      '/static/font/Trek_Arrowheads.ttf',
-    ).then((res) => res.arrayBuffer());
-    const symbolFont = await pdf.embedFont(symbolFontBytes);
-    this.fonts.addFont(FontType.Symbol, symbolFont);
+    await fontLoader2e(pdf, this.fonts, this.formFont);
+    this.headingFont = this.fonts.fontByType(FontType.Heading);
   }
 
   async fixedTextColumns(additionalPages: PDFPage[], pdf: PDFDocument) {
@@ -855,51 +825,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     character: Character,
     column: Column,
   ) {
-    if (character.description?.length) {
-      const subHeadings = {
-        'Construct.other.description': column.topBefore(9.5),
-      };
-      column = column.bottomAfter(12);
-      labelWriter(
-        page,
-        subHeadings,
-        character.version,
-        this.headingFont,
-        9,
-        Landscape2eCharacterSheet.greyColour,
-        TextAlign.Centre,
-      );
-
-      let paragraph = new Paragraph(page, column, this.fonts);
-      const descriptionParagraphs = character.description.split('\n');
-      const paragraphs = [paragraph];
-      descriptionParagraphs.forEach((p, i) => {
-        if (i > 0) {
-          paragraph = paragraph?.nextParagraph();
-          if (paragraph) {
-            paragraphs.push(paragraph);
-          }
-        }
-        paragraph?.append(p, new FontOptions(8));
-      });
-
-      paragraphs.forEach((p) => p.write());
-
-      if (paragraphs.length) {
-        const last = paragraphs.filter((p) => p.lines?.length).slice(-1)[0];
-        if (last) {
-          const bottom = last.bottom;
-          column = last.endColumn.bottomAfter(
-            bottom.y - last.endColumn.start.y,
-          );
-
-          if (column?.height > 10) {
-            column = column.bottomAfter(10);
-          }
-        }
-      }
-    }
-
+    column = this.writeCharacterDescription(page, character, column);
     const temp = column.columnWithAtLeast(35, page);
     column = temp.column;
     page = temp.page;

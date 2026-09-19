@@ -25,6 +25,7 @@ import { FontLibrary, FontType } from './fontLibrary';
 import type { LogEntry } from '../common/logEntry';
 import { FontOptions } from './fontOptions';
 import { TokenHelper } from './tokenHelper';
+import { fontLoader2e } from './fontLoader';
 
 export class Standard2eCharacterSheet extends BaseFormFillingSheet {
   static labelColour: SimpleColor = SimpleColor.from('#1A82AF');
@@ -32,8 +33,6 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
 
   static readonly headingColumn = new Column(436.5, 49, 17.4, 142);
   static readonly personalLogHeadingColumn = new Column(436.5, 53.2, 17.4, 142);
-
-  fonts: FontLibrary = new FontLibrary();
 
   getName(): string {
     return i18next.t('Sheet.standard2eCharacterSheet');
@@ -60,31 +59,8 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
 
   async initializeFonts(pdf: PDFDocument) {
     await super.initializeFonts(pdf);
-
-    const fontBytes = await fetch('/static/font/Michroma-Regular.ttf').then(
-      (res) => res.arrayBuffer(),
-    );
-    this.headingFont = await pdf.embedFont(fontBytes);
-
-    this.fonts.addFont(FontType.Standard, this.formFont);
-
-    const boldFontBytes = await fetch(
-      '/static/font/OpenSansCondensed-Bold.ttf',
-    ).then((res) => res.arrayBuffer());
-    const boldFont = await pdf.embedFont(boldFontBytes);
-    this.fonts.addFont(FontType.Bold, boldFont);
-
-    const italicFontBytes = await fetch(
-      '/static/font/OpenSansCondensed-LightItalic.ttf',
-    ).then((res) => res.arrayBuffer());
-    const italicFont = await pdf.embedFont(italicFontBytes);
-    this.fonts.addFont(FontType.Italic, italicFont);
-
-    const symbolFontBytes = await fetch(
-      '/static/font/Trek_Arrowheads.ttf',
-    ).then((res) => res.arrayBuffer());
-    const symbolFont = await pdf.embedFont(symbolFontBytes);
-    this.fonts.addFont(FontType.Symbol, symbolFont);
+    await fontLoader2e(pdf, this.fonts, this.formFont);
+    this.headingFont = this.fonts.fontByType(FontType.Heading);
   }
 
   get stressPill() {

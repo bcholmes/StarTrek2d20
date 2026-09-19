@@ -47,6 +47,7 @@ import type { Station } from '../common/station';
 import { Portrait2eStationSheet } from './portrait2eStationSheet';
 import { Implant } from '../helpers/borgImplant';
 import { isKlingonWarriorType } from '../helpers/klingonWarrior';
+import { BasicGeneratedPortraitCharacterSheet } from './generated2ePortraitSheet';
 
 abstract class BasicSheet implements ICharacterSheet {
   formFont: PDFFont;
@@ -1398,6 +1399,7 @@ class CharacterSheets {
       new GeneratedTngPortraitCharacterSheet(),
       new GeneratedTngPortraitA4CharacterSheet(),
       new BasicGeneratedHalfPageCharacterSheet(),
+      new BasicGeneratedPortraitCharacterSheet(),
       new HalfPageSupportingCharacterSheet(),
       new StandardTosCharacterSheet(),
       new KlingonCharacterSheet(),

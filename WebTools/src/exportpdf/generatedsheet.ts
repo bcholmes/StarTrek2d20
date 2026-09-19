@@ -31,6 +31,12 @@ import { TextBlock } from './textBlock';
 import { FontSpecification } from './fontSpecification';
 import type { CharacterType } from '../common/characterType';
 import type { Station } from '../common/station';
+import { FontLibrary } from './fontLibrary';
+import { labelWriter } from './labelWriter';
+import { greyColour2e } from './colourProvider2e';
+import { TextAlign } from './textAlign';
+import { FontOptions } from './fontOptions';
+import { Paragraph } from './paragraph';
 
 export class SpeciesAbilityAndOptions {
   readonly ability: SpeciesAbility;
@@ -44,6 +50,8 @@ export class SpeciesAbilityAndOptions {
 
 export abstract class BasicGeneratedSheet implements ICharacterSheet {
   formFont: PDFFont;
+  fonts: FontLibrary = new FontLibrary();
+  headingFont: PDFFont;
 
   getLanguage(): string {
     return 'en';
@@ -120,6 +128,65 @@ export abstract class BasicGeneratedSheet implements ICharacterSheet {
       }
     });
     return fontSize;
+  }
+
+  writeCharacterDescription(
+    page: PDFPage,
+    character: Character,
+    column: Column,
+    headingWriter: (page: PDFPage, column: Column, version: number) => void = (
+      page,
+      column,
+      version,
+    ) => {
+      const subHeadings = {
+        'Construct.other.description': column.topBefore(9.5),
+      };
+      labelWriter(
+        page,
+        subHeadings,
+        version,
+        this.headingFont,
+        9,
+        greyColour2e,
+        TextAlign.Centre,
+      );
+    },
+  ) {
+    if (character.description?.length) {
+      headingWriter(page, column, character.version);
+      column = column.bottomAfter(12);
+
+      let paragraph = new Paragraph(page, column, this.fonts);
+      const descriptionParagraphs = character.description.split('\n');
+      const paragraphs = [paragraph];
+      descriptionParagraphs.forEach((p, i) => {
+        if (i > 0) {
+          paragraph = paragraph?.nextParagraph();
+          if (paragraph) {
+            paragraphs.push(paragraph);
+          }
+        }
+        paragraph?.append(p, new FontOptions(8));
+      });
+
+      paragraphs.forEach((p) => p.write());
+
+      if (paragraphs.length) {
+        const last = paragraphs.filter((p) => p.lines?.length).slice(-1)[0];
+        if (last) {
+          const bottom = last.bottom;
+          column = last.endColumn.bottomAfter(
+            bottom.y - last.endColumn.start.y,
+          );
+
+          if (column?.height > 10) {
+            column = column.bottomAfter(10);
+          }
+        }
+      }
+    }
+    return column;
   }
 
   writeName(

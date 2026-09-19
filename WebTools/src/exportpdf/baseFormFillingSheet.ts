@@ -1,4 +1,4 @@
-import type { PDFDocument, PDFFont, PDFForm, PDFPage } from '@cantoo/pdf-lib';
+import type { PDFDocument, PDFForm, PDFPage } from '@cantoo/pdf-lib';
 import { BasicGeneratedSheet } from './generatedsheet';
 import type { Construct } from '../common/construct';
 import { Character } from '../common/character';
@@ -16,8 +16,6 @@ import { TracksHelper } from '../helpers/tracks';
 import { Implant } from '../helpers/borgImplant';
 
 export abstract class BaseFormFillingSheet extends BasicGeneratedSheet {
-  headingFont: PDFFont;
-
   async populate(pdf: PDFDocument, construct: Construct) {
     await super.populate(pdf, construct);
     const character = construct as Character;
