@@ -1005,6 +1005,15 @@ export class NpcGenerator {
       case NpcCharacterType.RogueRuffianMercenary:
         character.type = CharacterType.Civilian;
         break;
+      case NpcCharacterType.Borg:
+        character.type = CharacterType.AlliedMilitary;
+        character.typeDetails = new AlliedMilitaryDetails(
+          new AlliedMilitary('Borg Collective', AlliedMilitaryType.Borg, [
+            Species.Borg,
+          ]),
+          'Borg Collective',
+        );
+        break;
       case NpcCharacterType.MinorPolity:
         character.type = CharacterType.AlliedMilitary;
         if (specialization.id === Specialization.SonaCommandOfficer) {
@@ -1161,6 +1170,14 @@ export class NpcGenerator {
           character.addTalent(TalentsHelper.getTalent('Telepathy2e'));
         }
         numberOfTalents += 1;
+      } else if (
+        i === 0 &&
+        species.id === Species.Breen &&
+        hasSource(Source.AlliesAndAdversaries)
+      ) {
+        character.addTalent(
+          TalentsHelper.getTalent('Contained Form (Special Rule)'),
+        );
       } else if (
         i === 0 &&
         species.id === Species.CyberneticallyEnhanced &&
@@ -1436,7 +1453,11 @@ export class NpcGenerator {
       ranks = [];
     } else if (specialization.id === Specialization.BreenThot) {
       ranks = [RanksHelper.instance().getRank(Rank.Thot)];
-    } else if (specialization.id === Specialization.BreenWarrior) {
+    } else if (
+      [Specialization.BreenWarrior, Specialization.BreenEliteGuard].includes(
+        specialization.id,
+      )
+    ) {
       ranks = [
         RanksHelper.instance().getRank(Rank.Chot),
         RanksHelper.instance().getRank(Rank.VelSh),

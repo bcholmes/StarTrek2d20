@@ -1416,6 +1416,7 @@ class CharacterSheets {
         new Standard2eCharacterSheet(),
         new Landscape2eCharacterSheet(),
         new BasicGeneratedTentCardCharacterSheet(),
+        new BasicGeneratedPortraitCharacterSheet(),
         new GeneratedTngPortraitCharacterSheet(),
         new StandardGermanCharacterSheet(),
         new GeneratedTngPortraitA4CharacterSheet(),

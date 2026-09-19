@@ -6075,12 +6075,15 @@
     "Value.final.text": "The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",
 
     "Weapon.common.dice": "Dice",
+    "Weapon.common.escalation": "Escalation {{value}}",
     "Weapon.common.melee": "Melee",
     "Weapon.common.name": "Name/Type",
     "Weapon.common.qualities": "Qualities",
     "Weapon.common.ranged": "Ranged",
     "Weapon.common.severity": "Severity",
     "Weapon.common.size": "Size {{hands}}H",
+
+    "Weapon.personal.cryogenicGrenade.name": "Cryogenic Grenade",
 
     "Weapon.personal.dagger.name": "Dagger",
 
@@ -6114,7 +6117,13 @@
 
     "Weapon.personal.mekleth.name": "Mek'leth",
 
+    "Weapon.personal.neuralTruncheon.name": "Neural Truncheon",
+
     "Weapon.personal.particleRifle.name": "Particle Rifle",
+
+    "Weapon.personal.polaronDisruptorPistol.name": "Polaron Disruptor Pistol",
+
+    "Weapon.personal.polaronDisruptorRifle.name": "Polaron Disruptor Rifle",
 
     "Weapon.personal.keratinDart.name": "Keratin Dart",
 
@@ -6131,6 +6140,8 @@
     "Weapon.quality.charge.name": "Charge",
 
     "Weapon.quality.calibration.name": "Calibration",
+
+    "Weapon.quality.chilling.name": "Chilling",
 
     "Weapon.quality.cumbersome.name": "Cumbersome",
 

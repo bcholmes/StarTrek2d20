@@ -18,6 +18,7 @@ export enum AlliedMilitaryType {
   TzenkethiCoalition,
   TholianAssembly,
   BreenConfederacy,
+  Borg,
   Other,
 }
 

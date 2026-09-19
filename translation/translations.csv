@@ -5296,12 +5296,14 @@ Value.careerLength.experienced.text,"The character receives a Value, and this ca
 Value.careerLength.veteran.text,"The character receives a Value, which must reflect the character’s years of experience and the beliefs they’ve formed over their long career.",,"Der Charakter erhält eine Überzeugung, welche die Jahre an Erfahrung und die in der langen Karriere geformten Wertvorstellungen widerspiegelt.","El personaje recibe un Valor, que debe reflejar los años de experiencia del personaje y las creencias que ha desarrollado a lo largo de su dilatada carrera.","Le personnage reçoit une Valueur, qui doit refléter les années d'expérience du personnage et les croyances qu'il a dévellopé lors de sa longue carrière.","Персонаж получает Ценность, отражающую его годы опыта и убеждения сформировавшиеся за долгую карьеру.","A personagem recebe um Valor, que precisa refletir os anos de experiência e crenças que o personagem obteve durante sua longa carreira.",
 Value.final.text,"The character receives one final Value. This might reflect the Career Events rolled in Step Six, or it may represent some other element of the character. This Value might be a relationship, connecting the character to another character in the crew, or to another organization or culture in some way.",,"Der Charakter erhält eine letzte Überzeugung. Diese kann mit einem der Karriereereignisse aus Schritt 6 zusammenhängen, aber auch völlig frei gewählt sein. Die Überzeugung kann auch eine Beziehung sein, die den Charakter mit einem anderen Charakter in der Crew, einer Organisation oder einer Kultur verbindet.","El personaje recibe un Valor final. Éste puede reflejar los Eventos de Carrera obtenidos en el Paso Seis, o puede representar algún otro aspecto del personaje. Este Valor puede ser una relación, que conecte al personaje con otro personaje de la tripulación, o con otra organización o cultura de alguna manera.","Le personnage reçoit une valeur finale. Cela peut refléter les événements de carrière lancés à l'étape six, ou cela peut représenter un autre élément du personnage. Cette valeur peut être une relation, reliant le personnage à un autre personnage de l'équipage, ou à une autre organisation ou culture d'une manière ou d'une autre.","Персонаж получает одну заключительную Ценность. Она должно отражать События Карьеры выбранные в Шестом Этапе или исходить из других данных персонажа. Эта Ценность может быть социальной, связывающей персонажа с другим членом команды, какой-то организацией или расой в каком то виде.","A personagem recebe um Valor final. Isso pode refletir os Eventos de Carreira rolados no Passo Seis ou algum outro elemento da personagem. Esse Valor pode ser um relacionamento, conectando a personagem a outro da tripulação ou de alguma forma a outra organização ou cultura.",
 Weapon.common.dice,Dice,,,,,,,Kości
+Weapon.common.escalation,Escalation {{value}},,,,,,,
 Weapon.common.melee,Melee,,,Cuerpo a Cuerpo,Mélée,,Corporal,W zwarciu
 Weapon.common.name,Name/Type,,Name/Typ,Nombre/Tipo,Nom/Type,Название/Тип,Nome/Tipo,Nazwa/Typ
 Weapon.common.qualities,Qualities,,Eigenschaften,Cualidades,Qualités,Качества,Qualidades,Właściwości
 Weapon.common.ranged,Ranged,,,A distancia,A distance,,Distância,Dystansowa
 Weapon.common.severity,Severity,,,,,,,Stopień rany
 Weapon.common.size,Size {{hands}}H,,,Tamaño {{hands}} manos,Taile {{hands}} Mains,,Tamanho {{hands}}H,Rozmiar {{hands}}-ręczna
+Weapon.personal.cryogenicGrenade.name,Cryogenic Grenade,,,,,,,
 Weapon.personal.dagger.name,Dagger,,Dolch,Daga,Dague,Клинок,Adaga,Sztylet
 Weapon.personal.energyWhip.name,Energy Whip,,Energiepeitsche,Látigo energético,Fouet énérgétique,Энергитический хлыст,Chicote de Energia,Bicz energetyczny
 Weapon.personal.phasePistol.name,Phase Pistol,,,,,,,Pistolet fazowy
@@ -5318,7 +5320,10 @@ Weapon.personal.ushaantor.name,Ushaan-tor,,Ushaan-tor,Ushaan-tor,Ushaan-tor,Уш
 Weapon.personal.disruptor.name,Disruptor Pistol,,Disruptorpistole,Pistola Disruptora,Pistolet Disrupteur,Дизрапторный пистолет,Pistola Disruptora,Pistolet dezruptorowy
 Weapon.personal.disruptorRifle.name,Disruptor Rifle,,,,,,,Karabin dezruptorowy
 Weapon.personal.mekleth.name,Mek'leth,,,,,,,Mek'leth
+Weapon.personal.neuralTruncheon.name,Neural Truncheon,,,,,,,
 Weapon.personal.particleRifle.name,Particle Rifle,,Partikelgewehr,Rifle de Partículas,Fusil à particules,,Rifle de Partícula,Karabin cząsteczkowy
+Weapon.personal.polaronDisruptorPistol.name,Polaron Disruptor Pistol,,,,,,,
+Weapon.personal.polaronDisruptorRifle.name,Polaron Disruptor Rifle,,,,,,,
 Weapon.personal.keratinDart.name,Keratin Dart,,,,,,,Strzałka keratynowa
 Weapon.personal.sonaPlasmaDisruptorShotgun.name,Son'a Plasma Disruptor Shotgun,,Son'a Plasma-Disruptor-Schrotflinte,Disruptora de plasma Son'a,Disrupteur à plasma Son'a,,Espingarda de Plasma Disruptora Son'a,Dezruptorowo-plazmowy shotgun Son'a
 Weapon.personal.tzenkethiHeavyBlade.name,Tzenkethi Grade-AA Heavy Blade,,,Hoja pesada Tzenkethi,Lame Lourde Tzenkethi ,,Lâmina Pesada Tzenkethi Grade-AA,
@@ -5327,6 +5332,7 @@ Weapon.quality.area.name,Area,,Flächendeckend,Área,Zone,Дистанция,Ár
 Weapon.quality.areaOrSpread.name,Area or Spread,,,Área o Dispersión,Zone ou dispersion,,Área ou Dispersão,
 Weapon.quality.charge.name,Charge,,Aufladbar,Carga,Charges,Заряд,Carga,
 Weapon.quality.calibration.name,Calibration,,Kalibrierung,Calibrado,Calibrage,Калибровка,Calibragem,
+Weapon.quality.chilling.name,Chilling,,,,,,,
 Weapon.quality.cumbersome.name,Cumbersome,,,,,,,
 Weapon.quality.dampening.name,Dampening,,Energiesenkend,Neutralizadora,Sapeur,Ослабляющее,Amortecimento,
 Weapon.quality.deadly.name,Deadly,,Letal,Mortífera,Mortel,Смертельное,Mortal,

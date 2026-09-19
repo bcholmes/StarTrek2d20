@@ -44,6 +44,7 @@ export enum Specialization {
 
   BreenThot,
   BreenWarrior,
+  BreenEliteGuard,
 
   Scientist,
   Bureaucrat,

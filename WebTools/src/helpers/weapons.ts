@@ -29,6 +29,7 @@ export enum Quality {
 
   Grenade,
   Cumbersome,
+  Chilling,
 }
 
 export enum InjuryType {
@@ -1114,6 +1115,7 @@ export class Weapon {
   hands?: number;
   injuryType?: InjuryType;
   personalWeaponType?: PersonalWeaponType;
+  escalation?: number;
 
   constructor(
     usage: UsageCategory,
@@ -1396,6 +1398,7 @@ export class Weapon {
     type: WeaponType,
     hands: number = 1,
     personalWeaponType?: PersonalWeaponType,
+    escalation?: number,
   ) {
     const result = new Weapon(UsageCategory.Character, name, dice, type);
     result.qualityValues = qualities;
@@ -1403,6 +1406,7 @@ export class Weapon {
     result.hands = hands;
     result.injuryType = injuryType;
     result.personalWeaponType = personalWeaponType;
+    result.escalation = escalation;
     return result;
   }
 
@@ -1849,6 +1853,24 @@ export class PersonalWeapons {
     );
   }
 
+  get cryogenicGrenade() {
+    return Weapon.createCharacterWeapon(
+      i18next.t('Weapon.personal.cryogenicGrenade.name'),
+      InjuryType.Stun,
+      4,
+      [],
+      [
+        new WeaponQuality(Quality.Grenade),
+        new WeaponQuality(Quality.Area),
+        new WeaponQuality(Quality.Chilling),
+      ],
+      WeaponType.ENERGY,
+      1,
+      PersonalWeaponType.CryogenicGrenade,
+      1,
+    );
+  }
+
   get ushaanTor() {
     return Weapon.createCharacterWeapon(
       i18next.t('Weapon.personal.ushaantor.name'),
@@ -1966,6 +1988,36 @@ export class PersonalWeapons {
     );
   }
 
+  get polaronDisruptorPistol() {
+    return Weapon.createCharacterWeapon(
+      i18next.t('Weapon.personal.polaronDisruptorPistol.name'),
+      InjuryType.Deadly,
+      4,
+      [new WeaponQuality(Quality.Intense), new WeaponQuality(Quality.Piercing)],
+      [],
+      WeaponType.ENERGY,
+      1,
+      PersonalWeaponType.PolaronDisruptorPistol,
+    );
+  }
+
+  get polaronDisruptorRifle() {
+    return Weapon.createCharacterWeapon(
+      i18next.t('Weapon.personal.polaronDisruptorRifle.name'),
+      InjuryType.Deadly,
+      5,
+      [
+        new WeaponQuality(Quality.Accurate),
+        new WeaponQuality(Quality.Intense),
+        new WeaponQuality(Quality.Piercing),
+      ],
+      [],
+      WeaponType.ENERGY,
+      2,
+      PersonalWeaponType.PolaronDisruptorRifle,
+    );
+  }
+
   get disruptorRifle() {
     return Weapon.createCharacterWeapon(
       i18next.t('Weapon.personal.disruptorRifle.name'),
@@ -2006,6 +2058,19 @@ export class PersonalWeapons {
       WeaponType.ENERGY,
       1,
       PersonalWeaponType.EnergyWhip,
+    );
+  }
+
+  get neuralTruncheon() {
+    return Weapon.createCharacterWeapon(
+      i18next.t('Weapon.personal.neuralTruncheon.name'),
+      InjuryType.Stun,
+      3,
+      [new WeaponQuality(Quality.Debilitating)],
+      [],
+      WeaponType.ENERGY,
+      1,
+      PersonalWeaponType.NeuralTruncheon,
     );
   }
 

@@ -41,6 +41,8 @@ function describeSpecies(species) {
         return "The Tzenkethi have hulking reptile-like anatomy with a large pair of arms extending from their shoulders and a smaller pair of arms used for finer manipulation. Their skin color ranges from purple to scarlet to emerald green. ";
     } else if (species === "Breen") {
         return "The Breen are a spacefaring humanoid species native to the planet Breen in the Alpha Quadrant. Notoriously reclusive and warlike, the Breen are a formidable power in their region of the galaxy. They almost always wear refrigeration suits that entirely conceal their bodies. The Breen are hairless, pale green humanoids with two distinct forms: a solid form, and a gelatinous form in which their tissues are translucent and flexible. Breen culture teaches that the gelatinous form is their true face, whereas the solid form represents a weak evolutionary throwback. ";
+    } else if (species === "Borg") {
+        return "The Borg were a pseudo-species of cybernetic humanoids, or cyborgs, from the Delta Quadrant known as drones, which formed the entire population of the Borg Collective. Their ultimate goal was the attainment of 'perfection' through the forcible assimilation of diverse sentient species, technologies, and knowledge.";
     } else {
         return "";
     }
@@ -205,6 +207,20 @@ function describeSpecialization(inputJson, pronoun) {
             prompt += pronounPhrase + " a member of the Tholian military service.";
         } else if (inputJson.specialization === "BreenThot") {
             prompt += pronounPhrase + " a senior military leader of the Breen military with the rank of Thot.";
+        } else if (inputJson.specialization === "BreenWarrior" || inputJson.specialization === "BreenEliteGuard") {
+            prompt += pronounPhrase + " a soldier in the Breen military with the rank of " + inputJson.rank + ".";
+        }
+    } else if (inputJson.npcCharacterType === "Borg") {
+        prompt += pronounPhrase + " a cybernetic drone member of the collective, and as such has no real personality or personal interests. "
+            + pronounPhrase + " exists only to serve the collective. ";
+        if (inputJson.specialization === "BorgTacticalDrone") {
+          prompt += pronounPhrase + " specialized in tactical assault and defense of the collective. ";
+        } else if (inputJson.specialization === "BorgTechnicalDrone") {
+          prompt += pronounPhrase + " specialized in technical/engineering activities. ";
+        } else if (inputJson.specialization === "BorgMedicalDrone") {
+          prompt += pronounPhrase + " specialized in medical activities, keeping the organic and cybernetic parts of drones operational. ";
+        } else if (inputJson.specialization === "BorgAdjunctDrone") {
+          prompt += pronounPhrase + " specialized in group leadership/planning and organization. ";
         }
     }
 

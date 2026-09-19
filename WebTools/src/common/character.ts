@@ -1410,6 +1410,15 @@ export class Character extends Construct implements IWeaponDiceProvider {
       result.push(PersonalWeapons.instance(this.version).phaser1);
     } else if (this.isBajoranMilitia() || this.isCardassianUnion()) {
       result.push(PersonalWeapons.instance(this.version).phaser2);
+    } else if (this.isBreenSoldier()) {
+      result.push(
+        PersonalWeapons.instance(this.version).polaronDisruptorPistol,
+      );
+      result.push(PersonalWeapons.instance(this.version).polaronDisruptorRifle);
+      result.push(PersonalWeapons.instance(this.version).cryogenicGrenade);
+      if (this.departments[Department.Security] >= 3) {
+        result.push(PersonalWeapons.instance(this.version).neuralTruncheon);
+      }
     } else if (this.age.isAdult) {
       if (this.isKlingonImperialCitizen) {
         result.push(PersonalWeapons.instance(this.version).dkTagh);
@@ -1476,6 +1485,16 @@ export class Character extends Construct implements IWeaponDiceProvider {
     }
 
     return result;
+  }
+
+  isBreenSoldier() {
+    return (
+      (this.speciesStep?.species === Species.Breen &&
+        this.type !== CharacterType.Starfleet) || [
+        Specialization.BreenThot,
+        Specialization.BreenWarrior,
+      ]
+    );
   }
 
   isBajoranMilitia() {

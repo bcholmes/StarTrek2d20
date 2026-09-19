@@ -8912,6 +8912,32 @@ export class Talents {
       true,
     ),
     new TalentModel(
+      'Interlink Node (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Borg, false),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Contained Form (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Breen, false),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
       'Ambush Hunter',
       '',
       [new CreaturePrerequisite(), new Version2Prerequisite()],
