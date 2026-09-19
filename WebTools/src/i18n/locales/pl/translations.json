@@ -101,6 +101,7 @@
     "CareerEventDetails.errorAttribute": "Proszę wybierz Atrybut",
     "CareerEventDetails.errorDiscipline": "Proszę wybierz Sekcję",
     "CareerEventDetails.errorFocus": "Proszę wybierz Biegłość",
+    "CareerEventDetails.notesInstructions": "Opisz więcej szczegółów zdarzenia. Co się wydarzyło? Jaką rolę odgrywała Twoja postać? W jaki sposób zdarzenie wpłynęło na obecne myśli lub działania Twojej postaci?",
 
     "ChildSelectionPage.instruction": "Dzieci nie uczęszczają do Akademii Gwiezdnej Floty (ani innych placówek oferujących wyższe wykształcenie), bo są na wcześniejszych etapach edukacji.\n\nWybierz wiek swojego bohatera.",
 
@@ -262,6 +263,8 @@
     "FinishPage.values.instruction": "Jeżeli wartości postaci nie zostały zdefiniowane w trakcie tworzenia lub chcesz je zmienić, to teraz jest czas, aby to przemyśleć. Wartości to głębokie przekonania, które żywi Twoja postać o świecie, o sobie i swoim otoczeniu, które definiują jej charakter.",
 
     "FinishPage.job.example": "np. młodszy inżynier",
+
+    "FinishPage.descriptionInstruction": "Wykorzystaj to pole, aby opisać więcej szczegółów Twojej postaci: jej osobowość, wygląd, cele i aspiracje, relacje lub znajomości z innymi osobami.",
 
     "GeneralEditView.instruction": "Znaczące modyfikacje służą do dopasowania postaci na skutek pojawienia się nowych dodatków (np. nowe informacje z _Species Sourcebook_ mogłyby sprawić, że gracz chce zbudować swoją postać nieco inaczej) lub za zgodą MG do zmiany wyborów dokonywanych podczas początkowego tworzenia postaci. Te zmiany mają charakter retroaktywny i nie są częścią standardowego rozwoju postaci.",
 
@@ -617,6 +620,7 @@
     "UpbringingDetailPage.error.focus": "Uzupełnij biegłość postaci. Jeśli nie masz pomysłów, to możesz wybrać jedną z sugerowanych.",
 
     "Common.button.random": "Losowe",
+    "Common.button.advanced": "Zaawansowane",
     "Common.button.select": "Wybierz",
     "Common.button.selectAll": "Wybierz wszystkie",
     "Common.button.selectNone": "Anuluj wybory",
@@ -1081,16 +1085,28 @@
     "CareerEvent.unofficial.42.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą jej próby przywrócenia brakujących wspomnień. Przykłady obejmują: Badania, Psychoterapię lub Neuronauki.",
 
     "CareerEvent.unofficial.43.name": "Praca jako nauczyciel",
+    "CareerEvent.unofficial.43.description": "Postać miała możliwość nauczania lub trenowania innych w szkole, na konferencji lub w innych okolicznościach.\n\nGdzie uczyła Twoja postać i jak długo to trwało? Jaki był temat kursu?\nKim byli uczniowie/studenci? Czy nauka była produktywna?",
+    "CareerEvent.unofficial.43.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą wiedzę lub umiejętności przydatne do nauczania. Przykłady to m.in.: Nauczanie, Retoryka lub Literatura.",
 
     "CareerEvent.unofficial.44.name": "Batalia prawna",
+    "CareerEvent.unofficial.44.description": "Postać była uwikłana w prawne postępowanie.\n\nTo była sprawa cywilna czy karna? Kim były strony postępowania?\nJak zakończył się cały proces? Czy Twoja postać zgadza się z orzeczeniem?",
+    "CareerEvent.unofficial.44.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą wiedzę, której nabyła podczas procesu. Przykłady to m.in.: Prawo, Kryminalistyka lub Przesłuchiwanie.",
 
     "CareerEvent.unofficial.45.name": "Poddana kontroli umysłu",
+    "CareerEvent.unofficial.45.description": "Umysł postaci był tymczasowo kontrolowany – czy to przez atak telepatyczny, opętanie przez bezcielesne istoty czy pranie mózgu.\n\nCo lub kto przejął kontrolę nad umysłem Twojej postaci? Czy postać była zmuszona do zrobienia czegoś wbrew jej woli?\nW jaki sposób Twoja postać uwolniła się od obcego wpływu? Czy zachowała wspomnienia i co teraz czuje w związku z tym zdarzeniem?",
+    "CareerEvent.unofficial.45.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą jej próby zrozumienia tego, co się działo, jej przeciwnika lub sposobu pozwalającego na zapobiegnięcie podobnych incydentów w przyszłości. Przykłady to m.in.: Psychiatria, Siła woli lub Istoty bezcielesne.",
 
     "CareerEvent.unofficial.46.name": "Niedopasowanie do grupy",
+    "CareerEvent.unofficial.46.description": "Postać pracowała w zespole, w którym nie potrafiła się odnaleźć z powodu niedopasowania. Skutkiem było opuszczenie grupy lub bycie porzuconym.\n\nZ kim niedopasowanie było największe? Jakie były powodu tarcia?\nJakie czynności podjęła Twoja postać w związku z niedopasowaniem?",
+    "CareerEvent.unofficial.46.focusDescription": "Postać otrzymuje biegłość związaną z mechanizmami radzenia sobie w sytuacji niedopasowania lub coś irytującego, co może odpychać innych. Przykłady to m.in.: Dyskrecja, Konfrontacja lub Odwracanie uwagi.",
 
     "CareerEvent.unofficial.47.name": "Wyjątkowa pamiątka",
+    "CareerEvent.unofficial.47.description": "Postać pozyskała wyjątkowy przedmiot, który upamiętnia pewne wydarzenie z jej życia.\n\nCo to za przedmiot? Czy był to prezent, coś wytworzonego specjalnie dla niej lub coś zabranego?\nCo znaczy ten przedmiot dla Twojej postaci? Czy może być wartościowy także dla innych osób?",
+    "CareerEvent.unofficial.47.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą sposób pozyskania pamiątki lub obszar wiedzy związany z pamiątką. Przykłady to m.in.: Pozyskiwanie, Mitologia lub Ksenoarcheologia.",
 
     "CareerEvent.unofficial.48.name": "Misja w głębokiej przestrzeni kosmicznej",
+    "CareerEvent.unofficial.48.description": "Postać brała udział w misji w głębokiej przestrzeni kosmicznej.\n\nKtóry obszar Galaktyki badała Twoja postać? Na jakim okręcie się znajdowała?\nCzy udało się odkryć coś ciekawego w czasie eksploracji głębokiej przestrzeni kosmicznej?",
+    "CareerEvent.unofficial.48.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą umiejętności, których nabyła podczas misji w głębokiej przestrzeni kosmicznej. Przykłady to m.in.: Astrofizyka, Astronawigacja lub Anomalie przestrzenne.",
 
     "CareerEvent.unofficial.49.name": "Kontakt z anomalią temporalną",
 
@@ -1271,6 +1287,7 @@
     "Environment.common.andoria23rd.description": "**Andoria** to zimny, ale możliwy do zamieszkania księżyc gazowego giganta **Andor** – ósmej planety w systemie gwiezdnym Procyon. To ojczysty świat **Andorian**, a także odrębnego podgatunku **Aenarów**. To zimne, niełatwe środowisko, w którym temperatura rzadko sięga powyżej zera, a typowa pogoda w czasie lata w regionach polarnych to -28°. Powszechnie używa się nazwy Andor i Andoria wymiennie. Andoria jest jednym ze światów założycielskich Zjednoczonej Federacji Planet.\n\nStołeczne miasto **Laikan** mieści starą i prestiżową akademię wojskową, w której szkolą się oddziały obronne Andorii – **Andoriańska Gwardia Imperialna**, a także personel Gwiezdnej Floty. Specjalnością akademii są zaawansowane treningi bitewne i taktyczne. Większość andoriańskich miast, w tym Laikan, znajduje się pod powierzchnią ziemi, pod lotem, a ogrzewane są za pomocą geotermii. Andoriańscy żołnierze i oficerowie Gwiezdnej Floty utrzymują tradycję upuszczania próbki krwi od poległych towarzyszy pod specjalnym pomnikiem, **Ścianą Bohaterów**.",
 
     "Environment.common.betazed23rd.name": "Betazed",
+    "Environment.common.betazed23rd.description": "**Betazed** to zielony, urodzajny świat o umiarkowanym klimacie, w wielu aspektach podobny do Ziemi, chociaż nieco bardziej wilgotny. Betazed jest domem dla gatunku **Betazoidów**, członków Federacji od połowy XXII wieku. Łagodny i przyjemny klimat rzadko przejawia ekstremalne zjawiska pogodowe, nawet pomimo braku techniki kontroli pogody, wykorzystywanych na innych planetach.\n\nPowszechnie uważany za piękny, porośnięty jest ogromnymi obszarami dzikiej przyrody. Rozproszone miasta i trasy wiodące przez obszary rolnicze pośród lasów, jezior i kanionów. Stolicą jest **Rixx** – i jak wiele innych miast na Betazedzie – mieści liczne ośrodki artystyczne i akademickie. Betazed jest pokojowym, idyllicznym światem z rzadkimi śladami po historycznych konfliktach.",
 
     "Environment.common.denobula23rd.name": "Denobula",
 
@@ -1294,6 +1311,7 @@
     "Environment.klingon.busyColony.description": "Pochodzisz z jednej z najstarszych lub najlepiej rozwiniętych kolonii Imperium. Często mają one niezależne tradycje i zwyczaje, a także postrzeganie swojej cywilizacji. Kiedyś wspierane z niewielką pomocą metropolii, rozwinęły się na obcych światach ciężką pracą dumnych osadników. Jesteś potomkiem tych dzielnych pionierów.",
 
     "Environment.klingon.isolatedColony.name": "Odizolowana kolonia",
+    "Environment.klingon.isolatedColony.description": "Pochodzisz z kolonii znajdującej się na uboczu Imperium a także z dala od popularnych galaktycznych szlaków. Światy takie jak Boreth wykorzystują izolację jako okazję do skupienia na kwestia duchowych i kontemplacji, ale mogą to być też kolonie prezentujące unikalne możliwości związane z badaniami prowadzonymi daleko od instytucji kontrolnych i regulacji. Nawet będąc częścią Imperium, takie planety skupiają się na nauce i introspekcji.",
 
     "Environment.klingon.frontierColony.name": "Kolonia na rubieżach",
 
@@ -1608,11 +1626,17 @@
     "MilestoneType.name.spotlightMilestone": "Wzmocniony kamień milowy",
     "MilestoneType.name.arcMilestone": "Łuk fabularny",
 
+    "MissionPod.commandAndControl": "Dowodzenie i kontrola",
     "MissionPod.sensors": "Sensory",
     "MissionPod.weapons": "Uzbrojenie",
+    "MissionPod.astrometricsAndNavigation": "Astrometria i nawigacja",
+    "MissionPod.defensiveShieldEnhancement": "Wzmocnione tarcze obronne",
+    "MissionPod.emergencyRecovery": "Zasilanie awaryjne i naprawy",
     "MissionPod.fieldHospital": "Szpital polowy",
     "MissionPod.fleetCarrier": "Lotniskowiec",
     "MissionPod.fleetCommandSupport": "Wsparcie dowodzenia",
+    "MissionPod.mobileDrydock": "Mobilny dok naprawczy",
+    "MissionPod.warpPropulsionPod": "Moduł napędu warp",
 
     "MissionProfile.default.strategicAndDiplomatic": "Operacje strategiczne i dyplomatyczne",
 
@@ -1623,6 +1647,9 @@
     "MissionProfile.default.pathfinderAndReconaissance.description": "Misje dalekiego zasięgu często wykorzystują najbardziej zaawansowaną kartografię gwiezdną i urządzenia astrometryczne, co pozwala na efektywniejsze mapowanie i nawigację w nieznanych regionach przestrzeni kosmicznej – zwłaszcza tam, gdzie zniekształcenia przestrzenne utrudniają nawigację. Okręty te są przeznaczone do szeroko zakrojonych zadań eksploracyjnhych, operacji wojskowych polegających na zbieraniu danych wywiadowczych oraz ryzykownych operacji poszukiwania bezpiecznej trasy przez nieznaną przestrzeń.",
 
     "MissionProfile.default.technicalTestBed": "Testy nowych technologii",
+
+    "MissionProfile.default.technicalTestBed.description": "Okręt wyposażono w zestaw najnowszych technologii, niektóre będące jeszcze na etapie prototypów, do testowania i kontroli zachowania w warunkach rzeczywistych misji. Systemy te są ciągle poprawiane i korygowane. Takie okręty biorą udział w zróżnicowanych misjach, pozwalających zbadać działanie testowanego wyposażenia w szerokim zakresie warunków.",
+
     "MissionProfile.default.tactical": "Operacje taktyczne",
 
     "MissionProfile.default.tactical.description": "Chociaż Gwiezdna Flota nie jest formacją wojskową, obrona Federacji należy do jej obowiązków. W związku z tym wielokrotnie musiała przygotowywać się do wojny i wiele jej okrętów wyposażono zarówno do działań w czasie pokoju, jak i do celów militarnych. Liczba takich jednostek różni się w zależności od aktualnej polityki.",
@@ -1645,6 +1672,9 @@
     "MissionProfile.default.battlecruiser.description": "Wnioski wyciągnięte z wojny ziemsko-romulańskiej z połowy XXII wieku pozostawiły na długo ślad w umysłach mieszkańców Federacji. W związku z tym niektóre statki wyposażono jako okręty wojenne na wypadek wybuchu kolejnego konfliktu z Imperium Klingońskim lub Romulańskim. Podobny nacisk na rozwój ciężkich okrętów bojowych pojawił się podczas kryzysu Borg i Wojny z Dominium w latach sześćdziesiątych i siedemdziesiątych XXIV wieku. Statki te są rzadkością w Gwiezdnej Flocie, a tak skonfigurowane jednostki nieczęsto oddalają się od ważnych baz gwiezdnych lub światów, których strzegą.",
 
     "MissionProfile.default.reserveFleet": "Flota rezerwowa",
+
+    "MissionProfile.default.reserveFleet.description": "Te okręty to często starsze modele, które zostały już wycofane z aktywnej służby i służą jako doraźne wsparcie w przypadku katastrof naturalnych lub innych kryzysów. Niekiedy nowe okręty także są przygotowane do tych zadań, ale wtedy zwykle określa się je jako \"flota wsparcia\" i przydziela na odcinkach lub regionach, które znajdują się z dala od regularnych szlaków zaopatrzeniowych.",
+
     "MissionProfile.default.civilianMerchantMarine": "Cywilna misja handlowa",
     "MissionProfile.default.colonySupport": "Wsparcie kolonii",
     "MissionProfile.default.entertainmentPleasureShip": "Rozrywka i rekreacja",
@@ -1682,6 +1712,17 @@
     "MissionProfile.default.logisticalAndTacticalSupportStation": "Logistyka i wsparcie",
     "MissionProfile.default.politicalOperationsStation": "Operacje polityczne",
     "MissionProfile.default.researchStation": "Stacja naukowe",
+
+    "InjuryType.deadly": "Śmiertelne",
+    "InjuryType.stun": "Ogłuszające",
+    "InjuryType.stunOrDeadly": "Ogłuszające, Śmiertelne",
+
+    "MouthType.mouth1": "Wąskie usta",
+    "MouthType.mouth2": "Średnie usta",
+    "MouthType.mouth3": "Zmarszczone średnie usta",
+    "MouthType.mouth4": "Mniejsze",
+    "MouthType.mouth5": "Dość pełne wargi",
+    "MouthType.mouth6": "Szerokie pełne wargi",
 
     "NpcCharacterType.minorPolity": "Pomniejsza organizacja",
     "NpcCharacterType.rogueRuffianMercenary": "Najemnicy, zbiry i niezależni",
