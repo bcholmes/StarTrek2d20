@@ -2,6 +2,9 @@ import { test, expect, describe } from '@jest/globals';
 import '../../src/helpers/species';
 import { FantasyGroundsVttExporter } from '../../src/vtt/fantasyGroundsVttExport';
 import { makePopulatedMainCharacter, makePopulatedNpc } from './vttFixtures';
+import { CharacterAdvancementStep } from '../../src/common/character';
+import { CharacterAdvancementChoice } from '../../src/modify/model/characterAdvancementChoice';
+import { SelectedTalent } from '../../src/common/selectedTalent';
 
 jest.mock('i18next', () => {
   const mockI18n: any = (key: string) => key;
@@ -43,5 +46,44 @@ describe('FantasyGrounds XML export golden output', () => {
     const result =
       FantasyGroundsVttExporter.instance.exportCharacter(makePopulatedNpc());
     expect(result).toMatchSnapshot();
+  });
+
+  test('puts the rank into the main-character talent name and multiple field', () => {
+    const character = makePopulatedMainCharacter(2);
+    const advancement = (talentName: string) => {
+      const step = new CharacterAdvancementStep();
+      step.choice = CharacterAdvancementChoice.Talent;
+      step.value = new SelectedTalent(talentName);
+      return step;
+    };
+    character.improvements = [
+      advancement('Personal Effects'),
+      advancement('Personal Effects'),
+    ];
+
+    const result =
+      FantasyGroundsVttExporter.instance.exportCharacter(character);
+
+    expect(result).toContain(
+      '<name type="string">Personal Effects [x2]</name>',
+    );
+    expect(result).toContain('<multiple type="number">2</multiple>');
+    expect(result).toContain('<name type="string">Advisor</name>');
+    expect(result).not.toContain('<name type="string">Advisor [x1]</name>');
+  });
+
+  test('puts the rank into the NPC talent name', () => {
+    const character = makePopulatedNpc();
+    character.npcGenerationStep!.talents = [
+      new SelectedTalent('Personal Effects'),
+      new SelectedTalent('Personal Effects'),
+    ];
+
+    const result =
+      FantasyGroundsVttExporter.instance.exportCharacter(character);
+
+    expect(result).toContain(
+      '<name type="string">Personal Effects [x2]</name>',
+    );
   });
 });
