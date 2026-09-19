@@ -406,7 +406,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 1e character 
             "type": "talent",
             "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
             "system": {
-                "description": "<p></p>",
+                "description": "",
                 "talenttype": {
                     "typeenum": "general",
                     "description": "",
@@ -435,7 +435,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 1e character 
             "type": "talent",
             "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
             "system": {
-                "description": "<p></p>",
+                "description": "",
                 "talenttype": {
                     "typeenum": "general",
                     "description": "",
@@ -1085,7 +1085,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 2e character 
             "type": "talent",
             "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
             "system": {
-                "description": "<p></p>",
+                "description": "",
                 "talenttype": {
                     "typeenum": "general",
                     "description": "",
@@ -1114,7 +1114,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 2e character 
             "type": "talent",
             "img": "systems/sta/assets/compendia/icons/talents-core/talent-core.svg",
             "system": {
-                "description": "<p></p>",
+                "description": "",
                 "talenttype": {
                     "typeenum": "general",
                     "description": "",
@@ -1469,7 +1469,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 2e starship 1
             "type": "talent",
             "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
             "system": {
-                "description": "<p></p>",
+                "description": "",
                 "talenttype": {
                     "typeenum": "general",
                     "description": "",
@@ -1498,7 +1498,7 @@ exports[`FoundryVTT export golden output exports a fully-populated 2e starship 1
             "type": "talent",
             "img": "systems/sta/assets/compendia/icons/talents-core/talent-ship.svg",
             "system": {
-                "description": "<p></p>",
+                "description": "",
                 "talenttype": {
                     "typeenum": "general",
                     "description": "",
