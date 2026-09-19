@@ -1022,11 +1022,6 @@ export class FantasyGroundsVttExporter {
     character.rankedTalents.forEach((selectedTalent) => {
       const talent = selectedTalent.talentModel;
       if (talent) {
-        let name = selectedTalent.displayName;
-        if (talent.maxRank > 1) {
-          name += ' [x' + character.getRankForTalent(talent.name) + ']';
-        }
-
         result.elements.push({
           name: this.createNumberedId(index++),
           type: 'element',
@@ -1036,7 +1031,7 @@ export class FantasyGroundsVttExporter {
               null,
               resolveTalentDescription(selectedTalent, character.version, true),
             ),
-            xmlStringNode('name', name),
+            xmlStringNode('name', selectedTalent.displayNameWithMultiple),
           ],
         });
       }
@@ -1065,11 +1060,8 @@ export class FantasyGroundsVttExporter {
               resolveTalentDescription(s, character.version, true),
             ),
             xmlNumberNode('locked', '0'),
-            xmlNumberNode(
-              'multiple',
-              talent.maxRank > 1 ? character.getRankForTalent(talent.name) : 0,
-            ),
-            xmlStringNode('name', s.displayName),
+            xmlNumberNode('multiple', s.multiple ?? 0),
+            xmlStringNode('name', s.displayNameWithMultiple),
             xmlStringNode('requirement', talentRequirement(talent)),
           ],
         });
