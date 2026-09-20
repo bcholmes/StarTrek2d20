@@ -328,8 +328,8 @@ export class SpeciesPrerequisite implements IConstructPrerequisite {
   private allowMixedSpecies: boolean;
 
   constructor(
-    species: number,
-    allowCrossSelection: boolean,
+    species: Species,
+    allowCrossSelection: boolean = false,
     allowMixedSpecies: boolean = true,
   ) {
     this.species = species;

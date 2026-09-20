@@ -1083,16 +1083,23 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     const describer = new WeaponDescriber(construct.version, true);
 
     if (construct instanceof Character) {
-      const attacks = construct
-        .determineWeapons()
-        .map(
-          (w) =>
-            w.name +
-            ': ' +
-            describer
-              .describeFully(w, construct)
-              .replace(CHALLENGE_DICE_NOTATION, '\u25B2'),
+      const attacks = construct.determineWeapons().map((w) => {
+        let escalation = '';
+        if (w.escalation) {
+          escalation =
+            i18next.t('Weapon.common.escalation', { value: w.escalation }) +
+            ': ';
+        }
+
+        return (
+          escalation +
+          w.name +
+          ': ' +
+          describer
+            .describeFully(w, construct)
+            .replace(CHALLENGE_DICE_NOTATION, '\u25B2')
         );
+      });
 
       this.fillField(form, 'Attacks', attacks.join('\n'));
     }

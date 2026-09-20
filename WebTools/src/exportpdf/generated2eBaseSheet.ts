@@ -184,11 +184,19 @@ export abstract class BaseNonForm2eSheet extends BasicGeneratedSheet {
         w,
         construct,
       );
+
       paragraph =
         paragraph == null
           ? new Paragraph(page, column, this.fonts)
           : paragraph.nextParagraph(0);
       paragraph?.indent(15);
+      if (w.escalation) {
+        paragraph?.append(
+          i18next.t('Weapon.common.escalation', { value: w.escalation }) + ': ',
+          bold,
+          colour,
+        );
+      }
       paragraph?.append(w.name + ': ', bold);
       paragraph?.append(text, standard);
       paragraph?.write();

@@ -175,6 +175,8 @@ function describeSpecialization(inputJson, pronoun) {
             }
         } else if (inputJson.specialization === "CivilianDoctor") {
             prompt += pronounPhrase + " a civilian medical doctor working for the Federation.";
+        } else if (inputJson.specialization === "Journalist") {
+            prompt += pronounPhrase + " a journalist working for a Federation news outlet.";
         }
     } else if (inputJson.npcCharacterType === "RogueRuffianMercenary") {
 

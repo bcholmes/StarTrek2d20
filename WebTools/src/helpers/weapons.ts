@@ -1837,6 +1837,7 @@ export class PersonalWeapons {
       WeaponType.ENERGY,
       2,
       PersonalWeaponType.PhaserRifle,
+      2,
     );
   }
 
@@ -1850,6 +1851,7 @@ export class PersonalWeapons {
       WeaponType.ENERGY,
       1,
       PersonalWeaponType.PulseGrenade,
+      2,
     );
   }
 
@@ -1920,6 +1922,7 @@ export class PersonalWeapons {
       WeaponType.MELEE,
       2,
       PersonalWeaponType.HeavyBlade,
+      1,
     );
   }
 
@@ -1998,6 +2001,7 @@ export class PersonalWeapons {
       WeaponType.ENERGY,
       1,
       PersonalWeaponType.PolaronDisruptorPistol,
+      1,
     );
   }
 

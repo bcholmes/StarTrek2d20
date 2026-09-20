@@ -53,6 +53,7 @@ export enum Specialization {
   IndependentTraderCaptain,
   Child,
   CivilianDoctor,
+  Journalist,
 
   Pirate,
   InformationBroker,
