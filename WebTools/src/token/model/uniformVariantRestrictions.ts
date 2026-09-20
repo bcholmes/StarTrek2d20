@@ -51,9 +51,7 @@ export class UniformVariantRestrictions {
         result.push(UniformVariantType.Variant2);
       }
     } else if (uniformEra === UniformEra.Prodigy) {
-      if (!isCadetRank(rank)) {
-        result.push(UniformVariantType.Variant1);
-      }
+      result.push(UniformVariantType.Variant1);
     } else if (uniformEra === UniformEra.StrangeNewWorlds) {
       if (DivisionColors.getDivision(uniformEra, divisionColor) === 'Medical') {
         result.push(UniformVariantType.Variant2);
