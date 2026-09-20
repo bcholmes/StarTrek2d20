@@ -94,9 +94,11 @@ export enum Rank {
   Jagul,
   Gul,
   Dal,
+  Dalin,
   Glinn,
   Gil,
   Garresh,
+  Gorr,
 
   Trooper,
 
@@ -1052,14 +1054,21 @@ export class RanksHelper {
       ],
       'Gul',
     ),
-    new RankModel(Rank.Dal, 'Dal / Dalin', 'O3', [
+    new RankModel(Rank.Dal, 'Dal', 'O4', [
       new OfficerCharacterPrerequisite(),
       new SourceCharacterPrerequisite(Source.PlayersGuide),
       new AlliedMilitaryCharacterPrerequisite(
         AlliedMilitaryType.CardassianUnion,
       ),
     ]),
-    new RankModel(Rank.Glinn, 'Glinn / Gil', 'O2', [
+    new RankModel(Rank.Dalin, 'Dalin', 'O3', [
+      new OfficerCharacterPrerequisite(),
+      new SourceCharacterPrerequisite(Source.PlayersGuide),
+      new AlliedMilitaryCharacterPrerequisite(
+        AlliedMilitaryType.CardassianUnion,
+      ),
+    ]),
+    new RankModel(Rank.Glinn, 'Glinn', 'O2', [
       new OfficerCharacterPrerequisite(),
       new CareersCharacterPrerequisite(Career.Young, Career.Experienced),
       new SourceCharacterPrerequisite(Source.PlayersGuide),
@@ -1075,14 +1084,14 @@ export class RanksHelper {
         AlliedMilitaryType.CardassianUnion,
       ),
     ]),
-    new RankModel(Rank.Gil, 'Gil', 'E5', [
+    new RankModel(Rank.Garresh, 'Garresh', 'E2', [
       new EnlistedCharacterPrerequisite(),
       new SourceCharacterPrerequisite(Source.PlayersGuide),
       new AlliedMilitaryCharacterPrerequisite(
         AlliedMilitaryType.CardassianUnion,
       ),
     ]),
-    new RankModel(Rank.Garresh, 'Garresh / Gorr', 'E1', [
+    new RankModel(Rank.Garresh, 'Gorr', 'E1', [
       new EnlistedCharacterPrerequisite(),
       new CareersCharacterPrerequisite(Career.Young),
       new SourceCharacterPrerequisite(Source.PlayersGuide),
@@ -1442,9 +1451,11 @@ export class RanksHelper {
           Rank.Jagul,
           Rank.Gul,
           Rank.Dal,
+          Rank.Dalin,
           Rank.Glinn,
           Rank.Gil,
           Rank.Garresh,
+          Rank.Gorr,
         ];
         break;
       case CharacterType.Ferengi:

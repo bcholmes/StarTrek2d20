@@ -1729,6 +1729,7 @@ export enum PersonalWeaponType {
   PolaronDisruptorRifle,
   NeuralTruncheon,
   CryogenicGrenade,
+  TanQalanqSword,
 }
 
 export class PersonalWeapons {
@@ -1899,6 +1900,18 @@ export class PersonalWeapons {
     );
   }
 
+  get tanQalanqSword() {
+    return Weapon.createCharacterWeapon(
+      i18next.t('Weapon.personal.tanQalanqSword.name'),
+      InjuryType.Deadly,
+      3,
+      [],
+      [],
+      WeaponType.MELEE,
+      1,
+      PersonalWeaponType.TanQalanqSword,
+    );
+  }
   get mekLeth() {
     return Weapon.createCharacterWeapon(
       i18next.t('Weapon.personal.mekleth.name'),
@@ -2144,6 +2157,16 @@ export class PersonalWeapons {
         return this.energyWhip;
       case PersonalWeaponType.KeratinDart:
         return this.keratinDart;
+      case PersonalWeaponType.PolaronDisruptorPistol:
+        return this.polaronDisruptorPistol;
+      case PersonalWeaponType.PolaronDisruptorRifle:
+        return this.polaronDisruptorRifle;
+      case PersonalWeaponType.NeuralTruncheon:
+        return this.neuralTruncheon;
+      case PersonalWeaponType.CryogenicGrenade:
+        return this.cryogenicGrenade;
+      case PersonalWeaponType.TanQalanqSword:
+        return this.tanQalanqSword;
       default:
         return undefined;
     }

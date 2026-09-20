@@ -110,7 +110,7 @@ function describeSpecialization(inputJson, pronoun) {
             prompt += pronounPhrase + " a member of the Tal Shi'ar, the intelligence service of the Romulan Star Empire.";
         } else if (inputJson.specialization === "RomulanSenator") {
             prompt += pronounPhrase + " a senator in the government of the Romulan Star Empire.";
-        } else if (inputJson.specialization === "RomulanSenator") {
+        } else if (inputJson.specialization === "QowatMilat") {
             prompt += pronounPhrase + " in the order of the Qowat Milat, an all-female Romulan order of sword-wielding ninja-like fighters.";
         }
 

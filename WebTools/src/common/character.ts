@@ -1428,6 +1428,10 @@ export class Character extends Construct implements IWeaponDiceProvider {
         result.push(PersonalWeapons.instance(this.version).phaser1);
         result.push(PersonalWeapons.instance(this.version).energyWhip);
       } else if (
+        this.npcGenerationStep?.specialization === Specialization.QowatMilat
+      ) {
+        result.push(PersonalWeapons.instance(this.version).tanQalanqSword);
+      } else if (
         this.npcGenerationStep?.specialization ===
           Specialization.RomulanCenturion ||
         this.npcGenerationStep?.specialization ===
@@ -1490,10 +1494,10 @@ export class Character extends Construct implements IWeaponDiceProvider {
   isBreenSoldier() {
     return (
       (this.speciesStep?.species === Species.Breen &&
-        this.type !== CharacterType.Starfleet) || [
-        Specialization.BreenThot,
-        Specialization.BreenWarrior,
-      ]
+        this.type !== CharacterType.Starfleet) ||
+      [Specialization.BreenThot, Specialization.BreenWarrior].includes(
+        this.npcGenerationStep?.specialization,
+      )
     );
   }
 
