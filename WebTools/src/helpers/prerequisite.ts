@@ -285,6 +285,21 @@ export class SpecializationPrerequisite implements IConstructPrerequisite {
   }
 }
 
+export class NoSpecializationPrerequisite implements IConstructPrerequisite {
+  isPrerequisiteFulfilled(
+    character: Character | Starship | Creature | Station,
+  ) {
+    return (
+      character instanceof Character &&
+      character.stereotype === Stereotype.Npc &&
+      character.npcGenerationStep?.specialization == null
+    );
+  }
+  describe(): string {
+    return '';
+  }
+}
+
 export class NeverPrerequisite implements IConstructPrerequisite {
   isPrerequisiteFulfilled(c: Starship) {
     return false;

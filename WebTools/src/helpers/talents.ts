@@ -19,6 +19,7 @@ import {
   CareersPrerequisite,
   CharacterTypePrerequisite,
   MainCharacterPrerequisite,
+  NoSpecializationPrerequisite,
   NotPrerequisite,
   OfficerPrerequisite,
   RolePrerequisite,
@@ -8969,7 +8970,10 @@ export class Talents {
       [
         new StereotypePrerequisite(Stereotype.Npc),
         new Version2Prerequisite(),
-        new SpecializationPrerequisite(Specialization.Journalist),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.Journalist),
+          new NoSpecializationPrerequisite(),
+        ),
         new SourcePrerequisite(Source.AlliesAndAdversaries),
       ],
       1,
@@ -8982,13 +8986,68 @@ export class Talents {
       [
         new StereotypePrerequisite(Stereotype.Npc),
         new Version2Prerequisite(),
-        new SpecializationPrerequisite(Specialization.Journalist),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.Journalist),
+          new NoSpecializationPrerequisite(),
+        ),
         new SourcePrerequisite(Source.AlliesAndAdversaries),
       ],
       1,
       new TalentCategorization(TalentCategory.SpecialRule),
       true,
     ),
+    new TalentModel(
+      'Absolute Candor (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.QowatMilat),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SpeciesPrerequisite(Species.Romulan),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Choose to Live (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.QowatMilat),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SpeciesPrerequisite(Species.Romulan),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Qalankhkai (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.QowatMilat),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SpeciesPrerequisite(Species.Romulan),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+
     new TalentModel(
       'Ambush Hunter',
       '',

@@ -2027,7 +2027,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
       (this.type === CharacterType.AlliedMilitary &&
         this.typeDetails?.type === AlliedMilitaryType.RomulanStarEmpire) ||
       (this.type === CharacterType.AmbassadorDiplomat &&
-        this.typeDetails?.type === Polity.Romulan)
+        this.typeDetails?.type === Polity.Romulan) ||
+      this.npcGenerationStep?.specialization === Specialization.QowatMilat
     );
   }
 

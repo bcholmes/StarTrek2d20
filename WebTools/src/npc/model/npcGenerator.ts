@@ -997,7 +997,7 @@ export class NpcGenerator {
             Track.PoliticianOrBureaucrat,
           );
         } else if (specialization.id === Specialization.QowatMilat) {
-          character.type = CharacterType.Romulan;
+          character.type = CharacterType.Civilian;
         } else {
           character.type = CharacterType.Romulan;
         }
@@ -1171,13 +1171,17 @@ export class NpcGenerator {
         }
         numberOfTalents += 1;
       } else if (
-        i === 0 &&
+        i <= 1 &&
         species.id === Species.Breen &&
         hasSource(Source.AlliesAndAdversaries)
       ) {
-        character.addTalent(
-          TalentsHelper.getTalent('Contained Form (Special Rule)'),
-        );
+        if (i === 0) {
+          character.addTalent(
+            TalentsHelper.getTalent('Contained Form (Special Rule)'),
+          );
+        } else {
+          character.addTalent(TalentsHelper.getTalent('Immune to Cold'));
+        }
       } else if (
         i === 0 &&
         species.id === Species.CyberneticallyEnhanced &&

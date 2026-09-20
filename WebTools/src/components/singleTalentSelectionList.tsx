@@ -59,6 +59,7 @@ import { ModalControl } from './modal';
 import { AddWeaponView, AddWeaponMode } from '../starship/view/addWeaponView';
 import { SimpleSystemSelector } from './simpleSystemSelector';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
+import { RichTextEditor } from './richTextEditor';
 
 interface ISingleTalentSelectionProperties {
   talents: RankedTalent[];
@@ -436,7 +437,7 @@ export const TalentSelectionRow: React.FC<ITalentSelectionRowProperties> = ({
   const renderCustomTalent = () => {
     return (
       <div className="row">
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-8">
           <div>
             <InputFieldAndLabel
               labelName={t('Common.text.talentName')}
@@ -451,14 +452,11 @@ export const TalentSelectionRow: React.FC<ITalentSelectionRowProperties> = ({
               }}
             />
           </div>
-          <div>
-            <textarea
-              className="w-100 mt-3"
-              style={{ height: '6rem' }}
-              value={selection.customTalentDescription}
+          <div className="pt-3">
+            <RichTextEditor
+              initialText={selection.customTalentDescription}
               placeholder={t('Common.text.description')}
-              onChange={(e) => {
-                const description = e.target.value;
+              onChange={(description) => {
                 const temp = selection?.copy();
                 if (temp) {
                   temp.customTalentDescription = description;

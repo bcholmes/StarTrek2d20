@@ -9,11 +9,13 @@ import React, { useState } from 'react';
 interface IRichTextEditorProperties {
   initialText?: string;
   onChange: (string) => void;
+  placeholder?: string;
 }
 
 export const RichTextEditor: React.FC<IRichTextEditorProperties> = ({
   initialText,
   onChange,
+  placeholder,
 }) => {
   const [text, setText] = useState<string>(initialText ?? '');
 
@@ -32,6 +34,7 @@ export const RichTextEditor: React.FC<IRichTextEditorProperties> = ({
           ),
         }),
       ]}
+      placeholder={placeholder}
       onBlur={(e) => onChange(text.replace(/&#x20;/g, ' '))}
       onChange={(markdown) => setText(markdown)}
     />

@@ -29,16 +29,9 @@ import { WeaponDescriber } from './weaponDescriber';
 import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
 import { CharacterType } from '../common/characterType';
 import {
-  cardassianBrownColour2e,
-  divisionColour2e,
-  ferengiOrangeColour2e,
   greyColour2e,
-  klingonRedColour2e,
   labelColourProvider,
-  orionGreenColour2e,
-  romulanGreenColour2e,
   tealColour2e,
-  tholianFlameColour2e,
 } from './colourProvider2e';
 import {
   politySymbolArrowHead,
@@ -76,6 +69,7 @@ import { CareerEventsHelper } from '../helpers/careerEvents';
 import { ModificationType } from '../modify/model/modificationType';
 import { RanksHelper } from '../helpers/ranks';
 import { fontLoader2e } from './fontLoader';
+import { deriveSheetColour } from './characterColour';
 
 export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   static readonly page2Column1X = 55.6;
@@ -192,7 +186,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     }
 
     const page = pdf.getPage(0);
-    const colour = this.deriveSheetColour(character);
+    const colour = deriveSheetColour(character);
 
     [page].concat(...extraPages).forEach((p) => {
       new LandscapeSheetDecorations().drawSheetDecorations(p, colour);
@@ -415,32 +409,6 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
       });
     });
     paragraphs.forEach((p) => p.write());
-  }
-
-  deriveSheetColour(character: Character) {
-    if (
-      character.type === CharacterType.Starfleet ||
-      character.type === CharacterType.Cadet
-    ) {
-      const division = character.division;
-      return division != null
-        ? divisionColour2e(character.era, division)
-        : tealColour2e;
-    } else if (character.isKlingonImperialCitizen) {
-      return klingonRedColour2e;
-    } else if (character.isRomulanStarEmpire) {
-      return romulanGreenColour2e;
-    } else if (character.isOrion) {
-      return orionGreenColour2e;
-    } else if (character.isCardassian) {
-      return cardassianBrownColour2e;
-    } else if (character.isFerengi) {
-      return ferengiOrangeColour2e;
-    } else if (character.isTholian) {
-      return tholianFlameColour2e;
-    } else {
-      return tealColour2e;
-    }
   }
 
   drawArrowHead(page: PDFPage, character: Character, colour: SimpleColor) {

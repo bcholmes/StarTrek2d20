@@ -9,7 +9,7 @@ import { Department } from '../helpers/department';
 import type { Character } from '../common/character';
 import { Paragraph } from './paragraph';
 import { FontSpecification } from './fontSpecification';
-import type { Construct } from '../common/construct';
+import { Stereotype, type Construct } from '../common/construct';
 import { Column } from './column';
 import { XYLocation } from '../common/xyLocation';
 import { FontOptions } from './fontOptions';
@@ -23,10 +23,28 @@ import { SpeciesAbility } from '../helpers/speciesAbility';
 import { TalentWriter } from './talentWriter';
 import type { CharacterType } from '../common/characterType';
 import { PortraitSheetDecorations } from './portraitSheetDecorations';
+import { TokenHelper } from './tokenHelper';
+import { deriveSheetColour } from './characterColour';
 
 export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
+  imageSize = 72 * 1.5;
+
   secondBlock: Column = new Column(314, 72, 715 - 72, 552 - 314);
   mainBlock: Column = new Column(59, 72, 715 - 72, 298 - 59, this.secondBlock);
+
+  secondBlockWithToken: Column = new Column(
+    314,
+    72 + this.imageSize + 10,
+    715 - 72 - this.imageSize - 10,
+    552 - 314,
+  );
+  mainBlockWithToken: Column = new Column(
+    59,
+    72,
+    715 - 72,
+    298 - 59,
+    this.secondBlockWithToken,
+  );
 
   getName(): string {
     return i18next.t(
@@ -49,15 +67,24 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
     await super.populate(pdf, construct);
 
     const character = construct as Character;
+    const colour = deriveSheetColour(character);
 
     const page = pdf.getPage(0);
-    new PortraitSheetDecorations().drawSheetDecorations(page, tealColour2e);
-    this.writeCharacterName(page, character);
+    new PortraitSheetDecorations().drawSheetDecorations(page, colour);
+    this.writeCharacterName(page, character, colour);
 
-    const bottom = this.writeCharacterDetails(page, character);
+    const firstColumn = character.token
+      ? this.mainBlockWithToken
+      : this.mainBlock;
+    const bottom = this.writeCharacterDetails(
+      page,
+      character,
+      firstColumn,
+      colour,
+    );
 
-    let remainingColumn = this.mainBlock.bottomAfter(
-      bottom.y - this.mainBlock.start.y + 16,
+    let remainingColumn = firstColumn.bottomAfter(
+      bottom.y - firstColumn.start.y + 16,
     );
     remainingColumn = this.writeStatBoxes(page, remainingColumn, character);
 
@@ -73,7 +100,12 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
     );
     remainingColumn = remainingColumn.bottomAfter(16);
 
-    remainingColumn = this.writeAttacks(page, character, remainingColumn);
+    remainingColumn = this.writeAttacks(
+      page,
+      character,
+      remainingColumn,
+      colour,
+    );
 
     if (character.isStressTrackPresent) {
       if (remainingColumn.height <= 40) {
@@ -117,7 +149,11 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
         );
       },
     );
-    this.writeSpeciesAbility(page, character, remainingColumn);
+    this.writeSpeciesAbility(page, character, remainingColumn, colour);
+
+    if (character.token) {
+      await this.drawImage(pdf, page, character);
+    }
   }
 
   writeStatBoxes(page: PDFPage, column: Column, character: Character) {
@@ -232,6 +268,24 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
     return column.bottomAfter(10 + 2 * rowHeight);
   }
 
+  async drawImage(pdf: PDFDocument, page: PDFPage, character: Character) {
+    if (character.token) {
+      const tokenBytes = await TokenHelper.renderToken(character.token);
+      const image = await pdf.embedPng(tokenBytes);
+
+      page.moveTo(
+        this.secondBlock.start.x +
+          this.secondBlock.width / 2 -
+          this.imageSize / 2,
+        page.getHeight() - 72 - this.imageSize,
+      );
+      page.drawImage(image, {
+        width: this.imageSize,
+        height: this.imageSize,
+      });
+    }
+  }
+
   writeStressBoxes(
     page: PDFPage,
     form: PDFForm,
@@ -277,12 +331,17 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
     }
   }
 
-  writeCharacterDetails(page: PDFPage, character: Character) {
-    let paragraph = new Paragraph(page, this.mainBlock, this.fonts);
+  writeCharacterDetails(
+    page: PDFPage,
+    character: Character,
+    column: Column,
+    colour: SimpleColor,
+  ) {
+    let paragraph = new Paragraph(page, column, this.fonts);
     paragraph.append(
       i18next.t('Construct.other.purpose').toLocaleUpperCase() + ': ',
       new FontSpecification(this.boldFont, 9),
-      tealColour2e,
+      colour,
     );
     paragraph.append(
       character.jobAssignment ?? i18next.t('Common.text.none'),
@@ -295,7 +354,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
       paragraph?.append(
         i18next.t('Construct.other.pronouns').toLocaleUpperCase() + ': ',
         new FontSpecification(this.boldFont, 9),
-        tealColour2e,
+        colour,
       );
       paragraph?.append(
         character.pronouns,
@@ -308,7 +367,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
     paragraph?.append(
       i18next.t('Construct.other.speciesAndTraits').toLocaleUpperCase() + ': ',
       new FontSpecification(this.boldFont, 9),
-      tealColour2e,
+      colour,
     );
     paragraph?.append(
       character.getAllTraits(),
@@ -321,7 +380,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
       paragraph?.append(
         i18next.t('Construct.other.focuses').toLocaleUpperCase() + ': ',
         new FontSpecification(this.boldFont, 9),
-        tealColour2e,
+        colour,
       );
       paragraph?.append(
         character.focuses.join(', '),
@@ -335,7 +394,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
       paragraph?.append(
         i18next.t('Construct.other.values').toLocaleUpperCase() + ':',
         new FontOptions(9, FontType.Bold),
-        tealColour2e,
+        colour,
       );
       paragraph?.write();
 
@@ -345,14 +404,19 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
         paragraph?.append(v, new FontOptions(9));
         paragraph?.write();
 
-        bullet2EWriter(page, paragraph, tealColour2e);
+        bullet2EWriter(page, paragraph, colour);
       });
     }
 
     return paragraph?.bottom;
   }
 
-  writeSpeciesAbility(page: PDFPage, character: Character, column: Column) {
+  writeSpeciesAbility(
+    page: PDFPage,
+    character: Character,
+    column: Column,
+    colour: SimpleColor,
+  ) {
     const items = assembleWritableItems(character);
 
     if (character.version > 1 && items.length > 0) {
@@ -367,7 +431,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
         paragraph.append(
           character.speciesStep.ability.name + ': ',
           new FontOptions(9, FontType.Bold),
-          tealColour2e,
+          colour,
         );
         paragraph.append(
           character.speciesStep.ability.description,
@@ -377,7 +441,9 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
       } else {
         this.writeSubTitle(
           page,
-          i18next.t('Construct.other.specialRules'),
+          character.stereotype === Stereotype.MainCharacter
+            ? i18next.t('Construct.other.talents')
+            : i18next.t('Construct.other.specialRules'),
           column.topBefore(13),
         );
         column = column.bottomAfter(16);
@@ -385,31 +451,25 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
           page,
           this.fonts,
           character.version,
-          tealColour2e,
+          colour,
         ).writeTalents(items, column, 9);
       }
     }
   }
 
-  writeCharacterName(page: PDFPage, character: Character) {
+  writeCharacterName(page: PDFPage, character: Character, colour: SimpleColor) {
     if (character.name?.length) {
       let name = character.name;
       const rank = character.rank?.localizedAbbreviation;
       if (rank) {
         name = rank + ' ' + name;
       }
-      this.writeName(
-        page,
-        name,
-        tealColour2e,
-        this.headingFont,
-        this.nameColumn,
-      );
+      this.writeName(page, name, colour, this.headingFont, this.nameColumn);
     } else {
       this.writeName(
         page,
         i18next.t('Construct.other.unnamedCharacter'),
-        tealColour2e,
+        colour,
         this.headingFont,
         this.nameColumn,
       );
