@@ -42,7 +42,9 @@ function describeSpecies(species) {
     } else if (species === "Breen") {
         return "The Breen are a spacefaring humanoid species native to the planet Breen in the Alpha Quadrant. Notoriously reclusive and warlike, the Breen are a formidable power in their region of the galaxy. They almost always wear refrigeration suits that entirely conceal their bodies. The Breen are hairless, pale green humanoids with two distinct forms: a solid form, and a gelatinous form in which their tissues are translucent and flexible. Breen culture teaches that the gelatinous form is their true face, whereas the solid form represents a weak evolutionary throwback. ";
     } else if (species === "Borg") {
-        return "The Borg were a pseudo-species of cybernetic humanoids, or cyborgs, from the Delta Quadrant known as drones, which formed the entire population of the Borg Collective. Their ultimate goal was the attainment of 'perfection' through the forcible assimilation of diverse sentient species, technologies, and knowledge.";
+        return "The Borg are a pseudo-species of cybernetic humanoids, or cyborgs, from the Delta Quadrant known as drones, which formed the entire population of the Borg Collective. Their ultimate goal is the attainment of 'perfection' through the forcible assimilation of diverse sentient species, technologies, and knowledge. ";
+    } else if (species === "Ktarian") {
+        return "Ktarians have distinctive foreheads divided into two hemispheres, and distinctive yellow eyes with horizontally slit pupils. ";
     } else {
         return "";
     }
@@ -148,6 +150,10 @@ function describeSpecialization(inputJson, pronoun) {
             prompt += pronounPhrase + " a commanding officer in the military of the Cardassian Union, with the rank of " + inputJson.rank + "." ;
         } else if (inputJson.specialization === "CardassianSoldier") {
             prompt += pronounPhrase + " a member of the military forces for the Cardassian Union, with the rank of " + inputJson.rank + ".";
+        } else if (inputJson.specialization === "CardassianExarch") {
+            prompt += pronounPhrase + " the regional leader of a Cardassian municipality or settlement.";
+        } else if (inputJson.specialization === "CardassianBureaucrat") {
+            prompt += pronounPhrase + " a bureaucrat in the Cardassian government.";
         }
 
     } else if (inputJson.npcCharacterType === "Civilian") {

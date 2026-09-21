@@ -282,7 +282,7 @@ class Sources {
       SourceType.Expansion2e,
       'Allies and Adversaries',
       2,
-      false,
+      true,
     ),
     [Source.Century24]: new SourceViewModel(
       Source.Century24,

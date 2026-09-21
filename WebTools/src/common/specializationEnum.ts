@@ -30,6 +30,9 @@ export enum Specialization {
 
   CardassianSoldier,
   CardassianGul,
+  CardassianBureaucrat,
+  CardassianExarch,
+  ObsidianOrderOperative,
 
   RomulanCenturion,
   RomulanTalShiar,
@@ -41,6 +44,7 @@ export enum Specialization {
   TalarianOfficer,
   TzenkethiSoldier,
   TholianWarrior,
+  TholianEnforcer,
 
   BreenThot,
   BreenWarrior,

@@ -2484,7 +2484,7 @@ class SpeciesRepository {
         Era.PicardProdigy,
         Era.Discovery32,
       ],
-      [Source.IdwYearFive, Source.CaptainsLog],
+      [Source.IdwYearFive, Source.CaptainsLog, Source.AlliesAndAdversaries],
       [
         'Tholians are a nonhumanoid, crystalline-based species with six thin legs and a dome-like head atop the torso. Tholians evolved in a high-temperature, methane-rich atmosphere and their life-support requirements differ widely from those of most humanoid species. Accordingly, Tholian characters must wear protective EV suits if they intend to spend lengthy periods of time on a Federation starship or space station. Exposure to cooler environments causes their exoskeletons to crack and eventually shatter. Their language, composed of high-frequency chirps and squeals, can render the Universal Translator unreliable. Tholians possess a high level of technology, and their use of Tholian webs, or high-energy nets that can entrap vessels, are formidable weapons.',
         'The Tholians played a central role in Aegis’s plot to plunge the Galaxy into permanent stasis in order to prevent further expansion of the United Federation of Planets. The crew of the U.S.S. Enterprise rescued a Tholian child from the rubble of an abandoned outpost on the planet Lloyd Zeta- 9, setting off a volatile diplomatic crisis.',
@@ -2495,7 +2495,7 @@ class SpeciesRepository {
       '',
       [
         TalentsHelper.getTalent('Crystalline Telepathy'),
-        TalentsHelper.getTalent('Immune to Vacuum'),
+        TalentsHelper.getTalent('Immune to Vacuum (Tholian)'),
         TalentsHelper.getTalent('Radiation Burst'),
       ],
       'Tholian names are usually unpronounceable by non-Tholians.',

@@ -2515,6 +2515,7 @@
     "Specialization.security": "Security",
     "Specialization.smuggler": "Smuggler",
     "Specialization.starfleetScientist": "Scientist",
+    "Specialization.tholianWarrior": "Tholian Soldier",
 
     "Species.aenar.name": "Aenar",
     "Species.aenar.aboutNames": "Aenar usually have a single given name, as their enhanced senses allow them to tell the differences between two individuals with the same name based on the cadence of their voice, their heartbeat, and other physiological features.",
@@ -3520,6 +3521,10 @@
     "Talent.aboveTheClouds.description": "While engaged in Social conflict in a lavish environment (or one of excess), you reduce the Difficulty of any Persuade Tasks by 1 to a minimum of 1.",
     "Talent.aboveTheClouds.description2e": "When you are in a Social conflict scene in a lavish or opulent environment (or one of excess), you may re-roll one d20. If you succeed, score one bonus Momentum. Bonus Momentum may not be saved.",
 
+    "Talent.absoluteCandorSpecialRule": "Absolute Candor",
+
+    "Talent.absoluteCandorSpecialRule.description": "See pg. 91 of the _Allies and Adversaries_ book.",
+
     "Talent.abruptInsights": "Abrupt Insights",
 
     "Talent.abruptInsights.description": "Your insight into the minds of others can give you an edge when interacting with them, though not everyone is comfortable having someone else speak their mind. When you attempt a task as part of a social conflict, you can increase the complication range by 1, 2, or 3; if you succeed, you generate bonus Momentum equal to the complication range increase. Bonus Momentum may not be saved.",
@@ -3860,6 +3865,10 @@
 
     "Talent.chiefOfStaff.description2e": "When you Assist another character attempting a Medicine task, each assisting character may re-roll their assistance die.",
 
+    "Talent.chooseToLiveSpecialRule": "Choose to Live",
+
+    "Talent.chooseToLiveSpecialRule.description": "See pg. 91 of the _Allies and Adversaries_ book.",
+
     "Talent.chosenSpeaker": "Chosen Speaker",
 
     "Talent.chosenSpeaker.description2e": "Among Aenar communities, leaders and mediators are chosen as and when the need arises, nominating an individual to serve as Speaker. You’ve been chosen for this role often and are adept at using your senses and your telepathy to aid communication. When attempting a task to communicate telepathically with a willing being, you may re-roll 1d20.",
@@ -3893,6 +3902,10 @@
     "Talent.clusterTorpedoes": "Cluster Torpedoes",
 
     "Talent.clusterTorpedoes.description": "The ship uses a modified torpedo system, where each casing splits into several smaller projectiles with separate payloads. When the ship fires a torpedo salvo, the attack gains the Versatile 2 quality.",
+
+    "Talent.coercedActionSpecialRule": "Coerced Action",
+
+    "Talent.coercedActionSpecialRule.description": "See pg. 94 of the _Allies and Adversaries_ book",
 
     "Talent.coldBloodedSupremacy": "Cold-Blooded Supremacy",
 
@@ -3978,6 +3991,10 @@
     "Talent.computerExpertise.description": "Whenever you attempt a Task that involves the programming or study of a computer system, you may add a bonus d20 to your pool.",
     "Talent.computerExpertise.description2e": "Whenever you attempt a task that involves the programming or study of a computer system, the first bonus d20 you purchase is free.",
 
+    "Talent.concealedSpecialRule": "Contingency",
+
+    "Talent.concealedSpecialRule.description": "See pg. 49 of the _Allies and Adversaries_ book",
+
     "Talent.constantlyWatching": "Constantly Watching",
 
     "Talent.constantlyWatching.description": "When you attempt a Task to detect danger or hidden enemies, reduce the Difficulty by 1.",
@@ -3990,6 +4007,10 @@
     "Talent.containmentSuit": "Containment Suit",
 
     "Talent.containmentSuit.description": "See pg. 81 of the _Species Sourcebook_",
+
+    "Talent.contingencySpecialRule": "Contingency",
+
+    "Talent.contingencySpecialRule.description": "See pg. 49 of the _Allies and Adversaries_ book",
 
     "Talent.coolUnderPressure": "Cool Under Pressure",
 
@@ -4022,6 +4043,10 @@
     "Talent.cruel": "Cruel",
 
     "Talent.cruel.description2e": "See pg. 65 of the _Species Sourcebook_",
+
+    "Talent.crystallineTelepathySpecialRule": "Crystalline Telepathy",
+
+    "Talent.crystallineTelepathySpecialRule.description": "See pg. 93 of the _Allies and Adversaries_ book",
 
     "Talent.culinaryComforts": "Culinary Comforts",
 
@@ -4595,6 +4620,7 @@
 
     "Talent.immuneToVacuum.description2e": "The creature suffers no Injuries from being exposed to hard vacuum, or other extremes of atmospheric pressure, and cannot suffocate.",
 
+    "Talent.immuneToVacuumTholian": "Immune to Vacuum",
     "Talent.improvedDamageControl": "Improved Damage Control",
 
     "Talent.improvedDamageControl.description2e": "When a character takes the Damage Control action aboard the ship, they may re-roll a single d20. When attempting an extended task related to repairing the ship, anyone working on that extended task adds 1 to their Impact.",
@@ -5282,6 +5308,10 @@
 
     "Talent.putYourHeartsIntoIt.description": "See pg. 79 of the _Species Sourcebook_",
 
+    "Talent.qalankhkaiSpecialRule": "Qalankhkai",
+
+    "Talent.qalankhkaiSpecialRule.description": "See pg. 91 of the _Allies and Adversaries_ book.",
+
     "Talent.quantumTorpedoes": "Quantum Torpedoes",
 
     "Talent.quantumTorpedoes.soloDescription": "The vessel has been equipped with the latest in ship-to-ship munitions: quantum torpedoes. The ship has quantum torpedoes in addition to any other form of torpedo it carries.",
@@ -5308,6 +5338,10 @@
 
     "Talent.quickToAction.description": "During the first round of any combat, you and your allies may ignore the normal cost to Retain the Initiative.",
     "Talent.quickToAction.description2e": "During the first round of any combat, you and your allies may ignore the normal cost to Keep the Initiative.",
+
+    "Talent.radiationBurstSpecialRule": "Radiation Burst",
+
+    "Talent.radiationBurstSpecialRule.description": "See pg. 92 of the _Allies and Adversaries_ book",
 
     "Talent.ram": "Ram",
 
@@ -5921,6 +5955,10 @@
     "Talent.voiceOfTheXindi": "Voice of the Xindi",
 
     "Talent.voiceOfTheXindi.description": "See pg. 123 of the _Species Sourcebook_",
+
+    "Talent.vulnerableToCodeSpecialRule": "Vulnerable to Cold",
+
+    "Talent.vulnerableToCodeSpecialRule.description": "See pg. 92 of the _Allies and Adversaries_ book",
 
     "Talent.walkingEncyclopedia": "Walking Encyclopedia",
 

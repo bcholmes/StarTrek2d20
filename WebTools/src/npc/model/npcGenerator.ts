@@ -47,6 +47,7 @@ import { SelectedTalent } from '../../common/selectedTalent';
 import { SpecialWeapon } from '../../common/specialWeapon';
 import { TalentCategory } from '../../helpers/talentCategory';
 import { borgSpeciesDesignations } from './borgSpeciesDesignations';
+import { type TalentModel } from '../../helpers/talentModel';
 
 const recreationSkills: { [type: number]: string[] } = {
   [NpcCharacterType.Starfleet]: [
@@ -973,11 +974,20 @@ export class NpcGenerator {
         character.type = CharacterType.Starfleet;
         break;
       case NpcCharacterType.Cardassian:
-        character.type = CharacterType.AlliedMilitary;
-        character.typeDetails = new AlliedMilitaryDetails(
-          AllyHelper.instance.findOption(AlliedMilitaryType.CardassianUnion),
-          'Cardassian Union',
-        );
+        if (
+          [
+            Specialization.CardassianBureaucrat,
+            Specialization.CardassianExarch,
+          ].includes(specialization?.id)
+        ) {
+          character.type = CharacterType.Civilian;
+        } else {
+          character.type = CharacterType.AlliedMilitary;
+          character.typeDetails = new AlliedMilitaryDetails(
+            AllyHelper.instance.findOption(AlliedMilitaryType.CardassianUnion),
+            'Cardassian Union',
+          );
+        }
         break;
       case NpcCharacterType.KlingonDefenseForces:
         if (specialization.id === Specialization.KlingonDiplomat) {
@@ -1275,6 +1285,8 @@ export class NpcGenerator {
                 selectedTalent.department =
                   departments[Math.floor(Math.random() * departments.length)];
               }
+            } else if (talent.isXQualified) {
+              selectedTalent.x = NpcGenerator.determineXIfNecessary(talent);
             }
 
             if (!character.hasTalent(talent.name) || talent.maxRank > 1) {
@@ -1288,6 +1300,34 @@ export class NpcGenerator {
           }
         }
       }
+    }
+  }
+
+  static determineXIfNecessary(talent: TalentModel, x?: number) {
+    if (talent.isXQualified) {
+      if (x != null) {
+        return x;
+      } else if (talent.nameWithoutBracketedPart === 'Initiative X') {
+        const roll = D20.roll();
+        if (roll >= 1 && roll <= 15) {
+          return 2;
+        } else if (roll >= 16 && roll <= 19) {
+          return 3;
+        } else if (roll >= 20) {
+          return 4;
+        }
+      } else {
+        const roll = D20.roll();
+        if (roll >= 1 && roll <= 12) {
+          return 1;
+        } else if (roll >= 13 && roll <= 18) {
+          return 2;
+        } else if (roll >= 19) {
+          return 3;
+        }
+      }
+    } else {
+      return undefined;
     }
   }
 

@@ -41,6 +41,10 @@ const names: NameList[] = [
     names: require('./names-klingon.json'),
   },
   {
+    species: 'Ktarian',
+    names: require('./names-ktarian.json'),
+  },
+  {
     species: 'Nausicaan',
     names: require('./names-nausicaan.json'),
   },
