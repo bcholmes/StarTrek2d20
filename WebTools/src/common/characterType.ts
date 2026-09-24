@@ -150,7 +150,7 @@ export class CharacterTypeModel {
 
   public static getStarshipTypes(version: number) {
     if (version === 1) {
-      return [CharacterTypeModel.TYPES[0], CharacterTypeModel.TYPES[1]];
+      return [CharacterTypeModel.TYPES[CharacterType.Starfleet], CharacterTypeModel.TYPES[CharacterType.KlingonWarrior]];
     } else {
       return this.TYPES.filter((t) =>
         [
