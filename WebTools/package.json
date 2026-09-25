@@ -1,5 +1,5 @@
 {
-  "version": "1.260920",
+  "version": "1.260925",
   "name": "startrek",
   "author": "Christoffer Lundberg",
   "contributors": [
@@ -34,6 +34,10 @@
     {
       "name": "Kevin C. Baird",
       "url": "https://github.com/kbaird"
+    },
+    {
+      "name": "dwizard0",
+      "url": "https://github.com/dwizard0"
     }
   ],
   "license": "ISC",
