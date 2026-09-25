@@ -14,6 +14,13 @@ import { FantasyGroundsVttExporter } from '../fantasyGroundsVttExport';
 import { Roll20VttExporter } from '../roll20VttExporter';
 import { FoundryPluginType } from '../foundryPluginType';
 import { Station } from '../../common/station';
+import { MapToolVttExporter } from '../mapToolVttExporter';
+import {
+  MAPTOOL_FRAMEWORK_NAMES,
+  MapToolFrameworkType,
+  mapToolExportOptions,
+  mapToolFrameworkByName,
+} from '../mapToolFrameworkType';
 
 declare function download(
   bytes: Uint8Array | ArrayBuffer,
@@ -28,6 +35,9 @@ interface IVttSelectionModalProperties {
 interface IVttSelectionState {
   vttType: VttType;
   foundryPluginType?: FoundryPluginType;
+  mapToolFramework?: MapToolFrameworkType;
+  mapToolCharacterType?: string;
+  mapToolStarshipType?: string;
 }
 
 const VTT_OPTIONS_STORAGE_KEY = 'settings.vttOptions';
@@ -39,6 +49,13 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
   const [foundryPluginType, setFoundryPluginType] = useState<FoundryPluginType>(
     FoundryPluginType.Standard,
   );
+  const [mapToolFramework, setMapToolFramework] =
+    useState<MapToolFrameworkType>(MapToolFrameworkType.FreemanSta2e);
+  const [mapToolCharacterType, setMapToolCharacterType] =
+    useState<string>('Basic');
+  const [mapToolStarshipType, setMapToolStarshipType] =
+    useState<string>('Basic');
+  const [busy, setBusy] = useState<boolean>(false);
 
   useEffect(() => {
     const dataJson = window.localStorage.getItem(VTT_OPTIONS_STORAGE_KEY);
@@ -55,6 +72,9 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
     }
     const pluginType = data['foundryPluginType'] ?? FoundryPluginType.Standard;
     setFoundryPluginType(pluginType);
+    setMapToolFramework(mapToolFrameworkByName(data['mapToolFramework']));
+    setMapToolCharacterType(data['mapToolCharacterType'] || 'Basic');
+    setMapToolStarshipType(data['mapToolStarshipType'] || 'Basic');
   }, []);
 
   const getFoundryPluginOptions = () => {
@@ -102,6 +122,85 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
           />
         </div>
       );
+    } else if (vttType === VttType.MapTool) {
+      const persistMapTool = (changes: Partial<IVttSelectionState>) =>
+        persistVtt({
+          vttType,
+          foundryPluginType,
+          mapToolFramework,
+          mapToolCharacterType,
+          mapToolStarshipType,
+          ...changes,
+        });
+      return (
+        <div className="mt-4">
+          <p>
+            Exports a token file (.rptok). Drag it onto a map in MapTool. Every
+            stat is a token property, lists such as talents and weapons are JSON
+            properties (talents include their full text), and the token's notes
+            hold a readable sheet. Characters made in the Token Creator use that
+            portrait.
+          </p>
+          <p>Which MapTool framework do you use?</p>
+          <DropDownSelect
+            defaultValue={mapToolFramework}
+            items={[
+              MapToolFrameworkType.FreemanSta2e,
+              MapToolFrameworkType.Custom,
+            ].map((f) => new DropDownElement(f, MAPTOOL_FRAMEWORK_NAMES[f]))}
+            onChange={(val) => {
+              setMapToolFramework(val as MapToolFrameworkType);
+              persistMapTool({ mapToolFramework: val as MapToolFrameworkType });
+            }}
+          />
+          {mapToolFramework === MapToolFrameworkType.FreemanSta2e ? (
+            <p className="mt-3">
+              Characters use the <strong>STA2e Character</strong> token type and
+              starships use <strong>STA2e Ship</strong>. The framework sets the
+              token up the first time it loads it.
+            </p>
+          ) : (
+            <>
+              <p className="mt-3">
+                Type the token types from your campaign (Campaign Properties,
+                Token Properties). <strong>Basic</strong> works in any campaign.
+              </p>
+              <div className="row">
+                <div className="col-md-6 mb-2">
+                  <label className="w-100">
+                    Characters
+                    <input
+                      type="text"
+                      className="form-control text-dark"
+                      value={mapToolCharacterType}
+                      onChange={(e) => {
+                        setMapToolCharacterType(e.target.value);
+                        persistMapTool({
+                          mapToolCharacterType: e.target.value,
+                        });
+                      }}
+                    />
+                  </label>
+                </div>
+                <div className="col-md-6 mb-2">
+                  <label className="w-100">
+                    Starships
+                    <input
+                      type="text"
+                      className="form-control text-dark"
+                      value={mapToolStarshipType}
+                      onChange={(e) => {
+                        setMapToolStarshipType(e.target.value);
+                        persistMapTool({ mapToolStarshipType: e.target.value });
+                      }}
+                    />
+                  </label>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      );
     } else {
       return undefined;
     }
@@ -114,6 +213,9 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
     const newState = {
       vttType: t,
       foundryPluginType: p,
+      mapToolFramework,
+      mapToolCharacterType,
+      mapToolStarshipType,
     };
     persistVtt(newState);
     if (vttType !== t) {
@@ -123,6 +225,10 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
   };
 
   const exportConstruct = () => {
+    if (vttType === VttType.MapTool) {
+      exportToMapTool();
+      return;
+    }
     if (construct instanceof Character) {
       if (vttType === VttType.Foundry) {
         exportCharacterToFoundryVtt(construct as Character);
@@ -206,6 +312,47 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
     download(jsonBytes, escaped + '-foundry-vtt.json', 'application/json');
   };
 
+  const exportToMapTool = async () => {
+    setBusy(true);
+    try {
+      const { renderCharacterTokenImage, renderStarshipTokenImage } =
+        await import('../mapToolTokenImage');
+      const options = mapToolExportOptions(
+        mapToolFramework,
+        mapToolCharacterType,
+        mapToolStarshipType,
+      );
+      let bytes: Uint8Array;
+      let fileName: string;
+      if (construct instanceof Starship) {
+        const data = MapToolVttExporter.instance.exportStarship(
+          construct,
+          options,
+        );
+        bytes = MapToolVttExporter.instance.packageToken(
+          data,
+          await renderStarshipTokenImage(construct),
+        );
+        fileName = sanitizeName(construct.name, 'sta-starship');
+      } else if (construct instanceof Character) {
+        const data = MapToolVttExporter.instance.exportCharacter(
+          construct,
+          options,
+        );
+        bytes = MapToolVttExporter.instance.packageToken(
+          data,
+          await renderCharacterTokenImage(construct),
+        );
+        fileName = sanitizeName(construct.name, 'sta-character');
+      } else {
+        return;
+      }
+      download(bytes, fileName + '.rptok', 'application/zip');
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const sanitizeName = (name: string, defaultName: string) => {
     return (
       name?.replace(/\\/g, '_').replace(/\//g, '_').replace(/\s/g, '_') ||
@@ -219,6 +366,15 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
     };
     if (state.foundryPluginType != null) {
       data['foundryPluginType'] = FoundryPluginType[state.foundryPluginType];
+    }
+    if (state.mapToolFramework != null) {
+      data['mapToolFramework'] = MapToolFrameworkType[state.mapToolFramework];
+    }
+    if (state.mapToolCharacterType != null) {
+      data['mapToolCharacterType'] = state.mapToolCharacterType;
+    }
+    if (state.mapToolStarshipType != null) {
+      data['mapToolStarshipType'] = state.mapToolStarshipType;
     }
     window.localStorage.setItem(VTT_OPTIONS_STORAGE_KEY, JSON.stringify(data));
   };
@@ -254,7 +410,7 @@ export const VttSelectionModal: React.FC<IVttSelectionModalProperties> = ({
         <Button
           size="sm"
           onClick={() => exportConstruct()}
-          disabled={isExportDisabled()}
+          disabled={busy || isExportDisabled()}
         >
           Export
         </Button>

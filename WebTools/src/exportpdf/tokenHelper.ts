@@ -28,14 +28,18 @@ export class TokenHelper {
     );
   }
 
-  static async renderToken(tokenConfig: TokenConfig) {
+  static async renderToken(tokenConfig: TokenConfig, size: number = 800) {
     const svg = await TokenHelper.createTokenSvg(tokenConfig);
 
     const bytes = await TokenHelper.toPngBytes({
-      width: 800,
-      height: 800,
+      width: size,
+      height: size,
       svg: svg,
     });
     return bytes;
+  }
+
+  static async renderSvg(svg: string, width: number, height: number) {
+    return TokenHelper.toPngBytes({ width, height, svg });
   }
 }
