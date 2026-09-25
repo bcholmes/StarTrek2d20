@@ -2,6 +2,7 @@ export enum VttType {
   FantasyGrounds,
   Foundry,
   Roll20,
+  MapTool,
 }
 
 export class VttTypeModel {
@@ -20,6 +21,7 @@ export class VttTypes {
   private readonly types: VttTypeModel[] = [
     new VttTypeModel(VttType.FantasyGrounds, 'Fantasy Grounds'),
     new VttTypeModel(VttType.Foundry, 'Foundry VTT'),
+    new VttTypeModel(VttType.MapTool, 'MapTool'),
     new VttTypeModel(VttType.Roll20, 'Roll20'),
   ];
 

@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapTool export of characters golden output 1`] = `
+"{
+    "name": "Rhea Voss",
+    "kind": "character",
+    "propertyType": "Basic",
+    "tokenType": "PC",
+    "properties": [
+        {
+            "name": "Kind",
+            "value": "Main"
+        },
+        {
+            "name": "Edition",
+            "value": "2"
+        },
+        {
+            "name": "Species",
+            "value": "Human"
+        },
+        {
+            "name": "Pronouns",
+            "value": "she/her"
+        },
+        {
+            "name": "Rank",
+            "value": "Lieutenant Commander"
+        },
+        {
+            "name": "Role",
+            "value": "Chief Engineer / Operations Manager"
+        },
+        {
+            "name": "Assignment",
+            "value": "USS Venture"
+        },
+        {
+            "name": "Reputation",
+            "value": "5"
+        },
+        {
+            "name": "Control",
+            "value": "7"
+        },
+        {
+            "name": "Daring",
+            "value": "11"
+        },
+        {
+            "name": "Fitness",
+            "value": "9"
+        },
+        {
+            "name": "Insight",
+            "value": "8"
+        },
+        {
+            "name": "Presence",
+            "value": "9"
+        },
+        {
+            "name": "Reason",
+            "value": "8"
+        },
+        {
+            "name": "Command",
+            "value": "3"
+        },
+        {
+            "name": "Conn",
+            "value": "1"
+        },
+        {
+            "name": "Security",
+            "value": "2"
+        },
+        {
+            "name": "Engineering",
+            "value": "4"
+        },
+        {
+            "name": "Science",
+            "value": "2"
+        },
+        {
+            "name": "Medicine",
+            "value": "2"
+        },
+        {
+            "name": "StressMax",
+            "value": "9"
+        },
+        {
+            "name": "Determination",
+            "value": "1"
+        },
+        {
+            "name": "Resistance",
+            "value": "0"
+        },
+        {
+            "name": "Values",
+            "value": "[\\"Curiosity\\",\\"Courage\\",\\"Harmony\\",\\"Initiative\\"]"
+        },
+        {
+            "name": "Focuses",
+            "value": "[\\"Compassion\\",\\"Engineering\\",\\"Astrophysics\\",\\"Starship Design\\",\\"Survival\\",\\"Diplomacy\\"]"
+        },
+        {
+            "name": "Traits",
+            "value": "[{\\"name\\":\\"Steadfast\\",\\"description\\":\\"Humans are adaptable and resilient, and their resolve and ambition often allow them to resist great hardship and triumph despite great adversity. However, Humans can also be reckless and stubborn, irrational, and unpredictable.\\"},{\\"name\\":\\"Human\\",\\"description\\":\\"\\"},{\\"name\\":\\"Dark Secrets\\",\\"description\\":\\"\\"},{\\"name\\":\\"Professional\\",\\"description\\":\\"\\"}]"
+        },
+        {
+            "name": "Talents",
+            "value": "[{\\"name\\":\\"Bold\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.general\\",\\"requirement\\":\\"\\",\\"description\\":\\"\\"},{\\"name\\":\\"Cautious\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.general\\",\\"requirement\\":\\"\\",\\"description\\":\\"\\"},{\\"name\\":\\"Untapped Potential\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.career (CareerType.solo.young.name)\\",\\"requirement\\":\\"Only available to Young characters\\",\\"description\\":\\"The character is inexperienced, but talented and with a bright future in Starfleet. The character may not have or increase any Attribute above 11, or any Discipline above 4 while they have this Talent (and may have to adjust Attributes and Disciplines accordingly at the end of character creation). Whenever the character succeeds at a Task for which they bought one or more additional dice with either Momentum or Threat, they may roll 1CD. The character receives bonus Momentum equal to the roll, and adds one point to Threat if an Effect is rolled. The character cannot gain any higher rank than lieutenant (junior grade) while they possess this Talent.\\"},{\\"name\\":\\"Advisor\\",\\"rank\\":1,\\"category\\":\\"Command\\",\\"requirement\\":\\"Requires Command 2+, Main Character only\\",\\"description\\":\\"Whenever you assist another character using your Command Discipline, the character being assisted may re-roll one d20.\\"},{\\"name\\":\\"Supervisor\\",\\"rank\\":1,\\"category\\":\\"Command\\",\\"requirement\\":\\"\\",\\"description\\":\\"The ship’s Crew Support increases by one. This increase is cumulative if multiple Main Characters in the group select it.\\"}]"
+        },
+        {
+            "name": "SpeciesAbility",
+            "value": "{\\"name\\":\\"SpeciesAbility.human\\",\\"description\\":\\"SpeciesAbility.human.description\\"}"
+        },
+        {
+            "name": "Weapons",
+            "value": "[{\\"name\\":\\"Weapon.personal.strike.name\\",\\"type\\":\\"Melee\\",\\"severity\\":2,\\"injury\\":\\"Stun\\",\\"hands\\":1,\\"qualities\\":[],\\"effects\\":[]},{\\"name\\":\\"Weapon.personal.phaser2.name\\",\\"type\\":\\"Ranged\\",\\"severity\\":4,\\"injury\\":\\"Stun or Deadly\\",\\"hands\\":1,\\"qualities\\":[\\"Charge\\"],\\"effects\\":[]}]"
+        },
+        {
+            "name": "Equipment",
+            "value": "[\\"Uniform\\",\\"Communicator\\",\\"Tricorder\\",\\"Engineering Kit\\"]"
+        },
+        {
+            "name": "Background",
+            "value": "{\\"environment\\":\\"Environment.common.starshipOrStarbase.name\\",\\"upbringing\\":\\"Business or Trade (A)\\",\\"careerPath\\":\\"CharacterType.name.starfleet / Sciences Track\\",\\"experience\\":\\"CareerType.solo.experienced.name\\",\\"careerEvents\\":[\\"Ship Destroyed\\",\\"Negotiate a Treaty\\"],\\"pastimes\\":[\\"Anthropology\\",\\"Aquaponics\\"]}"
+        },
+        {
+            "name": "Description",
+            "value": "An engineer who documented the founding days of the new frontier."
+        },
+        {
+            "name": "SheetLink",
+            "value": "https://sta.bcholmes.org/view?s=eJx9VMtu20AM_BVBZ6NF0558S5w-ArRNUKe5FD7QK8oiIu1u9-HUKPLvHa5l2U3S3iQuOZyZJfd3HRMHdmnnuZ7XA4lddBTIIFrP6jG8TBTanjkhxIEQ-cq_0ke2-EniLMKWBs381jFVdy5GhLYcoh7Oz2Z1w9EE8SV5Xp_biu1GLHOoHjpXNc7kgW3ipkodV63LthG7qRraxcq1JWj5oWqDs0k4vAJ69usgCrKp579raQB7kSMwY7wOt4EaRhIZwx6w9TyFzLO6RaOIzPdjd60GOYlGfI_Is6NEPXhph1Hgheub-vFxVhsKyNITZGxSp6W_POrYGjSEfOqzVnyiMDi7ewnsu03kPVTfuIQTob5Ae4pJNOEHnEpdcN71bqMI5z8zeWfFxHp1oPB-i1KI-rF34c1R5TKHrYCGGpFSkHVO2vWSXtK9ZJODpMIzkKR94n2FeGDgP872-O-O-JcodgOZ3VOshRsGsvAJJAPZ-xPJn4XBwpLVWVK8txAcPRvhqGk-yEBhp75lYCApJiryjryvbJRNpwDfmCImCm1oLT3YX5cRK0iFJZdK8IGnZRhXarAKtOPk4Nvcq35Tbk4H96TyPCbY3-2iWj4rixA78dUlg0JpPBK-_PcMTd4r4urUqgO5Ytas_sKNGEVYHadn4XKgDb80PQvKEIubOEja23QTXMtFLG4eSGy3gr0ZxuKyKQcd10G_1hT5yYx8kKSb9P_lmDhicFzU2QGRFs7GTjv9pft4ewfo5078jT5eyKkZV1awJEm2L_px3mwlulDsUMs0knsdE737jeVmCcm6dstldYfaHBTHwxw8ODrQsePXXXn4gut5cmvRCbcHcjqRbJxtcOlXenrtx1cwfiGLvkFdkAGwWx6m1RxfUmq2BFHlMrDAnROj4du9lknppGmZgT7JmmAAPrjx5f3nglXjZBXOKuQMxAbXSCumEL7dg91MYCcdAvucDo_7yQ9AVo9_ADndJAk"
+        },
+        {
+            "name": "BuilderExport",
+            "value": "sta.bcholmes.org/maptool-export/1"
+        }
+    ]
+}"
+`;
+
+exports[`MapTool export of starships golden output 1`] = `
+"{
+    "name": "USS Venture",
+    "kind": "starship",
+    "propertyType": "Basic",
+    "tokenType": "NPC",
+    "properties": [
+        {
+            "name": "Kind",
+            "value": "Starship"
+        },
+        {
+            "name": "Edition",
+            "value": "2"
+        },
+        {
+            "name": "Class",
+            "value": "Galaxy Class"
+        },
+        {
+            "name": "Registry",
+            "value": "NCC-70637"
+        },
+        {
+            "name": "ServiceYear",
+            "value": "2372"
+        },
+        {
+            "name": "MissionProfile",
+            "value": "Battlecruiser"
+        },
+        {
+            "name": "Refits",
+            "value": "+1 Construct.system.engines, +1 Construct.system.weapons"
+        },
+        {
+            "name": "Communications",
+            "value": "9"
+        },
+        {
+            "name": "Computers",
+            "value": "10"
+        },
+        {
+            "name": "Engines",
+            "value": "11"
+        },
+        {
+            "name": "Sensors",
+            "value": "8"
+        },
+        {
+            "name": "Structure",
+            "value": "10"
+        },
+        {
+            "name": "Weapons",
+            "value": "12"
+        },
+        {
+            "name": "Command",
+            "value": "3"
+        },
+        {
+            "name": "Conn",
+            "value": "2"
+        },
+        {
+            "name": "Security",
+            "value": "3"
+        },
+        {
+            "name": "Engineering",
+            "value": "2"
+        },
+        {
+            "name": "Science",
+            "value": "3"
+        },
+        {
+            "name": "Medicine",
+            "value": "2"
+        },
+        {
+            "name": "Scale",
+            "value": "6"
+        },
+        {
+            "name": "Shields",
+            "value": "19"
+        },
+        {
+            "name": "Resistance",
+            "value": "7"
+        },
+        {
+            "name": "CrewSupport",
+            "value": "12"
+        },
+        {
+            "name": "Traits",
+            "value": "[{\\"name\\":\\"Federation Starship\\",\\"description\\":\\"\\"},{\\"name\\":\\"Galaxy Class\\",\\"description\\":\\"\\"},{\\"name\\":\\"Flagship\\",\\"description\\":\\"\\"},{\\"name\\":\\"Hero Ship\\",\\"description\\":\\"\\"}]"
+        },
+        {
+            "name": "Talents",
+            "value": "[{\\"name\\":\\"Abundant Personnel\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"\\",\\"description\\":\\"\\"},{\\"name\\":\\"Saucer Separation and Reconnect\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"\\",\\"description\\":\\"\\"},{\\"name\\":\\"Modular Laboratories\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"Requires Science 2+\\",\\"description\\":\\"The ship has considerable numbers of empty, multi-purpose compartments that can be converted to laboratories as and when required. At the start of an adventure, the crew may decide how the modular laboratories are configured; this configuration counts as an Advantage which applies to work performed within the laboratories.\\"},{\\"name\\":\\"Redundant Systems\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"\\",\\"description\\":\\"The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.\\"},{\\"name\\":\\"Ablative Armor\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"2371 or later\\",\\"description\\":\\"The vessel’s hull plating has an additional ablative layer that disintegrates slowly under extreme temperatures, such as those caused by energy weapons and torpedo blasts, dissipating the energy, and protecting the ship. This plating is replaced periodically. The ship’s Resistance is increased by 2.\\"},{\\"name\\":\\"Secondary Reactors\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"\\",\\"description\\":\\"The ship has additional impulse and fusion reactors, that allow the ship to generate far greater quantities of energy. Increase the ship’s normal Power capacity by 5.\\"},{\\"name\\":\\"Redundant Systems\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"\\",\\"description\\":\\"The ship has multiple additional redundancies that allow it to withstand severe damage more easily. Nominate a single System. When that system becomes Damaged or Disabled, the crew may choose to activate the backups as a Minor Action; if the System was Damaged, it is no longer Damaged. If it was Disabled, it becomes Damaged instead. A System’s backups may only be activated once per adventure, so subsequent damage will have the normal effect.\\"},{\\"name\\":\\"Dedicated Personnel\\",\\"rank\\":1,\\"category\\":\\"TalentCategory.starship\\",\\"requirement\\":\\"\\",\\"description\\":\\"The ship gains two additional Crew Support, which may only be used to establish Supporting Characters.\\"}]"
+        },
+        {
+            "name": "ShipWeapons",
+            "value": "[{\\"name\\":\\"Phaser Arrays\\",\\"type\\":\\"Energy\\",\\"damage\\":9,\\"range\\":\\"Medium\\",\\"qualities\\":[\\"Versatile 2\\"],\\"effects\\":[\\"Area or Spread\\"]},{\\"name\\":\\"Photon Torpedoes\\",\\"type\\":\\"Torpedo\\",\\"damage\\":6,\\"range\\":\\"Long\\",\\"qualities\\":[\\"High Yield\\"],\\"effects\\":[]},{\\"name\\":\\"Tractor Beam\\",\\"type\\":\\"Tractor\\",\\"damage\\":5,\\"range\\":\\"\\",\\"qualities\\":[],\\"effects\\":[]}]"
+        },
+        {
+            "name": "Description",
+            "value": ""
+        },
+        {
+            "name": "SheetLink",
+            "value": "https://sta.bcholmes.org/view?s=eJxVUMtqw0AM_BWjcwrFgRp8S9MkPZUQ93EopSi2nC6sd41WDjHB_15tsNP0tpqZHc3oDEGIyUvfEuQ6IIcf08IMRqRQpLZEohAxKvJCJ9mQ00GMdwrvO2Or1z_5aNATMuTpPEtn4LCJ7FtRJO_kpGNSAdPBBOE-ei6Xd9n9wzxT-EgconGeRkltJED-CSt3MI6C8h-ErXcBvjQjWnWL_HlaUVDpXYXcJzvCUjwHGGZXdkdVp6yTpOi1ePOPfKLKlChUJVuN4J0jC0PcwjiGWFs8jO2eiX1SxLcqQosl1Xyxudpt0OKp_05XugMaE2KpLfva2FvVI4pYKrkzgVh9wyWXElPNqeXNn8Xe6u2PlCy48QzDMPwCn_qZsw"
+        },
+        {
+            "name": "BuilderExport",
+            "value": "sta.bcholmes.org/maptool-export/1"
+        }
+    ]
+}"
+`;
