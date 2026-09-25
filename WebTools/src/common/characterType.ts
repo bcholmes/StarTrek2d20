@@ -48,6 +48,7 @@ export class CharacterTypeModel {
     new CharacterTypeModel('Orion', CharacterType.Orion),
 
     new CharacterTypeModel('Tribble', CharacterType.Tribble),
+    new CharacterTypeModel('Creature', CharacterType.Creature),
 
     new CharacterTypeModel('Other', CharacterType.Other),
   ];
@@ -150,7 +151,10 @@ export class CharacterTypeModel {
 
   public static getStarshipTypes(version: number) {
     if (version === 1) {
-      return [CharacterTypeModel.TYPES[CharacterType.Starfleet], CharacterTypeModel.TYPES[CharacterType.KlingonWarrior]];
+      return [
+        CharacterTypeModel.TYPES[CharacterType.Starfleet],
+        CharacterTypeModel.TYPES[CharacterType.KlingonWarrior],
+      ];
     } else {
       return this.TYPES.filter((t) =>
         [
