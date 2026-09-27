@@ -870,6 +870,10 @@ class Marshaller {
           character.upbringingStep.talent,
         );
       }
+      if (character.upbringingStep?.notes?.length) {
+        upbringing['notes'] = character.upbringingStep.notes;
+      }
+
       sheet['upbringing'] = upbringing;
     }
 

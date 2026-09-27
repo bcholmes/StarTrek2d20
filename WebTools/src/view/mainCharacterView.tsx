@@ -183,12 +183,12 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
           </div>
         </div>
 
-        <div className="row" style={{ alignItems: 'baseline' }}>
+        <div className="row align-items-stretch" style={{ alignItems: 'baseline' }}>
           <div className="col-md-2 view-field-label pb-2">
             {t('Construct.other.careerEvent1.short')}:
           </div>
           <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2">
+            <div className="view-border-bottom pb-2 h-100">
               {
                 CareerEventsHelper.getCareerEvent(
                   character.careerEvents[0]?.id,
@@ -208,7 +208,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
             {t('Construct.other.careerEvent2.short')}:
           </div>
           <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2">
+            <div className="view-border-bottom pb-2 h-100">
               {
                 CareerEventsHelper.getCareerEvent(
                   character.careerEvents[1]?.id,

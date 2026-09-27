@@ -10,7 +10,7 @@ import { CharacterCreationBreadcrumbs } from '../components/characterCreationBre
 import { CharacterType } from '../common/characterType';
 import {
   StepContext,
-  setCharacterCareerEventNotes,
+  setCharacterStepNotes,
   setCharacterCareerEventTrait,
   setCharacterFinishingTouches,
   setCharacterFocus,
@@ -47,7 +47,7 @@ const CareerEventDetailsPageBase: React.FC<ICareerEventDetailsProperties> = ({
   const { t } = useTranslation();
 
   const onNotesChanged = (value: string) => {
-    store.dispatch(setCharacterCareerEventNotes(value, context));
+    store.dispatch(setCharacterStepNotes(value, context));
   };
 
   const careerEventStep =

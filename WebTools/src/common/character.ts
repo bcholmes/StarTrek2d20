@@ -362,6 +362,7 @@ export class UpbringingStep {
   public discipline: Department;
   public focus?: string;
   public talent?: SelectedTalent;
+  public notes?: string;
 
   constructor(upbringing: EarlyOutlookModel, accepted: boolean = true) {
     this.upbringing = upbringing;
@@ -378,6 +379,19 @@ export class UpbringingStep {
           this.upbringing.attributeRebelPlus2,
           this.upbringing.attributeRebelPlus1,
         ];
+  }
+
+  copy() {
+  const result = new UpbringingStep(
+      this.upbringing,
+    );
+    result.acceptedUpbringing =
+      this.acceptedUpbringing;
+    result.discipline = this.discipline;
+    result.focus = this.focus;
+    result.talent = this.talent?.copy();
+    result.notes = this.notes;
+    return result;
   }
 
   get description() {
@@ -2199,18 +2213,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
       character.environmentStep.discipline = this.environmentStep.discipline;
       character.environmentStep.value = this.environmentStep.value;
     }
-    if (this.upbringingStep) {
-      character.upbringingStep = new UpbringingStep(
-        this.upbringingStep.upbringing,
-      );
-      character.upbringingStep.acceptedUpbringing =
-        this.upbringingStep.acceptedUpbringing;
-      character.upbringingStep.discipline = this.upbringingStep.discipline;
-      character.upbringingStep.focus = this.upbringingStep.focus;
-      if (this.upbringingStep.talent) {
-        character.upbringingStep.talent = this.upbringingStep.talent.copy();
-      }
-    }
+    character.upbringingStep = this.upbringingStep?.copy();
     if (this.educationStep) {
       character.educationStep = new EducationStep(
         this.educationStep.track,

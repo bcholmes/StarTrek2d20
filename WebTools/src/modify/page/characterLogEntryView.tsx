@@ -1,14 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { LogEntry, LogValueEntry, ValueUseType } from '../../common/logEntry';
 import type { ICharacterProperties } from '../../solo/page/soloCharacterProperties';
-import Markdown from 'react-markdown';
 import { Button } from 'react-bootstrap';
 import { InputFieldAndLabel } from '../../common/inputFieldAndLabel';
 import { useState } from 'react';
-import { TextArea } from '../../common/textarea';
 import { LogEntryValueView } from './logEntryValueView';
 import { Header } from '../../components/header';
 import { Dialog } from '../../components/dialog';
+import { RichTextEditor } from '../../components/richTextEditor';
+import { STAMarkdown } from '../../components/staMarkdown';
 
 class SelectedLogValueEntry {
   logEntry: LogValueEntry;
@@ -102,9 +102,9 @@ export const CharacterLogEntryView: React.FC<
     <>
       <div className="row">
         <div className="col-12 col-lg-6">
-          <Markdown className="mt-4">
+          <STAMarkdown className="mt-4">
             {t('CharacterLogEntry.instruction')}
-          </Markdown>
+          </STAMarkdown>
 
           <div className="my-3">
             <InputFieldAndLabel
@@ -116,21 +116,21 @@ export const CharacterLogEntryView: React.FC<
           </div>
 
           <div className="my-3">
-            <TextArea
-              value={details}
+            <RichTextEditor
+              initialText={details}
               placeholder="Mission details"
               onChange={setDetails}
             />
           </div>
         </div>
         <div className="col-12 col-lg-6">
-          <Markdown className="mt-4">
+          <STAMarkdown className="mt-4">
             {t('CharacterLogEntry.notes.instruction')}
-          </Markdown>
+          </STAMarkdown>
 
           <div className="my-3">
-            <TextArea
-              value={notes}
+            <RichTextEditor
+              initialText={notes}
               placeholder="Notes (optional)"
               onChange={setNotes}
             />
@@ -141,9 +141,9 @@ export const CharacterLogEntryView: React.FC<
           <Header level={2} className="mt-4">
             {t('Construct.other.values')}
           </Header>
-          <Markdown className="mt-4">
+          <STAMarkdown className="mt-4">
             {t('CharacterLogEntry.values.instruction')}
-          </Markdown>
+          </STAMarkdown>
 
           <table className="selection-list">
             {values.map((v, i) => (
@@ -162,9 +162,9 @@ export const CharacterLogEntryView: React.FC<
           <Header level={2} className="mt-4">
             {t('Common.text.directives')}
           </Header>
-          <Markdown className="mt-4">
+          <STAMarkdown className="mt-4">
             {t('CharacterLogEntry.directives.instruction')}
-          </Markdown>
+          </STAMarkdown>
           {directives.map((d, i) => (
             <InputFieldAndLabel
               id={'directive-' + i}

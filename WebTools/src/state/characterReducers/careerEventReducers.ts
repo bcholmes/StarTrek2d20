@@ -2,7 +2,7 @@ import type { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import { CareerEventStep } from '../../common/character';
 import {
   addCharacterCareerEvent,
-  setCharacterCareerEventNotes,
+  setCharacterStepNotes,
   setCharacterCareerEventTrait,
   StepContext,
 } from '../characterActions';
@@ -58,7 +58,7 @@ export const registerCareerEventReducers = (
       }
     });
   });
-  builder.addCase(setCharacterCareerEventNotes, (state, action) => {
+  builder.addCase(setCharacterStepNotes, (state, action) => {
     return withCharacter(state, action, (temp, action) => {
       if (
         action.payload.context === StepContext.CareerEvent1 &&
@@ -70,6 +70,11 @@ export const registerCareerEventReducers = (
         temp.careerEvents[1]
       ) {
         temp.careerEvents[1].notes = action.payload.notes;
+      } else if (
+        action.payload.context === StepContext.EarlyOutlook &&
+        temp.upbringingStep
+      ) {
+        temp.upbringingStep.notes = action.payload.notes;
       }
     });
   });
