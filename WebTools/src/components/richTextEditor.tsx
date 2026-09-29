@@ -12,7 +12,6 @@ export const RichTextEditor: React.FC<IRichTextEditorProperties> = ({
   onChange,
   placeholder,
 }) => {
-
   return (
     <TextArea
       value={initialText}
