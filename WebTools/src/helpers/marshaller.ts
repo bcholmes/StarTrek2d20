@@ -2420,6 +2420,9 @@ class Marshaller {
           result.version,
         );
       }
+      if (json.upbringing.notes) {
+        result.upbringingStep.notes = json.upbringing.notes;
+      }
     }
 
     if (json.finish) {

@@ -382,11 +382,8 @@ export class UpbringingStep {
   }
 
   copy() {
-  const result = new UpbringingStep(
-      this.upbringing,
-    );
-    result.acceptedUpbringing =
-      this.acceptedUpbringing;
+    const result = new UpbringingStep(this.upbringing);
+    result.acceptedUpbringing = this.acceptedUpbringing;
     result.discipline = this.discipline;
     result.focus = this.focus;
     result.talent = this.talent?.copy();

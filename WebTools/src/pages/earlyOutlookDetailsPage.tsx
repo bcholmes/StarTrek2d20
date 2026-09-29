@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navigation } from '../common/navigator';
 import { AttributesHelper } from '../helpers/attributes';
 import { AttributeView } from '../components/attribute';
@@ -15,6 +15,7 @@ import {
   addCharacterTalent,
   setCharacterEarlyOutlook,
   setCharacterFocus,
+  setCharacterStepNotes,
   StepContext,
 } from '../state/characterActions';
 import { store } from '../state/store';
@@ -31,6 +32,8 @@ import { FocusSelectionView } from '../components/focusSelectionView';
 import { determineSelectedTalentExtraErrors } from '../common/selectedTalentExtraCheck';
 import { getEarlyOutlookTalents } from '../helpers/earlyOutlookTalents';
 import { PageHistoryBasedPreviousButton } from '../components/pageHistoryBasedPreviousButton';
+import { STAMarkdown } from '../components/staMarkdown';
+import { RichTextEditor } from '../components/richTextEditor';
 
 const EarlyOutlookDetailsPageBase: React.FC<ICharacterProperties> = ({
   character,
@@ -41,6 +44,14 @@ const EarlyOutlookDetailsPageBase: React.FC<ICharacterProperties> = ({
     character,
     earlyOutlook,
   );
+
+  const [showAdvanced, setShowAdvanced] = useState<boolean>(
+    character?.upbringingStep?.notes?.length ? true : false,
+  );
+
+  const onNotesChanged = (value: string) => {
+    store.dispatch(setCharacterStepNotes(value, StepContext.EarlyOutlook));
+  };
 
   const changeAccepted = (accepted: boolean) => {
     store.dispatch(setCharacterEarlyOutlook(earlyOutlook, accepted));
@@ -189,6 +200,33 @@ const EarlyOutlookDetailsPageBase: React.FC<ICharacterProperties> = ({
           construct={character}
         />
       </div>
+      <div className="row">
+        {showAdvanced ? (
+          <div className="col-12 mt-4">
+            <Header level={2} className="mb-3">
+              {t('Construct.other.description')}
+            </Header>
+            <STAMarkdown>
+              {t('UpbringingDetailPage.notes.instruction')}
+            </STAMarkdown>
+            <RichTextEditor
+              onChange={onNotesChanged}
+              initialText={character?.upbringingStep?.notes}
+            />
+          </div>
+        ) : (
+          <div className="col-12 mt-4 text-end">
+            <Button
+              variant="link"
+              className="text-secondary px-0"
+              onClick={() => setShowAdvanced(!showAdvanced)}
+            >
+              {t('Common.button.advanced')}
+            </Button>
+          </div>
+        )}
+      </div>
+
       <div className="mt-4 d-flex justify-content-end">
         <PageHistoryBasedPreviousButton />
         <Button onClick={() => navigateToNextPage()}>

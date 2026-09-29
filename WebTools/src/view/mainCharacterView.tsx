@@ -157,15 +157,20 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
           </div>
         </div>
 
-        <div className="row" style={{ alignItems: 'baseline' }}>
+        <div className="row align-items-stretch">
           <div className="col-md-2 view-field-label pb-2">
             {t('Construct.other.upbringing')}:
           </div>
           <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2">
+            <div className="view-border-bottom py-2 h-100">
               {character.upbringingStep
                 ? character.upbringingStep.localizedDescription
                 : ''}
+              {character.upbringingStep?.notes?.length ? (
+                <STAMarkdown className="markdown-sm">
+                  {character.upbringingStep.notes}
+                </STAMarkdown>
+              ) : undefined}
             </div>
           </div>
 
@@ -173,7 +178,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
             {t('Construct.other.environment')}:
           </div>
           <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2">
+            <div className="view-border-bottom py-2">
               {CharacterSerializer.serializeEnvironment(
                 character.environmentStep?.environment,
                 character.environmentStep?.otherSpecies,
@@ -183,12 +188,12 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
           </div>
         </div>
 
-        <div className="row align-items-stretch" style={{ alignItems: 'baseline' }}>
+        <div className="row align-items-stretch">
           <div className="col-md-2 view-field-label pb-2">
             {t('Construct.other.careerEvent1.short')}:
           </div>
           <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2 h-100">
+            <div className="view-border-bottom py-2 h-100">
               {
                 CareerEventsHelper.getCareerEvent(
                   character.careerEvents[0]?.id,
@@ -208,7 +213,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
             {t('Construct.other.careerEvent2.short')}:
           </div>
           <div className="col-md-4 text-white">
-            <div className="view-border-bottom pb-2 h-100">
+            <div className="view-border-bottom py-2 h-100">
               {
                 CareerEventsHelper.getCareerEvent(
                   character.careerEvents[1]?.id,

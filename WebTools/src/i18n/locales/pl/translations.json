@@ -619,6 +619,8 @@
     "UpbringingDetailPage.error.talent": "Wybierz talent zanim przejdziesz dalej.",
     "UpbringingDetailPage.error.focus": "Uzupełnij biegłość postaci. Jeśli nie masz pomysłów, to możesz wybrać jedną z sugerowanych.",
 
+    "UpbringingDetailPage.notes.instruction": "Opisz bardziej szczegółowo wczesne lata rozwoju Twojej postaci.",
+
     "Common.button.random": "Losowe",
     "Common.button.advanced": "Zaawansowane",
     "Common.button.select": "Wybierz",
@@ -1109,12 +1111,18 @@
     "CareerEvent.unofficial.48.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą umiejętności, których nabyła podczas misji w głębokiej przestrzeni kosmicznej. Przykłady to m.in.: Astrofizyka, Astronawigacja lub Anomalie przestrzenne.",
 
     "CareerEvent.unofficial.49.name": "Kontakt z anomalią temporalną",
+    "CareerEvent.unofficial.49.description": "Postać była uwięziona w anomalii temporalnej lub napotkała osobę lub coś, co pochodzi z innej linii temporalnej.\n\n- Na czym polegała anomalia temporalna? Dotyczyła przyszłości, przeszłości, zapętlenia lub paradoksów?\nCzy Twoja postać wpływała na kształt linii czasowej lub naruszała Pierwszą Dyrektywę Temporalną? Czy w sprawie interweniował Wydział Badań Temporalnych?",
+    "CareerEvent.unofficial.49.focusDescription": "Postać otrzymuje biegłość związaną z próbami zrozumienia charakteru anomalii temporalnej. Przykłady to m.in. Mechanika temporalna, Parapsychologia lub Fizyka cząstek.",
 
     "CareerEvent.unofficial.50.name": "Zadanie w placówce medycznej",
+    "CareerEvent.unofficial.50.description": "Twoja postać odbywała służbę w medycznej placówce lub okręcie.\n\n- Gdzie znajdowała się ta placówka medyczna? Czy specjalizowała się w pewnym konkretnym dziale medycyny?\n- Do którego wydziału była przypisana Twoja postać w tej placówce? Kim byli pacjenci?",
+    "CareerEvent.unofficial.50.focusDescription": "Postać otrzymuje biegłość odzwierciedlającą umiejętności nabyte podczas pracy wśród personelu medycznego. Przykłady to m.in.: Anatomia porównawcza humanoidów, Chirurgia lub Wirologia.",
 
     "CareerEvent.common.57.name": "Spotkanie z niekontrolowaną AI",
+    "CareerEvent.common.57.description": "Starozytne cywilizacje, przełomowa nauka czy nawet przypadek mogą spowodować wyłonienie się prawdziwej sztucznej inteligencji (AI), a spotkania z AI są zawsze ciekawe i prowadzą do nieprzewidzianych konsekwencji. Postać napotkała taką AI, która zajmowała się władaniem prymitywną społecznością, przejmowaniem kontroli nad pokładowym komputerem czy może innymi niebezpiecznymi lub dziwnymi aktywnościami.",
 
     "CareerEvent.common.58.name": "Kontakt z anomalią przestrzenną",
+    "CareerEvent.common.58.description": "Termin \"anomalia przestrzenna\" opisuje jakiekolwiek niestandardowe zaburzenie w zwykłej tkance czasoprzestrzeni, poczynając od odchyleń grawitacyjnych, miejsc gdzie prawa fizyki wydają się zmienione lub nawet korytarzy podprzestrzennych.",
 
     "CareerEvent.common.59.name": "Kontakt z anomalią temporalną",
 
@@ -1290,6 +1298,7 @@
     "Environment.common.betazed23rd.description": "**Betazed** to zielony, urodzajny świat o umiarkowanym klimacie, w wielu aspektach podobny do Ziemi, chociaż nieco bardziej wilgotny. Betazed jest domem dla gatunku **Betazoidów**, członków Federacji od połowy XXII wieku. Łagodny i przyjemny klimat rzadko przejawia ekstremalne zjawiska pogodowe, nawet pomimo braku techniki kontroli pogody, wykorzystywanych na innych planetach.\n\nPowszechnie uważany za piękny, porośnięty jest ogromnymi obszarami dzikiej przyrody. Rozproszone miasta i trasy wiodące przez obszary rolnicze pośród lasów, jezior i kanionów. Stolicą jest **Rixx** – i jak wiele innych miast na Betazedzie – mieści liczne ośrodki artystyczne i akademickie. Betazed jest pokojowym, idyllicznym światem z rzadkimi śladami po historycznych konfliktach.",
 
     "Environment.common.denobula23rd.name": "Denobula",
+    "Environment.common.denobula23rd.description": "**Denobula** to gęsto zaludniony świat ojczysty cywilizacji **Denobulan**, znajdujący się w potrójnym układzie gwiezdnym **Denobula Triaxa**. Populacja planety zamieszkuje relatywnie niewielki kontynent o klimacie umiarkowanie wilgotnym z systemami zarządzania pogodą, chroniącymi przed silną aktywnością burzową. Denobula była sygnatariuszem Koalicji Planet, organizacji która później przerodziła się w Federację, natomiast do samej Federacji weszła z wieloletnim opóźnieniem.\n\nDenobulanie zamieszkują w gęsto zabudowanym ośrodku miejskim, rozrastającym się na cały kontynent. Kultura denobulańska celebruje wielkie rodziny i bliskie sąsiedztwo, które mogą być przytłaczające dla wielu pozaświatowców. Mimo tego Denobula jest otwarta na gości z zewnątrz, gotowych dostosować się do lokalnych zwyczajów.",
 
     "Environment.common.earth23rd.name": "Ziemia",
 
@@ -1713,6 +1722,57 @@
     "MissionProfile.default.politicalOperationsStation": "Operacje polityczne",
     "MissionProfile.default.researchStation": "Stacja naukowe",
 
+    "Implant.adaptiveShielding": "Adaptacyjne tarcze",
+
+    "Implant.adaptiveShielding.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.cardiopulmonaryStrengthener": "Wzmacniacz krążeniowo-oddechowy",
+
+    "Implant.cardiopulmonaryStrengthener.2e": "Wsparcie krążeniowo-oddechowe",
+    "Implant.cardiopulmonaryStrengthener.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.corticalArrayBioSyntheticGland": "Łuk korowy (gruczoł biosyntetyczny)",
+
+    "Implant.corticalArrayBioSyntheticGland.2e": "Biosyntetyczny gruczoł",
+    "Implant.corticalArrayBioSyntheticGland.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.corticalArrayInterlinkNode": "Łuk korowy (węzeł komunikacyjny)",
+
+    "Implant.corticalArrayInterlinkNode.2e": "Węzeł komunikacyjny",
+    "Implant.corticalArrayInterlinkNode.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.corticalArrayNeuralSubspaceTranceiver": "Łuk korowy (Neuralny odbiornik podprzestrzenny)",
+
+    "Implant.corticalArrayNeuralSubspaceTranceiver.2e": "Odbiornik czaszkowy",
+    "Implant.corticalArrayNeuralSubspaceTranceiver.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.corticalArrayCorticalNode": "Łuk korowy (węzeł korowy)",
+
+    "Implant.corticalArrayCorticalNode.2e": "Węzeł korowy",
+    "Implant.corticalArrayCorticalNode.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.cyberneticArmEngineering": "Ramię cybernetycze (Inżynieryjne)",
+
+    "Implant.cyberneticArmEngineering.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.cyberneticArmMedical": "Ramię cybernetyczne (Medyczne)",
+
+    "Implant.cyberneticArmMedical.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.cyberneticArmTactical": "Ramię cybernetyczne (Taktyczne)",
+
+    "Implant.cyberneticArmTactical.2e": "Kanaliki asymilacyjne",
+    "Implant.cyberneticArmTactical.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.exoPlating": "Egzopancerz",
+
+    "Implant.exoPlating.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
+    "Implant.ocularSensoryEnhancer": "Wzmacniacz wzroku",
+
+    "Implant.ocularSensoryEnhancer.2e": "Procesor wzrokowy",
+    "Implant.ocularSensoryEnhancer.description2e": "Zobacz str. 77 _Species Sourcebook_",
+
     "InjuryType.deadly": "Śmiertelne",
     "InjuryType.stun": "Ogłuszające",
     "InjuryType.stunOrDeadly": "Ogłuszające, Śmiertelne",
@@ -1891,6 +1951,8 @@
     "Sheet.standardTngCharacterSheet": "TNG standardowa karta postaci (US-Letter)",
     "Sheet.standard2eCharacterSheet": "Standardowa karta postaci 2ed (US-Letter)",
 
+    "Sheet.text.title": "Zapis służby",
+
     "Sheet.text.title.starship": "Rejestracja okrętu",
     "Sheet.text.title.alt": "Teczka osobowa",
 
@@ -2036,6 +2098,15 @@
     "SpaceframeAppearance.romulanScienceVessel": "Romulański okręt naukowy",
     "SpaceframeAppearance.romulanShuttle": "Romulański prom",
     "SpaceframeAppearance.scimitarType": "Typ Scimitar",
+    "SpaceframeAppearance.snakehead": "Snakehead",
+    "SpaceframeAppearance.tliss": "Klasa T'Liss",
+    "SpaceframeAppearance.type6Shuttle": "Prom typu 6",
+    "SpaceframeAppearance.type8Shuttle": "Prom typu 8",
+    "SpaceframeAppearance.type9Shuttle": "Prom typu 9",
+    "SpaceframeAppearance.type10Shuttle": "Prom typu 10",
+    "SpaceframeAppearance.type16Shuttle": "Prom typu 16",
+    "SpaceframeAppearance.whitewind": "Whitewind",
+    "SpaceframeAppearance.xhosaType": "Klasa Antares (Typ Xhosa)",
 
     "SpaceframeVariant.excelsior": "oryginalna klasa",
     "SpaceframeVariant.enterpriseBVariant": "wariant Enterprise-B",
@@ -2072,6 +2143,7 @@
     "Specialization.informationBroker": "Broker informacji",
     "Specialization.intelligenceOfficer": "Oficer wywiadu",
     "Specialization.jag": "Biuro prawne JAG",
+    "Specialization.journalist": "Dziennikarz",
     "Specialization.klingonWarrior": "Klingoński wojownik",
     "Specialization.klingonShipCaptain": "Klingoński kapitan okrętu",
     "Specialization.klingonWeaponsOfficer": "Klingoński zbrojmistrz",
@@ -2084,8 +2156,10 @@
     "Specialization.security": "Oficer ochrony",
     "Specialization.smuggler": "Przemytnik",
     "Specialization.starfleetScientist": "Naukowiec",
+    "Specialization.tholianWarrior": "Tholiański żołnierz",
 
     "Species.aenar.name": "Aenar",
+    "Species.aenar.aboutNames": "Aenarzy zwykle noszą pojedyncze imiona, ponieważ ich ulepszone zmysły pozwalają na rozróżnienie pomiędzy osobnikami na podstawie różnic w głosie, tempie bicia serca i innych fizjologicznych wskaźników.",
     "Species.aenar.trait": "Aenar",
 
     "Species.andorian.exampleValue": "Dumny syn Andorii / Dumna córka Andorii",
@@ -2195,6 +2269,131 @@
 
     "Species.grazerite.traitDescription2e": "Zobacz str. 48 _Species Sourcebook_",
 
+    "Species.hologram.name": "Hologram",
+
+    "Species.horta.name": "Horta",
+    "Species.horta.exampleValue": "Bronię naszej przyszłości",
+    "Species.horta.soloDescription": "Horta to rozwinięty gatunek niehumanoidalny, z biologią opartą na związkach krzemu, zdolny do tworzenia tuneli w litej skale.",
+    "Species.horta.traitDescription2e": "Zobacz str. 52 _Species Sourcebook_",
+
+    "Species.human.name": "Człowiek",
+    "Species.human.exampleValue": "Zew odkrywcy",
+
+    "Species.humanAugment.name": "Ulepszony genetycznie człowiek",
+    "Species.humanAugment.traitDescription": "Zobacz str. 54 _Species Sourcebook_",
+
+    "Species.hupyrian.name": "Hupyrian",
+    "Species.hupyrian.exampleValue": "Przyjmuję polecenia tylko od jednej osoby",
+
+    "Species.illyrian.name": "Illyrian",
+
+    "Species.illyrian_2E.name": "Illyrian",
+    "Species.illyrian_2E.traitDescription": "Zobacz str. 56 _Species Sourcebook_",
+
+    "Species.jelna.name": "Rigeliański Jelna",
+    "Species.jelna.traitDescription2e": "Zobacz str. 98 _Species Sourcebook_",
+
+    "Species.jemHadar.name": "Jem'Hadar",
+    "Species.jemHadar.traitDescription2e": "Zobacz str. 58 _Species Sourcebook_",
+
+    "Species.kazon.name": "Kazon",
+    "Species.kazon.description": "Gatunek agresywnych wojowników z Kwadrantu Delta, podzielony na 18 różnych frakcji toczących ze sobą wojny o zasoby. Posiadają złożone narośla kostne na czołach oraz gęste włosy, przypominające koralowce.",
+
+    "Species.kellerun.name": "Kellerun",
+    "Species.kellerun.traitDescription": "Zobacz str. 60 _Species Sourcebook_",
+    "Species.kellerun.aboutNames": "Kelleruńskie imiona są często proste, odzwierciedlające ich pragmatyczne nastawienie.",
+
+    "Species.kelpien.name": "Kelpianin",
+    "Species.kelpien.traitDescription2e": "Zobacz str. 62 _Species Sourcebook_",
+    "Species.kelpien.aboutNames": "Kelpianie noszą pojedyncze imiona, które mają tylko nieznaczne różnice pomiędzy formami męskimi i żeńskimi.",
+
+    "Species.klingon.name": "Klingon",
+
+    "Species.klingonQuchHa.name": "Klingon (QuchHa')",
+
+    "Species.klingonQuchHa_2E.name": "Klingon (QuchHa')",
+    "Species.klingonQuchHa_2E.traitDescription": "Zobacz str. 64 _Species Sourcebook_",
+
+    "StarSystem.common.coordinates": "Współrzędne",
+    "StarSystem.common.innerZone": "Strefa wewnętrzna",
+    "StarSystem.common.ecosphere": "Ekosfera",
+    "StarSystem.common.outerZone": "Strefa zewnętrzna",
+    "StarSystem.common.worlds": "Światy",
+    "StarSystem.common.noWorlds": "Brak światów",
+    "StarSystem.common.primaryStar": "Główna gwiazda",
+    "StarSystem.common.sector": "Sektor",
+    "StarSystem.common.system": "System",
+    "StarSystem.common.companionStar": "Gwiazda towarzysząca",
+
+    "StationFrame.internationalSpaceStation": "Międzynarodowa stacja kosmiczna",
+    "StationFrame.kClassBorderOutpost": "Posterunek graniczny klasy K",
+    "StationFrame.regulaClassMultipurposeStation": "Wielozadaniowa stacja klasy Regula",
+    "StationFrame.spacedock": "Dok kosmiczny",
+    "StationFrame.federationStarbase": "Baza gwiezdna Federacji",
+    "StationFrame.terakNorType": "Typ Terok Nor",
+    "StationFrame.narendraStationType": "Stacja typu Narendra",
+    "StationFrame.federationListeningPost": "Przygraniczna stacja nasłuchowa Federacji",
+    "StationFrame.federationSubspaceCommunicationsRelay": "Federacyjny przekaźnik komunikacji podprzestrzennej",
+    "StationFrame.custom": "Przygotowany na zamówienie",
+
+    "StationFrameAppearance.internationalSpaceStation": "Międzynarodowa stacja kosmiczna",
+    "StationFrameAppearance.drydock": "Suchy dok",
+    "StationFrameAppearance.fontanaStation": "Stacja Fontana",
+    "StationFrameAppearance.kClassBorderOutpost": "Posterunek graniczny klasy K",
+    "StationFrameAppearance.regulaClassMultipurposeStation": "Wielozadaniowa stacja klasy Regula",
+    "StationFrameAppearance.spacedock": "Dok kosmiczny",
+    "StationFrameAppearance.spacedockRevised": "Dok kosmiczny (poprawiony)",
+    "StationFrameAppearance.terakNorType": "Typ Terok Nor",
+    "StationFrameAppearance.vanguardType": "Stacja Vanguard",
+    "StationFrameAppearance.jupiterStation": "Stacja Jupiter",
+    "StationFrameAppearance.starbaseOneType": "Baza gwiezdna 1",
+    "StationFrameAppearance.narendraStationType": "Stacja typu Narendra",
+    "StationFrameAppearance.federationCommunicationsArray": "Federacyjny układ komunikacyjny",
+    "StationFrameAppearance.federationSubspaceCommunicationsRelay": "Federacyjny przekaźnik komunikacyjny",
+
+    "StationIndexPage.instruction": "Użyj tej ścieżki, aby stworzyć stację kosmiczną",
+    "StationIndexPage.characterType": "Typ stacji",
+
+    "StationFinalPage.instruction": "Pozostało jeszcze kilka ostatnich kroków, aby uzupełnić Twoją stację kosmiczną lub bazę gwiezdną.",
+
+    "StationFinalPage.name.instruction": "Wybierz nazwę stacji lub bazy.",
+
+    "StationFinalPage.traits.instruction": "Stacje kosmiczne zawsze posiadają cechę, która opisuje cywilizację, które je zbudowały, jak np. Federacyjna baza gwiezdna lub Klingońska forteca orbitalna. Drugą zalecaną cechą jest ogólne przeznaczenie lub opis działania stacji, np. Suchy dok czy Stacja przeładunkowa. Często są one powiązane także z profilem misji stacji.",
+
+    "StationMissionProfile.instruction": "Wybierz profil misji stacji.",
+
+    "StationMissionProfile.error.selectProfile": "Proszę wybierz profil misji dla stacji",
+
+    "StationSpaceframePage.instruction": "Wybierz szczegóły budowanej stacji. Możesz stworzyć nową stację od zera lub wykorzystać jeden z gotowych szablonów.",
+
+    "StationSpaceframePage.appearance.instruction": "Wybierz podstawy wygląd i kształt stacji.",
+
+    "StationSpaceframePage.departments.instruction": "Pozostałe punkty do rozdzielenia pomiędzy Sekcje stacji: {{points}}.",
+
+    "StationSpaceframePage.scale.instruction": "Skala stacji kosmicznej ma wpływ na wiele wskaźników, które będą później ustalane. Najmniejsze stacje gwiezdne, np. Regula I mają skalę 6, a takie umiarkowane jak DS9 czy Stacja Narendra osiągają skalę 12. Największy dok kosmiczny na orbicie Ziemi ma skalę 16. Bazy gwiezdne mogą mieś skalę od 3 (Międzynarodowa stacja kosmiczna ISS na ziemskiej orbicie jak w roku 2022) do tak wysokich, jak jest to potrzebne. Zauważ jednak, że wzrost skali nie jest proporcjonalny i każdy kolejny poziom skali oznacza znacznie większy przyrost.",
+
+    "StationSpaceframePage.systems.instruction": "Pozostałe punkty do rozdysponowania pomiędzy Atrybuty stacji: {{points}}.",
+
+    "StationSpaceframePage.noFrames.instruction": "Nie ma standardowych szablonów stacji dla tej organizacji.",
+
+    "StationSpaceframePage.frame.instruction": "Wybierz przygotowany szablon dla stacji kosmicznej.",
+
+    "StationSpaceframePage.error.standardFrame": "Proszę wybierz szablon.",
+    "StationSpaceframePage.error.departments": "Rozdziel proszę wszystkie punkty pomiędzy Sekcje stacji.",
+    "StationSpaceframePage.error.systems": "Rozdziel proszę wszystkie punkty pomiędzy Systemy stacji.",
+
+    "StationSpaceframePage.frameType": "Typ szablonu",
+    "StationSpaceframePage.custom": "Własny szablon",
+    "StationSpaceframePage.standard": "Standardowy",
+
+    "SupportingCharacterModificationType.additionalAttribute": "Dodatkowy Atrybut",
+    "SupportingCharacterModificationType.additionalDepartment": "Dodatkowa Sekcja",
+    "SupportingCharacterModificationType.additionalFocus": "Dodatkowa biegłość",
+    "SupportingCharacterModificationType.additionalTalent": "Dodatkowy talent",
+    "SupportingCharacterModificationType.additionalValue": "Dodatkowa wartość",
+
+    "Talent.text.rank": "{{talentName}} [Ranga: {{rank}}]",
+
     "Talent.abundantPersonnel": "Liczny personel",
 
     "Talent.abundantPersonnel.description": "Ostateczne Wsparcie Załogi okrętu – po uwzględnieniu wszelkich innych modyfikatorów – zostaje podwojone, a efekty lub zdolności zwiększające Wsparcie Załogi działają z dwukrotnie większą siłą na pokładzie statku objętego tą zasadą specjalną. Ponadto, gdy wprowadzasz bohatera wspierającego, możesz użyć jednego dodatkowego punktu Wsparcia Załogi, aby natychmiast go rozwinąć.",
@@ -2289,13 +2488,32 @@
 
     "Upbringing.starfleet.militaryOrExploration.name": "Gwiezdna Flota",
 
+    "Value.environment.text": "Ta wartość powinna odzwierciedlać środowisko i kulturę, w której wychowywała się postać. Warto rozważyć sposób, w jaki Twoja postać postrzega własną kulturę i jak akceptuje lub neguje myśli i tradycje swojej cywilizacji.",
+
+    "Value.starfleetTraining.text": "Postać otrzymuje wartość, która powinna oddawać pewne aspekty jej wierzeń lub przekonań, które rozwinęły się w czasie pobytu w Akademii.",
+
+    "Value.childEducation.text": "Postać otrzymuje wartość, która powinna odzwierciedlać pewne aspekty jej przekonań, które rozwinęły się w czasie jej edukacji.",
+
+    "Value.otherTraining.text": "Postać otrzymuje wartość, która powinna odzwierciedlać pewne aspekty jej przekonań, które rozwinęły się w czasie jej szkolenia.",
+
+    "Value.careerLength.young.text": "Postać otrzymuje wartość, która powinna oddawać jej niedoświadczenie i pewnego rodzaju naiwność.",
+
+    "Value.careerLength.experienced.text": "Postać otrzymuje wartość, którą można dowolnie wybrać.",
+
+    "Value.careerLength.veteran.text": "Postać otrzymuje wartość, która powinna odzwierciedlić lata doświadczeń i przekonania, które ukształtowały się w czasie długiej kariery.",
+
+    "Value.final.text": "Postać otrzymuje jedną finalną wartość. Może ona odzwierciedlać kluczowe zdarzenia wylosowane w kroku szóstym lub jakieś inne właściwości postaci. Wartość może opisywać relację łączącą ją z inną postacią z załogi, inną organizacją lub kulturą.",
+
     "Weapon.common.dice": "Kości",
+    "Weapon.common.escalation": "Eskalacja {{value}}",
     "Weapon.common.melee": "W zwarciu",
     "Weapon.common.name": "Nazwa/Typ",
     "Weapon.common.qualities": "Właściwości",
     "Weapon.common.ranged": "Dystansowa",
     "Weapon.common.severity": "Stopień rany",
     "Weapon.common.size": "Rozmiar {{hands}}-ręczna",
+
+    "Weapon.personal.cryogenicGrenade.name": "Granat kriogeniczny",
 
     "Weapon.personal.dagger.name": "Sztylet",
 
@@ -2329,9 +2547,119 @@
 
     "Weapon.personal.mekleth.name": "Mek'leth",
 
+    "Weapon.personal.neuralTruncheon.name": "Pałka neuralna",
+
     "Weapon.personal.particleRifle.name": "Karabin cząsteczkowy",
+
+    "Weapon.personal.polaronDisruptorPistol.name": "Polaronowy pistolet dezruptorowy",
+
+    "Weapon.personal.polaronDisruptorRifle.name": "Polaronowy karabin dezruptorowy",
 
     "Weapon.personal.keratinDart.name": "Strzałka keratynowa",
 
-    "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Dezruptorowo-plazmowy shotgun Son'a"
+    "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Dezruptorowo-plazmowy shotgun Son'a",
+
+    "Weapon.personal.tanQalanqSword.name": "Miecz Tan Qalanq",
+
+    "Weapon.personal.tzenkethiHeavyBlade.name": "Ciężkie ostrze Tzenkethi Typu AA",
+
+    "Weapon.quality.accurate.name": "Celna",
+
+    "Weapon.quality.area.name": "Obszarowa",
+
+    "Weapon.quality.areaOrSpread.name": "Obszarowa albo Rozrzut",
+
+    "Weapon.quality.charge.name": "Regulowana",
+
+    "Weapon.quality.calibration.name": "Kalibracja",
+
+    "Weapon.quality.chilling.name": "Chłodzenie",
+
+    "Weapon.quality.cumbersome.name": "Uciążliwa",
+
+    "Weapon.quality.dampening.name": "Drenująca",
+
+    "Weapon.quality.deadly.name": "Śmiertelna",
+
+    "Weapon.quality.debilitating.name": "Okaleczająca",
+
+    "Weapon.quality.depleting.name": "Rozładowująca",
+
+    "Weapon.quality.devastating.name": "Niszczycielska",
+
+    "Weapon.quality.highYield.name": "Wysokiej mocy",
+
+    "Weapon.quality.hidden.name": "Ukryta {{rank}}",
+
+    "Weapon.quality.intense.name": "Mordercza",
+
+    "Weapon.quality.jamming.name": "Zakłócająca",
+
+    "Weapon.quality.knockdown.name": "Obezwładniająca",
+
+    "Weapon.quality.nonLethal.name": "Ogłuszająca",
+
+    "Weapon.quality.piercing.name": "Przebijająca {{rank}}",
+
+    "Weapon.quality.persistentX.name": "Trwała X",
+
+    "Weapon.quality.slowing.name": "Spowalniająca",
+
+    "Weapon.quality.spread.name": "Rozrzut",
+
+    "Weapon.quality.versatile.name": "Wszechstronna {{rank}}",
+
+    "Weapon.quality.vicious.name": "Mordercza {{rank}}",
+
+    "World.attribute.atmosphereType": "Typ atmosfery",
+    "World.attribute.atmosphericDensity": "Gęstość atmosfery",
+    "World.attribute.atmosphericContaminants": "Zanieczyszczenie atmosfery",
+    "World.attribute.designation": "Określenie",
+    "World.attribute.classification": "Klasyfikacja",
+    "World.attribute.notes": "Notatki",
+    "World.attribute.orbitalRadius": "Promień orbity",
+    "World.attribute.orbitalPeriod": "Okres orbitalny",
+    "World.attribute.eccentricity": "Mimośród",
+    "World.attribute.diameter": "Średnica",
+    "World.attribute.density": "Gęstość",
+    "World.attribute.mass": "Masa",
+    "World.attribute.gravity": "Grawitacja",
+    "World.attribute.satellites": "Satelity",
+    "World.attribute.core": "Rdzeń",
+    "World.attribute.features": "Właściwości",
+    "World.attribute.rotation": "Obrót",
+    "World.attribute.tidallyLocked": "Obrót synchroniczny",
+    "World.attribute.retrograde": "Wsteczny",
+    "World.attribute.axialTilt": "Nachylenie osi",
+    "World.attribute.waterCoverage": "Powierzchnia wody",
+    "World.attribute.ring": "Pierścień",
+    "World.attribute.beltWidth": "Szerokość pasa",
+    "World.attribute.predominantSize": "Dominujący rozmiar",
+
+    "World.atmosphereType.vacuum": "Próżnia",
+    "World.atmosphereType.standardOxygenNitrogenMix": "Standardowa mieszanka tlen/azot",
+    "World.atmosphereType.oxygenArgonMix": "Mieszanka tlen/argon",
+    "World.atmosphereType.hydrogenCompoundsAndReactiveGases": "Związki wodoru i gazy reaktywne",
+    "World.atmosphereType.carbonDioxide": "Dwutlenek węgla",
+    "World.atmosphereType.toxicChemicals": "Substancje toksyczne",
+
+    "World.atmosphericContaminant.bacteriaOrViruses": "Niebezpieczne bakterie lub wirusy",
+    "World.atmosphericContaminant.unusualGases": "Nietypowe gazy",
+    "World.atmosphericContaminant.highOxygen": "Wysoki tlen",
+    "World.atmosphericContaminant.pollutants": "Zanieczyszczenia",
+    "World.atmosphericContaminant.sulfurCompounds": "Związki siarki",
+    "World.atmosphericContaminant.radioactives": "Radioaktywna",
+    "World.atmosphericContaminant.lowOxygen": "Niski tlen",
+    "World.atmosphericContaminant.acidRain": "Kwaśne deszcze",
+    "World.atmosphericContaminant.corrosiveGases": "Żrące gazy",
+    "World.atmosphericContaminant.irritantPollens": "Drażniące pyłki",
+
+    "World.atmosphericDensity.veryThin": "Bardzo rzadka",
+    "World.atmosphericDensity.thin": "Rzadka",
+    "World.atmosphericDensity.standard": "Standardowa",
+    "World.atmosphericDensity.dense": "Gęsta",
+    "World.atmosphericDensity.veryDense": "Bardzo gęsta",
+
+    "World.class.description": "Klasa {{class}}",
+    "World.class.fullDescription": "Klasa {{class}} {{definition}}"
 }

@@ -18,6 +18,10 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       onClose={() => onClose()}
       header="What's New?"
     >
+      <b>v1.260928</b>
+      <ul>
+        <li>Bug fixes.</li>
+      </ul>
       <b>v1.260925</b>
       <ul>
         <li>

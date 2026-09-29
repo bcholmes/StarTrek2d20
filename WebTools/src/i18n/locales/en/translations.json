@@ -619,6 +619,8 @@
     "UpbringingDetailPage.error.talent": "You must select a talent before proceeding.",
     "UpbringingDetailPage.error.focus": "You need to type in a Focus. Choose from the suggestions if you cannot come up with your own.",
 
+    "UpbringingDetailPage.notes.instruction": "Describe this stage of your character's early years in more detail.",
+
     "Common.button.random": "Random",
     "Common.button.advanced": "Advanced",
     "Common.button.select": "Select",
@@ -5043,6 +5045,10 @@
     "Talent.noHesitation": "No Hesitation",
 
     "Talent.noHesitation.description2e": "At the start of any round in an action scene, you may add 1 Threat to take the first turn, regardless of who would otherwise have acted first.",
+
+    "Talent.noIdleThreatSpecialRule": "No Idle Threat",
+
+    "Talent.noIdleThreatSpecialRule.description": "See pg. 67 of the _Allies and Adversaries_ book",
 
     "Talent.nomadicHeritage": "Nomadic Heritage",
 
