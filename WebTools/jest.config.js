@@ -3,7 +3,6 @@ module.exports = {
       '^.+\\.tsx?$': [
         'ts-jest',
         {
-          isolatedModules: true,
           // Jest compiles tests to CommonJS. moduleResolution "bundler" is only
           // valid with an ES module setting, so tests keep the Node resolver.
           tsconfig: {
