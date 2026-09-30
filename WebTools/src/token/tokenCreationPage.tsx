@@ -5,7 +5,7 @@ import { LcarsFrame } from '../components/lcarsFrame';
 import { PageIdentity } from '../pages/pageIdentity';
 import { Header } from '../components/header';
 import Button from 'react-bootstrap/Button';
-import { Canvg, presets } from 'canvg';
+import { TokenHelper } from '../exportpdf/tokenHelper';
 import { UniformSelectionView } from './view/uniformSelectionView';
 import { SpeciesSelectionView } from './view/speciesSelectionView';
 import { TokenSvgBuilder } from './tokenSvgBuilder';
@@ -163,26 +163,12 @@ const TokenCreationPageBase: React.FC<ITokenCreationPageProperties> = ({
     }
   };
 
-  const toPng = async (data) => {
-    const preset = presets.offscreen();
-    const { width, height, svg } = data;
-    const canvas = new OffscreenCanvas(width, height);
-    const ctx = canvas.getContext('2d');
-    const v = await Canvg.from(ctx, svg, preset);
-
-    // Render only first frame, ignoring animations and mouse.
-    await v.render();
-
-    const blob = await canvas.convertToBlob();
-    return blob.arrayBuffer();
-  };
-
   const exportPng = async () => {
-    toPng({
-      width: 400,
-      height: 400,
-      svg: TokenSvgBuilder.createSvg(token, rounded, bordered && rounded),
-    }).then((png) => {
+    TokenHelper.renderSvg(
+      TokenSvgBuilder.createSvg(token, rounded, bordered && rounded),
+      400,
+      400,
+    ).then((png) => {
       const division = DivisionColors.getDivision(
         token.uniformEra,
         token.divisionColor,

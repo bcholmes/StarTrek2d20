@@ -1,13 +1,37 @@
 import { Canvg, presets } from 'canvg';
 import type { TokenConfig } from '../common/character';
 
+// canvg 4.0.3 types OffscreenCanvas.getContext("2d") as non-null, but the DOM
+// type includes null. Returning that intersection keeps presets.offscreen()
+// assignable to Canvg.from.
+function createOffscreenCanvas(width: number, height: number) {
+  const canvas = new OffscreenCanvas(width, height);
+  const context = canvas.getContext('2d');
+  if (!context) {
+    throw new Error('Could not create a 2D canvas context');
+  }
+  return Object.assign(canvas, {
+    getContext(contextId: '2d') {
+      if (contextId !== '2d') {
+        throw new Error('Could not create a 2D canvas context');
+      }
+      return context;
+    },
+  });
+}
+
 export class TokenHelper {
   private static async toPngBytes(data) {
-    const preset = presets.offscreen();
     const { width, height, svg } = data;
-    const canvas = new OffscreenCanvas(width, height);
+    const canvas = createOffscreenCanvas(width, height);
     const ctx = canvas.getContext('2d');
-    const v = await Canvg.from(ctx, svg, preset);
+    if (!ctx) {
+      throw new Error('Could not create a 2D canvas context');
+    }
+    const v = await Canvg.from(ctx, svg, {
+      ...presets.offscreen(),
+      createCanvas: createOffscreenCanvas,
+    });
 
     // Render only first frame, ignoring animations and mouse.
     await v.render();
