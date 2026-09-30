@@ -91,10 +91,11 @@
     "@types/node": "20.19.43",
     "@types/react": "19.2.0",
     "@types/react-dom": "19.2.0",
-    "@typescript-eslint/eslint-plugin": "5.62.0",
-    "@typescript-eslint/parser": "5.62.0",
+    "@typescript-eslint/eslint-plugin": "8.71.0",
+    "@typescript-eslint/parser": "8.71.0",
     "@vitejs/plugin-react": "^5.0.3",
-    "eslint": "8.27.0",
+    "eslint": "9.39.5",
+    "globals": "^16.4.0",
     "jest": "^30.5.2",
     "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
@@ -118,16 +119,6 @@
     "typecheck": "tsc --noEmit",
     "prettier": "prettier \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" --write",
     "prettier:check": "prettier \"src/**/*.{ts,tsx}\" \"tests/**/*.{ts,tsx}\" --check"
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "rules": {
-      "unicode-bom": 0,
-      "semi": "error",
-      "no-var": "error",
-      "prefer-const": "error",
-      "@typescript-eslint/consistent-type-imports": "error"
-    }
   },
   "browserslist": {
     "production": [
