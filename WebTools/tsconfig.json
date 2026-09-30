@@ -2,15 +2,13 @@
   "compileOnSave": true,
   "compilerOptions": {
     "module": "esnext",
-    "target": "es2022",
+    "target": "ES2023",
     "noImplicitAny": false,
     "sourceMap": false,
     "jsx": "react-jsx",
     "lib": [
-      "dom",
-      "es2015.collection",
-      "es5",
-      "es2015.promise"
+      "DOM",
+      "ES2023"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,7 +18,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true
