@@ -48,7 +48,6 @@ export const stationSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(createStation, (state, action) => {
       const s = action.payload.station;
-      console.log('Create a station');
       return {
         ...state,
         station: s.copy(),
