@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router';
 import { CharacterCreationApp } from './app';
 import { Provider } from 'react-redux';
 import { store } from './state/store';

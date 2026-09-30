@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { LcarsFrame } from '../../components/lcarsFrame';
 import { Header } from '../../components/header';

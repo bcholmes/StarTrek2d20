@@ -9,7 +9,7 @@ import { CharacterType } from '../common/characterType';
 import { setCharacterFinishingTouches } from '../state/characterActions';
 import { store } from '../state/store';
 import { Stereotype } from '../common/construct';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface ICharacterBreadcrumbProperties extends ICharacterProperties {
   pageIdentity?: PageIdentity;

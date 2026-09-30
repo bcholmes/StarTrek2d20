@@ -5,7 +5,7 @@ import { PageIdentity } from '../../pages/pageIdentity';
 import { useTranslation } from 'react-i18next';
 import { Header } from '../../components/header';
 import { InstructionText } from '../../components/instructionText';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import {
   DropDownElement,
   DropDownSelect,

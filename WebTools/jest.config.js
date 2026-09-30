@@ -12,6 +12,9 @@ module.exports = {
         },
       ],
     },
+    // The local Watchman binary aborts (missing libfmt), which stops Jest
+    // before any tests run.
+    watchman: false,
     testEnvironment: 'node',
     testRegex: '/tests/.*\\.(test|spec)?\\.(ts|tsx)$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']

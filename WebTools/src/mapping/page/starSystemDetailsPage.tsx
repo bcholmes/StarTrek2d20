@@ -12,12 +12,10 @@ import { SystemMapLowerView } from '../view/systemMapLowerView';
 import { SystemMapUpperView } from '../view/systemMapUpperView';
 import { WorldView } from '../view/worldView';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { LcarsFrame } from '../../components/lcarsFrame';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { LoadingButton } from '../../common/loadingButton';
-import { Link } from 'react-router-dom';
-
 declare function download(
   bytes: Uint8Array | ArrayBuffer,
   fileName: string,

@@ -11,7 +11,7 @@ import type { CharacterWithTracking } from './model/characterWithTracking';
 import { useTranslation } from 'react-i18next';
 import { IconButton } from '../components/iconButton';
 import { LoadingButton } from '../common/loadingButton';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface IGMTrackerPageProperties {
   characters: CharacterWithTracking[];

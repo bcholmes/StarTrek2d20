@@ -13,8 +13,7 @@ import {
   DropDownSelect,
 } from '../../components/dropDownInput';
 import Markdown from 'react-markdown';
-import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import { store } from '../../state/store';
 import { saveStarshipToLocalStorage } from '../../state/savedConstructActions';
 import { marshaller } from '../../helpers/marshaller';

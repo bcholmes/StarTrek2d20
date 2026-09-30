@@ -12,12 +12,10 @@ import type { Sector } from '../table/sector';
 import type { StarSystem } from '../table/starSystem';
 import { PDFDocument } from '@cantoo/pdf-lib';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { LoadingButton } from '../../common/loadingButton';
 import { LcarsFrame } from '../../components/lcarsFrame';
 import { PageIdentity } from '../../pages/pageIdentity';
-import { Link } from 'react-router-dom';
-
 declare function download(
   bytes: Uint8Array | ArrayBuffer,
   fileName: string,

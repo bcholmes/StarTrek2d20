@@ -1,5 +1,5 @@
 import React, { lazy } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { StarshipView } from './starshipView';
 import { SupportingCharacterView } from './supportingCharacterView';
@@ -14,8 +14,6 @@ import { SoloCharacterView } from './soloCharacterView';
 import type { Asset } from '../asset/asset';
 import { originalEncodedSheet } from './originalEncodedSheet';
 import { StationView } from './stationView';
-import { Link } from 'react-router-dom';
-
 const AssetView = lazy(() =>
   import(/* webpackChunkName: 'asset' */ '../asset/view/assetView').then(
     (m) => ({ default: m.AssetView }),

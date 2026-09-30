@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import { LcarsFrame } from '../../components/lcarsFrame';
 import { PageIdentity } from '../../pages/pageIdentity';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router';
 import type { MissionProfileModel } from '../../helpers/missionProfiles';
 import { MissionProfiles } from '../../helpers/missionProfiles';
 import { CheckBox } from '../../components/checkBox';

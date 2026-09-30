@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 import { LcarsFrame } from '../../components/lcarsFrame';
 import { PageIdentity } from '../../pages/pageIdentity';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { Station } from '../../common/station';
 import { store } from '../../state/store';
 import { createStation } from '../../state/stationActions';
