@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>STAR TREK Adventures Character Creator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+    <meta name="description" content="A free application that you can use to create characters, ships, and tokens for Modiphius' Star Trek Adventures RPG (and the Captain's Log Solo RPG game).">
+    <meta property="og:title" content="The Star Trek Adventures Character Creator" data-react-helmet="true"/>
+    <meta property="og:description" content="A free application that you can use to create characters, ships, and tokens for Modiphius' Star Trek Adventures RPG (and the Captain's Log Solo RPG game)." data-react-helmet="true"/>
+    <meta property="og:type" content="website" data-react-helmet="true"/>
+    <meta property="og:image" content="/static/img/bannerImage.png" data-react-helmet="true"/>
+    <meta property="og:url" content="https://sta.bcholmes.org" data-react-helmet="true"/>
+    <link rel="icon" href="/favicon.ico" />
+
+</head>
+<body onload="setupGuard();">
+    <noscript>
+        <p style="color: white; font-size: 16px;">This website is a nifty tool that helps you create characters for Star Trek Adventures RPG by Modiphius. But you need to enable JavaScript to run this app.</p>
+
+        <p style="color: white; font-size: 16px;">If you don't want want to turn on JavaScript, okay, I get that. But you'll have to use the telepathically-enabled version instead. Beam your ideas of your
+        character directly at your browser, and our cadre of Betazoid character creation representatives will try to receive your telepathic broadcasts and
+        record them for you. There's a greater likelihood of success if you're a Vulcan or a Napean. Otherwise... well, we're not going to lie: there's only a small
+        chance that the telepathic broadcast will be received.</p>
+    </noscript>
+    <div id="mainBody"></div>
+
+    <script>
+        function setupGuard() {
+            if (window.history && history.pushState) {
+                history.pushState(null, null, null);
+                addEventListener('popstate', function () {
+                    var leave = confirm("Do you want to leave this page? This will cause your character to become lost in the Delta Quadrant.");
+                    if (leave) {
+                        history.back();
+                    }
+                    else {
+                        history.pushState(null, null, null);
+                    }
+                });
+            }
+        }
+    </script>
+
+    <script src="/static/js/download.min.js"></script>
+    <script type="module" src="/src/index.tsx"></script>
+
+</body>
+</html>

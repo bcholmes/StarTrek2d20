@@ -1,6 +1,24 @@
 import { D20 } from '../common/die';
 import type { ISpecies } from '../helpers/species';
 import { Species } from '../helpers/speciesEnum';
+import bynarNames from './names-bynar.json';
+import cardassianNames from './names-cardassian.json';
+import humanNames from './names-human.json';
+import ferengiNames from './names-ferengi.json';
+import hupyrianNames from './names-hupyrian.json';
+import klingonNames from './names-klingon.json';
+import ktarianNames from './names-ktarian.json';
+import nausicaanNames from './names-nausicaan.json';
+import orionNames from './names-orion.json';
+import pakledNames from './names-pakled.json';
+import remanNames from './names-reman.json';
+import romulanNames from './names-romulan.json';
+import talarianNames from './names-talarian.json';
+import tellariteNames from './names-tellarite.json';
+import tholianNames from './names-tholian.json';
+import tzenkethiNames from './names-tzenkethi.json';
+import vulcanNames from './names-vulcan.json';
+import yridianNames from './names-yridian.json';
 
 interface NameEntry {
   name: string;
@@ -16,78 +34,24 @@ interface NameList {
 }
 
 const names: NameList[] = [
-  {
-    species: 'Bynar',
-    names: require('./names-bynar.json'),
-  },
-  {
-    species: 'Cardassian',
-    names: require('./names-cardassian.json'),
-  },
-  {
-    species: 'Human',
-    names: require('./names-human.json'),
-  },
-  {
-    species: 'Ferengi',
-    names: require('./names-ferengi.json'),
-  },
-  {
-    species: 'Hupyrian',
-    names: require('./names-hupyrian.json'),
-  },
-  {
-    species: 'Klingon',
-    names: require('./names-klingon.json'),
-  },
-  {
-    species: 'Ktarian',
-    names: require('./names-ktarian.json'),
-  },
-  {
-    species: 'Nausicaan',
-    names: require('./names-nausicaan.json'),
-  },
-  {
-    species: 'Orion',
-    names: require('./names-orion.json'),
-  },
-  {
-    species: 'Pakled',
-    names: require('./names-pakled.json'),
-  },
-  {
-    species: 'Reman',
-    names: require('./names-reman.json'),
-  },
-  {
-    species: 'Romulan',
-    names: require('./names-romulan.json'),
-  },
-  {
-    species: 'Talarian',
-    names: require('./names-talarian.json'),
-  },
-  {
-    species: 'Tellarite',
-    names: require('./names-tellarite.json'),
-  },
-  {
-    species: 'Tholian',
-    names: require('./names-tholian.json'),
-  },
-  {
-    species: 'Tzenkethi',
-    names: require('./names-tzenkethi.json'),
-  },
-  {
-    species: 'Vulcan',
-    names: require('./names-vulcan.json'),
-  },
-  {
-    species: 'Yridian',
-    names: require('./names-yridian.json'),
-  },
+  { species: 'Bynar', names: bynarNames },
+  { species: 'Cardassian', names: cardassianNames },
+  { species: 'Human', names: humanNames },
+  { species: 'Ferengi', names: ferengiNames },
+  { species: 'Hupyrian', names: hupyrianNames },
+  { species: 'Klingon', names: klingonNames },
+  { species: 'Ktarian', names: ktarianNames },
+  { species: 'Nausicaan', names: nausicaanNames },
+  { species: 'Orion', names: orionNames },
+  { species: 'Pakled', names: pakledNames },
+  { species: 'Reman', names: remanNames },
+  { species: 'Romulan', names: romulanNames },
+  { species: 'Talarian', names: talarianNames },
+  { species: 'Tellarite', names: tellariteNames },
+  { species: 'Tholian', names: tholianNames },
+  { species: 'Tzenkethi', names: tzenkethiNames },
+  { species: 'Vulcan', names: vulcanNames },
+  { species: 'Yridian', names: yridianNames },
 ];
 
 export class NameGenerator {
