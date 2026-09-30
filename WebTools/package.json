@@ -79,7 +79,6 @@
     "react-router-dom": "^6.30.6",
     "rehype-external-links": "3.0.0",
     "rehype-raw": "7.0.0",
-    "systemjs": "^0.19.27",
     "three": "^0.180.0",
     "tinycolor2": "^1.6.0",
     "url-parse": "1.5.10",
