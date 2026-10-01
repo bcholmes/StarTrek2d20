@@ -1,3 +1,4 @@
+import { test, expect, describe, it, jest } from '@jest/globals';
 import '../../src/helpers/species';
 import {
   Character,
@@ -663,7 +664,7 @@ describe('character reducer', () => {
         setCharacterAge(makeCharacter().age),
         (c: Character) => c.age,
       ] as any,
-    ])('sets the %s', (_label, action, selector) => {
+    ])('sets the %s', (_label, _action, _selector) => {
       const source = makeCharacter();
       const char = makeCharacter();
       const result = characterReducer(

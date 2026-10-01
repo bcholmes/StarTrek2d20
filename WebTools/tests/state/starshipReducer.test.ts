@@ -1,4 +1,4 @@
-import { test, expect, describe } from '@jest/globals';
+import { test, expect, describe, jest } from '@jest/globals';
 import '../../src/helpers/species';
 import { CharacterType } from '../../src/common/characterType';
 import { SelectedTalent } from '../../src/common/selectedTalent';

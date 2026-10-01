@@ -1,4 +1,4 @@
-import { test, expect, describe, afterEach, jest } from '@jest/globals';
+import { test, expect, describe, afterEach, jest, beforeEach } from '@jest/globals';
 import '../../src/helpers/species';
 import { Roll20VttExporter } from '../../src/vtt/roll20VttExporter';
 import {
