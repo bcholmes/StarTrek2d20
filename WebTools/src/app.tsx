@@ -129,8 +129,6 @@ export class CharacterCreationApp extends React.Component<{}, IAppState> {
         >
           <LcarsFrame
             activePage={this.state.activePage}
-            canGoBack={this.state.pageHistory.length > 0}
-            onBack={() => this.goBack()}
           >
             <div id="app">{page}</div>
           </LcarsFrame>
