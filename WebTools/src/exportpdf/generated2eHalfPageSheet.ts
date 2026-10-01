@@ -22,6 +22,8 @@ import { assembleWritableItems } from './generatedsheet';
 import { SpeciesAbility } from '../helpers/speciesAbility';
 import { TalentWriter } from './talentWriter';
 import type { CharacterType } from '../common/characterType';
+import { SubTitle } from './subTitle';
+import { PageArea } from './pageArea';
 
 export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
   secondBlock: Column = new Column(314, 72, 338 - 72, 552 - 314);
@@ -64,12 +66,12 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
       remainingColumn = newLocation?.column;
     }
 
-    this.writeSubTitle(
-      page,
+    let remainingArea = SubTitle.create(
+      new PageArea(remainingColumn, page),
       i18next.t('Construct.other.attacks'),
-      remainingColumn.topBefore(13),
+      this.headingFont,
     );
-    remainingColumn = remainingColumn.bottomAfter(16);
+    remainingColumn = remainingArea?.column;
 
     remainingColumn = this.writeAttacks(page, character, remainingColumn);
 
@@ -81,12 +83,12 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         remainingColumn = remainingColumn.bottomAfter(16);
       }
 
-      this.writeSubTitle(
-        page,
+      remainingArea = SubTitle.create(
+        new PageArea(remainingColumn, page),
         i18next.t('Construct.other.stress'),
-        remainingColumn.topBefore(13),
+        this.headingFont,
       );
-      remainingColumn = remainingColumn.bottomAfter(16);
+      remainingColumn = remainingArea?.column;
       if (remainingColumn) {
         remainingColumn = this.writeStressBoxes(
           page,
@@ -107,12 +109,12 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
   }
 
   writeStatBoxes(page: PDFPage, column: Column, character: Character) {
-    this.writeSubTitle(
-      page,
+    const remainingArea = SubTitle.create(
+      new PageArea(column, page),
       i18next.t('Construct.other.attributes'),
-      column.topBefore(13),
+      this.headingFont,
     );
-    column = column.bottomAfter(5 + 13);
+    column = remainingArea?.column;
 
     let boxes = new XYLocation(column.start.x, column.start.y);
     const statFrame =
@@ -155,19 +157,20 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
     column = column.bottomAfter(10 + 2 * rowHeight);
     if (character.version > 1) {
-      this.writeSubTitle(
-        page,
+      const remainingArea = SubTitle.create(
+        new PageArea(column, page),
         i18next.t('Construct.other.departments'),
-        column.topBefore(13),
+        this.headingFont,
       );
+      column = remainingArea?.column;
     } else {
-      this.writeSubTitle(
-        page,
+      const remainingArea = SubTitle.create(
+        new PageArea(column, page),
         i18next.t('Construct.other.disciplines'),
-        column.topBefore(13),
+        this.headingFont,
       );
+      column = remainingArea?.column;
     }
-    column = column.bottomAfter(5 + 13);
 
     boxes = new XYLocation(column.start.x, column.start.y);
     [
@@ -343,12 +346,12 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
 
     if (character.version > 1 && items.length > 0) {
       if (items.length === 1 && items[0] instanceof SpeciesAbility) {
-        this.writeSubTitle(
-          page,
+        const remainingArea = SubTitle.create(
+          new PageArea(column, page),
           i18next.t('Construct.other.speciesAbility'),
-          column.topBefore(13),
+          this.headingFont,
         );
-        column = column.bottomAfter(16);
+        column = remainingArea?.column;
         const paragraph = new Paragraph(page, column, this.fonts);
         paragraph.append(
           character.speciesStep.ability.name + ': ',
@@ -361,12 +364,12 @@ export class BasicGeneratedHalfPageCharacterSheet extends BaseNonForm2eSheet {
         );
         paragraph.write();
       } else {
-        this.writeSubTitle(
-          page,
+        const remainingArea = SubTitle.create(
+          new PageArea(column, page),
           i18next.t('Construct.other.specialRules'),
-          column.topBefore(13),
+          this.headingFont,
         );
-        column = column.bottomAfter(16);
+        column = remainingArea?.column;
         new TalentWriter(
           page,
           this.fonts,

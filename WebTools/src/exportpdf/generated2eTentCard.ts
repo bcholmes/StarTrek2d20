@@ -50,6 +50,8 @@ import {
   TALENT_NAME_COLLABORATION,
 } from '../helpers/talents';
 import { TokenHelper } from './tokenHelper';
+import { SubTitle } from './subTitle';
+import { PageArea } from './pageArea';
 
 export class BasicGeneratedTentCardCharacterSheet extends BaseNonForm2eSheet {
   firstBlock: Column = new Column(20.2, 255.2, 165.3, 158.9);
@@ -118,21 +120,21 @@ export class BasicGeneratedTentCardCharacterSheet extends BaseNonForm2eSheet {
   }
 
   writeStatBoxes(page: PDFPage, character: Character) {
-    this.writeSubTitle(
-      page,
+    SubTitle.create(
+      new PageArea(new Column(211.6, 220.4, 13, 241.2), page),
       i18next.t('Construct.other.attributes'),
-      new Column(211.6, 220.4, 13, 241.2),
+      this.headingFont,
     );
-    this.writeSubTitle(
-      page,
+    SubTitle.create(
+      new PageArea(new Column(211.6, 285.7, 13, 241.2), page),
       i18next.t('Construct.other.departments'),
-      new Column(211.6, 285.7, 13, 241.2),
+      this.headingFont,
     );
     if (character.isStressTrackPresent) {
-      this.writeSubTitle(
-        page,
+      SubTitle.create(
+        new PageArea(new Column(211.6, 351.0, 13, 241.2), page),
         i18next.t('Construct.other.stress'),
-        new Column(211.6, 351.0, 13, 241.2),
+        this.headingFont,
       );
       this.writeStressBoxes(
         page,

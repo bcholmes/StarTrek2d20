@@ -25,6 +25,8 @@ import type { CharacterType } from '../common/characterType';
 import { PortraitSheetDecorations } from './portraitSheetDecorations';
 import { TokenHelper } from './tokenHelper';
 import { deriveSheetColour } from './characterColour';
+import { PageArea } from './pageArea';
+import { SubTitle } from './subTitle';
 
 export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
   imageSize = 72 * 1.5;
@@ -93,12 +95,12 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
       remainingColumn = newLocation?.column;
     }
 
-    this.writeSubTitle(
-      page,
+    let remainingArea = SubTitle.create(
+      new PageArea(remainingColumn, page),
       i18next.t('Construct.other.attacks'),
-      remainingColumn.topBefore(13),
+      this.headingFont,
     );
-    remainingColumn = remainingColumn.bottomAfter(16);
+    remainingColumn = remainingArea?.column;
 
     remainingColumn = this.writeAttacks(
       page,
@@ -115,12 +117,12 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
         remainingColumn = remainingColumn.bottomAfter(16);
       }
 
-      this.writeSubTitle(
-        page,
+      remainingArea = SubTitle.create(
+        new PageArea(remainingColumn, page),
         i18next.t('Construct.other.stress'),
-        remainingColumn.topBefore(13),
+        this.headingFont,
       );
-      remainingColumn = remainingColumn.bottomAfter(16);
+      remainingColumn = remainingArea?.column;
       if (remainingColumn) {
         remainingColumn = this.writeStressBoxes(
           page,
@@ -142,10 +144,10 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
       character,
       remainingColumn,
       (page, column, version) => {
-        this.writeSubTitle(
-          page,
+        SubTitle.create(
+          new PageArea(column, page),
           i18next.t('Construct.other.description'),
-          column.topBefore(13),
+          this.headingFont,
         );
       },
     );
@@ -157,12 +159,12 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
   }
 
   writeStatBoxes(page: PDFPage, column: Column, character: Character) {
-    this.writeSubTitle(
-      page,
+    let remainingArea = SubTitle.create(
+      new PageArea(column, page),
       i18next.t('Construct.other.attributes'),
-      column.topBefore(13),
+      this.headingFont,
     );
-    column = column.bottomAfter(5 + 13);
+    column = remainingArea?.column;
 
     let boxes = new XYLocation(column.start.x, column.start.y);
     const statFrame =
@@ -205,19 +207,20 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
 
     column = column.bottomAfter(10 + 2 * rowHeight);
     if (character.version > 1) {
-      this.writeSubTitle(
-        page,
+      const remainingArea = SubTitle.create(
+        new PageArea(column, page),
         i18next.t('Construct.other.departments'),
-        column.topBefore(13),
+        this.headingFont,
       );
+      column = remainingArea?.column;
     } else {
-      this.writeSubTitle(
-        page,
+      const remainingArea = SubTitle.create(
+        new PageArea(column, page),
         i18next.t('Construct.other.disciplines'),
-        column.topBefore(13),
+        this.headingFont,
       );
+      column = remainingArea?.column;
     }
-    column = column.bottomAfter(5 + 13);
 
     boxes = new XYLocation(column.start.x, column.start.y);
     [
@@ -421,12 +424,13 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
 
     if (character.version > 1 && items.length > 0) {
       if (items.length === 1 && items[0] instanceof SpeciesAbility) {
-        this.writeSubTitle(
-          page,
+        const remainingArea = SubTitle.create(
+          new PageArea(column, page),
           i18next.t('Construct.other.speciesAbility'),
-          column.topBefore(13),
+          this.headingFont,
         );
-        column = column.bottomAfter(16);
+        column = remainingArea?.column;
+
         const paragraph = new Paragraph(page, column, this.fonts);
         paragraph.append(
           character.speciesStep.ability.name + ': ',
@@ -439,14 +443,14 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
         );
         paragraph.write();
       } else {
-        this.writeSubTitle(
-          page,
+        const remainingArea = SubTitle.create(
+          new PageArea(column, page),
           character.stereotype === Stereotype.MainCharacter
             ? i18next.t('Construct.other.talents')
             : i18next.t('Construct.other.specialRules'),
-          column.topBefore(13),
+          this.headingFont,
         );
-        column = column.bottomAfter(16);
+        column = remainingArea?.column;
         new TalentWriter(
           page,
           this.fonts,
