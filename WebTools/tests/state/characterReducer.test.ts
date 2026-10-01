@@ -664,7 +664,7 @@ describe('character reducer', () => {
         setCharacterAge(makeCharacter().age),
         (c: Character) => c.age,
       ] as any,
-    ])('sets the %s', (_label, _action, _selector) => {
+    ])('sets the %s', (_label, _done) => {
       const source = makeCharacter();
       const char = makeCharacter();
       const result = characterReducer(
