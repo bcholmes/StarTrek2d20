@@ -14,14 +14,11 @@ import { StationProfileView } from '../station/view/stationProfileView';
 
 interface ILcarsFrameProperties {
   activePage: PageIdentity;
-  canGoBack?: boolean;
-  onBack?: () => void;
   children: React.ReactNode;
 }
 
 export const LcarsFrame: React.FC<ILcarsFrameProperties> = ({
   activePage,
-  onBack,
   children,
 }) => {
   document.title = 'STAR TREK ADVENTURES';

@@ -1,5 +1,10 @@
-import React from 'react';
-import { TextArea } from '../common/textarea';
+import {
+  BoldItalicUnderlineToggles,
+  MDXEditor,
+  UndoRedo,
+  toolbarPlugin,
+} from '@mdxeditor/editor';
+import React, { useState } from 'react';
 
 interface IRichTextEditorProperties {
   initialText?: string;
@@ -12,11 +17,26 @@ export const RichTextEditor: React.FC<IRichTextEditorProperties> = ({
   onChange,
   placeholder,
 }) => {
+  const [text, setText] = useState<string>(initialText ?? '');
+
   return (
-    <TextArea
-      value={initialText}
+    <MDXEditor
+      markdown={text}
+      className="w-100 dark-theme"
+      plugins={[
+        toolbarPlugin({
+          toolbarClassName: 'my-classname',
+          toolbarContents: () => (
+            <>
+              <UndoRedo />
+              <BoldItalicUnderlineToggles />
+            </>
+          ),
+        }),
+      ]}
       placeholder={placeholder}
-      onChange={(e) => onChange(e)}
+      onBlur={(e) => onChange(text.replace(/&#x20;/g, ' '))}
+      onChange={(markdown) => setText(markdown)}
     />
   );
 };
