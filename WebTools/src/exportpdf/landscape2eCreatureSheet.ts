@@ -23,6 +23,7 @@ import { bullet2EWriter } from './bullet2eWriter';
 import { PageArea } from './pageArea';
 import type { CharacterType } from '../common/characterType';
 import type { SpeciesAbilityAndOptions } from './generatedsheet';
+import { SubTitle } from './subTitle';
 
 export class Landscape2eCreatureSheet extends BaseNonForm2eSheet {
   static readonly column3 = new Column(
@@ -76,23 +77,23 @@ export class Landscape2eCreatureSheet extends BaseNonForm2eSheet {
     area = this.writeStatBoxes(area, construct as Creature);
 
     let column = area.areaWithAtLeast(40)?.column;
-    this.writeSubTitle(
-      page,
+    const remainingArea = SubTitle.create(
+      new PageArea(column, page),
       i18next.t('Construct.other.attacks'),
-      column.topBefore(13),
+      this.headingFont,
     );
-    column = column.bottomAfter(5 + 13);
+    column = remainingArea?.column;
     column = this.writeAttacks(page, construct, column);
     column = column.bottomAfter(16);
 
-    column = column.columnWithAtLeast(40, page)?.column;
+    column = column?.columnWithAtLeast(40, page)?.column;
     if (column) {
-      this.writeSubTitle(
-        page,
+      const remainingArea = SubTitle.create(
+        new PageArea(column, page),
         i18next.t('Construct.other.specialRules'),
-        column.topBefore(13),
+        this.headingFont,
       );
-      column = column.bottomAfter(5 + 13);
+      column = remainingArea?.column;
 
       await new TalentWriter(
         page,
@@ -188,12 +189,12 @@ export class Landscape2eCreatureSheet extends BaseNonForm2eSheet {
   }
 
   writeStatBoxes(area: PageArea, creature: Creature) {
-    this.writeSubTitle(
-      area.page,
+    let remainingArea = SubTitle.create(
+      area,
       i18next.t('Construct.other.attributes'),
-      area.column.topBefore(13),
+      this.headingFont,
     );
-    let column = area.bottomAfter(5 + 13).column;
+    let column = remainingArea?.column;
 
     let boxes = new XYLocation(column.start.x, column.start.y);
     const statFrame =
@@ -237,19 +238,20 @@ export class Landscape2eCreatureSheet extends BaseNonForm2eSheet {
 
     column = column.bottomAfter(10 + 2 * rowHeight);
     if (creature.version > 1) {
-      this.writeSubTitle(
-        area.page,
+      let remainingArea = SubTitle.create(
+        new PageArea(column, area.page),
         i18next.t('Construct.other.departments'),
-        column.topBefore(13),
+        this.headingFont,
       );
+      column = remainingArea?.column;
     } else {
-      this.writeSubTitle(
-        area.page,
+      let remainingArea = SubTitle.create(
+        new PageArea(column, area.page),
         i18next.t('Construct.other.disciplines'),
-        column.topBefore(13),
+        this.headingFont,
       );
+      column = remainingArea?.column;
     }
-    column = column.bottomAfter(5 + 13);
 
     boxes = new XYLocation(column.start.x, column.start.y);
     [
