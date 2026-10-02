@@ -159,7 +159,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
   }
 
   writeStatBoxes(page: PDFPage, column: Column, character: Character) {
-    let remainingArea = SubTitle.create(
+    const remainingArea = SubTitle.create(
       new PageArea(column, page),
       i18next.t('Construct.other.attributes'),
       this.headingFont,

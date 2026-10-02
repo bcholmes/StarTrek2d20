@@ -189,7 +189,7 @@ export class Landscape2eCreatureSheet extends BaseNonForm2eSheet {
   }
 
   writeStatBoxes(area: PageArea, creature: Creature) {
-    let remainingArea = SubTitle.create(
+    const remainingArea = SubTitle.create(
       area,
       i18next.t('Construct.other.attributes'),
       this.headingFont,
@@ -238,14 +238,14 @@ export class Landscape2eCreatureSheet extends BaseNonForm2eSheet {
 
     column = column.bottomAfter(10 + 2 * rowHeight);
     if (creature.version > 1) {
-      let remainingArea = SubTitle.create(
+      const remainingArea = SubTitle.create(
         new PageArea(column, area.page),
         i18next.t('Construct.other.departments'),
         this.headingFont,
       );
       column = remainingArea?.column;
     } else {
-      let remainingArea = SubTitle.create(
+      const remainingArea = SubTitle.create(
         new PageArea(column, area.page),
         i18next.t('Construct.other.disciplines'),
         this.headingFont,

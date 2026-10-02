@@ -1,6 +1,6 @@
-import { PDFFont } from '@cantoo/pdf-lib';
+import type { PDFFont } from '@cantoo/pdf-lib';
 import { FontSpecification } from './fontSpecification';
-import { PageArea } from './pageArea';
+import type { PageArea } from './pageArea';
 import { TextBlock } from './textBlock';
 import { SimpleColor } from '../common/colour';
 import { greyColour2e } from './colourProvider2e';
