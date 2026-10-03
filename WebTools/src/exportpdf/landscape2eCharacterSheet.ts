@@ -108,6 +108,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
 
   async fixedTextColumns(additionalPages: PDFPage[], pdf: PDFDocument) {
     const logColumns = [];
+    let secondPageStartColumn = undefined;
     for (let i = additionalPages.length - 1; i >= 0; i--) {
       const page =
         i === additionalPages.length - 1 ? undefined : additionalPages[i + 1];
@@ -134,16 +135,12 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
         page2Column3,
         page2Column4,
       );
+      secondPageStartColumn = page2Column1;
     }
-
-    const page2Column4 = new Column(565.8, 72.6, 479.3, 158.1);
-    const page2Column3 = new Column(396.1, 72.6, 479.3, 158.1, page2Column4);
-    const page2Column2 = new Column(226.5, 72.6, 479.3, 158.1, page2Column3);
-    const page2Column1 = new Column(55.6, 72.6, 479.3, 158.1, page2Column2);
 
     const talentsColumn3 = new Column(390.6, 361, 200, 162, () => {
       const page = pdf.addPage(additionalPages[0]);
-      return new PageArea(page2Column1, page);
+      return new PageArea(secondPageStartColumn, page);
     });
     const talentsColumn2 = new Column(221.7, 361, 200, 162, talentsColumn3);
     const talentsColumn1 = new Column(51.5, 361, 200, 162, talentsColumn2);

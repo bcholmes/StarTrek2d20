@@ -18,6 +18,10 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       onClose={() => onClose()}
       header="What's New?"
     >
+      <b>v1.261002</b>
+      <ul>
+        <li>Minor PDF changes.</li>
+      </ul>
       <b>v1.260930</b>
       <ul>
         <li>
@@ -261,20 +265,6 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       <b>v1.260410</b>
       <ul>
         <li>Tweaks to the handling of custom spaceframes.</li>
-      </ul>
-      <b>v1.260331</b>
-      <ul>
-        <li>Additional minor improvements.</li>
-      </ul>
-      <b>v1.260327</b>
-      <ul>
-        <li>
-          Minor improvements. Prep for the new <cite>Species</cite> book.
-        </li>
-      </ul>
-      <b>v1.260320</b>
-      <ul>
-        <li>Additional bug fixes.</li>
       </ul>
 
       <div className="text-center">
