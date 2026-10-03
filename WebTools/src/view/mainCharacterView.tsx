@@ -346,7 +346,7 @@ export const MainCharacterView: React.FC<ICharacterViewProperties> = ({
     const hash = cyrb53(originalEncodedSheet());
     character.token = undefined;
     store.dispatch(saveCharacterToLocalStorage(character, hash));
-    const value = marshaller.encodeMainCharacter(character);
+    const value = marshaller.encodeCharacter(character);
     navigate('/view?s=' + value, { replace: true });
 
     Dialog.show(t('ViewPage.urlChanged'));

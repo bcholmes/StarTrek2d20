@@ -19,6 +19,10 @@ import Button from 'react-bootstrap/Button';
 import { cyrb53 } from '../common/cyrb53';
 import { originalEncodedSheet } from './originalEncodedSheet';
 import { STAMarkdown } from '../components/staMarkdown';
+import { Dialog } from '../components/dialog';
+import { saveCharacterToLocalStorage } from '../state/savedConstructActions';
+import { marshaller } from '../helpers/marshaller';
+import { CharacterTokenImage } from './characterTokenImage';
 
 export const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({
   character,
@@ -40,6 +44,16 @@ export const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({
   const { t } = useTranslation();
   const [loadingExport, setLoadingExport] = useState(false);
   const navigate = useNavigate();
+
+  function deleteToken() {
+    const hash = cyrb53(originalEncodedSheet());
+    character.token = undefined;
+    store.dispatch(saveCharacterToLocalStorage(character, hash));
+    const value = marshaller.encodeCharacter(character);
+    navigate('/view?s=' + value, { replace: true });
+
+    Dialog.show(t('ViewPage.urlChanged'));
+  }
 
   function renderTopFields() {
     return (
@@ -144,6 +158,14 @@ export const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({
       <div className="row">
         <div className="col-xl-6 mt-4">
           <CharacterStatBlock character={character} />
+
+          <div className="my-4">
+            <CharacterTokenImage
+              character={character}
+              marshalledCharacter={originalEncodedSheet()}
+              onDeleteToken={deleteToken}
+            />
+          </div>
 
           <SpeciesAbilityBlockView character={character} />
           <TalentsBlockView construct={character} />

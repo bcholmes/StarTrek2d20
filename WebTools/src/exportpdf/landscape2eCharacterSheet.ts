@@ -158,6 +158,11 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
     ).then((res) => res.arrayBuffer());
     const blankPdf = await PDFDocument.load(pdfBytes);
 
+    const pdfBytes2 = await fetch(
+      '/static/pdf/STA_2e_Landscape_Sheet_blank2.pdf',
+    ).then((res) => res.arrayBuffer());
+    const blankPdf2 = await PDFDocument.load(pdfBytes2);
+
     const character = construct as Character;
     const extraPages = [];
     for (
@@ -166,7 +171,7 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
       i++
     ) {
       // making an assumption here that we can write at least 4 improvements per page
-      const [p] = await pdf.copyPages(blankPdf, [0]);
+      const [p] = await pdf.copyPages(i % 2 === 0 ? blankPdf2 : blankPdf, [0]);
       extraPages.push(p);
     }
 
