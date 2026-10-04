@@ -1730,6 +1730,8 @@ export enum PersonalWeaponType {
   NeuralTruncheon,
   CryogenicGrenade,
   TanQalanqSword,
+  HirogenKukri,
+  TetryonRifle,
 }
 
 export class PersonalWeapons {
@@ -1884,6 +1886,33 @@ export class PersonalWeapons {
       WeaponType.MELEE,
       1,
       PersonalWeaponType.UshaanTor,
+    );
+  }
+
+  get hirogenKukri() {
+    return Weapon.createCharacterWeapon(
+      i18next.t('Weapon.personal.hirogenKukri.name'),
+      InjuryType.Deadly,
+      3,
+      [],
+      [],
+      WeaponType.MELEE,
+      1,
+      PersonalWeaponType.HirogenKukri,
+    );
+  }
+
+  get tetryonRifle() {
+    return Weapon.createCharacterWeapon(
+      i18next.t('Weapon.personal.tetryonRifle.name'),
+      InjuryType.Deadly,
+      5,
+      [],
+      [new WeaponQuality(Quality.Intense)],
+      WeaponType.ENERGY,
+      2,
+      PersonalWeaponType.TetryonRifle,
+      1,
     );
   }
 
@@ -2167,6 +2196,10 @@ export class PersonalWeapons {
         return this.cryogenicGrenade;
       case PersonalWeaponType.TanQalanqSword:
         return this.tanQalanqSword;
+      case PersonalWeaponType.HirogenKukri:
+        return this.hirogenKukri;
+      case PersonalWeaponType.TetryonRifle:
+        return this.tetryonRifle;
       default:
         return undefined;
     }

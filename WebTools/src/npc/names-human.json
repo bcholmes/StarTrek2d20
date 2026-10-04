@@ -108029,10 +108029,19 @@
     },
     {
         "name": "Rebecca",
+        "variants": [
+            "Becky",
+            "Bekka",
+            "Becka",
+            "Becca",
+            "Bex",
+            "Reba"
+        ],
         "gender": "Female",
         "type": "FirstName",
         "tags": [
-            "Italian"
+            "Italian",
+            "Common"
         ]
     },
     {

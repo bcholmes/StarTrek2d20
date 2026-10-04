@@ -45,6 +45,7 @@ export enum Specialization {
   TzenkethiSoldier,
   TholianWarrior,
   TholianEnforcer,
+  HirogenHunter,
 
   BreenThot,
   BreenWarrior,

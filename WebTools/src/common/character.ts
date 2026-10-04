@@ -1443,6 +1443,11 @@ export class Character extends Construct implements IWeaponDiceProvider {
       ) {
         result.push(PersonalWeapons.instance(this.version).tanQalanqSword);
       } else if (
+        this.npcGenerationStep?.specialization === Specialization.HirogenHunter
+      ) {
+        result.push(PersonalWeapons.instance(this.version).hirogenKukri);
+        result.push(PersonalWeapons.instance(this.version).tetryonRifle);
+      } else if (
         this.npcGenerationStep?.specialization ===
           Specialization.RomulanCenturion ||
         this.npcGenerationStep?.specialization ===
@@ -1614,6 +1619,9 @@ export class Character extends Construct implements IWeaponDiceProvider {
       result += 2;
     }
     if (this.hasTalent('Carnivorous Reptilian Physiology')) {
+      result += 2;
+    }
+    if (this.hasTalent('Tools of the Hunt (Hirogen Talent)')) {
       result += 2;
     }
     if (this.hasTalent(TALENT_NAME_NATURAL_PROTECTION_X)) {

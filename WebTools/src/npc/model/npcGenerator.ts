@@ -1077,6 +1077,8 @@ export class NpcGenerator {
             ),
             'Breen Confederacy',
           );
+        } else if (specialization.id === Specialization.HirogenHunter) {
+          character.type = CharacterType.Civilian;
         }
         break;
       case NpcCharacterType.Civilian:

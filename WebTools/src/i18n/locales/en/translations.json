@@ -2720,6 +2720,10 @@
     "Species.grazerite.traitDescription2e": "See pg. 48 the _Species Sourcebook_",
     "Species.grazerite.description2e": "The Grazerite are a peaceful people whose homeworld, Grazer, is one of the harsher examples of the far ends of the Class-M classification. The three main continents are predominately covered by extensive mountain ranges that reach as far as 10 kilometers above sea level. The Grazerites’ evolutionary development has incorporated not only traditional humanoid traits—but also those of Bovidae—giving them goatlike physical features. Grazerites are a peaceful people with a natural sense of curiosity. Grazerites have a deep dislike of conflict and actively avoid it if possible. Grazerite officers in Starfleet pursue careers in most fields—but it is nearly unheard of to see them serving as tactical or security officers. In Grazerite society, it is considered impolite (bordering on indecent) to leave one’s horns and hands uncovered, and thus Grazerites are usually seen with gloves and a headwrap.",
 
+    "Species.hirogen.name": "Hirogen",
+    "Species.hirogen.description": "Once, long ago, the Hirogen’s grand empire stretched across a massive expanse of space, maintained by their advanced technology and relentless will for conquest. A hundred, thousand years ago, their territory covered much of the Delta Quadrant and wrapped around the galactic core as far as the Alpha Quadrant. Few signs of this empire are left, with the most noteworthy being their communications relay network. Since their apex, Hirogen society has almost entirely collapsed, with the populace scattering across the Quadrant in nomadic packs. \n\nThe Hirogen have lost their ability to innovate or create and can barely even maintain their more advanced technology. What remains of Hirogen society is entirely centered around hunting: the pursuit of worthy prey and the challenge of claiming a trophy. The more unusual the relic of the hunt, the more status awarded the hunter. Their social structure was organized into packs of male hunters led by the Alpha, who was the strongest hunter. The second-in-command of a pack was the Beta, who became the Alpha if the first Alpha died. There are numerous rituals and ceremonies related to the hunt, including applying paint to faces and helmets, and studying one’s prey to understand their capabilities. Even choosing a weapon is given ceremonial importance, with each hunt requiring the proper arsenal.\n\nAll Hirogen hunters wear ceremonial armour, which protects them from small arms and wards against rapid changes in pressure. The armour has a removable helmet and optional face mask that can filter out dust or provide as secondary air source.",
+    "Species.hirogen.traitDescription": "Most Hirogen are larger than humans, being comparable in height to Klingons and Jem’Hadar, and possess physical strength comparable to the latter. Their immune system is heightened, and neutralizes foreign pathogens and chemicals, rendering most sedatives ineffective. Their biochemistry has been altered to aid in hunting, and Hirogen have excellent vision and emit no scent that would alert their prey. Most Hirogen lack basic empathy, seeing other intelligent and self-aware beings as potential prey.",
+
     "Species.hologram.name": "Hologram",
     "Species.hologram.soloDescription": "Holograms can be programmed to any specification, though the nature of their holomatrix means that they are essentially impervious to direct physical harm – they can allow energy and objects to pass through them at will. However, they are unable to go anywhere that lacks holographic emitters that can project their image and forcefields, and those emitters can be damaged even if the holograms themselves cannot. Holograms also tend not to receive much respect or consideration from flesh- and-blood people, who may see them as tools at best or annoyances at worst. While the majority of holograms are no more sentient than a character in a holo-novel, under the right circumstances, they can become self-aware and deserve the same rights as any biological sentient life-form. Holograms may also have a second species trait, reflecting the species they were designed to emulate.",
     "Species.hologram.traitDescription2e": "See pg. 50 the _Species Sourcebook_",
@@ -4572,9 +4576,13 @@
 
     "Talent.hunkerDown.description2e": "Making good use of your surroundings for protection is one of the hallmarks of a skilled soldier. Whenever you take cover, you may count the Potency of any location trait that represents that cover by +1.",
 
-    "Talent.huntersSenses": "Hunder's Senses",
+    "Talent.huntersSenses": "Hunter's Senses",
 
     "Talent.huntersSenses.description2e": "See pg. 103 of the _Species Sourcebook_",
+
+    "Talent.huntersSkillHirogentTalent": "Hunter's Skill",
+
+    "Talent.huntersSkillHirogentTalent.description": "You are dangerous predator, focused on taking down your target. Once per mission, as a Minor Action you can study a target and designate it to be your prey. Whenever you attempt a Task to track your prey may re-roll one d20. Additionally, the first time you attack your prey, you may re-roll any number of d20s. However, you are driven to bring the hunt to completion and increase the difficulty of non-lethal attacks you make against your prey by 1.",
 
     "Talent.hyperAgile": "Hyper-Agile",
 
@@ -5575,6 +5583,10 @@
 
     "Talent.specializedShuttlebay.description": "_Akira_-class vessels are built with a shuttlebay running the length of the saucer section, allowing small craft to depart from the prow and return safely via the aft. Any friendly small craft within Close range may count the ship as providing Cover (+1 Difficulty on attacks targeting them). Any small craft launching from the bay may take one additional helm minor action at no additional cost after they launch.",
 
+    "Talent.specialtyGoodsSpecialRule": "Specialty Goods",
+
+    "Talent.specialtyGoodsSpecialRule.description": "See pg. 68 of the _Allies and Adversaries_ book.",
+
     "Talent.spikedTail": "Spiked Tail",
 
     "Talent.spikedTail.description2e": "The creature has a spiked tail that can be used for damaging attacks.",
@@ -5835,6 +5847,10 @@
 
     "Talent.toBattle.description2e": "See pg. 65 of the _Species Sourcebook_",
 
+    "Talent.toolsOfTheHuntHirogenTalent": "Tools of the Hunt",
+
+    "Talent.toolsOfTheHuntHirogenTalent.description": "You keep the ritual equipment of a Hirogen hunter close at hand. This includes the armoured pressure suit of the Hirogen. This armour grants 2[D] of Resistance and confers the Trait: Environment Suit. You also own a scythe-like bladed weapon known as a talon, used to prolong the kill of a captured or cornered prey. The talon is a melee weapon with the following profile: Melee, 1[D], Vicious 1, Size 1 H, and the Debilitating Quality.",
+
     "Talent.toolUser": "Tool User",
 
     "Talent.toolUser.description2e": "While not sentient or self-aware, these creatures have a nervous system advanced enough to be able to manipulate the environment somehow in their favor. These creatures can be taught how to use simple devices or tools, or perhaps can learn through observation.",
@@ -5871,6 +5887,10 @@
     "Talent.tracker": "Tracker",
 
     "Talent.tracker.description": "You can follow even the faintest of tracks. When you attempt a task to track animals, people, or ground vehicles, the first d20 you buy is free. If the tracking was done as part of an extended task then the roll gains Progression 1.",
+
+    "Talent.tradeSpecialRule": "Trade",
+
+    "Talent.tradeSpecialRule.description": "See pg. 68 of the _Allies and Adversaries_ book.",
 
     "Talent.transformativeTreatments": "Transformative Treatments",
 
@@ -6199,6 +6219,10 @@
     "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Son'a Plasma Disruptor Shotgun",
 
     "Weapon.personal.tanQalanqSword.name": "Tan Qalanq Sword",
+
+    "Weapon.personal.hirogenKukri.name": "Hirogen Kukri",
+
+    "Weapon.personal.tetryonRifle.name": "Tetryon Rifle",
 
     "Weapon.personal.tzenkethiHeavyBlade.name": "Tzenkethi Grade-AA Heavy Blade",
 

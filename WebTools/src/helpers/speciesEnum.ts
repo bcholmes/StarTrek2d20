@@ -128,6 +128,7 @@ export enum Species {
   Illyrian,
   Kazon,
   Suliban,
+  Hirogen,
 
   // Animated Series
   Aquan,

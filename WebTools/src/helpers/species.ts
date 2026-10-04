@@ -4184,6 +4184,28 @@ class SpeciesRepository {
         },
       ],
     ),
+    [Species.Hirogen]: new SpeciesModel(
+      Species.Hirogen,
+      'Hirogen',
+      [Era.NextGeneration, Era.PicardProdigy, Era.Discovery32],
+      [Source.CaptainsLog],
+      [],
+      [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
+      'Hirogen',
+      '',
+      ['If You Are Not the Hunter, You Are the Prey'],
+      [
+        TalentsHelper.getTalent("Hunter's Skill (Hirogen Talent)"),
+        TalentsHelper.getTalent('Tools of the Hunt (Hirogen Talent)'),
+      ],
+      '',
+      [
+        {
+          type: 'Examples',
+          suggestions: 'Donik, Idrin, Karr, Turanj',
+        },
+      ],
+    ),
 
     //[Species.Romulan]: new SpeciesModel(
     //    "",

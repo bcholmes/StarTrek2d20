@@ -2899,6 +2899,39 @@ export class Specializations {
         1,
         [Species.Borg],
       ),
+      new SpecializationModel(
+        Specialization.HirogenHunter,
+        NpcCharacterType.MinorPolity,
+        'Hirogen Hunter',
+        [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
+        Department.Security,
+        [
+          'Tracking',
+          'Hand-to-Hand Combat',
+          'Marksmanship',
+          'Xenobiology',
+          'Animal Behaviour',
+        ],
+        [
+          'Survival',
+          'Starship Tactics',
+          'Concealment',
+          'Trophies',
+          'Traps and Snares',
+        ],
+        [
+          'Hunt all threats against the Hirogen',
+          'Patience is the knife that cuts deepest',
+          'A good death, a good hunt. This is life.',
+          'If You Are Not the Hunter, You Are the Prey',
+          'The way a creature behaves when it is wounded is the key to its destruction',
+          'You and your crew would have made worthy prey,',
+          'Never let your prey control the hunt',
+          'Capable prey make the hunt more challenging',
+        ],
+        1,
+        [Species.Hirogen],
+      ),
     ];
   }
 

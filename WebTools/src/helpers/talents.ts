@@ -9157,6 +9157,70 @@ export class Talents {
       true,
     ),
     new TalentModel(
+      'Specialty Goods (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(
+            Specialization.IndependentTraderCaptain,
+            Specialization.SketchyTraderCaptain,
+            Specialization.FerengiDaiMon,
+            Specialization.FerengiMerchant,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Trade (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(
+            Specialization.IndependentTraderCaptain,
+            Specialization.SketchyTraderCaptain,
+            Specialization.FerengiDaiMon,
+            Specialization.FerengiMerchant,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      "Hunter's Skill (Hirogen Talent)",
+      '',
+      [
+        new SpeciesPrerequisite(Species.Hirogen, true),
+        new SourcePrerequisite(Source.ContinuingMissions),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.Species, Species.Hirogen),
+      true,
+    ),
+    new TalentModel(
+      'Tools of the Hunt (Hirogen Talent)',
+      '',
+      [
+        new SpeciesPrerequisite(Species.Hirogen, true),
+        new SourcePrerequisite(Source.ContinuingMissions),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.Species, Species.Hirogen),
+      true,
+    ),
+    new TalentModel(
       'Ambush Hunter',
       '',
       [new CreaturePrerequisite(), new Version2Prerequisite()],
