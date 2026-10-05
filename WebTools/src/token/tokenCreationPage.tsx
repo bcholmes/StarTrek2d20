@@ -194,7 +194,7 @@ const TokenCreationPageBase: React.FC<ITokenCreationPageProperties> = ({
   const returnToViewPage = () => {
     const json = marshaller.decode(marshalledCharacter);
     const c = marshaller.decodeCharacter(json);
-    c.token = new TokenConfig(token, rounded, bordered);
+    c.image = new TokenConfig(token, rounded, bordered);
     store.dispatch(saveCharacterToLocalStorage(c, replacementHash));
     const value = marshaller.encodeCharacter(c);
     navigate('/view?s=' + value);

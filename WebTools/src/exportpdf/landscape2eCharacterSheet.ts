@@ -13,6 +13,7 @@ import {
   Character,
   Division,
   Promotion,
+  TokenConfig,
 } from '../common/character';
 import type {
   CharacterAdvancementStep,
@@ -211,8 +212,8 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   }
 
   async fillCharacterImage(pdf: PDFDocument, character: Character) {
-    if (character.token) {
-      const tokenBytes = await TokenHelper.renderToken(character.token);
+    if (character.image && character.image instanceof TokenConfig) {
+      const tokenBytes = await TokenHelper.renderToken(character.image);
       const image = await pdf.embedPng(tokenBytes);
       try {
         pdf.getForm().getButton('Image35_af_image').setImage(image);

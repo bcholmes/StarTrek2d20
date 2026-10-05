@@ -6,7 +6,7 @@ import type { PDFForm, PDFPage } from '@cantoo/pdf-lib';
 import { PDFDocument, PDFTextField } from '@cantoo/pdf-lib';
 import { SimpleColor } from '../common/colour';
 import type { Construct } from '../common/construct';
-import { Character } from '../common/character';
+import { Character, TokenConfig } from '../common/character';
 import { TextAlign } from './textAlign';
 import { staTextFieldAppearanceProvider } from '../helpers/pdfTextFieldAppearance';
 import { XYLocation } from '../common/xyLocation';
@@ -110,8 +110,8 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
   }
 
   async fillCharacterImage(pdf: PDFDocument, character: Character) {
-    if (character.token) {
-      const tokenBytes = await TokenHelper.renderToken(character.token);
+    if (character.image && character.image instanceof TokenConfig) {
+      const tokenBytes = await TokenHelper.renderToken(character.image);
       const image = await pdf.embedPng(tokenBytes);
       try {
         pdf.getForm().getButton('Image2_af_image').setImage(image);

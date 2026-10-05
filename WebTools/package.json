@@ -68,6 +68,7 @@
     "js-base64": "3.7.2",
     "loader-utils": "^2.0.4",
     "pako": "2.0.4",
+    "pica": "10.0.3",
     "react": "^19.3.0",
     "react-bootstrap": "2.10.10",
     "react-dom": "^19.3.0",

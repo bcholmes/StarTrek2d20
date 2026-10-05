@@ -20,6 +20,7 @@ import {
   OtherDetails,
   ReputationChangeStep,
   TokenConfig,
+  ImageConfig,
 } from '../common/character';
 import { CharacterType, CharacterTypeModel } from '../common/characterType';
 import type { Construct } from '../common/construct';
@@ -522,15 +523,20 @@ class Marshaller {
 
     sheet['improvements'] = this.encodeImprovements(character);
 
-    if (character.token) {
-      sheet['token'] = this.encodeToken(character.token);
+    if (character.image) {
+      sheet['image'] = this.encodeToken(character.image);
     }
     return sheet;
   }
 
-  encodeToken(tokenConfig: TokenConfig) {
-    if (tokenConfig?.token) {
+  encodeToken(tokenConfig: TokenConfig | ImageConfig) {
+    if (
+      tokenConfig &&
+      tokenConfig instanceof TokenConfig &&
+      tokenConfig?.token
+    ) {
       const token = {
+        imageType: 'token',
         primarySpecies: Species[tokenConfig.token.primarySpecies],
         speciesOption: SpeciesOption[tokenConfig.token.speciesOption],
         uniformEra: UniformEra[tokenConfig.token.uniformEra],
@@ -570,83 +576,93 @@ class Marshaller {
         rounded: tokenConfig.rounded ?? false,
         bordered: tokenConfig.bordered ?? false,
       };
+    } else if (tokenConfig && tokenConfig instanceof ImageConfig) {
+      return {
+        imageType: 'image',
+        type: tokenConfig.type,
+        contents: tokenConfig.contents,
+      };
     } else {
       return undefined;
     }
   }
 
   decodeToken(json: any) {
-    const tokenJson = json['token'];
-    const token = TokenModel.createDefault();
-    token.primarySpecies = SpeciesHelper.getSpeciesTypeByName(
-      tokenJson['primarySpecies'],
-    );
-    if (json['secondarySpecies'] != null) {
-      token.secondarySpecies = SpeciesHelper.getSpeciesTypeByName(
-        tokenJson['secondarySpecies'],
+    if (json.imageType === 'image') {
+      return new ImageConfig(json['type'], json['contents']);
+    } else {
+      const tokenJson = json['token'];
+      const token = TokenModel.createDefault();
+      token.primarySpecies = SpeciesHelper.getSpeciesTypeByName(
+        tokenJson['primarySpecies'],
+      );
+      if (json['secondarySpecies'] != null) {
+        token.secondarySpecies = SpeciesHelper.getSpeciesTypeByName(
+          tokenJson['secondarySpecies'],
+        );
+      }
+      token.speciesOption = allSpeciesOptions().filter(
+        (s) => SpeciesOption[s] === tokenJson['speciesOption'],
+      )[0];
+      token.skinColor = tokenJson['skinColor'];
+      token.headType = allHeadTypes().filter(
+        (t) => HeadType[t] === tokenJson['headType'],
+      )[0];
+      token.hairType = allHairTypes().filter(
+        (t) => HairType[t] === tokenJson['hairType'],
+      )[0];
+      token.hairColor = tokenJson['hairColor'];
+      token.noseType = allNoseTypes().filter(
+        (t) => NoseType[t] === tokenJson['noseType'],
+      )[0];
+      token.nasoLabialFold = allNasoLabialFoldTypes().filter(
+        (t) => NasoLabialFoldType[t] === tokenJson['nasoLabialFold'],
+      )[0];
+      token.bodyType = allBodyTypes().filter(
+        (t) => BodyType[t] === tokenJson['bodyType'],
+      )[0];
+
+      token.eyeType = allEyeTypes().filter(
+        (t) => EyeType[t] === tokenJson['eyeType'],
+      )[0];
+      token.eyeColor = tokenJson['eyeColor'];
+
+      token.mouthType = allMouthTypes().filter(
+        (t) => MouthType[t] === tokenJson['mouthType'],
+      )[0];
+      token.lipstickColor = tokenJson['lipstickColor'];
+
+      token.uniformEra = allUniformEras().filter(
+        (u) => UniformEra[u] === tokenJson['uniformEra'],
+      )[0];
+      token.variant = allUniformVariantTypes().filter(
+        (u) => UniformVariantType[u] === tokenJson['uniformVariant'],
+      )[0];
+      if (tokenJson['divisionColor'] != null) {
+        token.divisionColor = tokenJson['divisionColor'];
+      }
+      if (tokenJson['rankIndicator'] != null) {
+        token.rankIndicator = RanksHelper.instance().getRankByRankName(
+          tokenJson['rankIndicator'],
+        );
+      }
+      if (tokenJson['facialHairType']?.length) {
+        token.facialHairType = allFacialHairTypes().filter((t) =>
+          tokenJson['facialHairType'].includes(FacialHairType[t]),
+        );
+      }
+      if (tokenJson['extras']?.length) {
+        token.extras = allExtraTypes().filter((t) =>
+          tokenJson['extras'].includes(ExtraType[t]),
+        );
+      }
+
+      return new TokenConfig(
+        token,
+        json['rounded'] === true,
+        json['bordered'] === true,
       );
     }
-    token.speciesOption = allSpeciesOptions().filter(
-      (s) => SpeciesOption[s] === tokenJson['speciesOption'],
-    )[0];
-    token.skinColor = tokenJson['skinColor'];
-    token.headType = allHeadTypes().filter(
-      (t) => HeadType[t] === tokenJson['headType'],
-    )[0];
-    token.hairType = allHairTypes().filter(
-      (t) => HairType[t] === tokenJson['hairType'],
-    )[0];
-    token.hairColor = tokenJson['hairColor'];
-    token.noseType = allNoseTypes().filter(
-      (t) => NoseType[t] === tokenJson['noseType'],
-    )[0];
-    token.nasoLabialFold = allNasoLabialFoldTypes().filter(
-      (t) => NasoLabialFoldType[t] === tokenJson['nasoLabialFold'],
-    )[0];
-    token.bodyType = allBodyTypes().filter(
-      (t) => BodyType[t] === tokenJson['bodyType'],
-    )[0];
-
-    token.eyeType = allEyeTypes().filter(
-      (t) => EyeType[t] === tokenJson['eyeType'],
-    )[0];
-    token.eyeColor = tokenJson['eyeColor'];
-
-    token.mouthType = allMouthTypes().filter(
-      (t) => MouthType[t] === tokenJson['mouthType'],
-    )[0];
-    token.lipstickColor = tokenJson['lipstickColor'];
-
-    token.uniformEra = allUniformEras().filter(
-      (u) => UniformEra[u] === tokenJson['uniformEra'],
-    )[0];
-    token.variant = allUniformVariantTypes().filter(
-      (u) => UniformVariantType[u] === tokenJson['uniformVariant'],
-    )[0];
-    if (tokenJson['divisionColor'] != null) {
-      token.divisionColor = tokenJson['divisionColor'];
-    }
-    if (tokenJson['rankIndicator'] != null) {
-      token.rankIndicator = RanksHelper.instance().getRankByRankName(
-        tokenJson['rankIndicator'],
-      );
-    }
-    if (tokenJson['facialHairType']?.length) {
-      token.facialHairType = allFacialHairTypes().filter((t) =>
-        tokenJson['facialHairType'].includes(FacialHairType[t]),
-      );
-    }
-    if (tokenJson['extras']?.length) {
-      token.extras = allExtraTypes().filter((t) =>
-        tokenJson['extras'].includes(ExtraType[t]),
-      );
-    }
-
-    return new TokenConfig(
-      token,
-      json['rounded'] === true,
-      json['bordered'] === true,
-    );
   }
 
   encodeStarshipImprovements(starship: Starship) {
@@ -1069,7 +1085,7 @@ class Marshaller {
     }
 
     sheet['improvements'] = this.encodeImprovements(character);
-    sheet['token'] = this.encodeToken(character.token);
+    sheet['image'] = this.encodeToken(character.image);
 
     return sheet;
   }
@@ -2582,8 +2598,10 @@ class Marshaller {
       result.description = json.description;
     }
 
-    if (json.token) {
-      result.token = this.decodeToken(json.token);
+    if (json.image) {
+      result.image = this.decodeToken(json.image);
+    } else if (json.token) {
+      result.image = this.decodeToken(json.token);
     }
 
     return result;

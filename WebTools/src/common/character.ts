@@ -55,6 +55,7 @@ import {
 } from './characterAssembly';
 import type { TokenModel } from '../token/model/tokenModel';
 import { isKlingonWarriorType } from '../helpers/klingonWarrior';
+import { Buffer } from 'buffer';
 
 export enum Division {
   Command,
@@ -537,6 +538,28 @@ export class TokenConfig {
   }
 }
 
+export class ImageConfig {
+  readonly type: string;
+  readonly contents: string;
+
+  constructor(type: string, contents: string) {
+    this.type = type;
+    this.contents = contents;
+  }
+
+  get imageBytes() {
+    return Uint8Array.from(Buffer.from(this.contents, 'base64'));
+  }
+
+  get dataUrl() {
+    return 'data:' + this.type + ';base64,' + this.contents;
+  }
+
+  copy() {
+    return new ImageConfig(this.type, this.contents);
+  }
+}
+
 export class Character extends Construct implements IWeaponDiceProvider {
   public static ABSOLUTE_MAX_ATTRIBUTE = 12;
   public static ABSOLUTE_MAX_DEPARTMENT = 5;
@@ -578,7 +601,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
 
   public description?: string;
   public legacyMode: boolean;
-  public token?: TokenConfig;
+  public image?: TokenConfig | ImageConfig;
 
   constructor() {
     super(Stereotype.MainCharacter);
@@ -2256,7 +2279,7 @@ export class Character extends Construct implements IWeaponDiceProvider {
     character.era = this.era;
     character.pastime = this.pastime == null ? [] : [...this.pastime];
     character.description = this.description;
-    character.token = this.token?.copy();
+    character.image = this.image?.copy();
     return character;
   }
 

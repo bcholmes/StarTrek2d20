@@ -329,7 +329,7 @@ html {
     width: 100%;
 }
 
-input {
+input:not([type=file]) {
     width: 300px;
     color: white !important;
     background-color: transparent;

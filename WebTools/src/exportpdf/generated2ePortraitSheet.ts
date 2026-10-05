@@ -6,7 +6,7 @@ import i18next from 'i18next';
 import { makeKey } from '../common/translationKey';
 import { Attribute } from '../helpers/attributes';
 import { Department } from '../helpers/department';
-import type { Character } from '../common/character';
+import { ImageConfig, TokenConfig, type Character } from '../common/character';
 import { Paragraph } from './paragraph';
 import { FontSpecification } from './fontSpecification';
 import { Stereotype, type Construct } from '../common/construct';
@@ -75,7 +75,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
     new PortraitSheetDecorations().drawSheetDecorations(page, colour);
     this.writeCharacterName(page, character, colour);
 
-    const firstColumn = character.token
+    const firstColumn = character.image
       ? this.mainBlockWithToken
       : this.mainBlock;
     const bottom = this.writeCharacterDetails(
@@ -153,7 +153,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
     );
     this.writeSpeciesAbility(page, character, remainingColumn, colour);
 
-    if (character.token) {
+    if (character.image) {
       await this.drawImage(pdf, page, character);
     }
   }
@@ -272,8 +272,22 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
   }
 
   async drawImage(pdf: PDFDocument, page: PDFPage, character: Character) {
-    if (character.token) {
-      const tokenBytes = await TokenHelper.renderToken(character.token);
+    if (character.image && character.image instanceof TokenConfig) {
+      const tokenBytes = await TokenHelper.renderToken(character.image);
+      const image = await pdf.embedPng(tokenBytes);
+
+      page.moveTo(
+        this.secondBlock.start.x +
+          this.secondBlock.width / 2 -
+          this.imageSize / 2,
+        page.getHeight() - 72 - this.imageSize,
+      );
+      page.drawImage(image, {
+        width: this.imageSize,
+        height: this.imageSize,
+      });
+    } else if (character.image && character.image instanceof ImageConfig) {
+      const tokenBytes = await character.image.imageBytes;
       const image = await pdf.embedPng(tokenBytes);
 
       page.moveTo(

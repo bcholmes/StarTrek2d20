@@ -47,7 +47,7 @@ export const SupportingCharacterView: React.FC<ICharacterPageProperties> = ({
 
   function deleteToken() {
     const hash = cyrb53(originalEncodedSheet());
-    character.token = undefined;
+    character.image = undefined;
     store.dispatch(saveCharacterToLocalStorage(character, hash));
     const value = marshaller.encodeCharacter(character);
     navigate('/view?s=' + value, { replace: true });

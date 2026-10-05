@@ -1,5 +1,5 @@
 import type { Character } from '../common/character';
-import { Division } from '../common/character';
+import { Division, TokenConfig } from '../common/character';
 import { CharacterType } from '../common/characterType';
 import type { Starship } from '../common/starship';
 import { TokenHelper } from '../exportpdf/tokenHelper';
@@ -117,14 +117,14 @@ async function withThumbnails(
 export async function renderCharacterTokenImage(
   character: Character,
 ): Promise<MapToolTokenImage> {
-  if (character.token) {
+  if (character.image && character.image instanceof TokenConfig) {
     const png = await toBytes(
-      await TokenHelper.renderToken(character.token, TOKEN_SIZE),
+      await TokenHelper.renderToken(character.image, TOKEN_SIZE),
     );
     return withThumbnails(
       png,
       TOKEN_SIZE,
-      character.token.rounded ? 'CIRCLE' : 'SQUARE',
+      character.image.rounded ? 'CIRCLE' : 'SQUARE',
     );
   } else {
     const png = await toBytes(
