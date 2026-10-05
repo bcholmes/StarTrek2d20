@@ -7,7 +7,7 @@ import { makeKey } from '../common/translationKey';
 import { Attribute, AttributesHelper } from '../helpers/attributes';
 import { Department, DepartmentsHelper } from '../helpers/department';
 import type { Character } from '../common/character';
-import { Division, TokenConfig } from '../common/character';
+import { Division, ImageConfig, TokenConfig } from '../common/character';
 import type { Construct } from '../common/construct';
 import { Column } from './column';
 import { FontType } from './fontLibrary';
@@ -104,6 +104,20 @@ export class BasicGeneratedTentCardCharacterSheet extends BaseNonForm2eSheet {
   async drawImage(pdf: PDFDocument, page: PDFPage, character: Character) {
     if (character.image && character.image instanceof TokenConfig) {
       const tokenBytes = await TokenHelper.renderToken(character.image);
+      const image = await pdf.embedPng(tokenBytes);
+
+      const imageSize = 72 * 1.5;
+      page.moveTo(
+        page.getWidth() - 24,
+        page.getHeight() - page.getHeight() / 6 + imageSize / 2,
+      );
+      page.drawImage(image, {
+        width: imageSize,
+        height: imageSize,
+        rotate: degrees(180),
+      });
+    } else if (character.image && character.image instanceof ImageConfig) {
+      const tokenBytes = await character.image.imageBytes;
       const image = await pdf.embedPng(tokenBytes);
 
       const imageSize = 72 * 1.5;

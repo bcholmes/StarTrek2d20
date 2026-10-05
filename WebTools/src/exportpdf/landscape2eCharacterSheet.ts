@@ -12,6 +12,7 @@ import {
   CareerEventStep,
   Character,
   Division,
+  ImageConfig,
   Promotion,
   TokenConfig,
 } from '../common/character';
@@ -214,6 +215,15 @@ export class Landscape2eCharacterSheet extends BaseFormFillingSheet {
   async fillCharacterImage(pdf: PDFDocument, character: Character) {
     if (character.image && character.image instanceof TokenConfig) {
       const tokenBytes = await TokenHelper.renderToken(character.image);
+      const image = await pdf.embedPng(tokenBytes);
+      try {
+        pdf.getForm().getButton('Image35_af_image').setImage(image);
+      } catch {
+        // name changed...? ignore it.
+        console.log('Image button not found in PDF');
+      }
+    } else if (character.image && character.image instanceof ImageConfig) {
+      const tokenBytes = character.image.imageBytes;
       const image = await pdf.embedPng(tokenBytes);
       try {
         pdf.getForm().getButton('Image35_af_image').setImage(image);
