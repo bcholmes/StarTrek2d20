@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Character, ImageConfig } from '../common/character';
+import { ImageConfig } from '../common/character';
 import { ModalControl } from './modal';
 import i18next from 'i18next';
 import { Buffer } from 'buffer';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import Pica from 'pica';
+import { STAMarkdown } from './staMarkdown';
 
 const pica = Pica();
 
@@ -38,7 +39,7 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
     readFileContent(file);
   };
 
-  const readFileContent = async (file) => {
+  const readFileContent = async (file: File) => {
     let originalSize = 450;
     const targetSize = 450;
 
@@ -64,7 +65,7 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
       const base64 = Buffer.from(buffer).toString('base64');
 
       setFileContents(base64);
-      setFileContentType(file.type);
+      setFileContentType('image/jpeg');
 
       return true;
     };
@@ -76,8 +77,13 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
       return (
         <div className="text-center my-3">
           <img
+            className="mw-100"
             src={'data:' + fileContentType + ';base64,' + fileContents}
             id="file-upload-image-view"
+            style={{
+              width: '250px',
+              aspectRatio: '1',
+            }}
           />
         </div>
       );
@@ -96,13 +102,13 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
   };
 
   async function clipAndResizeImage(
-    sourceImage,
-    cropX,
-    cropY,
-    cropWidth,
-    cropHeight,
-    targetWidth,
-    targetHeight,
+    sourceImage: HTMLImageElement,
+    cropX: number,
+    cropY: number,
+    cropWidth: number,
+    cropHeight: number,
+    targetWidth: number,
+    targetHeight: number,
     fileType: string,
   ) {
     // 1. Create a canvas for the cropped (clipped) area
@@ -133,12 +139,13 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
     const resultCanvas = await pica.resize(sourceCanvas, destCanvas);
 
     // Convert result to a Blob or use directly
-    const blob = await pica.toBlob(resultCanvas, fileType);
+    const blob = await pica.toBlob(resultCanvas, fileType, 0.9);
     return blob;
   }
 
   return (
     <div>
+      <STAMarkdown>{t('FileUploadDialog.instruction')}</STAMarkdown>
       <div className="d-flex align-items-center my-2" style={{ gap: '0.5rem' }}>
         <input
           type="radio"

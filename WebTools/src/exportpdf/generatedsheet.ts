@@ -6,7 +6,11 @@ import { ReadableTalentModel } from './talentWriter';
 import type { RoleModel } from '../helpers/roles';
 import { RolesHelper } from '../helpers/roles';
 import type { SpeciesAbility } from '../helpers/speciesAbility';
-import type { Character, SpeciesAbilityOptions } from '../common/character';
+import type {
+  Character,
+  ImageConfig,
+  SpeciesAbilityOptions,
+} from '../common/character';
 import {
   TALENT_NAME_ADDITIONAL_PROPULSION_SYSTEM,
   TALENT_NAME_AUGMENTED_ABILITY,
@@ -128,6 +132,15 @@ export abstract class BasicGeneratedSheet implements ICharacterSheet {
       }
     });
     return fontSize;
+  }
+
+  async embedImage(pdf: PDFDocument, image: ImageConfig) {
+    const tokenBytes = image.imageBytes;
+    if ('image/jpeg' === image.type?.toLocaleLowerCase()) {
+      return await pdf.embedJpg(tokenBytes);
+    } else {
+      return await pdf.embedPng(tokenBytes);
+    }
   }
 
   writeCharacterDescription(

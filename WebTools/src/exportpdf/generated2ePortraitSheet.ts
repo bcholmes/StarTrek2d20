@@ -287,8 +287,7 @@ export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
         height: this.imageSize,
       });
     } else if (character.image && character.image instanceof ImageConfig) {
-      const tokenBytes = await character.image.imageBytes;
-      const image = await pdf.embedPng(tokenBytes);
+      const image = await this.embedImage(pdf, character.image);
 
       page.moveTo(
         this.secondBlock.start.x +

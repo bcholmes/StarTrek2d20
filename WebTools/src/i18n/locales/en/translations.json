@@ -239,6 +239,12 @@
 
     "ExtraStarshipTalentChoice.instruction": "This spaceframe requires you to make selections for some of the standard spaceframe talents.",
 
+    "FileUploadDialog.title": "Character Image",
+    "FileUploadDialog.instruction": "Choose an image to accompany your character: either a token from the token builder, or a custom image (JPG or PNG only).\n\nIdeal custom images are square; they'll be resized to 450x450px.",
+
+    "FileUploadDialog.option.token": "Token",
+    "FileUploadDialog.option.image": "Image",
+
     "FinalStarshipDetails.instruction": "Your ship is almost complete. It just needs a few final touches.",
 
     "FinalStarshipDetails.name.instruction": "Every Starship needs a name. There is no universal convention for the naming of ships, often naming them after locations, important historical persons (normally only the person’s surname), ancient ships, mythical figures, or even more abstract ideals, virtues, or concepts. In many cases, these vague naming conventions overlap — a ship may be named after an ancient ship that was itself named after a location, for example — but this shouldn’t cause any issues.\n\nThe name should ideally be a single word or, more rarely, two.",
@@ -5850,6 +5856,7 @@
     "Talent.toolsOfTheHuntHirogenTalent": "Tools of the Hunt",
 
     "Talent.toolsOfTheHuntHirogenTalent.description": "You keep the ritual equipment of a Hirogen hunter close at hand. This includes the armoured pressure suit of the Hirogen. This armour grants 2[D] of Resistance and confers the Trait: Environment Suit. You also own a scythe-like bladed weapon known as a talon, used to prolong the kill of a captured or cornered prey. The talon is a melee weapon with the following profile: Melee, 1[D], Vicious 1, Size 1 H, and the Debilitating Quality.",
+    "Talent.toolsOfTheHuntHirogenTalent.description2e": "You keep the ritual equipment of a Hirogen hunter close at hand. This includes the armoured pressure suit of the Hirogen. This armour grants 2 Protection and confers the Trait: Environment Suit. You also own a scythe-like bladed weapon known as a talon, used to prolong the kill of a captured or cornered prey. The talon is a melee weapon with the following profile: Melee, 3, Vicious 1, Size 1 H, and the Debilitating Quality.",
 
     "Talent.toolUser": "Tool User",
 

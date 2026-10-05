@@ -117,8 +117,7 @@ export class BasicGeneratedTentCardCharacterSheet extends BaseNonForm2eSheet {
         rotate: degrees(180),
       });
     } else if (character.image && character.image instanceof ImageConfig) {
-      const tokenBytes = await character.image.imageBytes;
-      const image = await pdf.embedPng(tokenBytes);
+      const image = await this.embedImage(pdf, character.image);
 
       const imageSize = 72 * 1.5;
       page.moveTo(

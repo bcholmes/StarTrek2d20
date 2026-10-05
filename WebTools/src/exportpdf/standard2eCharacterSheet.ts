@@ -110,24 +110,19 @@ export class Standard2eCharacterSheet extends BaseFormFillingSheet {
   }
 
   async fillCharacterImage(pdf: PDFDocument, character: Character) {
+    let image = null;
     if (character.image && character.image instanceof TokenConfig) {
       const tokenBytes = await TokenHelper.renderToken(character.image);
-      const image = await pdf.embedPng(tokenBytes);
-      try {
-        pdf.getForm().getButton('Image2_af_image').setImage(image);
-      } catch {
-        // name changed...? ignore it.
-        console.log('Image button not found in PDF');
-      }
+      image = await pdf.embedPng(tokenBytes);
     } else if (character.image && character.image instanceof ImageConfig) {
-      const tokenBytes = character.image.imageBytes;
-      const image = await pdf.embedPng(tokenBytes);
-      try {
-        pdf.getForm().getButton('Image2_af_image').setImage(image);
-      } catch {
-        // name changed...? ignore it.
-        console.log('Image button not found in PDF');
-      }
+      image = await this.embedImage(pdf, character.image);
+    }
+
+    try {
+      pdf.getForm().getButton('Image2_af_image').setImage(image);
+    } catch {
+      // name changed...? ignore it.
+      console.log('Image button not found in PDF');
     }
   }
 

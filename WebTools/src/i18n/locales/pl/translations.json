@@ -1125,6 +1125,8 @@
     "CareerEvent.common.58.description": "Termin \"anomalia przestrzenna\" opisuje jakiekolwiek niestandardowe zaburzenie w zwykłej tkance czasoprzestrzeni, poczynając od odchyleń grawitacyjnych, miejsc gdzie prawa fizyki wydają się zmienione lub nawet korytarzy podprzestrzennych.",
 
     "CareerEvent.common.59.name": "Kontakt z anomalią temporalną",
+    "CareerEvent.common.59.description": "Postać doświadczyła zdarzeń lub fenomenów poza naturalnym biegiem czasu. Być może utknęła w pętli czasu, powtarzając te same zdarzenia wielokrotnie zanim udało się jej uwolnić. A może spotkała podróżnika w czasie lub sama podróżowała do przyszłości lub przeszłości. Możliwe że urodziła się w zupełnie innym czasie i w ten czy inny sposób trafiła do naszej linii czasowej?",
+    "CareerEvent.common.59.traitDescription": "Postać otrzymuje cechę odzwierciedlającą skutki jej doświadczeń, np. Znam przyszłość, Temporalna świadomość albo Przybywam z innego czasu.",
 
     "CareerEvent.common.60.name": "Doświadczenie z alternatywnego wymiaru",
 
@@ -1145,6 +1147,7 @@
     "CareerEvent.common.68.name": "Program wymiany kulturalnej",
 
     "CareerEvent.common.69.name": "Spotkanie z nowym gatunkiem",
+    "CareerEvent.common.69.description": "Technicznie rzecz biorąc każde napotkanie nowego gatunku to **pierwszy kontakt**, ale jest pewna różnica pomiędzy formalnym pierwszym kontaktem, z odpowiednimi przygotowaniami i planowaniem, a zupełnie przypadkowym  napotkaniem wcześniej nieznanego gatunku gdzieś w głębokim kosmosie. Takie niespodziewane spotkania są dość częste, zwłaszcza dla okrętów operujących na granicach poznanego kosmosu. Takie spotkania mogą mieć pokojowy przebieg, ale może także dojść do wybuchu przemocy, który później jest bardzo ciężko załagodzić przez kolejne lata.",
 
     "CareerEvent.common.70.name": "Spotkanie z organizmem żyjącym w kosmosie",
 
@@ -1177,6 +1180,7 @@
     "CareerEvent.common.84.name": "Założenie kolonii na Nimbus III",
 
     "CareerEvent.common.85.name": "Konferencja na Babel",
+    "CareerEvent.common.85.description": "Kluczowa konferencja dyplomatyczna dla światów zrzeszonych Federacji Zjednoczonych Planet. Konferencja Babel była miejscem ważnych rozmów na szczycie federacyjnej polityki, w tym zgody na przystąpienie do Federacji Koridan III. Koridanie już wcześniej planowali dołączyć do Koalicji Planet (pierwowzoru Federacji), ale konflikt z Romulanami odstraszył ich od tego i skierował do izolacjonizmu na kolejne dekady. W konferencji brało udział 114 delegatów, w tym 32 znaczących ambasadorów, m.in. Sarek z Wolkana. Konferencja miała istotne znaczenie polityczne, nawet pomimo próby sabotażu, którą podjął Syndykat Oriona.",
 
     "CareerEvent.common.86.name": "Katastrofa Memory Alpha",
 
@@ -2314,6 +2318,40 @@
     "Species.klingonQuchHa_2E.name": "Klingon (QuchHa')",
     "Species.klingonQuchHa_2E.traitDescription": "Zobacz str. 64 _Species Sourcebook_",
 
+    "Species.ocampa.name": "Okampa",
+    "Species.ocampa.traitDescription2e": "Zobacz str. 86 _Species Sourcebook_",
+
+    "Species.orion.name": "Orionita",
+
+    "Species.osnullus.traitDescription2e": "Zobacz str. 90 _Species Sourcebook_",
+
+    "Species.other.name": "Własny/Inny",
+
+    "Species.pakled.traitDescription2e": "Zobacz str. 92 _Species Sourcebook_",
+
+    "Species.pandronian.name": "Pandronianin",
+
+    "Species.reman.name": "Remanin",
+
+    "Species.romulan.name": "Romulanin",
+
+    "Species.saurian.traitDescription2e": "Zobacz str. 102 _Species Sourcebook_",
+
+    "Species.skorr.name": "Skorr",
+    "Species.skorr.aboutNames": "Skorr używają zazwyczaj pojedynczego imienia.",
+    "Species.skorr.exampleValue": "Alar naszym zbawieniem i nauczycielem",
+
+    "Species.sonA.traitDescription2e": "Zobacz str. 104 _Species Sourcebook_",
+
+    "Species.suliban.name": "Sulibanin",
+
+    "Species.talarian.name": "Talarianin",
+
+    "Species.talaxian.traitDescription2e": "Zobacz str. 106 _Species Sourcebook_",
+
+    "Species.tamarian.name": "Dziecko Tamy",
+    "Species.tamarian.traitDescription2e": "Zobacz str. 36 _Species Sourcebook_",
+
     "StarSystem.common.coordinates": "Współrzędne",
     "StarSystem.common.innerZone": "Strefa wewnętrzna",
     "StarSystem.common.ecosphere": "Ekosfera",
@@ -2394,9 +2432,31 @@
 
     "Talent.text.rank": "{{talentName}} [Ranga: {{rank}}]",
 
+    "Talent.ablativeArmor": "Pancerz ablacyjny",
+
+    "Talent.ablativeArmor.description": "Poszycie kadłuba okrętu ma dodatkową warstwę pancerza, która powoli rozpada się w ekstremalnych temperaturach, wywoływanych przez broń energetyczną, wybuchy torped. Ubytek pancerza wytraca energię ataku, a sam pancerz musi być co jakiś czas odbudowywany. Odporność statku rośnie o 2.",
+    "Talent.ablativeArmor.description2e": "Poszycie kadłuba okrętu ma dodatkową warstwę pancerza, która powoli rozpada się w ekstremalnych temperaturach. Zwiększa to Odporność statku o 2.",
+    "Talent.ablativeArmor.soloDescription": "Poszycie kadłuba okrętu ma dodatkową warstwę pancerza, która powoli rozpada się w ekstremalnych temperaturach, wywoływanych przez broń energetyczną, wybuchy torped. Ubytek pancerza wytraca energię ataku, a sam pancerz musi być co jakiś czas odbudowywany.",
+
+    "Talent.ablativeArmorGenerator": "Generator pancerza ablacyjnego",
+    "Talent.ablativeFieldProjector": "Emiter pola ablacyjnego",
+    "Talent.ablativeHide": "Ablacyjny kamuflaż",
+    "Talent.aboveTheClouds": "Ponad chmurami",
+    "Talent.absoluteCandorSpecialRule": "Niezachwiana szczerość",
+
+    "Talent.absoluteCandorSpecialRule.description": "Zobacz str. 91 _Allies and Adversaries_",
+
+    "Talent.abruptInsights": "Nagłe wejrzenie",
+
+    "Talent.abruptInsights.description": "Twoje zrozumienie umysłów innych może dać Ci przewagę podczas interakcji z nimi – chociaż nie każdy czuje się komfortowo, gdy ktoś wypowiada jego myśli. Kiedy wykonujesz test w ramach konfliktu społecznego, możesz zwiększyć zakres komplikacji o 1, 2 lub 3. Jeżeli odniesiesz powodzenie, generujesz dodatkowy Impet równy zwiększonemu zakresowi komplikacji. Dodatkowy Impet nie może zostać zachowany.",
+
     "Talent.abundantPersonnel": "Liczny personel",
 
     "Talent.abundantPersonnel.description": "Ostateczne Wsparcie Załogi okrętu – po uwzględnieniu wszelkich innych modyfikatorów – zostaje podwojone, a efekty lub zdolności zwiększające Wsparcie Załogi działają z dwukrotnie większą siłą na pokładzie statku objętego tą zasadą specjalną. Ponadto, gdy wprowadzasz bohatera wspierającego, możesz użyć jednego dodatkowego punktu Wsparcia Załogi, aby natychmiast go rozwinąć.",
+
+    "Talent.acuteSenses": "Czujne zmysły",
+
+    "Talent.acuteSenses.description2e": "Aenarowie udoskonalili swoje zmysły do tego stopnia, że potrafią reagować na bodźce równie dobrze, a nawet lepiej, niż istoty obdarzone zdolnością widzenia. Podczas próby wykrycia czegoś ukrytego przed konwencjonalnymi zmysłami lub trudnego do dostrzeżenia, możesz przerzucić 1k20.",
 
     "Talent.advancedShields": "Zaawansowane tarcze",
 
@@ -2408,11 +2468,23 @@
 
     "Talent.advancedTeamDynamics.description2e": "Kiedy po raz pierwszy w danej misji wprowadzasz bohatera wspierającego, zyskuje on jedną dodatkową opcję z listy rozwinięć dla tego typu postaci.",
 
+    "Talent.chosenSpeaker": "Wybrany Mówca",
+
+    "Talent.chosenSpeaker.description2e": "Społeczność Aenarów wyznacza swoich przywódców i mediatorów, kiedy okoliczności tego wymagają. Wtedy wybierani są Mówcy. W trakcie swojego życia często byłeś wyznaczany do tej roli i jesteś biegły w używaniu swoich zmysłów i telepatii do wspomagania komunikacji. Podczas próby telepatycznego porozumienia się z otwartą na to istotą możesz przerzucić 1k20.",
+
     "Talent.dedicatedFocusX": "Wyjątkowa biegłość (X)",
 
     "Talent.dedicatedFocusX.description2e": "Kiedy wybierasz ten talent, wskaż jedną ze swoich biegłości. Podczas testów, do których ma ona zastosowanie, uzyskujesz krytyczny sukces na każdej kości, na której wypadła dwukrotność odpowiedniej sekcji albo mniej.",
 
     "Talent.extensiveAutomation": "Rozległa automatyzacja",
+    "Talent.orbExperience": "Doświadczenie Sfery",
+
+    "Talent.orbExperience.description": "Otrzymałeś wizję od bajorańskich Proroków za pośrednictwem jednej ze Sfer. To rzadkie doświadczenie. Z początku mogło wydawać się mylące, ale ostatecznie ukształtowało Twoje życie i poglądy. Posiadasz jedną dodatkową wartość reprezentującą przepowiednię dotyczącą przyszłości lub odkrytą prawdę, uzyskaną w trakcie wizji. Za pierwszy razem gdy wartość jest konfrontowana, rzuć 1[D] – jeśli wypadnie Efekt, niektóre przepowiedziane zdarzenia wydarzają się, a wartość nie jest wykreślana.",
+    "Talent.orbExperience.description2e": "Otrzymałeś wizję od bajorańskich Proroków za pośrednictwem jednej ze Sfer. To rzadkie doświadczenie. Z początku mogło wydawać się mylące, ale ostatecznie ukształtowało Twoje życie i poglądy. Posiadasz jedną dodatkową wartość reprezentującą przepowiednię dotyczącą przyszłości lub odkrytą prawdę, uzyskaną w trakcie wizji. Co więcej, raz na sesję, gdy ta wartość jest wykorzystywana, otrzymujesz podwójną standardową korzyść. Jeżeli wydasz Determinację, możesz zyskać dwie wymienione korzyści, a jeśli zyskałbyś Determinację, zyskujesz 2 punkty zamiast 1.",
+
+    "Talent.openBook": "Otwarta księga",
+
+    "Talent.openBook.description": "Kiedy dowolna postać wchodzi do sceny, możesz wydać 1 punkt Impetu (Natychmiastowy), aby zadać mistrzowi gry pytanie dotyczące jej aktualnych emocji lub powierzchownych myśli. Nie można tego zrobić względem postaci odpornych na telepatię.",
 
     "Talent.patienceBeforeAggression.description": "Zobacz str. 103 _Species Sourcebook_",
 
@@ -2424,10 +2496,19 @@
 
     "Talent.polarizedHullPlatingSpecialRule.description": "Okręty tej klasy nie posiadają tarcz deflektorowych typowych dla wielu innych statków, a zamiast tego polegają na polaryzacji poszycia w celu ochrony przed obrażeniami. Tor Tarcz okrętu reprezentuje zatem stan spolaryzowanego kadłuba i równy jest Poszyciu, bez dodatkowych modyfikatorów. Spolaryzowanie kadłuba nie wpływa na możliwości transportera w taki sposób, w jaki czyni to podniesienie tarcz.",
 
+    "Talent.proudAndHonorable": "Dumny i honorowy",
+
+    "Talent.proudAndHonorable.description": "Za każdym razem, gdy próbujesz wykonać test, aby oprzeć się przymusowi złamania obietnicy, zdradzenia sojuszników lub innego niehonorowego działania, możesz dodać Zagrożenie, aby natychmiast odnieść sukces w zadaniu. Liczba dodanych punktów Zagrożenia jest równa Trudności.",
+
     "Talent.secondaryReactors": "Dodatkowe reaktory",
 
     "Talent.secondaryReactors.description2e": "Statek posiada dodatkowe reaktory impulsowe i fuzyjne, które pozwalają mu generować znacznie większe ilości energii. Raz na scenę, kiedy postać wykonuje akcję Przekierowania mocy, może wydać 2 punkty Impetu (Natychmiastowe), aby odzyskać możliwość korzystania z Rezerw Mocy.",
     "Talent.secondaryReactors.soloDescription": "Statek posiada dodatkowe reaktory impulsowe i fuzyjne, które pozwalają mu generować znacznie większe ilości energii.",
+
+    "Talent.theUshaan": "Ushaan",
+
+    "Talent.theUshaan.description": "Jesteś adeptem tradycyjnej honorowej sztuki walki znanej jako Ushaan. Kiedy wykonujesz atak w zwarciu lub jesteś celem ataku w zwarciu i kupujesz jedną lub więcej k20, zwiększając Zagrożenie, możesz przerzucić dowolną liczbę kości ze swojej puli w tym teście. Ponadto posiadasz Ushaan-tor, ostre jak brzytwa narzędzie do wydobywania lodu, używane w tradycyjnych pojedynkach.",
+    "Talent.theUshaan.description2e": "Jesteś adeptem tradycyjnej honorowej sztuki walki znanej jako Ushaan. Kiedy wykonujesz atak w zwarciu lub jesteś celem ataku w zwarciu i kupujesz jedną lub więcej k20, zwiększając Zagrożenie, możesz przerzucić dowolną liczbę kości ze swojej puli w tym teście. Ponadto posiadasz Ushaan-tor, ostre jak brzytwa narzędzie do wydobywania lodu, używane w tradycyjnych pojedynkach. Ushaan-tor to broń biała (patrz str. 242 podręcznika), która należy do Twojego standardowego wyposażenia.",
 
     "TalentCategory.general": "Ogólne",
     "TalentCategory.career": "Kariera",
@@ -2486,7 +2567,17 @@
     "UniformEra.theMotionPicture": "Star Trek film kinowy",
     "UniformEra.voyagerDS9": "Voyager/Deep Space Nine",
 
-    "Upbringing.starfleet.militaryOrExploration.name": "Gwiezdna Flota",
+    "Upbringing.starfleet.militaryOrExploration.name": "Gwiezdnej Floty lub wojskowe",
+
+    "Upbringing.starfleet.businessOrTrade.name": "Biznesowe lub handlowe",
+
+    "Upbringing.starfleet.agricultureOrRural.name": "Rolnicze lub wiejskie",
+
+    "Upbringing.starfleet.scienceAndTechnology.name": "Naukowe i technologiczne",
+
+    "Upbringing.starfleet.artisticAndCreative.name": "Artystyczne i kreatywne",
+
+    "Upbringing.starfleet.diplomacyAndPolitics.name": "Dyplomatyczne i polityczne",
 
     "Value.environment.text": "Ta wartość powinna odzwierciedlać środowisko i kulturę, w której wychowywała się postać. Warto rozważyć sposób, w jaki Twoja postać postrzega własną kulturę i jak akceptuje lub neguje myśli i tradycje swojej cywilizacji.",
 
@@ -2560,6 +2651,10 @@
     "Weapon.personal.sonaPlasmaDisruptorShotgun.name": "Dezruptorowo-plazmowy shotgun Son'a",
 
     "Weapon.personal.tanQalanqSword.name": "Miecz Tan Qalanq",
+
+    "Weapon.personal.hirogenKukri.name": "Hirogeńskie kukri",
+
+    "Weapon.personal.tetryonRifle.name": "Karabin tetrionowy",
 
     "Weapon.personal.tzenkethiHeavyBlade.name": "Ciężkie ostrze Tzenkethi Typu AA",
 
