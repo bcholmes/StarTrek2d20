@@ -11,6 +11,7 @@ import { FileUploadDialog } from '../components/fileUploadView';
 import { cyrb53 } from '../common/cyrb53';
 import { saveCharacterToLocalStorage } from '../state/savedConstructActions';
 import { marshaller } from '../helpers/marshaller';
+import { useTranslation } from 'react-i18next';
 
 const TokenView = lazy(() =>
   import(/* webpackChunkName: 'token' */ '../token/view/tokenView').then(
@@ -30,6 +31,7 @@ export const CharacterTokenImage: React.FC<CharacterTokenImageProperties> = ({
   onDeleteToken = () => {},
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const openDialog = () => {
     const token =
@@ -84,6 +86,8 @@ export const CharacterTokenImage: React.FC<CharacterTokenImageProperties> = ({
             }}
             role="button"
             onClick={openDialog}
+            alt={t('Construct.other.characterImage')}
+            title={t('Construct.other.characterImage')}
           />
           {onDeleteToken != null ? (
             <IconButton icon="trash" variant="danger" onClick={onDeleteToken} />

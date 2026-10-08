@@ -239,6 +239,12 @@
 
     "ExtraStarshipTalentChoice.instruction": "Ten typ kadłuba wymaga dokonania kilku wyborów ze standardowych talentów okrętów.",
 
+    "FileUploadDialog.title": "Wczytaj obrazek",
+    "FileUploadDialog.instruction": "Wybierz wizerunek Twojej postaci: znacznik z kreatora znaczników lub dowolny obrazek (dozwolone formaty JPG lub PNG).\n\nNajlepiej wykorzystać kwadratową grafikę, ponieważ będzie przeskalowane do rozmiaru 450x450 pikseli.",
+
+    "FileUploadDialog.option.token": "Znacznik",
+    "FileUploadDialog.option.image": "Obrazek",
+
     "FinalStarshipDetails.instruction": "Twój okręt jest niemal gotowy. Wymaga jeszcze kilku drobiazgów.",
 
     "FinalStarshipDetails.name.instruction": "Każdy okręt potrzebuje nazwy. Nie ma jednej uniwersalnej konwencji nazewnictwa, chociaż często wykorzystuje się nazwy lokacji, ważnych historycznych osobistości (zwykle tylko nazwiska), starożytnych statków, postaci z mitologii czy bardziej abstrakcyjnych pojęć lub idei. Zdarza się, że te konwencje nachodzą na siebie, np. okręt może być nazwany po starożytnym statku, który swoje imię zawdzięcza znaczącej lokacji, ale oczywiście nie jest to regułą.\n\nIdealna nazwa to jedno słowo lub rzadziej dwa.",
@@ -1129,6 +1135,7 @@
     "CareerEvent.common.59.traitDescription": "Postać otrzymuje cechę odzwierciedlającą skutki jej doświadczeń, np. Znam przyszłość, Temporalna świadomość albo Przybywam z innego czasu.",
 
     "CareerEvent.common.60.name": "Doświadczenie z alternatywnego wymiaru",
+    "CareerEvent.common.60.description": "Wszechświat to znacznie więcej niż można zobaczyć czy doświadczyć i jest wiele warstw rzeczywistości, które zazwyczaj nie są dostępne, jak np. płynna przestrzeń, Kontinuum Q, niezliczone wymiary podprzestrzeni czy wszechświaty równoległe jak np. Wszechświat Lustrzany. Twoja postać napotkała lub doświadczyła fenomenu pochodzącego z innego wymiaru lub osobiście odwiedziła taki wymiar.",
 
     "CareerEvent.common.61.name": "Stypendium w elitarnej instytucji",
 
@@ -1319,6 +1326,7 @@
     "Environment.common.vulcan23rd.name": "Wolkan",
 
     "Environment.klingon.homeworld.name": "Qo'noS",
+    "Environment.klingon.homeworld.description": "Pochodzisz z klingońskiego świata ojczystego Qo'noS, określanego przez obcych jako Kronos. Otaczały Ciebie kulturowe i duchowe spuścizny Kahlessa i Imperium. Stąd wywodzą się najstarsze i najbardziej poważane klingońskie tradycje i definiowały one tę część Twojego życia.",
 
     "Environment.klingon.busyColony.name": "Tętniąca życiem kolonia",
     "Environment.klingon.busyColony.description": "Pochodzisz z jednej z najstarszych lub najlepiej rozwiniętych kolonii Imperium. Często mają one niezależne tradycje i zwyczaje, a także postrzeganie swojej cywilizacji. Kiedyś wspierane z niewielką pomocą metropolii, rozwinęły się na obcych światach ciężką pracą dumnych osadników. Jesteś potomkiem tych dzielnych pionierów.",

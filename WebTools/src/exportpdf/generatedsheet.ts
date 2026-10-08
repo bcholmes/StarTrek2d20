@@ -41,6 +41,9 @@ import { greyColour2e } from './colourProvider2e';
 import { TextAlign } from './textAlign';
 import { FontOptions } from './fontOptions';
 import { Paragraph } from './paragraph';
+import Pica from 'pica';
+
+const pica = Pica();
 
 export class SpeciesAbilityAndOptions {
   readonly ability: SpeciesAbility;
@@ -138,8 +141,27 @@ export abstract class BasicGeneratedSheet implements ICharacterSheet {
     const tokenBytes = image.imageBytes;
     if ('image/jpeg' === image.type?.toLocaleLowerCase()) {
       return await pdf.embedJpg(tokenBytes);
-    } else {
+    } else if ('image/png' === image.type?.toLocaleLowerCase()) {
       return await pdf.embedPng(tokenBytes);
+    } else {
+      const htmlImage = new Image();
+      htmlImage.src = image.dataUrl;
+      const sourceCanvas = document.createElement('canvas');
+      sourceCanvas.width = 450;
+      sourceCanvas.height = 450;
+      const ctx = sourceCanvas.getContext('2d');
+
+      ctx.drawImage(htmlImage, 0, 0, 450, 450);
+
+      const destCanvas = document.createElement('canvas');
+      destCanvas.width = 450;
+      destCanvas.height = 450;
+
+      const resultCanvas = await pica.resize(sourceCanvas, destCanvas);
+
+      const blob = await pica.toBlob(resultCanvas, 'image/png');
+      const png = await blob.arrayBuffer();
+      return await pdf.embedPng(png);
     }
   }
 

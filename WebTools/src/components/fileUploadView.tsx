@@ -58,14 +58,13 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
         originalSize,
         targetSize,
         targetSize,
-        file.type,
       );
       const buffer = await value.arrayBuffer();
 
       const base64 = Buffer.from(buffer).toString('base64');
 
       setFileContents(base64);
-      setFileContentType('image/jpeg');
+      setFileContentType('image/webp');
 
       return true;
     };
@@ -109,15 +108,12 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
     cropHeight: number,
     targetWidth: number,
     targetHeight: number,
-    fileType: string,
   ) {
-    // 1. Create a canvas for the cropped (clipped) area
     const sourceCanvas = document.createElement('canvas');
     sourceCanvas.width = cropWidth;
     sourceCanvas.height = cropHeight;
     const ctx = sourceCanvas.getContext('2d');
 
-    // Draw the clipped section onto the source canvas
     ctx.drawImage(
       sourceImage,
       cropX,
@@ -130,16 +126,13 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
       cropHeight, // Destination rectangle
     );
 
-    // 2. Create a destination canvas for the final resized output
     const destCanvas = document.createElement('canvas');
     destCanvas.width = targetWidth;
     destCanvas.height = targetHeight;
 
-    // 3. Use Pica to resize the clipped canvas with high quality
     const resultCanvas = await pica.resize(sourceCanvas, destCanvas);
 
-    // Convert result to a Blob or use directly
-    const blob = await pica.toBlob(resultCanvas, fileType, 0.9);
+    const blob = await pica.toBlob(resultCanvas, 'image/webp', 0.9);
     return blob;
   }
 

@@ -72,6 +72,7 @@
     "react": "^19.3.0",
     "react-bootstrap": "2.10.10",
     "react-dom": "^19.3.0",
+    "react-dropzone": "20.1.2",
     "react-hot-toast": "2.4.1",
     "react-i18next": "^12.1.1",
     "react-markdown": "^9.1.0",
