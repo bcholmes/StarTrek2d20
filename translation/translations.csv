@@ -326,6 +326,7 @@ FileUploadDialog.instruction,"Choose an image to accompany your character: eithe
 Ideal custom images are square; they'll be resized to 450x450px.",,,,,,,"Wybierz wizerunek Twojej postaci: znacznik z kreatora znaczników lub dowolny obrazek (dozwolone formaty JPG lub PNG).
 
 Najlepiej wykorzystać kwadratową grafikę, ponieważ będzie przeskalowane do rozmiaru 450x450 pikseli."
+FileUploadDialog.drag.instruction,Drag-and-drop an image here or click to select a file from your computer.,,,,,,,
 FileUploadDialog.option.token,Token,,,,,,,Znacznik
 FileUploadDialog.option.image,Image,,,,,,,Obrazek
 FinalStarshipDetails.instruction,Your ship is almost complete. It just needs a few final touches.,,Dein Shiff ist fast komplett. Es fehlen nur ein paar letzte Feinschliffe.,Tu nave casi está terminada. Solo necesita algunos retoques finales.,Votre vaisseau est presque terminé. Il ne reste que quelques détails à regler !,Ваш корабль почти готов. Осталось несколько последних штрихов.,Sua nave está quase completa. Ela só precisa de uns retoques finais.,Twój okręt jest niemal gotowy. Wymaga jeszcze kilku drobiazgów.

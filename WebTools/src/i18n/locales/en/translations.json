@@ -242,6 +242,8 @@
     "FileUploadDialog.title": "Character Image",
     "FileUploadDialog.instruction": "Choose an image to accompany your character: either a token from the token builder, or a custom image (JPG or PNG only).\n\nIdeal custom images are square; they'll be resized to 450x450px.",
 
+    "FileUploadDialog.drag.instruction": "Drag-and-drop an image here or click to select a file from your computer.",
+
     "FileUploadDialog.option.token": "Token",
     "FileUploadDialog.option.image": "Image",
 

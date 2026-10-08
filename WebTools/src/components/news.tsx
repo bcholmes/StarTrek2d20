@@ -20,6 +20,15 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
     >
       <b>v1.261002</b>
       <ul>
+        <li>
+          I've made some character image changes. There may be some
+          side-effects. Your adblocker may suddenly warn you when you click on
+          characters with character images because the character representation
+          is really big.
+        </li>
+      </ul>
+      <b>v1.261002</b>
+      <ul>
         <li>Minor PDF changes.</li>
       </ul>
       <b>v1.260930</b>

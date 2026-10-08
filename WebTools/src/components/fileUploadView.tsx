@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { ImageConfig } from '../common/character';
 import { ModalControl } from './modal';
 import i18next from 'i18next';
@@ -7,6 +7,7 @@ import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import Pica from 'pica';
 import { STAMarkdown } from './staMarkdown';
+import { useDropzone } from 'react-dropzone';
 
 const pica = Pica();
 
@@ -34,10 +35,31 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
 
   const { t } = useTranslation();
 
-  const onFileChange = (event) => {
-    const file = event.target.files[0];
-    readFileContent(file);
-  };
+  const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
+    useDropzone({
+      onDrop: (acceptedFiles) => {
+        if (acceptedFiles?.length) {
+          readFileContent(acceptedFiles[0]);
+        }
+      },
+      maxFiles: 1,
+      accept: { 'image/jpeg': [], 'image/png': [], 'image/webp': [] },
+    });
+
+  const baseStyle = { borderColor: '#bbbbbb' };
+  const focusedStyle = { borderColor: '#ffffff' };
+  const acceptStyle = { borderColor: '#ffffff' };
+  const rejectStyle = { borderColor: '#CC6666' };
+
+  const highlightStyle = useMemo(
+    () => ({
+      ...baseStyle,
+      ...(isFocused ? focusedStyle : {}),
+      ...(isDragAccept ? acceptStyle : {}),
+      ...(isDragReject ? rejectStyle : {}),
+    }),
+    [isFocused, isDragAccept, isDragReject],
+  );
 
   const readFileContent = async (file: File) => {
     let originalSize = 450;
@@ -163,7 +185,20 @@ export const FileUploadView: React.FC<IFileUploadViewProperties> = ({
       </div>
 
       {imageType === ImageType.Image ? (
-        <input type="file" onChange={onFileChange} />
+        <div
+          {...getRootProps({
+            className: 'dropzone text-center py-3 px-2',
+            style: {
+              ...highlightStyle,
+              borderStyle: 'dashed',
+              borderWidth: '2px',
+              borderRadius: '5px',
+            },
+          })}
+        >
+          <input {...getInputProps()} />
+          <p>{t('FileUploadDialog.drag.instruction')}</p>
+        </div>
       ) : undefined}
       {fileData()}
 
