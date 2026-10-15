@@ -9112,9 +9112,11 @@ export class Talents {
       [
         new StereotypePrerequisite(Stereotype.Npc),
         new Version2Prerequisite(),
-        new SpeciesPrerequisite(Species.Cardassian),
         new AnyOfPrerequisite(
-          new SpecializationPrerequisite(Specialization.ObsidianOrderOperative),
+          new SpecializationPrerequisite(
+            Specialization.ObsidianOrderOperative,
+            Specialization.Assassin,
+          ),
           new NoSpecializationPrerequisite(),
         ),
         new SourcePrerequisite(Source.AlliesAndAdversaries),
@@ -9189,6 +9191,98 @@ export class Talents {
             Specialization.SketchyTraderCaptain,
             Specialization.FerengiDaiMon,
             Specialization.FerengiMerchant,
+            Specialization.Smuggler,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Significant Relics (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(
+            Specialization.IndependentArchaeologist,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Dubious Provenance (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(
+            Specialization.IndependentArchaeologist,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Font of Knowledge (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(
+            Specialization.IndependentArchaeologist,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Quick, Efficient, and Deadly (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(
+            Specialization.Assassin,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Illicit Goods (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(
+            Specialization.Smuggler,
+            Specialization.SketchyTraderCaptain,
           ),
           new NoSpecializationPrerequisite(),
         ),

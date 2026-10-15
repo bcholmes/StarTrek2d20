@@ -104,6 +104,7 @@ export const CharacterTokenImage: React.FC<CharacterTokenImageProperties> = ({
           className="d-flex justify-content-center align-items-center text-secondary border border-secondary rounded"
           role="button"
           onClick={openDialog}
+          title={t('Construct.other.characterImage')}
         >
           <i className="bi bi-person-square"></i>
         </div>

@@ -4217,6 +4217,10 @@
     "Talent.dualEnvironment.description2e": "The ship is outfitted with redundant system rooms that can be filled with gases or liquids that allow crew members requiring different atmospheric conditions to work side by side with the rest of the crew. A character who is in a redundant system room may assist others in the connected system room as if they were in the same room.",
     "Talent.dualEnvironment.soloDescription": "The ship is outfitted with redundant system rooms that can be filled with gases or liquids that allow crew members requiring different atmospheric conditions to work side by side with the rest of the crew. In addition, passages that can be filled with the necessary liquids or gases run parallel to all passages in the ship, allowing these crew members to move freely throughout.",
 
+    "Talent.dubiousProvenanceSpecialRule": "Dubious Provenance",
+
+    "Talent.dubiousProvenanceSpecialRule.description": "See pg. 70 of the _Allies and Adversaries_ book.",
+
     "Talent.durability": "Durability",
 
     "Talent.durability.description": "Whether through genetic engineering or cybernetic implants, you’re more durable than most people. You gain Protection 2.",
@@ -4467,6 +4471,10 @@
     "Talent.followMyLead.description": "Once per scene, when you succeed at a Task during combat or another perilous situation, you may spend one Determination. If you do, choose a single ally. The next Task that ally attempts counts as having assistance from you, using your Presence + Command.",
     "Talent.followMyLead.description2e": "When you succeed at a task during combat or another perilous situation, you may spend Determination. If you do, choose a single ally who can hear you. The next task that ally attempts counts as having assistance from you, using your **Presence + Command**. On this task, do not roll your assistance die: it counts as having already rolled a 1.",
 
+    "Talent.fontOfKnowledgeSpecialRule": "Font of Knowledge",
+
+    "Talent.fontOfKnowledgeSpecialRule.description": "See pg. 70 of the _Allies and Adversaries_ book.",
+
     "Talent.formerInitiate": "Former Initiate",
 
     "Talent.formerInitiate.description": "You joined the Initiate Program, hoping to be chosen by the Symbiosis Commission to become Joined. As there are far more Initiates than there are Symbionts, you were one of the many who failed, but the quality of even a failed initiate is enough for Starfleet to recruit you. When you attempt a Task using Control or Reason, and spend Determination to buy a bonus d20 for that Task, you may re-roll your dice pool. Former Initiate cannot be taken if the character has the Joined Talent — they are mutually exclusive.",
@@ -4603,6 +4611,9 @@
     "Talent.iKnowMyShip.description2e": "Whenever you attempt a task to determine the source of a technical problem with your ship, the first bonus d20 you purchase is free.",
 
     "Talent.imADoctorNotA": "I'm a Doctor, Not a...",
+    "Talent.illicitGoodsSpecialRule": "Illicit Goods",
+
+    "Talent.illicitGoodsSpecialRule.description": "See pg. 83 of the _Allies and Adversaries_ book.",
 
     "Talent.imADoctorNotA.description": "When this Talent is purchased, select a Discipline with a score of 1. Once per scene, before attempting a Task using the selected Discipline, a point of Determination may be spent to substitute the character’s Medicine Score in place of that Discipline. This does not have to be linked to a Value.",
     "Talent.imADoctorNotA.description2e": "When you select this talent, choose one of your departments, with which you have a score of 1. When you attempt a task using the selected department, and you spend a point of Determination on that task, you may use your Medicine score instead of that department. The normal limits of spending Determination apply.",
@@ -5343,6 +5354,10 @@
 
     "Talent.quantumSlipstreamBurstDrive.description": "This experimental drive allows the ship to enter quantum slipstream for 30 minutes at a time, moving the ship up to 150 light-years before shutting down. The drive requires 12 hours to reset. As experimental technology, this drive may require extensive maintenance and be prone to failure. This is an independent system, so the crew may operate the warp drive in between slipstream bursts.",
 
+    "Talent.quickEfficientAndDeadlySpecialRule": "Quick, Efficient and Deadly",
+
+    "Talent.quickEfficientAndDeadlySpecialRule.description": "See pg. 83 of the _Allies and Adversaries_ book.",
+
     "Talent.quickLearner": "Quick Learner",
 
     "Talent.quickLearner.description2e": "See pg. 87 of the _Species Sourcebook_",
@@ -5566,6 +5581,10 @@
 
     "Talent.showOff.description": "You tend to show off, sometimes doing things the hard way just to demonstrate that you can. When you attempt a task, you may choose to increase the Difficulty by 1. If you succeed, you gain 2 bonus Momentum. Bonus Momentum cannot be saved.",
 
+    "Talent.significantRelicsSpecialRule": "Significant Relics",
+
+    "Talent.significantRelicsSpecialRule.description": "See pg. 70 of the _Allies and Adversaries_ book.",
+
     "Talent.siphoningShields": "Siphoning Shields",
 
     "Talent.siphoningShields.description2e": "When the ship is hit by an energy weapon, after the attack is resolved, you may add 2 Threat to restore Shields equal to the ship’s Security department.",
@@ -5739,6 +5758,10 @@
     "Talent.tacticalVoice": "Tactical Voice",
 
     "Talent.tacticalVoice.description2e": "See pg. 129 of the _Species Sourcebook_",
+
+    "Talent.takeThemAliveSpecialRule": "Taken them Alive",
+
+    "Talent.takeThemAliveSpecialRule.description": "See pg. 84 of the _Allies and Adversaries_ book.",
 
     "Talent.teacher": "Teacher",
 

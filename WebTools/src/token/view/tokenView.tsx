@@ -6,6 +6,7 @@ import { HeadCatalog } from '../model/headCatalog';
 import { UniformPackCollection } from '../model/uniformPackCollection';
 import { ExtrasCatalog } from '../model/extrasCatalog';
 import { TokenSvgBuilder } from '../tokenSvgBuilder';
+import { useTranslation } from 'react-i18next';
 
 interface ITokenViewProperties {
   tokenConfig: TokenConfig;
@@ -19,6 +20,7 @@ export const TokenView: React.FC<ITokenViewProperties> = ({
 }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const editable = onClick != null;
+  const { t } = useTranslation();
 
   const loadExtras = useCallback(() => {
     if (!ExtrasCatalog.instance.isLibraryLoaded) {
@@ -74,6 +76,7 @@ export const TokenView: React.FC<ITokenViewProperties> = ({
           className="mw-100"
           style={{ width: '300px', aspectRatio: '1' }}
           dangerouslySetInnerHTML={{ __html: svg }}
+          title={t('Construct.other.characterImage')}
         ></div>
       </div>
     );

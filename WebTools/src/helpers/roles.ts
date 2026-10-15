@@ -576,7 +576,7 @@ export class RolesHelper {
     new RoleModel(
       Role.FlightController,
       'Helm Officer (DeghwI’)',
-      'The weapons officer has direct control of the ship’s weaponry, and is responsible for their maintenance and upkeep. Since this can vary from vessel to vessel, it is vital that a ship’s weapons officer be completely familiar with the arsenal they oversee. The weapons officer also has the duty of becoming familiar with enemy vessels, learning their strengths, weaknesses, and capabilities to advise the commanding officer during battle.',
+      'The helm officer is responsible for laying a course and controlling the ship’s speed. For travel at warp, this is mostly automated with the helm officer overseeing and correcting for unexpected activity. A skilled helm officer is respected for their ability to manually control their ship, both in space and (in smaller ships) in atmosphere and will have learned a wide range of tactical maneuvers and be able to perform them instantly when commanded.',
       Department.Conn,
       'When the helm officer succeeds at a Conn task to control a starship, they generate one point of bonus Momentum to be used on that task. Bonus Momentum may not be saved.',
       new SourceCharacterPrerequisite(Source.KlingonCore),
@@ -586,7 +586,7 @@ export class RolesHelper {
     new RoleModel(
       Role.WeaponsOfficer,
       'Weapons Officer (nuHpIn)',
-      'The helm officer is responsible for laying a course and controlling the ship’s speed. For travel at warp, this is mostly automated with the helm officer overseeing and correcting for unexpected activity. A skilled helm officer is respected for their ability to manually control their ship, both in space and (in smaller ships) in atmosphere and will have learned a wide range of tactical maneuvers and be able to perform them instantly when commanded.',
+      'The weapons officer has direct control of the ship’s weaponry, and is responsible for their maintenance and upkeep. Since this can vary from vessel to vessel, it is vital that a ship’s weapons officer be completely familiar with the arsenal they oversee. The weapons officer also has the duty of becoming familiar with enemy vessels, learning their strengths, weaknesses, and capabilities to advise the commanding officer during battle.',
       Department.Security,
       'When the weapons officer succeeds at an attack with the ship’s weapons, they may re-roll a number of challenge dice on the damage roll equal to the weapons officer’s Security score.',
       new SourceCharacterPrerequisite(Source.KlingonCore),

@@ -1027,7 +1027,8 @@ export class Character extends Construct implements IWeaponDiceProvider {
     let stress = this.attributes[Attribute.Fitness];
     if (
       this.version !== 1 &&
-      this.stereotype === Stereotype.SupportingCharacter
+      this.stereotype === Stereotype.SupportingCharacter &&
+      !this.supportingStep?.supervisory
     ) {
       if (this.values.length === 1) {
         stress = Math.ceil(stress / 2);
