@@ -848,7 +848,11 @@ export class NpcGenerator {
       }
     }
 
-    if (!character.isCivilian() && characterType !== NpcCharacterType.Borg) {
+    if (
+      !character.isCivilian() &&
+      characterType !== NpcCharacterType.Borg &&
+      characterType !== NpcCharacterType.Dominion
+    ) {
       NpcGenerator.assignRank(character, specialization);
     }
     NpcGenerator.assignFocuses(npcType, character, specialization);

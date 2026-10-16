@@ -6,6 +6,7 @@ import cardassianNames from './names-cardassian.json';
 import humanNames from './names-human.json';
 import ferengiNames from './names-ferengi.json';
 import hupyrianNames from './names-hupyrian.json';
+import jemHadarNames from "./names-jem'hadar.json";
 import klingonNames from './names-klingon.json';
 import ktarianNames from './names-ktarian.json';
 import nausicaanNames from './names-nausicaan.json';
@@ -39,6 +40,7 @@ const names: NameList[] = [
   { species: 'Human', names: humanNames },
   { species: 'Ferengi', names: ferengiNames },
   { species: 'Hupyrian', names: hupyrianNames },
+  { species: "Jem'Hadar", names: jemHadarNames },
   { species: 'Klingon', names: klingonNames },
   { species: 'Ktarian', names: ktarianNames },
   { species: 'Nausicaan', names: nausicaanNames },

@@ -1480,10 +1480,13 @@ export class Specializations {
           'Being an assassin means knowing when to kill -- and when not to kill.',
           'Assassins take no pride in fighting fairly. We take pride in winning.',
           "It's nearly impossible to defend against an assassin who's willing to die for his cause.",
-          new Value('Assassin are meant to be quiet. Precise. We do not go announcing conspiracies from the rooftops to all who pass by.', 'Precise'),
+          new Value(
+            'Assassin are meant to be quiet. Precise. We do not go announcing conspiracies from the rooftops to all who pass by.',
+            'Precise',
+          ),
           'A thousand innocent people get killed every day',
           'If I show up at your door, chances are you did something to bring me there.',
-          'No, no. Psychopaths kill for no reason. I kill for money. It\'s a job.',
+          "No, no. Psychopaths kill for no reason. I kill for money. It's a job.",
         ],
         0.0,
       ),
@@ -2041,7 +2044,7 @@ export class Specializations {
           'I hacked the Gibson',
           new Value('Mess with the best; die like the rest.', 'Cocky'),
           'Information wants to be free, but for now, it has a price attached to it.',
-          "It's all about information"
+          "It's all about information",
         ],
         0,
         [
@@ -2126,12 +2129,7 @@ export class Specializations {
           'Hand Phasers',
           'Hand-to-Hand Combat',
         ],
-        [
-          'Security Rounds',
-          'Pharmacology',
-          'Exfiltration',
-          'Neural Implants',
-        ],
+        ['Security Rounds', 'Pharmacology', 'Exfiltration', 'Neural Implants'],
         [
           'Everything has a price',
           'I only kill those who will cost me more than they can earn me',
@@ -2174,7 +2172,7 @@ export class Specializations {
           "I can see none of you are smugglers; that's why it's so loud.",
           new Value("Trust isn't given; it's earned.", 'Slow to Trust'),
           'Carrying charges, my friend. Carrying charges.',
-          'I thrive because I do not ignore opportunities'
+          'I thrive because I do not ignore opportunities',
         ],
         0,
         [
@@ -3004,6 +3002,31 @@ export class Specializations {
         [Species.Hirogen],
       ),
       new SpecializationModel(
+        Specialization.JemHadarGuard,
+        NpcCharacterType.Dominion,
+        "Jem'Hadar Guard",
+        [Attribute.Daring, Attribute.Fitness, Attribute.Control],
+        Department.Security,
+        ['Hand-to-Hand Combat', 'Marksmanship', 'Security Protocols'],
+        [
+          'Starship Tactics',
+          'Ambush Tactics',
+          'Creating Distraction',
+          'Security Sweeps',
+          'Covering Fire',
+          'Exfiltration',
+        ],
+        [
+          'We shall take advantage of their mistake.',
+          "As of this moment, we are all dead. We go into battle to reclaim our lives. This we do gladly, for we are Jem'Hadar. Remember: victory is life.",
+          'You have the look of a warrior, but the heart of a coward',
+          'We pledge our loyalty to the Founders, from now until death',
+          'It is our duty to punish those who would break their vow of loyalty',
+        ],
+        0,
+        [Species.JemHadar],
+      ),
+      new SpecializationModel(
         Specialization.IndependentArchaeologist,
         NpcCharacterType.Civilian,
         'Independent Archaeologist',
@@ -3029,7 +3052,6 @@ export class Specializations {
           'X never, ever marks the spot',
           "That's an important artifact. It belongs in a museum",
           'If you wanna be a good archaeologist, you gotta get out of the library',
-
         ],
         1,
         [

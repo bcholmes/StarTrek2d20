@@ -10,6 +10,7 @@ export enum NpcCharacterType {
   RomulanEmpire,
   Ferengi,
   Cardassian,
+  Dominion,
   MinorPolity,
   Civilian,
   RogueRuffianMercenary,
@@ -37,6 +38,8 @@ export class NpcCharacterTypeModel {
         return i18next.t('AlliedMilitaryType.name.cardassianUnion');
       case NpcCharacterType.Civilian:
         return i18next.t('CharacterType.name.civilian');
+      case NpcCharacterType.Dominion:
+        return i18next.t('AlliedMilitaryType.name.dominion');
       case NpcCharacterType.Ferengi:
         return i18next.t('Species.ferengi.name');
       case NpcCharacterType.MinorPolity:
@@ -72,6 +75,7 @@ export class NpcCharacterTypes {
       'Romulan Star Empire',
     ),
     new NpcCharacterTypeModel(NpcCharacterType.Cardassian, 'Cardassian'),
+    new NpcCharacterTypeModel(NpcCharacterType.Dominion, 'Dominion'),
     new NpcCharacterTypeModel(NpcCharacterType.Ferengi, 'Ferengi'),
     new NpcCharacterTypeModel(NpcCharacterType.MinorPolity, 'Minor Polity'),
     new NpcCharacterTypeModel(NpcCharacterType.Civilian, 'Civilian'),
@@ -117,6 +121,11 @@ export class NpcCharacterTypes {
           ]) && this.isNextGenerationOrLater()
         );
       } else if (t.type === NpcCharacterType.Borg) {
+        return (
+          hasSource(Source.AlliesAndAdversaries) &&
+          this.isNextGenerationOrLater()
+        );
+      } else if (t.type === NpcCharacterType.Dominion) {
         return (
           hasSource(Source.AlliesAndAdversaries) &&
           this.isNextGenerationOrLater()

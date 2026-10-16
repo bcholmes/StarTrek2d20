@@ -34,6 +34,14 @@ describe('testing name generation', () => {
     }
   });
 
+  test("should create Jem'Hadar name", () => {
+    const { name, pronouns } = NameGenerator.instance.createName(
+      new MockSpecies(Species.JemHadar, "Jem'Hadar"),
+    );
+    expect(name).toBeDefined();
+    expect(pronouns).toBeDefined();
+  });
+
   test('should create Borg name', () => {
     const name = NameGenerator.instance.createBorgName().split(' ');
     expect(Number(name[0])).toBeGreaterThan(0);

@@ -53,6 +53,8 @@ WebTools/build folder to a web server, and you're done.
 ## Contributing
 Contributions are welcome. Use a [Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) to get your changes into the master branch.
 
+Please consider configuring your Git client to [sign your commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits). That helps add an additional level of security.
+
 ### Translations
 I can especially use some help with translating text to support
 [languages other than English](./translation/README.md). If that's your skillset,

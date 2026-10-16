@@ -75,6 +75,8 @@ export enum Specialization {
   BorgTechnicalDrone,
   BorgMedicalDrone,
   BorgAdjunctDrone,
+
+  JemHadarGuard,
 }
 
 export const allSpecializations = () => {
