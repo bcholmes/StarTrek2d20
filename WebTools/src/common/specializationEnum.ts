@@ -77,6 +77,9 @@ export enum Specialization {
   BorgAdjunctDrone,
 
   JemHadarGuard,
+  JemHadarWarrior,
+  JemHadarFirst,
+  VortaAdministrator,
 }
 
 export const allSpecializations = () => {

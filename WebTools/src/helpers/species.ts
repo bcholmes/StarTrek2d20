@@ -507,7 +507,12 @@ class SpeciesRepository {
       [Attribute.Insight, Attribute.Presence, Attribute.Reason],
       'Vorta',
       'Vorta have extremely keen hearing, but relatively poor eyesight. They are immune to most forms of poison. Vorta are absolutely loyal to the Dominion, revering the Founders as living gods. Those who encounter the Vorta often regard them as insincere or manipulative.',
-      '',
+      [
+        'I serve at the Founders pleasure',
+        'The Dominion philosophy is superior',
+        'There is nothing I will not do to achieve my—the Founders’—ends',
+        'I do not wish to be your enemy, and it is regrettable that you have forced my hand',
+      ],
       [
         TalentsHelper.getTalent('Manipulative'),
         TalentsHelper.getTalent('Overseer'),

@@ -5,6 +5,7 @@ import { Attribute } from '../../helpers/attributes';
 import { Department } from '../../helpers/department';
 import { Species } from '../../helpers/speciesEnum';
 import { NpcCharacterType } from './npcCharacterType';
+import { Value } from '../../common/value';
 
 export class Specialty {
   focuses: { [id: string]: string[] };
@@ -27,16 +28,6 @@ export class Specialty {
       result = result || f.includes(focus);
     });
     return result;
-  }
-}
-
-export class Value {
-  readonly value: string;
-  readonly aspect: string;
-
-  constructor(value: string, aspect: string) {
-    this.value = value;
-    this.aspect = aspect;
   }
 }
 
@@ -3066,6 +3057,118 @@ export class Specializations {
         ],
         0,
         [Species.JemHadar],
+      ),
+      new SpecializationModel(
+        Specialization.JemHadarWarrior,
+        NpcCharacterType.Dominion,
+        "Jem'Hadar Warrior",
+        [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
+        Department.Security,
+        [
+          'Hand-to-Hand Combat',
+          'Marksmanship',
+          'Security Protocols',
+          'Combat Tactics',
+        ],
+        [
+          'Starship Tactics',
+          'Ambush Tactics',
+          'Creating Distraction',
+          'Security Sweeps',
+          'Covering Fire',
+          'Guerilla Tactics',
+        ],
+        [
+          new Value('We shall take advantage of their mistake.', 'Ruthless'),
+          "As of this moment, we are all dead. We go into battle to reclaim our lives. This we do gladly, for we are Jem'Hadar. Remember: victory is life.",
+          'You have the look of a warrior, but the heart of a coward',
+          new Value(
+            'We pledge our loyalty to the Founders, from now until death',
+            'Loyal',
+          ),
+          new Value(
+            'It is our duty to punish those who would break their vow of loyalty',
+            'Zealous',
+          ),
+        ],
+        0,
+        [Species.JemHadar],
+      ),
+      new SpecializationModel(
+        Specialization.JemHadarFirst,
+        NpcCharacterType.Dominion,
+        "Jem'Hadar First",
+        [Attribute.Daring, Attribute.Fitness, Attribute.Insight],
+        Department.Security,
+        [
+          'Hand-to-Hand Combat',
+          'Marksmanship',
+          'Security Protocols',
+          'Combat Tactics',
+          'Battle Strategy',
+        ],
+        [
+          'Starship Tactics',
+          'Ambush Tactics',
+          'Creating Distraction',
+          'Security Sweeps',
+          'Covering Fire',
+          'Mission Planning',
+        ],
+        [
+          new Value('We shall take advantage of their mistake.', 'Ruthless'),
+          "As of this moment, we are all dead. We go into battle to reclaim our lives. This we do gladly, for we are Jem'Hadar. Remember: victory is life.",
+          'You have the look of a warrior, but the heart of a coward',
+          new Value(
+            'We pledge our loyalty to the Founders, from now until death',
+            'Loyal',
+          ),
+          new Value(
+            'It is our duty to punish those who would break their vow of loyalty',
+            'Zealous',
+          ),
+        ],
+        0,
+        [Species.JemHadar],
+      ),
+      new SpecializationModel(
+        Specialization.VortaAdministrator,
+        NpcCharacterType.Dominion,
+        'Vorta Administrator',
+        [Attribute.Control, Attribute.Insight, Attribute.Presence],
+        Department.Command,
+        [
+          'Deception',
+          'Diplomacy',
+          'Observation',
+          'Psychology',
+          'Planning',
+          'Resource Allocation',
+        ],
+        [
+          'Risk Assessment',
+          'Mission Parameters',
+          'Current Border Readiness',
+          'External Polity Intelligence',
+          'Negotiation',
+          'Military Intelligence',
+          'Operational Efficiency',
+        ],
+        [
+          new Value('We shall take advantage of their mistake.', 'Ruthless'),
+          "As of this moment, we are all dead. We go into battle to reclaim our lives. This we do gladly, for we are Jem'Hadar. Remember: victory is life.",
+          'You have the look of a warrior, but the heart of a coward',
+          new Value(
+            'We pledge our loyalty to the Founders, from now until death',
+            'Loyal',
+          ),
+          new Value(
+            'It is our duty to punish those who would break their vow of loyalty',
+            'Zealous',
+          ),
+        ],
+        0,
+        [Species.Vorta],
       ),
       new SpecializationModel(
         Specialization.IndependentArchaeologist,

@@ -2825,6 +2825,8 @@ class Marshaller {
       talentName === 'Dedicated Personnel (Science)'
     ) {
       talentName = 'Dedicated Personnel';
+    } else if (talentName === 'Brute Force (Special Rule)') {
+      talentName = 'Brute Force';
     }
     const talent = TalentsHelper.getTalent(talentName);
     if (talent) {

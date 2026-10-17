@@ -126,6 +126,12 @@ export enum Rank {
   Chot,
   Thot,
 
+  First,
+  Second,
+  Third,
+  Fourth,
+  Fifth,
+
   None,
 }
 
@@ -1375,6 +1381,56 @@ export class RanksHelper {
         ),
       ],
       "H'ren",
+    ),
+    new RankModel(
+      Rank.First,
+      'First',
+      'O5',
+      [
+        new OfficerCharacterPrerequisite(),
+        new AlliedMilitaryCharacterPrerequisite(AlliedMilitaryType.Dominion),
+      ],
+      'First',
+    ),
+    new RankModel(
+      Rank.Second,
+      'Second',
+      'O4',
+      [
+        new OfficerCharacterPrerequisite(),
+        new AlliedMilitaryCharacterPrerequisite(AlliedMilitaryType.Dominion),
+      ],
+      'Second',
+    ),
+    new RankModel(
+      Rank.Third,
+      'Third',
+      'O3',
+      [
+        new OfficerCharacterPrerequisite(),
+        new AlliedMilitaryCharacterPrerequisite(AlliedMilitaryType.Dominion),
+      ],
+      'Third',
+    ),
+    new RankModel(
+      Rank.Fourth,
+      'Fourth',
+      'O2',
+      [
+        new OfficerCharacterPrerequisite(),
+        new AlliedMilitaryCharacterPrerequisite(AlliedMilitaryType.Dominion),
+      ],
+      'Fourth',
+    ),
+    new RankModel(
+      Rank.Fifth,
+      'Fifth',
+      'O1',
+      [
+        new OfficerCharacterPrerequisite(),
+        new AlliedMilitaryCharacterPrerequisite(AlliedMilitaryType.Dominion),
+      ],
+      'Fifth',
     ),
   ];
 

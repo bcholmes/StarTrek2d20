@@ -18,6 +18,7 @@ import talarianNames from './names-talarian.json';
 import tellariteNames from './names-tellarite.json';
 import tholianNames from './names-tholian.json';
 import tzenkethiNames from './names-tzenkethi.json';
+import vortaNames from './names-vorta.json';
 import vulcanNames from './names-vulcan.json';
 import yridianNames from './names-yridian.json';
 
@@ -52,6 +53,7 @@ const names: NameList[] = [
   { species: 'Tellarite', names: tellariteNames },
   { species: 'Tholian', names: tholianNames },
   { species: 'Tzenkethi', names: tzenkethiNames },
+  { species: 'Vorta', names: vortaNames },
   { species: 'Vulcan', names: vulcanNames },
   { species: 'Yridian', names: yridianNames },
 ];

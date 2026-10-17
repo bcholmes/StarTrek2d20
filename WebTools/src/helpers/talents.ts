@@ -5601,6 +5601,7 @@ export class Talents {
       [
         new SourcePrerequisite(Source.SpeciesSourcebook),
         new SpeciesPrerequisite(Species.JemHadar, false),
+        new NotPrerequisite(new StereotypePrerequisite(Stereotype.Npc)),
       ],
       1,
       new TalentCategorization(TalentCategory.Species, Species.JemHadar),
@@ -5921,6 +5922,7 @@ export class Talents {
       [
         new SourcePrerequisite(Source.SpeciesSourcebook),
         new SpeciesPrerequisite(Species.Vorta, true),
+        new NotPrerequisite(new StereotypePrerequisite(Stereotype.Npc)),
       ],
       1,
       new TalentCategorization(TalentCategory.Species, Species.Vorta),
@@ -9295,13 +9297,58 @@ export class Talents {
       true,
     ),
     new TalentModel(
-      'Brute Force (Special Rule)',
+      'The Shroud (Special Rule)',
       '',
       [
         new StereotypePrerequisite(Stereotype.Npc),
         new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.JemHadar, false),
         new AnyOfPrerequisite(
-          new SpecializationPrerequisite(Specialization.JemHadarGuard),
+          new SpecializationPrerequisite(
+            Specialization.JemHadarGuard,
+            Specialization.JemHadarFirst,
+            Specialization.JemHadarWarrior,
+          ),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(
+          Source.Core2ndEdition,
+          Source.AlliesAndAdversaries,
+        ),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Victory is Life (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.JemHadar, false),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.JemHadarFirst),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(
+          Source.Core2ndEdition,
+          Source.AlliesAndAdversaries,
+        ),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Overseer (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Vorta, false),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.VortaAdministrator),
           new NoSpecializationPrerequisite(),
         ),
         new SourcePrerequisite(Source.AlliesAndAdversaries),
@@ -9311,17 +9358,34 @@ export class Talents {
       true,
     ),
     new TalentModel(
-      'The Shroud (Special Rule)',
+      'In the Name of the Founders (Special Rule)',
       '',
       [
         new StereotypePrerequisite(Stereotype.Npc),
         new Version2Prerequisite(),
-        new SpeciesPrerequisite(Species.JemHadar, false),
+        new AnySpeciesPrerequisite(false, Species.Vorta, Species.Changeling),
         new AnyOfPrerequisite(
-          new SpecializationPrerequisite(Specialization.JemHadarGuard),
+          new SpecializationPrerequisite(Specialization.VortaAdministrator),
           new NoSpecializationPrerequisite(),
         ),
-        new SourcePrerequisite(Source.AlliesAndAdversaries),
+        new SourcePrerequisite(Source.Core2ndEdition),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      'Manipulative (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new SpeciesPrerequisite(Species.Vorta, false),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.VortaAdministrator),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.Core2ndEdition),
       ],
       1,
       new TalentCategorization(TalentCategory.SpecialRule),
