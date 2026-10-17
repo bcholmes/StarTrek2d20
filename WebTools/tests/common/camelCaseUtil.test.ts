@@ -6,6 +6,12 @@ describe('testing Camel Case Utility', () => {
     expect(toCamelCase('A Fair Maiden')).toBe('aFairMaiden');
   });
 
+  test('preceeding punctuation', () => {
+    expect(toCamelCase('...But only Between Ferengi (Special Rule)')).toBe(
+      'butOnlyBetweenFerengiSpecialRule',
+    );
+  });
+
   test('unusual characters', () => {
     expect(toCamelCase('Transporters & Replicators')).toBe(
       'transportersReplicators',

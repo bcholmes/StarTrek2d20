@@ -9392,6 +9392,39 @@ export class Talents {
       true,
     ),
     new TalentModel(
+      'A Contract is a Contract is a Contract... (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.FerengiLiquidator),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
+      '...But only Between Ferengi (Special Rule)',
+      '',
+      [
+        new StereotypePrerequisite(Stereotype.Npc),
+        new Version2Prerequisite(),
+        new AnySpeciesPrerequisite(false, Species.Ferengi),
+        new AnyOfPrerequisite(
+          new SpecializationPrerequisite(Specialization.FerengiLiquidator),
+          new NoSpecializationPrerequisite(),
+        ),
+        new SourcePrerequisite(Source.AlliesAndAdversaries),
+      ],
+      1,
+      new TalentCategorization(TalentCategory.SpecialRule),
+      true,
+    ),
+    new TalentModel(
       "Hunter's Skill (Hirogen Talent)",
       '',
       [

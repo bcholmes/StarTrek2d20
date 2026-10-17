@@ -242,6 +242,8 @@
     "FileUploadDialog.title": "Wczytaj obrazek",
     "FileUploadDialog.instruction": "Wybierz wizerunek Twojej postaci: znacznik z kreatora znaczników lub dowolny obrazek (dozwolone formaty JPG lub PNG).\n\nNajlepiej wykorzystać kwadratową grafikę, ponieważ będzie przeskalowane do rozmiaru 450x450 pikseli.",
 
+    "FileUploadDialog.drag.instruction": "Przeciągnij obrazek w to miejsce lub kliknij, aby wybrać plik z komputera.",
+
     "FileUploadDialog.option.token": "Znacznik",
     "FileUploadDialog.option.image": "Obrazek",
 
@@ -709,6 +711,7 @@
 
     "Construct.other.careerEvents": "Kluczowe wydarzenia",
     "Construct.other.careerPath": "Ścieżka kariery",
+    "Construct.other.characterImage": "Wizerunek postaci",
     "Construct.other.characterRole": "Rola bohatera",
     "Construct.other.characterType": "Rodzaj bohatera",
     "Construct.other.crew": "Załoga",
@@ -1138,8 +1141,11 @@
     "CareerEvent.common.60.description": "Wszechświat to znacznie więcej niż można zobaczyć czy doświadczyć i jest wiele warstw rzeczywistości, które zazwyczaj nie są dostępne, jak np. płynna przestrzeń, Kontinuum Q, niezliczone wymiary podprzestrzeni czy wszechświaty równoległe jak np. Wszechświat Lustrzany. Twoja postać napotkała lub doświadczyła fenomenu pochodzącego z innego wymiaru lub osobiście odwiedziła taki wymiar.",
 
     "CareerEvent.common.61.name": "Stypendium w elitarnej instytucji",
+    "CareerEvent.common.61.description": "W Galaktyce istnieje wiele prestiżowych instytucji naukowych i akademickich, np. Instytut Daystroma na Okinawie (Ziemia) czy Wolkańska Akademia Nauk w ShiKahr (Wolkan). Twoja postać studiowała w jednej z takich instytucji przez kilka miesięcy lub nawet lat, przeprowadzając ważne badania i zyskując rozgłos w naukowej społeczności.",
+    "CareerEvent.common.61.traitDescription": "Postać otrzymuje cechę reprezentującą prestiż i dokonania, które towarzyszą pracy na uczelni, np. Stypendysta Daystroma albo Studia w Wolkańskiej Akademii Nauk. Nazwa powinna pasować do właściwej instytucji.",
 
-    "CareerEvent.common.62.name": "Studia archeotechniczne",
+    "CareerEvent.common.62.name": "Studia archeotechnologiczne",
+    "CareerEvent.common.62.description": "Archeotechnologia to nauka badająca poziom rozwoju technologii zarówno w istniejących współcześnie cywilizacjach jak i w takich, które już nie istnieją. Postać spędziła czas – zawodowo lub w ramach osobistego zainteresowania – studiując historyczne technologie, takie jak np. prymitywne urządzenia przedwarpowej epoko własnej kultury lub dawno zapomniane zdobycze naukowe cywilizacji z odległej przeszłości.",
 
     "CareerEvent.common.63.name": "Badanie nowego rodzaju źródła mocy",
 
@@ -1312,6 +1318,7 @@
     "Environment.common.denobula23rd.description": "**Denobula** to gęsto zaludniony świat ojczysty cywilizacji **Denobulan**, znajdujący się w potrójnym układzie gwiezdnym **Denobula Triaxa**. Populacja planety zamieszkuje relatywnie niewielki kontynent o klimacie umiarkowanie wilgotnym z systemami zarządzania pogodą, chroniącymi przed silną aktywnością burzową. Denobula była sygnatariuszem Koalicji Planet, organizacji która później przerodziła się w Federację, natomiast do samej Federacji weszła z wieloletnim opóźnieniem.\n\nDenobulanie zamieszkują w gęsto zabudowanym ośrodku miejskim, rozrastającym się na cały kontynent. Kultura denobulańska celebruje wielkie rodziny i bliskie sąsiedztwo, które mogą być przytłaczające dla wielu pozaświatowców. Mimo tego Denobula jest otwarta na gości z zewnątrz, gotowych dostosować się do lokalnych zwyczajów.",
 
     "Environment.common.earth23rd.name": "Ziemia",
+    "Environment.common.earth23rd.description": "**Ziemia** jest ojczystą planetą dla **Ludzi** (a także niewielkiej populacji **Lantanitów** żyjących w ukryciu), a także stolicą Zjednoczonej Federacji Planet. Jest to trzecia planeta Układu Słonecznego i panuje na niej klimat umiarkowany. W erze gwałtownych wojen Ziemia znajdowała się na skraju ekologicznej katastrofy, natomiast po pierwszym kontakcie z Wolkanami doszło do wielkiej odbudowy.\n\nOd tego czasu Ziemia stała się niemal rajem, uwolniona od społecznych i ekologicznych wyzwań przeszłości. Na Ziemi stacjonuje także Dowództwo Gwiezdnej Floty (San Francisco) jak i urząd Prezydenta Federacji oraz siedziba Rady Federacji. Z powodu politycznej wagi, na planecie znajdują się liczne ambasady oraz istotna nie-ludzka społeczność.",
 
     "Environment.common.qonos23rd.name": "Qo'noS",
 
@@ -1335,6 +1342,7 @@
     "Environment.klingon.isolatedColony.description": "Pochodzisz z kolonii znajdującej się na uboczu Imperium a także z dala od popularnych galaktycznych szlaków. Światy takie jak Boreth wykorzystują izolację jako okazję do skupienia na kwestia duchowych i kontemplacji, ale mogą to być też kolonie prezentujące unikalne możliwości związane z badaniami prowadzonymi daleko od instytucji kontrolnych i regulacji. Nawet będąc częścią Imperium, takie planety skupiają się na nauce i introspekcji.",
 
     "Environment.klingon.frontierColony.name": "Kolonia na rubieżach",
+    "Environment.klingon.frontierColony.description": "Pochodzisz z kolonii znajdującej się na pograniczu Imperium, na skraju poznanej przestrzeni lub w bezpośredniej bliskości granicy z Federacją lub Imperium Romulańskim. Twój świat mógł być w przeszłości obiektem roszczeń terytorialnych lub działań wojennych z sąsiadami. Kolonie graniczne sprzyjają zdeterminowanym, upartym i czujnym jednostkom, gotowym do obrony swoich siedzib i społeczności.",
 
     "Environment.klingon.starshipOrStarbase.name": "Statek kosmiczny albo baza gwiezdna",
 
@@ -1342,7 +1350,7 @@
 
     "Environment.alternate.utopianParadise.name": "Utopijny raj",
 
-    "Environment.alternate.cosmopolitan.name": "Kosmpolityzm",
+    "Environment.alternate.cosmopolitan.name": "Kosmopolityzm",
 
     "Environment.alternate.rigorousDiscipline.name": "Ścisła dyscyplina",
 
@@ -1805,7 +1813,9 @@
 
     "NpcType.major.name": "Kluczowy BN",
 
+    "PropulsionSystemType.displacementActivatedSporeHubDrive": "Translacyjny napęd aktywowany zarodnikami",
     "PropulsionSystemType.protostarDrive": "Napęd protogwiezdny",
+    "PropulsionSystemType.quantumSlipstreamDrive": "Kwantowy napęd strumieniowy",
     "PropulsionSystemType.transwarp": "Transwarp",
 
     "Rank.admiral.name": "admirał",

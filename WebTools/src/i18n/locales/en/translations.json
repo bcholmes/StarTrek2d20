@@ -2506,6 +2506,7 @@
     "Specialization.engineer": "Engineer",
     "Specialization.federationAmbassador": "Federation Ambassador",
     "Specialization.ferengiDaiMon": "Ferengi DaiMon",
+    "Specialization.ferengiLiquidator": "FCA Liquidator",
     "Specialization.ferengiMerchant": "Ferengi Merchant",
     "Specialization.firstContactSpecialist": "First Contact Specialist",
     "Specialization.hangarDeck": "Hangar Deck",
@@ -3552,6 +3553,10 @@
 
     "Talent.acidicTouchUnofficial.description": "You can use your natural acidic offensively. Your touch counts as a melee weapon with 3[D], Intense, Size 1H. When you use your acid touch, add 2 to the Threat pool.",
 
+    "Talent.aContractIsAContractIsAContractSpecialRule": "A Contract is a Contract is a Contract...",
+
+    "Talent.aContractIsAContractIsAContractSpecialRule.description": "See pg. 58 of the _Allies and Adversaries_ book.",
+
     "Talent.acuteSenses": "Acute Senses",
 
     "Talent.acuteSenses.description2e": "The Aenar have honed their senses to the point that they are able to respond to stimuli just as well as, if not superior to, those who possess the ability to see. When attempting a task to detect something which is hidden from conventional senses, or which would normally be difficult to perceive, you may re-roll 1d20.",
@@ -3820,9 +3825,13 @@
 
     "Talent.bornToFight.description2e": "The character may reroll one d20 when making an attack. In addition, if an attack is successful, the character generates 1 bonus Momentum which may only be spent to increase the Severity of the attack. Bonus Momentum may not be saved.",
 
-    "Talent.bruteForceSpecialRule": "Brute Force",
+    "Talent.bruteForce": "Brute Force",
 
-    "Talent.bruteForceSpecialRule.description": "See pg. 51 of the _Allies and Adversaries_ book.",
+    "Talent.bruteForce.description2e": "This character adds the Intense effect to their Unarmed Strike, and may attack with Deadly force.",
+
+    "Talent.butOnlyBetweenFerengiSpecialRule": "...But only Between Ferengi",
+
+    "Talent.butOnlyBetweenFerengiSpecialRule.description": "See pg. 58 of the _Allies and Adversaries_ book.",
 
     "Talent.calibratedMunitions": "Calibrated Munitions",
 
@@ -4775,6 +4784,10 @@
 
     "Talent.interviewTechniqueSpecialRule.description": "See pg. 103 of the _Allies and Adversaries_ book.",
 
+    "Talent.inTheNameOfTheFoundersSpecialRule": "In the Name of the Founders",
+
+    "Talent.inTheNameOfTheFoundersSpecialRule.description": "When using the _Direct_ or _Assist_ task to command other servants of the Dominion, a Vorta may roll 2d20 instead of 1d20.",
+
     "Talent.inTheNickOfTime": "In the Nick of Time",
 
     "Talent.inTheNickOfTime.description": "Whenever you succeed at an Engineering or Science Task as part of an Extended Task, you score 1 additional Work for every Effect rolled.",
@@ -4890,6 +4903,10 @@
     "Talent.manipulative": "Manipulative",
 
     "Talent.manipulative.description": "See pg. 113 of the _Species Sourcebook_",
+
+    "Talent.manipulativeSpecialRule": "Manipulative",
+
+    "Talent.manipulativeSpecialRule.description": "If the character purchases one or more d20s when attempting a task to deceive or intimidate another, she may re-roll her dice pool.",
 
     "Talent.martialArtist": "Martial Artist",
 
@@ -5138,6 +5155,10 @@
     "Talent.overseer": "Overseer",
 
     "Talent.overseer.description": "See pg. 113 of the _Species Sourcebook_",
+
+    "Talent.overseerSpecialRule": "Overseer",
+
+    "Talent.overseerSpecialRule.description": "See pg. 54 of the _Allies and Adversaries_ book.",
 
     "Talent.packHunter": "Pack Hunter",
 
@@ -5840,7 +5861,7 @@
 
     "Talent.theShroudSpecialRule": "The Shroud",
 
-    "Talent.theShroudSpecialRule.description": "See pg. 51 of the _Allies and Adversaries_ book.",
+    "Talent.theShroudSpecialRule.description": "Jem’Hadar may spend 2 Threat as a minor action to become virtually invisible, increasing the Difficulty of all tasks to observe, locate, or target the Jem’Hadar by three. This effect ends when the Jem’Hadar makes an Attack, or takes a minor action to end the effect. The Jem’Hadar loses this ability when deprived of ketracel-white.",
 
     "Talent.theSpiceOfLife": "The Spice of Life",
 
@@ -6010,6 +6031,10 @@
     "Talent.victoryIsLife": "Victory is Life!",
 
     "Talent.victoryIsLife.description": "See pg. 59 of the _Species Sourcebook_",
+
+    "Talent.victoryIsLifeSpecialRule": "Victory is Life!",
+
+    "Talent.victoryIsLifeSpecialRule.description": "Whenever a Jem’Hadar First or one of its subordinates inflicts an Injury or achieves an objective, add 1 Threat.",
 
     "Talent.visitEveryStar": "Visit Every Star",
 

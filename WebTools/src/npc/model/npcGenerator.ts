@@ -1121,7 +1121,12 @@ export class NpcGenerator {
         }
         break;
       case NpcCharacterType.Ferengi:
-        if (specialization.id === Specialization.FerengiDaiMon) {
+        if (
+          [
+            Specialization.FerengiDaiMon,
+            Specialization.FerengiPrivateer,
+          ].includes(specialization.id)
+        ) {
           character.type = CharacterType.AlliedMilitary;
           character.typeDetails = new AlliedMilitaryDetails(
             AllyHelper.instance.findOption(AlliedMilitaryType.Other),
@@ -1519,6 +1524,12 @@ export class NpcGenerator {
       );
     } else if (specialization.id === Specialization.FerengiDaiMon) {
       ranks = [RanksHelper.instance().getRank(Rank.DaiMon)];
+    } else if (specialization.id === Specialization.FerengiPrivateer) {
+      ranks = [
+        RanksHelper.instance().getRank(Rank.Salesman),
+        RanksHelper.instance().getRank(Rank.Associate),
+        RanksHelper.instance().getRank(Rank.Menial),
+      ];
     } else if (
       [Specialization.JemHadarWarrior, Specialization.JemHadarGuard].includes(
         specialization.id,

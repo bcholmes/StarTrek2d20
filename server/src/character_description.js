@@ -127,9 +127,13 @@ function describeSpecialization(inputJson, pronoun) {
         if (inputJson.specialization === "FerengiMerchant") {
             prompt += pronounPhrase + " Ferengi merchant seeking fortune through the sale of goods.";
         } else if (inputJson.specialization === "FerengiDaiMon") {
-            prompt += pronounPhrase + " an officer in the Ferengi mercantile fleet, with the rank of " + inputJson.rank + ".";
+            prompt += pronounPhrase + " a leader among Ferengi privateers, with the rank of " + inputJson.rank + ".";
+        } else if (inputJson.specialization === "FerengiPrivateer") {
+            prompt += pronounPhrase + " a Ferengi privateer, with the rank of " + inputJson.rank + ".";
         } else if (inputJson.specialization === "FerengiLiquidator") {
             prompt += pronounPhrase + " an trade official/liquidator in the Ferengi Commerce Authority.";
+        } else if (inputJson.specialization === "FerengiArmsMerchant") {
+            prompt += pronounPhrase + " a trader in weapons and military armaments. ";
         } else if (inputJson.specialization === "FerengiEliminator") {
             prompt += pronounPhrase + " an \"eliminator\" or mercenary free agent who is trained for dangerous clandestine missions.";
         } else if (inputJson.specialization === "FerengiBartender") {

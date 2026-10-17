@@ -3,6 +3,7 @@ import type { ISpecies } from '../helpers/species';
 import { Species } from '../helpers/speciesEnum';
 import bynarNames from './names-bynar.json';
 import cardassianNames from './names-cardassian.json';
+import denobulanNames from './names-denobulan.json';
 import humanNames from './names-human.json';
 import ferengiNames from './names-ferengi.json';
 import hupyrianNames from './names-hupyrian.json';
@@ -38,6 +39,7 @@ interface NameList {
 const names: NameList[] = [
   { species: 'Bynar', names: bynarNames },
   { species: 'Cardassian', names: cardassianNames },
+  { species: 'Denobulan', names: denobulanNames },
   { species: 'Human', names: humanNames },
   { species: 'Ferengi', names: ferengiNames },
   { species: 'Hupyrian', names: hupyrianNames },
