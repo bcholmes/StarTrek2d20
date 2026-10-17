@@ -773,13 +773,16 @@ export class NpcGenerator {
         gender,
       );
       character.name = name;
-      character.pronouns = pronouns;
+      character.pronouns =
+        specialization.id === Specialization.JemHadarGuard
+          ? 'He/Him'
+          : pronouns;
       origin = nameOrigin;
     }
 
     character.npcGenerationStep = new NpcGenerationStep(npcType);
     character.npcGenerationStep.specialization = specialization.id;
-    NpcGenerator.assignAttributes(npcType, character, species, specialization);
+    NpcGenerator.assignAttributes(npcType, character, specialization);
 
     const disciplines = DepartmentsHelper.instance.getDepartments();
     const disciplinePoints = NpcTypes.departmentPoints(npcType);
@@ -1307,6 +1310,20 @@ export class NpcGenerator {
         }
       }
     }
+
+    if (specialization.id === Specialization.JemHadarGuard) {
+      if (!character.hasTalent('Immune to Fear')) {
+        character.addTalent(TalentsHelper.getTalent('Immune to Fear'));
+      }
+      if (!character.hasTalent('Immune to Pain')) {
+        character.addTalent(TalentsHelper.getTalent('Immune to Pain'));
+      }
+      if (!character.hasTalent('The Shroud (Special Rule)')) {
+        character.addTalent(
+          TalentsHelper.getTalent('The Shroud (Special Rule)'),
+        );
+      }
+    }
   }
 
   static determineXIfNecessary(talent: TalentModel, x?: number) {
@@ -1340,7 +1357,6 @@ export class NpcGenerator {
   static assignAttributes(
     npcType: NpcType,
     character: Character,
-    species: SpeciesModel,
     specialization: SpecializationModel,
   ) {
     const attributes = AttributesHelper.getAllAttributes();

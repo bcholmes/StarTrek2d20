@@ -3820,6 +3820,10 @@
 
     "Talent.bornToFight.description2e": "The character may reroll one d20 when making an attack. In addition, if an attack is successful, the character generates 1 bonus Momentum which may only be spent to increase the Severity of the attack. Bonus Momentum may not be saved.",
 
+    "Talent.bruteForceSpecialRule": "Brute Force",
+
+    "Talent.bruteForceSpecialRule.description": "See pg. 51 of the _Allies and Adversaries_ book.",
+
     "Talent.calibratedMunitions": "Calibrated Munitions",
 
     "Talent.calibratedMunitions.description": "You’ve spent many duty hours carefully tuning and refining the ship’s weapon systems. When you use the Calibrate Weapons minor action (page 305 of the core rulebook), the weapon’s damage on your next attack increases by 2 instead of 1. In addition, when you fire a weapon with the **Calibration** quality, increase its damage by 1.",
@@ -5833,6 +5837,10 @@
     "Talent.theShroud": "The Shroud",
 
     "Talent.theShroud.description": "See pg. 59 of the _Species Sourcebook_",
+
+    "Talent.theShroudSpecialRule": "The Shroud",
+
+    "Talent.theShroudSpecialRule.description": "See pg. 51 of the _Allies and Adversaries_ book.",
 
     "Talent.theSpiceOfLife": "The Spice of Life",
 

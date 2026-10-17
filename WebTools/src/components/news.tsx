@@ -18,7 +18,11 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       onClose={() => onClose()}
       header="What's New?"
     >
-      <b>v1.261002</b>
+      <b>v1.261016</b>
+      <ul>
+        <li>Minor NPC tweaks.</li>
+      </ul>
+      <b>v1.261008</b>
       <ul>
         <li>
           I've made some character image changes. There may be some
@@ -262,18 +266,6 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
           species abilities that change things like Protection). I'll work on
           cleaning that up, soon.
         </li>
-      </ul>
-      <b>v1.260412</b>
-      <ul>
-        <li>More minor improvements and fixes.</li>
-      </ul>
-      <b>v1.260411</b>
-      <ul>
-        <li>Minor improvements and fixes.</li>
-      </ul>
-      <b>v1.260410</b>
-      <ul>
-        <li>Tweaks to the handling of custom spaceframes.</li>
       </ul>
 
       <div className="text-center">

@@ -47,6 +47,8 @@ function describeSpecies(species) {
         return "Ktarians have distinctive foreheads divided into two hemispheres, and distinctive yellow eyes with horizontally slit pupils. ";
     } else if (species === "Hirogen") {
         return "Hirogen adults are quite large, standing above the average height of most other known humanoid species. They also possess greater physical strength due to their advanced muscle and nervous system. Their sensory perception are acute. They are hairless, with scaly skin covering their faces and bodies. They show little empathy or compassion. ";
+    } else if (species === "Jem'Hadar") {
+        return "The Jem'Hadar are genetically designed soldiers for the Dominion; they are hairless, have grey, scaly reptile-like skin and bony protrusions on their jawlines and on the sides of their heads. ";
     } else {
         return "";
     }
@@ -235,6 +237,10 @@ function describeSpecialization(inputJson, pronoun) {
           prompt += pronounPhrase + " specialized in medical activities, keeping the organic and cybernetic parts of drones operational. ";
         } else if (inputJson.specialization === "BorgAdjunctDrone") {
           prompt += pronounPhrase + " specialized in group leadership/planning and organization. ";
+        }
+    } else if (inputJson.npcCharacterType === "Dominion") {
+        if (inputJson.specialization === "JemHadarGuard") {
+          prompt += pronounPhrase + " is a guard for important leaders in the Dominion. ";
         }
     }
 
