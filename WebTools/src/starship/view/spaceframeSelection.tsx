@@ -18,6 +18,7 @@ import {
   DropDownSelect,
 } from '../../components/dropDownInput';
 import type { Spaceframe } from '../../helpers/spaceframeEnum';
+import { Alert } from 'react-bootstrap';
 
 interface ISpaceframeSelectionProperties {
   serviceYear: number;
@@ -234,26 +235,34 @@ export const SpaceframeSelection: React.FC<ISpaceframeSelectionProperties> = ({
 
   return (
     <div>
-      {renderNotice()}
-      {overrideCheckbox}
-      <table className="selection-list w-100">
-        <thead>
-          <tr>
-            <td></td>
-            <td className="d-none d-md-table-cell text-center">
-              {t('Construct.other.stats')}
-            </td>
-            <td className="d-none d-md-table-cell text-center">
-              {t('Construct.other.scale')}
-            </td>
-            <td className="d-none d-md-table-cell">
-              {t('Construct.other.talents')}
-            </td>
-            <td></td>
-          </tr>
-        </thead>
-        {frames}
-      </table>
+      {spaceframes?.length ? (
+        <>
+          {renderNotice()}
+          {overrideCheckbox}
+          <table className="selection-list w-100">
+            <thead>
+              <tr>
+                <td></td>
+                <td className="d-none d-md-table-cell text-center">
+                  {t('Construct.other.stats')}
+                </td>
+                <td className="d-none d-md-table-cell text-center">
+                  {t('Construct.other.scale')}
+                </td>
+                <td className="d-none d-md-table-cell">
+                  {t('Construct.other.talents')}
+                </td>
+                <td></td>
+              </tr>
+            </thead>
+            {frames}
+          </table>
+        </>
+      ) : (
+        <Alert variant="dark" className="bg-dark text-white border-dark p-3">
+          {t('SpaceframeSelectionPage.noFrames')}
+        </Alert>
+      )}
     </div>
   );
 };

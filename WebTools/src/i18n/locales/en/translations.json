@@ -516,6 +516,7 @@
     "SpaceframeSelectionPage.error": "Please select a spaceframe before proceeding.",
     "SpaceframeSelectionPage.errata": "A published errata has revised this spaceframe from the original printed book's stats.",
     "SpaceframeSelectionPage.variant": "Spaceframe Variant",
+    "SpaceframeSelectionPage.noFrames": "There are no standard frames available; please create a custom spaceframe.",
 
     "SpeciesAbilityView.instruction": "Each species provides a talent in the form of a Species Ability, which reflects some unique aspect of their physiology, psychology, or culture. You automatically receive this talent. Species abilities cannot be selected after character creation. These are distinct from talents which have a particular species as a requirement, which are always optional.",
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Navigation } from '../../common/navigator';
 import type { Starship } from '../../common/starship';
@@ -26,6 +26,7 @@ import { BuildPoints } from '../model/buildPoints';
 import { SpaceframeModel } from '../../helpers/spaceframeModel';
 import { ShipBuildType } from '../../common/shipBuildType';
 import { PageHistoryBasedPreviousButton } from '../../components/pageHistoryBasedPreviousButton';
+import { SpaceframeHelper } from '../../helpers/spaceframes';
 
 enum SpaceframeTab {
   Custom,
@@ -40,41 +41,55 @@ interface ISpaceframeSelectionPageProperties {
 const SpaceframeSelectionPageBase: React.FC<
   ISpaceframeSelectionPageProperties
 > = ({ starship, workflow }) => {
+
+  const spaceframes = SpaceframeHelper.instance().getSpaceframes(
+    starship,
+    false,
+  );
+
   const { t } = useTranslation();
+  const noFrames = spaceframes?.length ? false : true;
   const [tab, setTab] = useState<SpaceframeTab>(
-    starship?.spaceframeStep?.model?.isCustom
+    noFrames || starship?.spaceframeStep?.model?.isCustom
       ? SpaceframeTab.Custom
       : SpaceframeTab.Standard,
   );
 
+  useEffect(() => {
+    if (tab === SpaceframeTab.Custom) {
+      createCustomSpaceframe();
+    }
+  }, [tab]);
+
+  const createCustomSpaceframe = () => {
+    if (!starship.spaceframeModel?.isCustom) {
+      const scale = 3;
+      const systems = PointAllocator.allocatePointsEvenly(
+        BuildPoints.systemPointsForType(
+          ShipBuildType.Starship,
+          starship.serviceYear,
+          starship.type,
+          scale,
+          starship.version,
+        ),
+      );
+      const departments = PointAllocator.allocatePointsEvenly(
+        BuildPoints.departmentPointsForType(ShipBuildType.Starship),
+      );
+      const spaceframe = SpaceframeModel.createCustomSpaceframe(
+        starship?.type,
+        starship?.serviceYear,
+        systems,
+        departments,
+        scale,
+      );
+      store.dispatch(setStarshipSpaceframe(spaceframe));
+    }
+  }
+
   const onChangeTab = (newTab: SpaceframeTab) => {
     if (newTab === tab) {
       // no change
-    } else if (newTab === SpaceframeTab.Custom) {
-      if (!starship.spaceframeModel?.isCustom) {
-        const scale = 3;
-        const systems = PointAllocator.allocatePointsEvenly(
-          BuildPoints.systemPointsForType(
-            ShipBuildType.Starship,
-            starship.serviceYear,
-            starship.type,
-            scale,
-            starship.version,
-          ),
-        );
-        const departments = PointAllocator.allocatePointsEvenly(
-          BuildPoints.departmentPointsForType(ShipBuildType.Starship),
-        );
-        const spaceframe = SpaceframeModel.createCustomSpaceframe(
-          starship?.type,
-          starship?.serviceYear,
-          systems,
-          departments,
-          scale,
-        );
-        store.dispatch(setStarshipSpaceframe(spaceframe));
-      }
-      setTab(newTab);
     } else {
       setTab(newTab);
     }
