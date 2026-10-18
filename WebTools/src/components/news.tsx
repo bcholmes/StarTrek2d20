@@ -18,6 +18,11 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       onClose={() => onClose()}
       header="What's New?"
     >
+      <b>v1.261017</b>
+      <ul>
+        <li>More NPC tweaks.</li>
+        <li>Subtle revision to starship creation.</li>
+      </ul>
       <b>v1.261016</b>
       <ul>
         <li>Minor NPC tweaks.</li>
@@ -26,9 +31,9 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       <ul>
         <li>
           I've made some character image changes. There may be some
-          side-effects. Your adblocker may suddenly warn you when you click on
-          characters with character images because the character representation
-          is really big.
+          side-effects. Your adblocker and/or anti-virus may suddenly warn you
+          when you click on characters with character images because the
+          character representation is really big.
         </li>
       </ul>
       <b>v1.261002</b>

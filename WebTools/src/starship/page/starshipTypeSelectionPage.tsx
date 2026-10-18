@@ -50,7 +50,7 @@ class StarshipTypeSelectionPageBase extends React.Component<
 
   render() {
     const { t } = this.props;
-    const typeSelection = hasSource(Source.KlingonCore) ? (
+    const typeSelection = (
       <div className="col-lg-6">
         <div className="my-3">
           <Header level={2}>{t('StarshipTypeSelection.shipPolity')}</Header>
@@ -68,7 +68,7 @@ class StarshipTypeSelectionPageBase extends React.Component<
           </div>
         </div>
       </div>
-    ) : undefined;
+    );
 
     const buildTypeSelection = (
       <div className="my-3">

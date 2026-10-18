@@ -41,7 +41,6 @@ interface ISpaceframeSelectionPageProperties {
 const SpaceframeSelectionPageBase: React.FC<
   ISpaceframeSelectionPageProperties
 > = ({ starship, workflow }) => {
-
   const spaceframes = SpaceframeHelper.instance().getSpaceframes(
     starship,
     false,
@@ -85,7 +84,7 @@ const SpaceframeSelectionPageBase: React.FC<
       );
       store.dispatch(setStarshipSpaceframe(spaceframe));
     }
-  }
+  };
 
   const onChangeTab = (newTab: SpaceframeTab) => {
     if (newTab === tab) {

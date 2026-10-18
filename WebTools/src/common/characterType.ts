@@ -150,23 +150,16 @@ export class CharacterTypeModel {
   }
 
   public static getStarshipTypes(version: number) {
-    if (version === 1) {
-      return [
-        CharacterTypeModel.TYPES[CharacterType.Starfleet],
-        CharacterTypeModel.TYPES[CharacterType.KlingonWarrior],
-      ];
-    } else {
-      return this.TYPES.filter((t) =>
-        [
-          CharacterType.Starfleet,
-          CharacterType.KlingonWarrior,
-          CharacterType.Romulan,
-          CharacterType.Cardassian,
-          CharacterType.Ferengi,
-          CharacterType.Orion,
-          CharacterType.Civilian,
-        ].includes(t.type),
-      );
-    }
+    return this.TYPES.filter((t) =>
+      [
+        CharacterType.Starfleet,
+        CharacterType.KlingonWarrior,
+        CharacterType.Romulan,
+        CharacterType.Cardassian,
+        CharacterType.Ferengi,
+        CharacterType.Orion,
+        CharacterType.Civilian,
+      ].includes(t.type),
+    );
   }
 }
