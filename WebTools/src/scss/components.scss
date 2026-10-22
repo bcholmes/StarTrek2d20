@@ -551,3 +551,56 @@ img.social-media {
         transform: translateY(0px);
     }
 }
+
+.talent-filter-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding-right: 0.6rem;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: $lcars-orange;
+
+    h2.header-text {
+        margin-bottom: 0;
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin: 0.2rem 0 0.2rem 1rem;
+        min-width: 0;
+        max-width: calc(100% - 1rem);
+        font-family: var(--lcars-text-font);
+        font-size: 1rem;
+        line-height: 1.5;
+        text-transform: none;
+        color: $black;
+    }
+
+    select {
+        color: var(--bs-body-color);
+        background-color: var(--bs-body-bg);
+        border: 2px solid currentColor;
+        border-radius: 0.3rem;
+        padding: 0.1rem 0.4rem;
+        min-height: 2rem;
+        font: inherit;
+        max-width: 100%;
+    }
+
+    select:focus-visible {
+        outline: 3px solid $black;
+        outline-offset: 2px;
+    }
+
+    @media (forced-colors: active) {
+        label { color: CanvasText; }
+        select { color: CanvasText; background-color: Canvas; }
+        select:focus-visible { outline-color: Highlight; }
+    }
+}

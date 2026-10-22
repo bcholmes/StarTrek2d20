@@ -133,8 +133,8 @@ const CareerLengthDetailsPageBase: React.FC<ICharacterProperties> = ({
           </div>
 
           <div className="my-3">
-            <Header level={2}>{t('Construct.other.talent')}</Header>
             <SingleTalentSelectionList
+              heading={t('Construct.other.talent')}
               talents={filterTalentList()}
               initialSelection={character.careerStep?.talent}
               construct={character}

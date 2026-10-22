@@ -460,9 +460,11 @@ export const BorgImplantsSelectionView: React.FC<
 
 export const ExpandedProgramSelectionView: React.FC<
   ITalentAdditionalSelectionProperties
-> = ({ onSelection, character }) => {
+> = ({ onSelection, character, initialSelection }) => {
   const { t } = useTranslation();
-  const [selection, setSelection] = useState<string[]>([]);
+  const [selection, setSelection] = useState<string[]>(
+    (initialSelection as string[]) ?? [],
+  );
 
   return (
     <div>

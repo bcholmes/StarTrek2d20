@@ -332,7 +332,7 @@ const FinishPageBase: React.FC<IFinishPageProperties> = ({ character }) => {
             CharacterSheetDialog.show(
               CharacterSheetRegistry.getCharacterSheets(c),
               'sta-character',
-              character,
+              c,
             );
           }, 200);
         },
