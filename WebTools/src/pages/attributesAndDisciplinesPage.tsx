@@ -1,3 +1,8 @@
+import { LifepathTalentReview } from '../components/deferredTalentSelection';
+import {
+  supportsDeferredTalents,
+  finalLifepathTalentErrors,
+} from '../helpers/lifepathTalents';
 import React, { useEffect } from 'react';
 import { Character } from '../common/character';
 import { Navigation } from '../common/navigator';
@@ -71,6 +76,11 @@ const AttributesAndDisciplinesPageBase: React.FC<ICharacterProperties> = ({
   };
 
   const navigateToNextPage = () => {
+    const errors = finalLifepathTalentErrors(character);
+    if (errors.length) {
+      Dialog.show(errors.join('\n'));
+      return;
+    }
     if (character.finishingStep?.attributes.length !== attributeCount) {
       Dialog.show(
         t('SoloFinishingTouchesPage.errorAttributes', {
@@ -126,10 +136,11 @@ const AttributesAndDisciplinesPageBase: React.FC<ICharacterProperties> = ({
     disciplineCount,
   );
 
-  const talents = filterTalentList();
+  const talents = supportsDeferredTalents(character) ? [] : filterTalentList();
 
   const talentSelection =
-    isKlingonWarriorType(character.type) || character.version > 1 ? (
+    !supportsDeferredTalents(character) &&
+    (isKlingonWarriorType(character.type) || character.version > 1) ? (
       <div className="my-4">
         <SingleTalentSelectionList
           heading={t('Construct.other.talents')}
@@ -220,6 +231,7 @@ const AttributesAndDisciplinesPageBase: React.FC<ICharacterProperties> = ({
         {value}
       </div>
 
+      <LifepathTalentReview character={character} />
       {talentSelection}
 
       <div className="mt-4 d-flex justify-content-end">

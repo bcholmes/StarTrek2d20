@@ -13,7 +13,12 @@ const DialogContent: React.FC<IDialogProperties> = ({ message }) => {
 
   return (
     <Modal show={true}>
-      <Modal.Body className="text-center py-4">{message}</Modal.Body>
+      <Modal.Body
+        className="text-center py-4"
+        style={{ whiteSpace: 'pre-line' }}
+      >
+        {message}
+      </Modal.Body>
       <Modal.Footer className="border-top-0 justify-content-center py-4">
         <Button variant="primary" onClick={() => Dialog.hide()}>
           {t('Common.button.ok')}

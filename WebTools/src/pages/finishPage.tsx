@@ -1,3 +1,5 @@
+import { finalLifepathTalentErrors } from '../helpers/lifepathTalents';
+import { Dialog } from '../components/dialog';
 import React, { useEffect, useState } from 'react';
 import type { AlliedMilitaryDetails, Character } from '../common/character';
 import { CharacterType } from '../common/characterType';
@@ -81,8 +83,22 @@ const FinishPageBase: React.FC<IFinishPageProperties> = ({ character }) => {
     store.dispatch(setCharacterDescription(value));
   };
 
+  const validateTalents = () => {
+    const errors = finalLifepathTalentErrors(
+      store.getState().character.currentCharacter,
+    );
+    if (errors.length) {
+      Dialog.show(errors.join('\n'));
+      return false;
+    }
+    return true;
+  };
+
   const showViewPage = () => {
+    if (!validateTalents()) return;
     setTimeout(() => {
+      // State may change while the timer or export module is loading.
+      if (!validateTalents()) return;
       const c = store.getState().character.currentCharacter;
       const value = marshaller.encodeMainCharacter(c);
       store.dispatch(saveCharacterToLocalStorage(c));
@@ -319,6 +335,7 @@ const FinishPageBase: React.FC<IFinishPageProperties> = ({ character }) => {
   };
 
   function showDialog() {
+    if (!validateTalents()) return;
     setLoadingExport(true);
     import(
       /* webpackChunkName: 'export' */ '../components/characterSheetDialog'
@@ -327,6 +344,8 @@ const FinishPageBase: React.FC<IFinishPageProperties> = ({ character }) => {
         ({ CharacterSheetRegistry }) => {
           setLoadingExport(false);
           setTimeout(() => {
+            // State may change while the timer or export module is loading.
+            if (!validateTalents()) return;
             const c = store.getState().character.currentCharacter;
             store.dispatch(saveCharacterToLocalStorage(c));
             CharacterSheetDialog.show(

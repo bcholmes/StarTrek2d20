@@ -1,3 +1,4 @@
+import type { StepContext } from './stepContext';
 import { createAction } from '@reduxjs/toolkit';
 import type { Character, CharacterRank } from '../common/character';
 import type { CharacterType } from '../common/characterType';
@@ -101,16 +102,7 @@ export const REMOVE_CHARACTER_TOKEN = 'REMOVE_CHARACTER_TOKEN';
 export const SET_CHARACTER_DESCRIPTION = 'SET_CHARACTER_DESCRIPTION';
 export const SET_CHARACTER_STEP_NOTES = 'SET_CHARACTER_STEP_NOTES';
 
-export enum StepContext {
-  Species,
-  Environment,
-  EarlyOutlook,
-  Education,
-  Career,
-  CareerEvent1,
-  CareerEvent2,
-  FinishingTouches,
-}
+export { StepContext } from './stepContext';
 
 export const setCharacter = createAction(
   SET_CHARACTER,
@@ -489,4 +481,10 @@ export const modifyCharacterAddAdvancement = createAction(
     }
     return { payload };
   },
+);
+
+// Record skipped choices when advancing, without discarding partially edited talents.
+export const recordLifepathTalentProgress = createAction(
+  'RECORD_LIFEPATH_TALENT_PROGRESS',
+  (context: StepContext) => ({ payload: { context } }),
 );

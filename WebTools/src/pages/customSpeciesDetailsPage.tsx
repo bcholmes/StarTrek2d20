@@ -1,3 +1,9 @@
+import { recordLifepathTalentProgress } from '../state/characterActions';
+import { OptionalTalentNote } from '../components/deferredTalentSelection';
+import {
+  supportsDeferredTalents,
+  getLifepathTalentChoices,
+} from '../helpers/lifepathTalents';
 import React from 'react';
 import { Navigation } from '../common/navigator';
 import { PageIdentity } from './pageIdentity';
@@ -90,13 +96,21 @@ const CustomSpeciesDetailsPageBase: React.FC<
         <div>
           <SingleTalentSelectionList
             heading={t('Construct.other.talents')}
-            talents={talents}
+            talents={
+              supportsDeferredTalents(character)
+                ? getLifepathTalentChoices(character, StepContext.Species)
+                : talents
+            }
             construct={character}
             initialSelection={character.speciesStep?.talent}
             onSelection={(talent) => onTalentSelected(talent)}
           >
             <div>{renderCrossSpeciesCheckbox()}</div>
             {esotericTalentOption}
+            <OptionalTalentNote
+              character={character}
+              context={StepContext.Species}
+            />
           </SingleTalentSelectionList>
         </div>
       ) : (
@@ -148,7 +162,11 @@ const CustomSpeciesDetailsPageBase: React.FC<
       return;
     }
 
-    if (isTalentSelectionRequired() && character.speciesStep?.talent == null) {
+    if (
+      isTalentSelectionRequired() &&
+      character.speciesStep?.talent == null &&
+      !supportsDeferredTalents(character)
+    ) {
       Dialog.show('You have not selected a talent.');
       return;
     }
@@ -156,6 +174,7 @@ const CustomSpeciesDetailsPageBase: React.FC<
     if (character.stereotype === Stereotype.Npc) {
       navigate('/npc/stats');
     } else {
+      store.dispatch(recordLifepathTalentProgress(StepContext.Species));
       Navigation.navigateToPage(PageIdentity.Environment);
     }
   };

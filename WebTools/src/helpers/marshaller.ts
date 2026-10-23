@@ -1,3 +1,10 @@
+import {
+  supportsDeferredTalents,
+  lifepathTalentContexts,
+  getLifepathTalentStep,
+  canDeferTalent,
+} from './lifepathTalentState';
+import { StepContext } from '../state/stepContext';
 import { Base64 } from 'js-base64';
 import pako from 'pako';
 import {
@@ -864,6 +871,17 @@ class Marshaller {
       name: character.name,
       version: character.version,
     };
+
+    if (supportsDeferredTalents(character)) {
+      const deferred = lifepathTalentContexts
+        .filter(
+          (c) =>
+            canDeferTalent(character, c) &&
+            getLifepathTalentStep(character, c)?.talentDeferred,
+        )
+        .map((c) => StepContext[c]);
+      if (deferred.length) sheet['deferredTalents'] = deferred;
+    }
 
     if (character.description?.length) {
       sheet['description'] = character.description;
@@ -2604,6 +2622,20 @@ class Marshaller {
       result.image = this.decodeToken(json.token);
     }
 
+    if (
+      supportsDeferredTalents(result) &&
+      Array.isArray(json.deferredTalents)
+    ) {
+      lifepathTalentContexts.forEach((context) => {
+        const step = getLifepathTalentStep(result, context);
+        if (
+          canDeferTalent(result, context) &&
+          !step.talent &&
+          json.deferredTalents.includes(StepContext[context])
+        )
+          step.talentDeferred = true;
+      });
+    }
     return result;
   }
 

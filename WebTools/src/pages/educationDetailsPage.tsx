@@ -1,3 +1,9 @@
+import { recordLifepathTalentProgress } from '../state/characterActions';
+import { OptionalTalentNote } from '../components/deferredTalentSelection';
+import {
+  supportsDeferredTalents,
+  getLifepathTalentChoices,
+} from '../helpers/lifepathTalents';
 import React from 'react';
 import { CharacterType } from '../common/characterType';
 import { Navigation } from '../common/navigator';
@@ -311,13 +317,22 @@ const EducationDetailsPageBase: React.FC<ICharacterProperties> = ({
       <div>
         <SingleTalentSelectionList
           heading={t('Construct.other.talent')}
-          talents={filterTalentList()}
+          talents={
+            supportsDeferredTalents(character)
+              ? getLifepathTalentChoices(character, StepContext.Education)
+              : filterTalentList()
+          }
           initialSelection={character.educationStep?.talent}
           construct={character}
           onSelection={(talent) => {
             onTalentSelected(talent);
           }}
-        />
+        >
+          <OptionalTalentNote
+            character={character}
+            context={StepContext.Education}
+          />
+        </SingleTalentSelectionList>
       </div>
     );
   };
@@ -339,7 +354,7 @@ const EducationDetailsPageBase: React.FC<ICharacterProperties> = ({
   };
 
   const onTalentSelected = (talent?: SelectedTalent) => {
-    if (talent) {
+    if (talent || supportsDeferredTalents(character)) {
       store.dispatch(addCharacterTalent(talent, StepContext.Education));
     } else {
       // ?????
@@ -358,19 +373,25 @@ const EducationDetailsPageBase: React.FC<ICharacterProperties> = ({
       Dialog.show(t('SoloEducationDetailsPage.errorFocuses'));
     } else if (!character.educationStep?.value) {
       Dialog.show(t('Common.error.value'));
-    } else if (character.educationStep?.talent == null) {
+    } else if (
+      !supportsDeferredTalents(character) &&
+      character.educationStep?.talent == null
+    ) {
       Dialog.show(t('Common.error.talent'));
     } else {
       const error = determineSelectedTalentExtraErrors(
         character.educationStep?.talent,
       );
-      if (error?.length) {
+      if (!supportsDeferredTalents(character) && error?.length) {
         Dialog.show(error);
       } else if (character.age.isChild) {
+        store.dispatch(recordLifepathTalentProgress(StepContext.Education));
         Navigation.navigateToPage(PageIdentity.ChildCareer);
       } else if (character.type === CharacterType.Cadet) {
+        store.dispatch(recordLifepathTalentProgress(StepContext.Education));
         Navigation.navigateToPage(PageIdentity.NoviceOrCadetExperience);
       } else {
+        store.dispatch(recordLifepathTalentProgress(StepContext.Education));
         Navigation.navigateToPage(PageIdentity.CareerLength);
       }
     }
