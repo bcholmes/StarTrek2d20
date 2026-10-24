@@ -1,12 +1,15 @@
 import { D20 } from '../../common/die';
 
 export enum CreatureSize {
-  Swarm,
+  Microscopic,
+  Tiny,
+  Swarm, // deprecated
   Small,
   Average,
   Large,
   Huge,
-  Gigantic,
+  Gigantic, // deprecated
+  Cosmozoan,
 }
 
 export class CreatureSizeModel {

@@ -88,7 +88,7 @@ export const creatureGenerator = async (
     result.departments[Department.Security] += 1;
   }
 
-  const attributeImprovementBySize = [26, 26, 28, 28, 30, 32];
+  const attributeImprovementBySize = [26, 26, 26, 26, 28, 28, 30, 32, 32];
   const attributeImprovement = attributeImprovementBySize[result.size.id];
   let attributes = [
     Attribute.Control,
