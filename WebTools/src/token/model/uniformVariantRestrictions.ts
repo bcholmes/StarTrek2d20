@@ -94,6 +94,11 @@ export class UniformVariantRestrictions {
       }
     } else if (uniformEra === UniformEra.TheMotionPicture) {
       result.push(UniformVariantType.Variant1);
+      if (DivisionColors.getDivision(uniformEra, divisionColor) === 'Security') {
+        result.push(UniformVariantType.Variant2);
+      }
+      result.push(UniformVariantType.Variant3);
+      result.push(UniformVariantType.Variant4);
     } else if (uniformEra === UniformEra.OriginalSeries) {
       if (species === Species.Edosian) {
       } else {

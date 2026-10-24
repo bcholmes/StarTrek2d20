@@ -143,6 +143,16 @@ export class DivisionColors {
     const index = this.indexOf(era, color);
     if (!this.isDivisionColorsSupported(era)) {
       return null;
+    } else if (era === UniformEra.TheMotionPicture) {
+      const colours = [
+        'Command',
+        'Science',
+        'Medical',
+        'Engineering',
+        'Operations',
+        'Security',
+      ];
+      return index >= 0 ? colours[index] : null;
     } else if (era === UniformEra.MonsterMaroon) {
       const colours = [
         'Command',
