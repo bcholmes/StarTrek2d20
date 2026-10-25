@@ -516,6 +516,7 @@
     "SpaceframeSelectionPage.error": "Wybierz proszę typ kadłuba zanim przejdziesz dalej.",
     "SpaceframeSelectionPage.errata": "Opublikowano erratę, która zmodyfikowała statystyki tego typu kadłuba.",
     "SpaceframeSelectionPage.variant": "Wariant typu kadłuba",
+    "SpaceframeSelectionPage.noFrames": "Nie ma standardowych typów kadłuba, proszę stwórz własny.",
 
     "SpeciesAbilityView.instruction": "Każdy gatunek ma zapewniony jeden specjalny talent w postaci Zdolności gatunkowej. Oddaje on specyficzne uwarunkowania fizyczne, psychiczne lub kulturowe. Otrzymujesz go automatycznie na początku tworzenia postaci i później nie można dobierać nowych zdolności gatunkowych. Niezależnie od tego możesz opcjonalnie dobierać talenty gatunkowe i kulturowe, czyli takie, które posiadają w opisie wymagań, że przeznaczone są dla postaci należących do konkretnego gatunku.",
 
@@ -1148,10 +1149,13 @@
     "CareerEvent.common.62.description": "Archeotechnologia to nauka badająca poziom rozwoju technologii zarówno w istniejących współcześnie cywilizacjach jak i w takich, które już nie istnieją. Postać spędziła czas – zawodowo lub w ramach osobistego zainteresowania – studiując historyczne technologie, takie jak np. prymitywne urządzenia przedwarpowej epoko własnej kultury lub dawno zapomniane zdobycze naukowe cywilizacji z odległej przeszłości.",
 
     "CareerEvent.common.63.name": "Badanie nowego rodzaju źródła mocy",
+    "CareerEvent.common.63.description": "Chociaż większość Galaktyki polega na reaktorach fuzyjnych lub regulowanej dilithium reakcji materii i antymaterii, to zawsze istnieją teoretyczne i eksperymentalne możliwości zapewnienia nowych źródeł energii lub udoskonalania już istniejących. Twoja postać poświęciła swój czas i wysiłek badając jedną z takich możliwości.",
 
     "CareerEvent.common.64.name": "Udział w katastrofie technicznej",
+    "CareerEvent.common.64.description": "Postęp technologiczny jest często problematyczny, ze ślepymi zaułkami, nieprzewidywalnymi konsekwencjami a czasem nawet katastrofalnymi zdarzeniami. Twoja postać była świadkiem szczególnie groźnego wydarzenia, być może pomagała z radzeniem sobie ze skutkami wypadku lub ratowała innych, a może uważa, że jej błąd w jakiś sposób doprowadził do wybuchu katastrofy?",
 
     "CareerEvent.common.65.name": "Testy ulepszeń transporterów",
+    "CareerEvent.common.65.description": "Mimo że wydają się cudowne lub magiczne, transportery mają poważne ograniczenia, z którymi starają się uporać kolejne pokolenia inżynierów. Przesuwają oni limity i znajdują nowe sposoby, by rozwinąć możliwości tej technologii. Twoja postać brała udział w takim projekcie, pracując nad rozszerzeniem ograniczeń transportera lub wykorzystaniem go w niekonwencjonalnych okolicznościach.",
 
     "CareerEvent.common.66.name": "Praca w Projekcie Transwarp",
 
@@ -1325,6 +1329,7 @@
     "Environment.common.risa23rd.name": "Risa",
 
     "Environment.common.romulus23rd.name": "Romulus",
+    "Environment.common.romulus23rd.description": "Romulus jest planetą macierzystą **Romulan** i stolicą **Gwiezdnego Imperium Romulan**. To świat o umiarkowanym, wilgotnym klimacie, bujno zarośnięty, ale posiadający ograniczone zasoby mineralne. Jego bliźniaczy sąsiad, planeta **Remus** jest jednak bogata w surowce, które pozwoliły Romulan stworzyć wielkie imperium.\n\nKultura Gwiezdnego Imperium Romulan jest przesiąknięta tajemniczością, paranoją i autorytarną kontrolą. Państwowy aparat bezpieczeństwa – zarówno technologiczny jak i w formie tajnej policji – nadzoruje, aby w społeczeństwie nie dochodziło do buntów lub infiltracji obcych wpływów. Złapani na wykroczeniach giną lub po prostu znikają, być może zsyłani do więziennych kopalni na Remusie.",
 
     "Environment.common.tellarPrime23rd.name": "Tellar Prime",
 
@@ -1345,6 +1350,7 @@
     "Environment.klingon.frontierColony.description": "Pochodzisz z kolonii znajdującej się na pograniczu Imperium, na skraju poznanej przestrzeni lub w bezpośredniej bliskości granicy z Federacją lub Imperium Romulańskim. Twój świat mógł być w przeszłości obiektem roszczeń terytorialnych lub działań wojennych z sąsiadami. Kolonie graniczne sprzyjają zdeterminowanym, upartym i czujnym jednostkom, gotowym do obrony swoich siedzib i społeczności.",
 
     "Environment.klingon.starshipOrStarbase.name": "Statek kosmiczny albo baza gwiezdna",
+    "Environment.klingon.starshipOrStarbase.description": "Dorastasz w kosmosie, podróżując na statku kosmicznym lub żyjąc na stacji. Raczej nie był to okręt wojenny, ale frachtowiec, okręt transportowy czy inny rodzaj jednostki cywilnej tradycyjnie zamieszkiwanej przez załogi pokoleniowe. Osoby dorastające w kosmosie już jako dzieci nabywają odpowiedniej wiedzy związanej z podróżami i często jako dorośli kontynuują ten kierunek.",
 
     "Environment.klingon.anotherSpeciesWorld.name": "Świat innego gatunku",
 
@@ -1705,6 +1711,9 @@
     "MissionProfile.default.reserveFleet.description": "Te okręty to często starsze modele, które zostały już wycofane z aktywnej służby i służą jako doraźne wsparcie w przypadku katastrof naturalnych lub innych kryzysów. Niekiedy nowe okręty także są przygotowane do tych zadań, ale wtedy zwykle określa się je jako \"flota wsparcia\" i przydziela na odcinkach lub regionach, które znajdują się z dala od regularnych szlaków zaopatrzeniowych.",
 
     "MissionProfile.default.civilianMerchantMarine": "Cywilna misja handlowa",
+
+    "MissionProfile.default.civilianMerchantMarine.description": "WIele jednostek Gwiezdnej Floty, które zostają wycofane z oficjalnej służby, przechodzi do Floty Handlowej – aktywnej rezerwy, w której okręty i personel mogą kontynuować swoją pracę dla Federacji w sposób mniej formalny i ryzykowny. Flota Handlowa może w razie potrzeby wspierać jednostki Gwiezdnej Floty jako pomoc logistyczna albo uzupełnienie braków w sytuacjach krytycznych. Większość cywilizacji kosmicznych ma analogiczne organizacje.",
+
     "MissionProfile.default.colonySupport": "Wsparcie kolonii",
     "MissionProfile.default.entertainmentPleasureShip": "Rozrywka i rekreacja",
     "MissionProfile.default.espionageIntelligence": "Szpiegostwo/wywiad",
@@ -1803,6 +1812,30 @@
     "MouthType.mouth4": "Mniejsze",
     "MouthType.mouth5": "Dość pełne wargi",
     "MouthType.mouth6": "Szerokie pełne wargi",
+    "MouthType.mouth1Lipstick": "Szminka, klasyczna gwiazdeczka Hollywood",
+    "MouthType.mouth3Lipstick": "Szminka, podkreślona górna warga",
+    "MouthType.mouth4Lipstick": "Szminka, cienkie usta",
+    "MouthType.mouth5Lipstick": "Szminka, skierowana w dół",
+    "MouthType.mouth6Lipstick": "Szminka, wyraźny łuk Kupidyna",
+
+    "NasoLabialFoldType.none": "Brak",
+    "NasoLabialFoldType.subtle": "Subtelne",
+    "NasoLabialFoldType.cherubic": "Cherubinowy nos",
+    "NasoLabialFoldType.nimoy": "Wyniosły",
+    "NasoLabialFoldType.meaney": "Łagodny i szeroki",
+    "NasoLabialFoldType.lewis": "Wyraźny",
+
+    "NoseType.straightBasic": "Prosty/podstawowy",
+    "NoseType.convex": "Wypukły",
+    "NoseType.smallBulb": "Mała kulka",
+    "NoseType.broad": "Szeroki",
+    "NoseType.longNarrow": "Długi i wąski",
+    "NoseType.highBridge": "Wysoki mostek",
+    "NoseType.bulbous": "Okrągły",
+    "NoseType.smallFlat": "Mały i płaski",
+    "NoseType.smallUpTurned": "Mały i zadarty",
+    "NoseType.hawk": "Orli nos",
+    "NoseType.broadFlat": "Szeroki, płaski, wyraźne nozdrza",
 
     "NpcCharacterType.minorPolity": "Pomniejsza organizacja",
     "NpcCharacterType.rogueRuffianMercenary": "Najemnicy, zbiry i niezależni",
@@ -1901,6 +1934,12 @@
     "Rank.cadetFourthClass.abbrev": "kadet",
 
     "Role.commandingOfficer": "Oficer dowodzący",
+
+    "Role.commandingOfficer.description": "Kapitan. Nawet jeżeli oficer dowodzący nie posiada oficjalnej rangi kapitana, to  zwyczajowo podwładni nazywają go kapitanem. Każdy okręt potrzebuje oficera dowodzącego.",
+    "Role.commandingOfficer.description2e": "Nawet jeżeli oficer dowodzący nie posiada rangi kapitana, to i tak przełożeni na okręcie używają tego tytułu, gdy się do niego zwracają. Na stacjach kosmicznych jest inaczej i tam zawsze używa się formalnej rangi, nawet niższej. Oficerowie dowodzący są odpowiedzialni za działanie okrętu lub placówki oraz za wykonywanie rozkazów i dyrektyw przekazywanych przez dowództwo.",
+    "Role.commandingOfficer.ability": "Oficer dowodzący może przekazać punkt Determinacji dowolnej postaci w zasięgu komunikacji i nie musi być to powiązane z wykorzystaniem Wartości.",
+    "Role.commandingOfficer.ability2e": "Możesz wydać Determinację, aby inna postać w zasięgu łączności otrzymała 1 Determinacji. Nie musi to być związane z wykorzystaniem lub odpieraniem Wartości.",
+
     "Role.executiveOfficer": "Pierwszy oficer",
     "Role.operationsManager": "Oficer operacyjny",
     "Role.chiefEngineer": "Szef maszynowni",

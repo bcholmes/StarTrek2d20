@@ -17,6 +17,7 @@ export enum NaturalAttacks {
   Horns,
   Trample,
   Bludgeoning,
+  SpikesOrSpines,
 }
 
 export class NaturalAttacksHelper {
@@ -41,20 +42,20 @@ export class NaturalAttacksHelper {
     switch (id) {
       case NaturalAttacks.Teeth:
         return Weapon.createCharacterWeapon(
-          'Teeth',
+          'Bite',
           InjuryType.Deadly,
-          4,
+          3,
           [],
           [
-            new WeaponQuality(Quality.Cumbersome),
-            new WeaponQuality(Quality.Debilitating),
+            new WeaponQuality(Quality.Piercing),
+            new WeaponQuality(Quality.Intense),
           ],
           WeaponType.MELEE,
           1,
         );
       case NaturalAttacks.Claws:
         return Weapon.createCharacterWeapon(
-          'Claws',
+          'Claw',
           InjuryType.Deadly,
           3,
           [],
@@ -79,11 +80,12 @@ export class NaturalAttacksHelper {
         return Weapon.createCharacterWeapon(
           'Large Fangs',
           InjuryType.Deadly,
-          5,
+          3,
           [],
           [
+            new WeaponQuality(Quality.Piercing),
+            new WeaponQuality(Quality.Intense),
             new WeaponQuality(Quality.Cumbersome),
-            new WeaponQuality(Quality.Debilitating),
           ],
           WeaponType.MELEE,
           1,
@@ -120,10 +122,20 @@ export class NaturalAttacksHelper {
         );
       case NaturalAttacks.Bludgeoning:
         return Weapon.createCharacterWeapon(
-          'Bludgeoning',
+          'Slam',
+          InjuryType.Stun,
+          2,
+          [],
+          [],
+          WeaponType.MELEE,
+          1,
+        );
+      case NaturalAttacks.SpikesOrSpines:
+        return Weapon.createCharacterWeapon(
+          'Spikes or Spines',
           InjuryType.StunOrDeadly,
-          4,
-          [new WeaponQuality(Quality.Intense)],
+          1,
+          [new WeaponQuality(Quality.Debilitating)],
           [],
           WeaponType.MELEE,
           1,

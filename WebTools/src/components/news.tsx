@@ -18,6 +18,10 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       onClose={() => onClose()}
       header="What's New?"
     >
+      <b>v1.261024</b>
+      <ul>
+        <li>Minor token revisions.</li>
+      </ul>
       <b>v1.261017</b>
       <ul>
         <li>More NPC tweaks.</li>
@@ -257,20 +261,6 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
           A few straggling updates from the <cite>Species Sourcebook</cite>.
         </li>
         <li>Other minor updates.</li>
-      </ul>
-      <b>v1.260423</b>
-      <ul>
-        <li>
-          Support for most of the new material for the{' '}
-          <cite>Species Sourcebook</cite>. There are certain features &mdash;
-          like additional rules around custom species &mdash; that haven't yet
-          been implemented. They'll come soon enough.
-        </li>
-        <li>
-          There may be certain rules that still need to be implemented (such as
-          species abilities that change things like Protection). I'll work on
-          cleaning that up, soon.
-        </li>
       </ul>
 
       <div className="text-center">
