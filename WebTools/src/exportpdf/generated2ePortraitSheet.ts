@@ -31,20 +31,20 @@ import { SubTitle } from './subTitle';
 export class BasicGeneratedPortraitCharacterSheet extends BaseNonForm2eSheet {
   imageSize = 72 * 1.5;
 
-  secondBlock: Column = new Column(314, 72, 715 - 72, 552 - 314);
-  mainBlock: Column = new Column(59, 72, 715 - 72, 298 - 59, this.secondBlock);
+  secondBlock: Column = new Column(310, 72, 715 - 72, 541 - 314);
+  mainBlock: Column = new Column(55, 72, 715 - 72, 294 - 55, this.secondBlock);
 
   secondBlockWithToken: Column = new Column(
-    314,
+    310,
     72 + this.imageSize + 10,
     715 - 72 - this.imageSize - 10,
-    552 - 314,
+    541 - 314,
   );
   mainBlockWithToken: Column = new Column(
-    59,
+    55,
     72,
     715 - 72,
-    298 - 59,
+    294 - 55,
     this.secondBlockWithToken,
   );
 

@@ -318,6 +318,8 @@
 
     "ModifySupportingCharacter.focus.instruction": "The supporting character chooses one additional focus. This option may be chosen three times, gaining a new focus each time.",
 
+    "ModifySupportingCharacter.general.instruction": "Change the character's name, pronouns and/or description.",
+
     "ModifySupportingCharacter.attribute.instruction": "The supporting character increases a single attribute by 1. This option may only be chosen once.",
 
     "ModifySupportingCharacter.talent.instruction": "The supporting character gains a single talent that they meet the requirements for. This option may be chosen four times, gaining a different talent each time.",

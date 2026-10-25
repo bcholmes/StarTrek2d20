@@ -42,6 +42,7 @@ import {
   isAdditionalTalentSupported,
 } from './additionalTalentInfo';
 import { TalentsHelper } from '../../helpers/talents';
+import { ModifySupportingCharacterGeneralEditView } from './modifySupportingCharacterGeneralEditView';
 
 const ModifySupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
   character,
@@ -131,6 +132,8 @@ const ModifySupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
           character.improvements?.filter((i) => i instanceof Promotion)
             ?.length ?? 0
         );
+      case SupportingCharacterModificationType.General:
+        return 0;
       default:
         break;
     }
@@ -273,7 +276,8 @@ const ModifySupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
       if (
         modificationType === SupportingCharacterModificationType.Promotion ||
         modificationType ===
-          SupportingCharacterModificationType.AdditionalDepartment
+          SupportingCharacterModificationType.AdditionalDepartment ||
+        modificationType === SupportingCharacterModificationType.General
       ) {
         return undefined;
       } else {
@@ -455,6 +459,18 @@ const ModifySupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
           />
         </div>
       );
+    } else if (
+      modificationType === SupportingCharacterModificationType.General
+    ) {
+      return (
+        <div className="mt-4">
+          <ModifySupportingCharacterGeneralEditView
+            character={character}
+            onNextStep={onNextPage}
+            onPreviousStep={() => setIndex(index - 1)}
+          />
+        </div>
+      );
     }
   };
 
@@ -497,6 +513,12 @@ const ModifySupportingCharacterPageBase: React.FC<ICharacterPageProperties> = ({
         ),
       );
     }
+    result.push(
+      new DropDownElement(
+        SupportingCharacterModificationType.General,
+        t('ModificationType.name.generalEdit'),
+      ),
+    );
     return result;
   };
 

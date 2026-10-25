@@ -5,4 +5,5 @@ export enum SupportingCharacterModificationType {
   AdditionalTalent,
   AdditionalValue,
   Promotion,
+  General,
 }
