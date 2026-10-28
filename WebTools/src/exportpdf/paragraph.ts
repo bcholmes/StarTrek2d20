@@ -428,9 +428,8 @@ export class Paragraph {
             let word = words[i];
             if (!line?.isEmpty() && !skipSpace) {
               word = ' ' + word;
-            } else {
-              skipSpace = false;
             }
+            skipSpace = false;
             const block = TextBlock.create(
               word,
               fontSpec,

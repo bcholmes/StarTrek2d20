@@ -34670,6 +34670,9 @@
     },
     {
         "name": "David",
+        "variants": [
+            "Dave"
+        ],
         "gender": "Male",
         "type": "FirstName",
         "tags": [
@@ -88198,7 +88201,8 @@
         "name": "Michael",
         "variants": [
             "Mike",
-            "Mikey"
+            "Mikey",
+            "Mick"
         ],
         "gender": "Male",
         "type": "FirstName",
@@ -116448,14 +116452,7 @@
         "type": "LastName",
         "gender": "Unisex",
         "tags": [
-            "Afghan"
-        ]
-    },
-    {
-        "name": "Shah",
-        "gender": "Unisex",
-        "type": "LastName",
-        "tags": [
+            "Afghan",
             "Persian"
         ]
     },
