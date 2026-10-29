@@ -28,7 +28,9 @@ jest.mock('../../src/state/store', () => {
   const enterpriseEra = 0;
   return {
     store: {
-      getState: () => ({ context: { sources: [core2ndEdition], era: enterpriseEra } }),
+      getState: () => ({
+        context: { sources: [core2ndEdition], era: enterpriseEra },
+      }),
       dispatch: () => undefined,
     },
   };
@@ -44,7 +46,9 @@ describe('SpeciesHelper', () => {
   test('getSpecies returns species for character types', () => {
     const starfleet = SpeciesHelper.getSpecies(CharacterType.Starfleet);
     const civilian = SpeciesHelper.getSpecies(CharacterType.Civilian);
-    const klingonWarrior = SpeciesHelper.getSpecies(CharacterType.KlingonWarrior);
+    const klingonWarrior = SpeciesHelper.getSpecies(
+      CharacterType.KlingonWarrior,
+    );
     expect(Array.isArray(starfleet)).toBe(true);
     expect(Array.isArray(civilian)).toBe(true);
     expect(Array.isArray(klingonWarrior)).toBe(true);
@@ -81,7 +85,9 @@ describe('SpeciesHelper', () => {
   });
 
   test('generateRandomSpeciesForQuadrant', () => {
-    const result = SpeciesHelper.generateRandomSpeciesForQuadrant(Source.GammaQuadrant);
+    const result = SpeciesHelper.generateRandomSpeciesForQuadrant(
+      Source.GammaQuadrant,
+    );
     expect(result === null || typeof result === 'number').toBe(true);
   });
 });
