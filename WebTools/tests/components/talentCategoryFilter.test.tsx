@@ -225,3 +225,20 @@ it.each([
     false,
   );
 });
+
+it('shows the filter without a section header when only filterable is set', () => {
+  const html = renderToStaticMarkup(
+    <SimpleTalentSelectionList
+      filterable
+      talents={['Tough', 'Advisor'].map((name) =>
+        TalentsHelper.getTalent(name),
+      )}
+      construct={new Character()}
+      onSelection={jest.fn()}
+    />,
+  );
+  expect(html).toContain('Filter talents');
+  expect(html).toContain('talent-filter-bar');
+  expect(html).not.toContain('header-text');
+  expect(html).not.toContain('talent-filter-heading');
+});

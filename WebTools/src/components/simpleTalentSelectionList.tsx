@@ -16,6 +16,8 @@ import type { TalentFilter } from './talentCategoryFilter';
 
 interface ISimpleTalentSelectionProperties {
   heading?: string;
+  // Show the talent filter without a section heading (e.g. inside a modal).
+  filterable?: boolean;
   talents: TalentModel[];
   allowDeselect?: boolean;
   construct: Construct;
@@ -32,7 +34,9 @@ export const SimpleTalentSelectionList: React.FC<
   initialSelection,
   allowDeselect = true,
   heading,
+  filterable = false,
 }) => {
+  const showFilter = !!heading || filterable;
   const [filter, setFilter] = useState<TalentFilter>('all');
   const [selection, setSelection] = useState<string | undefined>(
     initialSelection,
@@ -50,7 +54,7 @@ export const SimpleTalentSelectionList: React.FC<
   }, [talents, selection, onSelection]);
 
   const matches = talents.filter(
-    (talent) => !heading || matchesTalentFilter(talent, filter),
+    (talent) => !showFilter || matchesTalentFilter(talent, filter),
   );
   const selectedOutsideFilter = talents.some(
     (talent) => talent.name === selection && !matches.includes(talent),
@@ -125,17 +129,17 @@ export const SimpleTalentSelectionList: React.FC<
 
   return (
     <>
-      {heading && (
+      {showFilter && (
         <TalentCategoryFilter
           heading={heading}
           value={filter}
           onChange={setFilter}
         />
       )}
-      {heading && selectedOutsideFilter && (
+      {showFilter && selectedOutsideFilter && (
         <p role="status">{t('TalentFilter.selectedOutside')}</p>
       )}
-      {heading && matches.length === 0 && (
+      {showFilter && matches.length === 0 && (
         <p role="status">
           {filter === 'all' ? t('TalentFilter.none') : t('TalentFilter.empty')}
         </p>
