@@ -1,4 +1,4 @@
-npm test &&
+npm test -- --coverage &&
   npm run typecheck &&
   npm run lint &&
   npm run prettier:check &&
