@@ -91,7 +91,7 @@ const AttributesAndDisciplinesPageBase: React.FC<ICharacterProperties> = ({
       isTalentSelectionNeeded() &&
       character?.finishingStep?.talent == null
     ) {
-      Dialog.show(t('SoloFinishingTouchesPage.errorTalent'));
+      Dialog.show(t('Common.error.talent'));
     } else if (
       isTalentSelectionNeeded() &&
       determineSelectedTalentExtraErrors(character.finishingStep.talent) != null
@@ -131,8 +131,8 @@ const AttributesAndDisciplinesPageBase: React.FC<ICharacterProperties> = ({
   const talentSelection =
     isKlingonWarriorType(character.type) || character.version > 1 ? (
       <div className="my-4">
-        <Header level={2}>{t('Construct.other.talents')}</Header>
         <SingleTalentSelectionList
+          heading={t('Construct.other.talents')}
           talents={talents}
           construct={character}
           initialSelection={character.finishingStep?.talent}
