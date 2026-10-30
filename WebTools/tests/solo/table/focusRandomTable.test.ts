@@ -12,6 +12,66 @@ describe('focusRandomTable', () => {
     jest.restoreAllMocks();
   });
 
+  test('covers every department, table roll, and focus roll', () => {
+    const departments = [
+      Department.Command,
+      Department.Conn,
+      Department.Security,
+      Department.Engineering,
+      Department.Science,
+      Department.Medicine,
+    ];
+    const spy = jest.spyOn(D20, 'roll');
+
+    for (const department of departments) {
+      for (const tableRoll of [1, 11]) {
+        for (let roll = 1; roll <= 20; roll++) {
+          spy.mockReturnValueOnce(tableRoll).mockReturnValueOnce(roll);
+          const result = focusRandomTable(department);
+          expect(typeof result).toBe('string');
+          expect(result.length).toBeGreaterThan(0);
+        }
+      }
+    }
+  });
+
+  test('selects a department when no skill is provided', () => {
+    const spy = jest.spyOn(D20, 'roll');
+    spy.mockReturnValueOnce(1).mockReturnValueOnce(1).mockReturnValueOnce(1);
+
+    const result = focusRandomTable();
+    expect(typeof result).toBe('string');
+  });
+
+  test('focusDivisionRandomTable covers every division roll', () => {
+    const expectedDepartments = [
+      Department.Command,
+      Department.Command,
+      Department.Command,
+      Department.Conn,
+      Department.Conn,
+      Department.Conn,
+      Department.Security,
+      Department.Security,
+      Department.Security,
+      Department.Engineering,
+      Department.Engineering,
+      Department.Engineering,
+      Department.Science,
+      Department.Science,
+      Department.Science,
+      Department.Medicine,
+      Department.Medicine,
+      Department.Medicine,
+    ];
+    const spy = jest.spyOn(D20, 'roll');
+
+    expectedDepartments.forEach((expected, index) => {
+      spy.mockReturnValueOnce(index + 1);
+      expect(focusDivisionRandomTable()).toBe(expected);
+    });
+  });
+
   test('focusDivisionRandomTable returns a department', () => {
     const spy = jest.spyOn(D20, 'roll').mockReturnValue(1);
     const result = focusDivisionRandomTable();
