@@ -1,3 +1,9 @@
+import { recordLifepathTalentProgress } from '../state/characterActions';
+import { OptionalTalentNote } from '../components/deferredTalentSelection';
+import {
+  supportsDeferredTalents,
+  getLifepathTalentChoices,
+} from '../helpers/lifepathTalents';
 import React from 'react';
 import { Navigation } from '../common/navigator';
 import { PageIdentity } from './pageIdentity';
@@ -165,13 +171,22 @@ const SpeciesDetailsPageBase: React.FC<ISpeciesDetailsProperties> = ({
     if (talents.length > 0 && isTalentSelectionRequired()) {
       return (
         <div>
-          <Header level={2}>{t('Construct.other.talents')}</Header>
           <SingleTalentSelectionList
-            talents={talents}
+            heading={t('Construct.other.talents')}
+            talents={
+              supportsDeferredTalents(character)
+                ? getLifepathTalentChoices(character, StepContext.Species)
+                : talents
+            }
             construct={character}
             initialSelection={character.speciesStep?.talent}
             onSelection={(talent) => onTalentSelected(talent)}
-          />
+          >
+            <OptionalTalentNote
+              character={character}
+              context={StepContext.Species}
+            />
+          </SingleTalentSelectionList>
         </div>
       );
     } else {
@@ -203,15 +218,16 @@ const SpeciesDetailsPageBase: React.FC<ISpeciesDetailsProperties> = ({
     if (talents.length > 0 && isTalentSelectionRequired()) {
       return (
         <div>
-          <Header level={2}>{t('Construct.other.talents')}</Header>
-          <div>{renderCrossSpeciesCheckbox()}</div>
-          {esotericTalentOption}
           <SingleTalentSelectionList
+            heading={t('Construct.other.talents')}
             talents={talents}
             construct={character}
             initialSelection={character.speciesStep?.talent}
             onSelection={(talent) => onTalentSelected(talent)}
-          />
+          >
+            <div>{renderCrossSpeciesCheckbox()}</div>
+            {esotericTalentOption}
+          </SingleTalentSelectionList>
         </div>
       );
     } else {
@@ -350,11 +366,13 @@ const SpeciesDetailsPageBase: React.FC<ISpeciesDetailsProperties> = ({
       Dialog.show(t('SpeciesDetails.error.attributes'));
     } else if (
       isTalentSelectionRequired() &&
-      character.speciesStep?.talent == null
+      character.speciesStep?.talent == null &&
+      !supportsDeferredTalents(character)
     ) {
       Dialog.show(t('Common.error.talent'));
     } else if (
       isTalentSelectionRequired() &&
+      !supportsDeferredTalents(character) &&
       determineSelectedTalentExtraErrors(character.speciesStep?.talent) != null
     ) {
       Dialog.show(
@@ -374,6 +392,7 @@ const SpeciesDetailsPageBase: React.FC<ISpeciesDetailsProperties> = ({
     } else if (character.stereotype === Stereotype.Npc) {
       navigate('/npc/stats');
     } else {
+      store.dispatch(recordLifepathTalentProgress(StepContext.Species));
       Navigation.navigateToPage(PageIdentity.Environment);
     }
   };

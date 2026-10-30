@@ -1,3 +1,9 @@
+import { recordLifepathTalentProgress } from '../state/characterActions';
+import { OptionalTalentNote } from '../components/deferredTalentSelection';
+import {
+  supportsDeferredTalents,
+  getLifepathTalentChoices,
+} from '../helpers/lifepathTalents';
 import React, { useState } from 'react';
 import { Navigation } from '../common/navigator';
 import { AttributesHelper } from '../helpers/attributes';
@@ -62,17 +68,22 @@ const EarlyOutlookDetailsPageBase: React.FC<ICharacterProperties> = ({
       Dialog.show(t('UpbringingDetailPage.error.discipline'));
     } else if (!character.upbringingStep?.focus) {
       Dialog.show(t('UpbringingDetailPage.error.focus'));
-    } else if (character.upbringingStep?.talent == null) {
+    } else if (
+      character.upbringingStep?.talent == null &&
+      !supportsDeferredTalents(character)
+    ) {
       Dialog.show(t('UpbringingDetailPage.error.talent'));
     } else {
       const error = determineSelectedTalentExtraErrors(
         character.upbringingStep?.talent,
       );
-      if (error?.length) {
+      if (!supportsDeferredTalents(character) && error?.length) {
         Dialog.show(error);
       } else if (character.type === CharacterType.Child) {
+        store.dispatch(recordLifepathTalentProgress(StepContext.EarlyOutlook));
         Navigation.navigateToPage(PageIdentity.ChildEducationPage);
       } else {
+        store.dispatch(recordLifepathTalentProgress(StepContext.EarlyOutlook));
         Navigation.navigateToPage(PageIdentity.Career);
       }
     }
@@ -134,7 +145,9 @@ const EarlyOutlookDetailsPageBase: React.FC<ICharacterProperties> = ({
     </div>
   );
 
-  const talents = getEarlyOutlookTalents(character);
+  const talents = supportsDeferredTalents(character)
+    ? getLifepathTalentChoices(character, StepContext.EarlyOutlook)
+    : getEarlyOutlookTalents(character);
 
   return (
     <div className="page container ms-0">
@@ -189,16 +202,21 @@ const EarlyOutlookDetailsPageBase: React.FC<ICharacterProperties> = ({
         </div>
       </div>
       <div>
-        <Header level={2}>{t('Construct.other.talent')}</Header>
-        {character.version > 1 ? <TalentSettingsView /> : undefined}
         <SingleTalentSelectionList
+          heading={t('Construct.other.talent')}
           talents={talents}
           initialSelection={character.upbringingStep?.talent}
           onSelection={(talent) => {
             onTalentSelected(talent);
           }}
           construct={character}
-        />
+        >
+          {character.version > 1 ? <TalentSettingsView /> : undefined}
+          <OptionalTalentNote
+            character={character}
+            context={StepContext.EarlyOutlook}
+          />
+        </SingleTalentSelectionList>
       </div>
       <div className="row">
         {showAdvanced ? (

@@ -759,7 +759,7 @@ export class Talents {
         new SourcePrerequisite(Source.CommandDivision),
       ],
       1,
-      new TalentCategorization(TalentCategory.Department, Department.Security),
+      new TalentCategorization(TalentCategory.Department, Department.Command),
     ),
     new TalentModel(
       'Multi-Discipline',
@@ -1111,7 +1111,11 @@ export class Talents {
         ),
       ],
       1,
-      new TalentCategorization(TalentCategory.Department, Department.Security),
+      new TalentCategorization(
+        TalentCategory.Department,
+        Department.Security,
+        Department.Command,
+      ),
     ),
     new TalentModel(
       'Deadeye Marksman',
@@ -1297,7 +1301,11 @@ export class Talents {
         new SourcePrerequisite(Source.Core, Source.Core2ndEdition),
       ],
       1,
-      new TalentCategorization(TalentCategory.Department, Department.Science),
+      new TalentCategorization(
+        TalentCategory.Department,
+        Department.Science,
+        Department.Engineering,
+      ),
     ),
     new TalentModel(
       'Intense Scrutiny',
@@ -1311,7 +1319,11 @@ export class Talents {
         new SourcePrerequisite(Source.Core, Source.Core2ndEdition),
       ],
       1,
-      new TalentCategorization(TalentCategory.Department, Department.Science),
+      new TalentCategorization(
+        TalentCategory.Department,
+        Department.Science,
+        Department.Engineering,
+      ),
     ),
     new TalentModel(
       'Jury-Rig',
@@ -1558,7 +1570,11 @@ export class Talents {
         new SourcePrerequisite(Source.Core, Source.Core2ndEdition),
       ],
       1,
-      new TalentCategorization(TalentCategory.Department, Department.Science),
+      new TalentCategorization(
+        TalentCategory.Department,
+        Department.Science,
+        Department.Engineering,
+      ),
     ),
     new TalentModel(
       'Baffling Briefing',
