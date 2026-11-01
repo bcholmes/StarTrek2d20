@@ -964,7 +964,7 @@ export class Roll20VttExporter {
       'repeating_ship_',
       'weapon_',
       'weapon_effect',
-      weapon.dice + starship.getDiceForWeaponForRoll20(weapon),
+      starship.getDiceForWeaponForRoll20(weapon),
       weapon.type === WeaponType.TORPEDO ? 'Torpedo' : 'Energy',
       id,
     );

@@ -72,6 +72,37 @@ describe('Roll20 JSON export golden output', () => {
   });
 });
 
+describe('Roll20 starship weapon damage rolls', () => {
+  test('uses the ship dice helper without adding weapon dice twice', () => {
+    const result: any = Roll20VttExporter.instance.exportStarship(
+      makePopulatedStarship(),
+    );
+    const attribs: { name: string; current: any }[] = result.character.attribs;
+    const diceCount = (weaponName: string) => {
+      const nameAttrib = attribs.find(
+        (a) => a.name.endsWith('_weapon_name') && a.current === weaponName,
+      );
+      if (nameAttrib == null) {
+        throw new Error('No weapon named ' + weaponName);
+      }
+      const rowId = nameAttrib.name
+        .replace(/^repeating_ship_/, '')
+        .replace(/_weapon_name$/, '');
+      const damageRoll = attribs.find(
+        (a) => a.name === 'repeating_ship_' + rowId + '_damageRoll',
+      );
+      if (damageRoll == null) {
+        throw new Error('No damage roll for ' + weaponName);
+      }
+      return (damageRoll.current.match(/\{\{cdice/g) ?? []).length;
+    };
+
+    expect(diceCount('Phaser Arrays')).toBe(0);
+    expect(diceCount('Photon Torpedoes')).toBe(3);
+    expect(diceCount('Tractor Beam')).toBe(5);
+  });
+});
+
 describe('Roll20 export known divergences', () => {
   test('uses the misspelled "communcation" attrib key', () => {
     const result: any = Roll20VttExporter.instance.exportStarship(
