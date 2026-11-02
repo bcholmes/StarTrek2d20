@@ -14,6 +14,10 @@ import Markdown from 'react-markdown';
 import { CHALLENGE_DICE_NOTATION } from '../common/challengeDiceNotation';
 import { Button } from 'react-bootstrap';
 import { TalentCategory } from '../helpers/talentCategory';
+import {
+  matchesTalentFilter,
+  type TalentFilter,
+} from '../helpers/talentFilter';
 
 enum TalentVersion {
   FirstEdition,
@@ -139,6 +143,15 @@ export const TalentsOverviewPage = () => {
   const { t } = useTranslation();
 
   const selectTalents = () => {
+    const filter: TalentFilter = {
+      category: categoryType,
+      type:
+        categoryType === TalentCategory.Department
+          ? department
+          : categoryType === TalentCategory.Species
+            ? species
+            : undefined,
+    };
     const talents = [];
     for (let i = 0; i < allTalents.length; i++) {
       const talent = allTalents[i];
@@ -154,22 +167,7 @@ export const TalentsOverviewPage = () => {
         talent.version === TalentVersion.FirstEdition
       ) {
         // don't include
-      } else if (
-        categoryType != null &&
-        talent.talent.category?.category !== categoryType
-      ) {
-        // don't include
-      } else if (
-        categoryType === TalentCategory.Department &&
-        department != null &&
-        !talent.talent.category?.includes(department)
-      ) {
-        // don't include
-      } else if (
-        categoryType === TalentCategory.Species &&
-        species != null &&
-        !talent.talent.category?.includes(species)
-      ) {
+      } else if (!matchesTalentFilter(talent.talent, filter)) {
         // don't include
       } else {
         talents.push(talent);

@@ -62,11 +62,12 @@ import { SimpleSystemSelector } from './simpleSystemSelector';
 import { InputFieldAndLabel } from '../common/inputFieldAndLabel';
 import { RichTextEditor } from './richTextEditor';
 
+import { TalentCategoryFilter } from './talentCategoryFilter';
 import {
-  TalentCategoryFilter,
+  ALL_TALENTS,
   matchesTalentFilter,
-} from './talentCategoryFilter';
-import type { TalentFilter } from './talentCategoryFilter';
+  type TalentFilter,
+} from '../helpers/talentFilter';
 
 interface ISingleTalentSelectionProperties {
   heading?: string;
@@ -1054,7 +1055,7 @@ export const SingleTalentSelectionList: React.FC<
   heading,
   children,
 }) => {
-  const [filter, setFilter] = useState<TalentFilter>('all');
+  const [filter, setFilter] = useState<TalentFilter>(ALL_TALENTS);
   let original = null;
   if (initialSelection == null) {
     // do nothing
@@ -1123,7 +1124,9 @@ export const SingleTalentSelectionList: React.FC<
       )}
       {heading && matches.length === 0 && (
         <p role="status">
-          {filter === 'all' ? t('TalentFilter.none') : t('TalentFilter.empty')}
+          {filter.category == null
+            ? t('TalentFilter.none')
+            : t('TalentFilter.empty')}
         </p>
       )}
       <table className="selection-list">{talentList}</table>

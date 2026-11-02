@@ -4,10 +4,9 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import translations from '../../src/i18n/locales/en/translations.json';
-import {
-  TalentCategoryFilter,
-  matchesTalentFilter,
-} from '../../src/components/talentCategoryFilter';
+import { TalentCategoryFilter } from '../../src/components/talentCategoryFilter';
+import { ALL_TALENTS } from '../../src/helpers/talentFilter';
+import { TalentCategory } from '../../src/helpers/talentCategory';
 import { SingleTalentSelectionList } from '../../src/components/singleTalentSelectionList';
 import { TalentsHelper } from '../../src/helpers/talents';
 import { RankedTalent } from '../../src/helpers/rankedTalent';
@@ -33,36 +32,13 @@ beforeAll(async () => {
 });
 afterEach(() => jest.restoreAllMocks());
 
-it('distinguishes General from specific disciplines', () => {
-  const tough = TalentsHelper.getTalent('Tough');
-  const advisor = TalentsHelper.getTalent('Advisor');
-  expect(matchesTalentFilter(tough, 'general')).toBe(true);
-  expect(matchesTalentFilter(tough, Department.Command)).toBe(false);
-  expect(matchesTalentFilter(advisor, 'general')).toBe(false);
-  expect(matchesTalentFilter(advisor, Department.Command)).toBe(true);
-  expect(matchesTalentFilter(advisor, Department.Conn)).toBe(false);
-});
-
-it.each(['In the Nick of Time', 'Intense Scrutiny'])(
-  'includes %s in both relevant disciplines',
-  (name) => {
-    const talent = TalentsHelper.getTalent(name);
-    expect(matchesTalentFilter(talent, Department.Engineering)).toBe(true);
-    expect(matchesTalentFilter(talent, Department.Science)).toBe(true);
-    expect(matchesTalentFilter(talent, Department.Medicine)).toBe(false);
-  },
-);
-
-it('All retains career choices that are neither General nor Department', () => {
-  const veteran = TalentsHelper.getTalent('Veteran');
-  expect(matchesTalentFilter(veteran, 'all')).toBe(true);
-  expect(matchesTalentFilter(veteran, 'general')).toBe(false);
-  expect(matchesTalentFilter(veteran, Department.Command)).toBe(false);
-});
-
 it('renders a labelled select in the orange heading with all eleven choices', () => {
   const html = renderToStaticMarkup(
-    <TalentCategoryFilter heading="Talents" value="all" onChange={() => {}} />,
+    <TalentCategoryFilter
+      heading="Talents"
+      value={ALL_TALENTS}
+      onChange={() => {}}
+    />,
   );
   expect(html).toContain('talent-filter-heading');
   expect(html).toContain('<h2 class="header-text"><div>Talents</div></h2>');
@@ -76,6 +52,55 @@ it('renders a labelled select in the orange heading with all eleven choices', ()
   expect(html).toContain('General');
   expect(html).toContain('Medicine');
 });
+
+const general = { category: TalentCategory.General };
+const department = (type: Department) => ({
+  category: TalentCategory.Department,
+  type,
+});
+
+it('selecting an option reports the matching shared filter', () => {
+  const onChange = jest.fn();
+  const element = TalentCategoryFilter({
+    heading: 'Talents',
+    value: ALL_TALENTS,
+    onChange,
+  }) as React.ReactElement;
+  const select = findSelect(element);
+  select.props.onChange({ target: { value: String(Department.Science) } });
+  select.props.onChange({ target: { value: 'species' } });
+  select.props.onChange({ target: { value: 'all' } });
+  expect(onChange.mock.calls.map((c) => c[0])).toEqual([
+    department(Department.Science),
+    { category: TalentCategory.Species },
+    ALL_TALENTS,
+  ]);
+});
+
+it('shows the option that matches the current filter', () => {
+  const html = renderToStaticMarkup(
+    <TalentCategoryFilter
+      heading="Talents"
+      value={department(Department.Conn)}
+      onChange={() => {}}
+    />,
+  );
+  expect(html).toMatch(/<option value="1" selected="">Conn<\/option>/);
+});
+
+function findSelect(node): React.ReactElement<{
+  onChange: (event: { target: { value: string } }) => void;
+}> {
+  if (!node || typeof node !== 'object') return undefined;
+  if (node.type === 'select') return node;
+  if (typeof node.type === 'function') return findSelect(node.type(node.props));
+  const children = React.Children.toArray(node.props?.children);
+  for (const child of children) {
+    const found = findSelect(child);
+    if (found) return found;
+  }
+  return undefined;
+}
 
 function renderFilteredList(filter, selected?: SelectedTalent) {
   jest
@@ -103,13 +128,13 @@ function renderFilteredList(filter, selected?: SelectedTalent) {
 }
 
 it('filters rows without mutating eligibility or invoking selection updates', () => {
-  const html = renderFilteredList('general');
+  const html = renderFilteredList(general);
   expect(html).toContain('Tough');
   expect(html).not.toContain('Advisor');
 });
 
 it('retains the selected talent outside the filter with an explanation', () => {
-  const html = renderFilteredList('general', new SelectedTalent('Advisor'));
+  const html = renderFilteredList(general, new SelectedTalent('Advisor'));
   expect(html).toContain('Advisor');
   expect(html).toContain('Tough');
   expect(html).toContain('outside this filter');
@@ -117,7 +142,7 @@ it('retains the selected talent outside the filter with an explanation', () => {
 });
 
 it('explains an empty result and how to restore the full list', () => {
-  const html = renderFilteredList(Department.Medicine);
+  const html = renderFilteredList(department(Department.Medicine));
   expect(html).not.toContain('Advisor');
   expect(html).not.toContain('Tough');
   expect(html).toContain('No available talents match');
@@ -148,14 +173,14 @@ function renderFilteredEditor(filter, selected?: string, heading = 'Talents') {
 }
 
 it('filters the shared editor choices by discipline without changing selection', () => {
-  const html = renderFilteredEditor(Department.Command);
+  const html = renderFilteredEditor(department(Department.Command));
   expect(html).toContain('Advisor');
   expect(html).not.toContain('Tough');
   expect(html).toContain('Filter talents');
 });
 
 it('keeps the current editor talent visible and checked outside the filter', () => {
-  const html = renderFilteredEditor('general', 'Advisor');
+  const html = renderFilteredEditor(general, 'Advisor');
   expect(html).toContain('Advisor');
   expect(html).toContain('Tough');
   expect(html).toContain('outside this filter');
@@ -163,14 +188,18 @@ it('keeps the current editor talent visible and checked outside the filter', () 
 });
 
 it('explains empty editor results', () => {
-  const html = renderFilteredEditor(Department.Medicine);
+  const html = renderFilteredEditor(department(Department.Medicine));
   expect(html).toContain('No available talents match');
   expect(html).not.toContain('Advisor');
   expect(html).not.toContain('Tough');
 });
 
 it('leaves other simple selection lists unfiltered without an opt-in heading', () => {
-  const html = renderFilteredEditor(Department.Medicine, undefined, '');
+  const html = renderFilteredEditor(
+    department(Department.Medicine),
+    undefined,
+    '',
+  );
   expect(html).toContain('Advisor');
   expect(html).toContain('Tough');
   expect(html).not.toContain('Filter talents');
@@ -207,24 +236,6 @@ it.each([
     expect(html).not.toContain('Choose All talents');
   },
 );
-
-it.each([
-  ['species', 'Proud and Honorable'],
-  ['esoteric', 'Telepathy2e'],
-  ['enhancement', 'Neural Interface'],
-] as const)('the %s filter matches only that category', (filter, name) => {
-  const talent = TalentsHelper.getTalent(name);
-  expect(matchesTalentFilter(talent, filter)).toBe(true);
-  expect(matchesTalentFilter(talent, 'general')).toBe(false);
-  expect(matchesTalentFilter(talent, Department.Command)).toBe(false);
-  for (const other of ['species', 'esoteric', 'enhancement'] as const) {
-    if (other !== filter)
-      expect(matchesTalentFilter(talent, other)).toBe(false);
-  }
-  expect(matchesTalentFilter(TalentsHelper.getTalent('Tough'), filter)).toBe(
-    false,
-  );
-});
 
 it('shows the filter without a section header when only filterable is set', () => {
   const html = renderToStaticMarkup(

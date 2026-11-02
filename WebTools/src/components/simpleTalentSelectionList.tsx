@@ -8,11 +8,12 @@ import type { Construct } from '../common/construct';
 import { SelectedTalent } from '../common/selectedTalent';
 import type { ITalent } from '../helpers/italent';
 import { t } from 'i18next';
+import { TalentCategoryFilter } from './talentCategoryFilter';
 import {
-  TalentCategoryFilter,
+  ALL_TALENTS,
   matchesTalentFilter,
-} from './talentCategoryFilter';
-import type { TalentFilter } from './talentCategoryFilter';
+  type TalentFilter,
+} from '../helpers/talentFilter';
 
 interface ISimpleTalentSelectionProperties {
   heading?: string;
@@ -37,7 +38,7 @@ export const SimpleTalentSelectionList: React.FC<
   filterable = false,
 }) => {
   const showFilter = !!heading || filterable;
-  const [filter, setFilter] = useState<TalentFilter>('all');
+  const [filter, setFilter] = useState<TalentFilter>(ALL_TALENTS);
   const [selection, setSelection] = useState<string | undefined>(
     initialSelection,
   );
@@ -141,7 +142,9 @@ export const SimpleTalentSelectionList: React.FC<
       )}
       {showFilter && matches.length === 0 && (
         <p role="status">
-          {filter === 'all' ? t('TalentFilter.none') : t('TalentFilter.empty')}
+          {filter.category == null
+            ? t('TalentFilter.none')
+            : t('TalentFilter.empty')}
         </p>
       )}
       <table className="selection-list">

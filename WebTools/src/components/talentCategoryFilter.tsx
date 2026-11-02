@@ -2,27 +2,57 @@ import React from 'react';
 import { t } from 'i18next';
 import { Department } from '../helpers/department';
 import { TalentCategory } from '../helpers/talentCategory';
-import type { TalentModel } from '../helpers/talentModel';
+import {
+  ALL_TALENTS,
+  isSameTalentFilter,
+  type TalentFilter,
+} from '../helpers/talentFilter';
 
-export type TalentFilter =
-  'all' | 'general' | 'species' | 'esoteric' | 'enhancement' | Department;
-
-const CATEGORY_FILTERS: Record<string, TalentCategory> = {
-  general: TalentCategory.General,
-  species: TalentCategory.Species,
-  esoteric: TalentCategory.Esoteric,
-  enhancement: TalentCategory.Enhancement,
-};
-
-export function matchesTalentFilter(talent: TalentModel, filter: TalentFilter) {
-  if (filter === 'all') return true;
-  if (typeof filter === 'string')
-    return talent.category.category === CATEGORY_FILTERS[filter];
-  return (
-    talent.category.category === TalentCategory.Department &&
-    talent.category.includes(filter)
-  );
+interface FilterOption {
+  value: string;
+  filter: TalentFilter;
+  label: () => string;
 }
+
+// The compact, single-dropdown form of the talent filter used beside talent
+// selection lists. Each option is a TalentFilter, matched by the same
+// function as the Talents Overview page.
+const FILTER_OPTIONS: FilterOption[] = [
+  { value: 'all', filter: ALL_TALENTS, label: () => t('TalentFilter.all') },
+  {
+    value: 'general',
+    filter: { category: TalentCategory.General },
+    label: () => t('TalentCategory.general'),
+  },
+  ...[
+    Department.Command,
+    Department.Conn,
+    Department.Security,
+    Department.Engineering,
+    Department.Science,
+    Department.Medicine,
+  ].map((department) => ({
+    value: String(department),
+    filter: { category: TalentCategory.Department, type: department },
+    label: () =>
+      t('Construct.discipline.' + Department[department].toLowerCase()),
+  })),
+  {
+    value: 'species',
+    filter: { category: TalentCategory.Species },
+    label: () => t('TalentCategory.species'),
+  },
+  {
+    value: 'esoteric',
+    filter: { category: TalentCategory.Esoteric },
+    label: () => t('TalentCategory.esoteric'),
+  },
+  {
+    value: 'enhancement',
+    filter: { category: TalentCategory.Enhancement },
+    label: () => t('TalentCategory.enhancement'),
+  },
+];
 
 const FilterSelect: React.FC<{
   value: TalentFilter;
@@ -31,33 +61,22 @@ const FilterSelect: React.FC<{
   <label>
     <span>{t('TalentFilter.label')}</span>
     <select
-      value={value}
-      onChange={(event) => {
-        const value = event.target.value;
+      value={
+        FILTER_OPTIONS.find((o) => isSameTalentFilter(o.filter, value))
+          ?.value ?? 'all'
+      }
+      onChange={(event) =>
         onChange(
-          value === 'all' || value in CATEGORY_FILTERS
-            ? (value as TalentFilter)
-            : (Number(value) as Department),
-        );
-      }}
+          FILTER_OPTIONS.find((o) => o.value === event.target.value)?.filter ??
+            ALL_TALENTS,
+        )
+      }
     >
-      <option value="all">{t('TalentFilter.all')}</option>
-      <option value="general">{t('TalentCategory.general')}</option>
-      {[
-        Department.Command,
-        Department.Conn,
-        Department.Security,
-        Department.Engineering,
-        Department.Science,
-        Department.Medicine,
-      ].map((department) => (
-        <option key={department} value={department}>
-          {t('Construct.discipline.' + Department[department].toLowerCase())}
+      {FILTER_OPTIONS.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.label()}
         </option>
       ))}
-      <option value="species">{t('TalentCategory.species')}</option>
-      <option value="esoteric">{t('TalentCategory.esoteric')}</option>
-      <option value="enhancement">{t('TalentCategory.enhancement')}</option>
     </select>
   </label>
 );
