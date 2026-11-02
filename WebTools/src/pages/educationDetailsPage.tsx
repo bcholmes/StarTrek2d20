@@ -309,8 +309,8 @@ const EducationDetailsPageBase: React.FC<ICharacterProperties> = ({
   const renderTalents = () => {
     return (
       <div>
-        <Header level={2}>{t('Construct.other.talent')}</Header>
         <SingleTalentSelectionList
+          heading={t('Construct.other.talent')}
           talents={filterTalentList()}
           initialSelection={character.educationStep?.talent}
           construct={character}
@@ -358,8 +358,8 @@ const EducationDetailsPageBase: React.FC<ICharacterProperties> = ({
       Dialog.show(t('SoloEducationDetailsPage.errorFocuses'));
     } else if (!character.educationStep?.value) {
       Dialog.show(t('Common.error.value'));
-    } else if (!character.educationStep?.talent == null) {
-      Dialog.show(t('SoloEducationDetailsPage.errorTalent'));
+    } else if (character.educationStep?.talent == null) {
+      Dialog.show(t('Common.error.talent'));
     } else {
       const error = determineSelectedTalentExtraErrors(
         character.educationStep?.talent,

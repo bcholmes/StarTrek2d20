@@ -165,8 +165,8 @@ const SpeciesDetailsPageBase: React.FC<ISpeciesDetailsProperties> = ({
     if (talents.length > 0 && isTalentSelectionRequired()) {
       return (
         <div>
-          <Header level={2}>{t('Construct.other.talents')}</Header>
           <SingleTalentSelectionList
+            heading={t('Construct.other.talents')}
             talents={talents}
             construct={character}
             initialSelection={character.speciesStep?.talent}
@@ -203,15 +203,16 @@ const SpeciesDetailsPageBase: React.FC<ISpeciesDetailsProperties> = ({
     if (talents.length > 0 && isTalentSelectionRequired()) {
       return (
         <div>
-          <Header level={2}>{t('Construct.other.talents')}</Header>
-          <div>{renderCrossSpeciesCheckbox()}</div>
-          {esotericTalentOption}
           <SingleTalentSelectionList
+            heading={t('Construct.other.talents')}
             talents={talents}
             construct={character}
             initialSelection={character.speciesStep?.talent}
             onSelection={(talent) => onTalentSelected(talent)}
-          />
+          >
+            <div>{renderCrossSpeciesCheckbox()}</div>
+            {esotericTalentOption}
+          </SingleTalentSelectionList>
         </div>
       );
     } else {

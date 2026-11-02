@@ -1,3 +1,5 @@
+import { TalentSelectionRow } from '../../components/singleTalentSelectionList';
+import { RankedTalent } from '../../helpers/rankedTalent';
 import type { AttackType } from '../../common/attackType';
 import type { Character } from '../../common/character';
 import type { SelectedTalent } from '../../common/selectedTalent';
@@ -142,6 +144,7 @@ export const AdditionalTalentInfo: React.FC<
         }}
         character={character}
         simpleHeader={simpleHeader}
+        initialSelection={talentSelection.focuses}
       />
     );
   } else if (talentSelection?.talent === TALENT_NAME_WARRIORS_SPIRIT) {
@@ -156,6 +159,7 @@ export const AdditionalTalentInfo: React.FC<
         }}
         character={character}
         simpleHeader={simpleHeader}
+        initialSelection={talentSelection.selection as SpecialWeapon}
       />
     );
   } else if (talentSelection?.talent === TALENT_NAME_WISDOM_OF_YEARS) {
@@ -176,6 +180,9 @@ export const AdditionalTalentInfo: React.FC<
           setTalentSelection(temp);
         }}
         character={character}
+        initialFocus={talentSelection.focuses[0]}
+        initialValue={talentSelection.value}
+        simpleHeader={simpleHeader}
       />
     );
   } else if (
@@ -196,6 +203,18 @@ export const AdditionalTalentInfo: React.FC<
         character={character}
         simpleHeader={simpleHeader}
       />
+    );
+  } else if (talentSelection) {
+    return (
+      <table className="selection-list">
+        <TalentSelectionRow
+          detailsOnly
+          talent={new RankedTalent(talentSelection.talentModel)}
+          construct={character}
+          selection={talentSelection}
+          onSelection={setTalentSelection}
+        />
+      </table>
     );
   } else {
     return undefined;

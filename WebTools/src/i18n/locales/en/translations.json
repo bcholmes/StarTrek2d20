@@ -6393,5 +6393,11 @@
     "World.atmosphericDensity.veryDense": "Very dense",
 
     "World.class.description": "Class {{class}}",
-    "World.class.fullDescription": "Class {{class}} ({{definition}})"
+    "World.class.fullDescription": "Class {{class}} ({{definition}})",
+    "TalentEdit.unselected": "No talent selected.",
+    "TalentFilter.label": "Filter talents",
+    "TalentFilter.all": "All talents",
+    "TalentFilter.selectedOutside": "Your selected talent is shown below even though it is outside this filter.",
+    "TalentFilter.empty": "No available talents match this filter. Choose All talents to see the full list.",
+    "TalentFilter.none": "No talents are available for this choice."
 }

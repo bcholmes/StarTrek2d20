@@ -1,3 +1,4 @@
+import { TalentEditView } from '../../components/talentEditView';
 import { useTranslation } from 'react-i18next';
 import type { ICharacterProperties } from '../../solo/page/soloCharacterProperties';
 import Markdown from 'react-markdown';
@@ -31,14 +32,10 @@ import { SpeciesAbilityList } from '../../helpers/speciesAbility';
 import { AttributesHelper } from '../../helpers/attributes';
 import { AttributeView } from '../../components/attribute';
 import { makeKey } from '../../common/translationKey';
-import { AdditionalTalentInfo } from '../../supportingcharacters/modify/additionalTalentInfo';
-import { SelectedTalentDescriptionView } from '../../components/selectedTalentDescriptionView';
 import { NameGenerator } from '../../npc/nameGenerator';
 import { SpeciesHelper } from '../../helpers/species';
 import type { SpeciesModel } from '../../helpers/speciesModel';
 import { TalentsHelper } from '../../helpers/talents';
-import { ModalControl } from '../../components/modal';
-import { SimpleTalentSelectionList } from '../../components/simpleTalentSelectionList';
 import type { SelectedTalent } from '../../common/selectedTalent';
 import { determineSelectedTalentExtraErrors } from '../../common/selectedTalentExtraCheck';
 import { Dialog } from '../../components/dialog';
@@ -73,36 +70,6 @@ export const GeneralEditView: React.FC<IGeneralEditViewProperties> = ({
 }) => {
   const [tab, setTab] = useState<Tab>(Tab.Species);
   const { t } = useTranslation();
-
-  const closeModal = () => {
-    ModalControl.hide();
-  };
-
-  const showTalentSelectionModal = (talentAssembly: TalentAssembly) => {
-    let talents = TalentsHelper.getAllAvailableTalentsForCharacter(character);
-    if (talentAssembly.context === AssemblyContext.Career) {
-      talents = TalentsHelper.getCareerLengthTalents(character);
-    }
-
-    ModalControl.show(
-      'xl',
-      () => closeModal(),
-
-      <div>
-        <SimpleTalentSelectionList
-          construct={character}
-          talents={talents}
-          onSelection={(t) => onTalentChanged(talentAssembly, t)}
-        />
-        <div className="text-center mt-4">
-          <Button size="sm" onClick={() => closeModal()}>
-            {t('Common.button.ok')}
-          </Button>
-        </div>
-      </div>,
-      t('ModifySupportingCharacter.talentModal.title'),
-    );
-  };
 
   const prepareForOnNextStep = () => {
     const errorMessage = character.talentAssemblies
@@ -373,32 +340,20 @@ export const GeneralEditView: React.FC<IGeneralEditViewProperties> = ({
                 !character.speciesStep?.ability?.isTalentSelectionSupported,
             )
             .map((talent, i) => (
-              <>
-                <div className="col-12 col-md-6" key={'talent-' + i}>
-                  <Header level={2} className="my-4">
-                    {talent.talent.talentModel.localizedName}
-                  </Header>
-                  <div className="text-end">
-                    <Button
-                      size="sm"
-                      variant="outline-primary"
-                      onClick={() => showTalentSelectionModal(talent)}
-                    >
-                      {t('Common.button.modify')}
-                    </Button>
-                  </div>
-                  <SelectedTalentDescriptionView
-                    talent={talent.talent}
-                    version={character.version}
-                  />
-                  <AdditionalTalentInfo
-                    character={character}
-                    talentSelection={talent.talent}
-                    setTalentSelection={(s) => onTalentChanged(talent, s)}
-                    simpleHeader={true}
-                  />
-                </div>
-              </>
+              <TalentEditView
+                key={'talent-' + i}
+                character={character}
+                heading={talent.talent.talentModel.localizedName}
+                talent={talent.talent}
+                choices={
+                  talent.context === AssemblyContext.Career
+                    ? TalentsHelper.getCareerLengthTalents(character)
+                    : TalentsHelper.getAllAvailableTalentsForCharacter(
+                        character,
+                      )
+                }
+                onChange={(selection) => onTalentChanged(talent, selection)}
+              />
             ))}
         </div>
       </>

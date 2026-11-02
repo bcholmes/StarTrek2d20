@@ -189,16 +189,17 @@ const EarlyOutlookDetailsPageBase: React.FC<ICharacterProperties> = ({
         </div>
       </div>
       <div>
-        <Header level={2}>{t('Construct.other.talent')}</Header>
-        {character.version > 1 ? <TalentSettingsView /> : undefined}
         <SingleTalentSelectionList
+          heading={t('Construct.other.talent')}
           talents={talents}
           initialSelection={character.upbringingStep?.talent}
           onSelection={(talent) => {
             onTalentSelected(talent);
           }}
           construct={character}
-        />
+        >
+          {character.version > 1 ? <TalentSettingsView /> : undefined}
+        </SingleTalentSelectionList>
       </div>
       <div className="row">
         {showAdvanced ? (

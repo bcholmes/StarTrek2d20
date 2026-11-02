@@ -122,7 +122,7 @@ export const registerGeneralEditReducers = (
         oldValue.context === AssemblyContext.EarlyOutlook &&
         temp.upbringingStep
       ) {
-        temp.upbringingStep.focus = action.payload.newValue;
+        temp.upbringingStep.talent = action.payload.newValue;
       } else if (
         oldValue.context === AssemblyContext.Education &&
         temp.educationStep
