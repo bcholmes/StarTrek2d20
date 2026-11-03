@@ -28,7 +28,7 @@ const FilterSelect: React.FC<{
   value: TalentFilter;
   onChange: (value: TalentFilter) => void;
 }> = ({ value, onChange }) => (
-  <label>
+  <label className="d-none d-md-flex">
     <span>{t('TalentFilter.label')}</span>
     <select
       value={value}
@@ -72,7 +72,7 @@ export const TalentCategoryFilter: React.FC<{
 }> = ({ heading, value, onChange }) =>
   heading ? (
     <div className="talent-filter-heading">
-      <h2 className="header-text">
+      <h2 className="header-text d-flex align-items-stretch py-0">
         <div>{heading}</div>
       </h2>
       <FilterSelect value={value} onChange={onChange} />

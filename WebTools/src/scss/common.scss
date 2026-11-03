@@ -480,6 +480,9 @@ h2.header-text {
     text-transform: uppercase;
     border-radius: 15px;
     padding-left: 30px;
+}
+
+h2.header-text:not(.d-flex) {
     line-height: 30px;
 }
 
