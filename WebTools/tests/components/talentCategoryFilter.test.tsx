@@ -1,3 +1,4 @@
+import { afterEach, beforeAll, expect, it, jest } from '@jest/globals';
 import { Character } from '../../src/common/character';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -65,9 +66,11 @@ it('renders a labelled select in the orange heading with all eleven choices', ()
     <TalentCategoryFilter heading="Talents" value="all" onChange={() => {}} />,
   );
   expect(html).toContain('talent-filter-heading');
-  expect(html).toContain('<h2 class="header-text"><div>Talents</div></h2>');
-  expect(html.indexOf('</h2>')).toBeLessThan(html.indexOf('<label>'));
-  expect(html).toContain('<label>');
+  expect(html).toContain(
+    '<h2 class="header-text d-flex align-items-stretch py-0"><div>Talents</div></h2>',
+  );
+  expect(html.indexOf('</h2>')).toBeLessThan(html.indexOf('<label '));
+  expect(html).toContain('<label ');
   expect(html).toContain('Filter talents');
   expect(html.match(/<option /g)).toHaveLength(11);
   expect(html).toContain('<option value="species">Species</option>');
