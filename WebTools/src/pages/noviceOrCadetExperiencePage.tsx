@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { supportsDeferredTalents } from '../helpers/lifepathTalentState';
 import { Navigation } from '../common/navigator';
 import Button from 'react-bootstrap/Button';
 import { TalentDescription } from '../components/talentDescription';
@@ -19,6 +20,7 @@ import { store } from '../state/store';
 import {
   StepContext,
   addCharacterTalent,
+  recordLifepathTalentProgress,
   addCharacterUntappedPotentialAttribute,
   setCharacterValue,
 } from '../state/characterActions';
@@ -39,12 +41,15 @@ const NoviceOrCadetExperiencePageBase: React.FC<ICharacterProperties> = ({
   const onNext = () => {
     if (
       character.version > 1 &&
+      !supportsDeferredTalents(character) &&
       character.careerStep?.talent?.attribute == null
     ) {
       Dialog.show(t('NoviceOrCadetExperiencePage.attribute.error'));
     } else if (character.type === CharacterType.Cadet) {
+      store.dispatch(recordLifepathTalentProgress(StepContext.Career));
       Navigation.navigateToPage(PageIdentity.CadetSeniority);
     } else {
+      store.dispatch(recordLifepathTalentProgress(StepContext.Career));
       Navigation.navigateToPage(PageIdentity.CareerEvent1);
     }
   };
@@ -67,6 +72,9 @@ const NoviceOrCadetExperiencePageBase: React.FC<ICharacterProperties> = ({
   };
 
   useEffect(() => {
+    if (supportsDeferredTalents(character) && character.careerStep?.talent)
+      return;
+    // Initialize the fixed novice talent on entry; its attribute can be completed at review.
     store.dispatch(addCharacterTalent(talentModel, StepContext.Career));
   }, [talentModel]);
 
@@ -95,6 +103,9 @@ const NoviceOrCadetExperiencePageBase: React.FC<ICharacterProperties> = ({
           </div>
           <div className="col-12 col-lg-6 mt-4">
             <Header level={2}>{t('Construct.other.talent')}</Header>
+            {supportsDeferredTalents(character) && (
+              <p>{t('LifepathTalentReview.fixedNovice')}</p>
+            )}
             <TalentDescription
               name={talentModel.localizedDisplayName}
               description={

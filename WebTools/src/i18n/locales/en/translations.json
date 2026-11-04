@@ -6394,10 +6394,27 @@
 
     "World.class.description": "Class {{class}}",
     "World.class.fullDescription": "Class {{class}} ({{definition}})",
+    "LifepathTalentReview.title": "Review talents",
+    "LifepathTalentReview.optional": "You can select this talent now or leave it for the talent review near the end of character creation.",
+    "LifepathTalentReview.instruction": "Review or change your talents below, grouped by where you gained them. Complete any remaining choices before finishing.",
     "TalentEdit.unselected": "No talent selected.",
+    "LifepathTalentReview.remaining_one": "{{count}} talent choice needs attention before finishing.",
+    "LifepathTalentReview.remaining_other": "{{count}} talent choices need attention before finishing.",
+    "LifepathTalentReview.complete": "All talent choices are complete.",
     "TalentFilter.label": "Filter talents",
     "TalentFilter.all": "All talents",
     "TalentFilter.selectedOutside": "Your selected talent is shown below even though it is outside this filter.",
     "TalentFilter.empty": "No available talents match this filter. Choose All talents to see the full list.",
-    "TalentFilter.none": "No talents are available for this choice."
+    "TalentFilter.none": "No talents are available for this choice.",
+    "LifepathTalentReview.origin.species": "Species",
+    "LifepathTalentReview.origin.earlyOutlook": "Upbringing / early outlook",
+    "LifepathTalentReview.origin.education": "Education",
+    "LifepathTalentReview.origin.career": "Career length",
+    "LifepathTalentReview.origin.finishingTouches": "Finishing touches",
+    "LifepathTalentReview.error.missing": "Select a talent before finishing.",
+    "LifepathTalentReview.error.ineligible": "This talent no longer meets this stage’s restrictions, prerequisites, or rank limit.",
+    "LifepathTalentReview.error.details": "Complete the talent’s required details.",
+    "LifepathTalentReview.error.duplicate": "Choose a different option for this repeated talent.",
+    "LifepathTalentReview.originError": "{{origin}}: {{error}}",
+    "LifepathTalentReview.fixedNovice": "Untapped Potential is assigned automatically. You can choose its attribute now or complete it during the final talent review."
 }
