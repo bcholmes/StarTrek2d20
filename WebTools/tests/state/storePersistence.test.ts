@@ -1,4 +1,4 @@
-import { test, expect, describe, beforeAll, beforeEach } from '@jest/globals';
+import { test, expect, describe, beforeAll, beforeEach, jest } from '@jest/globals';
 import { store } from '../../src/state/store';
 import { Source } from '../../src/helpers/sources';
 import { Era } from '../../src/helpers/erasEnum';

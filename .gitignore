@@ -16,5 +16,6 @@ WebTools/src/**/*.js
 /server/obj/Release
 .DS_Store
 .vscode/
+coverage/
 .env
 groq.ini
