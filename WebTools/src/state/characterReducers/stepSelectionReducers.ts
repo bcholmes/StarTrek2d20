@@ -1,3 +1,4 @@
+import { supportsDeferredTalents } from '../../helpers/lifepathTalentState';
 import type { ActionReducerMapBuilder } from '@reduxjs/toolkit';
 import {
   CareerStep,
@@ -86,6 +87,7 @@ export const registerStepSelectionReducers = (
           temp.speciesStep.mixedSpecies = originalStep.mixedSpecies;
           temp.speciesStep.originalSpecies = originalStep.originalSpecies;
           temp.speciesStep.talent = originalStep.talent?.copy();
+          temp.speciesStep.talentDeferred = originalStep.talentDeferred;
           temp.speciesStep.abilityOptions = originalStep.abilityOptions?.copy();
         }
       }
@@ -96,6 +98,17 @@ export const registerStepSelectionReducers = (
         }
       }
 
+      if (
+        supportsDeferredTalents(temp) &&
+        ((originalStep?.ability != null &&
+          originalStep.ability !== temp.speciesStep.ability) ||
+          originalStep?.mixedSpecies !== action.payload.mixedSpecies ||
+          originalStep?.originalSpecies !== action.payload.originalSpecies ||
+          originalStep?.species !== temp.speciesStep.species)
+      ) {
+        temp.speciesStep.talent = undefined;
+        temp.speciesStep.talentDeferred = false;
+      }
       temp.speciesStep.mixedSpecies = action.payload.mixedSpecies;
       temp.speciesStep.originalSpecies = action.payload.originalSpecies;
       if (
@@ -116,6 +129,11 @@ export const registerStepSelectionReducers = (
   });
   builder.addCase(setCharacterCareerLength, (state, action) => {
     return withCharacter(state, action, (temp, action) => {
+      if (
+        supportsDeferredTalents(temp) &&
+        temp.careerStep?.career === action.payload.careerLength
+      )
+        return;
       temp.careerStep = new CareerStep(action.payload.careerLength);
     });
   });
@@ -138,6 +156,7 @@ export const registerStepSelectionReducers = (
           temp.educationStep.focuses = [...originalStep.focuses];
           temp.educationStep.value = originalStep.value;
           temp.educationStep.talent = originalStep.talent?.copy();
+          temp.educationStep.talentDeferred = originalStep.talentDeferred;
         }
       }
     });
@@ -194,6 +213,7 @@ export const registerStepSelectionReducers = (
         }
         temp.upbringingStep.focus = originalStep.focus;
         temp.upbringingStep.talent = originalStep.talent?.copy();
+        temp.upbringingStep.talentDeferred = originalStep.talentDeferred;
       }
     });
   });

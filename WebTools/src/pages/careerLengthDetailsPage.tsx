@@ -1,3 +1,9 @@
+import { recordLifepathTalentProgress } from '../state/characterActions';
+import { OptionalTalentNote } from '../components/deferredTalentSelection';
+import {
+  supportsDeferredTalents,
+  getLifepathTalentChoices,
+} from '../helpers/lifepathTalents';
 import React, { useEffect, useState } from 'react';
 import { Navigation } from '../common/navigator';
 import { PageIdentity } from './pageIdentity';
@@ -35,7 +41,10 @@ const CareerLengthDetailsPageBase: React.FC<ICharacterProperties> = ({
   character,
 }) => {
   const { t } = useTranslation();
-  const [talentName, setTalentName] = useState(null);
+  const allowDeferral = supportsDeferredTalents(character);
+  const [talentName, setTalentName] = useState(
+    character.careerStep?.talent?.talent ?? null,
+  );
   const career = CareersHelper.instance.getCareer(
     character.careerStep?.career,
     character,
@@ -64,11 +73,12 @@ const CareerLengthDetailsPageBase: React.FC<ICharacterProperties> = ({
   }
 
   useEffect(() => {
+    if (allowDeferral) return;
     if (career.talent != null && wroteTheBook === undefined) {
       store.dispatch(addCharacterTalent(career.talent, StepContext.Career));
       setTalentName(career.talent.name);
     }
-  }, [career.id, career.talent, wroteTheBook]);
+  }, [career.id, career.talent, wroteTheBook, allowDeferral]);
 
   const randomValue = () => {
     const value = randomUniqueValue(
@@ -91,7 +101,11 @@ const CareerLengthDetailsPageBase: React.FC<ICharacterProperties> = ({
       textDescription = t('Value.careerLength.veteran.text');
     }
 
-    if (career.talent != null && filterTalentList().length <= 1) {
+    if (
+      !supportsDeferredTalents(character) &&
+      career.talent != null &&
+      filterTalentList().length <= 1
+    ) {
       return (
         <div className="row">
           <div className="col-md-6 my-3">
@@ -135,13 +149,22 @@ const CareerLengthDetailsPageBase: React.FC<ICharacterProperties> = ({
           <div className="my-3">
             <SingleTalentSelectionList
               heading={t('Construct.other.talent')}
-              talents={filterTalentList()}
+              talents={
+                supportsDeferredTalents(character)
+                  ? getLifepathTalentChoices(character, StepContext.Career)
+                  : filterTalentList()
+              }
               initialSelection={character.careerStep?.talent}
               construct={character}
               onSelection={(talent) => {
                 onTalentSelected(talent);
               }}
-            />
+            >
+              <OptionalTalentNote
+                character={character}
+                context={StepContext.Career}
+              />
+            </SingleTalentSelectionList>
           </div>
         </>
       );
@@ -185,15 +208,17 @@ const CareerLengthDetailsPageBase: React.FC<ICharacterProperties> = ({
   };
 
   const onNext = () => {
-    if (!talentName) {
-      Dialog.show('You must select a Talent before proceeding.');
+    if (!supportsDeferredTalents(character) && !talentName) {
+      Dialog.show(t('Common.error.talent'));
     } else if (
+      !supportsDeferredTalents(character) &&
       determineSelectedTalentExtraErrors(character.careerStep?.talent) != null
     ) {
       Dialog.show(
         determineSelectedTalentExtraErrors(character.careerStep?.talent),
       );
     } else {
+      store.dispatch(recordLifepathTalentProgress(StepContext.Career));
       Navigation.navigateToPage(PageIdentity.CareerEvent1);
     }
   };
