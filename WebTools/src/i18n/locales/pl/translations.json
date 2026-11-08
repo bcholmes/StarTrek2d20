@@ -318,6 +318,8 @@
 
     "ModifySupportingCharacter.focus.instruction": "Bohater wspierający wybiera jedną dodatkową biegłość. Opcję tę można wybrać trzy razy, za każdym razem uzyskując nową biegłość.",
 
+    "ModifySupportingCharacter.general.instruction": "Zmień nazwę, opis lub zaimki postaci.",
+
     "ModifySupportingCharacter.attribute.instruction": "Bohater wspierający zwiększa jeden atrybut o 1. Tę opcję można wybrać tylko raz.",
 
     "ModifySupportingCharacter.talent.instruction": "Bohater wspierający zyskuje jeden talent, którego wymagania spełnia. Tę opcję można wybrać cztery razy, za każdym razem zdobywając inny talent.",
@@ -1158,8 +1160,10 @@
     "CareerEvent.common.65.description": "Mimo że wydają się cudowne lub magiczne, transportery mają poważne ograniczenia, z którymi starają się uporać kolejne pokolenia inżynierów. Przesuwają oni limity i znajdują nowe sposoby, by rozwinąć możliwości tej technologii. Twoja postać brała udział w takim projekcie, pracując nad rozszerzeniem ograniczeń transportera lub wykorzystaniem go w niekonwencjonalnych okolicznościach.",
 
     "CareerEvent.common.66.name": "Praca w Projekcie Transwarp",
+    "CareerEvent.common.66.description": "\"Transwarp\" to zbiorcza nazwa dla różnego rodzaju projektów związanych z napędami do poruszania się z prędkościami wyższymi niż prędkość światła. Twoja postać była zaangażowana w badania nowych rodzajów napędów albo ich testowanie.",
 
     "CareerEvent.common.67.name": "Misja kartograficzna",
+    "CareerEvent.common.67.description": "Twoja postać służyła na okręcie zaangażowanym w misję kartograficzną na nieznanym obszarze. Uczestniczyliście w mapowaniu planet zdolnych do zamieszkania, a być może nawet zamieszkanych, bogatych w surowce planet i asteroid, niezwykłych kosmicznych fenomenów, stabilnych korytarzy przestrzennych i wielu innych zjawisk.",
 
     "CareerEvent.common.68.name": "Program wymiany kulturalnej",
 
