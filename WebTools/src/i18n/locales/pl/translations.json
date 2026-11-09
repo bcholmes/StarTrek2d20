@@ -610,6 +610,14 @@
     "TacticalAssetsPage.instruction": "Dodaj zasób do Twojej listy zasobów.",
     "TacticalAssetsPage.assets": "Lista zasobów",
 
+    "TalentEdit.unselected": "Nie wybrano talentów.",
+
+    "TalentFilter.label": "Filtruj talenty",
+    "TalentFilter.all": "Wszystkie talenty",
+    "TalentFilter.selectedOutside": "Wybrany przez Ciebie talent jest widoczny poniżej, nawet jeżeli znajduje się poza zakresem filtrowania.",
+    "TalentFilter.empty": "Żadne talenty nie pasują do podanego zakresu filtrowania. Wybierz \"Wszystkie talenty\", aby wrócić do pełnej listy.",
+    "TalentFilter.none": "Żaden talent nie pasuje do tego wyboru.",
+
     "ToolSelection.instruction": "Co chcesz stworzyć?",
     "ToolSelection.mainCharacter": "Główny bohater",
     "ToolSelection.supportingCharacter": "Bohater wspierający",
@@ -1166,21 +1174,29 @@
     "CareerEvent.common.67.description": "Twoja postać służyła na okręcie zaangażowanym w misję kartograficzną na nieznanym obszarze. Uczestniczyliście w mapowaniu planet zdolnych do zamieszkania, a być może nawet zamieszkanych, bogatych w surowce planet i asteroid, niezwykłych kosmicznych fenomenów, stabilnych korytarzy przestrzennych i wielu innych zjawisk.",
 
     "CareerEvent.common.68.name": "Program wymiany kulturalnej",
+    "CareerEvent.common.68.description": "Twoja postać spędziła pewien czas wśród innej kultury, np. podczas programu wymiany oficerów. Gwiezdna Flota przeprowadza podobne inicjatywy, aby wymienić doświadczenia a także rozwinąć relacje z sojuszniczymi organizacjami. Innym przypadkiem są misje łącznikowe, które są potrzebne za każdym razem gdy sprzymierzone floty współpracują, co było częste np. podczas Wojny z Dominium.",
+    "CareerEvent.common.68.focusDescription": "Stwórz lub wybierz biegłość odpowiadającą kulturze, z którą służyła Twoja postać.",
 
     "CareerEvent.common.69.name": "Spotkanie z nowym gatunkiem",
     "CareerEvent.common.69.description": "Technicznie rzecz biorąc każde napotkanie nowego gatunku to **pierwszy kontakt**, ale jest pewna różnica pomiędzy formalnym pierwszym kontaktem, z odpowiednimi przygotowaniami i planowaniem, a zupełnie przypadkowym  napotkaniem wcześniej nieznanego gatunku gdzieś w głębokim kosmosie. Takie niespodziewane spotkania są dość częste, zwłaszcza dla okrętów operujących na granicach poznanego kosmosu. Takie spotkania mogą mieć pokojowy przebieg, ale może także dojść do wybuchu przemocy, który później jest bardzo ciężko załagodzić przez kolejne lata.",
 
-    "CareerEvent.common.70.name": "Spotkanie z organizmem żyjącym w kosmosie",
+    "CareerEvent.common.70.name": "Spotkanie z astrofauną",
+    "CareerEvent.common.70.description": "Organizmy zdolne do funkcjonowania w próżni kosmicznej, określane jako **astrofauna** (cosmozoan) ewoluowały do przetrwania w skrajnie niesprzyjających warunkach. Należą tutaj zwierzęta jak gormagandery, zwane także kosmicznymi wielorybami, ekstremofile czy makroskopowe niesporczaki, ale także inne formy życia przybierające formę gazową, międzygwiezdnej plazmy czy bezcielesnych istot energetycznych. Stworzenia te są spotykane rzadko, ale wciąż na tyle często, aby dało się je skatalogować czy opisać.",
 
     "CareerEvent.common.71.name": "Galaktyczna zagadka",
+    "CareerEvent.common.71.description": "Galaktyka jest pełna fenomenów, które nie zostały jeszcze zbadane i wyjaśnione. Twoja postać napotkała taką zagadkę i nawet jeżeli nie zna jeszcze odpowiedzi, to na pewno ma kilka hipotez prowadzących do jej rozwikłania.",
 
     "CareerEvent.common.72.name": "Ekspedycja historyczna",
+    "CareerEvent.common.72.description": "Dość rzadko pojawia się okazja, aby wziąć udział w zaplanowanej podróży w czasie, zorganizowanej w celu skrytego badania wydarzeń z przeszłości. Gwiezdna Flota organizuje czasem takie misje, chociaż są one ściśle regulowane i nadzorowane. Niektóre z tych misji mogą być organizowane przez przyszłe wersje Gwiezdnej Floty, w których podróże w czasie są wykorzystywane znacznie częściej.",
 
     "CareerEvent.common.73.name": "Obserwacja wydarzenia kulturalnego",
+    "CareerEvent.common.73.description": "Twoja postać została zaproszona, aby uczestniczyć w wydarzeniu kulturalnym ważnym dla innej kultury: festiwalu, ceremonii czy rytuale o istotnym znaczeniu. Zdarzenie było poważne lub radosne, być może uczestniczyły w nim tysiące lub miliony istot a może była to bardzo kameralna okazja z kilkoma uczestnikami?",
 
     "CareerEvent.common.74.name": "Długotrwała misja w dalekim kosmosie",
+    "CareerEvent.common.74.description": "Twoja postać uczestniczyła w długotrwałej misji w dalekim kosmosie na statku lub stacji, biorąc udział w długoterminowych badaniach lub eksploracji. Najbardziej znane przypadki to pięcioletnie misje przeprowadzane przez okręty klasy Constitution w połowie XXIII wieku. Te zadania mogą być trudne, niebezpieczne i ryzykowne, zwłaszcza że odbywają się przez lata bez dostępu do bezpośredniego wsparcia. Jednocześnie okazały się jednymi z najważniejszych i najbardziej wpływowych misji, jakich Gwiezdna Flota się podejmowała. Nabyte podczas nich doświadczenia sprawiały, że personel dokonywał później wielkich rzeczy.",
 
     "CareerEvent.common.75.name": "Zwiad planetarny",
+    "CareerEvent.common.75.description": "Twoja postać uczestniczyła w rozszerzonym badaniu niezamieszkałej planety. Zazwyczaj dotyczy to planet klasy M, aby oszacować ich przydatność do kolonizacji lub innych typów planet, aby ocenić obecność i dostępność cennych surowców lub możliwość terraformacji.",
 
     "CareerEvent.common.76.name": "Badanie kultury prewarp",
 
@@ -2201,6 +2217,7 @@
     "Specialization.engineer": "Inżynier",
     "Specialization.federationAmbassador": "Ambasador Federacji",
     "Specialization.ferengiDaiMon": "DaiMon Ferengi",
+    "Specialization.ferengiLiquidator": "Likwidator Izby Handlowej Ferengi",
     "Specialization.ferengiMerchant": "Kupiec Ferengi",
     "Specialization.firstContactSpecialist": "Specjalista ds. Pierwszego kontaktu",
     "Specialization.hangarDeck": "Pokład hangarowy",
