@@ -70,7 +70,11 @@ import {
   modifyCharacterReputation,
   modifyCharacterRank,
 } from '../../src/state/characterActions';
-import { LogEntry } from '../../src/common/logEntry';
+import {
+  LogEntry,
+  LogValueEntry,
+  ValueUseType,
+} from '../../src/common/logEntry';
 import { NpcType } from '../../src/npc/model/npcType';
 import { Role } from '../../src/helpers/roles';
 import { Rank } from '../../src/helpers/ranks';
@@ -755,6 +759,46 @@ describe('character reducer', () => {
         ),
       );
       expect(result.currentCharacter.educationStep?.value).toBe('New Value');
+    });
+
+    it('updates a value used in a log entry', () => {
+      const char = makeCharacter();
+      const logEntry = new LogEntry(1);
+      logEntry.valuesUsed = [
+        new LogValueEntry('Old Value', ValueUseType.Challenged, 'Replacement'),
+      ];
+      char.improvements = [logEntry];
+      const result = characterReducer(
+        stateWithCharacter(char) as any,
+        updateCharacterGeneralEditValueChange(
+          new ValueAssembly('Old Value', AssemblyContext.Improvement, 0, 0),
+          'New Value',
+        ),
+      );
+      const updated = (result.currentCharacter.improvements[0] as LogEntry)
+        .valuesUsed[0];
+      expect(updated).toBeInstanceOf(LogValueEntry);
+      expect(updated.value).toBe('New Value');
+      expect(updated.useType).toBe(ValueUseType.Challenged);
+      expect(updated.newValue).toBe('Replacement');
+    });
+
+    it('ignores an out-of-range log entry value index', () => {
+      const char = makeCharacter();
+      const logEntry = new LogEntry(1);
+      logEntry.valuesUsed = [new LogValueEntry('Old Value')];
+      char.improvements = [logEntry];
+      const result = characterReducer(
+        stateWithCharacter(char) as any,
+        updateCharacterGeneralEditValueChange(
+          new ValueAssembly('Old Value', AssemblyContext.Improvement, 0, 5),
+          'New Value',
+        ),
+      );
+      expect(
+        (result.currentCharacter.improvements[0] as LogEntry).valuesUsed[0]
+          .value,
+      ).toBe('Old Value');
     });
   });
 

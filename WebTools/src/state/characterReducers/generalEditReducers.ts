@@ -6,7 +6,7 @@ import type {
   TalentAssembly,
   ValueAssembly,
 } from '../../common/characterAssembly';
-import { LogEntry } from '../../common/logEntry';
+import { LogEntry, LogValueEntry } from '../../common/logEntry';
 import type { SelectedTalent } from '../../common/selectedTalent';
 import { CharacterAdvancementChoice } from '../../modify/model/characterAdvancementChoice';
 import {
@@ -62,7 +62,15 @@ export const registerGeneralEditReducers = (
           oldValue.index != null
         ) {
           const values = improvement.valuesUsed;
-          values[oldValue.index] = action.payload.newValue;
+          const index = oldValue.index;
+          if (index >= 0 && index < values.length) {
+            const current = values[index];
+            values[index] = new LogValueEntry(
+              action.payload.newValue,
+              current?.useType,
+              current?.newValue,
+            );
+          }
         } else if (
           improvement instanceof CharacterAdvancementStep &&
           improvement.choice === CharacterAdvancementChoice.Value
