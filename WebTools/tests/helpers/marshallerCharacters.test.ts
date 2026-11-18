@@ -14,11 +14,31 @@ import {
   StarshipAdvancementStep,
 } from '../../src/common/starship';
 import { StarshipAdvancementChoice } from '../../src/common/starshipAdvancementChoice';
-import { TokenConfig } from '../../src/common/character';
+import {
+  AlliedMilitaryDetails,
+  CareerStep,
+  Character,
+  CharacterRank,
+  GovernmentDetails,
+  OtherDetails,
+  SpeciesStep,
+  TokenConfig,
+} from '../../src/common/character';
+import { Stereotype } from '../../src/common/construct';
+import { Specialization } from '../../src/common/specializationEnum';
+import {
+  AllyHelper,
+  AlliedMilitaryType,
+} from '../../src/helpers/alliedMilitary';
+import { Attribute } from '../../src/helpers/attributes';
+import { Career } from '../../src/helpers/careerEnum';
 import { Department } from '../../src/helpers/department';
+import { EquipmentModel, EquipmentType } from '../../src/helpers/equipment';
 import { Era } from '../../src/helpers/erasEnum';
+import { Governments, Polity } from '../../src/helpers/governments';
 import { marshaller } from '../../src/helpers/marshaller';
 import { Role } from '../../src/helpers/roles';
+import { Species } from '../../src/helpers/speciesEnum';
 import { Spaceframe } from '../../src/helpers/spaceframeEnum';
 import { SpaceframeAppearance } from '../../src/helpers/spaceframeAppearance';
 import { SpaceframeModel } from '../../src/helpers/spaceframeModel';
@@ -28,6 +48,7 @@ import { StarshipWeaponRegistry } from '../../src/helpers/weapons';
 import translations from '../../src/i18n/locales/en/translations.json';
 import {
   makePopulatedMainCharacter,
+  makePopulatedNpc,
   makePopulatedStarship,
 } from '../vtt/vttFixtures';
 
@@ -274,5 +295,328 @@ describe('marshaller character and starship coverage', () => {
     expect(restored.additionalWeapons.map((w) => w.name)).toEqual([
       'Phaser Banks',
     ]);
+  });
+});
+
+describe('marshaller NPC and supporting character coverage', () => {
+  test('round-trips a populated NPC with specialization and equipment', () => {
+    const npc = makePopulatedNpc();
+    npc.npcGenerationStep!.specialization = Specialization.Security;
+    npc.npcGenerationStep!.equipment = [
+      EquipmentType.Communicator,
+      new EquipmentModel(EquipmentType.Other, 'Custom Kit'),
+    ];
+    npc.additionalTraits = 'Vulcan, Logical';
+    npc.pronouns = 'he/him';
+    npc.jobAssignment = 'Liaison Officer';
+    npc.careerStep = new CareerStep(Career.Experienced);
+    npc.careerStep.value = 'Logic';
+    npc.careerStep.talent = new SelectedTalent('Bold');
+    npc.legacyMode = true;
+    npc.attributeValues = [9, 9, 8, 8, 7, 7];
+    npc.skills = [3, 2, 2, 1, 1, 1];
+
+    const encoded = marshaller.encodeConstruct(npc);
+    const json = marshaller.decode(encoded);
+    const restored = marshaller.decodeCharacter(json);
+
+    expect(json.stereotype).toBe('npc');
+    expect(restored.stereotype).toBe(Stereotype.Npc);
+    expect(restored.name).toBe(npc.name);
+    expect(restored.type).toBe(npc.type);
+    expect(restored.era).toBe(npc.era);
+    expect(restored.version).toBe(npc.version);
+    expect(restored.description).toBe(npc.description);
+    expect(restored.additionalTraits).toBe('Vulcan, Logical');
+    expect(restored.pronouns).toBe('he/him');
+    expect(restored.jobAssignment).toBe('Liaison Officer');
+    expect(restored.rankValue?.name).toBe('Commander');
+    expect(restored.careerStep?.career).toBe(Career.Experienced);
+    expect(restored.attributeValues).toEqual([9, 9, 8, 8, 7, 7]);
+
+    const step = restored.npcGenerationStep!;
+    expect(step.values).toEqual(['Logic', 'Peace']);
+    expect(step.talents.map((t) => t.name)).toEqual(['Bold', 'Veteran']);
+    expect(step.specialization).toBe(Specialization.Security);
+    expect(step.type).toBe(npc.npcGenerationStep?.type);
+    expect(step.attributes).toEqual([0, 1, 0, 1, 0, 1]);
+    expect(step.departments).toEqual([3, 2, 2, 1, 1, 1]);
+    expect(step.focuses).toEqual([
+      'Meditation',
+      'Vulcan Nerve Pinch',
+      'Science',
+    ]);
+    expect(step.weapons).toEqual(npc.npcGenerationStep?.weapons);
+    expect(step.equipment[0]).toBe(EquipmentType.Communicator);
+    const customEquipment = step.equipment[1] as EquipmentModel;
+    expect(customEquipment.type).toBe(EquipmentType.Other);
+    expect(customEquipment.name).toBe('Custom Kit');
+  });
+
+  test('decodes legacy OrionPirate NPC specialization', () => {
+    const restored = marshaller.decodeCharacter({
+      stereotype: 'npc',
+      type: 'Starfleet',
+      era: 'NextGeneration',
+      version: 2,
+      name: 'Orion Pirate',
+      npc: { specialization: 'OrionPirate' },
+    });
+
+    expect(restored.npcGenerationStep?.specialization).toBe(
+      Specialization.Pirate,
+    );
+  });
+
+  test.each([1, 2] as const)(
+    'round-trips a populated v%s supporting character',
+    (version) => {
+      const character = Character.createSupportingCharacter(
+        Era.NextGeneration,
+        version,
+      );
+      character.name = 'Mara Voss';
+      character.description = 'A supporting character.';
+      character.additionalTraits = 'Observant, Steady';
+      character.pronouns = 'they/them';
+      character.jobAssignment = 'Bartender';
+      character.speciesStep!.attributes = [
+        Attribute.Control,
+        Attribute.Insight,
+        Attribute.Presence,
+      ];
+      character.careerStep = new CareerStep(Career.Experienced);
+      character.careerStep.value = 'Service';
+      character.careerStep.talent = new SelectedTalent('Bold');
+      character.supportingStep!.focuses = ['Diplomacy', 'Piloting', ''];
+      character.supportingStep!.attributes = [
+        Attribute.Daring,
+        Attribute.Control,
+        Attribute.Fitness,
+        Attribute.Insight,
+        Attribute.Presence,
+        Attribute.Reason,
+      ];
+      character.supportingStep!.disciplines = [
+        Department.Command,
+        Department.Conn,
+        Department.Engineering,
+        Department.Security,
+        Department.Science,
+        Department.Medicine,
+      ];
+      character.supportingStep!.supervisory = true;
+      character.supportingStep!.value = 'Service';
+
+      const encoded = marshaller.encodeConstruct(character);
+      const json = marshaller.decode(encoded);
+      const restored = marshaller.decodeCharacter(json);
+
+      expect(json.stereotype).toBe('supportingCharacter');
+      expect(restored.stereotype).toBe(Stereotype.SupportingCharacter);
+      expect(restored.name).toBe('Mara Voss');
+      expect(restored.description).toBe('A supporting character.');
+      expect(restored.additionalTraits).toBe('Observant, Steady');
+      expect(restored.pronouns).toBe('they/them');
+      expect(restored.jobAssignment).toBe('Bartender');
+      expect(restored.version).toBe(version);
+      expect(restored.type).toBe(CharacterType.Starfleet);
+      expect(restored.era).toBe(Era.NextGeneration);
+      expect(restored.speciesStep?.species).toBe(Species.Human);
+      expect(restored.speciesStep?.attributes).toEqual(
+        character.speciesStep?.attributes,
+      );
+      expect(restored.careerStep?.career).toBe(Career.Experienced);
+      expect(restored.rankValue?.id).toBe(character.rankValue?.id);
+
+      expect(restored.supportingStep?.focuses).toEqual([
+        'Diplomacy',
+        'Piloting',
+      ]);
+      expect(restored.supportingStep?.attributes).toEqual(
+        character.supportingStep?.attributes,
+      );
+      expect(restored.supportingStep?.disciplines).toEqual(
+        character.supportingStep?.disciplines,
+      );
+      expect(restored.supportingStep?.supervisory).toBe(true);
+      expect(restored.supportingStep?.value).toBe('Service');
+    },
+  );
+
+  test('round-trips legacy supporting attributes and disciplines', () => {
+    const character = Character.createSupportingCharacter(
+      Era.NextGeneration,
+      2,
+    );
+    character.name = 'Legacy Supporting';
+    character.legacyMode = true;
+    character.attributeValues = [8, 9, 7, 6, 5, 4];
+    character.skills = [3, 2, 2, 1, 1, 0];
+
+    const restored = marshaller.decodeCharacter(
+      marshaller.decode(marshaller.encodeConstruct(character)),
+    );
+
+    expect(restored.stereotype).toBe(Stereotype.SupportingCharacter);
+    expect(restored.attributeValues).toEqual([8, 9, 7, 6, 5, 4]);
+    expect(restored.skills).toEqual([3, 2, 2, 1, 1, 0]);
+  });
+});
+
+describe('marshaller solo character coverage', () => {
+  test('round-trips a populated solo character', () => {
+    const character = Character.createSoloCharacter(Era.NextGeneration);
+    character.version = 2;
+    character.type = CharacterType.Starfleet;
+    character.name = 'Solo Emissary';
+    character.description = 'A solo character.';
+    character.pronouns = 'she/her';
+    character.additionalTraits = 'Diplomatic';
+    character.legacyMode = true;
+    character.attributeValues = [8, 7, 7, 8, 7, 8];
+    character.rankValue = new CharacterRank('Commander');
+    character.role = Role.ChiefEngineer;
+    character.secondaryRole = Role.OperationsManager;
+    character.jobAssignment = 'First Officer';
+    character.assignedShip = 'USS Venture';
+    character.speciesStep = new SpeciesStep(Species.Vulcan);
+    character.speciesStep.attributes = [
+      Attribute.Control,
+      Attribute.Insight,
+      Attribute.Reason,
+    ];
+    character.careerStep = new CareerStep(Career.Experienced);
+    character.careerStep.value = 'Logic';
+    character.careerStep.talent = new SelectedTalent('Bold');
+
+    const encoded = marshaller.encodeConstruct(character);
+    const json = marshaller.decode(encoded);
+    const restored = marshaller.decodeCharacter(json);
+
+    expect(json.stereotype).toBe('soloCharacter');
+    expect(restored.stereotype).toBe(Stereotype.SoloCharacter);
+    expect(restored.name).toBe('Solo Emissary');
+    expect(restored.description).toBe('A solo character.');
+    expect(restored.pronouns).toBe('she/her');
+    expect(restored.additionalTraits).toBe('Diplomatic');
+    expect(restored.type).toBe(CharacterType.Starfleet);
+    expect(restored.era).toBe(Era.NextGeneration);
+    expect(restored.version).toBe(2);
+    expect(restored.rankValue?.name).toBe('Commander');
+    expect(restored.role).toBe(Role.ChiefEngineer);
+    expect(restored.secondaryRole).toBe(Role.OperationsManager);
+    expect(restored.jobAssignment).toBe('First Officer');
+    expect(restored.assignedShip).toBe('USS Venture');
+    expect(restored.attributeValues).toEqual([8, 7, 7, 8, 7, 8]);
+    expect(restored.skills).toEqual([1, 1, 1, 1, 1, 1]);
+    expect(restored.speciesStep?.species).toBe(Species.Vulcan);
+    expect(restored.speciesStep?.attributes).toEqual([
+      Attribute.Control,
+      Attribute.Insight,
+      Attribute.Reason,
+    ]);
+    expect(restored.careerStep?.career).toBe(Career.Experienced);
+    expect(restored.careerStep?.value).toBe('Logic');
+    expect(restored.careerStep?.talent?.name).toBe('Bold');
+  });
+});
+
+describe('marshaller type details coverage', () => {
+  test('round-trips allied military type details', () => {
+    const character = Character.createMainCharacter(
+      CharacterType.AlliedMilitary,
+      Era.NextGeneration,
+      2,
+    );
+    character.name = 'Klingon Officer';
+    character.typeDetails = new AlliedMilitaryDetails(
+      AllyHelper.instance.findOption(AlliedMilitaryType.KlingonDefenceForce)!,
+      'Klingon Exchange Officer',
+    );
+
+    const restored = marshaller.decodeCharacter(
+      marshaller.decode(marshaller.encodeConstruct(character)),
+    );
+    expect(restored.type).toBe(CharacterType.AlliedMilitary);
+    expect(restored.typeDetails).toBeInstanceOf(AlliedMilitaryDetails);
+    const details = restored.typeDetails as AlliedMilitaryDetails;
+    expect(details.type).toBe(AlliedMilitaryType.KlingonDefenceForce);
+    expect(details.alliedMilitary.name).toBe('Klingon Defence Force');
+  });
+
+  test('round-trips ambassador type details', () => {
+    const character = Character.createMainCharacter(
+      CharacterType.AmbassadorDiplomat,
+      Era.NextGeneration,
+      2,
+    );
+    character.name = 'Federation Envoy';
+    character.typeDetails = new GovernmentDetails(
+      Governments.findOption(Polity.Federation)!,
+      'Federation Envoy',
+    );
+
+    const restored = marshaller.decodeCharacter(
+      marshaller.decode(marshaller.encodeConstruct(character)),
+    );
+    expect(restored.type).toBe(CharacterType.AmbassadorDiplomat);
+    expect(restored.typeDetails).toBeInstanceOf(GovernmentDetails);
+    const details = restored.typeDetails as GovernmentDetails;
+    expect(details.type).toBe(Polity.Federation);
+    expect(details.government.name).toBe('Federation');
+  });
+
+  test('round-trips other type details', () => {
+    const character = Character.createMainCharacter(
+      CharacterType.Other,
+      Era.NextGeneration,
+      2,
+    );
+    character.name = 'Freelance Trader';
+    character.typeDetails = new OtherDetails('Freelance Trader');
+
+    const restored = marshaller.decodeCharacter(
+      marshaller.decode(marshaller.encodeConstruct(character)),
+    );
+    expect(restored.type).toBe(CharacterType.Other);
+    expect(restored.typeDetails).toBeInstanceOf(OtherDetails);
+    expect((restored.typeDetails as OtherDetails).name).toBe(
+      'Freelance Trader',
+    );
+  });
+
+  test('decodes unknown allied military and government type details', () => {
+    const allied = marshaller.decodeCharacter({
+      stereotype: 'mainCharacter',
+      type: 'AlliedMilitary',
+      era: 'NextGeneration',
+      version: 2,
+      name: 'Unknown Ally',
+      typeDetails: {
+        type: 'UnknownType',
+        typeName: 'Unknown Force',
+        name: 'Unknown Envoy',
+      },
+    });
+    const alliedDetails = allied.typeDetails as AlliedMilitaryDetails;
+    expect(alliedDetails.alliedMilitary.type).toBeUndefined();
+    expect(alliedDetails.alliedMilitary.name).toBe('Unknown Force');
+
+    const ambassador = marshaller.decodeCharacter({
+      stereotype: 'mainCharacter',
+      type: 'AmbassadorDiplomat',
+      era: 'NextGeneration',
+      version: 2,
+      name: 'Unknown Ambassador',
+      typeDetails: {
+        type: 'UnknownPolity',
+        typeName: 'Unknown Government',
+        name: 'Unknown Ambassador',
+      },
+    });
+    const governmentDetails = ambassador.typeDetails as GovernmentDetails;
+    expect(governmentDetails.government.type).toBeUndefined();
+    expect(governmentDetails.government.name).toBe('Unknown Government');
   });
 });
