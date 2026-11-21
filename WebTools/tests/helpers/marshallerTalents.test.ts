@@ -166,6 +166,26 @@ describe('marshaller talent selection coverage', () => {
     });
   });
 
+  test('round-trips a custom Additional Propulsion System selection', () => {
+    const talent = new SelectedTalent(TALENT_NAME_ADDITIONAL_PROPULSION_SYSTEM);
+    talent.selection = new OtherSelection('Custom Drive');
+
+    const json = marshaller.talentToJson(talent);
+    const restored = marshaller.hydrateTalent(json, 2);
+
+    expect(restored.selection).toBeInstanceOf(OtherSelection);
+    expect((restored.selection as OtherSelection).name).toBe('Custom Drive');
+    expect(
+      marshaller.hydrateTalent(
+        {
+          name: TALENT_NAME_ADDITIONAL_PROPULSION_SYSTEM,
+          selection: { type: 'Other', name: 'Custom Drive' },
+        },
+        2,
+      ).selection,
+    ).toMatchObject({ name: 'Custom Drive' });
+  });
+
   test('encodes a Weapon and decodes both weapon representations', () => {
     const talent = new SelectedTalent(TALENT_NAME_MINELAYER);
     talent.weapon = new Weapon(
