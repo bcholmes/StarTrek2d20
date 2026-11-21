@@ -2,9 +2,11 @@ import { D20, D6 } from '../../common/die';
 import type { TableRoll } from '../../common/tableRoll';
 import { Source } from '../../helpers/sources';
 import { hasSource } from '../../state/contextFunctions';
-import { setSector, setStar } from '../../state/starActions';
+import { setSector, setStarSystem } from '../../state/starActions';
 import { store } from '../../state/store';
+import { SpaceRegion, type SpaceRegionModel } from '../spaceRegion';
 import { AlienNameGenerator } from '../util/alienNameGenerator';
+import { generatePlanetName } from '../util/planetNameGenerator';
 import { atmosphereTable } from './atmosphereTable';
 import { LuminosityTable } from './luminosityTable';
 import { numberOfMoonsTable } from './moonsAndSatellitesTable';
@@ -19,13 +21,8 @@ import { isolatedColonyFeaturesOfInterest } from './planetaryFeaturesTable';
 import { Sector, SectorCoordinates } from './sector';
 import type { SpectralClassModel } from './spectralClass';
 import { SpectralClass, SpectralClassRegistry } from './spectralClass';
-import type { SpaceRegionModel, SpecialSectors } from './star';
-import {
-  LuminosityClass,
-  LuminosityClassModel,
-  Star,
-  SpaceRegion,
-} from './star';
+import type { SpecialSectors } from './star';
+import { LuminosityClass, LuminosityClassModel, Star } from './star';
 import { CompanionType, StarSystem } from './starSystem';
 import {
   AsteroidBeltDetails,
@@ -778,8 +775,7 @@ class SystemGeneration {
       const id = Math.floor(Math.random() * interval) + start;
       start = id + 1;
 
-      const idString = ('0000' + id).slice(-4);
-      s.id = idString;
+      s.id = this.generateStarSystemId(id);
       s.rootName = sector.simpleName;
     });
 
@@ -787,7 +783,11 @@ class SystemGeneration {
       sector.simpleName = AlienNameGenerator.generateSectorName();
     }
     store.dispatch(setSector(sector));
-    store.dispatch(setStar(sector.systems[0]));
+    store.dispatch(setStarSystem(sector.systems[0]));
+  }
+
+  generateStarSystemId(idNumber: number) {
+    return ('0000' + idNumber).slice(-4);
   }
 
   generateStarSystem(region: SpaceRegionModel, sectorType?: SpecialSectors) {
@@ -991,7 +991,7 @@ class SystemGeneration {
 
       if (isPrimaryWorld) {
         this.createWorldFeatures(world);
-        world.name = AlienNameGenerator.generatePlanetName();
+        world.name = generatePlanetName(world.worldClass.id);
       }
 
       return world;

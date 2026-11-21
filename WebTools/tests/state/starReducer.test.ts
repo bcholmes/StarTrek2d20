@@ -5,7 +5,7 @@ import type { Star } from '../../src/mapping/table/star';
 import { star } from '../../src/state/starReducer';
 import {
   setSector,
-  setStar,
+  setStarSystem,
   setSectorName,
   setStarSystemName,
 } from '../../src/state/starActions';
@@ -41,7 +41,7 @@ describe('starReducer', () => {
 
   test('SET_STAR stores the star system', () => {
     const system = makeSystem('SYS-1', 'Alpha');
-    const result = star(undefined, setStar(system));
+    const result = star(undefined, setStarSystem(system));
     expect(result.starSystem).toBe(system);
   });
 

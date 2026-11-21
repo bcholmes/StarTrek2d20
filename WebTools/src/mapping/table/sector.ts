@@ -13,7 +13,7 @@ export class Sector {
     this.simpleName = this.id;
   }
 
-  private static randomId(prefix: string) {
+  static randomId(prefix: string) {
     return prefix + '-' + createRandomValue();
   }
   get name() {

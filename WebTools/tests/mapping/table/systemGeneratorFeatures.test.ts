@@ -1,11 +1,11 @@
 import { test, expect, describe } from '@jest/globals';
 import { SystemGenerationTable } from '../../../src/mapping/table/systemGenerator';
+import { SpecialSectors } from '../../../src/mapping/table/star';
+import { store } from '../../../src/state/store';
 import {
   SpaceRegion,
   SpaceRegionModel,
-  SpecialSectors,
-} from '../../../src/mapping/table/star';
-import { store } from '../../../src/state/store';
+} from '../../../src/mapping/spaceRegion';
 
 const localStorageMock = {
   getItem: () => null,

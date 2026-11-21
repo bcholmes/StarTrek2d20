@@ -1,5 +1,5 @@
 
-.btn.btn-outline-secondary, .btn.btn-outline-primary {
+.btn.btn-outline-secondary, .btn.btn-outline-primary, .btn.btn-outline-info {
     border-width: 1px;
 }
 
@@ -47,7 +47,7 @@ h1 .btn-link {
     min-width: auto;
 }
 
-.btn.btn-sm.btn-primary, .btn.btn-sm.btn-danger, .btn.btn-sm.btn-outline-primary {
+.btn.btn-sm.btn-primary, .btn.btn-sm.btn-danger, .btn.btn-sm.btn-outline-primary, .btn.btn-sm.btn-outline-info {
     line-height: 1.2;
 }
 
@@ -73,9 +73,19 @@ h1 .btn-link {
     color: rgba(181, 179, 216, .8);
 }
 
+.btn-outline-info {
+    border-color: $info;
+    color: $info;
+}
+
 .btn-outline-primary:active {
     background-color: #b5b3d8 !important;
     border-color: #b5b3d8 !important;
+    color: black !important;
+}
+.btn-outline-info:active {
+    background-color: $info !important;
+    border-color: $info !important;
     color: black !important;
 }
 .btn-primary, .btn-outline-primary:hover {

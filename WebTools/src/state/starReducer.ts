@@ -4,7 +4,7 @@ import type { StarSystem } from '../mapping/table/starSystem';
 import {
   setSector,
   setSectorName,
-  setStar,
+  setStarSystem,
   setStarSystemName,
 } from './starActions';
 
@@ -78,7 +78,7 @@ export const starSlice = createSlice({
           return state;
         }
       })
-      .addCase(setStar, (state, action) => {
+      .addCase(setStarSystem, (state, action) => {
         return {
           ...state,
           starSystem: action.payload.starSystem,

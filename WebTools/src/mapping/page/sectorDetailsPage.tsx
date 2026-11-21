@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Header } from '../../components/header';
-import { setSectorName, setStar } from '../../state/starActions';
+import { setSectorName, setStarSystem } from '../../state/starActions';
 import { store } from '../../state/store';
 import { EditableHeader } from '../view/editableHeader';
 import { LcarsDecorationLeftView } from '../view/lcarsDecorationLeft';
@@ -51,7 +51,7 @@ const SectorDetailsPageBase: React.FC<ISectorDetailsPageProperties> = ({
   };
 
   const showSystem = (system: StarSystem) => {
-    store.dispatch(setStar(system));
+    store.dispatch(setStarSystem(system));
     navigate('/tools/sector/starSystem');
   };
 

@@ -606,6 +606,10 @@
 
     "SystemGenerationPage.selectQuadrant": "Select quadrant",
     "SystemGenerationPage.generateSector": "Generate Sector",
+    "SystemGenerationPage.region": "Region",
+
+    "SystemGenerationPage.type.sector": "Sector",
+    "SystemGenerationPage.type.system": "System",
 
     "TacticalAssetsPage.instruction": "Add additional assets to your asset list.",
     "TacticalAssetsPage.assets": "Asset List",

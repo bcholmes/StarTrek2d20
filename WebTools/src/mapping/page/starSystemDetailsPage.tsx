@@ -16,6 +16,8 @@ import { Link, useNavigate } from 'react-router';
 import { LcarsFrame } from '../../components/lcarsFrame';
 import { PageIdentity } from '../../pages/pageIdentity';
 import { LoadingButton } from '../../common/loadingButton';
+import type { Sector } from '../table/sector';
+
 declare function download(
   bytes: Uint8Array | ArrayBuffer,
   fileName: string,
@@ -24,10 +26,12 @@ declare function download(
 
 interface IStarSystemDetailsPageProperties {
   starSystem?: StarSystem;
+  sector?: Sector;
 }
 
 const StarSystemDetailsPageBase: React.FC<IStarSystemDetailsPageProperties> = ({
   starSystem,
+  sector,
 }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -91,11 +95,13 @@ const StarSystemDetailsPageBase: React.FC<IStarSystemDetailsPageProperties> = ({
                     {t('Page.title.systemGeneration')}
                   </Link>
                 </li>
-                <li className="breadcrumb-item">
-                  <Link to="/tools/sector/details">
-                    {t('Page.title.sectorDetails')}
-                  </Link>
-                </li>
+                {sector ? (
+                  <li className="breadcrumb-item">
+                    <Link to="/tools/sector/details">
+                      {t('Page.title.sectorDetails')}
+                    </Link>
+                  </li>
+                ) : undefined}
                 <li className="breadcrumb-item active" aria-current="page">
                   {t('Page.title.starSystemDetails')}
                 </li>
@@ -165,13 +171,15 @@ const StarSystemDetailsPageBase: React.FC<IStarSystemDetailsPageProperties> = ({
             </div>
 
             <div>
-              <Button
-                size="sm"
-                className="me-2"
-                onClick={() => navigate('/tools/sector/details')}
-              >
-                Back to Sector
-              </Button>
+              {sector ? (
+                <Button
+                  size="sm"
+                  className="me-2"
+                  onClick={() => navigate('/tools/sector/details')}
+                >
+                  Back to Sector
+                </Button>
+              ) : undefined}
               <LoadingButton
                 loading={loadingExport}
                 size="sm"
@@ -191,6 +199,7 @@ const StarSystemDetailsPageBase: React.FC<IStarSystemDetailsPageProperties> = ({
 function mapStateToProps(state, ownProps) {
   return {
     starSystem: state.star.starSystem,
+    sector: state.star.sector,
   };
 }
 
