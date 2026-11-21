@@ -605,8 +605,14 @@
     "SupportingCharacter.speciesBonus": "Species Bonus",
 
     "SystemGenerationPage.selectQuadrant": "Select quadrant",
+    "SystemGenerationPage.worldClassification": "World Classification",
+
+    "SystemGenerationPage.worldClassification.instruction": "Include a primary world of class:",
+    "SystemGenerationPage.worldClassification.any": "Any primary class",
+
     "SystemGenerationPage.generateSector": "Generate Sector",
-    "SystemGenerationPage.region": "Region",
+    "SystemGenerationPage.generateSystem": "Generate System",
+    "SystemGenerationPage.region": "Quadrant / Region",
 
     "SystemGenerationPage.type.sector": "Sector",
     "SystemGenerationPage.type.system": "System",

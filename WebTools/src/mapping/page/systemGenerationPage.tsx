@@ -18,6 +18,8 @@ import { SpaceRegion, SpaceRegionModel } from '../spaceRegion';
 import { store } from '../../state/store';
 import { setSector, setStarSystem } from '../../state/starActions';
 import { Sector } from '../table/sector';
+import { WorldClass, worldClasses, WorldClassModel } from '../table/worldClass';
+import { GenerationSettings } from '../generationSettings';
 
 enum GenerationType {
   Sector,
@@ -30,6 +32,9 @@ export const SystemGenerationPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [type, setType] = useState<GenerationType>(GenerationType.Sector);
+  const [worldClass, setWorldClass] = useState<WorldClass | undefined>(
+    undefined,
+  );
 
   const renderSectorTypeSection = () => {
     if (region === SpaceRegion.ShackletonExpanse) {
@@ -78,6 +83,39 @@ export const SystemGenerationPage = () => {
       });
   };
 
+  const worldClassOptions = () => {
+    return [
+      new DropDownElement(
+        '',
+        t('SystemGenerationPage.worldClassification.any'),
+      ),
+      new DropDownElement(
+        WorldClass.M,
+        worldClasses[WorldClass.M].fullDescription,
+      ),
+      new DropDownElement(
+        WorldClass.K,
+        worldClasses[WorldClass.K].fullDescription,
+      ),
+      new DropDownElement(
+        WorldClass.L,
+        worldClasses[WorldClass.L].fullDescription,
+      ),
+      new DropDownElement(
+        WorldClass.E,
+        worldClasses[WorldClass.E].fullDescription,
+      ),
+      new DropDownElement(
+        WorldClass.O,
+        worldClasses[WorldClass.O].fullDescription,
+      ),
+      new DropDownElement(
+        WorldClass.P,
+        worldClasses[WorldClass.P].fullDescription,
+      ),
+    ];
+  };
+
   const generateSector = () => {
     SystemGenerationTable.generateSector(
       SpaceRegionModel.for(region),
@@ -88,7 +126,12 @@ export const SystemGenerationPage = () => {
 
   const generateSystem = () => {
     const spaceRegion = SpaceRegionModel.for(region);
-    const system = SystemGenerationTable.generateStarSystem(spaceRegion);
+    const settings = new GenerationSettings(
+      spaceRegion,
+      region === SpaceRegion.ShackletonExpanse ? sectorType : undefined,
+    );
+    settings.ecosphereWorldClass = worldClass;
+    const system = SystemGenerationTable.generateStarSystem(settings);
     system.id = SystemGenerationTable.generateStarSystemId(
       Math.floor(Math.random() * 10000),
     );
@@ -176,6 +219,26 @@ export const SystemGenerationPage = () => {
                 {renderSectorTypeSection()}
               </div>
             </div>
+            {type === GenerationType.System ? (
+              <div className="row">
+                <div className="col-12 col-md-6 mt-3">
+                  <Header level={2}>
+                    {t('SystemGenerationPage.worldClassification')}
+                  </Header>
+
+                  <STAMarkdown>
+                    {t('SystemGenerationPage.worldClassification.instruction')}
+                  </STAMarkdown>
+                  <DropDownSelect
+                    onChange={(e) =>
+                      setWorldClass(e === '' ? undefined : (e as WorldClass))
+                    }
+                    defaultValue={worldClass}
+                    items={worldClassOptions()}
+                  />
+                </div>
+              </div>
+            ) : undefined}
             <div className="mt-5 text-end">
               <Button onClick={generateSystemOrSector}>
                 {t(

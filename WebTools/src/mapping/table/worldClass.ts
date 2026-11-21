@@ -1,3 +1,5 @@
+import i18next from 'i18next';
+
 export enum WorldClass {
   AsteroidBelt,
   A,
@@ -32,6 +34,15 @@ export class WorldClassModel {
   constructor(id: WorldClass, description: string) {
     this.id = id;
     this.description = description;
+  }
+
+  get fullDescription() {
+    return (
+      i18next.t('World.class.description', { class: WorldClass[this.id] }) +
+      ' (' +
+      this.description +
+      ')'
+    );
   }
 
   get isGasGiant() {

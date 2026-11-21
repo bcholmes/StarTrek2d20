@@ -4,6 +4,7 @@ import { Source } from '../../helpers/sources';
 import { hasSource } from '../../state/contextFunctions';
 import { setSector, setStarSystem } from '../../state/starActions';
 import { store } from '../../state/store';
+import { GenerationSettings } from '../generationSettings';
 import { SpaceRegion, type SpaceRegionModel } from '../spaceRegion';
 import { AlienNameGenerator } from '../util/alienNameGenerator';
 import { generatePlanetName } from '../util/planetNameGenerator';
@@ -761,7 +762,9 @@ class SystemGeneration {
     const count = notableSystemTable();
     const sector = new Sector(region.prefix);
     for (let i = 0; i < count; i++) {
-      const system = this.generateStarSystem(region, sectorType);
+      const system = this.generateStarSystem(
+        new GenerationSettings(region, sectorType),
+      );
       if (system) {
         sector.systems.push(system);
       }
@@ -790,13 +793,13 @@ class SystemGeneration {
     return ('0000' + idNumber).slice(-4);
   }
 
-  generateStarSystem(region: SpaceRegionModel, sectorType?: SpecialSectors) {
+  generateStarSystem(settings: GenerationSettings) {
     let star = this.generateStar();
     let phenomenon = undefined;
 
     if (
       star == null &&
-      (sectorType != null || hasSource(Source.ExplorationGuide))
+      (settings.sectorType != null || hasSource(Source.ExplorationGuide))
     ) {
       // roll of 20
       while (star == null) {
@@ -805,7 +808,7 @@ class SystemGeneration {
 
       phenomenon = notableSpatialPhenomenaTable(
         star?.spectralClass?.id,
-        sectorType,
+        settings.sectorType,
       );
       if (phenomenon.id === NotableSpatialPhenomenon.RoguePlanet) {
         star = undefined;
@@ -847,7 +850,7 @@ class SystemGeneration {
         }
       }
 
-      this.generateSystem(region, starSystem);
+      this.generateSystem(settings, starSystem);
       return starSystem;
     } else {
       return undefined;
@@ -965,19 +968,22 @@ class SystemGeneration {
     isPrimaryWorld: boolean,
     orbit: Orbit,
     romanNumeral: number,
-    region: SpaceRegionModel,
+    settings: GenerationSettings,
     starSystem: StarSystem,
     useCoreTable: boolean = false,
   ): World {
     if (
-      region.id !== SpaceRegion.ShackletonExpanse &&
+      settings?.region?.id !== SpaceRegion.ShackletonExpanse &&
       (isPrimaryWorld ||
         useCoreTable ||
         (orbit.radius < starSystem.gardenZoneOuterRadius &&
           orbit.radius >= starSystem.gardenZoneInnerRadius))
     ) {
       const roll = D20.roll() + D20.roll();
-      const type = this.generalPlanetaryType[roll];
+      const type =
+        isPrimaryWorld && settings.ecosphereWorldClass != null
+          ? new GeneralPlanetaryType(worldClasses[settings.ecosphereWorldClass])
+          : this.generalPlanetaryType[roll];
 
       const world = this.createBasicWorldAttributes(
         type.worldClass,
@@ -999,7 +1005,7 @@ class SystemGeneration {
       let table = innerWorldShackletonExpanseTable;
       if (
         hasSource(Source.ExplorationGuide) &&
-        region.id !== SpaceRegion.ShackletonExpanse
+        settings?.region?.id !== SpaceRegion.ShackletonExpanse
       ) {
         table = innerWorldShackletonExpanseTable;
         if (isPrimaryWorld) {
@@ -1019,7 +1025,10 @@ class SystemGeneration {
         }
       }
 
-      const worldType = this.rollWorldType(table);
+      const worldType =
+        settings.ecosphereWorldClass == null || !isPrimaryWorld
+          ? this.rollWorldType(table)
+          : worldClasses[settings.ecosphereWorldClass];
 
       const world = this.createBasicWorldAttributes(
         worldType,
@@ -1056,7 +1065,7 @@ class SystemGeneration {
     return world;
   }
 
-  generateSystem(region: SpaceRegionModel, starSystem: StarSystem) {
+  generateSystem(settings: GenerationSettings, starSystem: StarSystem) {
     if (!starSystem.star.spectralClass.isDwarf) {
       let roll = D20.roll();
       this.numberOfPlanetsModifiers.forEach((mod) => (roll += mod(starSystem)));
@@ -1088,14 +1097,14 @@ class SystemGeneration {
             romanNumeralId,
             starSystem,
           );
-          this.createGasGiantDetails(world, orbit, starSystem, region, true);
+          this.createGasGiantDetails(world, orbit, starSystem, settings, true);
           romanNumeralId++;
         } else {
           world = this.createBasicWorld(
             i === primaryWorldOrbit - 1,
             orbit,
             romanNumeralId,
-            region,
+            settings,
             starSystem,
           );
           if (world.worldClass.id === WorldClass.AsteroidBelt) {
@@ -1195,7 +1204,7 @@ class SystemGeneration {
             world.worldDetails = details;
           } else if (world.worldClass.id === WorldClass.ArtificialPlanet) {
           } else if (world.worldClass.isGasGiant) {
-            this.createGasGiantDetails(world, orbit, starSystem, region);
+            this.createGasGiantDetails(world, orbit, starSystem, settings);
           } else {
             this.calculateStandardPlanetSize(world, starSystem);
             world.worldDetails = this.deriveStandardWorldDetails(world);
@@ -1211,7 +1220,7 @@ class SystemGeneration {
     world: World,
     orbit: Orbit,
     starSystem: StarSystem,
-    region: SpaceRegionModel,
+    settings: GenerationSettings,
     forceEcosphere: boolean = false,
   ) {
     let detailsRoll = D20.roll();
@@ -1234,7 +1243,7 @@ class SystemGeneration {
           world,
           orbit,
           starSystem,
-          region,
+          settings,
           forceEcosphere,
         ),
       ];
@@ -1245,7 +1254,7 @@ class SystemGeneration {
     gasGiant: World,
     orbit: Orbit,
     starSystem: StarSystem,
-    region: SpaceRegionModel,
+    settings: GenerationSettings,
     isPrimary: boolean,
   ) {
     const details = gasGiant.worldDetails as GasGiantDetails;
@@ -1253,7 +1262,7 @@ class SystemGeneration {
       isPrimary,
       orbit,
       gasGiant.orbit,
-      region,
+      settings,
       starSystem,
       true,
     );
@@ -1291,7 +1300,7 @@ class SystemGeneration {
           isPrimary,
           orbit,
           gasGiant.orbit,
-          region,
+          settings,
           starSystem,
           true,
         );

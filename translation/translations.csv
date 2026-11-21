@@ -738,8 +738,12 @@ SupportingCharacter.nameAndRankInstruction,Give the character an appropriate nam
 SupportingCharacter.numericalValue,Value,,Wert,Valor,Valeur,Значение,Valor,Wartość
 SupportingCharacter.speciesBonus,Species Bonus,,Spezies-Bonus,Bonificación por Especie,Bonus d'Espèce,Рассовый бонус,Bônus de Espécie,Korzyści wynikające z gatunku
 SystemGenerationPage.selectQuadrant,Select quadrant,,,Seleccionar cuadrante,,,,Wybierz kwadrant
+SystemGenerationPage.worldClassification,World Classification,,,,,,,
+SystemGenerationPage.worldClassification.instruction,Include a primary world of class:,,,,,,,
+SystemGenerationPage.worldClassification.any,Any primary class,,,,,,,
 SystemGenerationPage.generateSector,Generate Sector,,,Generar sector,,,,Generuj sektor
-SystemGenerationPage.region,Region,,,,,,,
+SystemGenerationPage.generateSystem,Generate System,,,,,,,
+SystemGenerationPage.region,Quadrant / Region,,,,,,,
 SystemGenerationPage.type.sector,Sector,,,,,,,
 SystemGenerationPage.type.system,System,,,,,,,
 TacticalAssetsPage.instruction,Add additional assets to your asset list.,,,Añade otros recursos a tu lista de recursos.,,,Adicione outros recursos à sua lista de recursos.,Dodaj zasób do Twojej listy zasobów.
