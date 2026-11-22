@@ -525,7 +525,7 @@ export class World {
       result.push(
         new WorldAttribute(
           i18next.t('World.attribute.classification'),
-          this.worldClass.fullDescription
+          this.worldClass.fullDescription,
         ),
       );
     }
