@@ -39,7 +39,8 @@ export class WorldClassModel {
   get fullDescription() {
     return i18next.t('World.class.fullDescription', {
       class: WorldClass[this.id],
-      description: this.description,
+      definition: this.description,
+      interpolation: { escapeValue: false },
     });
   }
 

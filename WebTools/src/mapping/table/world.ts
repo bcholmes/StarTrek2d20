@@ -525,11 +525,7 @@ export class World {
       result.push(
         new WorldAttribute(
           i18next.t('World.attribute.classification'),
-          i18next.t('World.class.fullDescription', {
-            class: WorldClass[this.worldClass.id],
-            definition: this.worldClass.description,
-            interpolation: { escapeValue: false },
-          }),
+          this.worldClass.fullDescription
         ),
       );
     }
