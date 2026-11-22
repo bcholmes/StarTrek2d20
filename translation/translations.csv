@@ -746,6 +746,9 @@ SystemGenerationPage.generateSystem,Generate System,,,,,,,
 SystemGenerationPage.region,Quadrant / Region,,,,,,,
 SystemGenerationPage.type.sector,Sector,,,,,,,
 SystemGenerationPage.type.system,System,,,,,,,
+SystemGenerationPage.star,Stellar Classification,,,,,,,
+SystemGenerationPage.star.instruction,Has a star of the following stellar classification:,,,,,,,
+SystemGenerationPage.star.any,Any stellar classification,,,,,,,
 TacticalAssetsPage.instruction,Add additional assets to your asset list.,,,Añade otros recursos a tu lista de recursos.,,,Adicione outros recursos à sua lista de recursos.,Dodaj zasób do Twojej listy zasobów.
 TacticalAssetsPage.assets,Asset List,,,Lista de Recursos,,,Lista de Recursos,Lista zasobów
 TalentEdit.unselected,No talent selected.,,,,,,,Nie wybrano talentów.

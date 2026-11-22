@@ -794,7 +794,7 @@ class SystemGeneration {
   }
 
   generateStarSystem(settings: GenerationSettings) {
-    let star = this.generateStar();
+    let star = this.generateStar(settings.spectralClass);
     let phenomenon = undefined;
 
     if (
@@ -857,8 +857,11 @@ class SystemGeneration {
     }
   }
 
-  generateStar() {
-    const spectralClass = this.rollSpectralClass();
+  generateStar(defaultSpectralClass?: SpectralClass) {
+    const spectralClass =
+      defaultSpectralClass == null
+        ? this.rollSpectralClass()
+        : SpectralClassRegistry.findBySpectralClass(defaultSpectralClass);
     if (spectralClass != null) {
       return this.generateStarDetails(spectralClass);
     } else {

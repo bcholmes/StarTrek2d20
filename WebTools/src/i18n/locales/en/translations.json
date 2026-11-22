@@ -617,6 +617,11 @@
     "SystemGenerationPage.type.sector": "Sector",
     "SystemGenerationPage.type.system": "System",
 
+    "SystemGenerationPage.star": "Stellar Classification",
+
+    "SystemGenerationPage.star.instruction": "Has a star of the following stellar classification:",
+    "SystemGenerationPage.star.any": "Any stellar classification",
+
     "TacticalAssetsPage.instruction": "Add additional assets to your asset list.",
     "TacticalAssetsPage.assets": "Asset List",
 

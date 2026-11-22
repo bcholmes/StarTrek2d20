@@ -97,6 +97,12 @@ export class SpectralClassRegistry {
     return SpectralClassRegistry.singleton;
   }
 
+  static findBySpectralClass(spectralClass: SpectralClass) {
+    return SpectralClassRegistry.instance.classes.filter(
+      (s) => s.id === spectralClass,
+    )[0];
+  }
+
   readonly classes: SpectralClassModel[] = [
     new SpectralClassModel(
       SpectralClass.M,

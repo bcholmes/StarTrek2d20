@@ -37,12 +37,10 @@ export class WorldClassModel {
   }
 
   get fullDescription() {
-    return (
-      i18next.t('World.class.description', { class: WorldClass[this.id] }) +
-      ' (' +
-      this.description +
-      ')'
-    );
+    return i18next.t('World.class.fullDescription', {
+      class: WorldClass[this.id],
+      description: this.description,
+    });
   }
 
   get isGasGiant() {

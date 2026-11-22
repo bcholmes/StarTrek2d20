@@ -20,6 +20,8 @@ import { setSector, setStarSystem } from '../../state/starActions';
 import { Sector } from '../table/sector';
 import { WorldClass, worldClasses, WorldClassModel } from '../table/worldClass';
 import { GenerationSettings } from '../generationSettings';
+import { SpectralClass, SpectralClassRegistry } from '../table/spectralClass';
+import { spellCheck$ } from '@mdxeditor/editor';
 
 enum GenerationType {
   Sector,
@@ -32,9 +34,10 @@ export const SystemGenerationPage = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [type, setType] = useState<GenerationType>(GenerationType.Sector);
-  const [worldClass, setWorldClass] = useState<WorldClass | undefined>(
-    undefined,
-  );
+  const [spectralClass, setSpectralClass] = useState<
+    SpectralClass | undefined
+  >();
+  const [worldClass, setWorldClass] = useState<WorldClass | undefined>();
 
   const renderSectorTypeSection = () => {
     if (region === SpaceRegion.ShackletonExpanse) {
@@ -81,6 +84,36 @@ export const SystemGenerationPage = () => {
       .map((r) => {
         return new DropDownElement(r.id, r.localizedName);
       });
+  };
+
+  const spectralClassOptions = () => {
+    return [
+      new DropDownElement('', t('SystemGenerationPage.star.any')),
+      new DropDownElement(
+        SpectralClass.B,
+        SpectralClassRegistry.findBySpectralClass(SpectralClass.B)?.description,
+      ),
+      new DropDownElement(
+        SpectralClass.A,
+        SpectralClassRegistry.findBySpectralClass(SpectralClass.A)?.description,
+      ),
+      new DropDownElement(
+        SpectralClass.F,
+        SpectralClassRegistry.findBySpectralClass(SpectralClass.F)?.description,
+      ),
+      new DropDownElement(
+        SpectralClass.G,
+        SpectralClassRegistry.findBySpectralClass(SpectralClass.G)?.description,
+      ),
+      new DropDownElement(
+        SpectralClass.K,
+        SpectralClassRegistry.findBySpectralClass(SpectralClass.K)?.description,
+      ),
+      new DropDownElement(
+        SpectralClass.M,
+        SpectralClassRegistry.findBySpectralClass(SpectralClass.M)?.description,
+      ),
+    ];
   };
 
   const worldClassOptions = () => {
@@ -131,6 +164,7 @@ export const SystemGenerationPage = () => {
       region === SpaceRegion.ShackletonExpanse ? sectorType : undefined,
     );
     settings.ecosphereWorldClass = worldClass;
+    settings.spectralClass = spectralClass;
     const system = SystemGenerationTable.generateStarSystem(settings);
     system.id = SystemGenerationTable.generateStarSystemId(
       Math.floor(Math.random() * 10000),
@@ -221,6 +255,22 @@ export const SystemGenerationPage = () => {
             </div>
             {type === GenerationType.System ? (
               <div className="row">
+                <div className="col-12 col-md-6 mt-3">
+                  <Header level={2}>{t('SystemGenerationPage.star')}</Header>
+
+                  <STAMarkdown>
+                    {t('SystemGenerationPage.star.instruction')}
+                  </STAMarkdown>
+                  <DropDownSelect
+                    onChange={(e) =>
+                      setSpectralClass(
+                        e === '' ? undefined : (e as SpectralClass),
+                      )
+                    }
+                    defaultValue={spectralClass}
+                    items={spectralClassOptions()}
+                  />
+                </div>
                 <div className="col-12 col-md-6 mt-3">
                   <Header level={2}>
                     {t('SystemGenerationPage.worldClassification')}
