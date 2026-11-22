@@ -2988,9 +2988,17 @@ class Marshaller {
               ? AttackType.Melee
               : AttackType.Ranged;
         } else if (talent.name === TALENT_NAME_ADDITIONAL_PROPULSION_SYSTEM) {
-          selectedTalent.selection = PropulsionSystemModel.getByTypeName(
-            t['selection'],
-          )?.type;
+          const selection = t['selection'];
+          if (
+            typeof selection === 'object' &&
+            selection?.type === 'Other' &&
+            typeof selection?.name === 'string'
+          ) {
+            selectedTalent.selection = new OtherSelection(selection.name);
+          } else if (typeof selection === 'string') {
+            selectedTalent.selection =
+              PropulsionSystemModel.getByTypeName(selection)?.type;
+          }
         } else {
           selectedTalent.selection = t['selection'];
         }
