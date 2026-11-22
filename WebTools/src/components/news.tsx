@@ -18,6 +18,14 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       onClose={() => onClose()}
       header="What's New?"
     >
+      <b>v1.261121</b>
+      <ul>
+        <li>
+          Revisions to the main character creations proces to defer talent
+          selection to the end. This revision was contributed by dwizard0.
+        </li>
+        <li>Minor tweaks to the star system generation process.</li>
+      </ul>
       <b>v1.261024</b>
       <ul>
         <li>Minor token revisions.</li>
@@ -213,54 +221,6 @@ export const News: React.FC<INewsProperties> = ({ showModal, onClose }) => {
       <b>v1.260523</b>
       <ul>
         <li>Bug fixes and more token tweaks.</li>
-      </ul>
-      <b>v1.260518</b>
-      <ul>
-        <li>More minor token changes.</li>
-      </ul>
-      <b>v1.260516</b>
-      <ul>
-        <li>Minor improvements to tokens.</li>
-      </ul>
-      <b>v1.260515</b>
-      <ul>
-        <li>A handful of minor updates and bug fixes.</li>
-        <li>
-          Added a 32nd-century uniform, with important commbadge contributions
-          from Felderburg.
-        </li>
-      </ul>
-      <b>v1.260508</b>
-      <ul>
-        <li>
-          Support for the 2nd edition updates for the{' '}
-          <cite>Gamma Quadrant</cite> and
-          <cite>Delta Quadrant</cite> sourcebooks.
-        </li>
-      </ul>
-      <b>v1.260507</b>
-      <ul>
-        <li>Tweaks to the Talent list.</li>
-        <li>More work on spaceframe appearances and other bug fixes.</li>
-      </ul>
-      <b>v1.260502</b>
-      <ul>
-        <li>
-          At Modiphius/Paramount's request, I've removed key text that
-          originated in the <cite>Species Sourcebook</cite>.
-        </li>
-        <li>Other minor improvements.</li>
-      </ul>
-      <b>v1.260429</b>
-      <ul>
-        <li>Small bug fixes.</li>
-      </ul>
-      <b>v1.260425</b>
-      <ul>
-        <li>
-          A few straggling updates from the <cite>Species Sourcebook</cite>.
-        </li>
-        <li>Other minor updates.</li>
       </ul>
 
       <div className="text-center">
